@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PluginServiceCluster">
+
+    <typeAlias alias="PluginServiceCluster" type="com.huawei.sharedrive.app.plugins.cluster.domain.PluginServiceCluster" />
+	
+	<insert id="create" parameterClass="PluginServiceCluster">
+        <![CDATA[
+        insert into plugin_service_cluster(dssId, appId, name, description, monitorPeriod, status, lastMonitorTime)
+        	values (#dssId#, #appId#, #name#, #description#, #monitorPeriod#, #status#, #lastMonitorTime#)
+        ]]>
+		
+ 		<selectKey resultClass="int" keyProperty="clusterId" >  
+       		 SELECT @@IDENTITY AS id  
+    	</selectKey>  
+    </insert>
+    
+    <delete id="delete" parameterClass="PluginServiceCluster">
+        <![CDATA[
+        delete from plugin_service_cluster where clusterId = #clusterId#
+        ]]>
+    </delete>
+    
+    <select id="listByAppId" parameterClass="PluginServiceCluster" resultClass="PluginServiceCluster">
+    	<![CDATA[
+        select * from plugin_service_cluster where appId = #appId#
+        ]]>
+    </select>
+    
+    <update id="update" parameterClass="PluginServiceCluster">
+        update plugin_service_cluster
+        <dynamic prepend="set">
+	        <isNotNull prepend=","  property="dssId">
+	            dssId = #dssId#
+	        </isNotNull>
+	        <isNotNull prepend="," property="name">
+	            name = #name#
+	        </isNotNull>
+	        <isNotNull prepend="," property="description">
+	            description = #description#
+	        </isNotNull>
+	        <isNotNull prepend="," property="monitorPeriod">
+	            monitorPeriod = #monitorPeriod#
+	        </isNotNull>
+	        <isNotNull prepend="," property="status">
+	            status = #status#
+	        </isNotNull>
+	        <isNotNull prepend="," property="lastMonitorTime">
+	            lastMonitorTime = #lastMonitorTime#
+	        </isNotNull>
+        </dynamic>
+        where clusterId = #clusterId#
+    </update>
+
+    <update id="updateStatusAndLastMonitorTime" parameterClass="PluginServiceCluster">
+    	<![CDATA[
+        update plugin_service_cluster set status = #status#, lastMonitorTime = #lastMonitorTime# where clusterId = #clusterId#
+        ]]>
+    </update>
+    
+    <select id="getByAppIdAndRouteInfo" parameterClass="PluginServiceCluster" resultClass="PluginServiceCluster">
+    	<![CDATA[
+        select c.* from plugin_service_cluster c join plugin_service_router r on c.clusterid = r.clusterid where r.dssid = #dssId# and c.appid = #appId#
+        ]]>
+    </select>
+    
+    <select id="get" parameterClass="Integer" resultClass="PluginServiceCluster">
+    	<![CDATA[
+        select * from plugin_service_cluster where clusterId = #value#
+        ]]>
+    </select>
+    
+    
+    
+</sqlMap>
+

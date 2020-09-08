@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TeamSpaceMemberships">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="TeamSpaceMemberships" type="com.huawei.sharedrive.app.teamspace.domain.TeamSpaceMemberships" />
+
+    <insert id="insert" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        insert into teamspace_memberships_$tableSuffix$(id,cloudUserId,userId,userType,username,loginName,teamRole,createdBy,createdAt,modifiedBy,modifiedAt,status) 
+        values 
+        (#id#,#cloudUserId#,#userId#,#userType#,#username#,#loginName#,#teamRole#,#createdBy#,#createdAt#,#modifiedBy#,#modifiedAt#,#status#)
+        ]]>
+    </insert>
+    
+    <insert id="insertToUserTable" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        insert into teamspace_memberships_user_$tableSuffix$(id,cloudUserId,userId,userType,username,loginName,teamRole,createdBy,createdAt,modifiedBy,modifiedAt,status) 
+        values 
+        (#id#,#cloudUserId#,#userId#,#userType#,#username#,#loginName#,#teamRole#,#createdBy#,#createdAt#,#modifiedBy#,#modifiedAt#,#status#)
+        ]]>
+    </insert>
+    
+    
+    <delete id="delete" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        delete from  teamspace_memberships_$tableSuffix$ where cloudUserId=#cloudUserId# and userId=#userId# and userType=#userType#
+        ]]>
+    </delete>
+
+    <delete id="deleteAll" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        delete from  teamspace_memberships_$tableSuffix$ where cloudUserId=#cloudUserId# 
+        ]]>
+    </delete>
+    
+     <delete id="deleteByID" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        delete from  teamspace_memberships_$tableSuffix$ where cloudUserId=#cloudUserId# and id=#id#
+        ]]>
+    </delete>
+    
+    <delete id="deleteToUserTable" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        delete from  teamspace_memberships_user_$tableSuffix$ where cloudUserId=#cloudUserId# and userId=#userId# and userType=#userType#
+        ]]>
+    </delete>
+    
+     <delete id="deleteToUserTableByID" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        delete from  teamspace_memberships_user_$tableSuffix$ where cloudUserId=#cloudUserId# and id=#id#
+        ]]>
+    </delete>
+    
+    <update id="update" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        update teamspace_memberships_$tableSuffix$ set teamRole=#teamRole#,modifiedBy=#modifiedBy#,modifiedAt=#modifiedAt#,status=#status# where cloudUserId=#cloudUserId# and userId=#userId# and userType=#userType#
+        ]]>
+    </update>
+    
+    <update id="updateMemberName" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        update teamspace_memberships_$tableSuffix$ set username=#username#,loginName=#loginName# where cloudUserId=#cloudUserId# and userId=#userId# and userType=#userType#
+        ]]>
+    </update>
+    
+    <update id="updateRole" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        update teamspace_memberships_$tableSuffix$ set teamRole=#teamRole#,modifiedBy=#modifiedBy#,modifiedAt=#modifiedAt# where cloudUserId=#cloudUserId# and userId=#userId# and userType=#userType#
+        ]]>
+    </update>
+    
+    <update id="updateRoleToUserTable" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        update teamspace_memberships_user_$tableSuffix$  set teamRole=#teamRole#, modifiedBy=#modifiedBy#,modifiedAt=#modifiedAt# where cloudUserId=#cloudUserId# and userId=#userId# and userType=#userType#
+        ]]>
+    </update>
+    
+    <update id="updateUserNameToUserTable" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        update teamspace_memberships_user_$tableSuffix$  set username=#username#,loginName=#loginName# where userId=#userId# and userType=#userType#
+        ]]>
+    </update>
+    
+    <update id="updateToUserTableByID" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        update teamspace_memberships_user_$tableSuffix$  set teamRole=#teamRole#, modifiedBy=#modifiedBy#,modifiedAt=#modifiedAt#, status=#status# where cloudUserId=#cloudUserId# and id=#id#
+        ]]>
+    </update>
+    
+    <select id="getByUser" resultClass="TeamSpaceMemberships" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        select * from teamspace_memberships_$tableSuffix$   where  cloudUserId=#cloudUserId# and userId=#userId# and userType=#userType#
+        ]]>
+    </select>
+    
+    <select id="getByUserType" resultClass="TeamSpaceMemberships" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        select * from teamspace_memberships_$tableSuffix$   where  cloudUserId=#cloudUserId# and userType=#userType#
+        ]]>
+    </select>
+
+    <select id="getByUserId" resultClass="TeamSpaceMemberships" parameterClass="TeamSpaceMemberships">
+    	<![CDATA[
+        select * from teamspace_memberships_user_$tableSuffix$  where  userId=#userId# and userType=#userType#
+        ]]>
+    </select>
+    
+    <select id="getByID" resultClass="TeamSpaceMemberships" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        select * from teamspace_memberships_$tableSuffix$   where  cloudUserId=#cloudUserId# and id=#id#
+        ]]>
+    </select>
+
+    <select id="getByTeamIdAndUserId" resultClass="TeamSpaceMemberships" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        select * from teamspace_memberships_$tableSuffix$   where cloudUserId=#cloudUserId# and userId=#userId#
+        ]]>
+    </select>
+
+	<select id="listTeamSpaceMemberships" parameterClass="map" resultClass="TeamSpaceMemberships">
+        select * from teamspace_memberships_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.cloudUserId">
+                    cloudUserId = #filter.cloudUserId#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.teamRole">
+                    teamRole = #filter.teamRole#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.username">
+                username like concat(#filter.username#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.loginName">
+                loginName like concat(#filter.loginName#,'%')
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                $limit.offset$,$limit.length$
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getMemberCount" resultClass="Long" parameterClass="map">
+        select count(cloudUserId) from teamspace_memberships_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.cloudUserId">
+                    cloudUserId = #filter.cloudUserId#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.teamRole">
+                    teamRole = #filter.teamRole#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.username">
+                username like concat(#filter.username#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.loginName">
+                loginName like concat(#filter.loginName#,'%')
+            </isNotEmpty>
+        </dynamic>
+    </select>   
+        
+    <select id="listUserTeamSpaceMemberships" parameterClass="map" resultClass="TeamSpaceMemberships">
+        select * from teamspace_memberships_user_$filter.tableSuffix$ s JOIN teamspace t on s.cloudUserId = t.cloudUserId where t.type = #type#
+        <dynamic prepend="and">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.userId">
+                    s.userId = #filter.userId#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.userType">
+                    s.userType = #filter.userType#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                $limit.offset$,$limit.length$
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getUserTeamSpaceCount" resultClass="Long" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        select count(userId) from teamspace_memberships_user_$tableSuffix$   where userId=#userId# and userType=#userType#
+        ]]>
+    </select>
+
+    <select id="getMaxMembershipsId" resultClass="Long" parameterClass="TeamSpaceMemberships">
+        <![CDATA[
+        select max(id) from teamspace_memberships_$tableSuffix$   where cloudUserId=#cloudUserId#
+        ]]>
+    </select>    
+
+    <select id="listUserTeamSpaceIds" parameterClass="map" resultClass="Long">
+        select cloudUserId from teamspace_memberships_user_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.userId">
+                    userId = #filter.userId#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.userType">
+                    userType = #filter.userType#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+        
+     <select id="listAllUserTeamSpaceMemberships" parameterClass="map" resultClass="TeamSpaceMemberships">
+        select * from teamspace_memberships_user_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="userId">
+                    userId = #userId#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="userType">
+                    userType = #userType#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    
+    <select id="getTeamSpaceMemberByTeamIdAndRole" parameterClass="map" resultClass="TeamSpaceMemberships">
+        select * from teamspace_memberships_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.cloudUserId">
+                    cloudUserId = #filter.cloudUserId#
+                </isNotEmpty>
+                  <isNotEmpty prepend="and" property="filter.userType">
+                  userType= #filter.userType#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.teamRole">
+                    teamRole = #filter.teamRole#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+</sqlMap>
+

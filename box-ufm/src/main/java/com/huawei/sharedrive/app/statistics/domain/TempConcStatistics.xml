@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TempConcStatistics">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="TempConcStatistics"
+		type="com.huawei.sharedrive.app.statistics.domain.TempConcStatistics" />
+	<insert id="insert" parameterClass="TempConcStatistics">
+    	<![CDATA[
+    	insert into temp_conc_statistics_day
+    	(day,host,timeUnit,maxUpload,maxDownload)
+    	values
+    	(#day#,#host#,#timeUnit#,#maxUpload#,#maxDownload#)
+    	]]>
+	</insert>
+	
+	<select id="get" resultClass="TempConcStatistics" parameterClass="map">
+        <![CDATA[
+        SELECT *
+        FROM temp_conc_statistics_day
+        WHERE day=#day# and timeUnit=#timeUnit# and host=#host#
+        ]]>
+	</select>
+	
+	<select id="getMaxUpload" resultClass="int" parameterClass="int">
+        SELECT max(maxUpload)
+        FROM temp_conc_statistics_day
+        WHERE day=#day#
+        GROUP BY day,timeUnit
+        ORDER BY max(maxUpload) DESC 
+        LIMIT 0, 1
+	</select>
+	
+	<select id="getMaxDownload" resultClass="int" parameterClass="int">
+        SELECT max(maxDownload)
+        FROM temp_conc_statistics_day
+        WHERE day=#day#
+        GROUP BY day,timeUnit
+        ORDER BY max(maxDownload) DESC 
+        LIMIT 0, 1
+	</select>
+	
+	<update id="update" parameterClass="TempConcStatistics">
+        <![CDATA[
+        UPDATE temp_conc_statistics_day
+        SET maxUpload=#maxUpload#,maxDownload=#maxDownload#
+        WHERE day=#day# and timeUnit=#timeUnit# and host=#host#
+        ]]>
+	</update>
+	
+</sqlMap>
+

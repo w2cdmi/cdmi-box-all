@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CopyTaskPart">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CopyTaskPart" type="pw.cdmi.file.engine.mirro.domain.CopyTaskPart" />
+
+	<resultMap id="resultMap.CopyTaskPart" class="CopyTaskPart">
+		<result column="taskId" property="taskId" javaType="java.lang.String" />
+		<result column="partId" property="partId" javaType="java.lang.String" />
+		<result column="size" property="size" javaType="java.lang.Long" />
+		<result column="copyStatus" property="copyStatus" javaType="java.lang.Integer" />
+		<result column="remark" property="remark" javaType="java.lang.String" />
+		<result column="createdAt" property="createdAt" />
+		<result column="modifiedAt" property="modifiedAt" />
+		<result column="retryNum" property="retryNum" javaType="java.lang.Integer" />
+		<result column="partRange" property="partRange" javaType="java.lang.String" />
+	</resultMap>
+	<insert id="batchReplace" parameterClass="java.util.List">   
+		    <![CDATA[  
+		        replace into copy_task_part(taskId,partId,size,copyStatus,remark,createdAt,modifiedAt,retryNum,partRange) values  
+		    ]]>
+		<iterate conjunction=",">   
+	        <![CDATA[  
+	            (#task[].taskId#,#task[].partId#,#task[].size#,#task[].copyStatus#,#task[].remark#,#task[].createdAt#,#task[].modifiedAt#,#task[].retryNum#,#task[].partRange#)
+	        ]]>
+		</iterate>
+	</insert>
+
+	<select id="countCopyTaskPart" parameterClass="java.lang.String" resultClass="int">
+        <![CDATA[
+        select count(*) from copy_task_part where taskId=#taskId#
+		]]>
+	</select>
+
+	<select id="countUnSuccessTaskParts" parameterClass="java.lang.String" resultClass="int">
+        <![CDATA[
+        select count(*) from copy_task_part where taskId=#taskId# and copyStatus in(0,3)
+		]]>
+	</select>
+
+	<select id="listCopyTaskPartByTaskId" parameterClass="java.lang.String" resultMap="resultMap.CopyTaskPart">
+        <![CDATA[
+        select * from copy_task_part where taskId=#taskId# order by partId
+		]]>
+	</select>
+
+	<update id="updateTaskSartsStatus" parameterClass="CopyTaskPart">
+	 	<![CDATA[  
+	 		update copy_task_part  set 
+	 		size=#size#,
+	 		copyStatus=#copyStatus#,
+	 		remark=#remark#,
+	 		modifiedAt=now(),
+	 		retryNum=#retryNum#,
+	 		partRange=#partRange#
+	 		where taskId=#taskId# and	partId=#partId#
+		]]>
+	</update>
+	<delete id="deleteByTaskId" parameterClass="String">
+		<![CDATA[
+			delete from copy_task_part where taskId = #taskId#
+		]]>
+	</delete>
+	<delete id="deleteUnExistTaskPart" parameterClass="String">
+		<![CDATA[
+			delete from copy_task_part where taskId <> all (select taskId from copy_task)
+		]]>
+	</delete>
+</sqlMap>

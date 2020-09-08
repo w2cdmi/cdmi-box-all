@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+	<BackupTreeNode height="32"  name="fullBackup_treeItem_listItem" folderattr="name=&quot;fullBackup_treeItem_expand&quot; padding=&quot;10,10,0,0&quot; width=&quot;12&quot; height=&quot;12&quot; normalimage=&quot;..\Image\ic_popup_backup_launch.png&quot; selectedimage=&quot;..\Image\ic_popup_backup_add.png&quot; selected=&quot;true&quot;">
+		<HorizontalLayout width="560" height="30" padding="5,0">
+			<Option name="fullBackup_treeItem_check" align="left" valign="vcenter" normalimage="file='..\image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='7,7,23,23'" selected="true" selectedimage="file='..\image\ic_popup_checkbox.png' source='0,26,16,42' dest='7,7,23,23'" width="30"/>
+			<Label name="fullBackup_treeItem_icon" width="24" height="24" padding="5,4,0,4" />
+			<MyFilesRichEditUI name="fullBackup_treeItem_name" limitchars="/ \ * | ' : ? &lt; &gt; &quot;" padding="5,3,0,3" inset="0,2" height="24" width="410"  multiline="false" font="12" mouse="false"  align="left" autohscroll="true" textcolor="#FF000000" endellipsis="true"/>
+		</HorizontalLayout>
+	</BackupTreeNode>
+</Window>

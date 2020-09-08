@@ -1,0 +1,47 @@
+/*user style*/
+.user-all-content{
+    width: 100%;
+}
+.user-setting-content{
+    width: 830px;
+    margin: auto;
+    /*background: #fff;*/
+
+}
+.user-header{
+    border-bottom: 1px solid #eaeaea;
+    line-height: 50px;
+}
+.user-header p{
+    font-size: 14px;
+    color: #ea5036;
+    padding-left: 14px;
+}
+.user-setting-contents{
+    margin: 14px 0 0 42px;
+    overflow: hidden;
+}
+.user-detail-info-left{
+    width: 420px;
+    float: left;
+}
+.user-detail-info-right{
+    float: right;
+}
+.user-common-style p span{
+    font-size: 14px;
+    color: #666666;
+    line-height: 52px;
+}
+.user-detail-info-right i{
+    display: inline-block;
+    width: 72px;
+    margin-right: 160px;
+    margin-top: 18px;
+}
+.user-detail-info-right i img{
+    width: 100%;
+}
+.bind-wx{
+    color: #EA5036;
+}

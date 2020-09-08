@@ -1,0 +1,15 @@
+<view class='view_container'>
+  <view bindtap='toEmployeesDepartments' class="view_comm"><text class='cont_text'>部门与员工管理</text><image class='plug_icon' src='/disk/images/arrow.png'></image></view>
+   <view bindtap='toLeaveManagements' class="view_comm"><text class='cont_text'>离职人员移交</text><image class='plug_icon' src='/disk/images/arrow.png'></image></view>
+  <!-- <view class="view_comm"><text class='cont_text'> 管理知识专员</text><image class='plug_icon' src='/disk/images/arrow.png'></image></view>
+  <view class="view_comm"><text class='cont_text'>查看应用管理员</text><image class='plug_icon' src='/disk/images/arrow.png'></image></view>  -->
+</view>
+
+<!-- <view class='view_container'>
+    <view class="view_comm"><text class='cont_text'>文件审计日志</text><image class='plug_icon' src='/disk/images/arrow.png'></image></view>
+</view>
+
+<view class='view_container'>
+    <view class="view_comm"><text class='cont_text'>通知邮箱</text><image class='plug_icon' src='/disk/images/arrow.png'></image></view>
+    <view class="view_comm"><text class='cont_text'>限额管理</text><image class='plug_icon' src='/disk/images/arrow.png'></image></view>    
+</view> -->

@@ -1,0 +1,23 @@
+<rules>
+    <rule>
+        <namespace>MirrorObject</namespace>
+        <shardingExpression>ownedBy % 1024 &lt; 256</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>MirrorObject</namespace>
+        <shardingExpression>ownedBy % 1024 &gt;= 256 and ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    <rule>
+        <namespace>MirrorObject</namespace>
+        <shardingExpression>ownedBy % 1024 &gt;= 512 and ownedBy % 1024 &lt; 768</shardingExpression>
+        <shards>partition3</shards>
+    </rule>
+    <rule>
+        <namespace>MirrorObject</namespace>
+        <shardingExpression>ownedBy % 1024 &gt;= 768</shardingExpression>
+        <shards>partition4</shards>
+    </rule>
+
+</rules>

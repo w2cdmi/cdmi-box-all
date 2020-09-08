@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window>
+	<VerticalLayout>
+
+		<HorizontalLayout height="42" bkimage="file='..\Image\rightheakerbk.png' corner='1,1,2,2'">
+			<HorizontalLayout>
+				<Option name="myShare_SharedOpt" text="指定人分享" padding="20,8" font="12" group="myShareTab" width="110" height="34" textcolor="#FF666666" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" selectedimage="file='..\Image\ic_tab_current.png' corner='6,6,72,22'" selected="true" />
+				<Option name="myShare_LinkedOpt" text="通过链接分享" padding="0,8" font="12" group="myShareTab" width="120" height="34" textcolor="#FF666666" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" selectedimage="file='..\Image\ic_tab_current.png' corner='6,6,72,22'" />
+			</HorizontalLayout>
+
+			<HorizontalLayout width="200" height="30" padding="0,6" name="myShare_searchLayout" bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'">
+				<SearchTxt name="myShare_searchtxt" maxchar="246" padding="8,2" height="26" visible="true" wantreturn="true" autohscroll="true" font="10" valign="vcenter" multiline="false" rich="false"/>
+				<Button name="myShare_clearsearchbtn" padding="5,7,10,0" width="16" height="16" normalimage="file='..\Image\ic_input_search_delete.png' source='0,0,16,16' dest='0,0,16,16'" hotimage="file='..\Image\ic_input_search_delete.png' source='0,26,16,42' dest='0,0,16,16'" pushedimage="file='..\Image\ic_input_search_delete.png' source='0,26,16,42' dest='0,0,16,16'" visible="false"/>				
+				<Button name="myShare_searchbtn" padding="0,5" showhtml="true" height="20" width="20" text="{i ..\Image\ic_input_search.png}{/i}" />
+			</HorizontalLayout>
+			<Control width="20"/>
+		</HorizontalLayout>
+
+		<HorizontalLayout height="50">
+			<HorizontalLayout>
+				<Text name="myShare_sharecount" padding="2,0" font="12" float="true" pos="20,5,320,45" valign="vcenter" visible="false" showhtml="true" />
+				<Control width="10"/>
+				<ScaleIconButton name="myShare_setShare" padding="10,10,0,0" font="12"  text="查看分享" textpadding="25,0,0,0" align="left" valign="vcenter" height="30" iconimage="file='..\Image\ic_toolmenu_detail.png' source='0,0,20,20' dest='0,5,20,25'" iconhotimage="file='..\Image\ic_toolmenu_detail.png' source='0,30,20,50' dest='0,5,20,25'" textcolor="#FF008be8" visible="false"/>
+				<ScaleIconButton name="myShare_canclShare" padding="20,10,0,0" font="12"  text="取消分享" textpadding="25,0,0,0" align="left" valign="vcenter" height="30" iconimage="file='..\Image\ic_toolmenu_share-cancel.png' source='0,0,20,20' dest='0,5,20,25'" iconhotimage="file='..\Image\ic_toolmenu_share-cancel.png' source='0,30,20,50' dest='0,5,20,25'" textcolor="#FF008be8" visible="false"/>
+			</HorizontalLayout>
+			<HorizontalLayout width="87" height="20" padding="0,15">
+				<HorizontalLayout >
+					<Option name="myShare_listOpt" tooltip="列表" width="20" group="myShare_changeTable" normalimage="file='..\Image\ic_oper_list.png' source='0,0,20,20'" pushedimage="file='..\Image\ic_oper_list.png' source='0,30,20,50'" selectedimage="file='..\Image\ic_oper_list.png' source='0,30,20,50'" selected="true"/>
+					<Option name="myShare_tabloidOpt" tooltip="缩略图" width="20" padding="10,0" group="myShare_changeTable" normalimage="file='..\Image\ic_oper_list_largeicon.png' source='0,0,20,20'" pushedimage="file='..\Image\ic_oper_list_largeicon.png' source='0,30,20,50'" selectedimage="file='..\Image\ic_oper_list_largeicon.png' source='0,30,20,50'" />
+				</HorizontalLayout>
+				<Control width="1" padding="8,0" bkcolor="#FFd9d9d9" />
+				<Button name="myShare_flush" padding="8,0" tooltip="刷新" width="20" height="20" normalimage="file='..\Image\ic_oper_refresh.png' source='0,0,20,20'" hotimage="file='..\Image\ic_oper_refresh.png' source='0,30,20,50'" disabledimage="file='..\Image\ic_oper_refresh.png' source='0,60,20,80'"/>
+			</HorizontalLayout>
+			<Control width="20"/>
+		</HorizontalLayout>
+
+		<TabLayout name="myShare_listTabShareOrLink">
+			<VerticalLayout>
+				<TabLayout name="myShare_listTabShare">
+					<VerticalLayout>
+						<CustomList name="myShare_ListShare" menu="true" encloseselect="true" menuxmlfile="myshareContextMenu.xml" endelipsis="true" header="true" itemshowhtml="true" vscrollbar="true" hscrollbar="true" itemlinecolor="#FFE5E5E5" itemhotbkcolor="#FFEBEBEB" itemselectedbkcolor="#FFDEF0FF" inset="20,0,20,0" >
+							<ListHeader height="28" bkimage="file='..\Image\listheaderbk.png' corner='1,1,2,2'">
+
+								<ListHeaderItem name="myShare_listheaderitem_name" font="10" intset="1,0,1,0" width="455" minwidth="200" textcolor="#FF666666" sepimage="..\Image\ic_tab_head_devideline.png" sepwidth="1">
+									<HorizontalLayout mousechild="true" padding="10,0,2,0" childpadding="5">
+										<HorizontalLayout width="60">
+											<ScaleIconButton name="myShare_listHeaderItemName" text="名称" textpadding="1,6,1,0" font="10" textcolor="#FF666666" align="left" />
+											<Button name="myShare_listHeaderItemNameSortIcon" visible="true" padding="5,5" width="18" height="18" normalimage="file='..\Image\ic_tab_head_arrowup.png' source='0,0,6,6' dest='0,6,6,12'" hotimage="file='..\Image\ic_tab_head_arrowup.png' source='0,16,6,22' dest='0,6,6,12'" />
+										</HorizontalLayout>
+									</HorizontalLayout>
+								</ListHeaderItem>
+								<ListHeaderItem name="myShare_listheaderitem_path" intset="1,0,1,0" font="10" width="97" minwidth="60" textcolor="#FF666666" sepimage="..\Image\ic_tab_head_devideline.png" sepwidth="1" >
+									<HorizontalLayout mousechild="true" padding="15,0,2,0" >
+										<ScaleIconButton name="myShare_listHeaderItemPath" text="路径" textpadding="1,6,1,0" font="10" textcolor="#FF666666" align="left"/>
+										<Button name="myShare_listHeaderItemPathSortIcon" visible="false" padding="5,5" width="18" height="18" normalimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,0,6,6' dest='0,6,6,12'" hotimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,16,6,22' dest='0,6,6,12'" />
+									</HorizontalLayout>
+								</ListHeaderItem>
+								<ListHeaderItem name="myShare_listheaderitem_size" font="10" intset="1,0,1,0" width="115" minwidth="60" textcolor="#FF666666" sepimage="..\Image\ic_tab_head_devideline.png" sepwidth="0">
+									<HorizontalLayout mousechild="true" padding="20,0,0,0" childpadding="1">
+										<HorizontalLayout >
+											<Control />
+											<ScaleIconButton name="myShare_listHeaderItemSize" text="大小" width="25" font="10" textcolor="#FF666666" />
+											<Button name="myShare_listHeaderItemSizeSortIcon" visible="false" padding="5,5" width="18" height="18" normalimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,0,6,6' dest='0,6,6,12'" hotimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,16,6,22' dest='0,6,6,12'" />
+										</HorizontalLayout>
+									</HorizontalLayout>
+								</ListHeaderItem>
+							</ListHeader>
+						</CustomList>
+					</VerticalLayout>
+					<VerticalLayout>
+						<TileLayoutList droptarget="false" name="myShare_TileShare" menu="true" encloseselect="true" menuxmlfile="myshareContextMenu.xml" header="hidden" visible="true" mouse="true" inset="24,15,25,25" childpadding="10" itemsize="122,123" itemshowhtml="true" vscrollbar="true" hscrollbar="false"/>
+					</VerticalLayout>
+
+					<VerticalLayout name="myShare_ShareNoFiles" >
+						<Control />
+						<HorizontalLayout height="200" >
+							<Control />
+							<Label bkimage="..\image\ic_null_shared_by_me.png" width="180" height="180" />
+							<Control />
+						</HorizontalLayout>
+						<VerticalLayout height="54">
+							<Label align="center" height="18" text="没有任何发出的分享" textpadding="10,0" font="17"  textcolor="#FF666666"/>
+							<Control height="10" />
+							<Label name="myShare_Share_nullfiles_description" align="center" height="16" text="当您需要协同办公时，给同事发出分享邀请" font="12" textcolor="#FF666666"/>
+							<Control height="10" />
+						</VerticalLayout>
+						<Control height="115" />
+						<Control />
+					</VerticalLayout>	
+
+				</TabLayout>
+			</VerticalLayout>
+
+			<VerticalLayout>
+				<TabLayout name="myShare_listTabLink">
+					<VerticalLayout>
+						<CustomList name="myShare_ListLink" menu="true" encloseselect="true" menuxmlfile="myshareContextMenu.xml" endelipsis="true" header="true" itemshowhtml="true" vscrollbar="true" hscrollbar="true" itemlinecolor="#FFE5E5E5" itemhotbkcolor="#FFEBEBEB" itemselectedbkcolor="#FFDEF0FF" inset="20,0,20,0" >
+							<ListHeader height="28" bkimage="file='..\Image\listheaderbk.png' corner='1,1,2,2'">
+
+								<ListHeaderItem name="myShare_listheaderitem_name" font="10" intset="1,0,1,0" width="290" minwidth="200" textcolor="#FF666666" sepimage="..\Image\ic_tab_head_devideline.png" sepwidth="1">
+									<HorizontalLayout mousechild="true" padding="10,0,2,0" childpadding="5">
+										<HorizontalLayout width="60">
+											<ScaleIconButton name="myShare_listHeaderItemName" text="名称" textpadding="1,6,1,0" font="10" textcolor="#FF666666" align="left" />
+											<Button name="myShare_listHeaderItemNameSortIcon" visible="true" padding="5,5" width="18" height="18" normalimage="file='..\Image\ic_tab_head_arrowup.png' source='0,0,6,6' dest='0,6,6,12'" hotimage="file='..\Image\ic_tab_head_arrowup.png' source='0,16,6,22' dest='0,6,6,12'" />
+										</HorizontalLayout>
+									</HorizontalLayout>
+								</ListHeaderItem>
+								<ListHeaderItem name="myShare_listheaderitem_path" intset="1,0,1,0" font="10" width="145" minwidth="60" textcolor="#FF666666" sepimage="..\Image\ic_tab_head_devideline.png" sepwidth="1" >
+									<HorizontalLayout mousechild="true" width="100" padding="15,0,2,0">
+										<ScaleIconButton name="myShare_listHeaderItemPath" text="路径" textpadding="1,6,1,0" font="10" textcolor="#FF666666" align="left"/>
+										<Button name="myShare_listHeaderItemPathSortIcon" visible="false" padding="5,5" width="18" height="18" normalimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,0,6,6' dest='0,6,6,12'" hotimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,16,6,22' dest='0,6,6,12'" />
+									</HorizontalLayout>
+								</ListHeaderItem>
+								<ListHeaderItem name="myShare_listheaderitem_link" font="10" intset="1,0,1,0" width="100" minwidth="50" textcolor="#FF666666" sepimage="..\Image\ic_tab_head_devideline.png" sepwidth="1">
+									<HorizontalLayout mousechild="true" padding="15,0,2,0" childpadding="5">
+										<ScaleIconButton name="myShare_listHeaderItemLink" text="链接数" autocalcwidth="true" font="10" textcolor="#FF666666" />
+										<Button name="myShare_listHeaderItemLinkSortIcon" visible="false" padding="5,5" width="18" height="18" normalimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,0,6,6' dest='0,6,6,12'" hotimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,16,6,22' dest='0,6,6,12'" />
+									</HorizontalLayout>
+								</ListHeaderItem>
+								<ListHeaderItem name="myShare_listheaderitem_size" font="10" intset="1,0,1,0" width="150" minwidth="65" textcolor="#FF666666" sepimage="..\Image\ic_tab_head_devideline.png" sepwidth="0">
+									<HorizontalLayout mousechild="true" padding="20,0,2,0" childpadding="5">
+										<HorizontalLayout >
+											<Control />
+											<ScaleIconButton name="myShare_listHeaderItemSize" text="大小" width="25" font="10" textcolor="#FF666666" />
+											<Button name="myShare_listHeaderItemSizeSortIcon" visible="false" padding="5,5" width="18" height="18" normalimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,0,6,6' dest='0,6,6,12'" hotimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,16,6,22' dest='0,6,6,12'" />
+										</HorizontalLayout>
+									</HorizontalLayout>
+								</ListHeaderItem>
+							</ListHeader>
+						</CustomList>
+					</VerticalLayout>
+					<VerticalLayout>
+						<TileLayoutList droptarget="false" name="myShare_TileLink" menu="true" encloseselect="true" menuxmlfile="myshareContextMenu.xml" header="hidden" visible="true" mouse="true" inset="24,15,25,25" childpadding="10" itemsize="122,123" itemshowhtml="true" vscrollbar="true" hscrollbar="false"/>
+					</VerticalLayout>
+
+					<VerticalLayout name="myShare_LinkNoFiles" >
+						<Control />
+						<HorizontalLayout height="200" >
+							<Control />
+							<Label bkimage="..\image\ic_null_shared_by_me.png" width="180" height="180" />
+							<Control />
+						</HorizontalLayout>
+						<VerticalLayout height="54">
+							<Label align="center" height="18" text="没有任何发出的分享" textpadding="10,0" font="17"  textcolor="#FF666666"/>
+							<Control height="10"/>
+							<Label name="myShare_Share_nullfiles_description" align="center" height="16" text="给文件或文件夹创建一个链接，发送给任何人" font="12" textcolor="#FF666666"/>
+							<Control height="10"/>
+						</VerticalLayout>
+						<Control height="115" />
+						<Control />
+					</VerticalLayout>
+
+				</TabLayout>
+			</VerticalLayout>
+		</TabLayout>
+	</VerticalLayout>
+</Window>

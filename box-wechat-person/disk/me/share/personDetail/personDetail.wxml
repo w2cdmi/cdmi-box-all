@@ -1,0 +1,29 @@
+<!--disk/me/share/personDetail/personDetail.wxml-->
+<!--disk/me/share/shareDetail/shareDetail.wxml-->
+<view class='page'>
+
+    <!--分享人数详情  -->
+    <scroll-view wx:if="{{!isShowBlankPage}}" scroll-y="{{true}}" style="height: {{windowHeight}}px;" bindscrolltolower='getMoreList'>
+        <view wx:for='{{personDetail}}' wx:key="*this" data-item='{{item}}' data-index='{{index}}' class='detail-list'>
+            <view>
+                <image src='{{item.avatarUrl}}' class='avatar-comm'></image>
+                <!-- <image src='/disk/images/department-avatar.png' class='avatar-comm'></image> -->
+            </view>
+            <view>
+                <view>
+                    <text class='person-name'>{{item.nickName}}</text>
+                    <!-- <image src='{{item.level}}' class='level-comm'></image> -->
+                    <image src='/disk/images/comments/level{{item.shareLevel}}.png' class='level-comm'></image>
+                </view>
+                <text class='date-text'>{{item.date}}</text>
+            </view>
+        </view>
+    </scroll-view>
+
+    <view wx:if="{{isShowBlankPage}}" class='blank-bg'>
+        <view class='blank-bg-image'>
+            <image src='/disk/images/me/share/blank-person.png'></image>
+        </view>
+        <view class='blank-bg-font'>暂时没有分享人数</view>
+    </view>
+</view>

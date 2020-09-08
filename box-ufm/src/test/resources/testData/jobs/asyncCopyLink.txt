@@ -1,0 +1,16 @@
+{ 
+    "type":"copy",  
+    "destFolderId":132, 
+    "destOwnerId":46, 
+    "srcOwnerId":46, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":131} 
+    ], 
+    "link":
+    {
+    	"linkCode":"c5640e0f", 
+        "plainAccessCode":"$plainAccessCode"
+    },
+    "autoRename":true
+} 

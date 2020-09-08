@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+	default-autowire="byName">
+    
+    <bean id="ruleForEspaceDownload" class="com.huawei.sharedrive.app.dataserver.url.ReplaceRule">
+    	<property name="networkTypes">
+    		<list>
+    			<value>2</value>
+    			<value>9</value>
+    		</list>
+    	</property>
+    	<property name="replacers">
+    		<list>
+    			<bean class="com.huawei.sharedrive.app.dataserver.url.Replacer">
+    				<property name="source" value="clouddrive-lhr.huawei.com" />
+    				<property name="target" value="clouddrive-007.huawei.com/lhr" />
+    			</bean>
+    		</list>
+    	</property>
+    </bean>
+    	
+    <bean id="ruleForOneboxUpload" class="com.huawei.sharedrive.app.dataserver.url.ReplaceRule">
+    	<property name="replacers">
+    		<list>
+    			<bean class="com.huawei.sharedrive.app.dataserver.url.Replacer">
+    				<property name="source" value="clouddrive-lhr.huawei.com" />
+    				<property name="target" value="clouddrive-007.huawei.com/lhr" />
+    			</bean>
+    		</list>
+    	</property>
+    </bean>
+    
+    <bean id="downloadUrlReplaceUtils" class="com.huawei.sharedrive.app.dataserver.url.URLReplaceUtils">
+    </bean>
+    
+    <bean id="uploadUrlReplaceUtils" class="com.huawei.sharedrive.app.dataserver.url.URLReplaceUtils">
+    </bean>
+    
+    <bean id="urlReplaceTools" class="com.huawei.sharedrive.app.dataserver.url.URLReplaceTools">
+    	<property name="uploadUrlReplaceUtils" ref="uploadUrlReplaceUtils" />
+    	<property name="downloadUrlReplaceUtils" ref="downloadUrlReplaceUtils" />
+    </bean>
+</beans>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="OrderBill">
+    <typeAlias alias="OrderBill" type="com.huawei.sharedrive.uam.product.domain.OrderBill" />
+    
+	<insert id="create" parameterClass="OrderBill">
+     <![CDATA[
+      INSERT INTO `order_bill` ( `id`, `productId`, `duration`, `totalPrice`, `discountRatio`, `discountPrice`, `surplusCost`, `payMoney`, `type`, `userType`, `submitDate`, `finishedDate`, `enterpriseId`, `enterpriseUserId`, `accountId`, `cloudUserId`, `descript`, `status`) 
+                        VALUES ( #id#, #productId#, #duration#, #totalPrice#, #discountRatio#, #discountPrice#, #surplusCost#, #payMoney#, #type#, #userType#, #submitDate#, #finishedDate#, #enterpriseId#, #enterpriseUserId#, #accountId#, #cloudUserId#, #descript#, #status#)
+                         ]]>
+                       
+                       
+   </insert>
+   <select id="list" resultClass="OrderBill" parameterClass="OrderBill">
+      <![CDATA[
+       select * from order_bill where enterpriseId=#enterpriseId# and cloudUserId=#cloudUserId#
+       ]]>
+    </select>
+    
+    
+    <select id="orderId" resultClass="OrderBill" parameterClass="string">
+      <![CDATA[
+       select * from order_bill where id=#id#
+       ]]>
+    </select>
+    
+    <update id="updateStatus" parameterClass="OrderBill">
+       UPDATE `order_bill` SET `status`=#status# 
+       <dynamic>
+         <isNotNull property="finishedDate">
+           <![CDATA[
+           , `finishedDate`=#finishedDate# 
+           ]]>
+         </isNotNull>
+       
+       </dynamic>
+       
+       WHERE (`id`=#id#)
+    </update>
+   
+</sqlMap>

@@ -1,0 +1,115 @@
+@import "/disk/template/fileList.wxss";
+
+.wechat-backup-set-content {
+    background-color: #fff;
+}
+
+.wechat-group-data-choose {
+    display: flex;
+    font-size: 30rpx;
+    color: #333;
+}
+
+.group-data-choose {
+    width: 50%;
+    text-align: center;
+    padding: 18rpx 0;
+}
+
+.group-data-choose-active {
+    color: #ea5036;
+    border-bottom: 1rpx solid #ea5036;
+}
+
+.backup-group-title {
+    padding: 20rpx 30rpx;
+    background-color: #f5f5f5;
+    font-size: 26rpx;
+}
+
+.border-bottom {
+    width: 100%;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.file-info label {
+    height: 90rpx;
+    line-height: 90rpx;
+}
+
+.checkbox-item {
+    width: 60rpx;
+}
+.data-checkbox-item{
+    width: 50rpx;
+}
+checkbox .wx-checkbox-input {
+    border-radius: 50%;
+    width: 35rpx;
+    height: 35rpx;
+    margin-top: 24rpx;
+    margin-right: 50rpx;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+    border: 1rpx solid #1d97ff;
+    background: #1d97ff;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+    border-radius: 50%;
+    width: 35rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: #fff;
+    background: transparent;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.backup-bg {
+    height: 20rpx;
+    background: #f5f5f5;
+}
+
+.per-group-title {
+    padding: 20rpx 30rpx;
+    font-size: 26rpx;
+    color: #666;
+    border-bottom: 1rpx solid #f1f1f1;
+}
+.choose-data-type{
+    padding: 20rpx 30rpx;
+}
+.choose-data-type{
+    display: flex;
+}
+.picture-video-document{
+    display: flex;
+    margin-right: 90rpx;
+}
+.picture-video-document view{
+    line-height: 90rpx;
+    font-size: 30rpx;
+    color: #666;
+}
+.confirm-button-content{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff;
+}
+.sure-button{
+    background: #ea5036;
+}
+.scroll-y-style{
+    margin-bottom: 130rpx;
+}
+.img-icon{
+    width: 90rpx;
+    height: 90rpx;
+}

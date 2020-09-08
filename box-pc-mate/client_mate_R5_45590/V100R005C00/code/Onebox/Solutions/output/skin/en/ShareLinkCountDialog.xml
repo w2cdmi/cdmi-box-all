@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="600,400" caption="0,0,0,42" roundcorner="5,5,5,5" >
+	<Include source="Default.xml" />
+
+	<VerticalLayout bkcolor="#FFffffff" >
+		<VerticalLayout height="42">
+			<HorizontalLayout bkcolor="#FFfafafa">
+				<Label name="CreateLinkDialog_TitleName" text="Share" font="15" textpadding="20,0,20,0" textcolor="#FF000000" align="left" valign="vcenter" endellipsis="true"/>
+				<Button name="closebtn" width="20" height="20" padding="0,11" normalimage="file='..\Image\ic_popup_delete.png' source='0,0,20,20'" hotimage="file='..\Image\ic_popup_delete.png' source='0,30,20,50'" pushedimage="file='..\Image\ic_popup_delete.png' source='0,60,20,80'" />
+				<Control width="20" />
+			</HorizontalLayout>
+			<Control height="1" bkcolor="#FFd9d9d9"/>
+		</VerticalLayout>
+
+		<HorizontalLayout>
+			<Control width="20" />
+			<VerticalLayout>
+				<Control height="20"/>
+				<HorizontalLayout height="20">
+					<Label text="Share Links" width="200" font="12" textcolor="#FF000000" />
+					<Control />				
+					<ScaleIconButton name="CreateLinkDialog_BtnShare" font="12" tooltip="Share with Colleagues" text="Share with Colleagues" textpadding="40,0,0,0" align="left" valign="vcenter" height="20" textcolor="#FF008be8" hottextcolor="#FF006ab0" pushedtextcolor="#FF006ab0" disabledtextcolor="#FF999999" iconimage="file='..\Image\ic_toolmenu_share.png' source='0,0,20,20' dest='15,0,35,20'" iconhotimage="file='..\Image\ic_toolmenu_share.png' source='0,30,20,50' dest='15,0,35,20'"/>
+				</HorizontalLayout>
+				<Control height="15" />
+				<HorizontalLayout height="20">
+					<Label text="You can create multiple links and set different user permissions." font="10" textcolor="#FF666666" />
+				</HorizontalLayout>
+
+				<VerticalLayout height="75" name="CreateLinkDialog_Layout1" visible="false">
+					<Control height="15" />
+					<HorizontalLayout height="30" bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'">
+						<Edit name="CreateLinkDialog_EditUrl1" text="" height="28" padding="5,1,5,1" width="389" font="12" disabledtextcolor="#FF000000" align="left" valign="vcenter" enabled="false"  bkcolor="#FFf5f5f5"/>
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnEdit1" tooltip="Edit" width="40" normalimage="file='..\Image\ic_toolmenu_more_rename.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_toolmenu_more_rename.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_toolmenu_more_rename.png' source='0,30,20,50' dest='10,5,30,25'" />
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnCopy1" tooltip="Copy" width="40" normalimage="file='..\Image\ic_toolmenu_more_copy-move.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_toolmenu_more_copy-move.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_toolmenu_more_copy-move.png' source='0,30,20,50' dest='10,5,30,25'" />
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnEmail1" tooltip="Email" width="40" normalimage="file='..\Image\ic_popup_share_mail.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_popup_share_mail.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_popup_share_mail.png' source='0,30,20,50' dest='10,5,30,25'" />
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnDelete1" tooltip="Delete" width="40" normalimage="file='..\Image\ic_toolmenu_more_delete.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_toolmenu_more_delete.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_toolmenu_more_delete.png' source='0,30,20,50' dest='10,5,30,25'" />
+					</HorizontalLayout>
+					<Control height="10" />
+					<HorizontalLayout height="20">
+						<Label name="CreateLinkDialog_TextStatus1" text="Access Control: Download Preview" showhtml="true" font="10" textcolor="#FF666666" endellipsis="true"/>
+					</HorizontalLayout>
+				</VerticalLayout>				
+
+				<VerticalLayout height="75" name="CreateLinkDialog_Layout2" visible="false">
+					<Control height="15" />
+					<HorizontalLayout height="30" bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'">
+						<Edit name="CreateLinkDialog_EditUrl2" text="https://onebox.huawei.com/p/wyafefaefaf" height="28" padding="5,1,5,1" width="389" font="12" disabledtextcolor="#FF000000" align="left" valign="vcenter" enabled="false"  bkcolor="#FFf5f5f5"/>
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnEdit2" tooltip="Edit" width="40" normalimage="file='..\Image\ic_toolmenu_more_rename.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_toolmenu_more_rename.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_toolmenu_more_rename.png' source='0,30,20,50' dest='10,5,30,25'" />
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnCopy2" tooltip="Copy" width="40" normalimage="file='..\Image\ic_toolmenu_more_copy-move.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_toolmenu_more_copy-move.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_toolmenu_more_copy-move.png' source='0,30,20,50' dest='10,5,30,25'" />
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnEmail2" tooltip="Email" width="40" normalimage="file='..\Image\ic_popup_share_mail.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_popup_share_mail.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_popup_share_mail.png' source='0,30,20,50' dest='10,5,30,25'" />
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnDelete2" tooltip="Delete" width="40" normalimage="file='..\Image\ic_toolmenu_more_delete.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_toolmenu_more_delete.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_toolmenu_more_delete.png' source='0,30,20,50' dest='10,5,30,25'" />
+					</HorizontalLayout>
+					<Control height="10" />
+					<HorizontalLayout height="20">
+						<Text name="CreateLinkDialog_TextStatus2" text="Access Control: Download Preview" showhtml="true" font="10" textcolor="#FF666666" endellipsis="true"/>
+					</HorizontalLayout>
+				</VerticalLayout>
+
+				<VerticalLayout height="75" name="CreateLinkDialog_Layout3" visible="false">
+					<Control height="15" />
+					<HorizontalLayout height="30" bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'">
+						<Edit name="CreateLinkDialog_EditUrl3" text="https://onebox.huawei.com/p/wyafefaefaf" height="28" padding="5,1,5,1" width="389" font="12" disabledtextcolor="#FF000000" align="left" valign="vcenter" enabled="false"  bkcolor="#FFf5f5f5"/>
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnEdit3" tooltip="Edit" width="40" normalimage="file='..\Image\ic_toolmenu_more_rename.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_toolmenu_more_rename.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_toolmenu_more_rename.png' source='0,30,20,50' dest='10,5,30,25'" />
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnCopy3" tooltip="Copy" width="40" normalimage="file='..\Image\ic_toolmenu_more_copy-move.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_toolmenu_more_copy-move.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_toolmenu_more_copy-move.png' source='0,30,20,50' dest='10,5,30,25'" />
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnEmail3" tooltip="Email" width="40" normalimage="file='..\Image\ic_popup_share_mail.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_popup_share_mail.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_popup_share_mail.png' source='0,30,20,50' dest='10,5,30,25'" />
+						<Control width="1" bkcolor="#FFcccccc"/>
+						<Button name="CreateLinkDialog_BtnDelete3" tooltip="Delete" width="40" normalimage="file='..\Image\ic_toolmenu_more_delete.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_toolmenu_more_delete.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_toolmenu_more_delete.png' source='0,30,20,50' dest='10,5,30,25'" />
+					</HorizontalLayout>
+					<Control height="10" />
+					<HorizontalLayout height="20">
+						<Text name="CreateLinkDialog_TextStatus3" text="Access Control: Download Preview" showhtml="true" font="10" textcolor="#FF666666" endellipsis="true"/>
+					</HorizontalLayout>
+				</VerticalLayout>
+
+				<Control />
+				<HorizontalLayout height="30">		
+					<Control />
+					<ScaleIconButton name="ShareLinkDialog_BtnCreate" text="Create More" textpadding="20,0,20,0" height="30" font="12" textcolor="#FFffffff" align="center" valign="center" normalimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" />
+					<Control width="10" />
+					<ScaleIconButton name="ShareLinkDialog_BtnCancel" text="Close" textpadding="20,0,20,0" height="30" font="12" textcolor="#FF000000" hottextcolor="#FF000000" align="center" valign="center" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,66,110' corner='3,3,3,3'" />	
+				</HorizontalLayout>
+			</VerticalLayout>
+			<Control width="20" />
+		</HorizontalLayout>
+
+		<HorizontalLayout height="20">
+		</HorizontalLayout>
+	</VerticalLayout>
+
+</Window>

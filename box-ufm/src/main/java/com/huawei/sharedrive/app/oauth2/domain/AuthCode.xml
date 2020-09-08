@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AuthCode">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="AuthCode" type="com.huawei.sharedrive.app.oauth2.domain.AuthCode" />
+    
+	<resultMap id="mapToAuthCode" class="AuthCode">
+		<result column="code" property="code"/>
+		<result column="auth" property="auth"/>
+		<result column="user_id" property="userId"/>
+		<result column="client_id" property="clientId"/>
+		<result column="device_id" property="deviceId"/>
+		<result column="created_at" property="createdAt"/>
+	</resultMap>
+
+    <select id="get" parameterClass="String" resultMap="mapToAuthCode">
+        <![CDATA[
+        select * from auth_code where code=#value#
+        ]]>
+    </select>
+    
+    
+    <select id="getAuthCodeByUserId" parameterClass="AuthCode" resultMap="mapToAuthCode">
+        <![CDATA[
+        select * from auth_code where user_id=#userId# and client_id=#clientId#
+        ]]>
+    </select>
+    
+    
+    <insert id="insert" parameterClass="AuthCode">
+        <![CDATA[
+        insert into auth_code
+        (code,auth,user_id,client_id,device_id,created_at)
+         values 
+        (#code#,#auth#,#userId#,#clientId#,#deviceId#,#createdAt#)
+        ]]>
+    </insert>
+
+    <delete id="delete" parameterClass="String">
+        <![CDATA[
+        delete from auth_code where code=#value#
+        ]]>
+    </delete>
+
+    <update id="update" parameterClass="AuthCode">
+        <![CDATA[
+        update auth_code set auth=#auth#,user_id=#userId#,
+        client_id=#clientId#,device_id=#deviceId#,
+        created_at=#createdAt# where code=#code#
+        ]]>
+    </update>
+</sqlMap>
+

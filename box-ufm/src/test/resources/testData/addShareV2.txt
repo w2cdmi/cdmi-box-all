@@ -1,0 +1,7 @@
+{ 
+    "sharedUser": 
+    { 
+        "id":5, 
+        "type":"user"
+    } 
+}

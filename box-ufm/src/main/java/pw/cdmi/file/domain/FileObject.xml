@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FileObject">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="FileObject" type="pw.cdmi.file.domain.FileObject" />
+
+	<select id="get" parameterClass="java.util.Map" resultClass="FileObject">
+		<![CDATA[
+		select * from fileobject_$tablePostfix$ where objectId = #objectId#
+		]]>
+	</select>
+	
+</sqlMap>

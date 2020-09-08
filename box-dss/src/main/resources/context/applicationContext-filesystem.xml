@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+	default-autowire="byName">
+    <bean id="fileSystemCacheClient" class="pw.cdmi.common.cache.CacheClientFactory"
+		factory-method="getInstance" destroy-method="destroy">
+		<constructor-arg value="${cache.default.pool.name}" />
+		<constructor-arg value="${cache.default.server.ips}" />
+		<constructor-arg value="${cache.default.server.port}" />
+		<constructor-arg value="${cache.filesystem.max.connections}" />
+		<constructor-arg value="${cache.default.socket.timeout}" />
+		<constructor-arg value="${cache.default.socket.connect.timeout}" />
+		<constructor-arg value="${cache.default.timeout}" />
+		<constructor-arg value="${cache.default.key.prefix}" />
+		<constructor-arg value="${cache.default.binaryProtocal}" />
+		<constructor-arg value="${cache.default.aliveCheck}" />
+		<constructor-arg value="${cache.default.failback}" />
+		<constructor-arg value="${cache.default.failover}" />
+		<constructor-arg value="${cache.default.opTimeout}" />
+		<constructor-arg value="${cache.default.cacheDataMaxSize}" />
+		<constructor-arg value="${cache.default.maxQueuedNoReplyOperations}" />
+		<constructor-arg value="${cache.filesystem.needCheckTransferQueueSize}" />
+	</bean>
+	
+    <!-- 同步 -->
+    <bean id="syncMemcachedCacheFileSystem" class="pw.cdmi.file.engine.filesystem.cache.MemcachedCacheFileSystem">
+    	<property name="config">
+    		<!-- (start , end] -->
+			<bean class="pw.cdmi.file.engine.filesystem.cache.CacheFileSystemConfig">
+				<property name="rangeStart" value="-1" />
+				<property name="rangeEnd" value="524288" />
+			</bean>
+		</property>
+		<property name="acceptMaxConcurrent" value="30" />
+    </bean>
+    
+    <!-- 异步 -->
+    <bean id="asyncMemcachedCacheFileSystem" class="pw.cdmi.file.engine.filesystem.cache.MemcachedCacheFileSystem">
+    	<property name="config">
+    		<!-- (start , end] -->
+			<bean class="pw.cdmi.file.engine.filesystem.cache.CacheFileSystemConfig">
+				<property name="rangeStart" value="524288" />
+				<property name="rangeEnd" value="1048576" />
+			</bean>
+		</property>
+		<property name="acceptMaxConcurrent" value="15" />
+    </bean>
+    
+    <!-- 用于读memcached的文件系统 -->
+    <bean id="readFileMemcachedCacheFileSystem" class="pw.cdmi.file.engine.filesystem.cache.MemcachedCacheFileSystem">
+    	<property name="config">
+    		<!-- (start , end] -->
+			<bean class="pw.cdmi.file.engine.filesystem.cache.CacheFileSystemConfig">
+				<property name="rangeStart" value="-1" />
+				<property name="rangeEnd" value="1048576" />
+			</bean>
+		</property>
+		<property name="acceptMaxConcurrent" value="30" />
+    </bean>
+    
+    <bean id="fileCacheClientProperties" class="pw.cdmi.file.engine.filesystem.cache.FileCacheClientProperties">
+    	<!-- cacheSupported 是否支持文件缓存 -->
+    	<property name="cacheSupported" value="true" />
+    	
+    	<!-- asyncLoadTaskQueueSize 异步写入asyncWriteList中的队列任务大小，该值必须大于0 -->
+    	<property name="asyncLoadTaskQueueSize" value="1000000" />
+    	
+    	<!-- monitorAsyncLoadTaskQueueThreadNumber 处理asyncLoadTaskQueueSize队列的线程数，当前配置成0，是因为asyncWriteList为空，没有需要异步写入的缓存 -->
+    	<property name="monitorAsyncLoadTaskQueueThreadNumber" value="5" />
+
+    	<!-- bufferGate 512KB，当文件<=该值的时候，InputStream会被转换为ByteArrayInputStream从而支持mark、reset方法 -->
+    	<property name="bufferGate" value="524288" />
+    </bean>
+    
+    <bean id="fileCacheClient" class="pw.cdmi.file.engine.filesystem.cache.FileCacheClient">
+    	<constructor-arg name="cacheProperties" ref="fileCacheClientProperties"/>    
+    		
+    	<!-- 读缓存文件列表，按照配置顺序读取 -->
+    	<constructor-arg name="readList">
+    		<list>
+				<ref local="readFileMemcachedCacheFileSystem" />
+			</list>
+    	</constructor-arg>
+    	
+    	<constructor-arg name="asyncWriteList">
+    		<list>
+    			<ref local="asyncMemcachedCacheFileSystem" />
+			</list>
+    	</constructor-arg>
+    	
+    	<constructor-arg name="syncWriteList">
+    		<list>
+    			<ref local="syncMemcachedCacheFileSystem" />
+			</list>
+    	</constructor-arg>
+    </bean>
+</beans>

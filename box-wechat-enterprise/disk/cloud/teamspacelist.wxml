@@ -1,0 +1,32 @@
+<!--disk/cloud/teamspacelist.wxml-->
+<import src="/disk/template/menu.wxml" />
+<import src="./drawer.wxml" />
+<view class="page">
+    <scroll-view scroll-y="true" style='height:{{scrollHeight - 60}}px;'>
+        <view class='blankBackground' hidden="{{spaceList.length==0?false:true}}">
+            <image src='../images/blank/blank-bg.png'></image>
+            <view>矮油，还没有文件</view>
+        </view>
+
+        <view class='content' wx:for="{{spaceList}}" wx:key="*this" data-id="{{item.id}}" data-name="{{item.name}}" catchtap='onItemClick'>
+            <view class="file-group border-bottom view-bg">
+                <view>
+                    <image class="file-icon" src="../images/{{type==0?'teamfile':'depfile'}}.png"></image>
+                </view>
+                <view class='file-info cell_2_body_content'>
+                    <label>{{item.name}}</label>
+                    <text>拥有者: {{item.ownerName==''?'管理员':item.ownerName}}</text>
+                </view>
+                <view style='width: 136rpx;' catchtap='clickitem' data-delespace='{{item.deletespace}}' data-memberspace='{{item.memberspace}}' data-deorquit='{{item.deorquit}}' data-item='{{item}}' wx:if="{{type==0}}">
+                    <image src='../images/depart-plug.png' class='depart'></image>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+
+    <view class='btn' wx:if="{{isTeamspace}}">
+        <view bindtap='newteamspace' class='sure-button' bindtap="newteamspace">新建协作空间</view>
+    </view>
+</view>
+<template is="drawer" data="{{showModalStatus,animationData,deletespace,deorquit,memberquit,memberspace}}"></template>
+<!-- <template is="menu" data="{{isShowMenuPanel, isTeamspace, animationMenuPanel,isTeamspace, isShowMusicButton, isOpenRobot, userIcon, isOpenRobot, animationAddPanel, isShowUpButton}}" /> -->

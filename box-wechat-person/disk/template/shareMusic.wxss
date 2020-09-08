@@ -1,0 +1,96 @@
+/* disk/template/shareMusic.wxss */
+
+page {
+    background-color: #fff;
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+}
+
+.cd {
+    width: 558rpx;
+    height: 502rpx;
+    margin: 0 auto;
+    display: block;
+}
+
+.top {
+    padding-top: 134rpx;
+    width: 100%;
+}
+
+.page-section {
+    width: 100%;
+    padding-bottom: 60rpx;
+}
+
+.page-section-gap {
+    box-sizing: border-box;
+    padding: 0 30rpx;
+    font-size: 31rpx;
+}
+
+.audio {
+    text-align: left;
+    width: 608rpx;
+    height: 192rpx;
+    margin-top: -200rpx;
+    margin-left: 39rpx;
+    position: absolute;
+}
+
+.audio-content {
+    display: inline-block;
+    margin-left: 29rpx;
+    margin-top: 23rpx;
+}
+
+.audio-bc {
+    width: 736rpx;
+    height: 228rpx;
+    margin-top: -84rpx;
+    margin-left: -26rpx;
+}
+
+.play-img {
+    width: 67rpx;
+    height: 67rpx;
+    margin-top: 33rpx;
+    float: left;
+}
+
+.play-name {
+    display: block;
+}
+
+.file-size {
+    display: block;
+}
+
+.file-name{
+    width:380rpx;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+.play-time {
+    float: right;
+    margin-top: 25rpx;
+}
+
+.turntable {
+    width: 529rpx;
+    height: 529rpx;
+    margin: 0 auto;
+    display: block;
+}
+
+.pole {
+    float: left;
+    position: absolute;
+    top: 134rpx;
+    width: 192rpx;
+    height: 519rpx;
+    right: 43px;
+}

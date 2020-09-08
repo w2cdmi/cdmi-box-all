@@ -1,0 +1,35 @@
+// ShellExtent.idl : ShellExtent 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(ShellExtent.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(DA4E3E4E-A9FB-460B-853C-BC48062E966A),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IContextMenuExt : IDispatch{
+};
+[
+	uuid(D75E7189-85D0-46F0-992C-DC1CCB03278E),
+	version(1.0),
+]
+library ShellExtentLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(A4B065F6-91BF-452E-A481-736729410010)		
+	]
+	coclass ContextMenuExt
+	{
+		[default] interface IContextMenuExt;
+	};
+};
+
+import "shobjidl.idl";

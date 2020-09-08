@@ -1,0 +1,355 @@
+/*
+ Localization.strings
+ OneMail
+ 
+ Created by cse  on 15/12/2.
+ Copyright (c) 2015年 cse. All rights reserved.
+ */
+"Confirm" = "Confirm";
+"Cancel" = "Cancel";
+"Search" = "Search";
+"SelectAll" = "Select";
+"Delete" = "Delete";
+"More" = "More";
+"Done" = "Done";
+"OperationFailed" = "Failed";
+"OperationSuccess" = "Success";
+"Undo" = "Undo";
+
+//相册备份
+"Backup" = "Backup";
+"BackupTitle" = "Backup Album";
+"BackupStatusRunning" = "In the Backup";
+"BackupStatusComplete" = "Backup Complete";
+"BackupStatusPause" = "Pause";
+"BackupStatusContinue" = "Continue";
+"BackupRemainNotice" = "%ld/%ld remaining";
+"BackupFailedNotice" = "%ld failed";
+"BackupAlbumSelectTitle" = "Select Album";
+"BackupWIFINoticeTitle" = "Backup on Wi-Fi Only";
+"BackupAlbumViewTitle" = "View Backup Album";
+"BackupAlbumOpenTitle" = "Enable";
+"BackupAlbumCloseTitle" = "Close Backup Album";
+"BackupDescription" = "Remarkable moments to cloud for permanent storage";
+"BackupDeniedTitle" = "Access Denied";
+"BackupDeniedPrompt" = "This app does not have access to your photos or videos. You can enable access in Privacy Settings.";
+"BackupAlbumPreviewTitle" = "已备份相册";
+
+//云盘登录
+"LoginInitiateExperience" = " Click Start";
+"CloudLoginUserName" = "Domain／Username";
+"CloudLoginPassword" = "Password";
+"CloudLoginAutomaticaly" = "Automatic Login";
+"CloudLoginServerAddress" = "Cloud Address";
+"CloudLoginButtonTitle" = "Login";
+"CloudLoginFailedPrompt" = "Authorized Failed";
+"CloudLoginNone" = "Please input Login information";
+"CloudLoginNetworkPrompt" = "No Network";
+"CloudLoginIncorrectPrompt" = "Username or Password incorrect";
+"CloudLoginLockedPrompt" = "The account has been locked";
+"CloudLoginLastNotice" = "Login Notice";
+"CloudLoginLastTime" = " Login Time: %@\n\r";
+"CloudLoginIPAddress" = " IP Address: %@\n\r";
+"CloudLoginClientType" = " Client Type: %@";
+"CloudLoginForget" = "ForgetPassword";
+"InternetOfflineTitle" = "InternetOffline!";
+"Login"= "Login";
+//隐私声明
+"CloudDeclarationTitle" = "Privacy Statement";
+"CloudDeclarationDisagree" = "Disagree";
+"CloudDeclarationAgree" = "Agree";
+"CloudDeclarationFailed" = "Request Failed";
+"CloudSecurityMessage" = "To pretect data security,you must change the default password and log in the system again";
+
+//上传
+"CloudUploadTitle" = "Upload";
+"CloudUploadTo" = "Upload to:";
+"CloudUploadButton" = "Upload";
+"CloudUploadNumButton" = "Upload(%lu)";
+"CloudUploadAddSuccessPrompt" = "Upload operations add success";
+"CloudUploadDeniedTitle" = "Access Denied";
+"CloudUploadDeniedPrompt" = "This app does not have access to your photos or videos. You can enable access in Privacy Settings.";
+"CloudUploadWIFIPrompt" = "当前为非Wi-Fi模式，是否继续上传文件?";
+"CloudUploadAddSuccessPrompt" = "Upload operation add success";
+"CloudUploadAddFailedPrompt" = "Upload operation add failed";
+"CloudDownloadAddSuccessPrompt" = "Donwload operation add success";
+"CloudDownloadAddFailedPrompt" = "Download operation add failed";
+"CloudDownloadWIFIPrompt" = "当前为非Wi-Fi模式，是否继续下载文件?";
+"CloudNoneNetworkPrompt" = "没有可以使用的网络";
+
+//团队空间
+"CloudTeamSpaceTitle" = "Team Space";
+"CloudTeamSpaceFailedPrompt" = "Load Failed";
+"CloudTeamSpaceOwner" = "Owner:%@";
+"CloudTeamSpaceMember" = "%@ Members";
+"CloudSpaceCreate" = "Create team Space";
+"CloudTeamSpaceDissolve" = "Dissolve Team Space";
+"CloudTeamSpaceDetail" = "Detail Information";
+"CloudTeamSpaceAppoint" = "Change Owner";
+"CloudTeamSpaceManage" = "Members Manage";
+"CloudTeamSpaceDeletePrompt" = "Are you sure to delete?";
+"CloudTeamSpaceExit" = "Exit from team";
+"CloudTeamSpace" = "NO Team Space";
+"CloudShareApp" = "share storbox";
+//分享
+"CloudShareTitle" = "Share With Me";
+"CloudShareUser" = "Share User %@";
+"CloudSharing" = "Sharing...";
+"CloudShareWithButton" = "Share With";
+"CancelShare" = "Cancel Sharing";
+"CloudShareWithSpecified" = "Recipient(%lu)";
+"CloudShareWithSpecifiedPrompt" = "团队空间文件不支持分享给其他用户";
+"CloudShareWithLoadFailedPrompt" = "Load Failed";
+"CloudShareDeleteAll" = "Delete All";
+"CloudShareCancel" = "Sharing Cancel";
+
+"CloudShareLinkButton" = "Share Link";
+"CloudShareLinkNumPrompt" = "You can create 3 links for this file";
+"CloudShareLinkPermissonPrompt" = "Assign different permissions to visitors";
+"CloudShareLinkLoadFailedPrompt" = "Load Links Failed";
+"CloudShareLinkAccess" = "Access permission: ";
+"CloudShareLinkAccessDownload" = "Download";
+"CloudShareLinkAccessPreview" = "Preview";
+"CloudShareLinkAccessUpload" = "Upload";
+"CloudShareLinkUploader" = "Upload";
+"CloudShareLinkPreviewer" = "Preview";
+"CloudShareLinkViewer" = "Download,Preview";
+"CloudShareLinkUploadAndView" = "Download,Preview,Upload";
+"CloudShareLinkExtraction" = "Extraction code: ";
+"CloudShareLinkExtractionType" = "Extraction code type";
+"CloudShareLinkExtractionCommon" = "Common";
+"CloudShareLinkExtractionCustom" = "Custom";
+"CloudShareLinkExtractionStatic" = "Static";
+"CloudShareLinkExtractionNone" = "None";
+"CloudShareLinkRefrshButton" = "Refresh";
+"CloudShareLinkPeriod" = "Validity period: ";
+"CloudShareLinkPeriodStart" = "From";
+"CloudShareLinkPeriodEnd" = "To";
+"CloudShareLinkPeriodForever" = "Forever";
+"CloudShareLinkPeriodCustom" = "Custom";
+"CloudShareLinkPeriodOneDay" = "One Day";
+"CloudShareLinkPeriodThreeDay" = "Three Days";
+"CloudShareLinkPeriodOneWeek" = "One Week";
+"CloudShareLinkPeriodOneMonth" = "One Month";
+"CloudShareLinkPeriodFailedPrompt" = "链接有效期错误";
+"CloudShareLinkSettingTitle" = "Set Link";
+"CloudShareLinkTitle" = "Share Link";
+"CloudShareLinkDeletePrompt" = "You want to delete the link?";
+"CloudShareLinkSendToOnebox"="Share to Onebox";
+"CloudShareLinkSendToOtherApp"="Share to Other App";
+
+"CloudSharedUserFailedPrompt" = "Failed to obtain share users";
+"CloudSharedUserAddTitle" = "Search User";
+"CloudSharedUserAddButton" = "Share";
+"CloudSharedUserAddFailedPrompt" = "添加共享用户失败";
+"CloudShareMessageTitle" = "Add information";
+
+//联系人
+"ContactTitle" = "Contact";
+"ContactDetail" = "Detail";
+"ContactRecentTitle" = "Recent Contacts";
+"ContactAllTitle" = "All Contacts";
+"ContactSearchTitle" = "Search Contacts";
+"ContactAddTitle" = "Add Contacts";
+"ContactAddButton" = "Add";
+"ContactAddedTitle" = "Added";
+"ContactSearchEnterpriseTitle" = "Search for Enterprise Address Book";
+"ContactNameTitle" = "Name";
+"ContactMandatory" = "Required";
+"ContactEmailTitle" = "Email Address";
+"ContactMobliePhone" = "Mobile Phone";
+"ContactRemark" = "Remarks";
+"ContactAddFailedPrompt" = "The email address and name cannot be blank";
+"ContactGroupTitle" = "Group";
+"ContactSingleLabel" = "%lu Cantact";
+"ContactCountLabel" = "%lu Conatcts";
+"ContactNonePrompt" = "The cantact cannot be blank";
+"ContactSearchFailed" = "Search Failed";
+"ContactMore" = "More";
+"ContactMenuAddRemark" = "Add Remarks";
+"ContactMenuPhone" = "Mobile Phone";
+"ContactMenuDelete" = "Delete";
+
+
+//我的文件
+"CloudTitle" = "File";
+"CloudFileTitle" = "My Space";
+"CloudFileLoadFailedPrompt" = "Load Failed";
+"CloudFileRefreshPrompt" = "Last update time:%@";
+"CloudFileRefreshing" = "Reshing";
+"CloudNoFile" = "NO Files";
+"CloudNoFileNotification" = "You can click on the 'Upload' to add the files here";
+"CloudFileCreateFolder" = "New Folder";
+"CloudFileUploadFile" = "Upload";
+"CloudFileTransmitTeamSpace" = "Transmit to team space";
+"CloudFileTransmitMySpace" = "Transmit to my space";
+"CloudFileMove" = "Move";
+"CloudFileMovePrompt" = "%@ folder contains a file with the same name as %@";
+"CloudFileMoveRenamePrompt" = "Rename the file automatically?";
+"CloudFileRename" = "Rename";
+"CloudFileVersion" = "Version";
+"CloudFileSearch" = "Search";
+"CloudFileDeletePrompt" = "Are you sure to delete?";
+"CloudFileMoreSelect" = "Multi-Select";
+"CloudFileMultiSelectTitle" = "%ld Selected";
+"CloudFileMoreSortName" = "Sort By Name";
+"CloudFileMoreSortTime" = "Sort By Time";
+
+"CloudFileShareSinglePrompt" = "For single file only";
+"CloudFileRenameSinglePrompt" = "For single file only";
+"CloudFileVersionSinglePrompt" = "For single file only";
+"CloudFileNoneOperatePrompt" = "please choose at least one file";
+"CloudSearching" = "Searching...";
+"CloudSearchResultTitle" = "Search Result";
+
+"CloudCreateFolderTitle" = "New Folder";
+"CloudRenameTitle" = "Rename";
+"CloudNameIllegal" = "Invalid folder name";
+"CloudNameLimit" = "The folder name length exceeds the upper limit";
+
+"CloudVersionTitle" = "Version";
+"CloudVersionFailedPrompt" = "Load Failed";
+
+//预览
+"CloudPreviewFileTaskPrompt" = "文件正在传输,无法预览";
+"CloudPreviewVersionNoFound" = "The version has not been downloaded";
+"CloudPreviewAttachmentNoFound" = "The attachment has not been downloaded";
+"CloudPreviewFileNoFound" = "File not found";
+"CloudPreviewDownloadFailedPrompt" = "Download cancelled";
+
+//传输列表
+"CloudTransferTaskTitle" = "Transfer Tasks";
+"CloudTransferTitle" = "Transfer List";
+"CloudTransferingTitle" = "Transferring";
+"CloudTransferredTitle" = "Transferred";
+"CloudTransferStatusInitialing" = "Initializing";
+"CloudTransferStatusRunning" = "Running";
+"CloudTransferStatusWaitting" = "Waiting";
+"CloudTransferStatusWaitNetwork" = "等待网络";
+"CloudTransferStatusPaused" = "Suspended";
+"CloudTransferStatusSucceed" = "Succeeded";
+"CloudTransferStatusCancel" = "Cancelled";
+"CloudTransferStatusFailed" = "Failed";
+"CloudTransferDeletePrompt" = "Are you sure to delete?";
+"CloudTransferResumeAll" = "Resume All";
+"CloudTransferPauseAll" = "Pause All";
+"CloudTransferCancelAll" = "Cacnel All";
+"CloudTransferClearAll" = "Clear";
+"CloudTransferClearPrompt" = "清除任务不会影响已经缓存的数据";
+"CloudNoTransferTask" = "NoTransferTask";
+//邮件
+"MailTitle" = "Email";
+"MailLoading" = "Loading...";
+"MailNotidicationTitle" = "You've got a new email";
+
+"MailFormatIncorrect" = "Incorrect email address format";
+"PhoneFormatIncorrect" = "Incorrect phone number length";
+
+"MailShowTitle" = "Detail";
+"MailShowSubjectTitle" = "Subject:";
+"MailShowFromTitle" = "From:";
+
+"MailLoginHeader" = "An email address is required";
+"MailLoginAddress" = "Email";
+"MailLoginPassword" = "Password";
+"MailLoginChange" = "Change Email";
+"MailLoginDelete" = "Remove Email";
+"MailLoginNone" = "No Bound";
+"MailLogin" = "Start";
+"MailServerPrompt" = "Failed to get email server information";
+"MailDetail" = "Detail";
+"MailStickyTop" = "Sticky to top";
+"MailNotifications" = "Do not disturb";
+"MailScreenName" = "On-screen name";
+"MailForwardTitle" = "Choose Chat";
+"MailForwardPrompt" = "Send to this chat?";
+"MailChatPhoto" = "Photo";
+"MailChatVideo" = "Video";
+"MailChatAudio" = "Audio";
+"MailChatLocal" = "Local";
+"MailChatCloud" = "Cloud";
+"MailChatAttAttachment" = "Add Attachments";
+"MailReplyTitle" = "Reply";
+"MailTransmitTitle" = "Transmit";
+"MailDeleteTitle" = "Delete";
+"MailDeletePrompt" = "Are you sure to delete the message?";
+"MailEmptyPrompt" = "%@ sent an empty email";
+
+
+//
+"UserTitle" = "User Information";
+"UserPhoto" = "Profile Picture";
+"UserLoginName" = "Username";
+"UserName" = "Name";
+"UserMail" = "Email Address";
+"UserDescription" = "Department";
+"UserPhoneNumber" = "Mobile Phone";
+"UserRemark" = "Remark";
+"UserNameTitle" = "Name:%@";
+"UserMailTitle" = "%@";
+"UserMailNoBound" = "Not bound";
+"UserMailSendButton" = "Send Email";
+"UserRemarkAdd" = "Add Remarks";
+"UserAdd" = "Add";
+"UserDeletePrompt" = "The email history with this contact will be deleted at the same time.";
+"UserSendEmail" = "Send Message";
+"UserCamera" = "Camera";
+"UserPhotoLibrary" = "Photo";
+"UserCameraPrompt" = "Your camera is not available";
+"UserPhotoPrompt" = "Your photos are not available";
+
+//设置
+"SettingTitle" = "Settings";
+"SettingFileTitle" = "File";
+"SettingFileClearCache" = "Cache";
+"SettingFileClearCachePrompt" = "Are you sure to clear all cache?";
+"SettingFileClearButton" = "Clear";
+"SettingFileCache" = "Usage:%@";
+"SettingMailTitle" = "Email";
+"SettingMailAddressTitle" = "Email";
+"SettingMailAddressChangePrompt" = "Changing the mail will delete all previously downloaded messages from this phone.";
+"SettingMailAddressDeletePrompt" = "Removing the mail will delete all downloaded messages from this phone.";
+"SettingMailRemainTitle" = "Notification";
+"SettingMailRemainHeader" = "New Email";
+"SettingMailRemainNotification" = "Notification";
+"SettingMailRemainSound" = "Sounds";
+"SettingMailRemainShake" = "Vibration";
+"SettingMailRemainDisturbe" = "Do not disturb";
+"SettingMailRemainDisturbePrompt" = "Notifications will be muted";
+"SettingMailRemainDisturbeStart" = "From";
+"SettingMailRemainDisturbeEnd" = "To";
+"SettingMailRemainTimePrompt" = "Incorrect start and end times";
+"SettingMailSyncTitle" = "Synchronization";
+"SettingMailSyncModeTitle" = "Mode";
+"SettingMailSyncModeSaving" = "Save Bandwidth Mode";
+"SettingMailSyncModeSavingPrompt" = "Only download email subject on mobile data";
+"SettingMailSyncModeSmart" = "Smart Mode";
+"SettingMailSyncModeSmartPrompt" = "Automatically download email subject and content on mobile data";
+"SettingMailSyncAttachmentTitle" = "Archive Attachment";
+"SettingMailSyncAttachmentAutoArchive" = "Auto Archiving Attachment";
+"SettingMailSyncAttachmentWiFiArchive" = "Archive on Wi-Fi Only";
+"SettingMailSyncMailKeepTime" = "Email Retention Period";
+"SettingMailSyncMailKeepPrompt" = "Changing the email retention period will automatically delete expire emails.";
+"SettingMailSyncMailOneWeek" = "One Week";
+"SettingMailSyncMailOneMonth" = "One Month";
+"SettingMailSyncMailThreeMonth" = "Three Months";
+"SettingNetworkTitle" = "Network";
+"SettingNetworkWiFiNotification" = "Moblie Data Prompt";
+"SettingAutoLoginTitle" = "Automatic Login";
+"SettingLanguage" = "Language";
+"SettingLanguageSystem" = "Follow the System";
+"SettingLanguageEnglish" = "English";
+"SettingLanguageChineseSimplified" = "简体中文";
+"SettingAboutTitle" = "About";
+"SettingAboutVersionUpdate" = "Version Update";
+"SettingAboutPolicy" = "Terms and Privacy";
+"SettingAboutClientInfoFailedPrompt" = "Get Version Failed";
+"SettingAboutClientCheckFailed" = "Have Installed the latest released version！";
+"SettingAboutClientCheckSuccess" = "Check Client Successd";
+"SettingAboutClientUpdatePrompt" = "Update Now?";
+"SettingLogout" = "Log Out";
+"SettingLogoutPrompt" = "You will need to input your username and password the next time you log in.";
+
+"on_guide_one_image" = "welcome_page_bg_a_en";
+"on_guide_two_image" = "welcome_page_bg_b_en";
+"on_guide_three_image" = "welcome_page_bg_c_en";

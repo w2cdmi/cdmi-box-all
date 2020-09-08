@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EnterpriseAdminLog">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="EnterpriseAdminLog" type="com.huawei.sharedrive.uam.enterpriseadminlog.domain.EnterpriseAdminLog" />
+	
+    <insert id="insert" parameterClass="EnterpriseAdminLog">
+        insert into userlogdb.admin_userlog$tableSuffix$(id,enterpriseId,createTime,loginName,level,operatDescKey,operatDesc,operatType,ip,appId,authServerId,operatLevel) 
+        values
+        (#id#,#enterpriseId#,#createTime#,#loginName#,#level#,#operatDescKey#,#operatDesc#,#operatType#,#ip#,#appId#,#authServerId#,#operatLevel#) 
+    </insert>
+
+    <select id="getEnterpriseAdminlog" parameterClass="map" resultClass="EnterpriseAdminLog">
+        select * from userlogdb.admin_userlog$tableSuffix$
+         <dynamic prepend="where">
+            <isNotNull prepend="and" property="filter.enterpriseId">
+                enterpriseId= #filter.enterpriseId#
+            </isNotNull>
+            <isNotNull prepend="and" property="filter.authServerId">
+                authServerId= #filter.authServerId#
+            </isNotNull>
+            <isNotNull prepend="and" property="filter.operateType">
+                operatType= #filter.operateType#
+            </isNotNull>
+            <isNotNull prepend="and" property="filter.startTime">
+                createTime &gt;= #filter.startTime#
+            </isNotNull>
+            <isNotNull prepend="and" property="filter.endTime">
+                createTime &lt;= #filter.endTime#
+            </isNotNull>
+            <isNotNull prepend="and" property="filter.operatDesc">
+                operatDesc like concat('%',#filter.operatDesc#,'%')
+            </isNotNull>
+          </dynamic>
+          order by createTime desc
+       <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getCount" parameterClass="map" resultClass="Integer">
+        select count(*) from userlogdb.admin_userlog$tableSuffix$
+         <dynamic prepend="where">
+            <isNotNull prepend="and" property="filter.enterpriseId">
+                enterpriseId= #filter.enterpriseId#
+            </isNotNull>
+             <isNotNull prepend="and" property="filter.authServerId">
+                authServerId= #filter.authServerId#
+            </isNotNull>
+            <isNotNull prepend="and" property="filter.operateType">
+                operatType= #filter.operateType#
+            </isNotNull>
+            <isNotNull prepend="and" property="filter.startTime">
+                createTime &gt;= #filter.startTime#
+            </isNotNull>
+            <isNotNull prepend="and" property="filter.endTime">
+                createTime &lt;= #filter.endTime#
+            </isNotNull>
+            <isNotEmpty prepend="and" property="filter.operatDesc">
+                operatDesc like concat('%',#filter.operatDesc#,'%')
+            </isNotEmpty>
+          </dynamic>
+    </select>
+
+
+
+   <select id="getMinCreateTime" parameterClass="map" resultClass="EnterpriseAdminLog">
+    	<![CDATA[
+        SELECT MIN(t1.createTime) createTime FROM ( SELECT createTime from userlogdb.admin_userlog$tableSuffix$ WHERE operatType = #operateType# and enterpriseId = #enterpriseId# ORDER BY createTime DESC LIMIT 0,#logCount#)t1
+        ]]>
+    </select>
+    
+    <select id="getFilterCount" parameterClass="map" resultClass="int">
+    	<![CDATA[
+        SELECT count(1) from userlogdb.admin_userlog$tableSuffix$ WHERE operatType = #operateType# and enterpriseId = #enterpriseId#
+        ]]>
+    </select>
+    
+    <delete id="deleteImportUserRecordLog"  parameterClass="EnterpriseAdminLog">
+    	DELETE from userlogdb.admin_userlog$tableSuffix$ WHERE createTime &lt; #createTime# AND operatType = #operatType# and enterpriseId = #enterpriseId#
+    </delete>
+</sqlMap>
+

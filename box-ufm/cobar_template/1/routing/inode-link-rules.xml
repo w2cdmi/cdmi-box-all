@@ -1,0 +1,20 @@
+<rules>
+    <rule>
+    	<!-- ALL_PARTITION -->
+        <sqlmap>INodeLink.deleteALL</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+    	<!-- ALL_PARTITION -->
+        <sqlmap>INodeLink.deleteByOwner</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+    	<!-- hash.apply(id) -->
+        <namespace>INodeLink</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Window>
+	<MyFilesTileLayoutListContainerElement name="myFile_largeIconItem" mousechild="false" height="114"  width="120" >
+		<ItemCheckBox float="true"/>
+		<VerticalLayout name="myFile_largeIconItemVLayout" float="true" pos="0,0,120,114"  shortcut="F2" >
+			<Label name="myFile_nameIcon" float="true" width="72" height="72" pos="24,8,96,80"/>
+			<MyFilesRichEditUI name="myFile_name" limitchars="/ \ * | ' : ? &lt; &gt; &quot;" maxchar="246" mouse="false" multiline="true" autohscroll="true" float="true" pos="10,84,110,104" align="center" valign="center" textcolor="#FF000000" inset="0,2" font="12" rich="false"/>
+		</VerticalLayout>
+	</MyFilesTileLayoutListContainerElement>
+</Window>

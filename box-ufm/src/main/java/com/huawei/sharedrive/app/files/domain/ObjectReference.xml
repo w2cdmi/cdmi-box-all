@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ObjectReference">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="ObjectReference" type="com.huawei.sharedrive.app.files.domain.ObjectReference" />
+    
+    <select id="get" resultClass="ObjectReference" parameterClass="ObjectReference">
+        select * from object_reference_$tableSuffix$ where id=#id#
+    </select>
+    
+    <select id="getSecurityLabelForUpdate" resultClass="Integer" parameterClass="ObjectReference">
+        select securityLabel from object_reference_$tableSuffix$ where id=#id# for update
+    </select>
+    
+    <insert id="insert" parameterClass="ObjectReference">
+        insert into object_reference_$tableSuffix$(id,sha1,blockMD5,size,refCount,resourceGroupId,lastDeleteTime) 
+        values 
+        (#id#,#sha1#,#blockMD5#,#size#,#refCount#,#resourceGroupId#,#lastDeleteTime#)
+    </insert>
+    
+    <!-- 
+    <update id="update" parameterClass="ObjectReference">
+        update object_reference_$tableSuffix$ set sha1=#sha1#,blockMD5=#blockMD5#,size=#size#,refCount=#refCount#,
+        resourceGroupId=#resourceGroupId#,lastDeleteTime=#lastDeleteTime#  
+        where id=#id#
+    </update>
+     -->
+    
+    <update id="updateFingerprintAndSize" parameterClass="ObjectReference">
+        update object_reference_$tableSuffix$ set sha1=#sha1#,blockMD5=#blockMD5#,size=#size# where id=#id#
+    </update>
+    
+    <update id="increaseRefCount" parameterClass="ObjectReference">
+        update object_reference_$tableSuffix$  set refCount=refCount+1 where id=#id# and refCount>0
+    </update>
+    
+    <update id="decreaseRefCount" parameterClass="ObjectReference">
+        update object_reference_$tableSuffix$ set refCount=refCount-1 where id=#id# and refCount>0
+    </update>
+    
+    <update id="updateLastDeleteTime" parameterClass="ObjectReference">
+        update object_reference_$tableSuffix$ set lastDeleteTime=#lastDeleteTime#  where id=#id#
+    </update>
+    
+    <update id="updateSecurityLabel" parameterClass="ObjectReference">
+        update object_reference_$tableSuffix$ set securityLabel=#securityLabel#, securityVersion=#securityVersion# where id=#id#
+    </update>
+    
+    <!-- 
+    <delete id="delete" parameterClass="ObjectReference">
+        delete from object_reference_$tableSuffix$ where id=#id#
+    </delete>
+     -->    
+    
+    <delete id="deleteCheckRef" parameterClass="ObjectReference">
+        delete from object_reference_$tableSuffix$ where id=#id# and refCount = 0
+    </delete>  
+    
+   <select id="lstNeedDeleteObjects" parameterClass="map" resultClass="ObjectReference">
+        select * from object_reference_$filter.tableSuffix$ where refCount =0
+        <dynamic prepend="order by id limit">
+          <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+</sqlMap>
+

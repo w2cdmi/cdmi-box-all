@@ -1,0 +1,128 @@
+@@normal
+{   
+    "offset": 0, 
+    "limit": 900, 
+    "userId": 1, 
+    "loginName": "test", 
+    "beginTime": #beginTime#, 
+    "endTime": #endTime#, 
+    "type": "CREATE_FOLDER", 
+    "clientType": "WEB", 
+    "clientAddress":"10.169.68.106"， 
+    "clientOS": "Windows 7", 
+    "clientVersion": "Chrome", 
+    "appId": "Onebox", 
+    "detail": "创建文件夹" 
+}
+
+@@normal2
+{
+    "beginTime":1391845003374,
+    "endTime":1491845193374,
+    "clientAddress":"10.169.68.106",
+	"clientDeviceSN":"10.169.68.106",
+	"clientType":"WEB",
+	"clientVersion":"Internet Explorer",
+	"level":"INFO",
+	"limit":900,
+	"loginName":"puguangqiao",
+	"offset":0,
+	"type":"CREATE_FOLDER",
+	"detail":"创建文件夹", 
+	"appId":"Onebox",
+	"userId":2
+}
+
+
+
+@@normal1
+{
+	"beginTime":1391845003374,
+    "endTime":1461845193374,
+    "clientAddress":"127.0.0.1",
+    "clientDeviceName":"windows",
+	"clientDeviceSN":"127.0.0.1",
+	"clientType":"WEB",
+	"clientVersion":"10.0.1",
+	"detail":"",
+	"level":"INFO",
+	"limit":900,
+	"loginName":"pWX231110",
+	"offset":0,
+	"type":"COPY_FILE",
+	"userId":1430
+}
+
+@@BeginTime
+{
+	"beginTime":1391845003374
+}
+
+@@EndTime
+{
+	"endTime":1461845193374
+}
+
+@@NotContainUserId
+{
+    "beginTime":1421845003374,
+    "endTime":1421845193374,
+    "clientAddress":"",
+    "clientDeviceName":"",
+	"clientDeviceSN":"",
+	"clientOS":"",
+	"clientType":"PC",
+	"clientVersion":"10.0.1",
+	"detail":"创建",
+	"level":"INFO",
+	"limit":900,
+	"loginName":"",
+	"offset":0,
+	"type":"CREATE_FOLDER",
+	"userId":1430
+}
+
+@@NotContainBeginTime
+{
+    "endTime":1421845193374,
+    "clientAddress":"",
+    "clientDeviceName":"windows",
+	"clientDeviceSN":"",
+	"clientOS":"",
+	"clientType":"WEB",
+	"clientVersion":"10.0.1",
+	"clientTypeDb":12,
+	"detail":"",
+	"level":"INFO",
+	"limit":900,
+	"loginName":"",
+	"offset":0,
+	"levelDb":1,
+	"type":"CREATE_FOLDER",
+	"typeDb":1
+}
+
+@@NotContainEndTime
+{
+    "beginTime":1421845003374,
+    "clientAddress":"127.0.0.1",
+    "clientDeviceName":"windows",
+	"clientDeviceSN":"127.0.0.1",
+	"clientOS":"",
+	"clientType":"WEB",
+	"clientVersion":"10.0.1",
+	"clientTypeDb":12,
+	"detail":"",
+	"level":"INFO",
+	"limit":900,
+	"loginName":"",
+	"offset":0,
+	"levelDb":1,
+	"type":"CREATE_FOLDER",
+	"typeDb":1
+}
+
+@@onlyContainUserId
+{
+	"userId":1430
+}

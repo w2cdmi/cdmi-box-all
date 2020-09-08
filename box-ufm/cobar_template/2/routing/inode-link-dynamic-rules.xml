@@ -1,0 +1,12 @@
+<rules>
+    <rule>
+        <namespace>INodeLinkDynamic</namespace>
+        <shardingExpression>hash.apply(id) % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>INodeLinkDynamic</namespace>
+        <shardingExpression>hash.apply(id) % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+</rules>

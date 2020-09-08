@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccountSecConfig">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="AccountSecConfig" type="pw.cdmi.box.uam.enterprise.domain.AccountSecConfig" />
+	
+	<insert id="insert" parameterClass="AccountSecConfig">
+        <![CDATA[
+        insert into account_sec_config(accountId,enableSpaceSec,enableFileSec,enableFileCopySec,createdAt,modifiedAt) 
+        values 
+        (#accountId#,#enableSpaceSec#,#enableFileSec#,#enableFileCopySec#,#createdAt#,#modifiedAt#)
+        ]]>
+	</insert>
+	
+	<select id="get" parameterClass="int" resultClass="AccountSecConfig">
+    	<![CDATA[
+    	select *
+    	FROM account_sec_config
+    	WHERE accountId=#accountId#
+        ]]>
+	</select>
+    
+     <update id="modify" parameterClass="AccountSecConfig">
+        update account_sec_config
+        set enableSpaceSec=#enableSpaceSec#,enableFileSec=#enableFileSec#,enableFileCopySec=#enableFileCopySec#,modifiedAt=#modifiedAt#
+	  	where accountId=#accountId#
+    </update>
+</sqlMap>
+

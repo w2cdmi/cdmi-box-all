@@ -1,0 +1,17 @@
+<rules>
+   <rule>
+        <namespace>FavoriteNode</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+     <rule>
+        <sqlmap>FavoriteNode.getFilterd</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+     <rule>
+        <sqlmap>FavoriteNode.getbyparent</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

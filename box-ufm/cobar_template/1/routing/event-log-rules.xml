@@ -1,0 +1,15 @@
+<rules>
+	<rule>
+		<!-- SINGLE_PARTITION -->
+		<sqlmap>UserLog.delete</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>logpartition</shards>
+	</rule>
+
+	<rule>
+		<!-- SINGLE_PARTITION -->
+		<namespace>UserLog</namespace>
+		<shardingExpression></shardingExpression>
+		<shards>logpartition</shards>
+	</rule>
+</rules>

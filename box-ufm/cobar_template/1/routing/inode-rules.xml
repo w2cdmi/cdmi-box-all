@@ -1,0 +1,253 @@
+<rules>
+	<rule>
+		<!-- ALL_PARTITION -->
+		<sqlmap>INode.multiDSTest</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getFilterd</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getbyparent</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getbystatus</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getbyparentandstatus</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- ownedBy -->
+		<namespace>INode</namespace>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.geSyncNodeBySyncVer</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.updateTarshItemsStatus</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.searchNodeByName</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getSubINodeAndSelf</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- ownedBy -->
+		<sqlmap>INode.getByNameAndParentId</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.updateByOriginalId</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.updateObjectForDedup</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- ownedBy -->
+		<sqlmap>INode.copyTempInode</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- ownedBy -->
+		<sqlmap>INode.copyTempInodeNoBackup</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- ownedBy -->
+		<sqlmap>INode.dropTempInode</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- ownedBy -->
+		<sqlmap>INode.getTempInode</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getSubCountV2</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getByParentAndStatusV2</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getCountByStatusV2</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getbystatusV2</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getCountByNameV2</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.searchNodeByNameV2</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getEarliestVersions</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- filter.ownedBy -->
+		<sqlmap>INode.getByLinkStatus</sqlmap>
+		<shardingExpression></shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- ASSIGNED_PARTITION -->
+		<sqlmap>INode.lstDeleteNode</sqlmap>
+		<shardingExpression>partitionNum==1</shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- ASSIGNED_PARTITION -->
+		<sqlmap>INode.deleteFolderNodeCheckStatus</sqlmap>
+		<shardingExpression>partitionNum==1</shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- ASSIGNED_PARTITION -->
+		<sqlmap>INode.lstContentNode</sqlmap>
+		<shardingExpression>partitionNum==1</shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+	<rule>
+		<!-- ASSIGNED_PARTITION -->
+		<sqlmap>INode.listFileAndVersions</sqlmap>
+		<shardingExpression>partitionNum==1</shardingExpression>
+		<shards>partition1</shards>
+	</rule>
+
+	<rule>
+	    <!-- filter.ownedBy -->
+        <sqlmap>INode.lstFileAndVersionNode</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+	    <!-- filter.ownedBy -->
+        <sqlmap>INode.lstContentsNodeByRegionId</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+     <rule>
+	    <!-- filter.ownedBy -->
+        <sqlmap>INode.replaceObjectForINode</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+	<rule>
+    	<sqlmap>INode.statisticByResourceGroupId</sqlmap>
+    	<shardingExpression>partitionNum==1</shardingExpression>
+   		<shards>partition1</shards>
+ 	</rule>  
+ 	
+ 	 <rule>
+        <sqlmap>INode.getByParentAndType</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+	
+	 <rule>
+        <sqlmap>INode.getByParentList</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+	
+	 <rule>
+        <sqlmap>INode.updateStatusByParentList</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>INode.getINodeByDoctypeCount</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>INode.getINodeByDoctypeNameCount</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>INode.getINodeByDoctype</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>INode.getINodeByDoctypeName</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>INode.updateINodeDocType</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+
+</rules>

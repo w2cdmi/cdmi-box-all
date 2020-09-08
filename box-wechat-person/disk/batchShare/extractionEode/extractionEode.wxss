@@ -1,0 +1,97 @@
+/* disk/batchShare/extractionEode/extractionEode.wxss */
+
+page {
+    height: 0;
+}
+
+.content-conia {
+    width: 551rpx;
+    position: absolute;
+    top: 125rpx;
+    left: 100rpx;
+    height: 776rpx;
+}
+
+.con-container {
+    position: absolute;
+    bottom: 54rpx;
+    width: 100%;
+    height: 258rpx;
+}
+
+.in-put {
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 12rpx;
+    margin-bottom:9rpx;
+    display: flex;
+    align-items: center;
+}
+
+.placeholder {
+    font-size: 30rpx;
+    color: rgba(9, 9, 9, 0.6);
+}
+
+.code-icon {
+    height: 40rpx;
+    width: 40rpx;
+    float: left;
+    margin-right: 11rpx;
+}
+
+.code-input {
+    width: 372rpx;
+    margin-left: 20rpx;
+    height: 30rpx;
+}
+
+.tip-text {
+    text-align: left;
+    margin-left: 57rpx;
+    color: #ea5036;
+}
+
+.code-btn {
+    position: absolute;
+    bottom: 0px;
+    width: 446rpx;
+    height: 85rpx;
+    border-radius: 1.5em;
+    background-color: #ea5036;
+    color: white;
+    font-size: 36rpx;
+    left: 56rpx;
+}
+
+.bc-img {
+    height: 1000rpx;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    margin-top: 90rpx;
+    width: 711rpx;
+}
+
+.logo-img {
+    width:150rpx;
+    height:150rpx;
+}
+
+.link-info{
+    position: relative;
+    height: 150rpx;
+    width: 100%;
+    display:flex;
+    top:40rpx;
+}
+.link-name{
+    line-height:150rpx;
+    font-size:32rpx;
+    width:300rpx;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    word-wrap:normal;
+}

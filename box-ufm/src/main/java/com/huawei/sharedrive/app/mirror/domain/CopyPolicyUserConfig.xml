@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CopyPolicyUserConfig">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CopyPolicyUserConfig"
+		type="com.huawei.sharedrive.app.mirror.domain.CopyPolicyUserConfig" />
+
+	<resultMap id="resultMap.CopyPolicyUserConfig" class="CopyPolicyUserConfig">
+		<result column="policyId" 			property="policyId" 			javaType="java.lang.Integer" />
+		<result column="userType" 			property="userType" 			javaType="java.lang.Integer" />
+		<result column="userId" 			property="userId" 				javaType="java.lang.Long" />
+	</resultMap>
+
+	<select id="getByPolicyAndUser" resultMap="resultMap.CopyPolicyUserConfig" parameterClass="CopyPolicyUserConfig">
+		select * from copy_policy_user_config where userId = #userId#  and policyId=#policyId# and userType=#userType# 
+	</select>
+	
+	<insert id="insert" parameterClass="CopyPolicyUserConfig">
+		insert into
+		copy_policy_user_config(policyId,userType,userId)
+		values(#policyId#,#userType#,#userId#)
+	</insert>
+
+	<delete id="delete" parameterClass="CopyPolicyUserConfig">
+		delete from copy_policy where  userId = #userId# and policyId=#policyId# and userType=#userType# 
+	</delete>
+	
+	<delete id="deleteByPolicy" parameterClass="CopyPolicyUserConfig">
+		delete from copy_policy_user_config where
+		policyId=#policyId# 
+	</delete>
+	
+	<delete id="deleteByPolicyAndUserType" parameterClass="CopyPolicyUserConfig">
+		delete from copy_policy_user_config where policyId=#policyId# and userType=#userType# 
+	</delete>
+
+
+</sqlMap>
+

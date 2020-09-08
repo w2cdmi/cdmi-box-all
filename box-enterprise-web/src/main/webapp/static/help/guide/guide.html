@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link href="../../skins/default/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../../skins/default/css/public.css" rel="stylesheet" type="text/css" />
+<link href="../../skins/default/css/main.css" rel="stylesheet" type="text/css" />
+<script src="../../js/public/jquery-1.10.2.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="guide-con">
+	<div class="guide-block clearfix">
+    	<ul id="guideImgCon" class="clearfix">
+        	<li class="guide-1">
+            	<h4>我要上传</h4>
+            	<p>上传一个文件，它们将立即同步到Windows同步客户端和移动客户端。</p>
+            </li>
+            <li class="guide-2">
+            	<h4>我要共享</h4>
+            	<p>与别人共享文件进行协作开发是一件轻松的事，单击 “ <i class="icon-share"></i> ”即可共享。</p>
+            </li>
+            <li class="guide-3">
+            	<h4>我要分享链接</h4>
+            	<p>单击 “ <i class="icon-link"></i> ”，与同事一起分享文档和图片。</p>
+            </li>
+            <li class="guide-4">
+            	<h4>现在，开始体验吧</h4>
+            	<p>使用小窍门：按<strong>Ctrl</strong>多选、<strong>Ctrl+A</strong>全选、拖拽移动文件。更多内容，详见帮助中心。</p>
+            </li>
+        </ul>
+    </div>
+    <div id="guideBtnPrev" onClick="goNextGuide('prev')" class="btn-prev"></div>
+    <div id="guideBtnNext" onClick="goNextGuide('next')" class="btn-next"></div>
+	<div class="btn-con clearfix">
+		<span class="pull-left"><span id="currentGuideNum">1</span>/4</span>
+		<button id="overGuide" type="button" onclick="closeGuide()" class="btn btn-primary">跳过向导</button>
+		<button id="startWork" type="button" onclick="closeGuide()" class="btn btn-primary">开始体验</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+var guideNum = 0;
+function goNextGuide(v){
+	if(v=='prev'){
+		guideNum--;
+	}else if(v=='next'){
+		guideNum++;
+	}
+	$("#currentGuideNum").text(parseInt(guideNum + 1));
+	$("#guideImgCon").animate({marginLeft: -570*guideNum}, 300 ); 
+	if(guideNum==0){
+		$("#guideBtnPrev,#startWork").hide();
+		$("#overGuide").show();
+	}else if(guideNum == 3){
+		$("#guideBtnNext,#overGuide").hide();
+		$("#startWork").show();
+	}else{
+		$("#startWork").hide();
+		$("#guideBtnPrev,#guideBtnNext,#overGuide").show();
+	}
+}
+function closeGuide(){
+	top.setCookie("isShowGuide","neverShow");
+	top.ymPrompt.close();
+}
+</script>
+</body>
+</html>

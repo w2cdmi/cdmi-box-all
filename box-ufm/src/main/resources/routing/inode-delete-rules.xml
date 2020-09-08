@@ -1,0 +1,17 @@
+<rules>
+    <rule>
+        <sqlmap>INodeDelete.getFilterd</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getbystatus</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+   <rule>
+        <namespace>INodeDelete</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

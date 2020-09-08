@@ -1,0 +1,13 @@
+<view class='page'>
+    <!-- 文件信息 -->
+    <view class='view-bg file-group' wx:if="{{!linkCode}}">
+        <image class='img-icon margin-right' mode='center' src='{{fileInfo.iconPath}}'></image>
+        <view class='file-info'>
+            <label>{{fileInfo.name}}</label>
+            <text>{{fileInfo.fileSize=='0B'?'':fileInfo.fileSize+' | ' }}{{fileInfo.modifiedTime}}</text>
+        </view>
+    </view>
+    <include src="/disk/template/selectFolder.wxml" />
+</view>
+
+<include src="/disk/template/createFolder.wxml" />

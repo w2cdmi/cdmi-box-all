@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> 退出了团队空间 <strong>${teamSpaceName}</strong>

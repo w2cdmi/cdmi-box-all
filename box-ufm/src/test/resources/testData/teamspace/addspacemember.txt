@@ -1,0 +1,147 @@
+@@normal
+{ 
+    "teamRole":"manager",    
+    "member": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+   "role":"editor" 
+}
+
+@@member
+{ 
+    "teamRole":"member",    
+    "member": 
+    { 
+        "id":#userId#,  
+        "type": "group"
+    }, 
+   "role":"editor" 
+}
+
+@@repeat
+{ 
+    "teamRole":"manager",    
+    "member": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+
+@@noteamRole
+{   
+    "member": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+   "role":"editor" 
+}
+
+@@normalSystem
+{ 
+    "teamRole":"manager",    
+    "member": 
+    { 
+        "type": "system"
+    }, 
+   "role":"editor" 
+}
+@@nomember
+{ 
+   "teamRole":"manager",   
+   "role":"editor" 
+}
+@@nomemberid
+{ 
+    "teamRole":"manager",    
+    "member": 
+    { 
+        "type": "user"
+    }, 
+   "role":"editor" 
+}
+@@nomembertype
+{ 
+    "teamRole":"manager",    
+    "member": 
+    { 
+        "id":#userId#
+    }, 
+   "role":"editor" 
+}
+
+@@norole
+{ 
+    "teamRole":"manager",    
+    "member": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }
+}
+
+@@invalidteamRole
+{ 
+    "teamRole":"sssss",    
+    "member": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+   "role":"editor" 
+}
+@@invalidid
+{ 
+    "teamRole":"manager",    
+    "member": 
+    { 
+        "id":-26,  
+        "type": "user"
+    }, 
+   "role":"editor" 
+}
+@@nosuchuser
+{ 
+    "teamRole":"manager",    
+    "member": 
+    { 
+        "id":50000000,  
+        "type": "user"
+    }, 
+   "role":"editor" 
+}
+@@invalidtype
+{ 
+    "teamRole":"manager",    
+    "member": 
+    { 
+        "id":#userId#,  
+        "type": "tttt"
+    }, 
+   "role":"editor" 
+}
+@@invalidrole
+{ 
+    "teamRole":"manager",    
+    "member": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+   "role":"eeeeeeeee" 
+}
+
+@@addadmin
+{ 
+    "teamRole":"admin",    
+    "member": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+   "role":"editor" 
+}

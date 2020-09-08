@@ -1,0 +1,65 @@
+<!-- 首页列表cell模板  -->
+<scroll-view style='height:100%;' scroll-y="true" bindscrolltolower="scrollLower">
+    <view class="folderList {{(isTouchMoveIndex === index && checkSymbol === symbol) ? 'touch-moveToLeft-active' : 'touch-moveToRight-active'}}"
+     data-symbol="{{symbol}}" bindtouchstart="_touchstart" wx:for="{{dataList}}" wx:key="*this">
+        <view class='folderList-item flex-item'>
+            <view class="folder-item file-group border-bottom flex-item" data-index="{{index}}" data-fileInfo="{{item}}" 
+            data-item="{{item}}" data-symbol="{{symbol}}" bindtouchend="_touchend">
+                <view class='padding-left'>
+                    <image class="img-icon" mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src='{{item.icon}}'></image>
+                </view>
+                <view class='file-info cell_2_body_content'>
+                    <view class='padding-bottom'>{{item.name}}</view>
+                    <view class='flex-item flex-start'>
+                        <text wx:if="{{item.fileSize}}">{{item.fileSize}}</text>
+                        <text wx:if="{{item.ownerName}}">{{item.ownerName}}</text>
+                        <text wx:if="{{item.modifiedTime}}"> | {{item.modifiedTime}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class='flex-item'>
+                <!-- <view class='share-view' wx:if="{{showShareBtn}}" catchtap='share'>
+                    <button class='share-btn flex-item' data-item="{{item}}" open-type="share">
+                        <image src='/disk/images/icon/share.png' class='share-icon'></image>
+                    </button>
+                </view> -->
+                <!--type为1，可以分享  -->
+                <view class='share-view' wx:if="{{(showShareBtn && item.type === 1) ? true : false}}">
+                    <button class='share-btn flex-item' data-item="{{item}}" open-type="share">
+                        <image src='/disk/images/icon/share.png' class='share-icon'></image>
+                    </button>
+                </view>
+                <!--type为2，不能分享  -->
+                <view class='share-view' wx:if="{{(showShareBtn && item.type === 2) ? true : false}}">
+                    <button class='share-btn flex-item' data-item="{{item}}" catchtap='cantShare'>
+                        <image src='/disk/images/icon/share.png' class='share-icon'></image>
+                    </button>
+                </view>
+                <!--三个原点  -->
+                <view class='dept-more' wx:if="{{showModalBtn}}" data-folder-item='{{item}}' catchtap='setModalStatus'>
+                    <image class='plug_icon' src='/disk/images/depart-plug.png'></image>
+                </view>
+            </view>
+        </view>
+        <view class="del" bindtap="_deleteBrowseRecords" data-item="{{item}}" data-fileInfo='{{item}}' data-index="{{index}}">删除</view>
+    </view>
+
+    <!--三个原点唤起的弹出层  -->
+    <view class="drawer_screen" bindtap="cancelModalStatus" wx:if="{{showModalStatus}}"></view>
+    <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+        <view class='margin-bottom'>
+            <button open-type='share' class='cancel_view draw_view_content_comm'> 发送</button>
+            <view bindtap="deleteFolderItem" class='cancel_view draw_view_content_comm'> 删除</view>
+        </view>
+        <view bindtap="cancelModalStatus" class='cancel_view draw_view_content_comm'> 取消</view>
+    </view>
+
+    <view class="loadmore" wx:if="{{isLoadMore}}">
+        <view class="loading"></view>
+        <view class="loadmore-tips">正在加载</view>
+    </view>
+
+    <view class="loadmore loadmore-line" wx:if="{{hasNoMoreData}}">
+        <view class="loadmore-tips loadmore-tips-in-line">没有更多数据 </view>
+    </view>
+</scroll-view>

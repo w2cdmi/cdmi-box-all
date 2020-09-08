@@ -1,0 +1,16 @@
+/* disk/enterprise/employees-departments/person-details/personState/personState.wxss */
+
+.list-item {
+    height: 100rpx;
+    line-height: 100rpx;
+    background: #fff;
+    padding: 0 40rpx;
+    border-bottom: 1rpx solid #f6f6f6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.checked-icon{
+    width: 40rpx;
+    height: 30rpx;
+}

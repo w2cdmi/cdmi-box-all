@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{4bd9a6dd-6fee-46b6-bfff-8a1f73865c1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{c29545d6-ba21-4694-94e6-a898a8c82923}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{2624a940-03a9-40e0-be71-af1568c1ba3d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\CommonValue.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FileItem.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\HttpCbFuns.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\JsonGeneration.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\JsonParser.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PageParam.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ServerSysConfig.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShareLinkNode.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShareNode.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShareUserInfo.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UpdateInfo.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UploadInfo.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UserInfo.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Util.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RestClient.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\HttpRequest.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\CommonDefine.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Configure.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\ErrorCode.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\OneboxExport.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Token.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Utility.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\EmailItem.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TeamspaceInfo.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Util.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HttpCbFuns.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JsonGeneration.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\JsonParser.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\HttpRequest.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RestClient.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="src\RestClient_more.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\source\Utility.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\JsonParser.inl">
+      <Filter>include</Filter>
+    </None>
+  </ItemGroup>
+</Project>

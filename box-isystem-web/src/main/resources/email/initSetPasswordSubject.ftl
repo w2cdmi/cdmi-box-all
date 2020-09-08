@@ -1,0 +1,1 @@
+【重要】业务管理员创建帐号提醒邮件，请谨慎保管您的密码，登录系统后及时更换密码。[important] business administrator create account reminder email, please carefully keep your password, login password after the timely replacement.

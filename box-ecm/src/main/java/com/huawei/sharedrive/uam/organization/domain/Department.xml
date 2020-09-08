@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Department">
+    <typeAlias alias="Department" type="com.huawei.sharedrive.uam.organization.domain.Department" />
+
+    <insert id="addDept" parameterClass="Department">
+        <![CDATA[
+        insert into Department(enterpriseid,departmentId,parentid,domain,name,state,createdAt,modifiedAt)
+        values
+        (#enterpriseId#,#departmentId#,#parentId#,#domain#,#name#,#state#,#createdAt#,#modifiedAt#)
+        ]]>
+    </insert>
+
+	<update id="updateDept" parameterClass="Department">
+        update Department set `modifiedAt`=#modifiedAt#
+        <dynamic>
+            <isNotNull prepend="," property="name">
+                `name`=#name#
+            </isNotNull>
+            <isNotNull prepend="," property="parentId">
+                `parentId`=#parentId#
+            </isNotNull>
+            <isNotNull prepend="," property="state">
+                `state`=#state#
+            </isNotNull>
+        </dynamic>
+        where enterpriseId=#enterpriseId# and departmentId=#departmentId#
+    </update>
+
+	<update id="updateStateByEnterpriseId" parameterClass="Department">
+        update Department set `state`=#state# where enterpriseId=#enterpriseId#
+    </update>
+
+    <delete id="deleteDept" parameterClass="Department">
+    	delete from Department where enterpriseId=#enterpriseId# and departmentId=#departmentId#
+    </delete>
+
+    <select id="queryByEnterpriseId" parameterClass="Long" resultClass="Department">
+        select * from department where enterpriseId=#enterpriseId# and state =0 order by parentId,departmentId asc
+    </select>
+    
+     <select id="getEnpDeptByNameAndParent" parameterClass="map" resultClass="Department">
+        select * from department where enterpriseId=#enterpriseId# and name=#name# and parentId=#parentId#
+    </select>
+	
+    <select id="deptList" parameterClass="map" resultClass="Department">
+        select * from department where enterpriseid=#enterpriseId# order by parentId
+    </select>
+    
+    <select id="getDeptById" parameterClass="map" resultClass="Department">
+        select * from department where departmentId=#departmentId# and enterpriseId=#enterpriseId#
+    </select>
+    
+    <select id="getMaxId" resultClass="long">
+    	<![CDATA[
+    	select max(departmentId) from department;
+        ]]>
+	</select>
+
+    <select id="getMaxDepartmentIdInEnterprise" parameterClass="Long" resultClass="Long">
+    	<![CDATA[
+    	select max(departmentId) from department where enterpriseId=#enterpriseId#;
+        ]]>
+	</select>
+
+    <select id="listDepByParentDepId" parameterClass="map" resultClass="Department">
+        select * from Department where enterpriseid=#enterpriseId# and state >= 0  and  parentid=#parentId#
+    </select>
+
+    <select id="listDeptIdByParentDepId" parameterClass="map" resultClass="Department">
+        select id from Department where enterpriseid=#enterpriseId# and parentid=#parentId# and state >= 0
+    </select>
+
+    <select id="getByEnterpriseIdAndState" parameterClass="map" resultClass="Department">
+        select * from Department where enterpriseid=#enterpriseId# and state=#state#
+    </select>
+
+    <select id="getDeptCloudUserIdByUserId" parameterClass="map" resultClass="Long">
+        SELECT cloudUserId from department_account where enterpriseId = #enterpriseId# and accountId = #accountId# and status >= 0 and deptId IN (SELECT departmentId from user_department where enterpriseId = #enterpriseId# and enterpriseUserId = #enterpriseUserId# and departmentId > 0)
+    </select>
+
+    <select id="countByEnterpriseUserId" parameterClass="map" resultClass="int">
+        <![CDATA[
+        select count(*) from user_department where enterpriseId=#enterpriseId# and enterpriseUserId=#enterpriseUserId#
+        ]]>
+    </select>
+
+    <select id="getByEnterpriseUserId" parameterClass="map" resultClass="Department">
+        <![CDATA[
+        select * from Department where enterpriseId=#enterpriseId# and departmentId in (select departmentId from user_department where enterpriseId=#enterpriseId# and enterpriseUserId=#enterpriseUserId#)
+        ]]>
+    </select>
+    
+    
+    <select id="search" parameterClass="map" resultClass="Department">
+       select * from Department where enterpriseId=#enterpriseId# and name like concat('%',#name#,'%')
+    </select>
+</sqlMap>
+

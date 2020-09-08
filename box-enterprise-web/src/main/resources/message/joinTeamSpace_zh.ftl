@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> 把你加入了团队空间 <strong>${teamSpaceName}</strong>

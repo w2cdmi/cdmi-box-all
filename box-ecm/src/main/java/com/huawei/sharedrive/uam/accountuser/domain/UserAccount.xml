@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserAccount">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UserAccount" type="com.huawei.sharedrive.uam.accountuser.domain.UserAccount" />
+	
+	<select id="getMaxUserId" parameterClass="String" resultClass="Long">
+        <![CDATA[
+        select max(id) from user_account$tableSuffix$
+        ]]>
+    </select>
+	<insert id="insert" parameterClass="UserAccount">
+        <![CDATA[
+        insert into user_account$tableSuffix$(id,userId,enterpriseId,accountId,cloudUserId,status,accessKeyId,secretKey,regionId,
+        createdAt,modifiedAt,lastLoginAt,firstLogin,maxVersions,spaceQuota,teamSpaceFlag,teamSpaceQuota,teamSpaceMaxNum,uploadBandWidth,downloadBandWidth,resourceType,versionFileSize,versionFileType)
+        values 
+        (#id#,#userId#,#enterpriseId#,#accountId#,#cloudUserId#,#status#,#accessKeyId#,#secretKey#,#regionId#,
+        #createdAt#,#modifiedAt#,#lastLoginAt#,#firstLogin#,#maxVersions#,#spaceQuota#,#teamSpaceFlag#,#teamSpaceQuota#,#teamSpaceMaxNum#,#uploadBandWidth#,#downloadBandWidth#,#resourceType#,#versionFileSize#,#versionFileType#)
+        ]]>
+	</insert>
+	<update id="update" parameterClass="UserAccount">
+        <![CDATA[
+        update user_account$tableSuffix$ set status=#status#,regionId=#regionId#,modifiedAt=#modifiedAt#,lastLoginAt=#lastLoginAt#,maxVersions=#maxVersions#,
+        spaceQuota=#spaceQuota#,teamSpaceFlag=#teamSpaceFlag#,teamSpaceQuota=#teamSpaceQuota#,teamSpaceMaxNum=#teamSpaceMaxNum#,uploadBandWidth=#uploadBandWidth#,downloadBandWidth=#downloadBandWidth#,
+        versionFileSize=#versionFileSize#,versionFileType=#versionFileType#
+        where
+        userId=#userId# and accountId=#accountId#
+        ]]>
+	</update>
+
+	<!-- 个人空间配额-->
+	<update id="updateSpaceQuota" parameterClass="UserAccount">
+        <![CDATA[
+        update  user_account$tableSuffix$ set
+        spaceQuota=#spaceQuota#
+         userId=#userId# and accountId=#accountId#
+        ]]>
+	</update>
+	<!-- 更新关联的userId -->
+	<update id="updateUserIdById" parameterClass="UserAccount">
+        <![CDATA[
+        update user_account$tableSuffix$ set userId = #userId#, modifiedAt=#modifiedAt#
+        where
+          id=#id#
+        ]]>
+	</update>
+	<select id="get" parameterClass="map" resultClass="UserAccount">
+    	<![CDATA[
+        select * from user_account$tableSuffix$ where userId=#userId# and accountId=#accountId#
+        ]]>
+	</select>
+	<select id="getByEnterpriseId" parameterClass="map" resultClass="UserAccount">
+    	<![CDATA[
+        select * from user_account$tableSuffix$ where enterpriseId=#enterpriseId# and accountId=#accountId#
+        ]]>
+	</select>
+
+	
+	<select id="getBycloudUserAccountId" parameterClass="UserAccount" resultClass="UserAccount">
+    	<![CDATA[
+        select * from user_account$tableSuffix$ where cloudUserId=#cloudUserId# and accountId=#accountId#
+        ]]>
+	</select>
+	
+	<select id="getByImAccount" parameterClass="UserAccount" resultClass="UserAccount">
+    	<![CDATA[
+        select * from user_account$tableSuffix$ where imAccount=#imAccount# and accountId=#accountId#
+        ]]>
+	</select>
+
+	<select id="getById" parameterClass="map" resultClass="UserAccount">
+    	<![CDATA[
+        select * from user_account$tableSuffix$ where id=#id#
+        ]]>
+	</select>
+	<select id="getFilterdCount" parameterClass="map" resultClass="int">
+		select count(ua.id) from 
+			user_account$accountTableSuffix$ ua,
+			enterprise_user$enterpriseTableSuffix$ eu
+			where 
+			ua.accountId=#accountId#
+			and ua.enterpriseId=#enterpriseId#
+			and eu.userSource=#userSource#
+			and ua.userId=eu.id
+			<dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                eu.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%') 
+            </isNotEmpty>  
+            <isNotNull prepend="and" property="status">
+           	<![CDATA[
+              ua.status=#status#  
+              ]]>
+         </isNotNull>       
+        </dynamic>
+	</select>
+	
+	 <select id="getFilterd" parameterClass="map" resultClass="UserAccount">
+      select eu.name,eu.alias,eu.email,eu.description, ua.* from 
+			user_account$accountTableSuffix$ ua,
+			enterprise_user$enterpriseTableSuffix$ eu
+			where 
+			ua.accountId=#accountId#
+			and ua.enterpriseId=#enterpriseId#
+			and eu.userSource=#userSource#
+			and ua.userId=eu.id
+		<dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                eu.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%') 
+            </isNotEmpty>         
+        </dynamic>
+        <isNotNull prepend="and" property="status">
+           	<![CDATA[
+              ua.status=#status#  
+              ]]>
+         </isNotNull>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+     <update id="updateStatus" parameterClass="map">
+       <![CDATA[
+        update user_account$filter.tableSuffix$ set status=#filter.status#,modifiedAt=#filter.modifiedAt# where id in ($ids$)
+        ]]>
+	</update>
+	
+	 <update id="updateRole" parameterClass="map">
+       <![CDATA[
+        update user_account$filter.tableSuffix$ set roleId=#filter.roleId#,modifiedAt=#filter.modifiedAt# where id in ($ids$)
+        ]]>
+	</update>
+	
+	<update id="updateLoginTime" parameterClass="UserAccount">
+       <![CDATA[
+        update user_account$tableSuffix$ set lastLoginAt=#lastLoginAt# where id=#id#
+        ]]>
+	</update>
+	
+	<update id="updateFirstLogin" parameterClass="map">
+        <![CDATA[
+        update user_account$tableSuffix$
+        set firstLogin=#firstLogin#
+        where userid=#userId# and accountId=#accountId#
+        ]]>
+	</update>
+	
+	<delete id="delByUserAccountId" parameterClass="UserAccount">
+    	<![CDATA[
+        delete from user_account$tableSuffix$ where userId=#userId# and accountId=#accountId#
+        ]]>
+	</delete>
+
+	<select id="countByAccountId" parameterClass="map" resultClass="int">
+		<![CDATA[
+        select count(*) from user_account$tableSuffix$ where accountId=#accountId# and status = 0
+        ]]>
+	</select>
+
+	<select id="sumSpaceQuotaByAccountId" parameterClass="map" resultClass="long">
+		<![CDATA[
+        select sum(spaceQuota) from user_account$tableSuffix$ where accountId=#accountId# and status = 0
+        ]]>
+	</select>
+
+	<select id="countByAccountIdAndSpaceQuota" parameterClass="map" resultClass="int">
+		<![CDATA[
+        select count(*) from user_account$tableSuffix$ where accountId=#accountId# and spaceQuota = #spaceQuota# and status = 0
+        ]]>
+	</select>
+
+	<update id="compareAndSwapSpaceQuotaByAccountId" parameterClass="map">
+		<![CDATA[
+        update user_account$tableSuffix$ set spaceQuota=#newValue# where accountId=#accountId# and status = 0 and spaceQuota=#oldValue#
+		]]>
+	</update>
+
+	<select id="sumSpaceQuotaByAccountIdAndUserIds" parameterClass="map" resultClass="long">
+		select sum(spaceQuota) from user_account$tableSuffix$ where accountId=#accountId# and status = 0
+		and userId in <iterate open="(" close=")" conjunction="," property="userIds"> #userIds[]# </iterate>
+	</select>
+
+	<update id="updateSpaceQuotaByAccountIdAndUserIds" parameterClass="map">
+		update user_account$tableSuffix$ set spaceQuota=#spaceQuota# where accountId=#accountId# and status = 0
+		and userId in <iterate open="(" close=")" conjunction="," property="userIds"> #userIds[]# </iterate>
+	</update>
+</sqlMap>

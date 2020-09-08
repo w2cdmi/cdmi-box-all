@@ -1,0 +1,143 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{016CFCCE-2CA5-4D97-A353-29EBDFBC3105}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>SyncService</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)output\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\Build\output\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;ONEBOX_EXPORTS;ENABLE_UTILITY_STRING;ENABLE_UTILITY_REGISTRY;ENABLE_UTILITY_FS;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\include;..\..\OneboxCommon\include;..\..\OneboxCommon\Common\source\asyncTask;..\..\OneboxCommon\NetSDK\include;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/boost/include;$(VS2012_THIRD_PART)/curl/include;$(VS2012_THIRD_PART)/sqlite3/include;$(VS2012_THIRD_PART)/json/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir);$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/HuaweiSecureC/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/log4cpp/lib;$(VS2012_THIRD_PART)/sqlite3/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Common.lib;NetSDK.lib;HuaweiSecureC_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;ONEBOX_EXPORTS;ENABLE_UTILITY_STRING;ENABLE_UTILITY_REGISTRY;ENABLE_UTILITY_FS;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\include;..\..\OneboxCommon\include;..\..\OneboxCommon\Common\source\asyncTask;..\..\OneboxCommon\NetSDK\include;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/boost/include;$(VS2012_THIRD_PART)/curl/include;$(VS2012_THIRD_PART)/sqlite3/include;$(VS2012_THIRD_PART)/json/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(OutDir);$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/HuaweiSecureC/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/log4cpp/lib;$(VS2012_THIRD_PART)/sqlite3/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Common.lib;NetSDK.lib;HuaweiSecureC.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\OneboxCommon\include\InIHelper.h" />
+    <ClInclude Include="..\..\OneboxCommon\include\Utility.h" />
+    <ClInclude Include="include\ChangeJournal.h" />
+    <ClInclude Include="include\DataBaseMgr.h" />
+    <ClInclude Include="include\DiffNode.h" />
+    <ClInclude Include="include\DiffProcessor.h" />
+    <ClInclude Include="include\DiffTable.h" />
+    <ClInclude Include="include\LocalDetector.h" />
+    <ClInclude Include="include\LocalTable.h" />
+    <ClInclude Include="include\MetaDataTable.h" />
+    <ClInclude Include="include\OverlayIconMgr.h" />
+    <ClInclude Include="include\RelationTable.h" />
+    <ClInclude Include="include\RemoteDetector.h" />
+    <ClInclude Include="include\RemoteTable.h" />
+    <ClInclude Include="include\SyncAction.h" />
+    <ClInclude Include="include\SyncCommon.h" />
+    <ClInclude Include="include\SyncConfigure.h" />
+    <ClInclude Include="include\SyncDataTable.h" />
+    <ClInclude Include="include\SyncMerger.h" />
+    <ClInclude Include="include\SyncRules.h" />
+    <ClInclude Include="include\SyncService.h" />
+    <ClInclude Include="include\SyncTransTask.h" />
+    <ClInclude Include="include\SyncUtility.h" />
+    <ClInclude Include="include\TableDefine.h" />
+    <ClInclude Include="include\UploadTable.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\OneboxCommon\include\InIHelper.cpp" />
+    <ClCompile Include="..\..\OneboxCommon\include\Utility.cpp" />
+    <ClCompile Include="source\ChangeJournal.cpp" />
+    <ClCompile Include="source\DataBaseMgr.cpp" />
+    <ClCompile Include="source\DiffNode.cpp" />
+    <ClCompile Include="source\DiffProcessor.cpp" />
+    <ClCompile Include="source\DiffTable.cpp" />
+    <ClCompile Include="source\LocalDetector.cpp" />
+    <ClCompile Include="source\LocalTable.cpp" />
+    <ClCompile Include="source\MetaDataTable.cpp" />
+    <ClCompile Include="source\OverlayIconMgr.cpp" />
+    <ClCompile Include="source\RelationTable.cpp" />
+    <ClCompile Include="source\RemoteDetector.cpp" />
+    <ClCompile Include="source\RemoteTable.cpp" />
+    <ClCompile Include="source\SyncAction.cpp" />
+    <ClCompile Include="source\SyncConfigure.cpp" />
+    <ClCompile Include="source\SyncDataTable.cpp" />
+    <ClCompile Include="source\SyncMerger.cpp" />
+    <ClCompile Include="source\SyncRules.cpp" />
+    <ClCompile Include="source\SyncService.cpp" />
+    <ClCompile Include="source\SyncTransTask.cpp" />
+    <ClCompile Include="source\SyncUtility.cpp" />
+    <ClCompile Include="source\UploadTable.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Department">
+    <typeAlias alias="Department" type="com.huawei.sharedrive.app.user.domain.Department" />
+
+    <typeAlias alias="EnterpriseSecurityPrivilege" type="com.huawei.sharedrive.app.user.domain.EnterpriseSecurityPrivilege" />
+
+    <typeAlias alias="DepartmentAccount" type="com.huawei.sharedrive.app.user.domain.DepartmentAccount" />
+    
+    <typeAlias alias="EnterpriseUser" type="com.huawei.sharedrive.app.user.domain.EnterpriseUser" />
+    
+    <typeAlias alias="UserAccount" type="com.huawei.sharedrive.app.user.domain.UserAccount" />
+
+    <select id="getDeptById" parameterClass="map" resultClass="Department">
+        select * from department where departmentId=#departmentId# and enterpriseId=#enterpriseId#
+    </select>
+
+    <select id="getByEnterpriseIdAndDepartmentCloudUserId" parameterClass="map" resultClass="Department">
+        SELECT * from department where enterpriseId=#enterpriseId# AND departmentId = (SELECT deptId FROM department_account WHERE cloudUserId = #cloudUserId#)
+    </select>
+
+    <select id="getDeptCloudUserIdByCloudUserId" parameterClass="map" resultClass="Long">
+        SELECT cloudUserId from department_account where enterpriseId = #enterpriseId# and accountId = #accountId# and status >= 0 and deptId IN (SELECT departmentId from user_department where enterpriseId = #enterpriseId# and enterpriseUserId = (SELECT userId FROM  user_account$tableSuffix$ WHERE  accountId = #accountId# AND cloudUserId = #cloudUserId#) and departmentId > 0)
+    </select>
+    
+     <select id="getUsersByDept" parameterClass="map" resultClass="UserAccount">
+        <![CDATA[
+            select  ua.userid, ua.cloudUserId,ua.createdAt,ua.modifiedAt,enu.`name` from user_account$tableSuffix_userAccount$ ua LEFT JOIN enterprise_user$tableSuffix_enterpriseUser$ enu ON (ua.enterpriseId=enu.enterpriseId and ua.userid=enu.id) where accountId = #accountId#  and userid in
+                 ( select eu.id FROM enterprise_user$tableSuffix_enterpriseUser$ eu LEFT JOIN user_department ud on ud.enterpriseId=eu.enterpriseId and eu.id=ud.enterpriseUserId where ud.enterpriseId=#enterpriseId# and ud.departmentId in
+                       (SELECT dac.deptId FROM department_account dac where dac.cloudUserId=#deptCloudUserId#)
+                  )
+
+        ]]>
+    </select>
+
+    <select id="listPrivilege" parameterClass="EnterpriseSecurityPrivilege" resultClass="EnterpriseSecurityPrivilege">
+        select * from enterprise_security_privilege where enterpriseId=#enterpriseId#
+        <dynamic prepend="and">
+            <isGreaterThan property="departmentId" compareValue="0">
+                departmentId=#departmentId#
+            </isGreaterThan>
+        </dynamic>
+
+        <dynamic prepend="and">
+            <isGreaterThan property="enterpriseUserId" compareValue="0">
+                enterpriseUserId=#enterpriseUserId#
+            </isGreaterThan>
+        </dynamic>
+
+        <dynamic prepend="and">
+            <isGreaterThan property="role" compareValue="0">
+                role=#role#
+            </isGreaterThan>
+        </dynamic>
+    </select>
+
+    <select id="listUserDepts"  parameterClass="map" resultClass="DepartmentAccount">
+      SELECT * from department_account where enterpriseId=#enterpriseId# AND deptId = (SELECT departmentId FROM user_department WHERE enterpriseUserId = #enterpriseUserId# and enterpriseId=#enterpriseId#)
+    </select>
+
+    <select id="getUserCloudIdByEnterpriseUserId"  parameterClass="map" resultClass="long">
+
+        SELECT cloudUserId FROM  user_account$tableSuffix_userAccount$ WHERE  accountId = #accountId# AND userId = #userId#)
+    </select>
+    
+    
+    <select id="getUserAccountByCloudUserId"  parameterClass="map" resultClass="UserAccount">
+
+        SELECT * FROM  user_account$tableSuffix_userAccount$ WHERE  accountId = #accountId# AND cloudUserId = #cloudUserId#
+    </select>
+  
+    <update id="updateStatus" parameterClass="map">
+        update enterprise_user$tableSuffix$ set `status`=#status# where enterpriseId=#enterpriseId# and id=#id#
+    </update>
+   
+
+</sqlMap>
+

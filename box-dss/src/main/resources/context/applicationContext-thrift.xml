@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+    default-autowire="byName">
+
+    <bean id="thriftServer" class="pw.cdmi.file.engine.core.thrift.ThriftServerWrapper" lazy-init="false" init-method="start" destroy-method="destroy">
+        <property name="processorMap">
+            <map>
+                <entry key="FileObjectThriftService">
+                    <ref local="fileObjectThriftServiceProcessor" />
+                </entry>
+                <entry key="StorageResouceThriftService">
+                    <ref local="storageResouceThriftServiceProcessor" />
+                </entry>
+                <entry key="DCThriftService">
+                    <ref local="dcThriftServiceProcessor" />
+                </entry>
+<!--                 <entry key="JobThriftService">
+                    <ref local="jobThriftServiceProcessor" />
+                </entry> -->
+                <entry key="PreviewConvertThriftService">
+                    <ref local="previewConvertThriftServiceProcessor" />
+                </entry>
+                <entry key="PreviewConvertPluginThriftService">
+                    <ref local="previewConvertPluginThriftServiceProcessor" />
+                </entry>
+                <entry key="SecurityScanThriftService">
+                    <ref local="securityScanThriftServiceProcessor" />
+                </entry>
+                <entry key="SecurityScanAgentThriftService">
+                    <ref local="securityScanAgentThriftServiceProcessor" />
+                </entry>
+                <entry key="DCMirrorThriftService">
+                    <ref local="dcMirrorThriftServiceProcessor" />
+                </entry>
+                <entry key="ChechService">
+                    <ref local="chechServiceProcessor" />
+                </entry>
+                <entry key="SyncNodeService">
+                    <ref local="syncNodeServiceProcessor" />
+                </entry>
+                <entry key="ExtAttributeStorageResouceThriftService">
+                    <ref local="ExtAttributeStorageResourceThriftServiceProcessor" />
+                </entry>
+
+                <entry key="DCRealTimeThriftService">
+                    <ref local="dcRealTimeThriftServiceProcessor" />
+                </entry>
+
+                <!-- <entry key="DSSLocalService">
+                    <ref local="dsSLocalServiceProcessor" />
+                </entry> -->
+            </map>
+        </property>
+        <property name="minWorkerThreads" value="10" />
+        <property name="maxWorkerThreads" value="100" />
+        <property name="maxSelectorThreads" value="8" />
+        <property name="clientTimeout" value="10000" />
+        <property name="useSSL" value="${thrift.use.ssl}" />
+        <property name="keyStorePath" value="${thrift.ssl.keystore.path}" />
+        <property name="keyStorePass" value="${thrift.ssl.keystore.password}" />
+        <property name="keyStorePassKey" value="${thrift.ssl.keystore.password.encodekey}" />
+        <property name="trustStorePath" value="${thrift.ssl.truststore.path}" />
+        <property name="trustStorePass" value="${thrift.ssl.truststore.password}" />
+        <property name="trustStorePassKey" value="${thrift.ssl.truststore.password.encodekey}" />
+        <property name="cipherSuites">
+            <list>
+                <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+            </list>
+        </property>
+        <property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+        <property name="name" value="DSS Thrift Service" />
+    </bean>
+    
+    <bean id="dssThriftServer" class="pw.cdmi.file.engine.core.thrift.DSSThriftServerWrapper" lazy-init="false" init-method="start" destroy-method="destroy">
+        <property name="processorMap">
+            <map>
+                <entry key="DSSLocalService">
+                    <ref local="dsSLocalServiceProcessor" />
+                </entry>
+            </map>
+        </property>
+        <property name="minWorkerThreads" value="10" />
+        <property name="maxWorkerThreads" value="100" />
+        <property name="maxSelectorThreads" value="8" />
+        <property name="clientTimeout" value="10000" />
+        <property name="useSSL" value="false" />
+        <property name="keyStorePath" value="${thrift.ssl.keystore.path}" />
+        <property name="keyStorePass" value="${thrift.ssl.keystore.password}" />
+        <property name="keyStorePassKey" value="${thrift.ssl.keystore.password.encodekey}" />
+        <property name="trustStorePath" value="${thrift.ssl.truststore.path}" />
+        <property name="trustStorePass" value="${thrift.ssl.truststore.password}" />
+        <property name="trustStorePassKey" value="${thrift.ssl.truststore.password.encodekey}" />
+<!--	本機環境預覽服務器測試用，先把這里注釋掉	-->
+<!--         <property name="bindAddr" value="127.0.0.1" /> -->
+        <property name="cipherSuites">
+            <list>
+                <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+            </list>
+        </property>
+        <property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+        <property name="name" value="DSS Thrift Service" />
+    </bean>
+
+    <bean id="fileObjectThriftServiceProcessor" class="com.huawei.sharedrive.thrift.dc2app.FileObjectThriftService$Processor">
+        <constructor-arg>
+            <bean class="pw.cdmi.file.engine.object.thrift.FileObjectThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+    
+    <bean id="storageResouceThriftServiceProcessor" class="com.huawei.sharedrive.thrift.filesystem.StorageResouceThriftServiceOnDss$Processor">
+        <constructor-arg>
+            <bean class="pw.cdmi.file.engine.filesystem.manage.thrift.StorageResouceThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+    
+    <bean id="ExtAttributeStorageResourceThriftServiceProcessor" class="com.huawei.sharedrive.thrift.filesystem.StorageExtAttributeThriftServiceOnDss$Processor">
+        <constructor-arg>
+            <bean class="pw.cdmi.file.engine.filesystem.manage.thrift.ExtAttributeStorageResouceThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="dcThriftServiceProcessor" class="com.huawei.sharedrive.thrift.dc2app.DCThriftService$Processor">
+        <constructor-arg>
+            <bean class="pw.cdmi.file.engine.manage.datacenter.thrift.DCThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="dcMirrorThriftServiceProcessor" class="com.huawei.sharedrive.thrift.mirror.dc2app.DCMirrorThriftService$Processor">
+        <constructor-arg>
+            <bean class="pw.cdmi.file.engine.mirro.thirft.DCMirrorThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+ 
+     <bean id="dcRealTimeThriftServiceProcessor" class="com.huawei.sharedrive.thrift.realTime.dc2app.DCRealTimeThriftService$Processor">
+        <constructor-arg>
+            <bean class="pw.cdmi.file.engine.realtime.thrift.DCRealTimeThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+    
+    <bean id="chechServiceProcessor" class="com.huawei.sharedrive.thrift.echo.ChechService$Processor">
+        <constructor-arg>
+            <bean id="chechService" class="pw.cdmi.common.monitor.thrift.server.ChechServiceImpl" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="syncNodeServiceProcessor" class="com.huawei.sharedrive.thrift.syncnode.SyncNodeService$Processor">
+        <constructor-arg>
+            <ref local="syncNodeService" />
+        </constructor-arg>
+    </bean>
+    
+    <bean id="dsSLocalServiceProcessor" class="com.huawei.sharedrive.thrift.dc.local.DSSLocalService$Processor">
+        <constructor-arg>
+            <bean id="dsSLocalService" class="pw.cdmi.file.engine.object.thrift.DSSLocalServiceImpl" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="syncNodeService" class="pw.cdmi.common.monitor.thrift.server.SyncNodeServiceImpl">
+        <property name="serviceNodeService" ref="serviceNodeService" />
+        <property name="configManager" ref="monitorConfigManager" />
+    </bean>
+
+    <bean id="zkServer" class="pw.cdmi.core.zk.ZookeeperServer" lazy-init="true" init-method="init" destroy-method="destroy">
+        <property name="connectString" value="${zookeeper.server}" />
+        <property name="connectionTimeoutMs" value="${zookeeper.connectionTimeoutMs}" />
+        <property name="sessionTimeoutMs" value="${zookeeper.sessionTimeoutMs}" />
+        <property name="baseSleepTimeMs" value="${zookeeper.retryPolicy.baseSleepTimeMs}" />
+        <property name="maxSleepTimeMs" value="${zookeeper.retryPolicy.maxSleepTimeMs}" />
+        <property name="maxRetries" value="${zookeeper.retryPolicy.maxRetries}" />
+    </bean>
+
+    <bean id="transportManagerConfig" class="pw.cdmi.file.engine.core.thrift.client.UFMTTransportManagerConfig">
+        <property name="clusterType" value="ufm" />
+        <property name="addressType" value="manager" />
+        <property name="heartBeatServiceName" value="ChechService" />
+        <property name="zkRoot" value="/thrift-nodes/ufm-for-dss" />
+        <property name="maxActive" value="${thrift.app.maxActive}" />
+        <property name="maxIdle" value="${thrift.app.maxIdle}" />
+        <property name="minIdle" value="${thrift.app.minIdle}" />
+        <property name="maxWait" value="${thrift.app.maxWait}" />
+        <property name="numTestsPerEvictionRun" value="${thrift.app.numTestsPerEvictionRun}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${thrift.app.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${thrift.app.minEvictableIdleTimeMillis}" />
+        <property name="usePool" value="${thrift.app.usePool}" />
+    </bean>
+    
+         <bean id="sztransportManagerConfig" class="pw.cdmi.file.engine.core.thrift.client.SZUFMTTransportManagerConfig">
+        <property name="clusterType" value="ufm" />
+        <property name="addressType" value="manager" />
+        <property name="heartBeatServiceName" value="ChechService" />
+        <property name="zkRoot" value="/thrift-nodes/ufm-for-dss" />
+        <property name="maxActive" value="${thrift.app.maxActive}" />
+        <property name="maxIdle" value="${thrift.app.maxIdle}" />
+        <property name="minIdle" value="${thrift.app.minIdle}" />
+        <property name="maxWait" value="${thrift.app.maxWait}" />
+        <property name="numTestsPerEvictionRun" value="${thrift.app.numTestsPerEvictionRun}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${thrift.app.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${thrift.app.minEvictableIdleTimeMillis}" />
+        <property name="usePool" value="${thrift.app.usePool}" />
+    </bean>
+    
+     <bean id="dgtransportManagerConfig" class="pw.cdmi.file.engine.core.thrift.client.DGUFMTTransportManagerConfig">
+        <property name="clusterType" value="ufm" />
+        <property name="addressType" value="manager" />
+        <property name="heartBeatServiceName" value="ChechService" />
+        <property name="zkRoot" value="/thrift-nodes/ufm-for-dss" />
+        <property name="maxActive" value="${thrift.app.maxActive}" />
+        <property name="maxIdle" value="${thrift.app.maxIdle}" />
+        <property name="minIdle" value="${thrift.app.minIdle}" />
+        <property name="maxWait" value="${thrift.app.maxWait}" />
+        <property name="numTestsPerEvictionRun" value="${thrift.app.numTestsPerEvictionRun}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${thrift.app.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${thrift.app.minEvictableIdleTimeMillis}" />
+        <property name="usePool" value="${thrift.app.usePool}" />
+    </bean>
+
+    <bean id="ufmTransportBuilder" class="pw.cdmi.file.engine.core.thrift.client.UFMTransportBuilder">
+        <property name="useSSL" value="${thrift.use.ssl}" />
+        <property name="keyStoreFile" value="${thrift.ssl.keystore.path}" />
+        <property name="keyStorePwd" value="${thrift.ssl.keystore.password}" />
+        <property name="keyStorePwdKey" value="${thrift.ssl.keystore.password.encodekey}" />
+        <property name="trustStoreFile" value="${thrift.ssl.truststore.path}" />
+        <property name="trustStorePwd" value="${thrift.ssl.truststore.password}" />
+        <property name="trustStorePwdKey" value="${thrift.ssl.truststore.password.encodekey}" />
+        <property name="cipherSuites">
+            <list>
+                <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+            </list>
+        </property>
+        <property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="ufmThriftTransportManager" class="pw.cdmi.common.thrift.client.pool.TTransportManager" lazy-init="true" init-method="initPool" destroy-method="close">
+        <property name="config" ref="transportManagerConfig" />
+        <property name="transportBuilder" ref="ufmTransportBuilder" />
+        <property name="serviceNodeService" ref="serviceNodeService" />
+        <property name="zookeeperServer" ref="zkServer" />
+    </bean>
+    
+     <bean id="szufmThriftTransportManager" class="pw.cdmi.common.thrift.client.pool.TTransportManager" lazy-init="true" init-method="initPool" destroy-method="close">
+        <property name="config" ref="sztransportManagerConfig" />
+        <property name="transportBuilder" ref="ufmTransportBuilder" />
+        <property name="serviceNodeService" ref="serviceNodeService" />
+        <property name="zookeeperServer" ref="zkServer" />
+    </bean>
+    
+    <bean id="dgufmThriftTransportManager" class="pw.cdmi.common.thrift.client.pool.TTransportManager" lazy-init="true" init-method="initPool" destroy-method="close">
+        <property name="config" ref="dgtransportManagerConfig" />
+        <property name="transportBuilder" ref="ufmTransportBuilder" />
+        <property name="serviceNodeService" ref="serviceNodeService" />
+        <property name="zookeeperServer" ref="zkServer" />
+    </bean>
+
+    <bean id="ufmThriftClientProxyFactory" class="pw.cdmi.file.engine.core.thrift.client.UFMThriftClientProxyFactory">
+        <property name="transportManagerName" value="ufmThriftTransportManager" />
+    </bean>
+    
+      <bean id="szufmThriftClientProxyFactory" class="pw.cdmi.file.engine.core.thrift.client.SZUFMThriftClientProxyFactory">
+        <property name="transportManagerName" value="szufmThriftTransportManager" />
+    </bean>
+    
+    <bean id="dgufmThriftClientProxyFactory" class="pw.cdmi.file.engine.core.thrift.client.DGUFMThriftClientProxyFactory">
+        <property name="transportManagerName" value="dgufmThriftTransportManager" />
+    </bean>
+
+    <bean id="ufmMonitorTransportBuilder" class="pw.cdmi.common.thrift.client.TransportBuilder">
+        <property name="transportTimeout" value="10000" />
+        <property name="useSSL" value="${thrift.use.ssl}" />
+        <property name="keyStoreFile" value="${thrift.ssl.keystore.path}" />
+        <property name="keyStorePwd" value="${thrift.ssl.keystore.password}" />
+        <property name="keyStorePwdKey" value="${thrift.ssl.keystore.password.encodekey}" />
+        <property name="trustStoreFile" value="${thrift.ssl.truststore.path}" />
+        <property name="trustStorePwd" value="${thrift.ssl.truststore.password}" />
+        <property name="trustStorePwdKey" value="${thrift.ssl.truststore.password.encodekey}" />
+        <property name="cipherSuites">
+            <list>
+                <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+            </list>
+        </property>
+        <property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="thriftServiceMonitorManager" class="pw.cdmi.common.thrift.client.monitor.ThriftServiceMonitorManager" lazy-init="false" init-method="init" destroy-method="destroy">
+        <property name="zookeeperServer" ref="zkServer" />
+        <property name="serviceNodeService" ref="serviceNodeService" />
+        <property name="lockRoot" value="/thrift-monitor-lock/dss" />
+        <property name="transportBuilder" ref="ufmMonitorTransportBuilder" />
+        <property name="configManager" ref="monitorConfigManager" />
+        <property name="monitorConfigList">
+            <list>
+                <bean class="pw.cdmi.file.engine.core.thrift.client.UFMThriftServiceMonitorConfig">
+                    <property name="clusterType" value="ufm" />
+                    <property name="addressType" value="manager" />
+                    <property name="heartBeatServiceName" value="ChechService" />
+                    <property name="heartBeatInterval" value="30000" />
+                    <property name="deadNodeRetryInterval" value="10000" />
+                    <property name="clusterRoot" value="/thrift-nodes/ufm-for-dss" />
+                    <property name="name" value="ufm-thrift-nodes-monitor" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+</beans>

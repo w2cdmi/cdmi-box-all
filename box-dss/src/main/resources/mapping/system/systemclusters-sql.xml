@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="clusterNode">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="ClusterNode" type="pw.cdmi.file.engine.manage.datacenter.domain.ClusterNode" />
+
+	<resultMap id="resultMap.ClusterNode" class="ClusterNode">
+        <result column="name" 				property="name" 			javaType="java.lang.String"/>
+        <result column="manageraddr" 		property="manageAddr" 		javaType="java.lang.String"/>
+        <result column="managergw" 			property="managerGateway" 	javaType="java.lang.String"/>
+        <result column="managerport" 		property="managePort" 		javaType="java.lang.Integer" nullValue="-1"/>
+        <result column="inneraddr" 			property="innerAddr" 		javaType="java.lang.String"/>
+        <result column="innergw" 			property="innerGateway" 	javaType="java.lang.String"/>
+        <result column="serviceaddr" 		property="serviceAddr" 		javaType="java.lang.String"/>
+        <result column="servicgw" 			property="serviceGateway" 	javaType="java.lang.String"/>
+        <result column="state" 				property="status" 			typeHandler="pw.cdmi.file.engine.manage.datacenter.domain.NodeStatusTypeHandler"/>
+        <result column="runtimestate" 		property="runtimeStatus" 	typeHandler="pw.cdmi.file.engine.manage.datacenter.domain.RuntimeStatusTypeHandler"/>
+        <result column="lastreporttime" 	property="lastReportTime" 	javaType="java.lang.Long" nullValue="-1"/>
+    </resultMap>
+	
+	<select id="selectAll" resultMap="resultMap.ClusterNode">
+        select * from system_clusters order by name;
+    </select>
+    
+    <select id="select" parameterClass="ClusterNode" resultMap="resultMap.ClusterNode">
+        select * from system_clusters where name=#name#;
+    </select>
+    
+    <delete id="delete" parameterClass="ClusterNode">
+        delete from system_clusters where name=#name#;
+    </delete>
+    
+    <insert id="insert" parameterClass="ClusterNode">
+    	insert into system_clusters(name, manageraddr, managergw, managerport, inneraddr, innergw, serviceaddr, servicgw, state) 
+    		values(#name#, #manageAddr#, #managerGateway#, #managePort#, #innerAddr#, #innerGateway#, #serviceAddr#, #serviceGateway#, #status.code#);
+    </insert>
+    
+    <update id="update" parameterClass="ClusterNode">
+        update system_clusters 
+        <dynamic prepend="set"> 
+        	<isNotNull prepend="," property="manageAddr">
+        		manageraddr=#manageAddr#
+        	</isNotNull>
+        	<isNotNull prepend="," property="managerGateway">
+        		managergw=#managerGateway#
+        	</isNotNull>
+        	<isNotNull prepend="," property="managePort">
+        		managerport=#managePort#
+        	</isNotNull> 
+        	<isNotNull prepend="," property="innerAddr">
+        		inneraddr=#innerAddr#
+        	</isNotNull>
+        	<isNotNull prepend="," property="innerGateway">
+        		innergw=#innerGateway#
+        	</isNotNull>
+        	<isNotNull prepend="," property="serviceAddr">
+        		serviceaddr=#serviceAddr#
+        	</isNotNull>
+        	<isNotNull prepend="," property="serviceGateway">
+        		servicgw=#serviceGateway#
+        	</isNotNull>
+        	<isNotNull prepend="," property="status">
+        		state=#status.code#
+        	</isNotNull>
+        	<isNotNull prepend="," property="runtimeStatus">
+        		runtimestate=#runtimeStatus.code#
+        	</isNotNull>
+        	<isNotNull prepend="," property="lastReportTime">
+        		lastreporttime=#lastReportTime#
+        	</isNotNull>
+        </dynamic>
+        where name = #name#;
+    </update>
+</sqlMap>

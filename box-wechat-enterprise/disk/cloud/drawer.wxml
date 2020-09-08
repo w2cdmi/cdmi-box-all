@@ -1,0 +1,12 @@
+<template name="drawer">
+    <view class="drawer_screen" bindtap="memnerclose" data-status="0" wx:if="{{showModalStatus}}"></view>
+    <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+        <view class="drawer_attr_content">
+            <view class="drawer_content">
+                <view class="drawer_title line" bindtap="showmemner">成员管理</view>
+                <view class="drawer_title line" bindtap="deleteTeam" data-deorquit="{{deorquit}}" data-memberquit="{{memberquit}}">{{deletespace}}</view>
+                <view class="drawer_title close" bindtap="memnerclose">取消</view>
+            </view>
+        </view>
+    </view>
+</template>

@@ -1,0 +1,5 @@
+@@normal
+ { 
+	"groupBy":"region",
+	"appId": "Onebox"
+}

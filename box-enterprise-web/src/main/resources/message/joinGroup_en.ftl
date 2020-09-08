@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> has added you to group <strong>${groupName}</strong>

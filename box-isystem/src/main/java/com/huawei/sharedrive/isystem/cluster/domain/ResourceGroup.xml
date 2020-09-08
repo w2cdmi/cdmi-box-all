@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ResourceGroup">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="ResourceGroup" type="com.huawei.sharedrive.isystem.cluster.domain.ResourceGroup" />
+
+	<resultMap id="resultMap.ResourceGroup" class="ResourceGroup">
+        <result column="id"						property="id" 				javaType="java.lang.Integer"/>
+        <result column="dcId"					property="dcId" 			javaType="java.lang.Integer"/>
+        <result column="type"					property="type" 			javaType="java.lang.Integer"/>
+        <result column="regionId"				property="regionId" 		javaType="java.lang.Integer"/>
+        <result column="manageIp"				property="manageIp" 		javaType="java.lang.String"/>
+        <result column="managePort"			    property="managePort" 		javaType="java.lang.Integer"/>
+        <result column="domainName"             property="domainName"       javaType="java.lang.String"/>
+        <result column="getProtocol"             property="protocol"       javaType="java.lang.String"/>
+        <result column="serviceHttpPort" 		property="serviceHttpPort" 	javaType="java.lang.Integer" nullValue="8080"/>
+        <result column="serviceHttpsPort" 		property="serviceHttpsPort" javaType="java.lang.Integer" nullValue="8443"/>
+        <result column="servicePath"			property="servicePath" 		javaType="java.lang.String"/>
+        <result column="status"					property="status" 			typeHandler="com.huawei.sharedrive.isystem.cluster.domain.typehandler.ResourceGroupStatusTypeHandler"/>
+        <result column="rwStatus"				property="rwStatus" 		typeHandler="com.huawei.sharedrive.isystem.cluster.domain.typehandler.ResourceGroupRWStatusTypeHandler"/>
+        <result column="runtimeStatus"			property="runtimeStatus" 	typeHandler="com.huawei.sharedrive.isystem.cluster.domain.typehandler.ResourceGroupRuntimeStatusTypeHandler"/>
+        <result column="lastReportTime"			property="lastReportTime" 	javaType="java.lang.Long" nullValue="-1"/>
+        <result column="accessKey"				property="accessKey" 		javaType="java.lang.String"/>
+        <result column="id" 					property="nodes" 			select="ResourceGroupNode.getGroupNodes"/>
+    </resultMap>
+    
+    <select id="select" resultMap="resultMap.ResourceGroup" parameterClass="int">
+        select * from resource_group where id=#value#
+    </select>
+    
+    <insert id="insert" parameterClass="ResourceGroup">
+        insert into resource_group(id,dcId,type,regionId,manageIp,managePort,domainName,
+        servicehttpport,servicehttspport,servicepath,status,rwStatus,runtimeStatus,lastReportTime,accessKey) 
+        values(#id#,#dcId#,#type#,#regionId#,#manageIp#,#managePort#,#domainName#,
+        #serviceHttpPort#, #serviceHttpsPort#, #servicePath#, #status.code#, #rwStatus.code#,#runtimeStatus.code#,#lastReportTime#,#accessKey#)
+    </insert>
+    
+    <update id="update" parameterClass="ResourceGroup">
+        update resource_group set domainName=#domainName#,serviceHttpPort=#serviceHttpPort#, serviceHttpsPort=#serviceHttpsPort#, servicePath=#servicePath#, runtimeStatus=#runtimeStatus.code#,lastReportTime=#lastReportTime# where id=#id#
+    </update>
+    
+    <delete id="delete" parameterClass="int">
+        delete from resource_group where id=#value#
+    </delete>
+    
+    <select id="getAll" resultMap="resultMap.ResourceGroup">
+        select * from resource_group order by id
+    </select>
+
+    <select id="getAllByRegion" parameterClass="int" resultMap="resultMap.ResourceGroup">
+        select * from resource_group where regionId=#value# order by id
+    </select>
+    
+    <select id="getAllByDC" parameterClass="int" resultMap="resultMap.ResourceGroup">
+        select * from resource_group where dcId=#value# order by id
+    </select>
+
+    <select id="selectByAddr" resultMap="resultMap.ResourceGroup" parameterClass="java.util.Map">
+        select * from resource_group where manageIp=#managerIP# and managePort=#managerPort# order by id
+    </select>
+
+    <update id="updateStatistic" parameterClass="ResourceGroup">
+        update resource_group set status=#status.code#, runtimeStatus=#runtimeStatus.code#,
+        lastReportTime=#lastReportTime# where id=#id#
+    </update>
+    
+    <update id="updateRegionByDC" parameterClass="java.util.Map">
+        update resource_group set regionid=#regionID# where dcid=#dcid#
+    </update>
+    
+    <update id="updateStatus" parameterClass="java.util.Map">
+        update resource_group set status=#status# where dcid=#dcid#
+    </update>
+    
+    <update id="updateRWStatus" parameterClass="java.util.Map">
+        update resource_group set rwStatus=#rwStatus# where dcid=#dcid#
+    </update>
+
+    <delete id="deleteByDC" parameterClass="int">
+        delete from resource_group where dcid=#value#
+    </delete>
+</sqlMap>
+

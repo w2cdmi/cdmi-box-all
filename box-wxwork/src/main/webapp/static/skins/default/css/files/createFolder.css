@@ -1,0 +1,85 @@
+.creat-header{
+    width: 100%;
+    background: #fff;
+    overflow: hidden;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+.creat-header-content{
+    overflow: hidden;
+    margin: 0.75rem 0 0.75rem 0.75rem;
+}
+.creat-header-content input{
+    font-size: 0.75rem;
+    border: none;
+    line-height: 1.8rem;
+    margin-left: 1rem;
+}
+.coop-part-content{
+    overflow: hidden;
+}
+.coop-part-content i{
+    width: 1.8rem;
+    display: inline-block;
+}
+.coop-part-content i img{
+    width: 100%;
+}
+.coop-part-content p{
+    float: left;
+}
+.coop-part-contents p{
+    font-size:0.75rem;
+    color:rgba(51,51,51,1);
+}
+.foot-confirm{
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: #fff;
+    z-index: 4;
+}
+.foot-confirm-btn{
+    width:17.25rem;
+    height:2.17rem;
+    display: block;
+    border: none;
+    outline: none;
+    background:rgba(234,80,54,1);
+    border-radius: 0.13rem;
+    text-align: center;
+    margin: 0.5rem auto;
+    font-size:0.75rem;
+    color:rgba(255,255,255,1);
+}
+.foot-cancel-btn{
+    width:17.25rem;
+    height:2.17rem;
+    display: block;
+    border: none;
+    outline: none;
+    background: grey;
+    border-radius: 0.13rem;
+    text-align: center;
+    margin: 0.5rem auto;
+    font-size:0.75rem;
+    color:rgba(255,255,255,1);
+}
+.weui-cells:after{
+    border: none;
+}
+.weui-navbar+.weui-tab__bd{
+    padding-bottom: 7rem;
+}
+.bread-crumb{
+    /*border: none;*/
+}
+.upload-file-name{
+    display: inline-block;
+    max-width: 10rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+}

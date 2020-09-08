@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="560,440" caption="0,0,0,42" mininfo="560,440" bktrans="true" roundcorner="5,5,5,5">
+	<Include source="Default.xml" />
+	<VerticalLayout bordersize="1" bordercolor="#FFDDDDDD"  bkcolor="#FFFFFFFF" >
+		<HorizontalLayout height="42" bkcolor="#FFFAFAFA">
+			<Label name="fullBackUpTree_title" text="备份设置" textcolor="#FF000000" valign="vcenter" width="250" padding="20,0" font="15" />
+			<Control />
+			<Button name="fullBackUpTree_close_btn" width="20" height="20" padding="0,11" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" normalimage="file='..\image\ic_popup_delete.png' source='0,0,20,20'" hotimage="file='..\image\ic_popup_delete.png' source='0,30,20,50'" pushedimage="file='..\image\ic_popup_delete.png' source='0,60,20,80'" />
+		</HorizontalLayout>
+		<Label height="1" bkcolor="#FFDDDDDD"/>
+		<Control height="10"/>
+		<Label name="fullBackUpTree_intro" height="20" padding="20,0,20,0" font="12" text="请选择需要备份的本地磁盘或文件夹" textcolor="#FF000000"/>
+		<VerticalLayout name="fullBackUpTree_firstPage" padding="20,10,20,0" bkimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'">
+			<TreeView name="fullBackUpTree_localTreeView" bordersize="1" inset="1,1,1,1" borderround="3,3" bordercolor="#FFCCCCCC" bkcolor="#FFFFFFFF" itemminwidth="480" align="left" itemendellipsis="true"  itemhotbkcolor="#FFEBEBEB" itemselectedbkcolor="#FFDEF0FF" vscrollbar="true" hscrollbar="true"/>
+		</VerticalLayout>
+		<VerticalLayout name="fullBackUpTree_secondPage" padding="20,10,20,0" visible="false">
+			<HorizontalLayout name="fullBackUpTree_selectArea" height="30" visible="false">
+				<Option name="fullBackUpTree_create" text="新建" padding="0,0,20,0" textpadding="25,0,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="left" valign="vcenter" normalimage="file='..\Image\ic_radiobutton_unselect.png' source='0,78,16,94' dest='0,7,16,23'" hotimage="file='..\Image\ic_radiobutton_unselect.png' source='0,26,16,42' dest='0,7,16,23'"  selectedimage="file='..\Image\ic_radiobutton_select.png' source='0,26,16,42' dest='0,7,16,23'" group="fullBackUpTree_selectGroup"/>
+				<Option name="fullBackUpTree_exist" text="选择已有目录" padding="20,0,20,0" textpadding="25,0,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="left" valign="vcenter" normalimage="file='..\Image\ic_radiobutton_unselect.png' source='0,78,16,94' dest='0,7,16,23'" hotimage="file='..\Image\ic_radiobutton_unselect.png' source='0,26,16,42' dest='0,7,16,23'"  selectedimage="file='..\Image\ic_radiobutton_select.png' source='0,26,16,42' dest='0,7,16,23'" group="fullBackUpTree_selectGroup"/>
+			</HorizontalLayout>
+			<Control height="10"/>
+			<Label name="fullBackUpTree_remotePath" height="30" font="12" bkimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" textcolor="#FF666666" visible="false" textpadding="5,6,5,6" endellipsis="true"/>
+			<List name="fullBackUpTree_remotePathList" header="hidden" bkimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" bordersize="1" inset="1,1,1,1" borderround="3,3" bordercolor="#FFCCCCCC" bkcolor="#FFFFFFFF"  itemhotbkcolor="#FFEBEBEB" itemselectedbkcolor="#FFDEF0FF" vscrollbar="true" hscrollbar="true"/>
+		</VerticalLayout>
+		<Control height="10"/>
+		<HorizontalLayout height="30">
+			<Control />
+			<ScaleIconButton name="fullBackUpTree_previous" text="上一步"  normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110'  corner='3,3,3,3'" textpadding="20,0,20,0" font="0" textcolor="#FF000000" visible="false"/>
+			<Control width="10"/>
+			<ScaleIconButton name="fullBackUpTree_next" text="下一步"  normalimage="file='..\image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" textpadding="20,0,20,0"  font="0" textcolor="#FFFFFFFF" visible="false"/>
+			<ScaleIconButton name="fullBackUpTree_finish" text="确定"  normalimage="file='..\image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" textpadding="20,0,20,0"  font="0" textcolor="#FFFFFFFF" visible="false"/>
+			<Control width="10"/>
+			<ScaleIconButton name="fullBackUpTree_cancel" text="取消" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110'  corner='3,3,3,3'" textpadding="20,0,20,0" font="0" textcolor="#FF000000"/>
+			<Control width="20" />
+		</HorizontalLayout>
+		<Control height="15" />
+	</VerticalLayout>
+</Window>

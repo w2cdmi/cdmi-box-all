@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AppAccessKey">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="AppAccessKey" type="pw.cdmi.common.domain.AppAccessKey" />
+    
+    <select id="getById" parameterClass="String" resultClass="AppAccessKey">
+        select * from authapp_accesskey where id=#value#
+    </select>
+    
+    <select id="getByAppId" parameterClass="String" resultClass="AppAccessKey">
+        select * from authapp_accesskey where appId=#value# order by createdAt
+    </select>
+
+    <insert id="insert" parameterClass="AppAccessKey">
+        insert into authapp_accesskey(id,secretKey,secretKeyEncodeKey,appId,createdAt) 
+        values 
+        (#id#,#secretKey#,#secretKeyEncodeKey#,#appId#,#createdAt#)
+    </insert>
+
+    <delete id="delete" parameterClass="String">
+        delete from authapp_accesskey where id=#value#
+    </delete>
+    
+    <delete id="deleteByAppId" parameterClass="String">
+        delete from authapp_accesskey where appId=#value#
+    </delete>
+    
+    <update id="updateFirstScan" parameterClass="AppAccessKey">
+       update authapp_accesskey set firstScan=#firstScan# where appId=#appId#
+    </update>
+</sqlMap>
+

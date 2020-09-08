@@ -1,0 +1,39 @@
+<template name="file-list">
+    <scroll-view style='height:100%;' hidden='{{data.files.length > 0 ? false : true}}' scroll-y="true" bindscrolltolower="scrollLower">
+        <view class="folderList {{(isTouchMoveIndex === index && shortcut !== 'shortcut') ? 'touch-moveToLeft-active' : 'touch-moveToRight-active'}}" bindtouchstart="touchstart" wx:for="{{data.files}}" wx:key="*this">
+
+            <view class="file-group border-bottom view-bg">
+                <view class='flex-item'>
+                    <view class='flex-item' data-index="{{index}}" data-file-info="{{item}}" bindtouchend="touchend">
+                        <view>
+                            <image class="img-icon" mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src='{{item.icon}}'></image>
+                        </view>
+                        <view class='file-info cell_2_body_content'>
+                            <label>{{item.name}}</label>
+                            <text>
+                        <block wx:if="{{item.fileSize}}">{{item.fileSize}}</block>
+                        <block wx:if="{{item.ownerName}}">{{item.ownerName}}</block> | {{item.modifiedTime}}</text>
+                        </view>
+                    </view>
+                </view>
+
+                <!-- <button class='clear-button-style button-size' data-file-info='{{item}}' catchtap='saveToPersion' hidden='{{data.isShowSaveMenu?false:true}}'>
+                    <image src="./images/save-to.png" />
+                </button> -->
+                <button class='clear-button-style button-size' data-file-info='{{item}}' catchtap="onShareButtonClick" open-type="share" wx:if="{{activeIndex > 1}}">
+                    <image style='float:none;' src="/disk/images/share-disable.png" />
+                </button>
+            </view>
+            <view class="del" bindtap="deleteBrowseRecords" data-file-info='{{item}}' data-index="{{index}}">删除</view>
+        </view>
+        <view hidden='{{currentPageIcon}}'>
+            <view class="loadmore" hidden='{{loadMoreIcon}}'>
+                <view class="loading"></view>
+                <view class="loadmore-tips">正在加载</view>
+            </view>
+            <view class="loadmore loadmore-line" hidden='{{ isShowBlankPage || !loadMoreIcon ? true : false }}'>
+                <view class="loadmore-tips loadmore-tips-in-line">没有更多数据 </view>
+            </view>
+        </view>
+    </scroll-view>
+</template>

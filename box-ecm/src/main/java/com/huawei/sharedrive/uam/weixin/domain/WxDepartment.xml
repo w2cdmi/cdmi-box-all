@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WxDepartment">
+    <typeAlias alias="WxDepartment" type="com.huawei.sharedrive.uam.weixin.domain.WxDepartment" />
+
+    <insert id="insert" parameterClass="WxDepartment">
+        <![CDATA[
+        INSERT INTO wx_department(id,corpId,parentId,`name`,`order`,state,boxEnterpriseId,boxDepartmentId,createdAt,modifiedAt)
+        VALUES
+        (#id#,#corpId#,#parentId#,#name#,#order#,#state#,#boxEnterpriseId#,#boxDepartmentId#,#createdAt#,#modifiedAt#)
+        ]]>
+    </insert>
+
+    <update id="update" parameterClass="WxDepartment">
+        UPDATE wx_department SET `modifiedAt`=#modifiedAt#
+        <dynamic>
+            <isNotNull prepend="," property="name">
+                `name`=#name#
+            </isNotNull>
+            <isNotNull prepend="," property="parentId">
+                `parentId`=#parentId#
+            </isNotNull>
+            <isNotNull prepend="," property="order">
+                `order`=#order#
+            </isNotNull>
+            <isNotNull prepend="," property="state">
+                `state`=#state#
+            </isNotNull>
+            <isNotNull prepend="," property="boxDepartmentId">
+                `boxDepartmentId`=#boxDepartmentId#
+            </isNotNull>
+        </dynamic>
+        WHERE corpId=#corpId# AND id=#id#
+    </update>
+
+    <delete id="delete" parameterClass="WxDepartment">
+        <![CDATA[
+        DELETE FROM wx_department WHERE corpId=#corpId# AND id=#id#
+        ]]>
+    </delete>
+
+    <select id="get" parameterClass="map" resultClass="WxDepartment">
+        <![CDATA[
+    	select * from wx_department where corpId=#corpId# AND id=#id#;
+        ]]>
+    </select>
+
+    <select id="listByCorpId" parameterClass="String" resultClass="WxDepartment">
+        <![CDATA[
+    	select * from wx_department where corpId=#corpId# ORDER BY parentId;
+        ]]>
+    </select>
+
+    <update id="changeState" parameterClass="WxDepartment">
+        <![CDATA[
+        UPDATE wx_department SET `state`=#state#, `modifiedAt`=#modifiedAt# WHERE corpId=#corpId#
+        ]]>
+    </update>
+
+    <delete id="deleteByState" parameterClass="WxDepartment">
+        <![CDATA[
+        DELETE FROM wx_department WHERE corpId=#corpId# AND `state`=#state#
+        ]]>
+    </delete>
+
+</sqlMap>
+

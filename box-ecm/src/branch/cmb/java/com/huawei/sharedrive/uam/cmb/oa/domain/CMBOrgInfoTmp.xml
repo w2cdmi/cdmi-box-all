@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CMBOrgInfoTmp">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CMBOrgInfo" type="com.huawei.sharedrive.uam.cmb.oa.domain.CMBOrgInfo" />
+	
+	<insert id="insert" parameterClass="CMBOrgInfo">
+        <![CDATA[
+        insert into cmb_org_info_tmp(orgId,groupId,groupName,fatherGroupId,fatherOrgId,leaf,unitType,hierarchyflag,
+        emailId,headerId,display,point,pathName,oneclassOrgId,twoClassOrgId,threeClassOrgId,fourClassOrgId,fiveClassOrgId,
+        usePlace,groupProperty,sortId,location,exInfo) 
+        values 
+        (#orgId#,#groupId#,#groupName#,#fatherGroupId#,#fatherOrgId#,#leaf#,
+            #unitType#,#hierarchyflag#,#emailId#,
+            #headerId#,#display#,#point#,#pathName#,#oneclassOrgId#,#twoClassOrgId#,
+            #threeClassOrgId#,#fourClassOrgId#,#fiveClassOrgId#,#usePlace#,
+            #groupProperty#,#sortId#,#location#,#exInfo#)
+        ]]>
+	</insert>
+	<select id="getAll" resultClass="CMBOrgInfo">
+    	<![CDATA[
+        select * from cmb_org_info_tmp
+        ]]>
+	</select>
+	<delete id="deleteAll">
+    	<![CDATA[
+        delete from cmb_org_info_tmp
+        ]]>
+	</delete>
+	
+</sqlMap>
+

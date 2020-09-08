@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig  PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"  "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+    <settings lazyLoadingEnabled="true" useStatementNamespaces="true" />
+
+    <!-- 以下的配置都是从OSS模块复制的，将来整体重构完成后，OSS模块不再存在 -->
+    <sqlMap resource="pw/cdmi/file/domain/FileObject.xml"/>
+    <sqlMap resource="pw/cdmi/file/domain/FsEndpoint.xml"/>
+</sqlMapConfig>
+

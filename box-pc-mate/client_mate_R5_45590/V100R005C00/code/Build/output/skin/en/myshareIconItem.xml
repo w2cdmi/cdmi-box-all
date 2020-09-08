@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Window>
+	<MyShareTileLayoutListContainerElement name="myShare_iconItem" mousechild="false" width="120" maxwidth="120" height="114" height="114">
+		<VerticalLayout name="myShare_iconItemVLayout" float="true" pos="0,0,120,114" shortcut="F2" >
+			<Label name="myShare_icon" float="true" pos="24,8,96,80" />
+			<Label name="myShare_name" maxchar="246" multiline="true" autohscroll="true" float="true" pos="10,84,110,104" align="center" valign="vcenter" textcolor="#FF000000" hottextcolor="#FFebebeb" selectedtextcolor="#FFdef0ff" font="12" visible="true" endellipsis="true" />
+		</VerticalLayout>
+	</MyShareTileLayoutListContainerElement>
+</Window>

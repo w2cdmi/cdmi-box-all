@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RetrieveUser">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="RetrieveUser" type="com.huawei.sharedrive.uam.cmb.retrieve.domain.RetrieveUser" />
+	
+	<select id="getRetrieveUserCount" parameterClass="map" resultClass="int">
+		<![CDATA[
+		select 
+			count(1) 
+		from 
+			enterprise_user$enterpriseTableSuffix$ eu,user_account$accountTableSuffix$ au,cmb_user_info cu
+		where 
+			eu.id=au.userid and cu.sapId=eu.`name` and cu.`status`='A' and au.accountId=#accountId# 
+	]]>
+		<dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                eu.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                cu.spell like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                cu.firstSpell=#filter#
+            </isNotEmpty>
+        </dynamic>
+        <dynamic>
+            <isNotEmpty prepend="and" property="orgId">
+				cu.userId in (select DISTINCT(cmb_orguser_relation_info.userId) 
+				from cmb_orguser_relation_info where orgId=#orgId#)
+            </isNotEmpty>
+        </dynamic>
+	</select>
+	
+	<select id="getRetrieveUserList" parameterClass="map" resultClass="RetrieveUser">
+	<![CDATA[
+		select 
+			eu.id,eu.description,eu.email,eu.`name` as loginName,eu.alias as name,au.`status`,au.cloudUserId 
+		from 
+			enterprise_user$enterpriseTableSuffix$ eu,user_account$accountTableSuffix$ au,cmb_user_info cu
+		where 
+			eu.id=au.userid and cu.sapId=eu.`name` and cu.`status`='A' and au.accountId=#accountId# 
+	]]>
+		<dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                eu.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                cu.spell like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                cu.firstSpell=#filter#
+            </isNotEmpty>
+        </dynamic>
+        <dynamic>
+            <isNotEmpty prepend="and" property="orgId">
+				cu.userId in (select DISTINCT(cmb_orguser_relation_info.userId) 
+				from cmb_orguser_relation_info where orgId=#orgId#)
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="limit">
+           <isNotNull property="limit">
+               #limit.offset#,#limit.length#
+           </isNotNull>
+       </dynamic>
+    </select>
+</sqlMap>
+

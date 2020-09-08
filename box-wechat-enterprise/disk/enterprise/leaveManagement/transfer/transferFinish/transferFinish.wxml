@@ -1,0 +1,26 @@
+<view class="page page-padding">
+    <view class="transfer-finish-content">
+        <view class="transfer-finish-header">
+            <view class='leave-member'>{{leaveEmployeAlias}}</view>
+            <view class='finish-middle-header font-middle'>的以下文件已被成功移交给</view>
+            <view class='transfer-member'>{{managerAlias}}</view>
+        </view>
+        <scroll-view scroll-y class='scroll-view' style='height:{{scrollHeight}}'>
+            <view class="touch-item" wx:for="{{finishData}}" wx:key="{{*this}}">
+                <view class="file-group view-bg">
+                    <view>
+                        <image class="img-icon" src='{{item.icon}}'></image>
+                    </view>
+                    <view class='file-info cell_2_body_content'>
+                        <label>{{item.name}}</label>
+                        <text>{{item.fileSize?item.fileSize + ' | ':''}}{{item.modifiedTime}}</text>
+                    </view>
+                </view>
+            </view>
+        </scroll-view>
+        <view class='transfer-finish-button'>
+            <button class='clear-button-style common-button-style continue-transfer-button' catchtap='continueTransfer'>继续移交其他文件</button>
+            <button class='clear-button-style common-button-style return-leave-manage-button' catchtap='returnLeaveManage'>返回离职人员移交管理</button>
+        </view>
+    </view>
+</view>

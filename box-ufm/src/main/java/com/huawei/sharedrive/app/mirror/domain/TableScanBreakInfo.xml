@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TableScanBreakInfo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="TableScanBreakInfo"
+		type="com.huawei.sharedrive.app.mirror.domain.TableScanBreakInfo" />
+
+	<resultMap id="resultMap.TableScanBreakInfo" class="TableScanBreakInfo">
+		<result column="sysTaskId" 			property="sysTaskId" 			javaType="java.lang.String" />
+		<result column="limitOffset" 		property="limitOffset" 			javaType="java.lang.Long" />
+		<result column="model" 				property="model" 				javaType="java.lang.String" />
+		<result column="length" 			property="length" 				javaType="java.lang.Integer" />
+		<result column="breakTime" 			property="breakTime" 			javaType="java.util.Date" />
+		<result column="outPut" 			property="outPut" 				javaType="java.lang.String" />
+	</resultMap>
+
+	<insert id="insertTableScanBreakInfo" parameterClass="TableScanBreakInfo">
+		insert into table_scan_break_info (sysTaskId,limitOffset,model,length,breakTime,outPut)
+			values (#sysTaskId#,#limitOffset#,#model#,#length#,#breakTime#,#outPut#)
+	</insert>
+	
+	<select id="getTableScanBreakInfoById"  resultMap="resultMap.TableScanBreakInfo"  parameterClass="java.lang.String">
+		select * from table_scan_break_info where sysTaskId=#sysTaskId#
+	</select>
+	
+	
+	<delete id="deleteById" parameterClass="java.lang.String">
+		delete from table_scan_break_info where sysTaskId=#sysTaskId#
+	</delete>
+	
+</sqlMap>
+

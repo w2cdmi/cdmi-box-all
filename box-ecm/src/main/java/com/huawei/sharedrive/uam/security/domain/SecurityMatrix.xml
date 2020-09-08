@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SecurityMatrix">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="SecurityMatrix" type="com.huawei.sharedrive.uam.security.domain.SecurityMatrix" />
+
+	<resultMap id="resultMap.SecurityMatrix" class="SecurityMatrix">
+	 	<result column="appId" 		    	    property="appType.code" 				javaType="java.lang.Integer"/>
+        <result column="appDesc" 		    	property="appType.description" 		    javaType="java.lang.String"/>
+        <result column="userType" 		    	property="userType.code" 				javaType="java.lang.Integer"/>
+        <result column="userDesc" 		    	property="userType.description" 		javaType="java.lang.String"/>
+        <result column="networkType" 			property="networkType.code" 			javaType="java.lang.Integer"/>
+        <result column="networkDesc" 			property="networkType.description" 		javaType="java.lang.String"/>
+        <result column="deviceType" 			property="deviceType.code" 		    	javaType="java.lang.Integer"/>
+        <result column="deviceDesc" 			property="deviceType.description" 		javaType="java.lang.String"/>
+        <result column="srcResourceType" 		property="srcResourceType.code" 	    javaType="java.lang.Integer"/>
+        <result column="srcResourceDesc" 		property="srcResourceType.description" 	javaType="java.lang.String"/>
+        <result column="resTypeCode" 			property="resExtendType.code"    		javaType="java.lang.Integer"/>
+        <result column="resExtendDesc" 			property="resExtendType.description"    javaType="java.lang.String"/>
+        <result column="permissionValue" 		property="permissionValue" 				javaType="java.lang.String"/>
+        <result column="roleName" 				property="roleName" 					javaType="java.lang.String"/>
+    </resultMap>
+    
+    <resultMap id="resultMap.SecurityMatrixModify" class="SecurityMatrix">
+	 	<result column="appId" 		    	    property="appType.code" 				javaType="java.lang.Integer"/>
+        <result column="userType" 		    	property="userType.code" 				javaType="java.lang.Integer"/>
+        <result column="networkType" 			property="networkType.code" 			javaType="java.lang.Integer"/>
+        <result column="deviceType" 			property="deviceType.code" 		    	javaType="java.lang.Integer"/>
+        <result column="srcResourceType" 		property="srcResourceType.code" 	    javaType="java.lang.Integer"/>
+        <result column="resTypeCode" 			property="resExtendType.code"    		javaType="java.lang.Integer"/>
+        <result column="permissionValue" 		property="permissionValue" 				javaType="java.lang.String"/>
+        <result column="roleName" 				property="roleName" 					javaType="java.lang.String"/>
+    </resultMap>
+
+    <select id="queryMatrixByNFactor" parameterClass="SecurityMatrix" resultMap="resultMap.SecurityMatrixModify">
+       <![CDATA[ 
+       	 select * from security_matrix where instr(permissionValue,'ENABLED_SECURITY_MATRIX') > 0 
+       	 and appId = #appType.code#
+       	 and userType = #userType.code# 
+       	 and networkType= #networkType.code# 
+       	 and deviceType = #deviceType.code#
+       	 and srcResourceType = #srcResourceType.code#
+       	 and resTypeCode = #resExtendType.code#
+       	 ]]>
+    </select>
+    
+     <select id="hasEnabledSecurityMartix" parameterClass="String" resultClass="java.lang.Integer">
+       <![CDATA[ 
+       	 select count(*) from security_matrix where permissionValue like '%ENABLED_SECURITY_MATRIX%'
+       	 ]]>
+    </select>
+    
+     <select id="getSecurityMartixRoleNames" resultClass="java.util.HashMap" remapResults="true">
+       <![CDATA[ 
+       	 select roleName from security_matrix
+       	 ]]>
+    </select>
+    
+    
+    <select id="getFilterd" parameterClass="map" resultMap="resultMap.SecurityMatrix">
+    	select * from 
+        	(select m6.*,f6.description as resExtendDesc from
+			(select m5.*,f5.description as srcResourceDesc from
+			(select m4.*,f4.description as deviceDesc from 
+			(select m3.*,f3.description as networkDesc from 
+			(select m2.*,f2.description as userDesc from 
+			(select m1.appId, m1.userType, m1.networkType, m1.deviceType, m1.srcResourceType, m1.resTypeCode, m1.resTypeDesc, m1.roleName, m1.permissionValue, 
+			f1.description as appDesc from security_matrix m1
+			left join security_factor f1 on m1.appId=f1.code where f1.type=6) m2
+			left join security_factor f2 on m2.userType=f2.code where f2.type=1) m3	
+			left join security_factor f3 on m3.networkType=f3.code where f3.type=2) m4
+			left join security_factor f4 on m4.deviceType=f4.code where f4.type=3) m5
+			left join security_factor f5 on m5.srcResourceType=f5.code where f5.type=4) m6
+			left join security_factor f6 on m6.resTypeCode=f6.code where f6.type=5) m
+         where 1=1
+         <dynamic prepend="and">
+         	<isNotEmpty prepend="and" property="filter.appCode">
+            	appId = #filter.appCode#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.userCode">
+            	userType = #filter.userCode#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.networkCode">
+            	networkType = #filter.networkCode#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.deviceCode">
+            	deviceType = #filter.deviceCode#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.srcResourceCode">
+            	srcResourceType = #filter.srcResourceCode#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.resExtendCode">
+            	resTypeCode = #filter.resExtendCode#
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getFilterdCount" parameterClass="map" resultClass="java.lang.Integer">
+    	select count(*) from 
+        	(select m6.*,f6.description as resExtendDesc from
+			(select m5.*,f5.description as srcResourceDesc from
+			(select m4.*,f4.description as deviceDesc from 
+			(select m3.*,f3.description as networkDesc from 
+			(select m2.*,f2.description as userDesc from 
+			(select m1.appId, m1.userType, m1.networkType, m1.deviceType, m1.srcResourceType, m1.resTypeCode, m1.resTypeDesc, m1.roleName, m1.permissionValue, 
+			f1.description as appDesc from security_matrix m1
+			left join security_factor f1 on m1.appId=f1.code where f1.type=6) m2
+			left join security_factor f2 on m2.userType=f2.code where f2.type=1) m3	
+			left join security_factor f3 on m3.networkType=f3.code where f3.type=2) m4
+			left join security_factor f4 on m4.deviceType=f4.code where f4.type=3) m5
+			left join security_factor f5 on m5.srcResourceType=f5.code where f5.type=4) m6
+			left join security_factor f6 on m6.resTypeCode=f6.code where f6.type=5) m
+         where 1=1 
+         <dynamic prepend="and">
+         	<isNotEmpty prepend="and" property="filter.appCode">
+            	appId = #filter.appCode#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.userCode">
+            	userType = #filter.userCode#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.networkCode">
+            	networkType = #filter.networkCode#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.deviceCode">
+            	deviceType = #filter.deviceCode#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.srcResourceCode">
+            	srcResourceType = #filter.srcResourceCode#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.resExtendCode">
+            	resTypeCode = #filter.resExtendCode#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    
+    <select id="getSecurityMatrix" parameterClass="map" resultMap="resultMap.SecurityMatrixModify">
+        select * from security_matrix where 1=1 and roleName = #filter.roleName#
+    </select>
+        
+    <select id="isExist" parameterClass="map" resultClass="java.lang.Integer">
+        select count(userType) from security_matrix where 1=1  and roleName = #filter.roleName#
+    </select>
+    
+    <select id="isCiteByPermissionValue" parameterClass="String" resultClass="java.lang.Integer">
+     	<![CDATA[
+        select count(userType) from security_matrix where
+        permissionValue = #permissionValue# or 
+        permissionValue like concat('%;',#permissionValue#,';%') or 
+        permissionValue like concat('%',#permissionValue#,';%') or 
+        permissionValue like concat('%;',#permissionValue#,'%')
+     	 ]]>  
+    </select>
+    
+    <select id="isCiteByResExtendType" parameterClass="map" resultClass="java.lang.Integer">
+     	<![CDATA[
+        select count(userType) from security_matrix where 1=1 and $factor$=#code# 
+     	 ]]>  
+    </select>
+    
+    <insert id="insert" parameterClass="SecurityMatrix">
+    	 <![CDATA[
+    	insert into security_matrix(appId,userType,networkType,deviceType,srcResourceType,resTypeCode,resTypeDesc,permissionValue,roleName) 
+    	values(#appType.code#, #userType.code#, #networkType.code#, #deviceType.code#, #srcResourceType.code#, #resExtendType.code#, #resExtendType.description#, #permissionValue#, #roleName#)
+    	]]>
+    </insert>
+    
+    <update id="update" parameterClass="map">
+        <![CDATA[
+        update security_matrix set appId=#filter.appType.code#,userType=#filter.userType.code#,networkType=#filter.networkType.code#, deviceType=#filter.deviceType.code#, srcResourceType=#filter.srcResourceType.code#, resTypeCode=#filter.resExtendType.code#, resTypeDesc=#filter.resExtendType.description#, permissionValue=#filter.permissionValue#, roleName=#filter.roleName#
+        where roleName=#oldRoleName#
+        ]]>
+    </update>
+    
+    <delete id="delete" parameterClass="SecurityMatrix">
+        <![CDATA[
+        delete from security_matrix 
+        where roleName=#roleName#
+        ]]>
+    </delete>
+</sqlMap>
+

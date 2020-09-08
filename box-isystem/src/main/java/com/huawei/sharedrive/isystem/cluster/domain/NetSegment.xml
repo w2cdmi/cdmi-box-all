@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="NetSegment">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="NetSegment" type="com.huawei.sharedrive.isystem.cluster.domain.NetSegment" />
+
+	<resultMap id="resultMap.NetSegment" class="NetSegment">
+        <result column="id"					property="id" 				javaType="java.lang.Long"/>
+        <result column="startip"			property="startIp" 			javaType="java.lang.String"/>
+        <result column="endip"				property="endIp" 			javaType="java.lang.String"/>
+        <result column="regionid"           property="regionId"       	javaType="java.lang.Integer" nullValue="-1"/>
+    </resultMap>
+
+	<insert id="insert" parameterClass="NetSegment">
+        insert into net_segment(id, startip, endip, regionid) values(#id#, #startIp#, #endIp#, #regionId#);
+    </insert>
+    
+    <update id="update" parameterClass="NetSegment">
+        update net_segment set startip=#startIp#, endip=#endIp# where id=#id#
+    </update>
+    
+    <delete id="delete" parameterClass="long">
+        delete from net_segment where id=#value#
+    </delete>
+    
+    <select id="select" resultMap="resultMap.NetSegment" parameterClass="long">
+        select * from net_segment where id=#value#
+    </select>
+    
+    <select id="selectAll" resultMap="resultMap.NetSegment">
+        select * from net_segment order by id
+    </select>
+    
+    <select id="selectAllByRegion" resultMap="resultMap.NetSegment" parameterClass="int">
+        select * from net_segment where regionid=#value# order by id
+    </select>
+</sqlMap>
+

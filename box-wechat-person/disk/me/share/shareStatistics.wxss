@@ -1,0 +1,195 @@
+/* disk/me/share/shareStatistics.wxss */
+
+.page {
+    background: #fff;
+}
+
+.avatar-img {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 1.5em;
+}
+
+.small-img {
+    width: 10rpx;
+    height: 18rpx;
+}
+
+.big-img {
+    width: 120rpx;
+    height: 120rpx;
+}
+
+.middle-img {
+    width: 60rpx;
+    height: 60rpx;
+}
+
+.view-avatar-icon {
+    height: 80rpx;
+    padding-right: 12rpx;
+}
+
+.share-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.view-commission {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+}
+
+.commission-title {
+    font-size: 26rpx;
+    color: #666;
+    margin-right: 12rpx;
+}
+
+.arrow-img-icon {
+    height: 30rpx;
+}
+
+.share-title-left {
+    width: 50%;
+    display: flex;
+    align-items: center;
+}
+
+.view-user-name {
+    width: 80%;
+    display: flex;
+    height: 80rpx;
+    align-items: center;
+}
+
+.user-name {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 28rpx;
+}
+
+.history-view {
+    display: flex;
+ 
+}
+
+.border-bottom{
+   border-bottom: 1px solid #e5e5e5;
+   padding: 30rpx 30rpx;
+}
+.history-view-title{
+    font-size: 26rpx;
+    color:#666;
+}
+.history-view-today-title{
+    font-size: 24rpx;
+    color:#666;
+}
+.history-view view {
+    text-align: center;
+}
+
+.history-view-left {
+    width: 50%;
+}
+
+.history-view-middle {
+    width: 1px;
+    height: 82px;
+    background: #e5e5e5;
+}
+
+.history-view-right {
+    width: 50%;
+}
+
+.history-show {
+    height: 24rpx;
+    width: 34rpx;
+    margin-left: 20rpx;
+}
+
+.font-size-color {
+    font-size: 40rpx;
+    color: #ea5036;
+    line-height: 40rpx;
+    margin: 30rpx 0;
+}
+
+.view-level-small {
+    height: 25rpx;
+    margin-left: 10rpx;
+}
+
+.view-level-small image {
+    width: 30rpx;
+    height: 25rpx;
+}
+
+.level-view {
+    display: flex;
+}
+
+.level-view-middle {
+    width: 100%;
+}
+.my-grade-growth{
+    font-size: 30rpx;
+}
+.level-view {
+    text-align: center;
+    margin-top: 30rpx;
+}
+
+.level-number-view {
+    display: flex;
+    justify-content: space-between;
+    margin: 10rpx;
+}
+
+.gray-bg {
+    height: 15rpx;
+    background: #e8e3ea;
+    border-radius: 1.5em;
+    margin: 10rpx;
+}
+
+.vip-button-share {
+    text-align: center;
+    margin: 10px 15px;
+    background: #ea5036;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    font-size: 28rpx;
+    color: #fff;
+}
+
+.margin-top {
+    margin-top: 26rpx;
+}
+
+.page-middle-bg {
+    height: 20rpx;
+    background: #f5f5f5;
+}
+
+.level-between {
+    width: 62rpx;
+    text-align: left;
+}
+
+.red-bg {
+    height: 15rpx;
+    background: linear-gradient(to right, #f8a36f, #e47b37);
+    border-radius: 1.5em;
+}
+.share-font-middle{
+    font-size: 24rpx;
+}

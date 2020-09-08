@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link href="../../skins/default/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../../skins/default/css/public.css" rel="stylesheet" type="text/css" />
+<link href="../../skins/default/css/main.css" rel="stylesheet" type="text/css" />
+<script src="../../js/public/jquery-1.10.2.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="guide-con">
+	<div class="guide-block clearfix">
+    	<ul id="guideImgCon" class="clearfix">
+        	<li class="guide-en-1">
+            	<h4>Uploading a file</h4>
+            	<p>Upload a file, and it will be immediately synchronized to your Windows synchronization client and a mobile client.</p>
+            </li>
+            <li class="guide-en-2">
+            	<h4>Sharing a file</h4>
+            	<p>It is easy to share files with others for collaborative development. All you need to do is click <i class="icon-share"></i> icon.</p>
+            </li>
+            <li class="guide-en-3">
+            	<h4>Sharing a link</h4>
+            	<p>Click <i class="icon-link"></i> icon to share photos and documents with colleagues.</p>
+            </li>
+            <li class="guide-en-4">
+            	<h4>Enjoy now!</h4>
+            	<p>Tips: Press <strong>Ctrl</strong> for selecting multiple files and <strong>Ctrl+A</strong> for selecting all files. Drag files to move them. For more information, go to the help center.</p>
+            </li>
+        </ul>
+    </div>
+    <div id="guideBtnPrev" onClick="goNextGuide('prev')" class="btn-prev"></div>
+    <div id="guideBtnNext" onClick="goNextGuide('next')" class="btn-next"></div>
+	<div class="btn-con clearfix">
+		<span class="pull-left"><span id="currentGuideNum">1</span>/4</span>
+		<button id="overGuide" type="button" onclick="closeGuide()" class="btn btn-primary">Skip the wizard</button>
+		<button id="startWork" type="button" onclick="closeGuide()" class="btn btn-primary">Start</button>
+	</div>
+</div>
+
+<script type="text/javascript">
+var guideNum = 0;
+function goNextGuide(v){
+	if(v=='prev'){
+		guideNum--;
+	}else if(v=='next'){
+		guideNum++;
+	}
+	$("#currentGuideNum").text(parseInt(guideNum + 1));
+	$("#guideImgCon").animate({marginLeft: -570*guideNum}, 300 ); 
+	if(guideNum==0){
+		$("#guideBtnPrev,#startWork").hide();
+		$("#overGuide").show();
+	}else if(guideNum == 3){
+		$("#guideBtnNext,#overGuide").hide();
+		$("#startWork").show();
+	}else{
+		$("#startWork").hide();
+		$("#guideBtnPrev,#guideBtnNext,#overGuide").show();
+	}
+}
+function closeGuide(){
+	top.setCookie("isShowGuide","neverShow");
+	top.ymPrompt.close();
+}
+</script>
+</body>
+</html>

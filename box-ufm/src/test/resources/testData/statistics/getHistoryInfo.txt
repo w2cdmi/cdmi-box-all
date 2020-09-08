@@ -1,0 +1,5 @@
+@@normal
+{
+	"beginTime":1419581308836,
+	"interval":"day"
+}

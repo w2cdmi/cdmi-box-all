@@ -1,0 +1,30 @@
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TimeConfig">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="TimeConfig"
+		type="com.huawei.sharedrive.app.mirror.domain.TimeConfig" />
+
+	<resultMap id="resultMap.TimeConfig" class="TimeConfig">
+		<result column="uuid" property="uuid" javaType="java.lang.String" />
+		<result column="createdAt" property="createdAt" javaType="java.util.Date" />
+		<result column="exeStartAt" property="exeStartAt" javaType="java.lang.String" />
+		<result column="exeEndAt" property="exeEndAt" javaType="java.lang.String" />
+	</resultMap>
+
+	<select id="get" resultMap="resultMap.TimeConfig">
+		select * from time_config where uuid=#uuid#
+	</select>
+
+	<select id="countAll" resultClass="java.lang.Integer">
+		select count(*) from time_config
+	</select>
+
+	<select id="getAll" resultMap="resultMap.TimeConfig">
+		select * from time_config order by exeStartAt
+	</select>
+
+</sqlMap>

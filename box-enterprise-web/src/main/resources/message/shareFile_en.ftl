@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> has shared file <strong>${nodeName}</strong> with you

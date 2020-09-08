@@ -1,0 +1,110 @@
+/* disk/enterprise/employees-departments/person-details/person-details.wxss */
+
+.page {
+    overflow-x: hidden;
+}
+
+.avatar {
+    height: 60rpx;
+    width: 60rpx;
+    background-size: 100%;
+    border-radius: 50%;
+}
+
+.person-item {
+    display: flex;
+    padding: 0px 15px;
+    background: #fff;
+    margin-top: 20rpx;
+}
+
+.view-block {
+    display: block;
+}
+
+.view-block > view {
+    display: flex;
+    padding: 20rpx 0;
+}
+
+.flex-between {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-between>view {
+    color: #999;
+}
+
+.border-bottom {
+    border-bottom: 1rpx solid #f1f1f1;
+}
+
+.flex-center {
+    display: flex;
+    align-items: center;
+}
+
+.info-text {
+    font-size: 26rpx;
+    color: #666;
+}
+
+.cont-text {
+    color: #333;
+}
+
+.image-size {
+    width: 10rpx;
+    height: 18rpx;
+    margin-left: 18rpx;
+}
+
+.operation {
+    display: flex;
+    align-items: center;
+}
+
+.delete-btn {
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.add-btn {
+    width: 26rpx;
+    height: 26rpx;
+    margin-left: 44rpx;
+}
+
+.text-operation {
+    font-size: 13px;
+    color: #333;
+    margin-left: 10rpx;
+}
+
+.btn {
+    background-color: #ea5036;
+    color: #fff;
+    width: 690rpx;
+    height: 88rpx;
+    position: absolute;
+    left: 30rpx;
+    bottom: 54rpx;
+    font-size: 16px;
+}
+
+/*删除  */
+
+.flex-item{
+    display: flex;
+}
+.delete-size {
+    width: 20rpx;
+    height: 20rpx;
+    margin-right:20rpx;
+}
+
+.image-wrapper{
+    width: 60rpx;
+    height: 60rpx;
+}

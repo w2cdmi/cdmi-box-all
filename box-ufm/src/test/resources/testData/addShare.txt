@@ -1,0 +1,5 @@
+{
+ "shareList":[{
+      "sharedUserLoginName" : "h90005572"
+   }]
+}

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserLog">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="UserLog" type="pw.cdmi.common.log.UserLog" />
+    <typeAlias alias="UserLogListReq" type="com.huawei.sharedrive.app.openapi.domain.userlog.UserLogListReq" />
+	<typeAlias alias="List" type="java.util.List" />
+	
+	<select id="getTotalForOneLog" parameterClass="map" resultClass="long">
+        select count(1) from $tableName$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.loginName">
+                    loginName like "%"#filter.loginName#"%"
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.userId">
+                    userId =#filter.userId#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.typeDb">
+	                <iterate open="(" close=")" conjunction="or" property="filter.typeDb" > 
+		                type = #filter.typeDb[]# 
+		            </iterate> 
+		        </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.levelDb">
+                    level = #filter.levelDb#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientTypeDb">
+                    clientType = #filter.clientTypeDb#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceSN">
+                    clientDeviceSN like "%"#filter.clientDeviceSN#"%"
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientVersion">
+                    clientVersion like "%"#filter.clientVersion#"%"
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientAddress">
+                    clientAddress like "%"#filter.clientAddress#"%"
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceName">
+                    clientDeviceName like "%"#filter.clientDeviceName#"%"
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientOS">
+                    clientOS like "%"#filter.clientOS#"%"
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.appId">
+                    appId = #filter.appId#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.detail">
+                    (detail like "%"#filter.detail#"%" or keyword like "%"#filter.detail#"%" or loginName like "%"#filter.detail#"%")
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.beginTime">
+					<![CDATA[
+                    createdAt >= FROM_UNIXTIME(#filter.beginTime#)
+					]]>
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.endTime">
+                    <![CDATA[
+                      createdAt <= FROM_UNIXTIME(#filter.endTime#)
+					]]>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+    </select>
+	
+    <select id="getList" parameterClass="map" resultClass="UserLog">
+        select * from $tableName$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.loginName">
+                    loginName like "%"#filter.loginName#"%"
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.userId">
+                    userId = #filter.userId#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.typeDb">
+	                <iterate open="(" close=")" conjunction="or" property="filter.typeDb" > 
+		                type = #filter.typeDb[]# 
+		            </iterate> 
+		        </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.levelDb">
+                    level = #filter.levelDb#
+                </isNotEmpty>                
+				<isNotEmpty prepend="and" property="filter.clientTypeDb">
+                    clientType = #filter.clientTypeDb#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceSN">
+                    clientDeviceSN like "%"#filter.clientDeviceSN#"%"
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientVersion">
+                    clientVersion like "%"#filter.clientVersion#"%"
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientAddress">
+                    clientAddress like "%"#filter.clientAddress#"%"
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceName">
+                    clientDeviceName like "%"#filter.clientDeviceName#"%"
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientOS">
+                    clientOS like "%"#filter.clientOS#"%"
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.appId">
+                    appId = #filter.appId#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.detail">
+                    (detail like "%"#filter.detail#"%" or keyword like "%"#filter.detail#"%" or loginName like "%"#filter.detail#"%")
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.beginTime">
+					<![CDATA[
+                    createdAt >= FROM_UNIXTIME(#filter.beginTime#)
+					]]>
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.endTime">
+                    <![CDATA[
+                    createdAt <= FROM_UNIXTIME(#filter.endTime#)
+					]]>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>       
+		order by createdAt desc
+        <dynamic prepend="limit">
+                #offset#,#limit#
+        </dynamic>
+    </select>
+	
+	
+    <insert id="insert" parameterClass="UserLog">
+        insert into user_log_$tableSuffix$(id,loginName,userId,type,createdAt,level,clientType,clientDeviceSN,clientVersion,
+        clientAddress,clientOS,clientDeviceName,detail,keyword,appId) 
+        values
+        (#id#,#loginName#,#userId#,#type#,#createdAt#,#level#,#clientType#,#clientDeviceSN#,#clientVersion#,
+        #clientAddress#,#clientOS#,#clientDeviceName#,#detail#,#keyword#,#appId#) 
+    </insert> 
+    
+    <delete id="dropTable" parameterClass="UserLog">
+        drop table if exists user_log_$tableSuffix$
+    </delete>
+    
+    <delete id="createTable" parameterClass="UserLog">
+        create table if not exists user_log_$tableSuffix$ like user_log;
+    </delete>
+</sqlMap>
+

@@ -1,0 +1,127 @@
+<rules>
+   
+    <rule>
+        <sqlmap>INodeDelete.getFilterd</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &lt; 128</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getFilterd</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 128 and filter.ownedBy % 1024 &lt; 256</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getFilterd</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 256 and filter.ownedBy % 1024 &lt; 384</shardingExpression>
+        <shards>partition3</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getFilterd</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 384 and filter.ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition4</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getFilterd</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 512 and filter.ownedBy % 1024 &lt; 640</shardingExpression>
+        <shards>partition5</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getFilterd</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 640 and filter.ownedBy % 1024 &lt; 768</shardingExpression>
+        <shards>partition6</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getFilterd</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 768 and filter.ownedBy % 1024 &lt; 896</shardingExpression>
+        <shards>partition7</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getFilterd</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 896</shardingExpression>
+        <shards>partition8</shards>
+    </rule>
+    
+    
+    <rule>
+        <sqlmap>INodeDelete.getbystatus</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &lt; 128</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getbystatus</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 128 and filter.ownedBy % 1024 &lt; 256</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getbystatus</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 256 and filter.ownedBy % 1024 &lt; 384</shardingExpression>
+        <shards>partition3</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getbystatus</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 384 and filter.ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition4</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getbystatus</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 512 and filter.ownedBy % 1024 &lt; 640</shardingExpression>
+        <shards>partition5</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getbystatus</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 640 and filter.ownedBy % 1024 &lt; 768</shardingExpression>
+        <shards>partition6</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getbystatus</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 768 and filter.ownedBy % 1024 &lt; 896</shardingExpression>
+        <shards>partition7</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeDelete.getbystatus</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 896</shardingExpression>
+        <shards>partition8</shards>
+    </rule>
+    
+   <rule>
+        <namespace>INodeDelete</namespace>
+        <shardingExpression>filter.ownedBy % 1024 &lt; 128</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>INodeDelete</namespace>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 128 and filter.ownedBy % 1024 &lt; 256</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    <rule>
+        <namespace>INodeDelete</namespace>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 256 and filter.ownedBy % 1024 &lt; 384</shardingExpression>
+        <shards>partition3</shards>
+    </rule>
+    <rule>
+        <namespace>INodeDelete</namespace>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 384 and filter.ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition4</shards>
+    </rule>
+    <rule>
+        <namespace>INodeDelete</namespace>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 512 and filter.ownedBy % 1024 &lt; 640</shardingExpression>
+        <shards>partition5</shards>
+    </rule>
+    <rule>
+        <namespace>INodeDelete</namespace>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 640 and filter.ownedBy % 1024 &lt; 768</shardingExpression>
+        <shards>partition6</shards>
+    </rule>
+    <rule>
+        <namespace>INodeDelete</namespace>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 768 and filter.ownedBy % 1024 &lt; 896</shardingExpression>
+        <shards>partition7</shards>
+    </rule>
+    <rule>
+        <namespace>INodeDelete</namespace>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 896</shardingExpression>
+        <shards>partition8</shards>
+    </rule>
+    
+</rules>

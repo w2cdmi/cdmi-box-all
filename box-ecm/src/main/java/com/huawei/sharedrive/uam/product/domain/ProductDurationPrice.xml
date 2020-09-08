@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="productDurationPrice">
+
+	<typeAlias alias="productDurationPrice" type="com.huawei.sharedrive.uam.product.domain.ProductDurationPrice" />
+  
+   
+    <select id="list" resultClass="productDurationPrice">
+       SELECT * FROM product_duration_price
+    </select>
+    
+    <select id="get" resultClass="productDurationPrice" parameterClass="int">
+       SELECT * FROM product_duration_price where id=#id#
+    </select>
+    
+    <select id="getByProductId" resultClass="productDurationPrice" parameterClass="long">
+       <![CDATA[
+        SELECT * FROM product_duration_price where productId=#productId#
+       ]]>
+    </select>
+    
+    <select id="getByProductDurationPrice" resultClass="productDurationPrice" parameterClass="productDurationPrice">
+       <![CDATA[
+        SELECT * FROM product_duration_price where productId=#productId# and duration=#duration#
+       ]]>
+    </select>
+</sqlMap>

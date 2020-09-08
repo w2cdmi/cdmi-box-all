@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserMirrorStatisticInfo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UserMirrorStatisticInfo"
+		type="com.huawei.sharedrive.app.mirror.domain.UserMirrorStatisticInfo" />
+
+	<resultMap id="resultMap.UserMirrorStatisticInfo" class="UserMirrorStatisticInfo">
+		<result column="id" 						property="id" 							javaType="java.lang.String" />
+		<result column="statistcDate" 				property="statistcDate" 				javaType="java.util.Date" />
+		<result column="appId" 						property="appId" 						javaType="java.lang.String" />
+		<result column="accountId" 					property="accountId" 					javaType="java.lang.Long" />
+		<result column="userId" 					property="userId" 						javaType="java.lang.Long" />
+		<result column="policyId" 					property="policyId" 					javaType="java.lang.Integer" />
+		<result column="mirrorFileNumber" 			property="mirrorFileNumber" 			javaType="java.lang.Long" />
+		<result column="notMirrorFileNumber" 		property="notMirrorFileNumber" 			javaType="java.lang.Long" />
+		<result column="mirrorFileInfoStr" 			property="mirrorFileInfoStr" 			javaType="java.lang.String" />
+		<result column="notMirrorFileInfoStr" 		property="notMirrorFileInfoStr" 		javaType="java.lang.String" />
+	</resultMap>
+
+	<select id="get" resultMap="resultMap.UserMirrorStatisticInfo"  parameterClass="UserMirrorStatisticInfo">
+		select * from user_mirror_statistic_info_$tableSuffix$ where
+		id=#id#
+	</select>
+	
+	<select id="getByUserId" resultMap="resultMap.UserMirrorStatisticInfo" parameterClass="UserMirrorStatisticInfo">
+		select * from user_mirror_statistic_info_$tableSuffix$ where userId = #userId# order by statistcDate desc 
+	</select>
+	
+		<select id="getByUserIdAndPolicyId" resultMap="resultMap.UserMirrorStatisticInfo" parameterClass="UserMirrorStatisticInfo">
+		select * from user_mirror_statistic_info_$tableSuffix$ where userId = #userId# and policyId =#policyId#
+	</select>
+	
+	<insert id="insert" parameterClass="UserMirrorStatisticInfo">
+		insert into
+		user_mirror_statistic_info_$tableSuffix$(id,statistcDate,appId,accountId,userId,policyId,mirrorFileNumber,
+		notMirrorFileNumber,mirrorFileInfoStr,notMirrorFileInfoStr)
+		values(#id#,#statistcDate#,#appId#,#accountId#,#userId#,#policyId#,#mirrorFileNumber#,
+		#notMirrorFileNumber#,#mirrorFileInfoStr#,#notMirrorFileInfoStr#)
+	</insert>
+
+	<delete id="delete" parameterClass="UserMirrorStatisticInfo">
+		delete from user_mirror_statistic_info_$tableSuffix$ where
+		id=#id#
+	</delete>
+	
+	<delete id="deleteByUserId" parameterClass="UserMirrorStatisticInfo">
+		delete from user_mirror_statistic_info_$tableSuffix$ where
+		userId = #userId#
+	</delete>
+	
+	<delete id="deleteByUserIdAndPolicyId" parameterClass="UserMirrorStatisticInfo">
+		delete from user_mirror_statistic_info_$tableSuffix$ where
+		userId = #userId# and  policyId =#policyId#
+	</delete>
+	
+	<select id="getAccountIdCountByNotMirrorFileNumber" parameterClass="UserMirrorStatisticInfo">
+		select count(accountId) from user_mirror_statistic_info_$tableSuffix$ where
+		accountId  = #accountId# and notMirrorFileNumber = #notMirrorFileNumber#
+	</select>
+
+	<update id="update" parameterClass="UserMirrorStatisticInfo">
+		update copy_policy set statistcDate=#statistcDate#,mirrorFileNumber = #mirrorFileNumber#,
+		notMirrorFileNumber=#notMirrorFileNumber#,mirrorFileInfoStr=#mirrorFileInfoStr#,notMirrorFileInfoStr=#notMirrorFileInfoStr#
+		where userId = #userId#
+	</update>
+	
+	<select id="getLastStatisticInfo" parameterClass="UserMirrorStatisticInfo">
+		select *from user_mirror_statistic_info_$tableSuffix$ where
+		userId  = #userId# order by statistcDate desc limit 1;
+	</select>
+	
+	
+
+
+</sqlMap>
+

@@ -1,0 +1,88 @@
+﻿<Window
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+    xmlns:ShareDriverUI_CustomControls="clr-namespace:Onebox.CustomControls" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d"
+	x:Class="Onebox.LoginWindow"
+	x:Name="LoginWd"
+    Icon="/Onebox;component/ImageResource/logo.ico" 
+	Title="{StaticResource userLoginTitle}"  
+    Width="450" 
+    Height="250"
+    ResizeMode="NoResize"
+	WindowState="Normal"
+    WindowStyle="None" 
+    Background="{x:Null}" 
+    Foreground="{x:Null}"
+	AllowsTransparency="True" 
+    WindowStartupLocation="CenterScreen" Closing="Window_Closing" >
+	<Grid ShowGridLines="False">
+		<Grid.RowDefinitions>
+			<RowDefinition   Height="Auto" MinHeight="36"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+        <Border BorderBrush="#FFA3A4A4" Grid.Row="1" d:LayoutOverrides="GridBox" Background="#FFF1F1F1" CornerRadius="0,0,5,5" BorderThickness="1,0,1,1" Padding="20">
+        	<StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+        		<StackPanel Orientation="Vertical" MaxWidth="140" MinWidth="120">
+        			<Label Content="{StaticResource userName}"  Height="30" FontSize="14" Foreground="#FF333333" HorizontalAlignment="Right"  />
+        			<Label Content="{StaticResource password}"  Margin="0,20,0,0" FontSize="14" Height="30" Foreground="#FF333333" HorizontalAlignment="Right"  />
+        		</StackPanel>
+        		<StackPanel Orientation="Vertical" >
+        			<TextBox  x:Name ="TBUserName" FontSize="14" Height="30" Width="180"
+        				Text="" BorderBrush="#FFC4C4C4" Foreground="#FF333333"
+        				HorizontalAlignment="Left" VerticalContentAlignment="Center"
+        				GotFocus="TBUserName_GotFocus" LostFocus="TBUserName_LostFocus"/>
+        			<PasswordBox  x:Name ="TBPassWord"  FontSize="14" Height="30" Margin="0,20,0,0"
+        				Width="180" HorizontalAlignment="Left" VerticalContentAlignment="Center"
+        				BorderBrush="#FFC4C4C4" Foreground="#FF333333" />
+                    <StackPanel x:Name="sp_Rempsd_AutoLogin"  Orientation="Horizontal" Margin="0,8,0,0">
+                        <StackPanel  Orientation="Horizontal"  HorizontalAlignment="Left">
+                            <CheckBox x:Name="cb_rempsd"  Height="14"  Unchecked="cb_rempsd_unchecked"/>
+                            <Label Content="{StaticResource remPassword}"/>
+                        </StackPanel>
+                        <StackPanel  Orientation="Horizontal"  HorizontalAlignment="Left" Margin="30,0,0,0">
+                            <CheckBox x:Name="cb_autologin"  Height="14"  Checked="cb_autologin_checked"  />
+                            <Label Content="{StaticResource autoLogin}" />
+                        </StackPanel>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,6,0,0" HorizontalAlignment="Left">
+        				<Button x:Name="LoginOK"  Content="{StaticResource confirm}" Style="{StaticResource Button_Style_Focus}"
+        					Click="Button_LoginOK_Click" />
+        				<Button x:Name="LoginCancel" Content="{StaticResource cancel}" Style="{StaticResource Button_Style_Focus}"
+        					Margin="10,0,0,0" Click="Button_LoginCancel_Click"  />
+        			</StackPanel>
+        		</StackPanel>
+        	</StackPanel>
+		</Border>
+       <Border Style="{StaticResource Bg_Style_WindowHeader}">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.7*"/>
+					<ColumnDefinition Width="0.3*"/>
+				</Grid.ColumnDefinitions>	
+				<StackPanel  Orientation="Horizontal" HorizontalAlignment="Left">
+					<Grid Margin="10,0,0,0">
+						<Image Source="/Onebox;component/ImageResource/logo.png" Stretch="Fill" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Grid>
+                    <Label Content="{StaticResource userLoginTitle}"  Style="{StaticResource Font_Style_WindowTtile}" VerticalAlignment="Center"  />
+				</StackPanel>
+				<StackPanel Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+					<ShareDriverUI_CustomControls:ImageButton x:Name="CloseButton1"   
+						NormalImage="/Onebox;component/ImageResource/exit.png"
+						OverImage="/Onebox;component/ImageResource/exit.png"
+						PresseImage="/Onebox;component/ImageResource/exit.png"
+						DisableImage="/Onebox;component/ImageResource/exit.png"
+						ImageSize="14"
+						BorderVisibility="Hidden"
+						Style="{StaticResource ImageButtonStyle}" 
+						Click="Button_Close_Click" Cursor="Hand"/>
+				</StackPanel>
+				<Border BorderBrush="#FFA3A4A4" BorderThickness="0,0,0,1" Height="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+				<Border BorderBrush="#FFF1F1F1" BorderThickness="0,0,0,1" Margin="1,0" Grid.ColumnSpan="2"/>
+			</Grid>
+		</Border>
+	</Grid>
+</Window>

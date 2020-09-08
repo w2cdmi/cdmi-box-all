@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ObjectStatistics">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="ObjectStatistics"
+		type="com.huawei.sharedrive.app.statistics.domain.ObjectStatisticsDay" />
+		
+	<insert id="insert" parameterClass="ObjectStatistics">
+    	<![CDATA[
+    	insert into obj_statistics_day
+    	(day,regionId,fileCount,actualFileCount,
+    		spaceUsed,actualSpaceUsed,addedFileCount,
+    		addedActualFileCount,addedSpaceUsed,addedActualSpaceUsed)
+    	values
+    	(#day#,#regionId#,#fileCount#,#actualFileCount#,
+    		#spaceUsed#,#actualSpaceUsed#,#addedFileCount#,
+    		#addedActualFileCount#,#addedSpaceUsed#,#addedActualSpaceUsed#)
+    	]]>
+	</insert>
+	
+	<select id="getDayList" resultClass="ObjectStatistics" parameterClass="Long">
+        <![CDATA[
+        select * from obj_statistics_day where day=#day#
+        ]]>
+	</select>
+	
+	<select id="getDaySum" resultClass="ObjectStatistics" parameterClass="map">
+        SELECT day,sum(fileCount) as fileCount,sum(spaceUsed) as spaceUsed,
+        	SUM(actualSpaceUsed) as actualSpaceUsed, SUM(actualFileCount) as actualFileCount
+        FROM obj_statistics_day
+        <dynamic prepend="where">
+			<isNotEmpty prepend="and" property="day">
+				day = #day#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="regionId">
+				regionId = #regionId#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getDaySumGroupByRegion" resultClass="ObjectStatistics" parameterClass="map">
+        SELECT regionId,sum(fileCount) as fileCount,sum(spaceUsed) as spaceUsed,
+        	SUM(actualSpaceUsed) as actualSpaceUsed, SUM(actualFileCount) as actualFileCount
+        FROM obj_statistics_day
+        <dynamic prepend="where">
+			<isNotEmpty prepend="and" property="day">
+				day = #day#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="regionId">
+				regionId = #regionId#
+			</isNotEmpty>
+		</dynamic>
+		GROUP BY regionId
+	</select>
+	
+	<select id="getByRange" resultClass="ObjectStatistics" parameterClass="map">
+        SELECT day,sum(fileCount) as fileCount,sum(spaceUsed) as spaceUsed,
+        	SUM(actualSpaceUsed) as actualSpaceUsed, SUM(actualFileCount) as actualFileCount,
+        	sum(addedFileCount) as addedFileCount,sum(addedSpaceUsed) as addedSpaceUsed,
+        	SUM(addedActualSpaceUsed) as addedActualSpaceUsed, SUM(addedActualFileCount) as addedActualFileCount
+        FROM obj_statistics_day
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="beginDay">
+			     <![CDATA[
+				day >= #beginDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDay">
+			     <![CDATA[
+				day <= #endDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="regionId">
+				regionId = #regionId#
+			</isNotEmpty>
+		</dynamic>
+		GROUP BY day
+		ORDER BY day ASC
+	</select>
+	
+	<select id="getListByRange" resultClass="ObjectStatistics" parameterClass="map">
+        SELECT * FROM obj_statistics_day
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="beginDay">
+			     <![CDATA[
+				day >= #beginDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDay">
+			     <![CDATA[
+				day <= #endDay#
+			    ]]>	
+			</isNotEmpty>
+		</dynamic>
+		ORDER BY day ASC
+	</select>
+	
+</sqlMap>
+

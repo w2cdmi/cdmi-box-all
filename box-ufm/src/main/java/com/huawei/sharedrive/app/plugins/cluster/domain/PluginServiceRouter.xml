@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PluginServiceRouter">
+
+    <typeAlias alias="PluginServiceRouter" type="com.huawei.sharedrive.app.plugins.cluster.domain.PluginServiceRouter" />
+	
+	<insert id="create" parameterClass="PluginServiceRouter">
+        <![CDATA[
+        insert into plugin_service_router(dssId, clusterId) values (#dssId#, #clusterId#)
+        ]]>
+    </insert>
+    
+    <delete id="delete" parameterClass="PluginServiceRouter">
+        <![CDATA[
+        delete from plugin_service_router where dssId = #dssId# and clusterId = #clusterId#
+        ]]>
+    </delete>
+    
+    <select id="listByClusterId" parameterClass="PluginServiceRouter" resultClass="PluginServiceRouter">
+    	<![CDATA[
+        select * from plugin_service_router where clusterId = #clusterId#
+        ]]>
+    </select>
+    
+</sqlMap>
+

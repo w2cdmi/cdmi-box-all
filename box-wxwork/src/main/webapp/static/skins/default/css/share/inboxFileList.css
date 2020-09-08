@@ -1,0 +1,134 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+.box{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+.header{
+	height: 2.2rem;
+	border-bottom: 0.05rem solid #E4E1E1;
+	font-size: 0.75rem;
+}
+.header .left{
+	margin-left: 1.6rem;
+	float: left;
+	line-height: 2.2rem;
+}
+.header .right{
+	float: right;
+	line-height: 2.2rem;
+}
+.header .right div{
+	float: left;
+	font-size: 0.75rem;
+}
+.header .right div:nth-child(3){
+	color: skyblue;
+	margin-right: 0.75rem;
+}
+.item{
+	width: 100%;
+	height: 3.4rem;
+	border-bottom: 0.05rem solid #E4E1E1;
+	font-size: 0.6rem;
+	overflow: hidden;
+}
+.item .left2{
+	width: 100%;
+	height: 3.4rem;
+	float: left;
+}
+.item .left3{
+	width: 6rem;
+	height: 3.4rem;
+	float: left;
+	background: #FFFFFF;
+}
+
+.item img{
+	margin-top: 0.8rem;
+	float: left;
+	margin-left: 1rem;
+}
+.item .left2 div{
+	width: 8rem;
+	height: 1rem;
+	border: 0.05rem solid #FFFFFF;
+	line-height: 1.5rem;
+	padding-top: 0.5rem;
+	font-size: 0.75rem;
+}
+.item span{
+	width: 3rem;
+	height: 1rem;
+	border: 0.05rem solid #FFFFFF;
+	float: left;
+	line-height: 0.3rem;
+	margin-top: 0.5rem;
+}
+.item i {
+	width: 3rem;
+	height: 1rem;
+	border: 0.05rem solid #FFFFFF;
+	float: left;
+	line-height: 0.3rem;
+	margin-top: 0.5rem;
+}
+
+/*尾部*/
+#nav{
+	display: none;
+	position: absolute;
+	bottom: 0;
+	height: 10.5rem;
+	overflow: hidden;
+	transition: height 2s;
+}
+/*创建首页快捷*/
+#homepage{
+	width: 100%;
+	height: 2rem;
+	font-size: 0.75rem;
+	border-bottom: 0.05rem solid #E4E1E1;
+}
+#homepage div{
+	line-height: 2rem;
+	text-align: center;
+}
+/*内容中心*/
+#content li{
+	width: 100%;
+	height: 2rem;
+	font-size: 0.75rem;
+	border-bottom: 0.05rem solid #E4E1E1;
+}
+#content li div{
+	text-align: center;
+	line-height: 1.7rem;
+}
+.fs-view-file-list {
+    top: 4.8rem;
+}
+.fs-view-header {
+    height: 3.5rem;
+}
+.new-share-recive{
+	width: 92%;
+	position: fixed;
+	bottom: 0.5rem;
+	text-align: center;
+	background: #EA5036;
+	left: 4%;
+	border-radius: 0.15rem;
+}
+.new-share-recive > p{
+	font-size:0.75rem;
+	color: #fff;
+	line-height:2.2rem
+}

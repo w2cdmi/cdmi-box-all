@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserProfitDetail">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UserProfitDetail" type="com.huawei.sharedrive.uam.weixin.domain.UserProfitDetail" />
+
+    <insert id="insert" parameterClass="UserProfitDetail">
+        <![CDATA[
+        insert into user_profit_detail(id,userType,cloudUserId,unionID,openId,enterpriseId,orderId,userName,payMoney,`createAt`,finishAt,status,type,proportions,attempts,failReason,source)
+        values (#id#,#userType#,#cloudUserId#,#unionID#,#openId#,#enterpriseId#,#orderId#,#userName#,#payMoney#,#createAt#,#finishAt#,#status#,#type#,#proportions#,#attempts#,#failReason#,#source#)
+        ]]>
+	</insert>
+	
+	<select id="listByTypeAndStatus" parameterClass="UserProfitDetail" resultClass="UserProfitDetail">
+	   select * from user_profit_detail where type=#type# and status=#status#
+	</select>
+	
+	<update id="updateStatus" parameterClass="UserProfitDetail">
+	   update user_profit_detail set status=#status#,finishAt=#finishAt#,failReason=#failReason# where id=#id#
+	</update>
+	
+	<update id="update" parameterClass="UserProfitDetail">
+	   update user_profit_detail  
+	    
+	    <dynamic prepend="set">
+	         <isGreaterEqual compareProperty="attempts" compareValue="0" prepend=",">
+	           attempts = #attempts#
+	         </isGreaterEqual>
+	         <isGreaterEqual compareProperty="status" compareValue="0" prepend=",">
+	           status = #status#
+	         </isGreaterEqual>
+            <isNotNull prepend="," property="failReason">
+               `failReason`=#failReason#
+            </isNotNull>
+        </dynamic>
+	   
+	  where id=#id#
+	</update>
+
+
+	<select id="getPageList" parameterClass="map" resultClass="UserProfitDetail">
+	        select * from user_profit_detail where cloudUserId = #filter.cloudUserId#
+	        <dynamic>
+	           <isGreaterThan property="filter.status" compareProperty="filter.status" compareValue="0" prepend="and">
+	             status = #filter.status#
+	           </isGreaterThan>
+	        </dynamic> 
+	        <dynamic>
+	           <isGreaterThan property="filter.type" compareProperty="filter.type"  compareValue="0" prepend="and">
+	             type = #filter.type#
+	           </isGreaterThan>
+	        </dynamic> 
+	        <dynamic>
+	           <isGreaterThan property="filter.userType" compareProperty="filter.userType" compareValue="0" prepend="and">
+	             userType = #filter.userType#
+	           </isGreaterThan>
+	        </dynamic> 
+	        <dynamic>
+	           <isNotNull property="filter.source" prepend="and">
+	             source = #filter.source#
+	           </isNotNull>
+	        </dynamic>
+	       
+	       
+	        <dynamic prepend="order by ">
+	            <isNotNull property="orderBy">
+	                $orderBy$
+	            </isNotNull>
+	        </dynamic>
+	        <dynamic prepend="limit">
+	            <isNotNull property="limit">
+	                $limit.offset$,$limit.length$
+	            </isNotNull>
+	        </dynamic>
+	 </select>
+</sqlMap>
+

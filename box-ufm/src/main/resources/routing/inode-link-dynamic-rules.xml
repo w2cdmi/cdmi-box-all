@@ -1,0 +1,7 @@
+<rules>
+    <rule>
+        <namespace>INodeLinkDynamic</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

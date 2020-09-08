@@ -1,0 +1,2 @@
+"%VS2012_THIRD_PART%/thrift/bin/thrift-0.9.1.exe" -out "./OneboxSyncService" --gen cpp "./OneboxSyncService/OneboxSyncService.thrift"
+"%VS2012_THIRD_PART%/thrift/bin/thrift-0.9.1.exe" -out "../../../UI" --gen csharp "./OneboxSyncService/OneboxSyncService.thrift"

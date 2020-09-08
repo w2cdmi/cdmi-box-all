@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Privilege">
+    <select id="getDeptManagerOfUser" parameterClass="map" resultClass="Long">
+        SELECT cloudUserId FROM user_account$tableSuffix$ WHERE enterpriseId=#enterpriseId# AND accountId=#accountId# AND userId IN (SELECT enterpriseUserId FROM enterprise_security_privilege WHERE enterpriseId=#enterpriseId# AND role = 1 AND departmentId IN (SELECT departmentId FROM user_department WHERE enterpriseId=#enterpriseId# AND enterpriseUserId=#enterpriseUserId#))
+    </select>
+
+    <select id="getArchiveOwnerOfUser" parameterClass="map" resultClass="Long">
+        SELECT cloudUserId FROM user_account$tableSuffix$ WHERE enterpriseId=#enterpriseId# AND accountId=#accountId# AND userId IN (SELECT enterpriseUserId FROM enterprise_security_privilege WHERE enterpriseId=#enterpriseId# AND role = 2 AND departmentId IN (SELECT departmentId FROM user_department WHERE enterpriseId=#enterpriseId# AND enterpriseUserId=#enterpriseUserId#))
+    </select>
+</sqlMap>
+

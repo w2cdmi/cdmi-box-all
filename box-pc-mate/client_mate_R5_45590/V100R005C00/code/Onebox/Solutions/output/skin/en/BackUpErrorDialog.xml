@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="600,400" caption="0,0,0,42" mininfo="600,400" bktrans="true" roundcorner="5,5,5,5">
+	<Include source="Default.xml" />
+	<VerticalLayout bordersize="1" bordercolor="#FFDDDDDD"  bkcolor="#FFFFFFFF" >
+		<HorizontalLayout height="42" bkcolor="#FFFAFAFA" >
+			<Label name="BackUpError_title" text="View the Task Failure" textcolor="#FF000000" valign="vcenter" width="250" padding="20,0" font="15" />
+			<Control />
+			<Button name="BackUpError_close_btn" width="20" height="20" padding="0,11" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" normalimage="file='..\image\ic_popup_delete.png' source='0,0,20,20'" hotimage="file='..\image\ic_popup_delete.png' source='0,30,20,50'" pushedimage="file='..\image\ic_popup_delete.png' source='0,60,20,80'" />
+		</HorizontalLayout>
+		<Label height="1" bkcolor="#FFDDDDDD"/>
+		<Label height="16" name="BackUpError_count" padding="20,18,0,0" text="There are x files backup failed" textcolor="#FF000000" align="left" font="12"/>
+		<VerticalLayout height="218" padding="20,15,20,20" bkimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'">
+			<CustomList name="BackUpError_ListView" droptarget="false" padding="1,1,1,1" header="true"  menu="true" itemshowhtml="true" vscrollbar="true" hscrollbar="true" itemlinecolor="#FFE5E5E5" itemhotbkcolor="#FFEBEBEB" itemselectedbkcolor="#FFDEF0FF">
+				<ListHeader height="27" menu="true" bkcolor="#FFF2F2F2">
+					<ListHeaderItem name="BackUpError_listheaderitem_fileName" intset="1,0,1,0" width="180" minwidth="180" textcolor="#FF999999" sepimage="..\image\ic_tab_head_devideline.png" sepwidth="1">
+						<HorizontalLayout mousechild="false" padding="10,4,2,4">
+							<Label name="BackUpError_listheaderitemFileName" text="Name" font="2" textcolor="#FF999999" align="left"/>
+						</HorizontalLayout>
+					</ListHeaderItem>
+					<ListHeaderItem name="BackUpError_listheaderitem_fileSize" intset="1,0,1,0"  width="100" minwidth="100" textcolor="#FF999999" sepimage="..\image\ic_tab_head_devideline.png" sepwidth="1">
+						<HorizontalLayout mousechild="false" padding="5,4,2,4">
+							<Label name="BackUpError_listheaderitemFileSize" text="Size" font="2" textcolor="#FF999999" align="left"/>
+						</HorizontalLayout>
+					</ListHeaderItem>
+					<ListHeaderItem name="BackUpError_listheaderitem_filePath" intset="1,0,1,0" width="130" minwidth="130" textcolor="#FF999999"  sepimage="..\image\ic_tab_head_devideline.png" sepwidth="1">
+						<HorizontalLayout mousechild="false" padding="5,4,2,4">
+							<Label name="BackUpError_listheaderitemFilePath" text="Path" font="2" textcolor="#FF999999" align="left"/>
+						</HorizontalLayout>
+					</ListHeaderItem>
+					<ListHeaderItem name="BackUpError_listHeaderItem_errorDes" intset="1,0,1,0" width="100" minwidth="100" textcolor="#FF999999">
+						<HorizontalLayout mousechild="false" padding="5,4,0,4">
+							<Label name="BackUpError_listHeaderItemErrorDes" text="Reason" font="2" textcolor="#FF999999" align="left"/>
+						</HorizontalLayout>
+					</ListHeaderItem>
+				</ListHeader>
+			</CustomList>
+		</VerticalLayout>	
+		<Control height="20" />		
+		<HorizontalLayout height="30">
+			<Control />
+			<ScaleIconButton name="BackUpError_retry" text="Retry" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70'  corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110'  corner='3,3,3,3'" textpadding="20,0,20,0" font="2" textcolor="#FF000000"/>
+			<Control width="10" />
+			<ScaleIconButton name="BackUpError_cancel" text="Close" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110'  corner='3,3,3,3'" textpadding="20,0,20,0" font="2" textcolor="#FF000000"/>
+			<Control width="20" />		
+		</HorizontalLayout>
+		<Control height="20" />		
+	</VerticalLayout>
+</Window>

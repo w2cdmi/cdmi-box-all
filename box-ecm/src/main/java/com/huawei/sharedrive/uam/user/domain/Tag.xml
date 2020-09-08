@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Tag">
+
+	<typeAlias alias="Tag" type="com.huawei.sharedrive.uam.user.domain.Tag" />
+
+	<select id="get" parameterClass="map" resultClass="Tag">
+        select * from tag where 1=1
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+	</select>
+	<select id="getTagByid" parameterClass="String" resultClass="Tag">
+    	<![CDATA[
+        select * from tag where id=#value#
+        ]]>
+	</select>
+	<select id="getTagByTag" parameterClass="String" resultClass="Tag">
+    	<![CDATA[
+        select * from tag where tag=#value#
+        ]]>
+	</select>
+	<select id="getCount" resultClass="int">
+    	<![CDATA[
+        select count(id) from tag
+        ]]>
+	</select>
+	<insert id="insert" parameterClass="Tag">
+        <![CDATA[
+        insert into tag(id,tag) 
+        values 
+        (#id#,#tag#)
+        ]]>
+	</insert>
+	<delete id="delete" parameterClass="String">
+        <![CDATA[
+        delete from tag where id=#id#
+        ]]>
+	</delete>
+</sqlMap>
+

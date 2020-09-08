@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+	<TeamspaceListFileContainerElement name="teamSpace_listItem" height="44" singularrowcolor="#ffffffff" dualrowcolor="#fffafafa">
+		<!--ItemCheckBox float="true" pos="0,1,32,31" align="left" selectedimage="file='..\img\checkbox.png' dest='20,13,32,25' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,13,32,25' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,13,32,25' source='26,0,38,12'"/-->
+		<HorizontalLayout float="true" pos="0,0,480,44">
+			<HorizontalLayout width="44" height="44">
+				<Button name="teamSpace_List_icon" mouse="false" width="32" height="32" float="true" pos="10,6,42,38"  align="left" />
+			</HorizontalLayout>
+			<MyFilesRichEditUI name="teamSpace_List_listName" limitchars="/ \ * | ' : ? &lt; &gt; &quot;" maxchar="246" height="30" maxheight="30" borderround="5,5" font="0" padding="5,8" mouse="false" inset="5,5,5,5" align="left" endellipsis="true" autohscroll="true" multiline="false"/>
+			<HorizontalLayout name="teamSpace_List_listOperation"  padding="2,12,20,12" width="20" visible="false"  mouse="true">
+				<Button name="teamSpace_List_isShareLink" width="20" height="20" tooltip="分享链接" disabledimage="file='..\Image\ic_toolmenu_link.png' source='0,0,20,20'" padding="5,0,0,0" normalimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50'" hotimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50'"/>
+			</HorizontalLayout>
+		</HorizontalLayout>
+		<Button name="teamSpace_List_path" float="true" align="left" textpadding="5,11,0,10" pos="480,0,680,44" font="0" textcolor="#FF008BE8" endellipsis="true" width="200"/>
+	</TeamspaceListFileContainerElement>
+</Window>

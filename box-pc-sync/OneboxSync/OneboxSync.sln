@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OneboxSyncHelper", "OneboxSyncHelper\OneboxSyncHelper.vcxproj", "{8C256D25-1B84-46A3-A730-6DB7B648F8BC}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OneboxSyncService", "OneboxSyncService\OneboxSyncService.vcxproj", "{196E0F9E-834B-40FC-8473-CED5AA316E47}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8C256D25-1B84-46A3-A730-6DB7B648F8BC} = {8C256D25-1B84-46A3-A730-6DB7B648F8BC}
+		{943EE68F-7A48-4633-AB24-7E3C609583CC} = {943EE68F-7A48-4633-AB24-7E3C609583CC}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OneboxSDK", "OneboxSDK\OneboxSDK.vcxproj", "{943EE68F-7A48-4633-AB24-7E3C609583CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8C256D25-1B84-46A3-A730-6DB7B648F8BC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8C256D25-1B84-46A3-A730-6DB7B648F8BC}.Debug|Win32.Build.0 = Debug|Win32
+		{8C256D25-1B84-46A3-A730-6DB7B648F8BC}.Release|Win32.ActiveCfg = Release|Win32
+		{8C256D25-1B84-46A3-A730-6DB7B648F8BC}.Release|Win32.Build.0 = Release|Win32
+		{196E0F9E-834B-40FC-8473-CED5AA316E47}.Debug|Win32.ActiveCfg = Debug|Win32
+		{196E0F9E-834B-40FC-8473-CED5AA316E47}.Debug|Win32.Build.0 = Debug|Win32
+		{196E0F9E-834B-40FC-8473-CED5AA316E47}.Release|Win32.ActiveCfg = Release|Win32
+		{196E0F9E-834B-40FC-8473-CED5AA316E47}.Release|Win32.Build.0 = Release|Win32
+		{943EE68F-7A48-4633-AB24-7E3C609583CC}.Debug|Win32.ActiveCfg = Debug|Win32
+		{943EE68F-7A48-4633-AB24-7E3C609583CC}.Debug|Win32.Build.0 = Debug|Win32
+		{943EE68F-7A48-4633-AB24-7E3C609583CC}.Release|Win32.ActiveCfg = Release|Win32
+		{943EE68F-7A48-4633-AB24-7E3C609583CC}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

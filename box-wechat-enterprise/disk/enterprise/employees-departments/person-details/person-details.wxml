@@ -1,0 +1,75 @@
+<!--disk/enterprise/employees-departments/person-details/person-details.wxml-->
+
+<view class='page'>
+    <view class='person-item view-block'>
+        <view class='flex-between border-bottom'>
+            <text class='info-text'>基本信息</text>
+        </view>
+        <view class='flex-between border-bottom'>
+            <label class='cont-text'>头像</label>
+            <view class='avatar' style="background-image:url({{employee.avatarUrl}})"></view>
+        </view>
+        <view class='flex-between border-bottom'>
+            <label class='cont-text'>姓名</label>
+            <view class='flex-center'>
+                <text class='cont-text'>{{employee.name}}</text>
+            </view>
+        </view>
+        <!-- <view class='flex-between border-bottom'>
+        <label class='cont-text'>性别</label>
+        <view class='flex-center'><text class='cont-text'>{{employee.sex}}</text><image class='image-size' src='/disk/images/arrow.png'></image></view>
+    </view> -->
+        <view class='flex-between border-bottom'>
+            <label class='cont-text'>邮箱</label>
+            <view class='flex-center'>
+                <text class='cont-text'>{{employee.email}}</text>
+            </view>
+        </view>
+        <view class='flex-between border-bottom'>
+            <label class='cont-text'>手机号码</label>
+            <view class='flex-center'>
+                <text class='cont-text'>{{employee.mobile}}</text>
+            </view>
+        </view>
+
+        <view class='flex-between' bindtap='gotoPersonState'>
+            <label class='cont-text'>员工状态</label>
+            <view class='flex-center'>
+                <text class='cont-text'>{{employee.state}}</text>
+                <image class='image-size' src='/disk/images/arrow.png'></image>
+            </view>
+        </view>
+    </view>
+
+    <view class='person-item view-block'>
+        <view class='flex-between border-bottom'>
+            <text class='info-text'>设置部门与角色</text>
+            <view wx:if="{{!isShowDelete}}" class='flex-item'>
+                <view bindtap='showDelete'>
+                    <image class='delete-btn' src='/disk/images/icon/cancel.png'></image>
+                    <text class='text-operation'>删除</text>
+                </view>
+                <view bindtap='addDepartment'>
+                    <image class='add-btn' src='/disk/images/icon/add-black.png'></image>
+                    <text class='text-operation'>新增</text>
+                </view>
+            </view>
+            <view bindtap='hideDelete' wx:if="{{isShowDelete}}">
+                <text>取消</text>
+            </view>
+        </view>
+        <view wx:for="{{job}}" wx:key="*this" class='flex-between border-bottom' wx:if="{{item.name ? true : false}}">
+            <label class='cont-text'>
+                <text>{{item.name}}</text> -
+                <text>{{item.role === 0 ? '普通成员' : '主管'}}</text>
+            </label>
+            <view class='flex-center image-wrapper' wx:if="{{isShowDelete}}" bindtap='deleteDepartment' data-item="{{item}}">
+                <image class='delete-size' src='/disk/images/icon/enterprise/cancel-select.png'></image>
+            </view>
+            <!-- 无跳转页面，暂时不显示  -->
+            <!-- <view class='flex-center'>
+                <image class='image-size' src='/disk/images/arrow.png'></image>
+            </view> -->
+        </view>
+    </view>
+</view>

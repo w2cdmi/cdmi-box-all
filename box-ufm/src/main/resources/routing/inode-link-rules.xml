@@ -1,0 +1,17 @@
+<rules>
+    <rule>
+        <sqlmap>INodeLink.deleteALL</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeLink.deleteByOwner</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>INodeLink</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

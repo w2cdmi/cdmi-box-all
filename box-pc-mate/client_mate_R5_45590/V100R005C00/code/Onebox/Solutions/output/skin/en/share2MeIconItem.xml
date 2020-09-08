@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Window>
+	<Share2MeTileLayoutListContainerElement name="share2Me_iconItem" mousechild="false" width="120" height="114" >
+		<ItemCheckBox float="true"  />
+		<VerticalLayout name="share2Me_iconItemVLayout" float="true" pos="0,0,120,114" shortcut="F2" >
+			<Label name="share2Me_icon" float="true" pos="24,8,96,80" />
+			<MyFilesRichEditUI name="share2Me_name" limitchars="/ \ * | ' : ? &lt; &gt; &quot;" maxchar="246" mouse="false" multiline="true" autohscroll="true" float="true" pos="10,84,110,104" align="center" valign="center" textcolor="#FF000000" inset="0,2" font="12" rich="false"/>
+		</VerticalLayout>
+	</Share2MeTileLayoutListContainerElement>
+</Window>

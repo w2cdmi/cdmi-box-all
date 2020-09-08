@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+    default-autowire="byName" default-lazy-init="true">
+
+    <bean id="dnsThriftClientNoSSL" class="com.huawei.sharedrive.isystem.dns.common.DNSThriftClientNoSSL" lazy-init="false">
+    </bean>
+    
+    <bean id="chechServiceProcessor" class="com.huawei.sharedrive.thrift.echo.ChechService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.common.monitor.thrift.server.ChechServiceImpl" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="clusterServiceProcessor" class="com.huawei.sharedrive.thrift.cluster.IsystemThriftService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.isystem.monitor.thrift.ClusterServiceImpl" />
+        </constructor-arg>
+    </bean>
+    <bean id="ProcessServiceProcessor" class="com.huawei.sharedrive.thrift.process.ProcessRunningThriftService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.isystem.monitor.thrift.ProcessServiceImpl" />
+        </constructor-arg>
+    </bean>
+    <bean id="NodeServiceProcessor" class="com.huawei.sharedrive.thrift.systemNode.SystemNodeRunningThriftService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.isystem.monitor.thrift.NodeServiceImpl" />
+        </constructor-arg>
+    </bean>
+
+
+    <bean id="zkServer" class="pw.cdmi.core.zk.ZookeeperServer" lazy-init="false" init-method="init" destroy-method="destroy">
+        <property name="connectString" value="${zookeeper.server}" />
+        <property name="connectionTimeoutMs" value="${zookeeper.connectionTimeoutMs}" />
+        <property name="sessionTimeoutMs" value="${zookeeper.sessionTimeoutMs}" />
+        <property name="baseSleepTimeMs" value="${zookeeper.retryPolicy.baseSleepTimeMs}" />
+        <property name="maxSleepTimeMs" value="${zookeeper.retryPolicy.maxSleepTimeMs}" />
+        <property name="maxRetries" value="${zookeeper.retryPolicy.maxRetries}" />
+    </bean>
+
+    <bean id="transportManagerConfig" class="pw.cdmi.common.thrift.client.pool.TTransportManagerConfig">
+        <property name="clusterType" value="ufm" />
+        <property name="addressType" value="private" />
+        <property name="heartBeatServiceName" value="ChechService" />
+        <property name="zkRoot" value="/thrift-nodes/ufm-for-isystem" />
+        <property name="maxActive" value="${thrift.app.maxActive}" />
+        <property name="maxIdle" value="${thrift.app.maxIdle}" />
+        <property name="minIdle" value="${thrift.app.minIdle}" />
+        <property name="maxWait" value="${thrift.app.maxWait}" />
+        <property name="numTestsPerEvictionRun" value="${thrift.app.numTestsPerEvictionRun}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${thrift.app.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${thrift.app.minEvictableIdleTimeMillis}" />
+        <property name="backupAddress">
+            <bean class="com.huawei.sharedrive.common.thrift.client.ThriftServiceAddress">
+                <constructor-arg value="${thrift.app.ip}" />
+                <constructor-arg value="${thrift.app.port}" />
+            </bean>
+        </property>
+    </bean>
+
+    <bean id="ufmTransportBuilder" class="com.huawei.sharedrive.common.thrift.client.TransportBuilder">
+        <property name="transportTimeout" value="${thrift.app.socket.timeout}" />
+        <property name="useSSL" value="${thrift.use.ssl}" />
+        <property name="keyStoreFile" value="${thrift.ssl.keystore.path}" />
+        <property name="keyStorePwd" value="${thrift.ssl.keystore.password}" />
+        <property name="keyStorePwdKey" value="${thrift.ssl.keystore.password.encodekey}" />
+        <property name="trustStoreFile" value="${thrift.ssl.truststore.path}" />
+        <property name="trustStorePwd" value="${thrift.ssl.truststore.password}" />
+        <property name="trustStorePwdKey" value="${thrift.ssl.truststore.password.encodekey}" />
+        <property name="cipherSuites">
+            <list>
+                <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+            </list>
+        </property>
+        <property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="ufmThriftTransportManager" class="com.huawei.sharedrive.common.thrift.client.pool.TTransportManager" lazy-init="false" init-method="initPool" destroy-method="close">
+        <property name="config" ref="transportManagerConfig" />
+        <property name="transportBuilder" ref="ufmTransportBuilder" />
+        <property name="serviceNodeService" ref="serviceNodeService" />
+        <property name="zookeeperServer" ref="zkServer" />
+    </bean>
+
+    <bean id="ufmThriftClientProxyFactory" class="com.huawei.sharedrive.common.thrift.client.ThriftClientProxyFactory" lazy-init="false">
+        <property name="transportManager" ref="ufmThriftTransportManager" />
+    </bean>
+
+    <bean id="ufmMonitorTransportBuilder" class="com.huawei.sharedrive.common.thrift.client.TransportBuilder">
+        <property name="transportTimeout" value="10000" />
+        <property name="useSSL" value="${thrift.use.ssl}" />
+        <property name="keyStoreFile" value="${thrift.ssl.keystore.path}" />
+        <property name="keyStorePwd" value="${thrift.ssl.keystore.password}" />
+        <property name="keyStorePwdKey" value="${thrift.ssl.keystore.password.encodekey}" />
+        <property name="trustStoreFile" value="${thrift.ssl.truststore.path}" />
+        <property name="trustStorePwd" value="${thrift.ssl.truststore.password}" />
+        <property name="trustStorePwdKey" value="${thrift.ssl.truststore.password.encodekey}" />
+        <property name="cipherSuites">
+            <list>
+                <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+            </list>
+        </property>
+        <property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="thriftServiceMonitorManager" class="com.huawei.sharedrive.common.thrift.client.monitor.ThriftServiceMonitorManager" lazy-init="false" init-method="init" destroy-method="destroy">
+        <property name="zookeeperServer" ref="zkServer" />
+        <property name="serviceNodeService" ref="serviceNodeService" />
+        <property name="lockRoot" value="/thrift-monitor-lock/isystem" />
+        <property name="transportBuilder" ref="ufmMonitorTransportBuilder" />
+        <property name="monitorConfigList">
+            <list>
+                <bean class="com.huawei.sharedrive.common.thrift.client.monitor.ThriftServiceMonitorConfig">
+                    <property name="clusterType" value="ufm" />
+                    <property name="addressType" value="private" />
+                    <property name="heartBeatServiceName" value="ChechService" />
+                    <property name="heartBeatInterval" value="30000" />
+                    <property name="deadNodeRetryInterval" value="10000" />
+                    <property name="clusterRoot" value="/thrift-nodes/ufm-for-isystem" />
+                    <property name="name" value="ufm-thrift-nodes-monitor" />
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+</beans>

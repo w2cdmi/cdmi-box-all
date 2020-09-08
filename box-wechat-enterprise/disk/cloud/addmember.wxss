@@ -1,0 +1,152 @@
+/* disk/cloud/addmember.wxss */
+
+.list {
+    padding: 10rpx 40rpx;
+    display: flex;
+    justify-content: space-between;
+    height: 50px;
+    line-height: 50px;
+    color: #666;
+}
+
+.list .img {
+    width: 80rpx;
+    height: 80rpx;
+    vertical-align: middle;
+}
+
+.list image {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+
+.people {
+    display: flex;
+    justify-content: space-between;
+}
+
+.permissions {
+    float: right;
+}
+
+.people label {
+    margin-left: 20rpx;
+    font-size: 30rpx;
+}
+
+.people .img {
+    border-radius: 50%;
+}
+
+.permissions label {
+    margin-right: 30rpx;
+    font-size: 26rpx;
+}
+
+.permissions .img {
+    width: 17rpx;
+    height: 32rpx;
+}
+
+checkbox {
+    line-height: 35px;
+    width:70rpx;
+}
+
+checkbox .wx-checkbox-input {
+    border-radius: 50%;
+    width: 35rpx;
+    height: 35rpx;
+    margin-top: 24rpx;
+    margin-right: 50rpx;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+    border: 1rpx solid #1d97ff;
+    background: #1d97ff;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+    border-radius: 50%;
+    width: 35rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: #fff;
+    background: transparent;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+#breadcrumb {
+    display: inline-flex;
+    height: 40px;
+}
+
+#breadcrumb .icon {
+    font-size: 14px;
+}
+
+#breadcrumb .crumb-name {
+    display: inline-flex;
+}
+
+#breadcrumb .crumb-name image {
+    width: 15px;
+    height: 40px;
+    float: left;
+}
+
+#breadcrumb .crumb-name .weui-flex__item {
+    float: left;
+    background: #fff;
+    text-decoration: none;
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px 0 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #5b8cff;
+}
+
+#breadcrumb .crumb-name .weui-flex__item text {
+    float: left;
+    max-width: 100px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#breadcrumb .crumb-name:last-child .weui-flex__item {
+    color: #000;
+}
+
+.btn {
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.btn button {
+    background: #ea5036;
+    color: #fff;
+}
+#breadcrumb .crumb-name .weui-flex__item{
+    padding:0 10px 0 20px;
+}
+.confim{
+    text-align:center;
+    margin:10px 15px;
+    background:#ea5036;
+    height:40px;
+    line-height:40px;
+    border-radius:5px;
+    font-size:28rpx;
+    color:#fff;
+}
+

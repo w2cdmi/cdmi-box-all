@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="systemConfig">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="SystemConfig" type="pw.cdmi.file.engine.core.config.SystemConfig" />
+
+	<resultMap id="resultMap.SystemConfig" class="SystemConfig">
+        <result column="key" 			property="key" 				javaType="java.lang.String"/>
+        <result column="value" 			property="value" 			javaType="java.lang.String"/>
+        <result column="description" 	property="description" 		javaType="java.lang.String"/>
+        <result column="showable" 		property="showAble" 		javaType="java.lang.Boolean"/>
+        <result column="changeable" 	property="changeAble" 		javaType="java.lang.Boolean"/>
+    </resultMap>
+    
+	<select id="selectAll" parameterClass="java.lang.String" resultMap="resultMap.SystemConfig">
+        select * from system_config;
+    </select>
+    
+    <update id="update" parameterClass="SystemConfig">
+        update system_config s set s.value=#value#, s.description=#description# where s.key = #key#;
+    </update>
+</sqlMap>

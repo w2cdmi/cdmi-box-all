@@ -1,0 +1,13 @@
+<!--disk/enterprise/employees-departments/_blank/as-knowledger/as-knowledger.wxml-->
+<view>
+    <view style='width:316rpx;' class='top_view'>
+        <image class='blank_img' src='/disk/images/blank/depart-knowledger-blank.png'></image>
+        <text class='blank_txt'>尚未指定部门知识专员</text>
+        <button style='width:130rpx;' class='blank_btn' bindtap='setKnowledger'>添加</button>
+    </view>
+
+    <view class='bottom_view'>
+        <image  class='tip_img' src='/disk/images/tip_icon.png'></image>
+        <text class='tip_txt'>部门知识专员对部门空间文档进行访问权限设置，并代替主管对部门文档外发行为进行审批</text>
+    </view>
+</view>

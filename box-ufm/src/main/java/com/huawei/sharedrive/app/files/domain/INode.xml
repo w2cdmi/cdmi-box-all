@@ -1,0 +1,1374 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="INode">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="INode" type="com.huawei.sharedrive.app.files.domain.INode" />
+
+	<resultMap id="resultMap.INodeStatistic" class="java.util.HashMap">
+		<result column="number"               property="key"            javaType="java.lang.Long" />
+		<result column="allSize"              property="value"            javaType="java.lang.Long" />
+	</resultMap>
+	
+    <select id="getFilterd" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by type asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    ,$order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getByParentAndType" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.id">
+                    parentId = #filter.id#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.type">
+                    type = #filter.id#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+
+    <select id="getbyparent" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.id">
+                    parentId = #filter.id#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by type asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    ,$order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getByParentList" parameterClass="map" resultClass="INode">
+        select *
+        from inode_#filter.tableSuffix# force index(idx_owner_parent)
+        where ownedBy=#filter.ownedBy# and parentId in $parentListString$         
+    </select>
+    
+    <select id="getbystatus" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy# and type != -3 and type != -2 and type != -4
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by type asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    ,$order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+ 
+    <select id="getByLinkStatus" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$ where ownedBy = #filter.ownedBy# and linkCode is not null and status=0 and type!=2 and name like "%"#filter.name#"%" 
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getCountByLinkStatus" resultClass="Integer" parameterClass="INode">
+		<![CDATA[
+        select count(*) from inode_$tableSuffix$ where ownedBy = #ownedBy# and linkCode is not null and status=0 and type!=2 and name like "%"#name#"%" 
+        ]]>  
+    </select>
+            
+  <select id="getbyparentandstatus" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy# and type != -3 and type != -2 and type != -4  
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.id">
+                    parentId = #filter.id#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                	<![CDATA[
+                    status = #filter.status#
+                 	]]>   
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by type asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                   	 ,$order.field$  
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="multiDSTest" parameterClass="map" resultClass="INode">
+        select * from inode_$tableSuffix$
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="type">
+                type = #type#
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="order by type asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    ,$order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="get" resultClass="INode" parameterClass="INode">
+        <![CDATA[
+        select t1.*, group_concat(distinct convert(t2.labelId, char) separator ',') as filelabelIds from inode_$tableSuffix$  
+        	t1 left join filelabel_link_$tableSuffix$  t2 on t1.id = t2.inodeId 
+         	where ownedBy=#ownedBy# and t1.id=#id# group by t1.id
+        ]]>
+    </select>
+    
+    <select id="getChildren" resultClass="INode" parameterClass="INode">
+        <![CDATA[
+        select * from inode_$tableSuffix$ where ownedBy=#ownedBy# and  parentId=#id#
+        ]]>
+    </select>
+    
+	<select id="getNodeByName" resultClass="INode" parameterClass="INode">
+        <![CDATA[
+        select * from inode_$tableSuffix$ where ownedBy=#ownedBy# and parentId=#parentId# and name=#name# 
+        ]]>
+    </select>
+	
+    <select id="check" resultClass="Long" parameterClass="INode">
+        <![CDATA[
+        select id from inode_$tableSuffix$ where ownedBy=#ownedBy# and  id=#id#
+        ]]>
+    </select>
+    
+    <select id="getByName" resultClass="INode" parameterClass="INode">
+        <![CDATA[
+        select * from inode_$tableSuffix$ where ownedBy=#ownedBy# and  parentId=#parentId# and status=#status# and name=#name# 
+        ]]>
+    </select>
+    
+	<select id="getSubCount" resultClass="Integer" parameterClass="INode">
+        <![CDATA[
+        select count(*) from inode_$tableSuffix$ where parentId=#id# and status =#status#  and  ownedBy=#ownedBy# and type!=-3 and type!=-2 and type != -4
+        ]]>
+    </select>
+    
+    <select id="getCountByStatus" resultClass="Integer" parameterClass="INode">
+        <![CDATA[
+        select count(*) from inode_$tableSuffix$ where status =#status#  and  ownedBy=#ownedBy# and type!=-3 and type!=-2 and type != -4
+        ]]>
+    </select>
+  
+    <select id="getCountByStatusIgnoreVersion" resultClass="Integer" parameterClass="INode">
+        <![CDATA[
+        select count(*) from inode_$tableSuffix$ where status =#status#  and  ownedBy=#ownedBy# and type!=2
+        ]]>
+    </select>
+      
+    <select id="getObject" resultClass="INode" parameterClass="INode">
+        <![CDATA[
+        select * from inode_$tableSuffix$ where objectId=#objectId# and  ownedBy=#ownedBy# 
+        ]]>
+    </select>
+    
+    
+    <select id="getSubNodebyType" resultClass="INode" parameterClass="INode">
+        <![CDATA[
+        select * from inode_$tableSuffix$ where type=#type# and status=#status# and ownedBy=#ownedBy# and  parentId=#id#
+        ]]>
+    </select>
+    
+      <select id="getSyncRootNode" resultClass="INode" parameterClass="INode">
+        <![CDATA[
+        select * from inode_$tableSuffix$ where syncStatus=#syncStatus# and  ownedBy=#ownedBy# 
+        ]]>
+    </select>
+    
+    <select id="geSyncNodeBySyncVer" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+        	<isNotNull property="beginSyncVersion">
+                <isNotEmpty property="beginSyncVersion">
+                 <![CDATA[
+                    syncVersion>#beginSyncVersion#
+                      ]]>
+                </isNotEmpty>
+            </isNotNull>
+          </dynamic>
+          <dynamic prepend="and">
+            <isNotNull property="endSyncVersion">
+                <isNotEmpty property="endSyncVersion">
+                <![CDATA[
+                    syncVersion<=#endSyncVersion#
+                     ]]>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+         <dynamic prepend="and">
+            <isNotNull property="excludeSyncStatus">
+                <isNotEmpty property="excludeSyncStatus">
+                <![CDATA[
+                    syncStatus!=#excludeSyncStatus#
+                     ]]>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>        
+	<dynamic prepend="and">
+            <isNotNull property="excludeEmailSyncStatus">
+                <isNotEmpty property="excludeEmailSyncStatus">
+                <![CDATA[
+                    syncStatus!=#excludeEmailSyncStatus#
+                     ]]>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic> 
+    </select>
+    
+    <insert id="insert" parameterClass="INode">
+        <![CDATA[
+        insert into inode_$tableSuffix$(id,parentId,objectId,name,size,description,type,status,version,ownedBy
+        ,createdAt,modifiedAt,contentCreatedAt,contentModifiedAt,createdBy,modifiedBy,shareStatus,syncStatus
+        ,syncVersion,linkCode,encryptKey,sha1,resourceGroupId,securityId,kiaLabel,doctype) 
+        values 
+        (#id#,#parentId#,#objectId#,#name#,#size#,#description#,#type#,#status#,#version#,#ownedBy#,#createdAt#,
+        #modifiedAt#,#contentCreatedAt#,#contentModifiedAt#,#createdBy#,#modifiedBy#,#shareStatus#,#syncStatus#,
+        #syncVersion#,#linkCode#,#encryptKey#,#sha1#,#resourceGroupId#,#securityId#,#kiaLabel#,#doctype#)
+        ]]>
+    </insert>
+
+    <update id="update" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set parentId=#parentId#,objectId=#objectId#,name=#name#,size=#size#,
+        description=#description#,type=#type#,status=#status#,version=#version#,
+        modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy#,contentCreatedAt=#contentCreatedAt#,contentModifiedAt=#contentModifiedAt#, shareStatus=#shareStatus#,syncStatus=#syncStatus#,
+        syncVersion=#syncVersion#,linkCode=#linkCode#,encryptKey=#encryptKey#,sha1=#sha1#,
+        resourceGroupId=#resourceGroupId#,kiaLabel=#kiaLabel#,doctype=#doctype#
+        where ownedBy=#ownedBy# and  id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateForRename" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set name=#name#,modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy#,syncVersion=#syncVersion#,
+        type=#type#,syncStatus=#syncStatus#,doctype=#doctype# where ownedBy=#ownedBy# and id=#id#
+        ]]>
+    </update>
+    
+    
+    <update id="updateNameAndSyncVersion" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set name=#name#,modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy#,syncVersion=#syncVersion# 
+        where ownedBy=#ownedBy# and id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateVersionNum" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set version=#version# where ownedBy=#ownedBy# and id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateForRestore" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set parentId=#parentId#,name=#name#,status=#status#,modifiedBy=#modifiedBy#,
+        syncStatus=#syncStatus#,syncVersion=#syncVersion# where ownedBy=#ownedBy# and id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateForMove" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set parentId=#parentId#,name=#name#,modifiedBy=#modifiedBy#,
+        syncStatus=#syncStatus#,syncVersion=#syncVersion# where ownedBy=#ownedBy# and id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateByOriginalId" parameterClass="map">
+    	<![CDATA[
+        update inode_$filter.tableSuffix$ set id=#filter.id#, parentId=#filter.parentId#, type=#filter.type# where id=#originalId# and ownedBy=#filter.ownedBy#
+        ]]>
+    </update>
+    
+    <update id="updateForUploadFile" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set size=#size#,status=#status#,version=#version#,
+        modifiedAt=#modifiedAt#,syncStatus=#syncStatus#,syncVersion=#syncVersion#,sha1=#sha1# 
+        where ownedBy=#ownedBy# and id=#id# 
+        ]]>
+    </update>
+    
+    <!-- 
+    <update id="updateByObjectId" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set id=#id#,parentId=#parentId#,objectId=#objectId#,name=#name#,size=#size#,
+        description=#description#,type=#type#,status=#status#,version=#version#,
+        modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy#,shareStatus=#shareStatus#,syncStatus=#syncStatus#,
+        syncVersion=#syncVersion#,linkCode=#linkCode#,encryptKey=#encryptKey#,sha1=#sha1#,
+        resourceGroupId=#resourceGroupId# 
+        where objectId=#objectId# and ownedBy=#ownedBy#
+        ]]>
+    </update>
+     -->
+    
+    <update id="updateObject" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set size=#size#,status=#status#,sha1=#sha1#,syncVersion=#syncVersion#,syncStatus=#syncStatus#,version=#version# where  objectId=#objectId#  and ownedBy=#ownedBy# 
+        ]]>
+    </update>
+    
+    <update id="updateAllStatus" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set status=#status# where ownedBy=#ownedBy# and  status!=#status#
+        ]]>
+    </update>
+    
+    <update id="updateStatus" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set status=#status#,syncVersion=#syncVersion#,modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy# where ownedBy=#ownedBy# and  id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateStatusByParent" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ 
+        set status=#status#, syncVersion=#syncVersion#,modifiedBy=#modifiedBy#
+        where ownedBy=#ownedBy# and  parentId=#parentId#
+        ]]>
+    </update>
+    
+    <update id="updateStatusByParentList" parameterClass="map">    
+        <![CDATA[
+        update inode_#filter.tableSuffix# force index(idx_owner_parent)
+       set status=#filter.status#, syncVersion=#filter.syncVersion#,modifiedBy=#filter.modifiedBy#
+       where ownedBy=#filter.ownedBy# and status=0 and parentId in $parentListString$
+       ]]>
+    </update>
+    
+
+
+
+
+    <update id="updateStatusToDelete" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set status=#status#,modifiedAt=#modifiedAt# where ownedBy=#ownedBy# and  id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateStatusToRealDelete" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set status=#status#,modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy#,shareStatus=#shareStatus# where ownedBy=#ownedBy# and id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateSubINodeStatus" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set status=#status#,modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy# where ownedBy=#ownedBy# and  parentId=#id# and (status=2 or status=3)
+        ]]>
+    </update>
+    
+    <update id="updateSyncVersion" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set syncStatus=#syncStatus#,type=#type#,syncVersion=#syncVersion#,modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy# where ownedBy=#ownedBy# and  id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateSyncVersionByparent" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set syncVersion=#syncVersion# where ownedBy=#ownedBy# and  parentId=#parentId#
+        ]]>
+    </update>
+    
+    <update id="updateSubStatusByparent" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set status=#status#, syncVersion=#syncVersion#,modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy#  where ownedBy=#ownedBy# and  parentId=#id#
+        ]]>
+    </update>
+    
+    <update id="updateSyncStatusByparent" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set syncStatus=#syncStatus# where ownedBy=#ownedBy# and  parentId=#parentId#
+        ]]>
+    </update>
+    
+    <update id="updateTarshItemsStatus" parameterClass="map">
+       update inode_$filter.tableSuffix$
+       <dynamic prepend="set">
+        	<isNotNull property="filter">
+                    status = #filter.status# , syncVersion=#filter.syncVersion#,modifiedAt=#filter.modifiedAt#,modifiedBy=#filter.modifiedBy# 
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+        	<isNotEmpty property="id" >
+                 <![CDATA[
+                    parentId= #id# or id= #id#
+                      ]]>
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="and"  open="(" close=")">
+        	<isNotNull prepend="or"  property="status1">
+                 <![CDATA[
+                    status= #status1#
+                      ]]>
+            </isNotNull>
+            <isNotNull prepend="or"  property="status2" >
+                <![CDATA[
+                    status= #status2#
+                     ]]>
+            </isNotNull>
+        </dynamic>
+
+    </update>
+    
+    
+    <update id="updateShareStatus" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set shareStatus=#shareStatus# where ownedBy=#ownedBy# and  id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateLinkCode" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set linkCode=#linkCode# where ownedBy=#ownedBy# and  id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateAllNodesStatusToDelete" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set status=4 where ownedBy=#ownedBy#
+        ]]>
+    </update>
+
+
+    <delete id="delete" parameterClass="INode">
+        <![CDATA[
+        delete from inode_$tableSuffix$ where ownedBy=#ownedBy# and  id=#id#
+        ]]>
+    </delete>
+    
+    <delete id="deleteObjectNodeCheckStatus" parameterClass="INode">
+        <![CDATA[
+        delete from inode_$tableSuffix$ where objectId=#objectId# and ownedBy=#ownedBy# and status=#status#
+        ]]>
+    </delete>
+    
+    
+    
+    <select id="getCountByName" parameterClass="INode" resultClass="Integer">
+         <![CDATA[
+         select count(*) from inode_$tableSuffix$ where ownedBy = #ownedBy# and status = #status# and type != #type# and type != -3 and type != -2 and type != -4 and name like "%"#name#"%"
+          ]]>
+    </select>
+    
+    <select id="searchNodeByName" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy# and status = #filter.status# and type != #filter.type# and type != -3 and type != -2 and type != -4
+                </isNotEmpty>
+                 <isNotEmpty prepend="and" property="filter.name">
+                    <![CDATA[ 
+                    name like "%"#filter.name#"%" 
+                      ]]>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by type asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                     , $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getSubINodeAndSelf" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+            	 <isNotEmpty prepend="and" property="filter.ownedBy"> 
+            	 	(ownedBy = #filter.ownedBy#
+                    <isNotEmpty prepend="and" property="filter.id"> 
+                       parentId = #filter.id#
+                    </isNotEmpty> 
+                  	)
+            	</isNotEmpty>
+                and status = 0
+            </isNotNull>
+        </dynamic>
+        UNION 
+         select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+              <isNotEmpty prepend="and" property="filter.ownedBy"> 
+                 (ownedBy = #filter.ownedBy#
+                 <isNotEmpty prepend="and" property="filter.id"> 
+                    id = #filter.id#
+                 </isNotEmpty> 
+                 )
+              </isNotEmpty>
+                and status = 0
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by type asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    ,$order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                    ,version desc
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getSubINodeAndSelfTotal" resultClass="Integer" parameterClass="INode">
+        <![CDATA[
+        select sum(tmpcount) from 
+        (select count(*) as tmpcount from inode_$tableSuffix$ where (ownedBy = #ownedBy# and parentId = #id# ) and status = 0
+        UNION ALL
+        select count(*) as tmpcount from inode_$tableSuffix$ where (ownedBy = #ownedBy# and id = #id#) and status = 0) as temptable
+        ]]>
+    </select>
+    
+    <select id="getSubINodeAndSelfTotalForUpdate" resultClass="Integer" parameterClass="INode">
+        <![CDATA[
+        select sum(tmpcount) from 
+        (select count(*) as tmpcount from inode_$tableSuffix$ where (ownedBy = #ownedBy# and parentId = #id#) and status = 0 for update
+         UNION ALL
+        select count(*) as tmpcount from inode_$tableSuffix$ where (ownedBy = #ownedBy# and id = #id#) and status = 0 for update) as temptable
+        ]]>
+    </select>
+
+	<select id="getChangeNodesAfterTime" resultClass="INode" parameterClass="INode">
+        <![CDATA[
+        select * from inode_$tableSuffix$ where ownedBy=#ownedBy# and modifiedAt>#modifiedAt# and status=#status# and type!=#type# and syncStatus!=#syncStatus# and syncStatus != 4
+        ]]>
+    </select>
+    
+    <select id="getTrashTotalSize" resultClass="Long" parameterClass="INode">
+        <![CDATA[
+        select sum(size) from inode_$tableSuffix$ where ownedBy=#ownedBy# and status=#status# 
+        ]]>
+    </select>
+    
+    <select id="getUserTotalSpace" resultClass="Long" parameterClass="INode">
+        <![CDATA[
+        select sum(size) from inode_$tableSuffix$ where ownedBy=#ownedBy# and status!=#status# and status!=1 and type!=#type# 
+        ]]>
+    </select>
+    
+    <select id="getUserTotalFiles" resultClass="Long" parameterClass="INode">
+        <![CDATA[
+        select count(*) from inode_$tableSuffix$ where ownedBy=#ownedBy# and status!=4 and status!=1 
+        ]]>
+    </select>
+    
+    <update id="updateObjectForDedup" parameterClass="map">
+        <![CDATA[
+        update inode_$filter.tableSuffix$ set objectId=#filter.objectId#,resourceGroupId=#filter.resourceGroupId# where ownedBy=#filter.ownedBy# and objectId=#oldObjectId# limit 1
+        ]]>
+    </update>
+    
+    <update id="updateObjectForMerge" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set size=#size#,sha1=#sha1# where ownedBy=#ownedBy# and objectId=#objectId#
+        ]]>
+    </update>
+    
+    <select id="getByNameAndParentId" parameterClass="map" resultClass="INode">
+    	<![CDATA[
+        select * from inode_$tableSuffix$ where ownedBy=#ownedBy# and  parentId=#parentId# and name = #name# and status = 0 and type = 1
+        ]]>
+    </select>
+    
+    <select id="getMaxINodeId" resultClass="Long" parameterClass="INode">
+        <![CDATA[
+        select max(id) from inode_$tableSuffix$ where ownedBy=#ownedBy#
+        ]]>
+    </select>
+    
+    <select id="getMaxSyncVersion" resultClass="Long" parameterClass="INode">
+        <![CDATA[
+        select max(syncVersion) from inode_$tableSuffix$ where ownedBy=#ownedBy#
+        ]]>
+    </select>
+    
+    
+    <update id="updateObjectModifiedAt" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set modifiedAt=#modifiedAt# where ownedBy=#ownedBy# and id=#id#
+        ]]>
+    </update>
+    <parameterMap id="copyTempParamMap" class="java.util.HashMap">   
+        <parameter property="srcTableSuffix" javaType="java.lang.Integer" jdbcType="int" mode="IN"/>
+        <parameter property="ownedBy" javaType="java.lang.Long" jdbcType="long" mode="IN"/> 
+        <parameter property="destTableSuffix" javaType="java.lang.Long" jdbcType="long" mode="IN"/> 
+    </parameterMap>   
+       
+    <procedure id="copyTempInode" parameterMap="copyTempParamMap">   
+       { call proc_copy_temp_inode(?,?,?)}
+    </procedure>  
+    
+    <procedure id="copyTempInodeNoBackup" parameterMap="copyTempParamMap">   
+       { call proc_copy_temp_inode_no_backup(?,?,?)}
+    </procedure>
+ 
+    <parameterMap id="dropTempParamMap" class="java.util.HashMap">   
+        <parameter property="destTableSuffix" javaType="java.lang.Long" jdbcType="long" mode="IN"/> 
+        <parameter property="ownedBy" javaType="java.lang.Long" jdbcType="long" mode="IN"/> 
+    </parameterMap>   
+       
+    <procedure id="dropTempInode" parameterMap="dropTempParamMap">   
+       { call proc_drop_temp_inode(?,?)}
+    </procedure>
+    
+     <select id="exportToLocal" parameterClass="map">
+     	SELECT id,parentId,type,status,name,size,sha1,objectId,createdAt,modifiedAt,contentCreatedAt,contentModifiedAt,syncStatus,syncVersion
+     	FROM inode_#srcTableSuffix# 
+     	WHERE ownedBy=#ownedBy# and syncStatus!=3 and syncStatus!=4 and status=0 and type!=2 
+     	INTO OUTFILE '$localFile$'
+     	FIELDS TERMINATED BY '/'
+     </select>
+
+    <parameterMap id="getTempParamMap" class="java.util.HashMap">   
+        <parameter property="destTableSuffix" javaType="java.lang.Long" jdbcType="long" mode="IN"/>
+        <parameter property="ownedBy" javaType="java.lang.Long" jdbcType="long" mode="IN"/> 
+        <parameter property="datalen" javaType="java.lang.Integer" jdbcType="int" mode="IN"/>
+        <parameter property="offset" javaType="java.lang.Long" jdbcType="long" mode="IN"/>
+    </parameterMap>   
+       
+    <procedure id="getTempInode" parameterMap="getTempParamMap" resultClass="INode">   
+       { call proc_get_temp_inode(?,?,?,?)}
+    </procedure> 
+    
+    <!--======================== 以下为HWY V2版本 ========================== --> 
+    
+    <select id="getSubCountV2" resultClass="Integer" parameterClass="map">
+        select count(*) from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                 <isNotNull  prepend=" and " property="filter.filelabelIds">
+		            	id in (select distinct t3.inodeId from filelabel_link_$filter.tableSuffix$ t3 where t3.labelId in ($filter.filelabelIds$))
+			     </isNotNull>
+			     <isNotNull prepend="and" property="filter.name">
+	                <![CDATA[ 
+	                   name like '%$filter.name$%'
+	                ]]>
+	            </isNotNull>
+                <isNotNull prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotNull>
+                <isNotNull prepend="and" property="createdBy" >
+                  <![CDATA[
+                    createdBy = #createdBy#
+                   ]]>
+                </isNotNull>
+                <isNotNull prepend="and" property="filter.id">
+                    parentId = #filter.id#
+                </isNotNull>
+                <isNotNull prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotNull>
+                <isNotNull prepend="and" property="filter.type" >
+                     type=#filter.type#
+	            </isNotNull>
+	            <isNotNull prepend="and" property="filter.doctype" >
+	                 doctype=#filter.doctype#
+	            </isNotNull>
+	          
+            </isNotNull>
+            <isNotNull property="withExtraType">
+                <isEqual prepend="and" property="withExtraType" compareValue="false">
+                    type != -3 and type != -2 and type != -4
+                </isEqual>
+            </isNotNull>
+        </dynamic>
+        
+      
+    </select>
+    
+    
+     
+    <select id="getSubNodeV2" resultClass="INode" parameterClass="map">
+           select t1.*, group_concat(distinct convert(t2.labelId, char) separator ',') as filelabelIds from inode_$filter.tableSuffix$ t1 left join filelabel_link_$filter.tableSuffix$  t2 on t1.id = t2.inodeId 
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                 <isNotEmpty  prepend=" and " property="filter.filelabelIds">
+		            	t1.id in (select distinct t3.inodeId from filelabel_link_$filter.tableSuffix$ t3 where t3.labelId in ($filter.filelabelIds$))
+			     </isNotEmpty>
+			     <isNotEmpty prepend="and" property="filter.name">
+	                <![CDATA[ 
+	                   t1.name like '%$filter.name$%'
+	                ]]>
+	            </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    t1.ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isGreaterThan prepend="and" property="filter.id" compareValue="-1">	
+                    t1.parentId = #filter.id#
+                </isGreaterThan>
+                <isNotNull prepend="and" property="createdBy" >
+                   <![CDATA[
+                    t1.createdBy = #filter.createdBy#
+                   ]]>
+                </isNotNull>
+                <isNotEmpty prepend="and" property="filter.status">
+                    t1.status = #filter.status#
+                </isNotEmpty>
+                <isNotNull prepend="and" property="filter.type" >
+                    t1.type=#filter.type#
+	            </isNotNull>
+	            <isNotNull prepend="and" property="filter.doctype" >
+	                t1.doctype=#filter.doctype#
+	            </isNotNull>
+            </isNotNull>
+             <isNotNull property="withExtraType">
+                <isEqual prepend="and" property="withExtraType" compareValue="false">
+                    t1.type != -3 and t1.type != -2 and t1.type != -4
+                </isEqual>
+            </isNotNull>
+        </dynamic>
+        group by t1.id
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+             #offset#, #limit#
+        </dynamic>
+    </select>
+    
+    
+    
+    <select id="getByParentAndStatusV2" parameterClass="map" resultClass="INode">
+        select t1.*, group_concat(distinct convert(t2.labelId, char) separator ',') as filelabelIds from inode_$filter.tableSuffix$ t1 left join filelabel_link_$filter.tableSuffix$  t2 on t1.id = t2.inodeId 
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+            
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.id">
+                    parentId = #filter.id#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+            </isNotNull>
+            
+          
+        </dynamic>
+        <dynamic prepend="and">
+        	<isNotNull property="withExtraType">
+                <isEqual property="withExtraType" compareValue="false">
+                    type != -3 and type != -2 and type != -4
+                </isEqual>
+            </isNotNull>
+        </dynamic>
+        	group by t1.id
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+             #offset#, #limit#
+        </dynamic>
+    </select>
+    
+    
+    <select id="getByCreatedCountV2" resultClass="Integer" parameterClass="map">
+        select count(*) from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEqual  prepend="and" compareProperty="filter.createdBy" compareValue="0">
+                    createdBy = #filter.createdBy#
+                </isNotEqual>
+                <isNotEmpty prepend="and" property="filter.id">
+                    parentId = #filter.id#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+        	<isNotNull property="withExtraType">
+                <isEqual property="withExtraType" compareValue="false">
+                    type != -3 and type != -2 and type != -4
+                </isEqual>
+            </isNotNull>
+        </dynamic>
+    </select>
+    <select id="getByCreatedV2" parameterClass="map" resultClass="INode">
+        select t1.*, group_concat(distinct convert(t2.labelId, char) separator ',') as filelabelIds from inode_$filter.tableSuffix$ t1 left join filelabel_link_$filter.tableSuffix$  t2 on t1.id = t2.inodeId 
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEqual  prepend="and" compareProperty="filter.createdBy" compareValue="0">
+                    createdBy = #filter.createdBy#
+                </isNotEqual>
+                <isNotEmpty prepend="and" property="filter.id">
+                    parentId = #filter.id#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+        	<isNotNull property="withExtraType">
+                <isEqual property="withExtraType" compareValue="false">
+                    type != -3 and type != -2 and type != -4
+                </isEqual>
+            </isNotNull>
+        </dynamic>
+        	group by t1.id
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+             #offset#, #limit#
+        </dynamic>
+    </select>
+    
+     
+     
+    <select id="getCountByStatusV2" resultClass="Integer" parameterClass="map">
+        select count(*) from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+        	<isNotNull property="withExtraType">
+                <isEqual property="withExtraType" compareValue="false">
+                    type != -3 and type != -2 and type != -4
+                </isEqual>
+            </isNotNull>
+        </dynamic>
+    </select>
+     <select id="getbystatusV2" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+        	<isNotNull property="withExtraType">
+                <isEqual property="withExtraType" compareValue="false">
+                    type != -3 and type != -2 and type != -4
+                </isEqual>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #offset#,#limit#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getCountByNameV2" parameterClass="map" resultClass="Integer">
+        select count(*) from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.type">
+                    type != #filter.type#
+                </isNotEmpty>
+                <isNotNull prepend="and" property="filter.doctype">
+                 	<![CDATA[ 
+                   	 	doctype = #filter.doctype#
+                    ]]>
+                </isNotNull>
+
+                <isNotEmpty prepend="and" property="filter.name">
+	                <![CDATA[ 
+	                   name like '%$filter.name$%'
+	                ]]>
+	            </isNotEmpty>
+	        	                
+	         	<isNotEmpty  prepend=" and " property="labelIds">
+	            	id in (select distinct t3.inodeId from filelabel_link_$filter.tableSuffix$ t3 where t3.labelId in ($labelIds$))
+		     	</isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+        	<isNotNull property="withExtraType">
+                <isEqual property="withExtraType" compareValue="false">
+                    type != -3 and type != -2 and type != -4
+                </isEqual>
+            </isNotNull>
+        </dynamic>
+    </select>
+     
+    <select id="searchNodeByNameV2" parameterClass="map" resultClass="INode">
+         select t1.*, group_concat(distinct convert(t2.labelId, char) separator ',') as filelabelIds 
+    		from inode_$filter.tableSuffix$ t1 left join filelabel_link_$filter.tableSuffix$ t2 on t1.id = t2.inodeId 
+    		
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    t1.ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    t1.status = #filter.status#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.type">
+                    t1.type != #filter.type#
+                </isNotEmpty>
+               <isNotNull prepend="and" property="filter.doctype">
+                	<![CDATA[ 
+                    	t1.doctype = #filter.doctype#
+                    ]]>
+                </isNotNull>
+                
+                <isNotEmpty prepend="and" property="filter.name">
+	                <![CDATA[ 
+	                   name like '%$filter.name$%'
+	                ]]>
+	            </isNotEmpty>
+	                            
+	           <isNotEmpty  prepend=" and " property="labelIds">
+	            	t1.id in (select distinct t3.inodeId from filelabel_link_$filter.tableSuffix$ t3 where t3.labelId in ($labelIds$))
+		       </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+        	<isNotNull property="withExtraType">
+                <isEqual property="withExtraType" compareValue="false">
+                    t1.type != -3 and t1.type != -2 and t1.type != -4
+                </isEqual>
+            </isNotNull>
+        </dynamic>
+        
+        group by t1.id
+        
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+             #offset#, #limit#
+        </dynamic>
+    </select>
+    
+   <select id="getAllINodeMetadatas" resultClass="INode" parameterClass="INode">
+        <![CDATA[
+        select * from inode_$tableSuffix$ where ownedBy=#ownedBy# and status=0 and type!=2
+        ]]>
+    </select>
+    
+   <select id="getFolderMetadatas" resultClass="INode" parameterClass="INode">
+        <![CDATA[
+        select * from inode_$tableSuffix$ where ownedBy=#ownedBy# and parentId=#id# and syncStatus!=#syncStatus#
+        ]]>
+    </select>
+
+    <select id="getEarliestVersions" parameterClass="map" resultClass="INode">
+        <![CDATA[
+        select * from inode_$filter.tableSuffix$ where ownedBy=#filter.ownedBy# and parentId = #filter.parentId# and status = 0 order by createdAt asc limit 0 , #limit#
+        ]]>
+    </select>
+    
+     <!--========================  warning  ========================== --> 
+     <delete id="deleteFolderNodeCheckStatus" parameterClass="map">
+        <![CDATA[
+        delete from inode_$filter.tableSuffix$ where status=#filter.status# and (type=#filter.type# or type=-2 or type=-3) and modifiedAt < #filter.modifiedAt#
+        ]]>
+    </delete>
+    
+    <select id="lstDeleteNode" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.modifiedAt">
+                    <![CDATA[ 
+                    modifiedAt < #filter.modifiedAt#
+                      ]]>
+                </isNotEmpty>
+                and type != 0
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by id limit">
+          <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="lstContentNode" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$ where type != 0 order by  ownedBy desc
+        <dynamic prepend="limit">
+          <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="listFileAndVersions" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$ where type != 0 and status!=4 and status!=1 
+        <dynamic prepend="limit">
+          	<isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    
+    <select id="lstFileAndVersionNode" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$ where ownedBy=#filter.ownedBy# and type != 0 and status!=4 and status!=1 
+        <dynamic prepend="limit">
+          	<isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+   
+   	<update id="decreaseFileVersionNum" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set version=version-1 where ownedBy=#ownedBy# and id=#id#
+        ]]>
+    </update>
+    
+    
+    <select id="getUserInfoById" resultClass="com.huawei.sharedrive.app.spacestatistics.domain.UserStatisticsInfo" parameterClass="INode">
+        <![CDATA[
+        select sum(size) as spaceUsed, max(id) as lastStatisNode,count(*) as FileCount from inode_$tableSuffix$ where ownedBy=#ownedBy# and status!=#status# and status!=1 and type!=#type# and type!=-2 and type!=-3 
+        ]]>
+    </select>
+ 
+    <update id="updateKiaLabel" parameterClass="INode">
+        <![CDATA[
+        update inode_$tableSuffix$ set kiaLabel=#kiaLabel# where ownedBy=#ownedBy# and objectId=#objectId#
+        ]]>
+    </update>
+    
+    
+    <select id="lstContentsNodeByRegionId" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$ where ownedBy=#filter.ownedBy# and type != 0 and status!=4 and status!=1  and resourceGroupId not in (#strResourceGroups#)
+        <dynamic prepend="limit">
+          	<isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+      <update id="replaceObjectForINode" parameterClass="map">
+        <![CDATA[
+        update inode_$filter.tableSuffix$ set objectId=#newObjectId#,resourceGroupId=#filter.resourceGroupId# where ownedBy=#filter.ownedBy# and id = #filter.id# and objectId=#filter.objectId# limit 1
+        ]]>
+    </update>
+   
+   <select id="statisticByResourceGroupId" resultMap="resultMap.INodeStatistic" parameterClass="map">
+		SELECT count(size) as number,SUM(size) as allSize from inode_$filter.tableSuffix$  where type = 1 and status = 0 and resourceGroupId=#resourceGroupId#
+	</select>
+   
+    <!-- 文件智能分类 start -->
+    <select id="getINodeByDoctype" parameterClass="map" resultClass="INode">
+         select t1.*, group_concat(distinct convert(t2.labelId, char) separator ',') as filelabelIds 
+    		from inode_$filter.tableSuffix$ t1 left join filelabel_link_$filter.tableSuffix$ t2 on t1.id = t2.inodeId 
+          where	t1.ownedBy = #filter.ownedBy# 
+            and t1.status = #filter.status# 
+            and t1.type = #filter.type#
+            and t1.doctype = #filter.doctype#
+  
+            <isNotEmpty prepend="and" property="filter.name">
+	           <![CDATA[ 
+	                t1.name like '%$filter.name$%'
+	            ]]>
+	        </isNotEmpty>
+	        
+             <isNotEmpty  prepend=" and " property="labelIds">
+	            	t1.id in (select distinct t3.inodeId from filelabel_link_$filter.tableSuffix$ t3 where t3.labelId in ($labelIds$))
+		     </isNotEmpty>
+		     
+            group by t1.id
+            
+            <dynamic prepend=" order by ">
+				<isNotNull property="orderBy">
+				   		 $orderBy$  
+				</isNotNull>
+			</dynamic>
+			<dynamic prepend=" limit ">
+				<isNotNull property="limit">
+				    #offset#,#limit#
+				</isNotNull>
+			</dynamic>
+    </select>
+    
+    <!-- 文件智能分类返回总数 -->
+    <select id="getINodeByDoctypeCount"  parameterClass="map" resultClass="Integer">
+        select count(*) from inode_$filter.tableSuffix$ 
+          where	ownedBy = #filter.ownedBy# 
+            and status = #filter.status# 
+            and type = #filter.type#
+            and doctype = #filter.doctype# 
+
+            <isNotEmpty prepend="and" property="filter.name">
+	            <![CDATA[ 
+	                 name like '%$filter.name$%'
+	             ]]>
+	       </isNotEmpty>
+	       
+	        <isNotEmpty  prepend=" and " property="labelIds">
+		         id in (select distinct t3.inodeId from filelabel_link_$filter.tableSuffix$ t3 where t3.labelId in ($labelIds$))
+			</isNotEmpty>
+    </select>
+    
+    <select id="getINodeByDoctypeNameCount"  parameterClass="map" resultClass="Integer">
+        select count(*) from inode_$filter.tableSuffix$ 
+          where	ownedBy = #filter.ownedBy# 
+            and status = #filter.status# 
+            and type = #filter.type#
+            
+           <isNotEmpty prepend="and" property="doctype">
+              <![CDATA[ 
+                 name rlike #doctype#
+              ]]>
+            </isNotEmpty>
+
+            <isNotEmpty prepend="and" property="filter.name">
+	            <![CDATA[ 
+	                 name like '%$filter.name$%'
+	             ]]>
+	       </isNotEmpty>
+	       
+	       <isNotEmpty  prepend=" and " property="labelIds">
+		          id in (select distinct t3.inodeId from filelabel_link_$filter.tableSuffix$ t3 where t3.labelId in ($labelIds$))
+			</isNotEmpty>
+    </select>
+    
+    <select id="getINodeByDoctypeName" parameterClass="map" resultClass="INode">
+        select t1.*, group_concat(distinct convert(t2.labelId, char) separator ',') as filelabelIds 
+    		from inode_$filter.tableSuffix$ t1 left join filelabel_link_$filter.tableSuffix$ t2 on t1.id = t2.inodeId 
+          where	ownedBy = #filter.ownedBy# 
+            and status = #filter.status# 
+            and type = #filter.type#
+            
+            <isNotEmpty prepend="and" property="doctype">
+              	<![CDATA[ 
+                    t1.name rlike #doctype# 
+                ]]>
+            </isNotEmpty>
+          
+            <isNotEmpty prepend="and" property="filter.name">
+	            <![CDATA[ 
+	                t1.name like '%$filter.name$%'
+	            ]]>
+	     	</isNotEmpty>
+      
+		    <isNotEmpty  prepend=" and " property="labelIds">
+		        t1.id in (select distinct t3.inodeId from filelabel_link_$filter.tableSuffix$ t3 where t3.labelId in ($labelIds$))
+			</isNotEmpty>
+
+            group by t1.id 
+            
+            <dynamic prepend=" order by ">
+				<isNotNull property="orderBy">
+				   		 $orderBy$  
+				</isNotNull>
+			</dynamic>
+			<dynamic prepend=" limit ">
+				<isNotNull property="limit">
+				    #offset#,#limit#
+				</isNotNull>
+			</dynamic>
+    </select>
+    
+    
+     <select id="listSubOwnerINode" parameterClass="map" resultClass="INode">
+        select * from inode_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy# and type != -3 and type != -2 and type != -4  
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.id">
+                    parentId = #filter.id#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                	<![CDATA[
+                    status = #filter.status#
+                 	]]>   
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by type asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                   	 ,$order.field$  
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    
+    <select id="getSubFolderByName" parameterClass="map" resultClass="INode">
+    
+      select * from inode_$filter.tableSuffix$ where ownedBy=#filter.ownedBy# and name=#name# and type=0 and parentId=#filter.id#
+    
+    </select>
+   
+</sqlMap>
+

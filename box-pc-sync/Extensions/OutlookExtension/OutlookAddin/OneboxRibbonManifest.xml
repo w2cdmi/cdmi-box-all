@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabNewMailMessage">
+        <group id="GroupOnebox" insertAfterMso="GroupNames" label="Onebox">
+          <button id="ButtonAddAttaches" 
+              getKeytip="OnGetKeyTip"
+              getDescription="OnGetDiscription" 
+              getImage="OnLoadImage"
+              size="large" 
+              getLabel="OnGetLable"
+              onAction="OnButtonClicked" 
+              getEnabled="OnGetEnabled"/>
+        <button id="ButtonShowTasks" 
+              getKeytip="OnGetKeyTip" 
+              getDescription="OnGetDiscription" 
+              getImage="OnLoadImage"
+              size="large" 
+              getLabel="OnGetLable"
+              onAction="OnButtonClicked" 
+              getEnabled="OnGetEnabled"/>
+        </group>
+      </tab>
+    </tabs>
+  </ribbon>
+</customUI>

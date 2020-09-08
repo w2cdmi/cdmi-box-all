@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig  PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+         "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+    <settings lazyLoadingEnabled="true" useStatementNamespaces="true" />
+
+    <!-- 使用spring之后，数据源的配置移植到了spring上，所以iBATIS本身的配置可以取消 -->
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/Cluster.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/ClusterHistory.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/ClusterInstance.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/ClusterInstanceHistory.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/Node.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/NodeHistory.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/NodeDisk.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/NodeDiskHistory.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/NodeDiskIO.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/NodeDiskIOHistory.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/ProcessInfo.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/ProcessInfoHistory.xml" />
+	<sqlMap resource="com/huawei/sharedrive/isystem/monitor/domain/SystemClusterInfo.xml" />
+</sqlMapConfig>
+

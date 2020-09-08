@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> has quit group <strong>${groupName}</strong>

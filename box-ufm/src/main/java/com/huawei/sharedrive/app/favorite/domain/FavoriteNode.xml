@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FavoriteNode">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="FavoriteNode" type="com.huawei.sharedrive.app.favorite.domain.FavoriteNode" />
+	
+	<resultMap id="resultMap.FavoriteNode" class="FavoriteNode">
+        <result column="id" 					property="id" 					javaType="java.lang.Long"/>
+        <result column="ownedBy" 				property="ownedBy" 				javaType="java.lang.Long"/>
+        <result column="type" 					property="type" 				javaType="java.lang.Integer"/>
+        <result column="parent" 				property="parent" 				javaType="java.lang.Long"/>
+        <result column="name" 					property="name" 				javaType="java.lang.String"/>
+        <result column="createdAt" 				property="createdAt" 			javaType="java.util.Date"/>
+        <result column="modifiedAt" 			property="modifiedAt" 			javaType="java.util.Date" />
+        <result column="nodeOwnedBy" 			property="node.ownedBy" 		javaType="java.lang.Long" />
+        <result column="nodeId" 				property="node.id" 				javaType="java.lang.Long"/>
+        <result column="nodeType" 				property="node.type" 			javaType="java.lang.Byte"/>
+        <result column="params" 				property="params" 				javaType="java.lang.String"/>
+    </resultMap>
+	
+	<select id="getFilterd" parameterClass="map" resultMap="resultMap.FavoriteNode">
+		select * from inode_favorite
+		<dynamic prepend="where">
+			<isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.ownedBy">
+					ownedBy =
+					#filter.ownedBy#
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="order by type asc">
+			<isNotNull property="order">
+				<isNotEmpty property="order.field">
+					,$order.field$
+					<isEqual property="order.desc" compareValue="true">
+						desc
+					</isEqual>
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				#limit.offset#,#limit.length#
+			</isNotNull>
+		</dynamic>
+	</select>
+	<select id="getFavoriteNodeBy" parameterClass="FavoriteNode"	resultMap="resultMap.FavoriteNode">
+		select * from inode_favorite
+		<dynamic prepend="where">
+			<isNotNull property="id">
+				<isNotEmpty prepend="and" property="id">
+					id = #id#
+				</isNotEmpty>
+			</isNotNull>
+			<isNotNull property="ownedBy">
+				<isNotEmpty prepend="and" property="ownedBy">
+					ownedBy = #ownedBy#
+				</isNotEmpty>
+			</isNotNull>
+			<isNotNull property="parent">
+				<isNotEmpty prepend="and" property="parent">
+					parent = #parent#
+				</isNotEmpty>
+			</isNotNull>
+			<isNotNull property="node.ownedBy">
+				<isNotEmpty prepend="and" property="node.ownedBy">
+					nodeOwnedBy = #node.ownedBy#
+				</isNotEmpty>
+			</isNotNull>
+			<isNotNull property="node.id">
+				<isNotEmpty prepend="and" property="node.id">
+					nodeId = #node.id#
+				</isNotEmpty>
+			</isNotNull>
+			<isNotNull property="name">
+				<isNotEmpty prepend="and" property="name">
+					name = #name#
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<select id="getbyparent" parameterClass="map" resultMap="resultMap.FavoriteNode">
+		select * from inode_favorite
+		<dynamic prepend="where">
+			<isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.ownedBy">
+					ownedBy = 
+					#filter.ownedBy# 
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.id">
+					 parent = #filter.id# 
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.name">
+					 name like 
+					 concat('%',#filter.name#,'%') 
+			</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="order by ">
+			<isNotNull property="orderBy">
+				$orderBy$
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				#limit.offset#,#limit.length#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+
+	<select id="get" resultMap="resultMap.FavoriteNode" parameterClass="FavoriteNode">
+        <![CDATA[
+        select * from inode_favorite where id=#id# and ownedBy=#ownedBy#
+        ]]>
+	</select>
+	
+	<select id="getById" resultMap="resultMap.FavoriteNode" parameterClass="FavoriteNode">
+        <![CDATA[
+        select * from inode_favorite where ownedBy=#ownedBy# and  id=#id#
+        ]]>
+	</select>
+
+	<select id="getMaxId" resultClass="java.lang.Long" parameterClass="FavoriteNode">
+        <![CDATA[
+        select max(id) from inode_favorite where ownedBy=#ownedBy#
+        ]]>
+	</select>
+	
+	<select id="check" resultClass="java.lang.Long" parameterClass="FavoriteNode">
+        <![CDATA[
+        select id from inode_favorite where ownedBy=#ownedBy# and  id=#id#
+        ]]>
+	</select>
+
+
+	<select id="getSubCount" resultClass="Integer" parameterClass="FavoriteNode">
+		select count(*) from inode_favorite 
+		<dynamic prepend="where">
+			<isNotNull property="id">
+				<isNotEmpty prepend="and" property="id">
+					 parent = #id# 
+				</isNotEmpty>
+			</isNotNull>
+			<isNotNull property="ownedBy">
+				<isNotEmpty prepend="and" property="ownedBy">
+					 ownedBy = #ownedBy# 
+				</isNotEmpty>
+			</isNotNull>
+			<isNotNull property="name">
+				<isNotEmpty prepend="and" property="name">
+					 name like 
+					 concat('%',#name#,'%')
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+	</select>
+
+
+
+	<insert id="insert" parameterClass="FavoriteNode">
+        <![CDATA[
+        insert into inode_favorite(id,ownedBy,type,parent,name,createdAt,nodeOwnedBy,nodeId,nodeType,params,modifiedAt) 
+        values 
+        (#id#,#ownedBy#,#type#,#parent#,#name#,#createdAt#,#node.ownedBy#,#node.id#,#node.type#,#params#,#modifiedAt#)
+        ]]>
+	</insert>
+
+	<update id="update" parameterClass="FavoriteNode">
+        <![CDATA[
+     	update inode_favorite set  type=#type#,parent=#parent#,name=#name#,nodeOwnedBy=#node.ownedBy#,nodeId=#node.id#,nodeType=#node.type#,params=#params#,modifiedAt=#modifiedAt#
+        where ownedBy=#ownedBy# and  id=#id#
+        ]]>
+	</update>
+
+	<delete id="delete" parameterClass="FavoriteNode">
+        <![CDATA[
+        delete from inode_favorite where  ownedBy=#ownedBy# and  id=#id#
+        ]]>
+	</delete>
+
+</sqlMap>
+

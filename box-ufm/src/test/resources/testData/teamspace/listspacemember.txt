@@ -1,0 +1,213 @@
+@@normal
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"t"
+}
+@@normalordertime
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"createdAt",  
+            "direction":"ASC"  
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"t"  
+}
+
+@@normalorderusername
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"userName",  
+            "direction":"ASC"  
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"t"  
+}
+
+@@invalidlimit
+{  
+    "limit":-1001,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"t"  
+}
+@@invalidoffset
+{  
+    "limit":1000,  
+    "offset":-1,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"t"  
+}
+
+@@nolimit
+{    
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"t"  
+}
+@@nooffset
+{  
+    "limit":100, 
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"t"  
+}
+@@invalidorderfield
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"dddd",  
+            "direction":"ASC"  
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"t"  
+}
+@@invalidorderdirect
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"sss"  
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"t"  
+}
+@@noorder
+{  
+    "limit":100,  
+    "offset":0,
+    "teamRole":"admin",
+    "keyword":"t"
+}
+@@noorderfield
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "direction":"ASC"  
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"t"  
+}
+
+@@noorderdirect
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole" 
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"t"  
+}
+
+@@noTeamRole
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole" 
+        }  
+    ],
+    "keyword":"t"  
+}
+@@invalidTeamRole
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole" 
+        }  
+    ],
+    "teamRole":"ddddd",
+    "keyword":"t"  
+}
+
+@@nokeyword
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole" 
+        }  
+    ],
+    "teamRole":"admin"
+}
+@@invalidkeyword
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole" 
+        }  
+    ],
+    "teamRole":"admin",
+    "keyword":"ggggg"  
+}

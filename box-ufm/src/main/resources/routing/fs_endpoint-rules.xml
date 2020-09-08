@@ -1,0 +1,7 @@
+<rules>
+    <rule>
+        <namespace>FsEndpoint</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+</rules>

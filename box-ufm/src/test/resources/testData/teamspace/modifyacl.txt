@@ -1,0 +1,20 @@
+@@normal
+{ 
+    "role":"editor" 
+}
+
+@@repeat
+{ 
+    "role":"editor" 
+}
+
+@@norole
+{ 
+}
+
+
+@@invalidrole
+{ 
+   "role":"eeeeeeeee" 
+}
+

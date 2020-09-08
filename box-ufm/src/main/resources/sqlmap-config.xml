@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig  PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+         "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+    <settings lazyLoadingEnabled="true" useStatementNamespaces="true" />
+
+    <!-- 使用spring之后，数据源的配置移植到了spring上，所以iBATIS本身的配置可以取消 -->
+    <sqlMap resource="pw/cdmi/common/domain/SystemConfig.xml" />
+    <sqlMap resource="pw/cdmi/common/domain/CustomizeLogo.xml" />
+    <sqlMap resource="pw/cdmi/common/domain/AccessNetwork.xml" />
+    <sqlMap resource="pw/cdmi/common/domain/ClientManage.xml" />
+    
+    <sqlMap resource="com/huawei/sharedrive/app/core/domain/SystemLock.xml" />
+    <sqlMap resource="pw/cdmi/common/job/manage/dao/systemjob-sql.xml" />
+    
+    <sqlMap resource="com/huawei/sharedrive/app/system/domain/RegistApp.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/authapp/domain/AuthApp.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/authapp/domain/AppAccessKey.xml" />
+    
+    <sqlMap resource="com/huawei/sharedrive/app/dataserver/domain/Region.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/dataserver/domain/NetSegment.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/dataserver/domain/DataCenter.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/dataserver/domain/ResourceGroup.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/dataserver/domain/ResourceGroupNode.xml" />
+    
+    <sqlMap resource="com/huawei/sharedrive/app/oauth2/domain/AuthToken.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/oauth2/domain/AuthCode.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/oauth2/domain/AuthClient.xml" />
+    
+    <sqlMap resource="com/huawei/sharedrive/app/user/domain/User.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/user/domain/UserReverse.xml" />
+    
+    <sqlMap resource="com/huawei/sharedrive/app/files/domain/INode.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/files/domain/ObjectReference.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/files/domain/ObjectFingerprintIndex.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/files/domain/ObjectSecretLevel.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/files/domain/WaitingDeleteObject.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/files/domain/INodeDelete.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/files/domain/RecentBrowse.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/files/domain/Shortcut.xml" />
+    
+    <sqlMap resource="com/huawei/sharedrive/app/share/domain/INodeLink.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/share/domain/INodeShareMapper.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/share/domain/INodeShareReverseMapper.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/share/domain/INodeShareDeleteMapper.xml" />
+    <sqlMap resource="com/huawei/sharedrive/app/share/domain/INodeShareDeleteReverseMapper.xml" />
+	
+	<sqlMap resource="com/huawei/sharedrive/app/teamspace/domain/TeamRole.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/teamspace/domain/TeamSpace.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/teamspace/domain/TeamSpaceMemberships.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/acl/domain/INodeACL.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/acl/domain/ResourceRole.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/log/domain/UserLog.xml" />
+	
+	<sqlMap resource="com/huawei/sharedrive/app/common/systemtask/domain/SystemTask.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/common/systemtask/domain/UserdbInfo.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/system/dao/impl/LicenseFileMapper.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/system/dao/impl/LicenseNodeMapper.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/group/domain/Group.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/group/domain/GroupMemberships.xml"/>
+	
+	<sqlMap resource="com/huawei/sharedrive/app/dns/domain/DssDomain.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/favorite/domain/FavoriteNode.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/files/domain/MailMsg.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/account/domain/Account.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/account/domain/AccountAccessKey.xml"/>
+	
+	<sqlMap resource="com/huawei/sharedrive/app/message/domain/Message.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/user/domain/UserConfig.xml"/>
+	
+	<sqlMap resource="pw/cdmi/common/slavedb/domain/DatabaseAddr.xml"/>
+	
+	<sqlMap resource="com/huawei/sharedrive/app/plugins/cluster/domain/PluginServiceCluster.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/plugins/cluster/domain/PluginServiceInstance.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/plugins/cluster/domain/PluginServiceRouter.xml"/>
+	
+	<sqlMap resource="com/huawei/sharedrive/app/plugins/preview/domain/PreviewObject.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/plugins/preview/domain/AccountWatermark.xml"/>
+	
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/domain/CopyTask.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/domain/CopyPolicy.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/domain/CopyPolicySiteInfo.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/domain/ObjectMirrorShip.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/domain/MirrorObject.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/domain/CopyPolicyUserConfig.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/domain/UserMirrorStatisticInfo.xml"/>
+	
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/domain/TableScanBreakInfo.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/domain/TimeConfig.xml" />
+	
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/appdatamigration/domain/MigrationProcessInfo.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/appdatamigration/domain/MigrationEverydayProcess.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/appdatamigration/domain/NeverCopyContent.xml"/>
+	
+	
+	<sqlMap resource="com/huawei/sharedrive/app/statistics/domain/UserStatisticsDay.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/statistics/domain/TempUserNodeStatistics.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/statistics/domain/NodeStatisticsDay.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/statistics/domain/ObjectStatisticsDay.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/statistics/domain/TempObjectStatisticsDay.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/statistics/domain/SysConcStatisticsDay.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/statistics/domain/TempConcStatistics.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/statistics/domain/StatisticsAccessKey.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/plugins/scan/domain/SecurityScanTask.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/share/domain/INodeLinkReverse.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/share/domain/INodeLinkApprove.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/share/domain/LinkApproveUser.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/share/domain/INodeLinkApproveRecord.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/share/domain/INodeLinkDynamic.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/dataserver/domain/RegionNetworkDistance.xml" />
+
+	
+	<sqlMap resource="pw/cdmi/common/monitor/domain/ServiceNode.xml" />
+	
+	<sqlMap resource="com/huawei/sharedrive/app/spacestatistics/domain/FilesAdd.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/spacestatistics/domain/FilesDelete.xml" /> 
+	<sqlMap resource="com/huawei/sharedrive/app/spacestatistics/domain/TemporaryUserInfo.xml" /> 
+	<sqlMap resource="com/huawei/sharedrive/app/spacestatistics/domain/ClearRecycleBinRecord.xml" /> 
+	<sqlMap resource="com/huawei/sharedrive/app/mirror/datamigration/domain/UserDataMigrationTask.xml" /> 
+	<sqlMap resource="pw/cdmi/box/ufm/tools/domain/DocUserConfig.xml" /> 
+	<sqlMap resource="pw/cdmi/box/app/convertservice/domain/TaskBean.xml" /> 
+	<sqlMap resource="pw/cdmi/box/app/convertservice/domain/ImageObject.xml" /> 
+	<sqlMap resource="pw/cdmi/box/app/teamspaceattribute/domain/TeamSpaceAttribute.xml" />
+	<sqlMap resource="com/huawei/sharedrive/app/filelabel/domain/FileLabel.xml" />
+</sqlMapConfig>
+

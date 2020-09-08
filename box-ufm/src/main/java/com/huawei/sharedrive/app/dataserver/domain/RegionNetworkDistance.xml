@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RegionNetworkDistance">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="RegionNetworkDistance" type="com.huawei.sharedrive.app.dataserver.domain.RegionNetworkDistance" />
+
+	<resultMap id="resultMap.RegionNetworkDistance" class="RegionNetworkDistance">
+        <result column="name"					property="name" 				javaType="java.lang.String"/>
+        <result column="srcRegionId"			property="srcRegionId" 			javaType="java.lang.Integer"/>
+        <result column="srcResourceGroupId"		property="srcResourceGroupId" 	javaType="java.lang.Integer"/>
+        <result column="destRegionId"			property="destRegionId" 		javaType="java.lang.Integer"/>
+        <result column="destResourceGroupId"	property="destResourceGroupId" 	javaType="java.lang.Integer"/>
+        <result column="value"					property="value" 				javaType="java.lang.Integer"/>
+    </resultMap>
+    
+    <select id="getAll" resultMap="resultMap.RegionNetworkDistance">
+        select * from region_network_distance order by name
+    </select>
+
+    <select id="get" resultMap="resultMap.RegionNetworkDistance" parameterClass="String">
+        select * from region_network_distance where id=#value#
+    </select>
+    
+    <select id="getByRegion" resultMap="resultMap.RegionNetworkDistance" parameterClass="RegionNetworkDistance">
+        select * from region_network_distance where srcRegionId=#srcRegionId# and srcResourceGroupId=#srcResourceGroupId# and destRegionId=#destRegionId#
+    </select>
+    
+   
+    <insert id="insert" parameterClass="RegionNetworkDistance">
+        insert into region_network_distance(name,srcRegionId,srcResourceGroupId,destRegionId,destResourceGroupId,value) values(#name#,#srcRegionId#,#srcResourceGroupId#,#destRegionId#,#destResourceGroupId#,#value#)
+    </insert>
+
+    <update id="update" parameterClass="RegionNetworkDistance">
+        update region_network_distance set srcRegionId=#srcRegionId#,srcResourceGroupId=#srcResourceGroupId#,destRegionId=#destRegionId#,destResourceGroupId=#destResourceGroupId#,value=#value# where name=#name#
+    </update>
+
+    <delete id="delete" parameterClass="String">
+        delete from region_network_distance where name=#value#
+    </delete>
+</sqlMap>
+

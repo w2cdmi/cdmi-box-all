@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PaymentInfo">
+
+<typeAlias alias="PaymentInfo" type="com.huawei.sharedrive.uam.product.domain.PaymentInfo" />
+	<insert id="create" parameterClass="PaymentInfo" >
+     <![CDATA[
+     INSERT INTO `payment_info` (`orderId`, `payAccount`, `payAmout`, `payDate`, `remark`, `type`) 
+                        VALUES (#orderId#, #payAccount#, #payAmout#, #payDate#, #remark#, #type#)
+        ]]>
+   </insert>
+   <select id="get" parameterClass="long" resultClass="PaymentInfo" >
+     <![CDATA[
+     select * from payment_info where orderId=#orderId#
+     ]]>
+   </select>
+</sqlMap>

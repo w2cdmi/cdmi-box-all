@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EnterpriseUserDept">
+    <typeAlias alias="EnterpriseUserDept" type="com.huawei.sharedrive.uam.organization.domain.EnterpriseUserDept" />
+    
+    <insert id="create" parameterClass="EnterpriseUserDept">
+      INSERT INTO `user_department` ( `enterpriseUserId`, `enterpriseId`, `departmentId`) VALUES (#enterpriseUserId#, #enterpriseId#, #departmentId#)
+    </insert>
+    
+    <select id="getByEnterpriseIdAndDeptId" parameterClass="long" resultClass="EnterpriseUserDept">
+       select * from user_department where enterpriseUserId=#enterpriseUserId# and departmentId=#departmentId#
+    </select>
+
+    <select id="getByEnterpriseIdAndUserId" resultClass="EnterpriseUserDept" parameterClass="EnterpriseUserDept">
+       select * from user_department where enterpriseUserId=#enterpriseUserId# and enterpriseId=#enterpriseId#
+    </select>
+
+    <select id="get"  resultClass="EnterpriseUserDept" parameterClass="EnterpriseUserDept">
+      select * from user_department
+      <dynamic prepend="where">
+          <isNotNull prepend="and" property="enterpriseUserId">
+              enterpriseUserId=#enterpriseUserId#
+          </isNotNull>
+          <isNotNull prepend="and" property="departmentId">
+              departmentId=#departmentId#
+          </isNotNull>
+          <isNotNull prepend="and" property="enterpriseId">
+              enterpriseId=#enterpriseId#
+          </isNotNull>
+      </dynamic>
+    </select>
+
+    <delete id="delete" parameterClass="EnterpriseUserDept">
+      delete from user_department 
+	    <dynamic prepend="where">
+            <isNotNull prepend="and" property="enterpriseUserId">
+                enterpriseUserId=#enterpriseUserId#
+            </isNotNull>
+            <isNotNull prepend="and" property="departmentId">
+                departmentId=#departmentId#
+            </isNotNull>
+            <isNotNull prepend="and" property="enterpriseId">
+                enterpriseId=#enterpriseId#
+            </isNotNull>
+	      </dynamic>
+    </delete>
+
+    <delete id="deleteNonexistentDept" parameterClass="EnterpriseUserDept">
+      delete from user_department where departmentId not in (SELECT departmentId from department where enterpriseId=#enterpriseId#) and enterpriseId=#enterpriseId#
+        <dynamic>
+            <isNotNull prepend="and" property="enterpriseUserId">
+                enterpriseUserId=#enterpriseUserId#
+            </isNotNull>
+        </dynamic>
+    </delete>
+
+    <insert id="createRootDeptForNonexistentDept" parameterClass="EnterpriseUserDept">
+        INSERT INTO `user_department` (`enterpriseId`, `enterpriseUserId`, `departmentId`)
+            SELECT #enterpriseId#,#enterpriseUserId#,0 FROM dual WHERE NOT EXISTS (SELECT * FROM user_department WHERE enterpriseUserId=#enterpriseUserId# and enterpriseId=#enterpriseId#);
+    </insert>
+
+    <update id="update" parameterClass="EnterpriseUserDept">
+        UPDATE  user_department SET  departmentId=#departmentId# WHERE  enterpriseUserId=#enterpriseUserId# and   enterpriseId=#enterpriseId# and departmentId=#srcDeptId#
+
+    </update>
+
+
+</sqlMap>
+

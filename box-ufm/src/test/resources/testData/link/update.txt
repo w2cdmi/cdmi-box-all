@@ -1,0 +1,28 @@
+@@normal
+{ 
+ "plainAccessCode":"qww44@33d", 
+ "effectiveAt":1391845293374, 
+ "expireAt":1441845193374
+} 
+
+@@onlyEffectiveAt
+{
+"effectiveAt":1491845293374
+}
+
+@@onlyPlainAccessCode
+{
+"plainAccessCode":"qww44@33dsd"
+}
+
+@@onlyExpireAt
+{
+"expireAt":1441845193374
+}
+
+@@effctiveAtNegative
+{ 
+ "plainAccessCode":"qww44@33d", 
+ "effectiveAt":-1391845293374, 
+ "expireAt":1441845193374
+} 

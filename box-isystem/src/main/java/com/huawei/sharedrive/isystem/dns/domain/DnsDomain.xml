@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DnsDomain">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="DnsDomain"
+		type="com.huawei.sharedrive.isystem.dns.domain.DnsDomain" />
+
+	<resultMap id="resultMap.DnsDomain" class="DnsDomain">
+		<result column="domainName" property="domainName" javaType="java.lang.String" />
+		<result column="dnsServer_Id" property="dnsServerId" javaType="java.lang.Integer" />
+	</resultMap>
+
+    
+    <delete id="delete" parameterClass="String">
+		delete from dns_domain where domainName=#value#
+	</delete>
+	<select id="select" parameterClass="String" resultMap="resultMap.DnsDomain">
+		select * from dns_domain where domainName=#value#
+	</select>
+	
+    <insert id="insert" parameterClass="DnsDomain">
+        insert into dns_domain(domainName,dnsServer_Id) values(#domainName#, #dnsServerId#)
+    </insert>
+</sqlMap>
+

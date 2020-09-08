@@ -1,0 +1,22 @@
+<!--新增文件弹出框  -->
+<view class="modal-mask" wx:if="{{showPopup}}"></view>
+<view class="modal-dialog" wx:if="{{showPopup && showInputModal}}">
+    <view class="modal-title">{{title}}</view>
+    <view class="modal-content">
+        <view class="modal-input">
+            <input placeholder-class="input-holder" maxlength="255" bindinput="inputChange" class="input" value='{{folderName}}' focus='true' placeholder="{{placeholderText}}"></input>
+        </view>
+    </view>
+    <view class="modal-footer">
+        <view class="btn-cancel" bindtap='_onCreateFolderCancel'>{{createCancel}}</view>
+        <view class="btn-confirm" bindtap="_onCreateFolderConfirm">{{createConfirm}}</view>
+    </view>
+</view>
+
+<!--创建文件夹失败的弹出框，文本提示  -->
+<view class="modal-dialog" wx:if="{{showPopup && showErrorModal}}">
+    <view class="modal-error-text">
+        {{createFailText}}
+    </view>
+    <view class="btn-iKnow" catchtap="_onCreateFolderFail">{{createFailTextBtn}}</view>
+</view>

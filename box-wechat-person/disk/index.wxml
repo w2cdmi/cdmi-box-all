@@ -1,0 +1,158 @@
+<import src="/disk/template/fileList.wxml" />
+<view class="main">
+
+    <!--备份中  -->
+    <view class='weixinBackups flex-item' bindtap='goToBackupsing' wx:if="{{isBackupsing}}">
+        <view class='flex-item'>
+            <image src='{{avatarUrl}}' class='weixin-image'></image>
+            <view class='weixin-text'>微信备份中...</view>
+        </view>
+        <view class='flex-item'>
+            <view class='weixin-text'>查看详情</view>
+            <view><image src='/disk/images/arrow.png' class='arrow-image'></image></view>
+        </view>
+    </view>
+
+    <!--未备份  -->
+    <view class='weixinBackups flex-item' bindtap='goToBackups' wx:if="{{!isBackupsing}}">
+        <view class='flex-item'>
+            <image src='/disk/images/index/weixinBackups.png' class='weixin-image'></image>
+            <view class='weixin-text'>开启你的微信备份</view>
+        </view>
+        <view class='flex-item'>
+            <view class='weixin-text'>立即开启</view>
+            <view><image src='/disk/images/arrow.png' class='arrow-image'></image></view>
+        </view>
+    </view>
+    
+    <!-- 音乐播放状态 -->
+    <view class='weixinBackups flex-item' bindtap='goToPlayMusic' wx:if="{{isShowMusicPlay}}">
+        <view class='flex-item'>
+            <view class='view-image'><image src='/disk/images/index/music-play.png' class='music-play-icon'></image></view>
+            <view class='weixin-text'>正在播放</view>
+            <view class='weixin-text music-name'>{{musicName}}</view>
+        </view>
+        <view class='flex-item'>
+            <image src='/disk/images/arrow.png' class='arrow-image'></image>
+        </view>
+    </view>
+
+    <view class='tip_container' wx:if="{{commonsCount>0 ? true : false }}">
+        <view class='tip_view' catchtap="navigateToComms">
+            <image class='tip_img' src='{{userAvatarUrl}}'></image>
+            <text class='tip_txt' decode='{{true}}'>{{commonsCount}} 条信息</text>
+            <image src='/disk/images/arrow2.png' class="image-icon"></image>
+        </view>
+    </view>
+
+    <scroll-view style='height:100%;'>
+        <view class='file-item'>
+            <view class='file-panel-title' bindtap="{{recentBrowseData.length == 3?'gotoRecentBrowse':''}}">
+                <view>
+                    <image src='/disk/images/index/recentlyViewed.png' class='recentlyViewed-image'></image>
+                    <text class='title-text'>最近浏览</text>
+                </view>
+                <view wx:if="{{recentBrowseData.length == 3 ? true : false}}">
+                    <image src='/disk/images/arrow.png' class='arrow-image'></image>
+                </view>
+            </view>
+            <view class='blankContainer' wx:if="{{!recentBrowseData || recentBrowseData.length == 0}}">
+                <image src='./images/blank/not-document-bg.png' class='blank-icon'></image>
+                <view class='blank-text'>暂无最近浏览文件</view>
+            </view>
+            <view wx:for="{{recentBrowseData}}" wx:key="*this" bindtouchstart="touchstart" class="folderList {{isTouchMoveIndex===index?'touch-moveToLeft-active':'touch-moveToRight-active'}}">
+
+                <view class="file-group border-bottom view-bg" data-file-info="{{item}}" data-index='{{index}}' bindtouchend="touchend">
+                    <view>
+                        <image class="img-icon" mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src='{{item.icon}}'></image>
+                    </view>
+                    <view class='file-info cell_2_body_content'>
+                        <label>{{item.name}}</label>
+                        <text>
+                    <block wx:if="{{item.fileSize}}">{{item.fileSize}}</block>
+                    <block wx:if="{{item.ownerName}}">{{item.ownerName}}</block> | {{item.modifiedTime}}</text>
+                    </view>
+                </view>
+                <view class="del" catchtap="deleteItem" data-file-info='{{item}}' data-index="{{index}}">删除</view>
+            </view>
+        </view>
+    </scroll-view>
+
+    <scroll-view style='height:100%;'>
+        <view class='file-item'>
+            <view class='file-panel-title' bindtap="{{shareToMeData.length == 3?'gotoShareToMe':''}}">
+                <view>
+                    <image src='/disk/images/index/shareToMe.png' class='recentlyViewed-image'></image>
+                    <text class='title-text'>他人分享</text>
+                </view>
+                <view wx:if="{{shareToMeData.length == 3 ? true : false}}">
+                    <image src='/disk/images/arrow.png' class='arrow-image'></image>
+                </view>
+            </view>
+            <view class='blankContainer' wx:if="{{!shareToMeData || shareToMeData.length == 0}}">
+                <image src='./images/file-black.png' class='blank-icon'></image>
+                <view class='blank-text'>暂无他人分享的文件</view>
+            </view>
+            <view wx:for="{{shareToMeData}}" wx:key="*this" bindtouchstart="touchstart" class="folderList {{isTouchMoveIndex===(3 + index)?'touch-moveToLeft-active':'touch-moveToRight-active'}}">
+                <view class="file-group border-bottom flex-item view-bg">
+                    <view class='flex-item' data-file-info="{{item}}" data-index='{{3 + index}}' bindtouchend="touchend">
+                        <view>
+                            <image class="img-icon" mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src='{{item.icon}}'></image>
+                        </view>
+                        <view class='file-info cell_2_body_content'>
+                            <label>{{item.name}}</label>
+                            <text>
+                            <block wx:if="{{item.fileSize}}">{{item.fileSize}}</block>
+                            <block wx:if="{{item.ownerName}}">{{item.ownerName}}</block> | {{item.modifiedTime}}</text>
+                        </view>
+                    </view>
+                    <button class='clear-button-style button-size' data-file-info='{{item}}' catchtap="onShareButtonClick" open-type="share">
+                        <image style='float:none;' src="images/share-disable.png" />
+                    </button>
+                </view>
+                <view class="del" catchtap="deleteItem" data-file-info='{{item}}' data-index="{{3 + index}}">删除</view>
+            </view>
+        </view>
+    </scroll-view>
+
+    <scroll-view style='height:100%;'>
+        <view class='file-item'>
+            <view class='file-panel-title' bindtap="{{shareByMeData.length==3?'gotoShareByMe':''}}">
+                <view>
+                    <image src='/disk/images/index/shareByMe.png' class='recentlyViewed-image'></image>
+                    <text class='title-text'>我的分享</text>
+                </view>
+                <view wx:if="{{shareByMeData.length==3 ? true : false}}">
+                    <image src='/disk/images/arrow.png' class='arrow-image'></image>
+                </view>
+            </view>
+            <view class='blankContainer' wx:if="{{!shareByMeData || shareByMeData.length == 0}}">
+                <image src='./images/file-black.png' class='blank-icon'></image>
+                <view class='blank-text'>暂无我分享的文件</view>
+            </view>
+            <view wx:for="{{shareByMeData}}" bindtouchstart="touchstart" wx:key="*this" class="folderList {{isTouchMoveIndex===(6 + index)?'touch-moveToLeft-active':'touch-moveToRight-active'}}">
+
+                <view class="file-group border-bottom flex-item view-bg">
+                    <view class='flex-item' data-file-info="{{item}}" data-index='{{6 + index}}' bindtouchend="touchend">
+                        <view>
+                            <image class="img-icon" mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src='{{item.icon}}'></image>
+                        </view>
+                        <view class='file-info cell_2_body_content'>
+                            <label>{{item.name}}</label>
+                            <text>
+                        <block wx:if="{{item.fileSize}}">{{item.fileSize}}</block>
+                        <block wx:if="{{item.ownerName}}">{{item.ownerName}}</block> | {{item.modifiedTime}}</text>
+                        </view>
+                    </view>
+                    <button class='clear-button-style button-size' data-file-info='{{item}}' catchtap="onShareButtonClick" open-type="share">
+                        <image style='float:none;' src="images/share-disable.png" />
+                    </button>
+                </view>
+                <view class="del" catchtap="deleteItem" data-file-info='{{item}}' data-index="{{6 + index}}">删除</view>
+            </view>
+        </view>
+    </scroll-view>
+
+    <tabbar selectIndex="0" mCount="{{mCount}}" bind:onShowMenu="onShowMenu"></tabbar>
+    <menu isShowMenu='{{isShowMenu}}' bind:onUploadImage="onUploadImage" bind:onUploadVideo="onUploadVideo" bind:showCreateFolder="showCreateFolder"></menu>
+</view>

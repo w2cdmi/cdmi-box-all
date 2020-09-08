@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CopyTask">
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CopyTask" type="pw.cdmi.file.engine.mirro.domain.CopyTask" />
+	<typeAlias alias="CopyTaskRunInfo" type="pw.cdmi.file.engine.mirro.domain.CopyTaskRunInfo" />
+	<resultMap id="resultMap.CopyTask" class="CopyTask">
+		<result column="taskId" property="taskId" javaType="java.lang.String" />
+		<result column="srcObjectId" property="srcObjectId" javaType="java.lang.String" />
+		<result column="destObjectId" property="destObjectId" javaType="java.lang.String" />
+		<result column="size" property="size" javaType="java.lang.Long" />
+		<result column="copyStatus" property="copyStatus" javaType="java.lang.Integer" />
+		<result column="remark" property="remark" javaType="java.lang.String" />
+		<result column="createdAt" property="createdAt" />
+		<result column="modifiedAt" property="modifiedAt" />
+		<result column="exeAgent" property="exeAgent" javaType="java.lang.String" />
+		<result column="priority" property="priority" javaType="java.lang.Integer" />
+		<result column="retryNum" property="retryNum" javaType="java.lang.Integer" />
+		<result column="md5" property="md5" javaType="java.lang.String" />
+		<result column="blockMD5" property="blockMD5" javaType="java.lang.String" />
+		<result column="errorCode" property="errorCode" javaType="java.lang.Integer" />
+	</resultMap>
+	<resultMap id="resultMap.CopyTaskRunInfo" class="CopyTaskRunInfo">
+		<result column="exeAgent" property="exeAgent" javaType="java.lang.String" />
+		<result column="copystatus" property="copystatus" javaType="java.lang.Integer" />
+		<result column="taskNum" property="taskNum" javaType="java.lang.Integer" />
+		<result column="addNum" property="addNum" javaType="java.lang.Integer" /> 
+	</resultMap>
+
+	<insert id="batchInsertOrReplace" parameterClass="java.util.List">   
+		    <![CDATA[  
+		        replace into copy_task(taskId,srcObjectId,destObjectId,size,createdAt,modifiedAt,priority) values  
+		    ]]>
+		<iterate conjunction=",">
+	        <![CDATA[  
+	            (#task[].taskId#,#task[].srcObjectId#,#task[].destObjectId#,#task[].size#,#task[].createdAt#,now(),#task[].priority#)
+	        ]]>
+		</iterate>
+	</insert>
+	
+	
+	<insert id="batchInsertOrReplaceWithExeAgent" parameterClass="java.util.List">   
+		    <![CDATA[  
+		        insert into copy_task(taskId,srcObjectId,destObjectId,size,createdAt,modifiedAt,priority,exeAgent) values  
+		    ]]>
+		<iterate conjunction=",">
+	        <![CDATA[  
+	            (#task[].taskId#,#task[].srcObjectId#,#task[].destObjectId#,#task[].size#,#task[].createdAt#,now(),#task[].priority#,#task[].exeAgent#)
+	        ]]>
+		</iterate>
+		on duplicate key update exeAgent=values(exeAgent)
+	</insert>
+
+	<select id="queryWaitCopyTasks" parameterClass="java.lang.String" resultMap="resultMap.CopyTask">
+        <![CDATA[
+        select * from copy_task where retryNum < 10 and (copyStatus = 0 or copyStatus is null or (copyStatus =3 and DATE_ADD(modifiedAt,INTERVAL 30 MINUTE)<now()))  and exeAgent=#exeAgent# order by priority desc,createdAt limit 200
+		]]>
+	</select>
+
+	<select id="queryWaitCallbackTasks" parameterClass="java.lang.String" resultMap="resultMap.CopyTask">
+        <![CDATA[
+        select * from copy_task where retryNum < 10 and exeAgent=#exeAgent# and ((copyStatus =2 and errorCode in (200,404) ) or (copyStatus=9 and DATE_ADD(modifiedAt,INTERVAL 5 MINUTE)<now())) order by priority desc, modifiedAt limit 200
+		]]>
+	</select>
+
+	<select id="queryCallBack700Task" parameterClass="java.lang.String" resultMap="resultMap.CopyTask">
+        <![CDATA[
+        select * from copy_task where copyStatus=700 and exeAgent=#exeAgent# order by priority desc, modifiedAt limit 200
+		]]>
+	</select>
+
+	<update id="updateTaskStatus" parameterClass="CopyTask">
+		<![CDATA[
+			update copy_task set modifiedAt =now(),copyStatus=#copyStatus#,remark=#remark#,retryNum=#retryNum#,md5= #md5#,blockMD5=#blockMD5#,errorCode=#errorCode# where taskId=#taskId# and exeAgent = #exeAgent#
+		]]>
+	</update>
+
+	<update id="lockTaskStatus" parameterClass="CopyTask">
+		<![CDATA[
+			update copy_task set modifiedAt =now(),copyStatus=#copyStatus#,exeAgent = #exeAgent# where taskId=#taskId#
+		]]>
+	</update>
+	
+	<update id="unLockTaskStatus" parameterClass="CopyTask">
+		<![CDATA[
+			update copy_task set modifiedAt =now(),copyStatus=#copyStatus#,exeAgent = null where taskId=#taskId#
+		]]>
+	</update>
+
+	<!-- 当超过24小时还在running状态则再启动任务 -->
+	<update id="updateCrashTaskStatus" parameterClass="java.lang.String">
+		<![CDATA[
+			update copy_task set copyStatus=3,modifiedAt =now() where copyStatus = 1 and DATE_ADD(modifiedAt,INTERVAL 4 HOUR) < now() and exeAgent = #exeAgent#
+		]]>
+	</update>
+	
+	<!-- 当集群中其他的兄弟节点的数据长时间没有更新了，则认为此集群已经死掉。默认时间为4小时，不允许葬读 -->
+	<update id="updateBrotherTaskStatus" parameterClass="java.lang.String">
+		<![CDATA[
+			update copy_task set exeAgent = #exeAgent#,modifiedAt =now() where DATE_ADD(modifiedAt,INTERVAL 4 HOUR) < now() and exeAgent != #exeAgent# limit 100
+		]]>
+	</update>
+	
+	<!-- 删除已经成功的数据 -->
+	<delete id="deleteSucessHistoryTask" parameterClass="java.lang.String">
+		<![CDATA[
+			delete from copy_task where copyStatus = 8 and exeAgent = #exeAgent#
+		]]>
+	</delete>
+	
+	<delete id="deleteCallback700Task" parameterClass="CopyTask">
+		<![CDATA[
+			delete from copy_task where  taskId=#taskId# and copyStatus=700 and exeAgent = #exeAgent#
+		]]>
+	</delete>
+
+	<update id="updateMD5ByObjectId" parameterClass="CopyTask">
+		<![CDATA[
+			update copy_task set md5= #md5#,blockMD5=#blockMD5#,modifiedAt =now() where destObjectId = #destObjectId#
+		]]>
+	</update>
+	<update id="pushCopyUnSuccessTask" parameterClass="java.lang.String">
+		<![CDATA[
+			update copy_task set retryNum=0,modifiedAt =now() where  copyStatus=3 and retryNum>=10 and DATE_ADD(modifiedAt,INTERVAL 30 MINUTE) < now() and exeAgent = #exeAgent#
+		]]>
+	</update>
+	
+	<!-- 当超过10次还失败的任务，将重新放入任务池再执行。 -->
+	<update id="resetAllCopyFailedTask" parameterClass="java.lang.String">
+		<![CDATA[
+			update copy_task set retryNum=0,modifiedAt =now() where  copyStatus=3 and retryNum>=10 and exeAgent = #exeAgent#
+		]]>
+	</update>
+	<!-- 当任务首次启动时调用，出现这种情况是当进程被Kill过程正在运行的任务状态无法恢复。 -->
+	<update id="restoreCrashTaskStatus" parameterClass="java.lang.String">
+		<![CDATA[
+			update copy_task set copyStatus=3,modifiedAt =now() where copyStatus = 1 and exeAgent = #exeAgent#
+		]]>
+	</update>
+	<update id="pushCallbackUnSuccessTask" parameterClass="java.lang.String">
+		<![CDATA[
+			update copy_task set retryNum=0,modifiedAt =now(),copyStatus=9 where  (copyStatus=9 or copyStatus=102 or copyStatus=109) and DATE_ADD(modifiedAt,INTERVAL 30 MINUTE) < now() and exeAgent = #exeAgent#
+		]]>
+	</update>
+	
+	<select id="getAllCopyTask" resultMap="resultMap.CopyTask">
+        <![CDATA[
+        select * from copy_task
+		]]>
+	</select>
+	
+	<update id="pauseOrGoTask" parameterClass="map">
+		<![CDATA[
+			update copy_task set copyStatus=#newState# where copyStatus=#oldState#
+		]]>
+	</update>
+	
+	<select id="getExeAgentIsNullCopyTask" resultMap="resultMap.CopyTask">
+        <![CDATA[
+        select * from copy_task where exeAgent is null order by createdAt limit 1600
+		]]>
+	</select>
+	
+	<update id="updateTaskExeAgent" parameterClass="CopyTask">
+		<![CDATA[
+			update copy_task set modifiedAt =now(),exeAgent=#exeAgent#  where taskId=#taskId# 
+		]]>
+	</update> 
+	
+	<update id="setTaskExeAgent" parameterClass="map">
+		<![CDATA[
+			update copy_task set modifiedAt =now(),exeAgent=#exeAgent#  where exeAgent is null limit #size#
+		]]>
+	</update>
+	<select id="getTaskRunInfo" resultMap="resultMap.CopyTaskRunInfo">
+        <![CDATA[
+           select exeAgent ,1 copystatus ,count(1) taskNum,0 addNum from copy_task where copystatus =1  and exeAgent is not null group by exeAgent
+		]]>
+	</select>
+	
+</sqlMap>

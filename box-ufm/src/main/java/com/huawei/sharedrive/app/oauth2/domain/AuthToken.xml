@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AuthToken">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="AuthToken" type="com.huawei.sharedrive.app.oauth2.domain.AuthToken" />
+    
+	<resultMap id="mapToAuthToken" class="AuthToken">
+		<result column="token" property="token"/>
+		<result column="auth" property="auth"/>
+		<result column="code" property="code"/>
+		<result column="type" property="type"/>
+		<result column="expired_at" property="expiredAt"/>
+		<result column="created_at" property="createdAt"/>
+		<result column="refresh_token" property="refreshToken"/>
+		<result column="user_id" property="userId"/>
+		<result column="device_sn" property="deviceSN"/>
+	</resultMap>
+	
+    <select id="get" parameterClass="String" resultMap="mapToAuthToken">
+        <![CDATA[
+        select * from auth_token where token=#value#
+        ]]>
+    </select>
+    
+    <select id="getByRefreshToken" parameterClass="String" resultMap="mapToAuthToken">
+        <![CDATA[
+        select * from auth_token where refresh_token=#value#
+        ]]>
+    </select>
+    
+
+    
+    <insert id="insert" parameterClass="AuthToken">
+        <![CDATA[
+        insert into auth_token
+        (token,auth,code,type,expired_at,created_at,refresh_token,user_id)
+         values 
+        (#token#,#auth#,#code#,#type#,#expiredAt#,#createdAt#,#refreshToken#,#userId#)
+        ]]>
+    </insert>
+
+    <delete id="delete" parameterClass="String">
+        <![CDATA[
+        delete from auth_token where token=#value#
+        ]]>
+    </delete>
+
+    <delete id="deleteExpiredToken">
+        <![CDATA[
+        delete from auth_token where expired_at < now()
+        ]]>
+    </delete>
+    
+     <delete id="deleteDeviceSNToken">
+        <![CDATA[
+        delete from auth_token where device_sn=#value#
+        ]]>
+    </delete>
+    
+    <select id="getExpiredToken" parameterClass="Long" resultMap="mapToAuthToken">
+        <![CDATA[
+        select * from auth_token where expired_at < now() limit #value#,1000
+        ]]>
+    </select>
+
+    <update id="update" parameterClass="AuthToken">
+        <![CDATA[
+        update auth_token set auth=#auth#,code=#code#,
+        type=#type#,expired_at=#expiredAt#,
+        created_at=#createdAt#,refresh_token=#refreshToken#,
+        user_id=#userId# where userId=#userId#
+        ]]>
+    </update>
+
+</sqlMap>
+

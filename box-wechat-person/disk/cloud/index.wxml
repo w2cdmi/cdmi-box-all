@@ -1,0 +1,32 @@
+<import src="/disk/template/menu.wxml" />
+<import src="/disk/template/music.wxml" />
+<view class="page">
+    <view class="grids" wx:if="{{isShowGrids}}">
+        <block wx:for="{{grids}}" wx:key="*this">
+            <view id="{{item.id}}" bindtap="onclick" class="grid" hover-class="button-hover">
+                <image class="grid-icon" src="{{item.icon}}" />
+                <view class="grid-label">{{item.text}}</view>
+                <view class="grid-description">{{item.description}}</view>
+            </view>
+        </block> 
+    </view>
+
+    <!-- 显示上传按钮  -->
+    <view wx:if='{{!isShowGrids}}'>
+        <include src="/disk/widget/filelist.wxml" />
+    </view>
+
+    <view class='mask' catchtouchmove="preventTouchMove" wx:if="{{isShowTip}}"></view>
+    <view class='product-introduce' catchtouchmove="preventTouchMove" wx:if="{{isShowTip}}">
+        <view class='product-title'>开始您的资料营销旅程</view>
+        <view class='product-first-title'>上传您的产品资料，照片，视频等；</view>
+        <view class='product-first-title'>点击分享，将资料分享到群中；</view>
+        <view class='product-first-title'>用户点击查看您所营销的资料，并点赞或评论；</view>
+        <view class='product-first-title'>获取关注用户联系信息；</view>
+    </view>
+    <view class='close-introduce-btn' bindtap='closePrductIntroduce' wx:if="{{isShowTip}}">我知道了</view>
+</view>
+
+<template is="menu" data="{{isShowMenuPanel, animationMenuPanel, isShowMusicButton, isOpenRobot, userIcon, isOpenRobot, animationAddPanel, isShowUpButton}}"/>
+
+<template is="music" data="{{isShowMusicListPanel, musicCount, musics, isShowMusicPanel, playOrStopButton, musicInfoWidth, music, progressWidth, progress, currentTime, duration}}"/>

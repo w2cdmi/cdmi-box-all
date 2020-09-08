@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window size="400,200" caption="0,0,0,40" mininfo="400,200">
+
+	<Font id="0" name="微软雅黑" size="14" default="true" />
+
+	<VerticalLayout bordersize="1" bordercolor="#FFE1E1E1" bkcolor="#FFF6F9FC">
+		<HorizontalLayout height="40" bkcolor="#FF53A7FF">
+			<Control width="10" />
+			<Label name="ShellEncryptFrame_label_title" text="加密上传至 Onebox" textcolor="#FF333333" disabledtextcolor="#FFA7A6AA" />
+			<Button name="ShellEncryptFrame_button_close" width="10" height="10" padding="0,15,0,0" normalimage="file=&apos;SysBtn\btn_close.png&apos; source=&apos;0,0,10,10&apos;" hotimage="file=&apos;SysBtn\btn_close.png&apos; source=&apos;11,0,21,10&apos;" pushedimage="file=&apos;SysBtn\btn_close.png&apos; source=&apos;22,0,32,10&apos;" />
+			<Control width="10" />
+		</HorizontalLayout>
+
+		<Control height="1" bkcolor="#FFDDDDDD" />
+
+		<HorizontalLayout padding="0,40,0,0" height="30">
+			<Control width="60" />
+			<Label width="90" text="请输入密：" />
+			<Edit name="ShellEncryptFrame_text_password" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" />
+			<Control width="60" />
+		</HorizontalLayout>
+
+		<HorizontalLayout height="30" padding="0,50,0,0">
+			<Control />
+			<Button name="ShellEncryptFrame_button_ok" width="82" height="30" text="确定" textcolor="#FFE2ECF8" disabledtextcolor="#FF999999" align="center" normalimage="file='..\img\btn_all.png' source='0,62,82,92' corner='5,5,5,5'" hotimage="file='..\img\btn_all.png' source='0,31,82,61' corner='5,5,5,5'" pushedimage="file='..\img\btn_all.png' source='0,0,82,30' corner='5,5,5,5'" disabledimage="file='..\img\btn_all.png' source='0,93,82,123' corner='5,5,5,5'" />
+			<Button name="ShellEncryptFrame_button_cancel" width="82" height="30" padding="20,0,0,0" text="取消" textcolor="#FFE2ECF8" disabledtextcolor="#FF999999" align="center" normalimage="file='..\img\btn_all.png' source='0,62,82,92' corner='5,5,5,5'" hotimage="file='..\img\btn_all.png' source='0,31,82,61' corner='5,5,5,5'" pushedimage="file='..\img\btn_all.png' source='0,0,82,30' corner='5,5,5,5'" disabledimage="file='..\img\btn_all.png' source='0,93,82,123' corner='5,5,5,5'" />
+			<Control width="20" />
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

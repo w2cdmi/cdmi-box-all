@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<artifactId>box-bms-web</artifactId>
+	<version>3.5.4-SNAPSHOT</version>
+	<packaging>war</packaging>
+	<name>box-bms-web</name>
+	<description>业务管理子系统WAR工程</description>
+
+	<parent>
+		<artifactId>box-parent</artifactId>
+		<version>3.5.4-SNAPSHOT</version>
+		<relativePath>../storbox-parent/pom.xml</relativePath>
+		<groupId>pw.cdmi.box</groupId>
+	</parent>
+	<dependencies>
+		<dependency>
+			<groupId>pw.cdmi.box</groupId>
+			<artifactId>box-bms</artifactId>
+			<version>3.5.4-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>woodstox-core-asl</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.huawei.cse</groupId>
+			<artifactId>webcommon</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.huawei.cse</groupId>
+			<artifactId>common-license</artifactId>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<finalName>bms</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<executions>  
+				    <execution>  
+				        <id>make-assembly</id>  
+				        <phase>package</phase>  
+				        <goals>  
+				            <goal>single</goal>  
+				        </goals>  
+				    </execution>  
+				</executions>
+				<configuration>
+					<appendAssemblyId>false</appendAssemblyId>
+					<descriptors>
+						<descriptor>assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

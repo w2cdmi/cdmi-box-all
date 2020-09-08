@@ -1,0 +1,8 @@
+<rules>
+   <rule>
+        <namespace>INodeLinkApproveRecord</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+</rules>

@@ -1,0 +1,84 @@
+/* 新增按钮 */
+.add-panel{
+    position:absolute;
+    right:50px;
+    height:45px;
+    bottom:80px;
+    z-index:10;
+    background:#fff;
+    border-radius:22px;
+}
+.add-panel image{
+    width: 45px;
+    height: 45px;
+}
+.menu-panel{
+    position:absolute;
+    width:45px;
+    right:50px;
+    bottom:85px;
+    background:#EAEAEA;
+    text-align:center;
+    border-radius:23px;
+    z-index:9;
+}
+.menu-panel view image{
+    width: 26px;
+    height: 26px;
+}
+.menu-panel view text{
+    font-size:12px;
+    line-height:12px;
+    color: #000;
+}
+.menu-panel view{
+    height: 45px;
+    line-height:40px;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    margin-top:10px;
+}
+
+.modal-mask-white {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    opacity: 0;
+    overflow: hidden;
+    z-index: 8;
+}
+
+.button-share-p2p{
+    background:none;
+    font-size:12px;
+    height:50px;
+    margin-top:-20px;
+    line-height:4.6em;
+    width:40px;
+}
+
+/*菜单的动画显示效果  */
+.showPanel{
+    transition: all 500ms;
+    transform: scaleY(1);
+    transform-origin: 50% 90%;
+}
+.hidePanel{
+    transition: all 500ms;
+    transform: scaleY(0);
+    transform-origin: 50% 90%;
+}
+/*按钮的动画显示效果  */
+.btnRotate0{
+    transition: all 500ms;
+    transform: rotate(45deg);
+}
+.btnRotate45{
+    transition: all 500ms;
+    transform: rotate(0deg);
+}

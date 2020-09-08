@@ -1,0 +1,360 @@
+/*
+ Localization.strings
+ OneMail
+ 
+ Created by cse  on 15/12/2.
+ Copyright (c) 2015年 cse. All rights reserved.
+ */
+"Confirm" = "确定";
+"Cancel" = "取消";
+"Search" = "搜索";
+"SelectAll" = "全选";
+"Delete" = "删除";
+"More" = "更多";
+"Done" = "完成";
+"OperationFailed" = "操作失败";
+"OperationSuccess" = "操作成功";
+"CancelShare" = "取消分享";
+"Undo" = "取消";
+//相册备份
+"Backup" = "备份";
+"BackupTitle" = "相册备份";
+"BackupStatusRunning" = "备份中";
+"BackupStatusComplete" = "备份完成";
+"BackupStatusPause" = "暂停";
+"BackupStatusContinue" = "继续";
+"BackupRemainNotice" = "剩余%ld/%ld项";
+"BackupFailedNotice" = "失败%ld项";
+"BackupAlbumSelectTitle" = "选择相册";
+"BackupWIFINoticeTitle" = "仅Wi-Fi下自动备份";
+"BackupAlbumViewTitle" = "查看相册备份";
+"BackupAlbumOpenTitle" = "开启";
+"BackupAlbumCloseTitle" = "关闭相册备份";
+"BackupDescription" = "精彩瞬间轻松上云，永久珍藏";
+"BackupDeniedTitle" = "禁止访问";
+"BackupDeniedPrompt" = "应用不能访问相册，可用在设置中打开";
+"BackupAlbumPreviewTitle" = "已备份相册";
+
+//云盘登录
+"CloudLoginUserName" = "域／用户名";
+"CloudLoginPassword" = "密码";
+"CloudLoginAutomaticaly" = "自动登录";
+"CloudLoginServerAddress" = "云环境地址";
+"CloudLoginButtonTitle" = "登录";
+"CloudLoginFailedPrompt" = "登录失败";
+"CloudLoginNone" = "用户名或密码为空";
+"CloudLoginNetworkPrompt" = "无可用网络";
+"CloudLoginIncorrectPrompt" = "用户名或密码错误";
+"CloudLoginLockedPrompt" = "账户被锁定";
+"CloudLoginLastNotice" = "上次登录提醒";
+"CloudLoginLastTime" = " 登录时间: %@\n\r";
+"CloudLoginIPAddress" = " IP 地址: %@\n\r";
+"CloudLoginClientType" = " 终端类型: %@";
+"CloudLoginForget" = "忘记密码";
+"InternetOfflineTitle" = "没有网络信号";
+"Login"= "登录中";
+
+//隐私声明
+"LoginInitiateExperience" = "点击开始体验";
+"CloudDeclarationTitle" = "隐私保护声明";
+"CloudDeclarationDisagree" = "不同意";
+"CloudDeclarationAgree" = "同意隐私保护声明，开始使用";
+"CloudDeclarationFailed" = "请求失败";
+"CloudSecurityMessage" = "为了保证你的数据安全，必须修改系统初始化密码，重新登录才能使用";
+
+//上传
+"CloudUploadTitle" = "上传文件";
+"CloudUploadTo" = "上传至:";
+"CloudUploadButton" = "上传";
+"CloudUploadNumButton" = "上传(%lu)";
+"CloudUploadAddSuccessPrompt" = "上传任务添加成功";
+"CloudUploadDeniedTitle" = "禁止访问";
+"CloudUploadDeniedPrompt" = "应用不能访问相册，可用在设置中打开";
+"CloudUploadWIFIPrompt" = "当前为非Wi-Fi模式，是否继续上传文件?";
+"CloudUploadAddSuccessPrompt" = "上传任务添加成功";
+"CloudUploadAddFailedPrompt" = "上传任务添加失败";
+"CloudDownloadAddSuccessPrompt" = "下载任务添加成功";
+"CloudDownloadAddFailedPrompt" = "下载任务添加失败";
+"CloudDownloadWIFIPrompt" = "当前为非Wi-Fi模式，是否继续下载文件?";
+"CloudNoneNetworkPrompt" = "没有可以使用的网络";
+
+//团队空间
+"CloudTeamSpaceTitle" = "团队空间";
+"CloudTeamSpaceFailedPrompt" = "团队空间列举失败";
+"CloudTeamSpaceOwner" = "拥有者:%@";
+"CloudTeamSpaceMember" = "%@ 成员";
+"CloudSpaceCreate" = "创建团队空间";
+"CloudTeamSpaceDissolve" = "解除团队空间";
+"CloudTeamSpaceDetail" = "查看详情";
+"CloudTeamSpaceAppoint" = "变更拥有者";
+"CloudTeamSpaceManage" = "成员管理";
+"CloudTeamSpaceDeletePrompt" = "确定删除该空间吗?";
+"CloudTeamSpaceExit" = "退出团队";
+
+//分享
+"CloudShareTitle" = "收到的共享";
+"CloudShareUser" = "共享人 %@";
+"CloudSharing" = "正在分享...";
+"CloudShareWithButton" = "分享给指定的人";
+"CloudShareWithSpecified" = "分享人(%lu)";
+"CloudShareWithSpecifiedPrompt" = "团队空间文件不支持分享给其他用户";
+"CloudShareWithLoadFailedPrompt" = "列举共享用户失败";
+"CloudShareDeleteAll" = "删除全部";
+"CloudShareCancel" = "取消分享";
+
+"CloudShareLinkButton" = "通过链接分享";
+"CloudShareLinkNumPrompt" = "可以创建多了链接(最多3个)";
+"CloudShareLinkPermissonPrompt" = "为访问人设置不同的权限";
+"CloudShareLinkLoadFailedPrompt" = "列举连接信息失败";
+"CloudShareLinkAccess" = "权限: ";
+"CloudShareLinkAccessDownload" = "下载";
+"CloudShareLinkAccessPreview" = "预览";
+"CloudShareLinkAccessUpload" = "上传";
+"CloudShareLinkUploader" = "上传";
+"CloudShareLinkPreviewer" = "预览";
+"CloudShareLinkViewer" = "下载,预览";
+"CloudShareLinkUploadAndView" = "下载,预览,上传";
+"CloudShareLinkExtraction" = "提取码: ";
+"CloudShareLinkExtractionType" = "提取码类型";
+"CloudShareLinkExtractionCommon" = "普通提取码";
+"CloudShareLinkExtractionCustom" = "自定义提取码";
+"CloudShareLinkExtractionStatic" = "动态提取码";
+"CloudShareLinkExtractionNone" = "无";
+"CloudShareLinkRefrshButton" = "刷新";
+"CloudShareLinkPeriod" = "有效期: ";
+"CloudShareLinkPeriodType" = "有效期类型";
+"CloudShareLinkPeriodStart" = "开始时间";
+"CloudShareLinkPeriodEnd" = "结束时间";
+"CloudShareLinkPeriodForever" = "永久";
+"CloudShareLinkPeriodCustom" = "自定义";
+"CloudShareLinkPeriodOneDay" = "1天";
+"CloudShareLinkPeriodThreeDay" = "3天";
+"CloudShareLinkPeriodOneWeek" = "1周";
+"CloudShareLinkPeriodOneMonth" = "1月";
+"CloudShareLinkPeriodFailedPrompt" = "链接有效期错误";
+"CloudShareLinkSettingTitle" = "设置链接";
+"CloudShareLinkTitle" = "链接";
+"CloudShareLinkDeletePrompt" = "确认删除外链?";
+"CloudShareLinkSendToOnebox"="分享至Onebox";
+"CloudShareLinkSendToOtherApp"="分享至其他应用";
+
+"CloudSharedUserFailedPrompt" = "获取共享用户失败";
+"CloudSharedUserAddTitle" = "添加共享用户";
+"CloudSharedUserAddButton" = "邀请";
+"CloudSharedUserAddFailedPrompt" = "添加共享用户失败";
+"CloudShareMessageTitle" = "添加信息";
+"CloudTeamSpace" = "您尚未加入任何团队空间";
+"CloudShareApp" = "分享应用";
+//联系人
+"ContactTitle" = "联系人";
+"ContactDetail" = "详细资料";
+"ContactRecentTitle" = "最近联系人";
+"ContactAllTitle" = "全部联系人";
+"ContactSearchTitle" = "搜索联系人";
+"ContactAddTitle" = "添加联系人";
+"ContactAddButton" = "添加";
+"ContactAddedTitle" = "已添加";
+"ContactSearchEnterpriseTitle" = "查找企业通讯录";
+"ContactNameTitle" = "姓名";
+"ContactMandatory" = "必填";
+"ContactEmailTitle" = "邮箱地址";
+"ContactMobliePhone" = "手机号码";
+"ContactRemark" = "备注信息";
+"ContactAddFailedPrompt" = "邮箱或者姓名不能为空";
+"ContactGroupTitle" = "群组";
+"ContactSingleLabel" = "%lu个联系人";
+"ContactCountLabel" = "%lu个联系人";
+"ContactNonePrompt" = "联系人不能为空";
+"ContactSearchFailed" = "搜索失败";
+"ContactMore" = "更多";
+"ContactMenuAddRemark" = "添加备注";
+"ContactMenuPhone" = "手机号码";
+"ContactMenuDelete" = "删除";
+
+
+//我的文件
+"CloudTitle" = "文件";
+"CloudFileTitle" = "个人空间";
+"CloudFileLoadFailedPrompt" = "列举文件夹失败";
+"CloudFileRefreshPrompt" = "上次刷新时间:%@";
+"CloudFileRefreshing" = "正在刷新";
+"CloudFileCreateFolder" = "新建文件夹";
+"CloudFileUploadFile" = "上传文件";
+"CloudNoFile" = "没有文件哟～";
+"CloudNoFileNotification" = "您可以点击上传按钮添加文件";
+"CloudFileTransmitTeamSpace" = "转存到团队空间";
+"CloudFileTransmitMySpace" = "转存到我的空间";
+"CloudFileMove" = "移动";
+"CloudFileMovePrompt" = "%@存在与%@同名文件或文件夹";
+"CloudFileMoveRenamePrompt" = "是否自动重命名?";
+"CloudFileRename" = "重命名";
+"CloudFileVersion" = "查看版本";
+"CloudFileSearch" = "搜索";
+"CloudFileDeletePrompt" = "确定删除该文件?";
+"CloudFileMoreSelect" = "多选";
+"CloudFileMultiSelectTitle" = "%ld 已选择";
+"CloudFileMoreSortName" = "按名称排序";
+"CloudFileMoreSortTime" = "按时间排序";
+
+"CloudFileShareSinglePrompt" = "仅支持单个文件共享";
+"CloudFileRenameSinglePrompt" = "仅支持单个文件重命名";
+"CloudFileVersionSinglePrompt" = "仅支持单个文件查看版本";
+"CloudFileNoneOperatePrompt" = "请至少选择一个文件";
+
+"CloudSearching" = "搜索中...";
+"CloudSearchResultTitle" = "搜索结果";
+
+"CloudCreateFolderTitle" = "新建文件夹";
+"CloudRenameTitle" = "重命名";
+"CloudNameIllegal" = "文件名称不符合要求";
+"CloudNameLimit" = "文件名称超过字数限制";
+
+"CloudVersionTitle" = "文件版本";
+//"CloudVersionFailedPrompt" = "获取版本失败";
+"CloudVersionFailedPrompt" = "文件夹获取版本失败";
+//预览
+"CloudPreviewFileTaskPrompt" = "文件正在传输,无法预览";
+"CloudPreviewVersionNoFound" = "版本未下载";
+"CloudPreviewAttachmentNoFound" = "附件未下载";
+"CloudPreviewFileNoFound" = "服务端无此文件";
+"CloudPreviewDownloadFailedPrompt" = "下载取消";
+
+//传输列表
+"CloudTransferTaskTitle" = "传输任务";
+"CloudTransferTitle" = "传输列表";
+"CloudTransferingTitle" = "正在传输";
+"CloudTransferredTitle" = "传输完成";
+"CloudTransferStatusInitialing" = "初始化";
+"CloudTransferStatusRunning" = "进行";
+"CloudTransferStatusWaitting" = "等待";
+"CloudTransferStatusWaitNetwork" = "等待网络";
+"CloudTransferStatusPaused" = "暂停";
+"CloudTransferStatusSucceed" = "成功";
+"CloudTransferStatusCancel" = "取消";
+"CloudTransferStatusFailed" = "失败";
+"CloudTransferDeletePrompt" = "确定删除任务?";
+"CloudTransferResumeAll" = "全部开始";
+"CloudTransferPauseAll" = "全部暂停";
+"CloudTransferCancelAll" = "全部取消";
+"CloudTransferClearAll" = "全部清除";
+"CloudTransferClearPrompt" = "清除任务不会影响已经缓存的数据";
+"CloudNoTransferTask" = "没有传输任务";
+//邮件
+"MailTitle" = "邮件";
+"MailLoading" = "收取中...";
+"MailNotidicationTitle" = "你收到一封新邮件";
+
+"MailFormatIncorrect" = "邮箱格式不正确";
+"PhoneFormatIncorrect" = "手机号码位数错误";
+
+"MailShowTitle" = "邮件详情";
+"MailShowSubjectTitle" = "主题:";
+"MailShowFromTitle" = "发件人:";
+
+"MailLoginHeader" = "请先设置一个邮箱";
+"MailLoginAddress" = "邮箱地址";
+"MailLoginPassword" = "密码";
+"MailLoginChange" = "修改邮箱";
+"MailLoginDelete" = "删除邮箱";
+"MailLoginNone" = "未绑定";
+"MailLogin" = "开始使用";
+"MailServerPrompt" = "邮箱配置信息获取失败";
+"MailDetail" = "详情";
+"MailStickyTop" = "会话置顶";
+"MailNotifications" = "消息免打扰";
+"MailScreenName" = "显示名称";
+"MailForwardTitle" = "选择会话";
+"MailForwardPrompt" = "确定转发到该会话?";
+"MailChatPhoto" = "图片";
+"MailChatVideo" = "视频";
+"MailChatAudio" = "音频";
+"MailChatLocal" = "本地文件";
+"MailChatCloud" = "云文件";
+"MailChatAttAttachment" = "添加附件";
+"MailReplyTitle" = "回复";
+"MailTransmitTitle" = "转发";
+"MailDeleteTitle" = "删除";
+"MailDeletePrompt" = "确定删除该信息?";
+"MailEmptyPrompt" = "%@发送了一封空邮件";
+
+
+//
+"UserTitle" = "用户信息";
+"UserPhoto" = "头像";
+"UserLoginName" = "用户名";
+"UserName" = "姓名";
+"UserMail" = "邮箱";
+"UserDescription" = "部门";
+"UserPhoneNumber" = "手机号码";
+"UserRemark" = "备注";
+"UserNameTitle" = "用户名:%@";
+"UserMailTitle" = "%@";
+"UserMailNoBound" = "未绑定";
+"UserMailSendButton" = "发送信息";
+"UserRemarkAdd" = "添加备注";
+"UserAdd" = "添加";
+"UserDeletePrompt" = "将删除与此联系人的所有邮件记录";
+"UserSendEmail" = "发送邮件";
+"UserCamera" = "拍照";
+"UserPhotoLibrary" = "从手机相册选择";
+"UserCameraPrompt" = "摄像头不可用";
+"UserPhotoPrompt" = "手机相册不可用";
+
+//设置
+"SettingTitle" = "设置";
+"SettingFileTitle" = "文件";
+"SettingFileClearCache" = "清除缓存";
+"SettingFileClearCachePrompt" = "确定清除所有缓存吗?";
+"SettingFileClearButton" = "清除";
+"SettingFileCache" = "已下载:%@";
+"SettingMailTitle" = "邮件";
+"SettingMailAddressTitle" = "邮箱地址";
+"SettingMailAddressChangePrompt" = "修改绑定会删除以前邮箱下载的全部邮件";
+"SettingMailAddressDeletePrompt" = "删除绑定会删除已经下载的全部邮件";
+"SettingMailRemainTitle" = "提醒";
+"SettingMailRemainHeader" = "新邮件";
+"SettingMailRemainNotification" = "通知栏";
+"SettingMailRemainSound" = "声音";
+"SettingMailRemainShake" = "振动";
+"SettingMailRemainDisturbe" = "消息免打扰";
+"SettingMailRemainDisturbePrompt" = "开启后,在设定的时间内收到新邮件不会有响铃和振动";
+"SettingMailRemainDisturbeStart" = "开始时间";
+"SettingMailRemainDisturbeEnd" = "结束时间";
+"SettingMailRemainTimePrompt" = "时间选择错误";
+"SettingMailSyncTitle" = "同步";
+"SettingMailSyncModeTitle" = "模式";
+"SettingMailSyncModeSaving" = "省流量模式";
+"SettingMailSyncModeSavingPrompt" = "非Wi-Fi环境只下载邮件标题";
+"SettingMailSyncModeSmart" = "智能模式";
+"SettingMailSyncModeSmartPrompt" = "非Wi-Fi环境自动下载邮件标题和正文";
+"SettingMailSyncAttachmentTitle" = "附件归档";
+"SettingMailSyncAttachmentAutoArchive" = "自动归档附件";
+"SettingMailSyncAttachmentWiFiArchive" = "仅在Wi-Fi下自动归档";
+"SettingMailSyncMailKeepTime" = "邮件保留时间";
+"SettingMailSyncMailKeepPrompt" = "修改缓存时间会立即删除过期的邮件，确认删除?";
+"SettingMailSyncMailOneWeek" = "一周";
+"SettingMailSyncMailOneMonth" = "一个月";
+"SettingMailSyncMailThreeMonth" = "三个月";
+"SettingNetworkTitle" = "网络";
+"SettingNetworkWiFiNotification" = "非Wi-Fi时提示";
+"SettingAutoLoginTitle" = "自动登录";
+"SettingLanguage" = "语言";
+"SettingLanguageSystem" = "跟随系统";
+"SettingLanguageEnglish" = "English";
+"SettingLanguageChineseSimplified" = "简体中文";
+"SettingAboutTitle" = "关于";
+"SettingAboutVersionUpdate" = "版本更新";
+"SettingAboutPolicy" = "使用条款和隐私政策";
+"SettingAboutClientInfoFailedPrompt" = "获取版本信息失败";
+//客户端校验失败,无法完成更新
+"SettingAboutClientCheckFailed" = "客户端校目前是最新版本";
+"SettingAboutClientCheckSuccess" = "客户端校验成功";
+"SettingAboutClientUpdatePrompt" = "是否升级客户端?";
+"SettingLogout" = "注销";
+"SettingLogoutPrompt" = "注销会删除您的用户名和密码,确定注销吗?";
+
+"on_guide_one_image" = "welcome_page_bg_a";
+"on_guide_two_image" = "welcome_page_bg_b";
+"on_guide_three_image" = "welcome_page_bg_c";
+
+

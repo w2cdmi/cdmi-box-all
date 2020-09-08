@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+	default-autowire="byName" default-lazy-init="true">
+    
+    <bean id="dataSources" class="com.alibaba.cobar.client.datasources.DefaultCobarDataSourceService">
+        <property name="dataSourceDescriptors">
+            <set>
+                <bean class="com.alibaba.cobar.client.datasources.CobarDataSourceDescriptor">
+                    <property name="identity" value="partition0" />
+                    <property name="targetDataSource" ref="sysdb" />
+                    <property name="targetDetectorDataSource" ref="sysdb" />
+                </bean>
+                <bean class="com.alibaba.cobar.client.datasources.CobarDataSourceDescriptor">
+                    <property name="identity" value="logpartition" />
+                    <property name="targetDataSource" ref="logdb" />
+                    <property name="targetDetectorDataSource" ref="logdb" />
+                </bean>
+                <bean class="com.alibaba.cobar.client.datasources.CobarDataSourceDescriptor">
+                    <property name="identity" value="partition1" />
+                    <property name="targetDataSource" ref="userdb_1" />
+                    <property name="targetDetectorDataSource" ref="userdb_1" />
+                </bean>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="sysdb" class="pw.cdmi.common.alarm.AlarmAbleDataSource" destroy-method="close">
+    	<property name="exceptionKeyWord" value="Timeout waiting for idle object" />
+		<property name="alarmHelper" ref="alarmHelper" />
+		
+        <property name="driverClassName" value="${jdbc.sysdb.driverClassName}" />
+        <property name="url" value="${jdbc.sysdb.url}" />
+        <property name="username" value="${jdbc.sysdb.username}" />
+        <property name="password" value="${jdbc.sysdb.password}" />
+        <property name="initialSize" value="${jdbc.sysdb.pool.initialSize}" />
+        <property name="maxActive" value="${jdbc.sysdb.pool.maxActive}" />
+        <property name="maxIdle" value="${jdbc.sysdb.pool.maxIdle}" />
+        <property name="minIdle" value="${jdbc.sysdb.pool.minIdle}" />
+        <property name="maxWait" value="${jdbc.sysdb.pool.maxWait}" />
+        <property name="validationQuery" value="${jdbc.sysdb.pool.validationQuery}" />
+        <property name="testWhileIdle" value="${jdbc.sysdb.pool.testWhileIdle}" />
+        <property name="testOnReturn" value="${jdbc.sysdb.pool.testOnReturn}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.sysdb.pool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.sysdb.pool.minEvictableIdleTimeMillis}" />
+    </bean>
+    
+    <bean id="logdb" class="pw.cdmi.common.alarm.AlarmAbleDataSource" destroy-method="close">
+    	<property name="exceptionKeyWord" value="Timeout waiting for idle object" />
+		<property name="alarmHelper" ref="alarmHelper" />
+		
+        <property name="driverClassName" value="${jdbc.logdb.driverClassName}" />
+        <property name="url" value="${jdbc.logdb.url}" />
+        <property name="username" value="${jdbc.logdb.username}" />
+        <property name="password" value="${jdbc.logdb.password}" />
+        <property name="initialSize" value="${jdbc.logdb.pool.initialSize}" />
+        <property name="maxActive" value="${jdbc.logdb.pool.maxActive}" />
+        <property name="maxIdle" value="${jdbc.logdb.pool.maxIdle}" />
+        <property name="minIdle" value="${jdbc.logdb.pool.minIdle}" />
+        <property name="maxWait" value="${jdbc.logdb.pool.maxWait}" />
+        <property name="validationQuery" value="${jdbc.logdb.pool.validationQuery}" />
+        <property name="testWhileIdle" value="${jdbc.logdb.pool.testWhileIdle}" />
+        <property name="testOnReturn" value="${jdbc.logdb.pool.testOnReturn}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.logdb.pool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.logdb.pool.minEvictableIdleTimeMillis}" />
+    </bean>
+
+    <bean id="baseUserDB" abstract="true"> 
+    	<property name="exceptionKeyWord" value="Timeout waiting for idle object" />
+		<property name="alarmHelper" ref="alarmHelper" />
+		 
+        <property name="driverClassName" value="${jdbc.userdb.driverClassName}" />
+        <property name="username" value="${jdbc.userdb.username}" />
+        <property name="password" value="${jdbc.userdb.password}" />
+        <property name="initialSize" value="${jdbc.userdb.pool.initialSize}" />
+        <property name="maxActive" value="${jdbc.userdb.pool.maxActive}" />
+        <property name="maxIdle" value="${jdbc.userdb.pool.maxIdle}" />
+        <property name="minIdle" value="${jdbc.userdb.pool.minIdle}" />
+        <property name="maxWait" value="${jdbc.userdb.pool.maxWait}" />
+        <property name="validationQuery" value="${jdbc.userdb.pool.validationQuery}" />
+        <property name="testWhileIdle" value="${jdbc.userdb.pool.testWhileIdle}" />
+        <property name="testOnReturn" value="${jdbc.userdb.pool.testOnReturn}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.userdb.pool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.userdb.pool.minEvictableIdleTimeMillis}" />
+    </bean>
+
+    <bean id="userdb_1" class="pw.cdmi.common.alarm.AlarmAbleDataSource" destroy-method="close" parent="baseUserDB">
+        <property name="url" value="${jdbc.userdb_1.url}" />
+    </bean>
+    
+    <bean id="lobHandler" class="org.springframework.jdbc.support.lob.DefaultLobHandler"/>
+    
+    <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="dataSource" ref="sysdb" />
+        <property name="configLocation" value="classpath:sqlmap-config.xml" />
+        <property name="lobHandler" ref="lobHandler"/>
+    </bean>
+
+    <bean id="sqlMapClientTemplate" class="com.alibaba.cobar.client.CobarSqlMapClientTemplate">
+        <property name="sqlMapClient" ref="sqlMapClient" />
+        <property name="cobarDataSourceService" ref="dataSources" />
+        <property name="router" ref="internalRouter" />
+        <property name="sqlAuditor">
+            <bean class="com.alibaba.cobar.client.audit.SimpleSqlAuditor" />
+        </property>
+        <property name="profileLongTimeRunningSql" value="true" />
+        <property name="longTimeRunningSqlIntervalThreshold" value="3600000" />
+    </bean>
+
+    <bean id="internalRouter" class="com.alibaba.cobar.client.router.config.CobarInteralRouterXmlFactoryBean">
+        <property name="functionsMap">
+            <map>
+                <entry key="hash">
+                    <bean class="pw.cdmi.core.utils.HashTool" />
+                </entry>
+            </map>
+        </property>
+        <property name="configLocations">
+            <list>
+                <value>classpath:routing/SystemConfig-rules.xml</value>
+                <value>classpath:routing/Region-rules.xml</value>
+                <value>classpath:routing/group_rules.xml</value>
+                <value>classpath:routing/NetSegment-rules.xml</value>
+                <value>classpath:routing/ResourceGroup-rules.xml</value>
+                <value>classpath:routing/ResourceGroupNode-rules.xml</value>
+                <value>classpath:routing/DataCenter-rules.xml</value>
+                <value>classpath:routing/user-rules.xml</value>
+                <value>classpath:routing/user-custom-rules.xml</value>
+                <value>classpath:routing/inode-rules.xml</value> 
+                <value>classpath:routing/inode-link-rules.xml</value>
+                <value>classpath:routing/inode-link-approve-rules.xml</value>
+                <value>classpath:routing/link-approve-user-rules.xml</value>
+                <value>classpath:routing/inode-link-approve-record-rules.xml</value>
+                <value>classpath:routing/inode-share-rules.xml</value>
+                <value>classpath:routing/inode-share-delete-rules.xml</value>
+                <value>classpath:routing/inode-share-delete-r-rules.xml</value>
+                <value>classpath:routing/inode-share-r-rules.xml</value>
+                <value>classpath:routing/RecentBrowse-rules.xml</value> 
+                <value>classpath:routing/Shortcut-rules.xml</value>
+                <value>classpath:routing/event-log-rules.xml</value>
+                <value>classpath:routing/object-reference-rules.xml</value>
+                <value>classpath:routing/object-secretLevel-rules.xml</value>
+                <value>classpath:routing/object_fingerprint_index.xml</value>
+                <value>classpath:routing/waiting-delete-object.xml</value>
+                <value>classpath:routing/inode-delete-rules.xml</value>
+                <value>classpath:routing/inode-acl-rules.xml</value>
+                <value>classpath:routing/favorite-rules.xml</value>
+                <value>classpath:routing/inode-mailmsg-rules.xml</value>
+                <value>classpath:routing/message-rules.xml</value>
+                <value>classpath:pw/cdmi/common/job/manage/dao/systemjob-rules.xml</value>
+                <value>classpath:pw/cdmi/common/slavedb/domain/DatabaseAddr-rules.xml</value>
+                <value>classpath:com/huawei/sharedrive/app/plugins/preview/dao/impl/AccountWatermark-rules.xml</value>
+                <value>classpath:com/huawei/sharedrive/app/plugins/cluster/dao/impl/PluginServiceCluster-rules.xml</value>
+                <value>classpath:com/huawei/sharedrive/app/plugins/cluster/dao/impl/PluginServiceInstance-rules.xml</value>
+                <value>classpath:com/huawei/sharedrive/app/plugins/cluster/dao/impl/PluginServiceRouter-rules.xml</value>
+                <value>classpath:com/huawei/sharedrive/app/plugins/scan/dao/impl/SecurityScanTask-rules.xml</value>
+                <value>classpath:routing/preview_object-rules.xml</value>
+                <value>classpath:routing/CopyTask-rules.xml</value>
+                <value>classpath:routing/MirrorObject-rules.xml</value>
+                <value>classpath:routing/CopyPolicy-rules.xml</value>
+                <value>classpath:routing/CopyPolicySiteInfo-rules.xml</value>
+                <value>classpath:routing/ObjectMirrorShip-rules.xml</value>
+                <value>classpath:routing/CopyPolicyUserConfig-rules.xml</value>
+                <value>classpath:routing/statistics_rules.xml</value>
+                <value>classpath:routing/inode-link-r-rules.xml</value>
+                <value>classpath:routing/inode-link-dynamic-rules.xml</value>
+                <value>classpath:routing/spaceStatistics-rules.xml</value>
+                <value>classpath:routing/TableScanBreakInfo-rules.xml</value>
+                <value>classpath:routing/TimeConfig-rules.xml</value>
+                <value>classpath:routing/filelabel-link-rules.xml</value>
+            </list>
+        </property>
+    </bean>
+    
+	<!--DataSource TransactionManager -->
+    <bean id="transactionManager" class="pw.cdmi.common.cache.transaction.CacheSupportMultipleDataSourceTransactionManager">
+        <property name="cobarDataSourceService" ref="dataSources" />
+        <property name="globalRollbackOnParticipationFailure" value="true" />
+        <!-- SYNCHRONIZATION_NEVER, Cobar Client can not support transactionSynchronization -->
+        <property name="transactionSynchronization" value="2" />
+        <property name="cacheSupported" value="${cache.supported}" />
+    </bean>
+    
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
+
+    <!-- datasource from ecm module.-->
+    <bean id="ecmdb" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.ecmdb.driverClassName}" />
+        <property name="url" value="${jdbc.ecmdb.url}" />
+        <property name="username" value="${jdbc.ecmdb.username}" />
+        <property name="password" value="${jdbc.ecmdb.password}" />
+        <property name="initialSize" value="${jdbc.ecmdb.pool.initialSize}" />
+        <property name="maxActive" value="${jdbc.ecmdb.pool.maxActive}" />
+        <property name="maxIdle" value="${jdbc.ecmdb.pool.maxIdle}" />
+        <property name="minIdle" value="${jdbc.ecmdb.pool.minIdle}" />
+        <property name="maxWait" value="${jdbc.ecmdb.pool.maxWait}" />
+        <property name="validationQuery" value="${jdbc.ecmdb.pool.validationQuery}" />
+        <property name="testWhileIdle" value="${jdbc.ecmdb.pool.testWhileIdle}" />
+        <property name="testOnReturn" value="${jdbc.ecmdb.pool.testOnReturn}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.ecmdb.pool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.ecmdb.pool.minEvictableIdleTimeMillis}" />
+    </bean>
+
+    <bean id="ecmSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="dataSource" ref="ecmdb" />
+        <property name="configLocation" value="classpath:sqlmap-config-ecm.xml" />
+    </bean>
+
+    <bean id="ecmSqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+        <property name="sqlMapClient" ref="ecmSqlMapClient" />
+    </bean>
+
+    <!--查询UAM数据库的接口 start-->
+    <bean id="departmentDao" class="com.huawei.sharedrive.app.user.dao.impl.DepartmentDaoImpl">
+        <property name="sqlMapClientTemplate" ref="ecmSqlMapClientTemplate" />
+    </bean>
+
+    <bean id="accountConfigDao" class="com.huawei.sharedrive.app.account.dao.impl.AccountConfigDaoImpl">
+        <property name="sqlMapClientTemplate" ref="ecmSqlMapClientTemplate" />
+    </bean>
+
+    <bean id="privilegeDao" class="com.huawei.sharedrive.app.user.dao.impl.PrivilegeDaoImpl">
+        <property name="sqlMapClientTemplate" ref="ecmSqlMapClientTemplate" />
+    </bean>
+    <!--查询UAM数据库的接口 end-->
+
+    <!-- datasource from oss module.-->
+    <bean id="baseFileObjectDB" abstract="true">
+        <property name="exceptionKeyWord" value="Timeout waiting for idle object" />
+        <property name="alarmHelper" ref="alarmHelper" />
+
+        <property name="driverClassName" value="${jdbc.fileobjectdb.driverClassName}" />
+        <property name="username" value="${jdbc.fileobjectdb.username}" />
+        <property name="password" value="${jdbc.fileobjectdb.password}" />
+        <property name="initialSize" value="${jdbc.fileobjectdb.pool.initialSize}" />
+        <property name="maxActive" value="${jdbc.fileobjectdb.pool.maxActive}" />
+        <property name="maxIdle" value="${jdbc.fileobjectdb.pool.maxIdle}" />
+        <property name="minIdle" value="${jdbc.fileobjectdb.pool.minIdle}" />
+        <property name="maxWait" value="${jdbc.fileobjectdb.pool.maxWait}" />
+        <property name="testWhileIdle" value="${jdbc.fileobjectdb.pool.testWhileIdle}" />
+        <property name="testOnReturn" value="${jdbc.fileobjectdb.pool.testOnReturn}" />
+        <property name="testOnBorrow" value="${jdbc.fileobjectdb.pool.testOnBorrow}" />
+        <property name="validationQuery" value="${jdbc.fileobjectdb.pool.validationQuery}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.fileobjectdb.pool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.fileobjectdb.pool.minEvictableIdleTimeMillis}" />
+    </bean>
+
+    <bean id="fileobjectdb_1" class="pw.cdmi.common.alarm.AlarmAbleDataSource" destroy-method="close" parent="baseFileObjectDB">
+        <property name="url" value="${jdbc.fileobjectdb_1.url}" />
+    </bean>
+
+    <bean id="dcsysdb" class="pw.cdmi.common.alarm.AlarmAbleDataSource" destroy-method="close">
+        <property name="exceptionKeyWord" value="Timeout waiting for idle object" />
+        <property name="alarmHelper" ref="alarmHelper" />
+
+        <property name="driverClassName" value="${jdbc.dcsysdb.driverClassName}" />
+        <property name="url" value="${jdbc.dcsysdb.url}" />
+        <property name="username" value="${jdbc.dcsysdb.username}" />
+        <property name="password" value="${jdbc.dcsysdb.password}" />
+        <property name="initialSize" value="${jdbc.dcsysdb.pool.initialSize}" />
+        <property name="maxActive" value="${jdbc.dcsysdb.pool.maxActive}" />
+        <property name="maxIdle" value="${jdbc.dcsysdb.pool.maxIdle}" />
+        <property name="minIdle" value="${jdbc.dcsysdb.pool.minIdle}" />
+        <property name="maxWait" value="${jdbc.dcsysdb.pool.maxWait}" />
+        <property name="testWhileIdle" value="${jdbc.dcsysdb.pool.testWhileIdle}" />
+        <property name="testOnReturn" value="${jdbc.dcsysdb.pool.testOnReturn}" />
+        <property name="testOnBorrow" value="${jdbc.dcsysdb.pool.testOnBorrow}" />
+        <property name="validationQuery" value="${jdbc.dcsysdb.pool.validationQuery}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.dcsysdb.pool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.dcsysdb.pool.minEvictableIdleTimeMillis}" />
+    </bean>
+
+    <bean id="ossCobarDataSource" class="com.alibaba.cobar.client.datasources.DefaultCobarDataSourceService">
+        <property name="dataSourceDescriptors">
+            <set>
+                <bean class="com.alibaba.cobar.client.datasources.CobarDataSourceDescriptor">
+                    <property name="identity" value="partition0" />
+                    <property name="targetDataSource" ref="dcsysdb" />
+                    <property name="targetDetectorDataSource" ref="dcsysdb" />
+                </bean>
+                <bean class="com.alibaba.cobar.client.datasources.CobarDataSourceDescriptor">
+                    <property name="identity" value="partition1" />
+                    <property name="targetDataSource" ref="fileobjectdb_1" />
+                    <property name="targetDetectorDataSource" ref="fileobjectdb_1" />
+                </bean>
+            </set>
+        </property>
+    </bean>
+
+    <bean id="ossInternalRouter" class="com.alibaba.cobar.client.router.config.CobarInteralRouterXmlFactoryBean">
+        <property name="functionsMap">
+            <map>
+                <entry key="hash">
+                    <bean class="pw.cdmi.core.utils.HashTool" />
+                </entry>
+            </map>
+        </property>
+        <property name="configLocations">
+            <list>
+                <value>classpath:routing/fileobject-rules.xml</value>
+                <value>classpath:routing/fs_endpoint-rules.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="ossSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="dataSource" ref="dcsysdb" />
+        <property name="configLocation" value="classpath:sqlmap-config-oss.xml" />
+    </bean>
+
+    <bean id="ossSqlMapClientTemplate" class="com.alibaba.cobar.client.CobarSqlMapClientTemplate">
+        <property name="sqlMapClient" ref="ossSqlMapClient" />
+        <property name="cobarDataSourceService" ref="ossCobarDataSource" />
+        <property name="router" ref="ossInternalRouter" />
+        <property name="sqlAuditor">
+            <bean class="com.alibaba.cobar.client.audit.SimpleSqlAuditor" />
+        </property>
+        <property name="profileLongTimeRunningSql" value="true" />
+        <property name="longTimeRunningSqlIntervalThreshold" value="3600000" />
+    </bean>
+
+    <!--查询OSS数据库的接口 start-->
+    <bean id="fileObjectDao" class="pw.cdmi.file.dao.impl.FileObjectDaoImpl">
+        <property name="sqlMapClientTemplate" ref="ossSqlMapClientTemplate" />
+    </bean>
+
+    <bean id="cloudEndpointDao" class="pw.cdmi.file.dao.impl.CloudEndpointDaoImpl">
+        <property name="sqlMapClientTemplate" ref="ossSqlMapClientTemplate" />
+    </bean>
+    <!--查询OSS数据库的接口 end-->
+</beans>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TerminalStatistics">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="TerminalStatistics"
+		type="pw.cdmi.box.uam.statistics.domain.TerminalStatisticsDay" />
+	<insert id="insert" parameterClass="TerminalStatistics">
+    	<![CDATA[
+    	INSERT INTO terminal_statistics_day
+    	(day,deviceType,clientVersion,userCount)
+    	VALUES
+    	(#day#,#deviceType#,#clientVersion#,#userCount#)
+    	]]>
+	</insert>
+	
+	
+	<select id="getByDay" resultClass="TerminalStatistics" parameterClass="int">
+        <![CDATA[
+        SELECT day,deviceType,clientVersion,userCount
+        FROM terminal_statistics_day
+        WHERE day=#day#
+        ]]>
+	</select>
+	
+	
+	<select id="getListGroupByDevice" resultClass="TerminalStatistics" parameterClass="int">
+        <![CDATA[
+        SELECT day,deviceType,sum(userCount) as userCount
+        FROM terminal_statistics_day
+        WHERE day=#day#
+        GROUP BY day,deviceType
+        ]]>
+	</select>
+		
+	<select id="getRangeListGroupByDevice" resultClass="TerminalStatistics" parameterClass="map">
+		SELECT day,deviceType,sum(userCount) as userCount
+        FROM terminal_statistics_day
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="beginDay">
+			     <![CDATA[
+				day >= #beginDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDay">
+			     <![CDATA[
+				day <= #endDay#
+			    ]]>	
+			</isNotEmpty>
+		</dynamic>
+		GROUP BY day,deviceType
+		ORDER BY day ASC
+	</select>
+	
+	<select id="getRangeList" resultClass="TerminalStatistics" parameterClass="map">
+		SELECT day,deviceType,clientVersion,userCount
+        FROM terminal_statistics_day
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="beginDay">
+			     <![CDATA[
+				day >= #beginDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDay">
+			     <![CDATA[
+				day <= #endDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="deviceType">
+			     <![CDATA[
+				deviceType = #deviceType#
+			    ]]>	
+			</isNotEmpty>
+		</dynamic>
+		
+		ORDER BY day ASC
+	</select>
+	
+</sqlMap>
+

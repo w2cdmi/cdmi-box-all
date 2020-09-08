@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"  
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd 
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.2.xsd">
+
+	<!-- 如果需要在controller中使用@value标签，就必须添加下面的bean -->
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:application.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<!-- 自动扫描且只扫描@Controller -->
+	<context:component-scan base-package="com.huawei.sharedrive.isystem" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+
+	<context:component-scan base-package="pw.cdmi.box.isystem" use-default-filters="false">
+		<context:include-filter expression="org.springframework.stereotype.Controller" type="annotation"/>
+		<context:include-filter expression="org.springframework.web.bind.annotation.ControllerAdvice" type="annotation"/>
+	</context:component-scan>
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+				<!-- 不返回Accept-Charset响应头 -->
+				<property name="writeAcceptCharset" value="false" />
+			</bean>
+			<!-- 配置返回的JSON数据中不返回NULL值数据 -->
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+						<property name="serializationInclusion" value="NON_NULL" />
+					</bean>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<!-- 定义JSP文件的位置 -->
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+	<!-- 容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL -->
+	<mvc:default-servlet-handler />
+
+	<!-- 按华为IT要求语言设置改为Cookie级 -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+	
+	<mvc:interceptors>
+		<bean class="com.huawei.sharedrive.isystem.user.web.UnauthorizeAccessInterceptor">
+			<property name="excludeUrl">
+				<set>
+					<value>/|/[^/]+/</value>
+					<value>/login|/[^/]+/login</value>
+					<value>/api/.*|/[^/]+/api/.*</value>
+					<value>/account/initChangePwd|/[^/]+/account/initChangePwd</value>
+					<value>/login/turnToError|/[^/]+/login/turnToError</value>
+					<value>/logout.*|/[^/]+/logout.*</value>
+					<value>/syscommon/.*|/[^/]+/syscommon/.*</value>
+					<!-- <value>/systeminit/.*|/[^/]+/systeminit/.*</value> -->
+					<value>/static/.*|/[^/]+/static/.*</value>
+					<value>/favicon.ico|/[^/]+/favicon.ico</value>
+					<value>/register/.*|/[^/]+/register/.*</value> 
+					<value>/favicon.ico|/[^/]+/favicon.ico</value>
+					<value>/checkRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb|/[^/]+/checkRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb</value>
+            	</set>  
+			</property>
+		</bean>
+		
+		<bean class="pw.cdmi.core.log.LogInterceptor">
+			<property name="excludeHeaders">
+				<set>  
+                	<value>Cookie</value>
+                	<value>cookie</value>   
+            	</set>  
+			</property>
+			<property name="excludeUrl">
+				<set>  
+					<value>/</value>  
+                	<value>/[^/]+/static/.*</value>  
+                	<value>/static/.*</value>  
+                	<value>/[^/]+/skins/.*</value>
+                	<value>/skins/.*</value>    
+                	<value>/favicon.ico</value>
+                	<value>/login/turnToError</value>    
+            	</set>    
+			</property>
+		</bean>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+	</mvc:interceptors>
+
+	<!-- 定义国际化消息 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+		<property name="useCodeAsDefaultMessage" value="true" />
+	</bean>
+	
+	<bean id="multipartResolver"  
+        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <!-- one of the properties available; the maximum file size in bytes   
+        <property name="maxUploadSize" value="102400" />  -->
+    </bean> 
+</beans>

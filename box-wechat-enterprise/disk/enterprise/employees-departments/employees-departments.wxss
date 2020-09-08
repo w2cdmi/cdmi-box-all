@@ -1,0 +1,390 @@
+/* 标签样式 */
+
+.scroll-view-H {
+    height: 1050rpx;
+}
+
+.label {
+    display: inlin-block;
+    line-height: 50rpx;
+    height: 50rpx;
+    overflow: hidden;
+    width: 400rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    font-size: 28rpx;
+}
+
+.margin-left {
+    margin-left: 15rpx;
+}
+
+text {
+    font-size: 24rpx;
+    /* line-height: 40rpx; */
+    color: #999;
+    display: block;
+    text-align: left;
+}
+
+/* 页面布局 */
+
+.margin-right {
+    margin-right: 10rpx;
+}
+
+.margin-top {
+    margin-top: 20rpx;
+}
+
+/* 文件信息 */
+
+.file-group {
+    height: 90rpx;
+    display: flex;
+    width: 750rpx;
+}
+
+.img-icon {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 1.5em;
+    margin-top: 5rpx;
+}
+
+.plug_icon {
+    width: 8rpx;
+    height: 44rpx;
+    /* margin-top: 24rpx; */
+}
+
+.small-mark {
+    width: 30rpx;
+    height: 30rpx;
+    /* margin-left: 20rpx; */
+}
+
+.red_dot {
+    width: 16rpx;
+    height: 16rpx;
+    margin-top: 4rpx;
+}
+
+.file-info {
+    /* height: 84rpx; */
+    width: 72%;
+}
+
+.button-size {
+    width: 120rpx;
+    height: 90rpx;
+}
+
+.button-size image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: 30rpx;
+}
+
+.weui-cell_active {
+    background-color: #ececec;
+}
+
+.clear-button-style {
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.cell_2_body_content {
+    /* padding: 0 20rpx; */
+    line-height: 50rpx;
+}
+
+.cell_2_cancel, .cell_2_delete, .cell_2_delete2 {
+    position: absolute;
+    top: 0;
+    font-size: 26rpx;
+    width: 120rpx;
+    height: 120rpx;
+    line-height: 153rpx;
+    text-align: center;
+}
+
+.cell_2_cancel {
+    right: -120rpx;
+    background: #ececec;
+    color: #7c7c7c;
+}
+
+.cell_2_delete {
+    right: -240rpx;
+    background: #f6a623;
+    color: #fff;
+}
+
+.cell_2_delete2 {
+    right: -202rpx;
+    height: 136rpx;
+    background: #ea5036;
+    color: #fff;
+    width: 200rpx;
+    overflow: hidden;
+    line-height: 136rpx;
+    font-size: 35rpx;
+}
+
+.view_bottom {
+    background: #fff;
+    width: 100%;
+    position: absolute;
+    bottom: 0rpx;
+    z-index: 2;
+    box-shadow: 0px -10rpx 20rpx rgba(0, 0, 0, 0.10);
+    height: 144rpx;
+}
+
+.bottom_button {
+    color: #fff;
+    height: 88rpx;
+    width: 320rpx;
+    display: inline-block;
+    font-size: 28rpx;
+    line-height: 88rpx;
+}
+
+.invite_link {
+    background-color: #ea5036;
+    margin: 0;
+}
+
+.bottom_button_size {
+    height: 88rpx;
+    width: 320rpx;
+}
+
+.invite_navigator {
+    display: inline-block;
+    margin-top: 32rpx;
+    margin-left: 38rpx;
+}
+
+.add_department {
+    color: #333;
+    border: 1rpx solid #999;
+    margin-left: 38rpx;
+}
+
+::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+    color: transparent;
+}
+
+/* drawer */
+
+.drawer_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.2;
+    overflow: hidden;
+    z-index: 1000;
+    color: #fff;
+}
+
+.drawer_attr_box {
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2000;
+    background: #f4f4f4;
+}
+
+.close_icon {
+    width: 25rpx;
+    height: 25rpx;
+    line-height: 20rpx;
+    font-size: 30rpx;
+    position: absolute;
+    right: 5rpx;
+    top: 5rpx;
+    padding: 10rpx;
+    color: #ccc;
+    border: 1rpx solid #ccc;
+    border-radius: 50%;
+    text-align: center;
+    background: #fff;
+}
+
+.drawer_attr_content {
+    /* height: 305rpx;  新增知识管理员后应该有的高度*//* height:260rpx; *//* height: 160rpx; */
+    overflow-y: scroll;
+    /* border-bottom: 2rpx solid; */
+}
+
+.drawer_attr_content_user {
+    height: 82rpx;
+    overflow-y: scroll;
+}
+
+.btn {
+    width: 80%;
+    padding: 15rpx 0;
+    border-radius: 10rpx;
+    text-align: center;
+}
+
+.draw_department_icon {
+    width: 34rpx;
+    height: 28rpx;
+    float: left;
+    /* margin-top: 20rpx; */
+    margin-left: 34rpx;
+}
+
+.drawer_depart_text {
+    text-align: left;
+    margin-left: 20rpx;
+    max-width: 370rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.draw_view_content_comm {
+    width: 100%;
+    height: 100rpx;
+    background-color: #fff;
+    /* margin-bottom: 2rpx; */
+    line-height: 80rpx;
+    text-align: center;
+    font-size: 30rpx;
+}
+
+.cancel_view {
+    height: 100rpx;
+    line-height: 100rpx;
+    margin-top: 15rpx;
+}
+
+.open_btn {
+    margin: 40rpx 10%;
+    border-radius: 10rpx;
+    background: #20bb21;
+    color: #fff;
+}
+
+.show_view {
+    width: 590rpx;
+    height: 308rpx;
+}
+
+.btt_comm {
+    width: 50%;
+    position: absolute;
+    bottom: 0px;
+    display: inline-block;
+    background-color: #fff;
+}
+
+.modal_input {
+    position: absolute;
+    top: 64rpx;
+    left: 45rpx;
+    border: 1rpx solid #999;
+    border-radius: 10rpx;
+    width: 461rpx;
+    height: 70rpx;
+    padding: 0 20rpx;
+}
+
+.placeholder_txt {
+    font-size: 30rpx;
+    color: #999;
+}
+
+.cancel {
+    color: #666;
+}
+
+.sure {
+    right: 0;
+    color: #333;
+}
+
+/* zan UI  */
+
+.popup-example--center {
+    border-radius: 4px;
+}
+
+.dept-more {
+    width: 100rpx;
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    align-items: center;
+}
+@import "../../template/createFolder.wxss";
+
+/*列表  */
+
+/*flex布局  */
+
+.flex-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.folderList {
+    height: 130rpx;
+    width: 950rpx;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-bottom: 2rpx solid #f1f1f1;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+    overflow: hidden;
+}
+
+.touch-moveToLeft-active {
+    -webkit-transform: translateX(-180rpx);
+    transform: translateX(-180rpx);
+}
+
+.touch-moveToRight-active {
+    -webkit-transform: translateX(0rpx);
+    transform: translateX(0rpx);
+}
+
+.del {
+    background-color: #ea5036;
+    width: 180rpx;
+    height: 100%;
+    color: #fff;
+    line-height: 130rpx;
+    text-align: center;
+}
+
+.employee-text {
+    margin-left: 15rpx;
+}
+
+.flex-start {
+    justify-content: flex-start;
+}
+
+.flex-center {
+    justify-content: center;
+}
+
+.border-bottom{
+    border-bottom: 4rpx soild #f1f1f1;    
+}

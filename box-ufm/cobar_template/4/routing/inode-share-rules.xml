@@ -1,0 +1,85 @@
+<rules>
+    <rule>
+        <sqlmap>INodeShare.getPageList</sqlmap>
+        <shardingExpression>hash.apply(inodeShare.ownerId) % 1024 &lt; 256</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShare.getPageList</sqlmap>
+        <shardingExpression>hash.apply(inodeShare.ownerId) % 1024 &gt;= 256 and hash.apply(inodeShare.ownerId) % 1024 &lt; 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShare.getPageList</sqlmap>
+        <shardingExpression>hash.apply(inodeShare.ownerId) % 1024 &gt;= 512 and hash.apply(inodeShare.ownerId) % 1024 &lt; 768</shardingExpression>
+        <shards>partition3</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShare.getPageList</sqlmap>
+        <shardingExpression>hash.apply(inodeShare.ownerId) % 1024 &gt;= 768</shardingExpression>
+        <shards>partition4</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>INodeShare.listMyShares</sqlmap>
+        <shardingExpression>hash.apply(filter.ownerId) % 1024 &lt; 256</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShare.listMyShares</sqlmap>
+        <shardingExpression>hash.apply(filter.ownerId) % 1024 &gt;= 256 and hash.apply(filter.ownerId) % 1024 &lt; 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShare.listMyShares</sqlmap>
+        <shardingExpression>hash.apply(filter.ownerId) % 1024 &gt;= 512 and hash.apply(filter.ownerId) % 1024 &lt; 768</shardingExpression>
+        <shards>partition3</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShare.listMyShares</sqlmap>
+        <shardingExpression>hash.apply(filter.ownerId) % 1024 &gt;= 768</shardingExpression>
+        <shards>partition4</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>INodeShare.getCountMyShares</sqlmap>
+        <shardingExpression>hash.apply(filter.ownerId) % 1024 &lt; 256</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShare.getCountMyShares</sqlmap>
+        <shardingExpression>hash.apply(filter.ownerId) % 1024 &gt;= 256 and hash.apply(filter.ownerId) % 1024 &lt; 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShare.getCountMyShares</sqlmap>
+        <shardingExpression>hash.apply(filter.ownerId) % 1024 &gt;= 512 and hash.apply(filter.ownerId) % 1024 &lt; 768</shardingExpression>
+        <shards>partition3</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShare.getCountMyShares</sqlmap>
+        <shardingExpression>hash.apply(filter.ownerId) % 1024 &gt;= 768</shardingExpression>
+        <shards>partition4</shards>
+    </rule>
+	
+    <rule>
+        <namespace>INodeShare</namespace>
+        <shardingExpression>hash.apply(ownerId) % 1024 &lt; 256</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>INodeShare</namespace>
+        <shardingExpression>hash.apply(ownerId) % 1024 &gt;= 256 and hash.apply(ownerId) % 1024 &lt; 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    <rule>
+        <namespace>INodeShare</namespace>
+        <shardingExpression>hash.apply(ownerId) % 1024 &gt;= 512 and hash.apply(ownerId) % 1024 &lt; 768</shardingExpression>
+        <shards>partition3</shards>
+    </rule>
+    <rule>
+        <namespace>INodeShare</namespace>
+        <shardingExpression>hash.apply(ownerId) % 1024 &gt;= 768</shardingExpression>
+        <shards>partition4</shards>
+    </rule>
+</rules>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+    default-autowire="byName" default-lazy-init="true"
+>
+	<description>Spring公共配置 </description>
+	
+	<!-- 支持 @AspectJ 标记-->
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+    
+	<context:annotation-config />
+	
+	<bean id="propertyPlaceholderConfigurer" class="pw.cdmi.core.spring.ext.CustomPropertyPlaceholderConfigurer">
+		<property name="order" value="1" /> 
+		<property name="ignoreUnresolvablePlaceholders" value="true" /> 
+		<property name="locations">
+			<list>
+				<value>classpath*:application.properties</value>
+				<value>classpath*:job.properties</value>
+			</list>
+		</property>
+		 <property name="parsers">
+            <list>
+                <bean class="pw.cdmi.core.utils.DBAccessKeyParserEnhance">
+                    <property name="includes">
+                        <list>
+                           <!-- <value>*.password</value> -->
+                        </list>
+                    </property>
+                    <property name="excludes">
+                        <list>
+                            <value>ufm.client.truststore.password</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+	</bean>
+	
+    <!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
+    <context:component-scan base-package="com.huawei.sharedrive.uam.*">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+    </context:component-scan>
+    
+    <bean class="pw.cdmi.core.log.MethodLogAspect" />
+    <bean id="i18nUtils" class="pw.cdmi.core.utils.I18nUtils" lazy-init="false" />
+    <bean id="springContextUtil" class="pw.cdmi.core.utils.SpringContextUtil" lazy-init="false" />
+    <bean class="pw.cdmi.core.spring.ext.DoAfterSpringLoadComplete" lazy-init="false" />
+<!--     <bean id="timeConsumeUtils" class="com.huawei.sharedrive.common.util.TimeConsumeUtils" lazy-init="false" init-method="initTimeConsume"></bean> -->
+    
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource"> 
+        <property name="basename" value="messages"/> 
+    </bean> 
+    
+    <bean id="accessWhiteListService" class="com.huawei.sharedrive.uam.system.service.impl.AccessWhiteListServiceImpl" lazy-init="false" />
+    
+    <!-- RefererMatch Filter -->
+    <bean id="refererMatchFilter" class="pw.cdmi.common.web.RefererMatchFilter">
+        <property name="excludes">
+            <list>
+                <value>/static/**</value>
+                <value>/checkRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb</value>
+                <value>/newCheckRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb</value>
+                <value>/syscommon/**</value>
+                <value>/api/**</value>
+                <value>/register/**</value>
+                <value>/verifycode*</value>
+                <value>/favicon.ico</value>
+            </list>
+        </property>
+        <property name="allowedHost">
+            <list>
+            	  <!-- must be set after deploy -->
+                <value>localhost</value>
+                <value>127.0.0.1</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="deamonService" class="pw.cdmi.common.deamon.DeamonServiceImpl" lazy-init="false" destroy-method="destroy">
+        <property name="capacity" value="10000" />
+        <property name="maxConsumerWorkers" value="10" />
+    </bean>
+
+    <import resource="classpath*:pw/cdmi/common/job/applicationContext-job.xml"/>
+</beans>

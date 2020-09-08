@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="CppSQLite3">
+      <UniqueIdentifier>{3b55b156-51e8-43ec-8cca-74860d02a58a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UpdateIniFile">
+      <UniqueIdentifier>{de31094e-02bf-4cfa-8095-8d85d259d3d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="UpdateDB">
+      <UniqueIdentifier>{41537994-8b39-44f0-8123-d6a9f0cbeaf5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Utility">
+      <UniqueIdentifier>{855395c6-be58-49c9-ab2d-37a010b64d70}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Update.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="UpDateIniFile\IniHelper.h">
+      <Filter>UpdateIniFile</Filter>
+    </ClInclude>
+    <ClInclude Include="UpDateIniFile\UpdateIniFile.h">
+      <Filter>UpdateIniFile</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite\include\CppSQLite3.h">
+      <Filter>CppSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite\include\sqlite3.h">
+      <Filter>CppSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite\include\sqlite3ext.h">
+      <Filter>CppSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateDB\UpdateDBFile.h">
+      <Filter>UpdateDB</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdateDB\DBCommonDefine.h">
+      <Filter>UpdateDB</Filter>
+    </ClInclude>
+    <ClInclude Include="Utility\Utility.h">
+      <Filter>Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="UpDateApp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Update.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="UpDateIniFile\IniHelper.cpp">
+      <Filter>UpdateIniFile</Filter>
+    </ClCompile>
+    <ClCompile Include="UpDateIniFile\UpdateIniFile.cpp">
+      <Filter>UpdateIniFile</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite\include\CppSQLite3.cpp">
+      <Filter>CppSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite\include\sqlite3.c">
+      <Filter>CppSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateDB\UpdateDBFile.cpp">
+      <Filter>UpdateDB</Filter>
+    </ClCompile>
+    <ClCompile Include="Utility\Utility.cpp">
+      <Filter>Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="UpdateApp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Update.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="res\Update.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\Update.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\upgrade.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

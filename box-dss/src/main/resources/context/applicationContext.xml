@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+    default-autowire="byName">
+
+    <!-- 支持 @AspectJ 标记 -->
+    <aop:aspectj-autoproxy proxy-target-class="true" />
+
+    <context:annotation-config />
+
+    <!-- 自定义的资源文件加载 -->
+    <bean id="propertyPlaceholderConfigurer" class="pw.cdmi.core.spring.ext.CustomPropertyPlaceholderConfigurer">
+        <property name="order" value="1" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="locations">
+            <list>
+                <value>classpath*:config.properties</value>
+                <value>classpath*:jdbc.properties</value>
+                <value>classpath*:job.properties</value>
+            </list>
+        </property>
+        <property name="parsers">
+            <list>
+                <bean class="pw.cdmi.core.utils.DBAccessKeyParserEnhance">
+                    <property name="includes">
+                        <list>
+                             <!-- <value>*.password</value> -->
+                        </list>
+                    </property>
+                    <property name="excludes">
+                        <list>
+                             <value>thrift.ssl.keystore.password</value>
+                             <value>thrift.ssl.truststore.password</value>
+                             <value>https.client.truststore.password</value>                       
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="CommonPropertiesUtils" class="pw.cdmi.core.utils.CommonPropertiesUtils" lazy-init="false">
+        <property name="resourceName" value="config.properties" />
+    </bean>
+
+
+    <bean id="springContextUtil" class="pw.cdmi.core.utils.SpringContextUtil" lazy-init="false" />
+
+    <!-- 通过该配置，允许beanHolder直接获取配置文件中的属性值 -->
+    <bean id="messageSource" class="pw.cdmi.file.engine.core.spring.ext.RegexPropertyMessageResources">
+        <property name="basenames">
+            <list>
+                <value>classpath*:*.properties</value>
+            </list>
+        </property>
+    </bean>
+    
+
+    <import resource="classpath*:context/applicationContext-restclient.xml" />
+
+    <import resource="classpath*:context/applicationContext-copytask.xml" />
+    
+    <import resource="classpath*:context/applicationContext-realtime-copytask.xml" />
+
+    <import resource="classpath*:context/applicationContext-alarm.xml" />
+
+    <import resource="classpath*:context/applicationContext-dao.xml" />
+
+    <import resource="classpath*:context/applicationContext-slavedb.xml" />
+
+    <import resource="classpath*:context/applicationContext-preview-convert.xml" />
+
+    <import resource="classpath*:context/applicationContext-security-scan.xml" />
+
+    <import resource="classpath*:context/applicationContext-filesystem.xml" />
+
+    <bean id="beanHolder" class="pw.cdmi.file.engine.core.spring.ext.BeanHolder" />
+
+    <bean id="systemConfigLoader" class="pw.cdmi.file.engine.manage.config.SystemConfigLoader" lazy-init="false" init-method="load" />
+    <bean class="pw.cdmi.core.spring.ext.DoAfterSpringLoadComplete" lazy-init="false" />
+
+    <import resource="classpath*:context/applicationContext-cluster.xml" />
+    <import resource="classpath*:context/applicationContext-memcache.xml" />
+    <import resource="classpath*:context/applicationContext-loadbalance.xml" />
+
+    <bean id="fsEndpointManager" class="pw.cdmi.file.engine.filesystem.manage.FSEndpointManager" lazy-init="false" />
+
+	<import resource="classpath*:context/applicationContext-thrift.xml" />
+
+    <bean class="pw.cdmi.file.engine.permission.PermissionUtils">
+        <property name="ufmThriftClientProxyFactory" ref="ufmThriftClientProxyFactory" />
+        <property name="szufmThriftClientProxyFactory" ref="szufmThriftClientProxyFactory" />
+        <property name="dgufmThriftClientProxyFactory" ref="dgufmThriftClientProxyFactory" />
+    </bean>
+
+    <import resource="classpath*:pw/cdmi/common/job/applicationContext-job.xml"/>
+
+    <context:component-scan base-package="com.huawei.sharedrive.*;pw.cdmi.*" />
+</beans>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[CloudFileViewController fileShare:]:CloudFileViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[File(Remote) uploadAsset:force:]:File+Remote.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.fileOwner.integerValue">
+            </PersistentString>
+            <PersistentString
+               value = "representation">
+            </PersistentString>
+            <PersistentString
+               value = "representation.filename">
+            </PersistentString>
+            <PersistentString
+               value = "asset">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[SpaceInformationController viewDidLoad]:SpaceInformationController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.teamSpace">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

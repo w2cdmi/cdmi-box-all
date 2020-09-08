@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ProcessInfo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="ProcessInfo"
+		type="com.huawei.sharedrive.isystem.monitor.domain.ProcessInfo" />
+
+	<insert id="insert" parameterClass="ProcessInfo">
+		insert into
+		process_info(
+		clusterName,
+		hostName,
+		managerIp,
+		reportTime,
+		processName,
+		cpuUsage,
+		memoryUsage,
+		fileHandleTotal,
+		threadTotal,
+		type,
+		port,
+		role,
+		processCount,
+		syn,
+		vip,
+		status,
+		reserve) values (#clusterName#,
+		#hostName#,
+		#managerIp#,
+		#reportTime#,
+		#processName#,
+		#cpuUsage#,
+		#memoryUsage#,
+		#fileHandleTotal#,
+		#threadTotal#,
+		#type#,
+		#port#,
+		#role#,
+		#processCount#,
+		#syn#,
+		#vip#,
+		#status#,
+		#reserve#)
+	</insert>
+	<update id="update" parameterClass="ProcessInfo">
+		update
+		process_info set
+		clusterName=#clusterName#,
+		hostName=#hostName#,
+		managerIp=#managerIp#,
+		reportTime=#reportTime#,
+		processName=#processName#,
+		cpuUsage=#cpuUsage#,
+		memoryUsage=#memoryUsage#,
+		fileHandleTotal=#fileHandleTotal#,
+		threadTotal=#threadTotal#,
+		type=#type#,
+		port=#port#,
+		role=#role#,
+		processCount=#processCount#,
+		syn=#syn#,
+		vip=#vip#,
+		status=#status#,
+		reserve=#reserve#
+		where clusterName=#clusterName# and
+		hostName=#hostName# and processName=#processName#
+	</update>
+
+	<select id="select" resultClass="ProcessInfo" parameterClass="ProcessInfo">
+        select * from process_info where hostName=#hostName# and processName=#processName#
+    </select>
+
+	<!-- <select id="getFilterd" parameterClass="Cluster" resultClass="Cluster"> 
+		select * from admin <dynamic prepend="where"> <isNotNull prepend="and" property="filter"> 
+		type = #filter.type# </isNotNull> <isNotNull prepend="and" property="filter.status"> 
+		status = #filter.status# </isNotNull> </dynamic> <dynamic prepend="and" open="(" 
+		close=")"> <isNotEmpty prepend="or" property="filter.loginName"> loginName 
+		like concat('%',#filter.loginName#,'%') </isNotEmpty> <isNotEmpty prepend="or" 
+		property="filter.name"> name like concat('%',#filter.name#,'%') </isNotEmpty> 
+		<isNotEmpty prepend="or" property="filter.email"> email like concat('%',#filter.email#,'%') 
+		</isNotEmpty> </dynamic> <dynamic prepend="order by"> <isNotNull property="order"> 
+		<isNotEmpty property="order.field"> $order.field$ <isEqual property="order.desc" 
+		compareValue="true"> desc </isEqual> </isNotEmpty> </isNotNull> </dynamic> 
+		<dynamic prepend="limit"> <isNotNull property="limit"> #limit.offset#,#limit.length# 
+		</isNotNull> </dynamic> </select> -->
+
+</sqlMap>
+

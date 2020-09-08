@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="400,200" caption="0,0,0,42" roundcorner="5,5" mininfo="400,200" maxinfo="400,240">
+  <Include source="..\Default.xml" />
+	<VerticalLayout bkcolor="#FFFFFFFF" borderround="5,5,5,5" bordersize="1" bordercolor="#FFD9D9D9">
+		<HorizontalLayout height="42" bkcolor="#FFFAFAFA" bordersize="1" bordercolor="#FFD9D9D9">
+			<Label name="OfficeAddinProgressFrame_item_name" width="350" textpadding="20,0,0,0" endellipsis="true" textcolor="#FF000000" font="15" align="left"/>
+			<Button name="OfficeAddinProgressFrame_button_close"  padding="10,11,20,11" width="20" height="20" align="left" normalimage="file='..\..\Image\SysBtn\ic_popup_delete.png' source='0,0,20,20' dest='0,0,20,20'" hotimage="file='..\..\Image\SysBtn\ic_popup_delete.png' source='0,30,20,50' dest='0,0,20,20'"/>
+		</HorizontalLayout>
+    <Label name="OfficeAddinProgressFrame_item_stats" text="正在上传......" padding="20,24,0,0" width="360" height="20" textcolor="#FF000000" font="15"/>
+		<HorizontalLayout name="OfficeAddinProgressFrame_progress_Layout" width="360" height="50" padding="20,20,0,0">
+      <List name="OfficeAddin_Progress" width="360" mousechild="false" header="hidden" itemshowhtml="true" hscrollbar="false" vscrollbar="true"/>
+		</HorizontalLayout>
+		<VerticalLayout name="OfficeAddinProgressFrame_item_noticearea" visible="false" width="360" height="65" padding="20,10,0,0">
+			<Label name="OfficeAddinProgressFrame_item_fail" width="400" height="20" textcolor="#ff0000" font="0"/>
+			<RichEdit name="OfficeAddinProgressFrame_item_info" enabled="false" width="400" height="40" textpadding="2,0,2,0" textcolor="#FF666666" font="0" />
+		</VerticalLayout>
+		<Control />
+		<HorizontalLayout name="OfficeAddinProgressFrame_item_operations" height="30" padding="286,10,10,0" visible="false">
+			<Button name="OfficeAddinProgressFrame_btn_cancl" text="关闭"  width="84" height="30" font="0" textcolor="#FF666666" align="center" normalimage="file='..\..\Image\ic_button_white_nor.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\..\Image\ic_button_white_nor.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\..\Image\ic_button_white_nor.png' source='0,80,80,110' corner='3,3,3,3'"/>
+		</HorizontalLayout>
+		<Control height="20"/>
+	</VerticalLayout>
+</Window>

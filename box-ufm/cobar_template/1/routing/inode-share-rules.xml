@@ -1,0 +1,26 @@
+<rules>
+    <rule>
+    	<!-- hash.apply(inodeShare.ownerId) -->
+        <sqlmap>INodeShare.getPageList</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+    	<!-- hash.apply(filter.ownerId) -->
+        <sqlmap>INodeShare.listMyShares</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+    	<!-- hash.apply(filter.ownerId) -->
+        <sqlmap>INodeShare.getCountMyShares</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+    	<!-- hash.apply(ownerId) -->
+        <namespace>INodeShare</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

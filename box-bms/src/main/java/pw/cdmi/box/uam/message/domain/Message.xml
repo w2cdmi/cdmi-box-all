@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Message">
+
+    <typeAlias alias="Message" type="pw.cdmi.box.uam.message.domain.Message" />
+    
+    <typeAlias alias="MessageStatus" type="pw.cdmi.box.uam.message.domain.MessageStatus" />
+	
+	<parameterMap class="Message" id="parameterMap.Message">
+		<parameter property="id" 				javaType="java.lang.Long"/>
+        <parameter property="providerId" 		javaType="java.lang.Long" />
+        <parameter property="params" 			typeHandler="pw.cdmi.box.uam.message.domain.MessageParamsTypeHandler"/>
+        <parameter property="createdAt" 		javaType="java.util.Date"/>
+        <parameter property="expiredAt" 		javaType="java.util.Date"/>
+	</parameterMap>
+	
+	<resultMap id="resultMap.Message" class="Message">
+        <result column="id" 				property="id" 				javaType="java.lang.Long"/>
+        <result column="providerId" 		property="providerId" 		javaType="java.lang.Long"/>
+        <result column="params" 			property="params" 			typeHandler="pw.cdmi.box.uam.message.domain.MessageParamsTypeHandler"/>
+        <result column="receiverId" 		property="receiverId" 		javaType="java.lang.Long" nullValue="-1"/>
+        <result column="status" 			property="status" 			javaType="java.lang.Byte" nullValue="1"/>
+        <result column="createdAt" 			property="createdAt" 		javaType="java.util.Date"/>
+        <result column="expiredAt" 			property="expiredAt" 		javaType="java.util.Date"/>
+    </resultMap>
+    
+    <resultMap id="resultMap.MessageStatus" class="MessageStatus">
+        <result column="messageId" 			property="messageId" 		javaType="java.lang.Long"/>
+        <result column="receiverId" 		property="receiverId" 		javaType="java.lang.Long"/>
+        <result column="status" 			property="status" 			javaType="java.lang.Byte"/>
+        <result column="expiredAt" 			property="expiredAt" 		javaType="java.util.Date"/>
+    </resultMap>
+    
+	<insert id="create" parameterMap="parameterMap.Message">
+        <![CDATA[
+        insert into system_message(id,providerId,params,createdAt,expiredAt)
+        	values 
+        (?, ?, ?, ?, ?)
+        ]]>
+    </insert>
+    
+    <select id="listUnInitStatusMessage" parameterClass="map" resultMap="resultMap.Message">
+    	select t.id,t.providerId,t.params,t.createdAt,t.expiredAt, '-1' as receiverId, '1' as status from system_message t where t.id not in (select messageId from system_message_status_$tableSuffix$ s where s.receiverId=#receiverId#)
+    </select>
+    
+    <insert id="createStatus" parameterClass="map">
+        <![CDATA[
+        insert into system_message_status_$tableSuffix$(messageId,receiverId,status,expiredAt)
+        	values 
+        (#status.messageId#, #status.receiverId#,#status.status#,#status.expiredAt#)
+        ]]>
+    </insert>
+    
+    <select id="getTotalMessages" parameterClass="map" resultClass="Integer">
+        select count(*) from system_message t where t.id in (select messageId from system_message_status_$tableSuffix$ s
+        <dynamic prepend="where">
+        	<isNotEmpty prepend="and" property="receiverId">
+            	s.receiverId = #receiverId#
+            </isNotEmpty>
+            <isNotEqual prepend="and" property="status" compareValue="0">
+                s.status = #status#
+            </isNotEqual>
+            <isNotEmpty prepend="and" property="startId">
+               s.messageId >= #startId# 
+            </isNotEmpty>
+        </dynamic>
+        )
+    </select>
+    
+    <select id="listMessage" parameterClass="map" resultMap="resultMap.Message">
+        select t.id,t.providerId,t.params,t.createdAt,t.expiredAt,s.receiverId,s.status from system_message t, system_message_status_$tableSuffix$ s
+        where t.id=s.messageId and s.receiverId=#receiverId#
+        <dynamic>
+            <isNotEqual prepend="and" property="status" compareValue="0">
+                s.status = #filter.status#
+            </isNotEqual>
+            <isNotEmpty prepend="and" property="startId">
+                t.id >= #startId# 
+            </isNotEmpty>
+        </dynamic>
+        order by t.createdAt desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">    
+                #limit.offset#, #limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getMessage" parameterClass="java.lang.Long" resultMap="resultMap.Message">
+        select t.id,t.providerId,t.params,t.createdAt,t.expiredAt, '-1' as receiverId, '1' as status from system_message t where t.id = #value#
+    </select>
+    
+    <select id="getMessageStatus" parameterClass="map" resultMap="resultMap.MessageStatus">
+        select * from system_message_status_$tableSuffix$ where receiverId = #receiverId# and messageId=#messageId#
+    </select>
+    
+    <select id="getMaxId" resultClass="Long" parameterClass="Message">
+        <![CDATA[
+        select max(id) from system_message
+        ]]>
+    </select>
+    
+    <update id="updateStatus" parameterClass="map">
+    	<![CDATA[
+        update system_message_status_$tableSuffix$ set status=#message.status# where messageId=#message.id# and receiverId = #message.receiverId#
+        ]]>
+    </update>
+    
+    <delete id="cleanExpiredMessage" parameterClass="java.util.Date">
+        <![CDATA[
+        delete from system_message where expiredAt <= #value#
+        ]]>
+    </delete>
+    
+    <delete id="cleanExpiredMessageStatus" parameterClass="Map">
+        <![CDATA[
+        delete from system_message_status_$tableSuffix$ where expiredAt <= #time#
+        ]]>
+    </delete>
+</sqlMap>
+

@@ -1,0 +1,12 @@
+@@filePath1
+d:/junitTest.jpg
+
+@@fileParent1
+0
+
+@@folderParent1
+0
+
+@@imageFilePath
+d:/testImage.jpg
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+    default-autowire="byName" default-lazy-init="false"
+>
+   <bean id="uamClientService" class="pw.cdmi.core.restrpc.RestClient" init-method="init" destroy-method="destroy">
+        <property name="maxTotal" value="${uam.client.max.total}" />
+        <property name="defaultMaxPerRoute" value="${uam.client.default.max.per.route}" />
+        <property name="defaultRedirectMax" value="${uam.client.default.redirect.max}" />
+        <property name="connectionRequestTimeout" value="${uam.client.connection.request.timeout}" />
+        <property name="connectTimeout" value="${uam.client.connection.timeout}" />
+        <property name="socketTimeout" value="${uam.client.socket.timeout}" />
+        <property name="cipherSuites">
+		    <list>
+		        <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+		        <value>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</value>
+		    </list>
+		</property>
+		<property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+        <property name="validateServerCert" value="${uam.client.valid.server.cert}" />
+        <property name="trustStorePath" value="${uam.client.truststore.path}" />
+        <property name="trustStorePass" value="${uam.client.truststore.password}" />
+        <property name="trustStorePassKey" value="${uam.client.truststore.password.encodekey}" />
+        <property name="requireClientCert" value="${uam.client.require.client.cert}" />
+    </bean>
+   <bean id="fpClientService" class="pw.cdmi.core.restrpc.RestClient" init-method="init" destroy-method="destroy">
+        <property name="maxTotal" value="${uam.client.max.total}" />
+        <property name="defaultMaxPerRoute" value="${uam.client.default.max.per.route}" />
+        <property name="defaultRedirectMax" value="${uam.client.default.redirect.max}" />
+        <property name="connectionRequestTimeout" value="${uam.client.connection.request.timeout}" />
+        <property name="connectTimeout" value="${uam.client.connection.timeout}" />
+        <property name="socketTimeout" value="${uam.client.socket.timeout}" />
+        <property name="cipherSuites">
+		    <list>
+		        <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+		        <value>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</value>
+		    </list>
+		</property>
+		<property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+        <property name="validateServerCert" value="${uam.client.valid.server.cert}" />
+        <property name="trustStorePath" value="${uam.client.truststore.path}" />
+        <property name="trustStorePass" value="${uam.client.truststore.password}" />
+        <property name="trustStorePassKey" value="${uam.client.truststore.password.encodekey}" />
+        <property name="requireClientCert" value="${uam.client.require.client.cert}" />
+    </bean>    
+</beans>

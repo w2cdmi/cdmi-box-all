@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="OrderBill">
+    <typeAlias alias="OrderBill" type="pw.cdmi.box.disk.product.domain.OrderBill" />
+    
+	<insert id="create" parameterClass="OrderBill">
+     <![CDATA[
+      INSERT INTO `order_bill` ( `id`, `price`, `status`, `submitDate`, `finishedDate`, `descript`, `enterpriseId`, `enterpriseUserId`,`type`,`userType`,`productId`,`accountId`,`duration`) 
+                        VALUES ( #id#, #price#, #status#, #submitDate#, #finishedDate#, #descript#, #enterpriseId#, #enterpriseUserId#,#type#,`userType`,#productId#,#accountId#,#duration#)
+                         ]]>
+                       
+   </insert>
+   <select id="list" resultClass="OrderBill" parameterClass="OrderBill">
+      <![CDATA[
+       select * from order_bill where enterpriseId=#enterpriseId# and enterpriseUserId=#enterpriseUserId#
+       ]]>
+    </select>
+   
+   <select id="getOrderStatus" resultClass="byte" parameterClass="string">
+      <![CDATA[
+       select status from order_bill where id=#id#
+       ]]>
+    </select>
+   
+</sqlMap>

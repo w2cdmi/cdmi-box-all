@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="NetRegionIp">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="NetRegionIp" type="com.huawei.sharedrive.uam.enterprise.domain.NetRegionIp" />
+	
+	<insert id="insert" parameterClass="NetRegionIp">
+        <![CDATA[
+        insert into network_region_config(id,accountId,netRegionId,ipStart,ipEnd,ipStartValue,ipEndValue,networkTypeId,regionId,createdAt,modifiedAt) 
+        values 
+        (#id#,#accountId#,#netRegionId#,#ipStart#,#ipEnd#,#ipStartValue#,#ipEndValue#,#networkTypeId#,#regionId#,#createdAt#,#modifiedAt#)
+        ]]>
+	</insert>
+	
+	<select id="getDuplicateValues" parameterClass="NetRegionIp" resultClass="int">
+    	<![CDATA[
+    	select count(id) from network_region_config where ipStartValue=#ipStartValue# and id=#id# and accountId=#accountId#;
+        ]]>
+	</select>
+	
+	 <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from network_region_config where netRegionId=#filter.netRegionId# and accountId=#filter.accountId#
+    </select>
+    
+    <select id="getFilterd" parameterClass="map" resultClass="NetRegionIp">
+        select * from network_region_config where netRegionId=#filter.netRegionId# and accountId=#filter.accountId#
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getById" parameterClass="Long" resultClass="NetRegionIp">
+        select * from network_region_config where id=#id#
+    </select>
+    
+     <update id="modify" parameterClass="NetRegionIp">
+        update network_region_config set ipStart=#ipStart#, ipEnd=#ipEnd#,modifiedAt=#modifiedAt# where id=#id#
+    </update>
+    
+    <delete id="delete" parameterClass="Long">
+        delete from network_region_config where id=#id#
+    </delete>
+    
+    <delete id="deleteByCondition" parameterClass="NetRegionIp">
+        delete from network_region_config where accountId=#accountId# and netRegionId=#netRegionId#
+    </delete>
+    
+    
+    <select id="getListRegionIp" parameterClass="NetRegionIp" resultClass="NetRegionIp">
+        select nr.id,nr.netRegionName,nr.netRegionDesc,nrc.ipStart,nrc.ipEnd,nrc.ipStartValue,nrc.ipEndValue
+		from 
+		network_region_config nrc,net_region nr 
+		where nrc.netRegionId=nr.id
+		and nrc.accountId=#accountId#
+    </select>
+    
+    <select id="getByIp" parameterClass="map" resultClass="NetRegionIp">
+   		 <![CDATA[
+    	select * 
+    	from network_region_config 
+    	where  accountId=#accountId# and ipStartValue<=#ipLong# and ipEndValue>=#ipLong#
+    	limit 0,1
+    	]]>
+    </select>
+    
+    
+    	<select id="getMaxId" parameterClass="String" resultClass="Long">
+        <![CDATA[
+        select max(id) from network_region_config
+        ]]>
+    </select>
+    
+</sqlMap>
+

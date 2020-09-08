@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ObjectFingerprintIndex">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="ObjectFingerprintIndex" type="com.huawei.sharedrive.app.files.domain.ObjectFingerprintIndex" />
+
+    <insert id="insert" parameterClass="ObjectFingerprintIndex">
+        insert into object_fp_$tableSuffix$(id,sha1,regionId) values (#id#,#sha1#,#regionId#)
+    </insert>
+
+    <delete id="delete" parameterClass="ObjectFingerprintIndex">
+        delete from object_fp_$tableSuffix$ where id=#id# and sha1=#sha1#
+    </delete>
+    
+    <delete id="deletebysha1" parameterClass="ObjectFingerprintIndex">
+        delete from object_fp_$tableSuffix$ where  sha1=#sha1#
+    </delete>
+    
+    <select id="getbysha1" resultClass="ObjectFingerprintIndex" parameterClass="ObjectFingerprintIndex">
+        select * from object_fp_$tableSuffix$ where sha1=#sha1#
+    </select>
+    
+     <select id="getbysha1Andregionid" resultClass="ObjectFingerprintIndex" parameterClass="ObjectFingerprintIndex">
+        select * from object_fp_$tableSuffix$ where sha1=#sha1# and regionId=#regionId#
+    </select>
+</sqlMap>
+

@@ -1,0 +1,78 @@
+<!-- body -->
+<view class='page' style="height:auto;">
+  <view class='view-bg'>
+    <!-- tab -->
+    <view class='cloud-menu' hidden='{{isShowMenu?false:true}}'>
+      <view class="{{selectType=='personalFolders'?'menu-select':''}}" data-type='personalFolders' bindtap='onClickMenu'>个人文件</view>
+      <view class="{{selectType=='departments'?'menu-select':''}}" data-type='departments' bindtap='onClickMenu'>部门文件</view>
+      <view class="{{selectType=='teamSpaces'?'menu-select':''}}" data-type='teamSpaces' bindtap='onClickMenu'>协作空间</view>
+      <view class="{{selectType=='enterpriseFolders'?'menu-select':''}}" data-type='enterpriseFolders' bindtap='onClickMenu'>企业文库</view>
+    </view>
+    <view>
+      <!-- crumbs -->
+      <scroll-view scroll-x class='border-bottom' style='height:{{crumbsHeight}}px'>
+        <view class='crumbs font-middle'>
+          <block wx:for="{{crumbs}}" wx:key="*this">
+            <view data-crumb='{{item}}' bindtap='clickCrumb' class="{{currentNodeId==item.nodeId?'current-dir':''}}">{{item.name}}</view>
+            <image hidden="{{currentNodeId==item.nodeId?true:false}}" src='../images/icon-arrow.png'></image>
+          </block>
+        </view>
+      </scroll-view>
+
+            <scroll-view class='content' scroll-y style='height:{{listHeight}}px' hidden='{{isTeamSpace}}'>
+                <block wx:for="{{folders}}" wx:key="*this">
+                    <block wx:if="{{item.isListAcl}}">
+                        <view class="file-group border-bottom view-up-down-space" hover-class='button-hover' data-folder-name='{{item.name}}' data-owner-id='{{item.ownedBy}}' data-node-id='{{item.id}}' bindtap='openFolder'>
+                            <view class='view-select-icon' wx:if="{{isSelectMultipleFile}}">
+                                <!-- <image class="img-icon-small" src='/disk/images/icon/enterprise/no-select-icon.png'></image> -->
+                                <checkbox catchtap="checkbox" data-item="{{item}}" checked="{{item.checked}}" />
+                            </view>
+                            <view>
+                  <image class="img-icon margin-right" mode='aspectFit' src='/disk/images/icon/folder-icon.png'></image>
+                            </view>
+                            <view class='file-info'>
+                                <label>{{item.name}}</label>
+                                <text>{{item.menderName}} | {{item.modifiedTime}}</text>
+                            </view>
+                        </view>
+                    </block>
+                </block>
+
+                <block wx:for="{{files}}" wx:key="*this" wx:if="{{isSelectMultipleFile}}">
+                    <view class="file-group border-bottom view-up-down-space" hover-class='button-hover' data-folder-name='{{item.name}}' data-owner-id='{{item.ownedBy}}' data-node-id='{{item.id}}'>
+                        <view class='view-select-icon'>
+                            <checkbox catchtap="checkbox" data-item="{{item}}" checked="{{item.checked}}" />
+                        </view>
+                        <view>
+                <image class="img-icon margin-right" mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src='{{item.icon}}'></image>
+                        </view>
+                        <view class='file-info'>
+                            <label>{{item.name}}</label>
+                            <text>{{item.menderName}} | {{item.modifiedTime}}</text>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+
+            <scroll-view class='content' scroll-y style='height:{{listHeight}}px' hidden='{{isTeamSpace?false:true}}'>
+                <block wx:for="{{teamSpaces}}" wx:key="*this">
+                    <view class="file-group border-bottom view-up-down-space" data-space-name='{{item.name}}' data-owner-id='{{item.id}}' bindtap='openTeamSpace'>
+            <image class="img-icon margin-right" mode='{{imageIcon.length < 95 ? "aspectFit":"center" }}' src='{{imageIcon}}'></image>
+                        <view class='file-info'>
+                            <label>{{item.name}}</label>
+                            <text>拥有者: {{item.ownerName}}</text>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+        </view>
+    </view>
+
+    <!-- operation -->
+    <view class='view-bg save-to-operation' wx:if="{{!isSelectMultipleFile}}">
+        <button class="gray-button clear-button-style" bindtap='onCreateFolder'>新建文件夹</button>
+        <button class='clear-button-style' bindtap='onConfirmSave'>确认</button>
+    </view>
+
+    <view class='sure-button' wx:if="{{isSelectMultipleFile}}" bindtap='sureSelect'>确认</view>
+</view>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="INodeShare">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="INodeShare" type="pw.cdmi.box.disk.share.domain.INodeShare" />
+    <typeAlias alias="List" type="java.util.List" />
+	<resultMap id="mapToShare" class="INodeShare">
+		<result column="createdAt" property="createdAt"/>
+		<result column="createdBy" property="createdBy"/>
+		<result column="iNodeId" property="iNodeId"/>
+		<result column="modifiedAt" property="modifiedAt"/>
+		<result column="modifiedBy" property="modifiedBy"/>
+		<result column="ownerId" property="ownerId"/>
+		<result column="roleName" property="roleName"/>
+		<result column="sharedUserId" property="sharedUserId"/>
+		<result column="sharedUserType" property="sharedUserType"/>
+	</resultMap>
+	<insert id="insert" parameterClass="INodeShare">
+       insert into inode_share_$tableSuffix$(iNodeId,type,name,ownerId,ownerName,sharedUserId,sharedUserName,
+	   sharedUserType,createdAt,modifiedAt,createdBy,modifiedBy,roleName,status,size) values 
+        (#iNodeId#,#type#,#name#,#ownerId#,#ownerName#,#sharedUserId#,#sharedUserName#,#sharedUserType#,
+		#createdAt#,#modifiedAt#,#createdBy#,#modifiedBy#,#roleName#,#status#,#size#)
+    </insert>
+	
+	
+	 <delete id="deleteByInodeAndSharedUser" parameterClass="INodeShare">
+        <![CDATA[
+		delete from inode_share_$tableSuffix$ where iNodeId=#iNodeId# and ownerId=#ownerId# and sharedUserId=#sharedUserId# and sharedUserType=#sharedUserType#
+		]]>
+    </delete>
+	
+	<delete id="deleteByInode" parameterClass="INodeShare">
+        <![CDATA[
+        delete from inode_share_$tableSuffix$ where iNodeId=#iNodeId# and ownerId=#ownerId# 
+        ]]>
+    </delete>
+	
+	<update id="updateSize" parameterClass="INodeShare">
+        <![CDATA[
+        update inode_share_$tableSuffix$ set `size`=#size# where iNodeId=#iNodeId# and ownerId=#ownerId# 
+        ]]>
+    </update>
+	
+	<update id="updateStatus" parameterClass="INodeShare">
+        <![CDATA[
+        update inode_share_$tableSuffix$ set `status`=#status# where iNodeId=#iNodeId# and ownerId=#ownerId# 
+        ]]>
+    </update>
+	
+	<update id="updateOwnerName" parameterClass="INodeShare">
+        <![CDATA[
+        update inode_share_$tableSuffix$ set `ownerName`=#ownerName# where ownerId=#ownerId# 
+        ]]>
+    </update>
+	
+	<update id="updateName" parameterClass="INodeShare">
+        <![CDATA[
+        update inode_share_$tableSuffix$ set `name`=#name# where iNodeId=#iNodeId# and ownerId=#ownerId# 
+        ]]>
+    </update>
+	
+	<update id="updateNameAndSize" parameterClass="INodeShare">
+        <![CDATA[
+        update inode_share_$tableSuffix$ set `name`=#name#, `size`=#size# where iNodeId=#iNodeId# and ownerId=#ownerId# 
+        ]]>
+    </update>
+
+	 
+    
+    <select id="getsharelist" parameterClass="INodeShare" resultClass="INodeShare">
+        select * from inode_share_$tableSuffix$ where iNodeId=#iNodeId# and ownerId=#ownerId# and status=0
+    </select>	
+	
+	<select id="getsharelistIgnoreStatus" parameterClass="INodeShare" resultClass="INodeShare">
+        select * from inode_share_$tableSuffix$ where iNodeId=#iNodeId# and ownerId=#ownerId#
+    </select>
+	
+	<select id="getINodeShare" parameterClass="INodeShare" resultClass="INodeShare">
+        select * from inode_share_$tableSuffix$ where iNodeId=#iNodeId# and ownerId=#ownerId#
+		and sharedUserId=#sharedUserId# and sharedUserType=#sharedUserType# and status=0 limit 0,1
+    </select>
+	
+	
+	
+     <select id="getPageList" parameterClass="map" resultClass="INodeShare">
+        select * from inode_share_$inodeShare.tableSuffix$
+		where iNodeId=#inodeShare.iNodeId# and ownerId=#inodeShare.ownerId# and status=0
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                $limit.offset$,$limit.length$
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getCountByNode" parameterClass="INodeShare" resultClass="int">
+        select count(1) from inode_share_$tableSuffix$ where ownerId=#ownerId# and iNodeId=#iNodeId#
+    </select>
+</sqlMap>
+

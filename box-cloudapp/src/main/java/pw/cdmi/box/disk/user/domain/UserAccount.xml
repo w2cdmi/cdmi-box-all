@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserAccount">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UserAccount" type="pw.cdmi.box.disk.user.domain.UserAccount" />
+
+	<select id="getByCloudUserId" parameterClass="map" resultClass="UserAccount">
+        <![CDATA[
+        select * from user_account$tableSuffix$ where cloudUserId=#cloudUserId#
+        ]]>
+	</select>
+	<select id="getByUserId" parameterClass="map" resultClass="UserAccount">
+        <![CDATA[
+        select * from user_account$tableSuffix$ where userid=#userid#
+        ]]>
+	</select>
+	
+	<update id="updateFirstLogin" parameterClass="map">
+        <![CDATA[
+        update user_account$tableSuffix$
+        set firstLogin=#firstLogin#
+        where userid=#userId# and accountId=#accountId#
+        ]]>
+	</update>
+	
+</sqlMap>
+

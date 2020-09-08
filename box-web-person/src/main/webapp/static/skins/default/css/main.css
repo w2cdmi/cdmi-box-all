@@ -1,0 +1,1702 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    user-select: none;
+    -webkit-user-select: none;
+    font-family: Microsoft YaHei;
+    font-size: 12px;
+}
+
+img {
+    border: 0px;
+}
+
+.spatial-header {
+    width: 18.75rem;
+    height: 3rem;
+    border-bottom: 1px solid #E4E1E1;
+}
+
+.spatial-header .title {
+    margin-left: 15px;
+    font-size: 0.75rem;
+    line-height: 3rem;
+}
+
+.tabbar {
+    width: 100%;
+    height: 3rem;
+    /* position: fixed;
+	bottom: 0; */
+    /* border-top:1px solid #E4E1E1; */
+    /* z-index: 99; */
+    background: rgb(214, 92, 69);
+}
+
+.tabbar li {
+    list-style: none;
+    width: 25%;
+    height: 3rem;
+    float: left;
+    position: relative;
+    text-align: center;
+}
+
+
+/* .tabbar li i{
+	width: 1.4rem;
+	height: 1.4rem;
+	position: absolute;
+	top: 0.1rem;
+	left: 50%;
+	transform: translateX(-50%);
+} */
+
+
+/* .tabbar .inactive1{
+	background: url(../../default/img/blank-folder.png) no-repeat 50% 0.3rem;
+	background-size: 1.3rem 1.3rem;
+}
+.tabbar .inactive2{
+	background: url(../../default/img/blank-space.png) no-repeat 50% 0.3rem;
+	background-size:1.3rem 1.3rem;
+}
+.tabbar .inactive3{
+	background: url(../../default/img/blank-message.png) no-repeat 50% 0.4rem;
+	background-size: 1.3rem 1.3rem;
+}
+.tabbar .inactive4{
+	background: url(../../default/img/blank-head-photo.png) no-repeat 50% 0.3rem;
+	background-size: 1.3rem 1.3rem;
+} */
+
+
+/* .tabbar .active1{
+	background: url(../../default/img/folder.png) no-repeat 50% 0.3rem;
+	background-size: 1.3rem 1.3rem;
+}
+.tabbar .active1 a{
+	color: #18b4ed;
+}
+.tabbar .active2{
+	background: url(../../default/img/space.png) no-repeat 50% 0.3rem;
+	background-size: 1.3rem 1.3rem;
+}
+.tabbar .active2 a{
+	color: #18b4ed;
+}
+.tabbar .active3{
+	background: url(../../default/img/message.png) no-repeat 50% 0.4rem;
+	background-size: 1.3rem 1.3rem;
+}
+.tabbar .active3 a{
+	color: #18b4ed;
+}
+.tabbar .active4{
+	background: url(../../default/img/head-photo.png) no-repeat 50% 0.3rem;
+	background-size: 1.3rem 1.3rem;
+}
+.tabbar .active4 a{
+	color: #18b4ed;
+} */
+
+.tabbar li a {
+    font-size: 0.75rem;
+    text-decoration: none;
+    color: #FFFFFF;
+    line-height: 3rem;
+    /* margin-top: 1.7rem; */
+    /* display: block; */
+    padding-bottom: 5px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.tabbar li a:hover {
+    border-bottom: 2px solid #fff;
+}
+
+.color-primary {
+    color: #18B4ED;
+}
+
+
+/* .fillBackground{
+	width: 100%;
+	height: 0.5rem;
+	background: rgb(240,240,240);
+} */
+
+.toolNavbar {
+    padding-bottom: 30px;
+    background: #fff;
+    border-radius: 3px;
+    margin-top: 100px;
+    margin-bottom: 30px;
+    margin-left: 8%;
+}
+
+.toolNavbar::after {
+    content: "。。。";
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 18px;
+}
+
+.toolNavbar .title {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+}
+
+.toolNavbar .title span {
+    border-bottom: 3px solid #e53750;
+    display: inline-block;
+    margin-top: -40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.toolNavbar .tool div {
+    /* border: 1px solid red; */
+}
+
+.toolNavbar .tool div i {
+    width: 100%;
+    text-align: center;
+    display: inline-block;
+}
+
+.toolNavbar .tool div span {
+    text-align: center;
+    display: inline-block;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.toolNavbar .tool img {
+    width: 45px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+.message-number {
+    padding: 0 0.2rem;
+    background: #e53750;
+    border-radius: 0.2rem;
+    color: #FFFFFF;
+    position: absolute;
+    top: 0.5rem;
+    right: 0;
+    z-index: 101;
+    font-size: 0.6rem;
+}
+
+.tab-message {
+    position: relative;
+}
+
+
+/*图片引用样式*/
+
+.folder-icon {
+    float: left;
+    width: 2rem;
+    height: 2rem;
+    background: url(../img/icon/folder-icon.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    margin-top: 0.45rem;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.folder-secret {
+    background: url(../img/icon/folder-secret.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.folder-forbid {
+    background: url(../img/icon/folder-forbid.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-doc,
+.file-docx {
+    background: url(../img/icon/file-doc.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-rar {
+    background: url(../img/icon/file-rar.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-ppt,
+.file-pptx {
+    background: url(../img/icon/file-ppt.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-pdf {
+    background: url(../img/icon/file-pdf.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-avi,
+.file-mp4,
+.file-MP4 {
+    background: url(../img/icon/file-avi.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-mp3 {
+    background: url(../img/icon/file-mp3.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-xls,
+.file-xlsx {
+    background: url(../img/icon/file-xls.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-txt {
+    background: url(../img/icon/file-txt.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-undefined {
+    background: url(../img/icon/file-undefined.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-jpg,
+.file-jpeg {
+    background: url(../img/icon/file-jpg.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-png {
+    background: url(../img/icon/file-jpg.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-gif {
+    background: url(../img/icon/file-jpg.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.file-exe {
+    background: url(../img/icon/file-exe.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+.folder-share-icon {
+    background: url(../img/icon/folder-share-icon.png) no-repeat center center;
+    background-size: 1.5rem 1.5rem;
+    width: 2rem;
+    height: 2rem;
+    margin-top: 0.45rem;
+    float: left;
+    margin-left: 0.3rem;
+    margin-right: 0.5rem;
+}
+
+
+/*右侧带button的可滑动行*/
+
+.line-scroll-wrapper {
+    /*
+	width: 180%;
+    */
+    height: 3.4rem;
+    /* border-bottom:1px solid #E4E1E1; */
+}
+
+.line-scroll-wrapper:hover {
+    background: rgba(168, 166, 166, 0.2);
+}
+
+.line-content {
+    float: left;
+    width: 100%;
+    height: 3.4rem;
+}
+
+.line-buttons {
+    float: left;
+}
+
+.line-buttons .line-button {
+    float: left;
+    width: 4rem;
+    height: 3.4rem;
+    text-align: center;
+    line-height: 3.4rem;
+    color: #FFFFFF;
+    font-size: 0.75rem;
+}
+
+.line-buttons .line-button-share {
+    background: #f19a1e;
+}
+
+.line-buttons .line-button-link {
+    background: #cb1616;
+}
+
+.line-buttons .line-button-more {
+    background: #0487fe;
+}
+
+
+/*文件视图上方的toolbar*/
+
+.file-view-toolbar {
+    width: 100%;
+    height: 1.7rem;
+}
+
+.file-view-toolbar .tool-button {
+    line-height: 1.7rem;
+    height: 1.7rem;
+    font-weight: bold;
+    font-size: 0.6rem;
+}
+
+.file-view-toolbar .sort-button {
+    display: inline-flex;
+    line-height: 1.7rem;
+    height: 1.7rem;
+}
+
+.file-view-toolbar .sort-button div {
+    line-height: 1.7rem;
+    height: 1.7rem;
+    font-size: 0.6rem;
+}
+
+.file-view-toolbar .sort-button div+div {
+    width: 2.5rem;
+}
+
+.file-view-toolbar .new-folder-button {
+    display: inline-block;
+    margin: 16px 0 0 30px;
+}
+
+.search-button {
+    height: 1.7rem;
+    width: 2rem;
+    background: url(../img/Search-Bar.png) center center no-repeat;
+    background-size: 1rem 1rem;
+}
+
+
+/*移动到 弹框*/
+
+.full-dialog {
+    background: #FFFFFF;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.full-dialog-content {
+    width: 100%;
+    height: 100%;
+    background: #FFFFFF;
+    border-radius: 0.35rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.full-dialog-content-middle {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: #FFFFFF;
+}
+
+.dialog-title {
+    width: 100%;
+    height: 2.1rem;
+    line-height: 2.1rem;
+    font-size: 0.75rem;
+    color: #333333;
+    text-align: center;
+    border-bottom: 1px solid #E4E1E1;
+}
+
+.full-dialog-nav {
+    width: 100%;
+    border-bottom: 1px solid #E4E1E1;
+}
+
+.line-content-father {
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: fixed;
+    top: 3.9rem;
+    bottom: 7rem;
+}
+
+.line-content-father .line-scroll-wrapper {
+    width: 100%;
+}
+
+.line-content-father .line-scroll-wrapper .fileName {
+    padding-top: 0.9rem;
+}
+
+.full-dialog-content #chooserFileOkButton {
+    width: 90%;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #FFFFFF;
+    background: #18B4ED;
+    border-radius: 0.35rem;
+    margin-left: 5%;
+    margin-top: 1rem;
+    float: left;
+}
+
+.full-dialog-content #chooserFileCancelButton {
+    width: 90%;
+    height: 2.2rem;
+    background: #FC6156;
+    text-align: center;
+    line-height: 2.2rem;
+    font-size: 0.75rem;
+    float: left;
+    border-radius: 0.35rem;
+    color: #FFFFFF;
+    margin-left: 5%;
+    margin-top: 0.6rem;
+}
+
+.full-dialog-tail {
+    position: absolute;
+    width: 100%;
+    background: #FFFFFF;
+    padding-bottom: 1rem;
+    bottom: 0;
+}
+
+
+/*文件视图中的列表*/
+
+.file {
+    height: 3.4rem;
+    font-size: 0.6rem;
+    overflow: hidden;
+}
+
+.file .file-info {
+    width: 100%;
+    height: 3.4rem;
+    float: left;
+}
+
+.file-option {
+    width: 6rem;
+    height: 3.4rem;
+    float: left;
+}
+
+.file-option .share {
+    width: 3rem;
+    height: 3.4rem;
+    background: sandybrown;
+    text-align: center;
+    line-height: 3.4rem;
+    float: left;
+}
+
+.file-option .link {
+    width: 3rem;
+    height: 3.4rem;
+    background: aqua;
+    text-align: center;
+    line-height: 3.4rem;
+    float: left;
+}
+
+.file-info>.fileName {
+    width: 13rem;
+    /* height: 1.4rem; */
+    padding-top: 0.6rem;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.file-info>span {
+    float: left;
+    line-height: 0.8rem;
+    color: #999999;
+    margin-right: 0.3rem;
+    max-width: 10rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-info>i {
+    width: 3rem;
+    line-height: 0.3rem;
+    float: right;
+    margin-right: 4%;
+    font-style: normal;
+    font-size: 0.6rem;
+    color: #999999;
+    display: inline-block;
+    line-height: 0.8rem;
+}
+
+.pattern-name span {
+    color: #333333;
+}
+
+
+/* 面包屑导航 */
+
+.bread-crumb {
+    min-width: 100%;
+    border-bottom: 1px solid #E4E1E1;
+    height: 1.7rem;
+    line-height: 1.7rem;
+}
+
+.bread-crumb-content {
+    float: left;
+    display: inline-flex;
+}
+
+.bread-crumb-content div {
+    float: left;
+    line-height: 1.7rem;
+    font-size: 0.6rem;
+    background: #4f77aa url(../img/floder-nav1.png) no-repeat right center;
+    background-size: 3.4rem 1.7rem;
+    text-align: center;
+    color: #FFFFFF;
+    min-width: 60px;
+    max-width: 240px;
+    height: 1.7rem;
+    padding: 0rem 0.4rem 0rem 0.2rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bread-crumb-content div:last-of-type {
+    float: left;
+    line-height: 1.7rem;
+    font-size: 0.6rem;
+    text-align: center;
+    color: #FFFFFF;
+    min-width: 60px;
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 1.7rem;
+    padding: 0rem 0.4rem 0rem 0.2rem;
+    background: #4f77aa url(../img/triangle-nav.jpg)right center no-repeat;
+}
+
+
+/* 排序*/
+
+.sort-asc {
+    font-weight: bold;
+    background: url(../img/icon/sort-asc.png) 1.2rem center no-repeat;
+    background-size: 15px 18px;
+}
+
+.sort-desc {
+    font-weight: bold;
+    background: url(../img/icon/sort-desc.png) 1.2rem center no-repeat;
+    background-size: 15px 18px;
+}
+
+.pull-right {
+    float: right;
+}
+
+
+/*点击选中，取消图标*/
+
+.M-inactive {
+    float: left;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: url(../img/M-inactive.png) no-repeat center center;
+    background-size: 0.8rem 0.8rem;
+}
+
+.M-active {
+    float: left;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: url(../img/M-active.png) no-repeat center center;
+    background-size: 0.8rem 0.8rem;
+}
+
+.M-addblank {
+    float: left;
+    width: 0.8rem;
+    height: 0.8rem;
+    background: url(../img/add-leaguer-blank.png) no-repeat center center;
+    background-size: 0.8rem 0.8rem;
+}
+
+
+/*审批详情公共样式*/
+
+.details-header {
+    height: 9.2rem;
+    width: 100%;
+    background: #FFFFFF;
+    margin-top: 0.6rem;
+}
+
+.details-header dt {
+    height: 3.6rem;
+    width: 92%;
+    margin-left: 4%;
+}
+
+.details-header dt i {
+    width: 1.6rem;
+    height: 3.6rem;
+    float: left;
+    margin-right: 0.8rem;
+}
+
+.details-header dt i img {
+    width: 1.6rem;
+    height: 2.1rem;
+    margin-top: 0.85rem;
+}
+
+.details-header dt h1 {
+    width: 4rem;
+    font-weight: normal;
+    float: left;
+    word-wrap: break-word;
+    font-size: 0.6rem;
+    color: #333333;
+    margin-top: 1rem;
+}
+
+.details-header dd {
+    width: 92%;
+    height: 1.25rem;
+    line-height: 1.25rem;
+    font-size: 0.6rem;
+    margin-left: 4%;
+}
+
+.details-header dd p {
+    float: left;
+}
+
+.details-header dd span {
+    float: left;
+}
+
+
+/*审批第二页公共样式*/
+
+.details-two-content {
+    width: 100%;
+    background: #FFFFFF;
+    display: inline-block;
+    color: #333333;
+    font-size: 0.6rem;
+    margin-top: 0.8rem;
+}
+
+.details-two-content h1 {
+    width: 92%;
+    margin-left: 4%;
+    height: 1.9rem;
+    font-weight: normal;
+    line-height: 1.9rem;
+    border-bottom: 1px solid #E4E1E1;
+    font-size: 0.6rem;
+}
+
+.details-two-content p {
+    width: 80%;
+    line-height: 1.9rem;
+    margin-left: 10%;
+    word-wrap: break-word;
+}
+
+
+/*审批详情页尾的公共样式*/
+
+.details-tail {
+    background: #FFFFFF;
+    display: inline-block;
+    width: 100%;
+    margin-top: 0.8rem;
+}
+
+.details-tail ul li {
+    width: 92%;
+    height: 1.9rem;
+    line-height: 1.9rem;
+    margin-left: 4%;
+    color: #333333;
+    font-size: 0.6rem;
+    border-bottom: 1px solid #E4E1E1;
+}
+
+.details-tail ul li span {
+    float: left;
+}
+
+.details-tail ul li p {
+    float: right;
+}
+
+.details-tail ul li:last-child {
+    border-bottom: none;
+}
+
+
+/*搜索框背景颜色*/
+
+.modal-content {
+    background: #FFFFFF;
+    position: absolute;
+    top: 41px;
+    bottom: 0;
+    overflow-y: scroll;
+}
+
+
+/*外发链接的公共样式*/
+
+.putting-links {
+    width: 100%;
+    display: inline-block;
+    background: #FFFFFF;
+    margin-top: 0.8rem;
+}
+
+.putting-links .putting-link {
+    width: 100%;
+    height: 4rem;
+}
+
+.puttinglink-title {
+    height: 1.3rem;
+}
+
+.puttinglink-title div {
+    float: left;
+    margin-left: 1rem;
+    font-size: 0.75rem;
+}
+
+.puttinglink-title span {
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 0.05rem solid #999999;
+    border-radius: 50%;
+    float: right;
+    margin-top: 0.45rem;
+    margin-right: 1rem;
+}
+
+.puttinglink-one {
+    width: 100%;
+    height: 1rem;
+}
+
+.puttinglink-one div {
+    float: left;
+    line-height: 1rem;
+    color: #8a8888;
+}
+
+.puttinglink-one div:nth-child(1) {
+    margin-left: 1rem;
+}
+
+.puttinglink-one div span {
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+    line-height: 1rem;
+}
+
+.puttinglink-one div:nth-child(4) {
+    float: right;
+    margin-right: 1rem;
+}
+
+.puttinglink-more img {
+    width: 0.3rem;
+    height: 0.5rem;
+}
+
+.puttinglink-more {
+    display: block;
+}
+
+.puttinglink-delete {
+    display: block;
+}
+
+.puttinglink-delete img {
+    width: 0.65rem;
+    height: 0.85rem;
+}
+
+.puttinglink-one p {
+    float: right;
+    margin-left: 0.3rem;
+}
+
+.puttinglink-one div:nth-child(5) {
+    float: right;
+    margin-right: 1rem;
+}
+
+.puttinglink-two {
+    width: 100%;
+    height: 1rem;
+    font-size: 0.6rem;
+    color: #8A8888;
+}
+
+.puttinglink-two div {
+    float: left;
+    margin-left: 1rem;
+}
+
+.puttinglink-two span {
+    float: left;
+    margin-left: 0.5rem;
+}
+
+
+/*外发的尾巴*/
+
+.setting-tail {
+    width: 100%;
+    height: 2.6rem;
+    position: relative;
+    background: #FFFFFF;
+    margin-top: 0.6rem;
+}
+
+.setting-bottom {
+    width: 100%;
+    height: 1.6rem;
+    position: absolute;
+    bottom: 0;
+}
+
+.setting-bottom-left {
+    float: left;
+    height: 0.05rem;
+    width: 41%;
+    margin-left: 4%;
+    background: #999999;
+    margin-top: 0.475rem;
+}
+
+.setting-bottom-middle {
+    float: left;
+    width: 10%;
+    height: 1rem;
+    text-align: center;
+    line-height: 1rem;
+    font-size: 0.6rem;
+    color: #999999;
+}
+
+.setting-bottom-right {
+    float: left;
+    width: 41%;
+    height: 0.05rem;
+    background: #999999;
+    margin-top: 0.475rem;
+}
+
+
+/*外发公共样式*/
+
+.putting-tail {
+    width: 100%;
+    height: 5.5rem;
+    background: #FFFFFF;
+    position: relative;
+}
+
+.putting-tail img {
+    width: 2.65rem;
+    height: 2.65rem;
+    position: absolute;
+    top: 0.8rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.putting-tail-content {
+    width: 15rem;
+    height: 6.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 0;
+}
+
+.putting-tail-left {
+    float: left;
+    width: 5rem;
+    height: 6.5rem;
+    position: relative;
+}
+
+.putting-tail-content span {
+    display: block;
+    text-align: right;
+    margin-top: 3.8rem;
+    margin-right: 0.6rem;
+    width: 5rem;
+    text-align: center;
+}
+
+.putting-tail-right {
+    float: left;
+    width: 5rem;
+    height: 6.5rem;
+    position: relative;
+}
+
+.putting-tail-middle {
+    float: left;
+    width: 5rem;
+    height: 6.5rem;
+    position: relative;
+}
+
+
+/*查看版本信息*/
+
+.version-info {
+    width: 100%;
+    height: 33.325rem;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    display: none;
+}
+
+.version-info-content {
+    width: 92%;
+    height: 38%;
+    margin-left: 4%;
+    margin-top: 35%;
+    background: #FFFFFF;
+    border-radius: 0.35rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.version-info-tail {
+    width: 92%;
+    height: 2.1rem;
+    margin-left: 4%;
+    margin-top: 0.1rem;
+    border-radius: 0.35rem;
+    background: #FFFFFF;
+    text-align: center;
+    line-height: 2.1rem;
+    color: #18B4ED;
+    font-size: 0.75rem;
+}
+
+.version-info-header {
+    width: 100%;
+    height: 2.2rem;
+    border-bottom: 1px solid #E4E1E1;
+    line-height: 2.2rem;
+    text-align: center;
+    font-size: 0.75rem;
+    position: absolute;
+    top: 0;
+    background: #FFFFFF;
+    z-index: 2;
+}
+
+.version-info-page {
+    width: 100%;
+    overflow: auto;
+    position: absolute;
+    top: 6rem;
+    bottom: 0;
+}
+
+.version-info-page li {
+    width: 95%;
+    height: 2rem;
+    border-bottom: 1px solid #E4E1E1;
+    padding-right: 5%;
+    line-height: 2rem;
+}
+
+.version-info-page li i img {
+    width: 0.325rem;
+    height: 0.775rem;
+    margin-top: 0.6125rem;
+    margin-right: 0.3rem;
+    margin-left: 0.8rem;
+}
+
+.version-info-page li i {
+    float: left;
+    font-style: normal;
+    font-size: 0.75rem;
+    color: #606060;
+}
+
+.version-info-page li span {
+    float: left;
+    margin-left: 1rem;
+    line-height: 2rem;
+}
+
+.version-info-page li p {
+    width: 0.05rem;
+    height: 0.4rem;
+    float: left;
+    background: #8a8a8a;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+    margin-top: 0.8rem;
+}
+
+.version-info-page li h1 {
+    float: left;
+    font-size: 0.6rem;
+    color: #333333;
+    font-weight: normal;
+    line-height: 2rem;
+}
+
+.version-info-page h4 {
+    float: right;
+    width: 0.05rem;
+    height: 0.4rem;
+    margin-top: 0.8rem;
+    background: #8A8A8A;
+    margin-left: 0.2rem;
+    margin-right: 0.2rem;
+}
+
+.version-info-page h3 {
+    float: right;
+    font-size: 0.6rem;
+    color: #18B4ED;
+    font-weight: normal;
+    line-height: 2rem;
+}
+
+.version-info-page li h3:nth-child(1) {
+    margin-right: 1rem;
+}
+
+.version-info-middle {
+    width: 100%;
+    display: inline-block;
+    position: absolute;
+    top: 2.25rem;
+    background: #FFFFFF;
+    z-index: 2;
+    height: 3.1rem;
+}
+
+.version-info-middle div {
+    float: left;
+    width: 2.4rem;
+    height: 2.4rem;
+    margin-top: 0.8rem;
+    margin-left: 1rem;
+    font-style: normal;
+    color: #606060;
+    font-size: 0.6rem;
+}
+
+.version-info-middle div img {
+    width: 1.6rem;
+    height: 2.1rem;
+}
+
+.version-info-middle span {
+    float: left;
+    font-size: 0.6rem;
+    color: #333333;
+    margin-top: 1.6rem;
+    width: 11rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: keep-all;
+    white-space: nowrap;
+}
+
+.version-icon {
+    width: 0.35rem;
+    height: 0.8rem;
+    background: url(../img/version-icon.png) no-repeat center center;
+    background-size: 0.35rem 0.8rem;
+    float: left;
+    margin-top: 0.6rem;
+    margin-left: 1rem;
+    margin-right: 0.3rem;
+}
+
+
+/* */
+
+.badge-action {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    bottom: 0;
+    left: 0;
+}
+
+
+/*.weui-icon-cancel:before{
+	position: absolute;
+	left: 3rem;
+	top: -0.2rem;
+}*/
+
+
+/*.window-mask-transparent {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	z-index: 1000;
+	opacity: 1;
+}*/
+
+.fs-view-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 7.6rem;
+    z-index: 10;
+}
+
+.fs-view-file-list {
+    position: fixed;
+    top: 7.58rem;
+    bottom: 3rem;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: 100%;
+}
+
+
+/*共享页尾的公共样式*/
+
+.addshare-member-tail {
+    width: 100%;
+    height: 2.2rem;
+    position: fixed;
+    bottom: 0;
+    background: #FFFFFF;
+    overflow: hidden;
+    border-top: 1px solid #E4E1E1;
+    overflow-x: scroll;
+}
+
+.addshare-member-tail li i {
+    float: right;
+    width: 1.65rem;
+    height: 1.65rem;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 0.275rem;
+}
+
+.addshare-member-tail li i img {
+    width: 1.65rem;
+    height: 1.65rem;
+}
+
+.member-tail-buttons {
+    position: fixed;
+    height: 2.2rem;
+    width: 100px;
+    right: 0;
+    bottom: 0;
+    background: #FFFFFF;
+    border-left: 1px solid #E4E1E1;
+}
+
+.member-tail-button {
+    float: left;
+    width: 80px;
+    height: 2rem;
+    margin-top: 0.1rem;
+    margin-left: 0.5rem;
+    text-align: center;
+    line-height: 2rem;
+    color: #FFFFFF;
+    border-radius: 0.35rem;
+    background: #18B4ED;
+}
+
+#preAddMemberDiv ul {
+    height: 2.2rem;
+    overflow-x: scroll;
+}
+
+#preAddMember {
+    height: 2.2rem;
+}
+
+#preAddMember li {
+    width: 2.2rem;
+    height: 2.2rem;
+    float: left;
+}
+
+.spanSelect {
+    background-color: #18b4ed;
+}
+
+
+/*外发首页头部的公共样式*/
+
+.share-homepage-header {
+    width: 100%;
+    height: 3.4rem;
+    background: #FFFFFF;
+}
+
+.share-homepage-middle i {
+    font-style: normal;
+    height: 1.4rem;
+    word-break: keep-all;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.75rem;
+    display: block;
+    width: 13rem;
+    padding-top: 0.6rem;
+}
+
+.share-home-page {
+    background: #E4E1E1;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.share-homepage-top span {
+    float: left;
+    margin-left: 0.5rem;
+    /* width: 2.4rem; */
+    height: 2.4rem;
+    margin-top: 0.45rem;
+    margin-bottom: 0.4rem;
+}
+
+.share-homepage-top span img {
+    width: 2.4rem;
+    height: 2.4rem;
+}
+
+.share-homepage-right {
+    width: 14rem;
+    float: left;
+    margin-right: 0.5rem;
+}
+
+.share-homepage-middle {
+    display: block;
+    width: 100%;
+}
+
+.share-homepage-bottom {
+    display: inline-block;
+    width: 100%;
+    height: 1rem;
+    line-height: 1.2rem;
+    font-size: 0.5rem;
+    color: #999999;
+}
+
+.share-homepage-bottom-size {
+    float: left;
+    font-size: 0.6rem;
+}
+
+.share-homepage-bottom span {
+    float: left;
+    width: 0.05rem;
+    height: 0.4rem;
+    margin-top: 0.4rem;
+    margin-left: 0.4rem;
+    margin-right: 0.4rem;
+    background: #E4E1E1;
+}
+
+
+/*修改小程序公共的自带字体颜色*/
+
+.weui-dialog__btn {
+    color: #18B4ED;
+}
+
+.weui-actionsheet__cell {
+    color: #18B4ED;
+}
+
+.weui-dialog .weui-dialog__btn.default,
+.weui-toast .weui-dialog__btn.default {
+    color: #18B4ED;
+}
+
+
+/*首页最近浏览的更多选项*/
+
+.recent-browse-more {
+    width: 100%;
+    background: #FFFFFF;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1001;
+}
+
+.recent-browse-more-header {
+    width: 100%;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #333333;
+    border-bottom: 1px solid #E4E1E1;
+}
+
+.recent-browse-more-content {
+    position: absolute;
+    top: 2.75rem;
+    bottom: 4.25rem;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.recent-browse-more-tail {
+    width: 100%;
+    height: 4.2rem;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #E4E1E1;
+}
+
+.recent-browse-more-button {
+    width: 90%;
+    height: 2.2rem;
+    margin-left: 5%;
+    margin-top: 1rem;
+    border-radius: 0.35rem;
+    font-size: 0.75rem;
+    color: #333333;
+    line-height: 2.2rem;
+    background: #F8F8F8;
+    border: 0.05rem solid rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+
+/*首页快捷目录的更多选项*/
+
+.shortcut-directory {
+    width: 100%;
+    background: #FFFFFF;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    z-index: 1001;
+}
+
+.shortcut-directory-header {
+    width: 100%;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    text-align: center;
+    font-size: 0.75rem;
+    color: #333333;
+    border-bottom: 1px solid #E4E1E1;
+}
+
+.shortcut-directory-content {
+    position: absolute;
+    top: 2.75rem;
+    bottom: 4.25rem;
+    overflow-x: scroll;
+    width: 100%;
+}
+
+.shortcut-directory-tail {
+    width: 100%;
+    height: 4.2rem;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #E4E1E1;
+}
+
+
+/*搜索时关闭按钮的修改*/
+
+.weui-search-bar__close-btn {
+    color: #18B4ED;
+    margin-left: 0.3rem;
+    line-height: 1.3rem;
+}
+
+
+/*公共样式的开关按钮的修改*/
+
+.weui-switch,
+.weui-switch-cp__box {
+    width: 2rem;
+    height: 1rem;
+}
+
+.weui-switch-cp__box:before,
+.weui-switch:before {
+    width: 1rem;
+    height: 1rem;
+}
+
+.weui-switch-cp__box:after,
+.weui-switch:after {
+    width: 1rem;
+    height: 0.9rem;
+}
+
+
+/*页面正在加载的旋转效果*/
+
+.load {
+    width: 6rem;
+    height: 6rem;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 10.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1001;
+    border-radius: 0.35rem;
+}
+
+.load-img {
+    width: 1.5rem;
+    height: 1.5rem;
+    position: absolute;
+    top: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.load-img img {
+    width: 1.5rem;
+    height: 1.5rem;
+    animation: mymove 1s infinite linear;
+    animation-iteration-count: infinite;
+}
+
+@keyframes mymove {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.load-text {
+    width: 6rem;
+    height: 3rem;
+    margin-top: 3rem;
+    line-height: 3rem;
+    font-size: 0.75rem;
+    color: #FFFFFF;
+    text-align: center;
+}
+
+.weui-search-bar__cancel-btn {
+    color: #18B4ED;
+}
+
+
+/*搜索框的调整*/
+
+.weui-search-bar__box .weui-search-bar__input {
+    line-height: 28px;
+    vertical-align: middle;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    padding-left: 10px;
+}
+
+.weui-search-bar__box .weui-icon-search {
+    line-height: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.weui-search-bar__box .weui-icon-clear {
+    line-height: 28px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.logo {
+    width: 3rem;
+    height: 2.4rem;
+    background: url(../img/logo.png) no-repeat center center;
+    background-size: 3rem 2.4rem;
+}
+
+.weui-search-bar__box .weui-search-bar__input {
+    padding-left: 0;
+}
+
+
+/*weui自带蒙版在有些手机上显示过黑*/
+
+.weui-mask {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.weui-search-bar__box .weui-search-bar__input {
+    padding-left: 20px;
+}

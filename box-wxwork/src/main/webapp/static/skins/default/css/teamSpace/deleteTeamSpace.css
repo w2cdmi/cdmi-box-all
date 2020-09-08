@@ -1,0 +1,16 @@
+.controls{
+	text-align: center;
+}
+.control-label img{
+	margin-top: 3rem;
+	margin-left: 7.5rem;
+}
+.valid{
+	width: 6rem;
+	height: 1.7rem;
+	margin-left: 6.375rem;
+	outline: none;
+	font-size: 0.75rem;
+	margin-bottom: 1rem;
+}
+

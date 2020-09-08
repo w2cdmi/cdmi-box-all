@@ -1,0 +1,224 @@
+﻿<Window x:Class="Onebox.Share"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cs="clr-namespace:Onebox.CustomControls"
+        Icon="/Onebox;component/ImageResource/logo.ico" 
+        Title="{StaticResource share}"  
+        x:Name="ShareWd"
+        Width="650" SizeToContent="Height" Background="{x:Null}" 
+        WindowStyle="None" ResizeMode="NoResize" 
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen" 
+        ShowInTaskbar="True"
+        LocationChanged="ShareWd_LocationChanged">
+    <Grid ShowGridLines ="False">
+        <Grid.RowDefinitions>
+            <RowDefinition   Height="Auto" MinHeight="36"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <!--界面标题区-->
+        <!--界面主显示区-->
+        <Border  BorderThickness="1,0,1,1"  BorderBrush="#FFA3A4A4"  Background="#FFF1F1F1" Grid.Row="1" CornerRadius="0,0,5,5">
+        	<Grid Margin="40,0">
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="50"/>
+        			<RowDefinition/>
+        		</Grid.RowDefinitions>
+                <!--区域：共享概要信息显示区-->
+        		<Grid x:Name="area_Share_FileInfo" Grid.Row="0">
+        			<Grid.ColumnDefinitions>
+        				<ColumnDefinition Width="0.778*"/>
+        				<ColumnDefinition Width="0.222*"/>
+        			</Grid.ColumnDefinitions>
+        			<StackPanel Grid.Column="0" Orientation="Horizontal"  Margin="0,10" >
+        				<Image x:Name="Shmgr_image_IconFolder" Stretch="Fill" Margin="0,0,0,0" Height="20" Visibility="Visible"/>
+        				<Label  x:Name="lb_Share_FileName" HorizontalAlignment="Left" 
+        					FontSize="14" Foreground="#FF333333"  FontWeight="Bold"
+        					Content="{Binding FileName, Converter={StaticResource StringShow20ByteConverter}, Mode=OneWay}">
+        					<Label.ToolTip >
+                                <TextBlock TextWrapping="Wrap" MaxWidth="400" Text="{Binding FileName}"/>
+        					</Label.ToolTip>
+        				</Label>
+        			</StackPanel>
+        			<Label x:Name="sh_sharedUser_num" Grid.Column="2" 
+        				HorizontalAlignment="Right"  VerticalContentAlignment="Center"
+        				FontSize="14"  Foreground="Black" Height="32"  Visibility="Visible"
+        				Content=""/>
+        		</Grid>
+                <!--区域：共享详细信息显示,共享操作区-->
+        		<StackPanel  Grid.Row="1" Orientation="Vertical" >
+        			<!--区域：按钮区-->
+    <!--区域：共享人列表显示区-->
+        			<StackPanel x:Name="area_Share_Recipients" Height="156"  Visibility="Visible"  Margin="0,0,0,20">
+        				<ListBox  x:Name="lb_Recipients" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="156"
+        					Background="#FFFFFFFF" BorderBrush="#FFC4C4C4" BorderThickness="1">
+        					<ListBox.Resources>
+        						<Style TargetType="{x:Type ListBoxItem}">
+        							<Style.Resources>
+        								<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="White"/>
+        								<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+        							</Style.Resources>
+        						</Style>
+        					</ListBox.Resources>
+        					<ListBox.ItemTemplate>
+        						<DataTemplate>
+        							<Border  Height="30" Width="560"  HorizontalAlignment="Left"
+        								Background="{Binding ListColor, Converter={StaticResource BackgroundConverter}}" 
+        								BorderBrush="{Binding ListSideColor, Converter={StaticResource BorderBrushConverter}}">
+        								<StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                            <!--共享人-->
+        									<Border Margin="5,0,0,0" Width="208" >
+        										<StackPanel Orientation="Horizontal">
+        											<Image Source="/Onebox;component/ImageResource/user.png"  Width="16" Height="16"/>
+        											<TextBlock TextWrapping="Wrap" FontSize="14" VerticalAlignment="Center" Width="185" Margin="5,0,0,0"
+        												Text="{Binding UserName, Converter={StaticResource StringShow20ByteConverter}}"
+        												ToolTip="{Binding UserName}"/>
+        										</StackPanel>
+        									</Border>
+                                            <!--部门-->
+        									<Border Margin="10,0,0,0" Width="290">
+        										<TextBlock TextWrapping="Wrap" FontSize="14" VerticalAlignment="Center"
+        											Text="{Binding Department, Converter={StaticResource StringShow30ByteConverter}}"
+        											ToolTip="{Binding Department}"/>
+        									</Border>
+                                            <!--删除操作-->
+        									<Border Margin="10,0,0,0" Width="35"   >
+        										<cs:ImageButton x:Name="TBRemove"  AutomationProperties.AutomationId="{Binding UserName}" Width="16" Grid.Column="3" Height="16" 
+        											HorizontalAlignment="Left" VerticalAlignment="Center"
+        											NormalImage="/Onebox;component/ImageResource/share_cancle.png"
+        											OverImage="/Onebox;component/ImageResource/share_cancle.png"
+        											PresseImage="/Onebox;component/ImageResource/share_cancle.png"
+        											DisableImage="/Onebox;component/ImageResource/share_cancle.png"
+        											ImageSize="16" BorderVisibility="Hidden" Style="{StaticResource ImageButtonStyle}" 
+        											Tag="{Binding UserId}"
+        											Click="ImgBtn_sharePerson_remove" Cursor="Hand"/>
+        									</Border>
+        								</StackPanel>
+        							</Border>
+        						</DataTemplate>
+        					</ListBox.ItemTemplate>
+        				</ListBox>
+        			</StackPanel>
+                    <!--区域：邀请操作区-->
+        			<StackPanel x:Name="area_Share_Invite" Orientation="Vertical" >
+        				<TextBox x:Name="tx_invite_msg" BorderBrush="#FFC4C4C4" Foreground="#FFB8B8B8" FontSize="14" Background="White" Height="34"
+        					VerticalContentAlignment="Center" Text="{StaticResource invitePerson}"  GotFocus="tx_invite_focused" Style="{DynamicResource TextBoxStyle}"/>
+                        <!--输入被共享人-->
+        				<StackPanel x:Name="lb_share_inivite" >
+        					<TextBox x:Name="tx_shareUsers_tmp" Visibility="Hidden"  Text="" Margin="0,-30,0,0"
+        						TextChanged="lb_selectItem_Confirm" Style="{DynamicResource TextBoxStyle}" />
+        					<ListBox x:Name="LBSharePerson" MaxHeight="120"  
+        						Background="#FFFFFFFF"  BorderBrush="#FFC4C4C4" BorderThickness="1" 
+        						ScrollViewer.VerticalScrollBarVisibility="Auto" 
+        						ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+        						LostFocus="lb_inviteArea_lostFocused"   MouseDown="lb_inviteArea_Focused_mouse">
+        						<ListBox.Resources>
+        							<Style TargetType="{x:Type ListBoxItem}">
+        								<Style.Resources>
+        									<SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="White"/>
+        									<SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+        								</Style.Resources>
+        							</Style>
+        						</ListBox.Resources>
+        						<ListBox.ItemsPanel>
+        							<ItemsPanelTemplate>
+        								<WrapPanel Orientation="Horizontal" IsItemsHost="True"  ItemHeight="30"/>
+        							</ItemsPanelTemplate>
+        						</ListBox.ItemsPanel>
+        						<ListBox.ItemTemplate>
+        							<DataTemplate>
+                                        <!--用户框：提示状态、输入查询状态、选中状态 -->
+        								<Border x:Name="BDSharePerson" Height="25.667" CornerRadius="2" Margin="0,0,3,0" 
+        									BorderThickness="{Binding StyleVisibility}"  BorderBrush="#FFC4C4C4"
+        									Background="{Binding StyleVisibility, Converter={StaticResource StyleBordBackgroundConverter}}">
+        									<StackPanel Orientation="Horizontal">
+        										<TextBox x:Name="TBUserContrl" Text="{Binding UserName, Mode=TwoWay}"
+        											FontSize="14" VerticalAlignment="Center" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}"
+        											Foreground="{Binding StyleVisibility, Converter={StaticResource StyleForegroundConverter}}"
+        											IsEnabled="{Binding StyleVisibility, Converter={StaticResource StyleEnableConverter}}"
+                                                    MaxWidth="550"
+                                                    TextWrapping="Wrap"
+                                                    ScrollViewer.VerticalScrollBarVisibility="Auto" 
+        						                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+        											Loaded="TBUserContrl_Loaded_1" GotFocus="TBUserContrl_GotFocus_1"
+        											PreviewKeyDown="TBUserContrl_KeyDown"/>
+                                                <cs:ImageButton x:Name="CloseButton1" AutomationProperties.AutomationId="{Binding UserName}"
+        											NormalImage="/Onebox;component/ImageResource/UserCloseButton.png"
+        											OverImage="/Onebox;component/ImageResource/UserCloseButton.png"
+        											PresseImage="/Onebox;component/ImageResource/UserCloseButton.png"
+        											DisableImage="/Onebox;component/ImageResource/UserCloseButton.png"
+        											ImageSize="9" Margin="5,5,5,0" BorderVisibility="Hidden" Cursor="Hand"
+        											Visibility="{Binding StyleVisibility, Converter={StaticResource StyleVisibilityConverter}}"
+        											Style="{StaticResource ImageButtonStyle}" 
+        											Click="bt_UserRemove" VerticalAlignment="top" />
+        									</StackPanel>
+        								</Border>
+        								<DataTemplate.Triggers>
+        									<Trigger Property="IsMouseOver" Value="True">
+        										<Setter Property="Cursor" Value="IBeam"/>
+        									</Trigger>
+        								</DataTemplate.Triggers>
+        							</DataTemplate>
+        						</ListBox.ItemTemplate>
+        					</ListBox>
+                            <!--弹出层：用户选择下拉列表-->
+        					<Popup x:Name="pop_userList" Width="380" MaxHeight="220"
+        						HorizontalAlignment="Right" StaysOpen="False"  IsOpen="False"  AllowsTransparency="True">
+        						<ListBox x:Name="searchUserList"  Width="380" MaxHeight="220"  Background="White"
+        							ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ItemContainerStyle="{StaticResource listbox_searchUsersStyle}"
+        							ItemTemplate="{StaticResource searchUserDataTemplate}"  
+        							KeyDown="lb_pop_keydown"  MouseUp="lb_pop_mousedown" BorderBrush="#FFAAAAAA"/>
+        					</Popup>
+        				</StackPanel>
+        			</StackPanel>
+                    <!--区域：邀请信息区域-->
+        			<StackPanel>
+        				<TextBox x:Name="tx_share_emailMsg" BorderBrush="#FFC4C4C4" Foreground="#FFB8B8B8" FontSize="14" MaxLength="2000"
+        					Background="White" BorderThickness="1,0,1,1" Height="65.976"  TextWrapping="Wrap"  AcceptsReturn="True"  ScrollViewer.VerticalScrollBarVisibility="Auto"
+        					Tag="0" Text="{StaticResource addMsg}"  GotFocus="tx_emailMsg_Focus" LostFocus="tx_emailMsg_lostFocus" />
+        			</StackPanel>
+					<!--区域：按钮区-->
+        			<StackPanel x:Name="area_Share_btns" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,25">
+        				<Button x:Name="btn_Share_invite" Style="{DynamicResource Button_Style_Focus}" 
+        					Content="{StaticResource invite}" 
+        					Click="btn_inviteShare_Click" Background="{x:Null}"/>
+        				<Button  x:Name="btn_Share_Cancel" Style="{StaticResource Button_Style_Normal}"
+        					Margin="10,0,0,0"
+        					Click="btn_Cancle_Click" Content="{StaticResource cancel}"/>
+        				<Button  x:Name="btn_Share_RemoveAll" Style="{StaticResource Button_Style_Normal}"
+        					Click="btn_RemoveAll_Click" Content="{StaticResource unshared}"/>
+        				<Button x:Name="btn_share_close" Style="{DynamicResource Button_Style_Focus}" 
+        					Content="{StaticResource close}"  Margin="10,0,0,0"
+        					Click="Button_Close" Background="{x:Null}"/>
+        			</StackPanel>
+        		</StackPanel>
+        	</Grid>
+        </Border>
+        <!--界面标题区-->
+        <Border Style="{StaticResource Bg_Style_WindowHeader}">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.7*"/>
+					<ColumnDefinition Width="0.3*"/>
+				</Grid.ColumnDefinitions>	
+				<StackPanel  Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Grid Margin="10,0,0,0">
+						<Image Source="/Onebox;component/ImageResource/logo.png" Stretch="Fill" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Grid>
+					<Label Content="{StaticResource share}" Style="{StaticResource Font_Style_WindowTtile}" VerticalAlignment="Center" />
+                </StackPanel>
+                <StackPanel Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <cs:ImageButton x:Name="CloseButton1" ImageSize="14" BorderVisibility="Hidden"  
+                                    NormalImage="/Onebox;component/ImageResource/exit.png"
+                                    OverImage="/Onebox;component/ImageResource/exit.png"
+                                    PresseImage="/Onebox;component/ImageResource/exit.png"
+                                    DisableImage="/Onebox;component/ImageResource/exit.png"
+                                    Style="{StaticResource ImageButtonStyle}"
+                                    Click="Button_Close"/>
+                </StackPanel>
+				<Border BorderBrush="#FFA3A4A4" BorderThickness="0,0,0,1" Height="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+				<Border BorderBrush="#FFF1F1F1" BorderThickness="0,0,0,1" Margin="1,0" Grid.ColumnSpan="2"/>
+            </Grid>
+        </Border>
+        <!--界面主显示区-->
+    </Grid>
+</Window>

@@ -1,0 +1,12 @@
+@import "/disk/template/fileList.wxss";
+@import "/disk/enterprise/leaveManagement/transfer/seeCoopSpace/seeCoopSpace.wxss";
+.list-detail-right-style{
+  color: #666;
+}
+.list-choose-all{
+  margin-right: 46rpx;
+}
+.not-list-detail-bg image{
+  width: 130px;
+  height:100px;
+}

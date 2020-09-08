@@ -1,0 +1,298 @@
+@@normal
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+
+@@normalNode
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#, 
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+
+
+@@normalTeam
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":-26,  
+        "type": "team"
+    }, 
+    "role":"editor" 
+}
+@@normalTeamNoUserId
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "type": "team"
+    }, 
+    "role":"editor" 
+}
+@@normalSystem
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":-26,  
+        "type": "system"
+    }, 
+    "role":"editor" 
+}
+
+@@normalPublic
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":-26,  
+        "type": "public"
+    }, 
+    "role":"editor" 
+}
+
+@@repeat
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+
+@@noresource
+{ 
+    "user": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+@@noownerid
+{ 
+    "resource": 
+    { 
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+
+@@nonodeid
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#
+    }, 
+    "user": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+
+@@nouser
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "role":"editor" 
+}
+
+@@nouserid
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+@@nousertype
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":#userId#
+    }, 
+    "role":"editor" 
+}
+
+@@norole
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }
+}
+
+@@invalidownerid
+{ 
+    "resource": 
+    { 
+        "ownerId":-25,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+
+@@invalidnodeid
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": -5
+    }, 
+    "user": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+
+@@invaliduserid
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":-26,  
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+
+@@invalidusertype
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":#userId#,  
+        "type": "sssss"
+    }, 
+    "role":"editor" 
+}
+
+@@invalidrole
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":#userId#,  
+        "type": "user"
+    }, 
+    "role":"xxxx" 
+}
+
+@@nosuchuser
+{ 
+    "resource": 
+    { 
+        "ownerId":#teamSpaceId#,  
+        "nodeId": 0
+    }, 
+    "user": 
+    { 
+        "id":90000000,  
+        "type": "user"
+    }, 
+    "role":"editor" 
+}
+
+@@addAclReplace
+{ 
+    "resource": 
+    { 
+        "ownerId":#ownerId#, 
+        "nodeId":#nodeId#
+    }, 
+    "user": 
+    { 
+        "id":#id#, 
+        "type":#type# 
+    }, 
+    "role":#role#
+}
+
+
+

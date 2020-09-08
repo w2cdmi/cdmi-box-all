@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+		<resetJUL>true</resetJUL>
+    </contextListener>
+    
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}][dss][%X{LogID}][%-5level][%C][%M,%L][%msg][%thread]%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${catalina.base}/logs/dss.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${catalina.base}/logs/dss.%d{yyyy-MM-dd}-%i.log.zip</FileNamePattern> 
+			<MaxHistory>90</MaxHistory> 
+			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>300MB</MaxFileSize> 
+			</TimeBasedFileNamingAndTriggeringPolicy>
+  		</rollingPolicy>
+  		<encoder>
+  			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}][dss][%X{LogID}][%-5level][%C][%M,%L][%msg][%thread]%n</pattern> 
+  		</encoder>
+	</appender>
+	
+	<appender name="rollingFile_sql" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${catalina.base}/logs/dss_sql.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${catalina.base}/logs/dss_sql.%d{yyyy-MM-dd}-%i.log.zip</FileNamePattern> 
+			<MaxHistory>90</MaxHistory> 
+			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>300MB</MaxFileSize> 
+			</TimeBasedFileNamingAndTriggeringPolicy>
+  		</rollingPolicy>
+  		<encoder>
+  			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}][dss][%X{LogID}][%-5level][%L][%msg][%thread]%n</pattern> 
+  		</encoder>
+	</appender>
+	
+	<appender name="rollingFile_mirror" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${catalina.base}/logs/dss_mirror.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${catalina.base}/logs/dss_mirror.%d{yyyy-MM-dd}-%i.log.zip</FileNamePattern> 
+			<MaxHistory>90</MaxHistory> 
+			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>300MB</MaxFileSize> 
+			</TimeBasedFileNamingAndTriggeringPolicy>
+  		</rollingPolicy>
+  		<encoder>
+  			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}][dss][%X{LogID}][%-5level][%L][%msg][%thread]%n</pattern> 
+  		</encoder>
+	</appender>
+	
+	<appender name="rollingFile_realtime" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${catalina.base}/logs/dss_realtime.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<FileNamePattern>${catalina.base}/logs/dss_realtime.%d{yyyy-MM-dd}-%i.log.zip</FileNamePattern>
+			<MaxHistory>90</MaxHistory>
+			<TimeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+				<MaxFileSize>300MB</MaxFileSize>
+			</TimeBasedFileNamingAndTriggeringPolicy>
+		</rollingPolicy>
+		<encoder>
+			<pattern>[%d{yyyy-MM-dd HH:mm:ss.SSS}][dss][%X{LogID}][%-5level][%L][%msg][%thread]%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- project default level -->
+	<logger name="com.huawei.sharedrive" level="INFO" />
+	<logger name="org.springframework" level="INFO" />
+	<logger name="org.springframework.web.servlet.FrameworkServlet" level="INFO" />
+	
+	<logger name="com.ibatis" level="INFO" />
+	<logger name="com.ibatis.common.jdbc.SimpleDataSource" level="INFO" />
+	<logger name="com.ibatis.common.jdbc.ScriptRunner" level="INFO" />
+	<logger name="com.ibatis.sqlmap.engine.impl.SqlMapClientDelegate" level="INFO" />
+	<logger name="java.sql.Connection" level="INFO" />
+	<logger name="java.sql.Statement" level="INFO" />
+	<logger name="java.sql.PreparedStatement" level="INFO" />
+	<logger name="java.sql.ResultSet" level="INFO" />
+	
+	<logger name="com.alibaba.cobar" level="WARN" />
+	<logger name="com.huawei.sharedrive.dataserver.core.job.quartz.JobExecutor" level="INFO" />
+	<logger name="com.huawei.sharedrive.dataserver.manage.dc.job.ReportDCStatusJob" level="INFO" />
+	<logger name="com.huawei.sharedrive.dataserver.manage.dc.job.CheckSelfStatusJob" level="INFO" />
+	<logger name="com.huawei.sharedrive.common.job.quartz.QuartzJobExecutor" level="INFO" />
+	<logger name="org.quartz.impl.jdbcjobstore.JobStoreTX" level="ERROR" />
+
+	<!--log4jdbc -->
+	<logger name="jdbc.sqltiming" level="INFO"/>
+
+	<logger name="com.huawei.sharedrive.common.sql.SQLPrinter" level="ERROR" additivity="false">  
+        <appender-ref ref="rollingFile_sql" />  
+    </logger>  
+    
+	<logger name="com.huawei.sharedrive.dataserver.mirro.printer.MirrorPrinter"	level="INFO" additivity="false">
+		<appender-ref ref="rollingFile_mirror" />
+	</logger>
+	
+	<logger name="com.huawei.sharedrive.dataserver.realtime.printer.RealTimePrinter" level="INFO" additivity="false">
+		<appender-ref ref="rollingFile_realtime" />
+	</logger>
+    
+	<root level="INFO">
+		<appender-ref ref="console" />
+	</root>
+</configuration>

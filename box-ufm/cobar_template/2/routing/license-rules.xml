@@ -1,0 +1,12 @@
+<rules>
+    <rule>
+        <namespace>LicenseFileMapper</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+	<rule>
+        <namespace>LicenseNodeMapper</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+</rules>

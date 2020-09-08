@@ -1,0 +1,10 @@
+@@preUpload
+{ 
+ "name":"refreshUploadUrlFile", 
+ "parent":0,
+ "size":123,
+ "sha1":"8b22dae2c74656bd4547cc99cc8f60871c8a561e",
+ "contentCreatedAt":131111111000,
+ "contentModifiedAt":131111111000,
+ "encryptKey":"encryptKey"
+}

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EnterpriseUserAccount">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="EnterpriseUserAccount" type="com.huawei.sharedrive.uam.enterpriseuseraccount.domain.EnterpriseUserAccount" />
+    <select id="getUserFilterd" parameterClass="map" resultClass="EnterpriseUserAccount">
+    	select a.id,a.objectSid,a.description,a.email,a.status,a.name,a.alias,a.enterpriseId,b.cloudUserId,b.regionId,b.accountId,b.status,b.spaceQuota,b.maxVersions from enterprise_user$enterprise_tableSuffix$ a,user_account$account_tableSuffix$ b 
+    	where a.enterpriseId=b.enterpriseId and a.id=b.userId
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                a.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                a.email like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                a.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+        </dynamic>
+		<isNotNull prepend="and" property="accountId">
+           	<![CDATA[
+              accountId=#accountId#  
+              ]]>
+         </isNotNull>
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    <select id="getUserFilterdCount" parameterClass="map" resultClass="int">
+        select count(b.cloudUserId) from enterprise_user$enterprise_tableSuffix$ a,user_account$account_tableSuffix$ b 
+    	where a.enterpriseId=b.enterpriseId and a.id=b.userId
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                a.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                a.email like concat('%',#filter#,'%') 
+            </isNotEmpty>
+        </dynamic>
+		<isNotNull prepend="and" property="accountId">
+           	<![CDATA[
+              accountId=#accountId#  
+              ]]>
+         </isNotNull>
+	</select>
+</sqlMap>
+

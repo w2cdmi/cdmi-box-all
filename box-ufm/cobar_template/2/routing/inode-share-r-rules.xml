@@ -1,0 +1,47 @@
+<rules>
+    <rule>
+        <sqlmap>INodeShareReverse.listShareToMeByPage</sqlmap>
+        <shardingExpression>hash.apply(filter.sharedUserId) % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShareReverse.listShareToMeByPage</sqlmap>
+        <shardingExpression>hash.apply(filter.sharedUserId) % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+    <rule>
+        <sqlmap>INodeShareReverse.listShareToMeByPageV2</sqlmap>
+        <shardingExpression>hash.apply(filter.sharedUserId) % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShareReverse.listShareToMeByPageV2</sqlmap>
+        <shardingExpression>hash.apply(filter.sharedUserId) % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+
+    <rule>
+        <sqlmap>INodeShareReverse.getShareToMeCountBySearchName</sqlmap>
+        <shardingExpression>hash.apply(filter.sharedUserId) % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShareReverse.getShareToMeCountBySearchName</sqlmap>
+        <shardingExpression>hash.apply(filter.sharedUserId) % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+
+    <rule>
+        <namespace>INodeShareReverse</namespace>
+        <shardingExpression>hash.apply(sharedUserId) % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>INodeShareReverse</namespace>
+        <shardingExpression>hash.apply(sharedUserId) % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+</rules>

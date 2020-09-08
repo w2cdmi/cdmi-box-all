@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="StatisticsAccessKey">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="StatisticsAccessKey" type="com.huawei.sharedrive.isystem.statistics.domain.StatisticsAccessKey" />
+ 	<insert id="insert" parameterClass="StatisticsAccessKey">
+ 		insert into statistics_accesskey(id,secretKey,secretKeyEncodeKey,createdAt) 
+ 		values(#id#,#secretKey#,#secretKeyEncodeKey#,#createdAt#)
+ 	</insert>
+ 	
+ 	<select id="getListAll" resultClass="StatisticsAccessKey" >
+ 		select * from statistics_accesskey
+ 	</select>
+ 	
+ 	<select id="getById" resultClass="StatisticsAccessKey" >
+ 		select * from statistics_accesskey where id = #id#
+ 	</select>
+ 	
+ 	<delete id="deleteById" parameterClass="String">
+ 		delete from statistics_accesskey where id =#id#
+ 	</delete>
+ </sqlMap>
+  

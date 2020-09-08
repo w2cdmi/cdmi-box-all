@@ -1,0 +1,161 @@
+/* 标签样式 */
+
+label {
+    display: block;
+    line-height: 50rpx;
+    height: 50rpx;
+    overflow: hidden;
+    width: 500rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    font-size: 28rpx;
+}
+
+.file-info text {
+    font-size: 24rpx;
+    color: #999;
+    display: block;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+
+/*./app.wxss>.view-bg  */
+
+.view-bg {
+    /* justify-content:space-between; */
+    /* padding: 20rpx 0 20rpx 30rpx; */
+}
+
+/* 页面布局 */
+
+.margin-right {
+    margin-right: 20rpx;
+}
+
+.margin-top {
+    margin-top: 20rpx;
+}
+
+/* 文件信息 */
+
+.file-group {
+    height: 90rpx;
+    display: flex;
+    width: 750rpx;
+}
+
+.file-icon {
+    width: 90rpx;
+    height: 90rpx;
+    padding: 0 0 0 40rpx;
+}
+
+.img-icon {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius: 0.5em;
+}
+
+.file-info {
+    height: 90rpx;
+    width: 100%;
+    padding-left: 20rpx;
+}
+
+.button-size {
+    width: 120rpx;
+    height: 90rpx;
+    padding-right: 30rpx;
+}
+
+.button-size image {
+    width: 40rpx;
+    height: 40rpx;
+    margin-top: 30rpx;
+    /* float: right; */
+}
+
+.weui-cell_active {
+    background-color: #ececec;
+}
+
+.clear-button-style {
+    background-color: rgba(255, 0, 0, 0);
+}
+
+.folderList {
+    height: 130rpx;
+    width: 930rpx;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-bottom: 2rpx solid #f1f1f1;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.folderList-item {
+    width: 750rpx;
+}
+
+.folder-item {
+    width: 85%;
+    justify-content: flex-start;
+}
+
+.flex-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 侧滑  */
+
+.touch-item {
+    font-size: 28rpx;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1rpx solid #f1f1f1;
+    width: 100%;
+    overflow: hidden;
+}
+
+.content {
+    width: 100%;
+    line-height: 44rpx;
+    margin-right: 0;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.del {
+    background-color: #ea5036;
+    width: 180rpx;
+    height: 100%;
+    color: #fff;
+    line-height: 130rpx;
+    text-align: center;
+}
+
+.touch-moveToLeft-active {
+    -webkit-transform: translateX(-180rpx);
+    transform: translateX(-180rpx);
+}
+
+.touch-moveToRight-active {
+    -webkit-transform: translateX(0rpx);
+    transform: translateX(0rpx);
+}
+
+/*文件排序方式  */
+
+.desc-sorting {
+    transform: rotate(0deg);
+    transform-origin: 50% 50%;
+}
+
+.asc-sorting {
+    transform: rotate(180deg);
+    transform-origin: 50% 50%;
+}

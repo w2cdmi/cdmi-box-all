@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RealTimeCopyTaskPart">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="RealTimeCopyTaskPart" type="pw.cdmi.file.engine.realtime.domain.RealTimeCopyTaskPart" />
+
+	<resultMap id="resultMap.RealTimeCopyTaskPart" class="RealTimeCopyTaskPart">
+		<result column="taskId" property="taskId" javaType="java.lang.String" />
+		<result column="partId" property="partId" javaType="java.lang.String" />
+		<result column="size" property="size" javaType="java.lang.Long" />
+		<result column="status" property="status" javaType="java.lang.Integer" />
+		<result column="createTime" property="createTime" />
+		<result column="modifyTime" property="modifyTime" />		
+		<result column="partRange" property="partRange" javaType="java.lang.String" />
+	</resultMap>
+	<insert id="batchReplace" parameterClass="java.util.List">   
+		    <![CDATA[  
+		        replace into copytask_part_rt(taskId,partId,size,status,createTime,modifyTime,partRange) values  
+		    ]]>
+		<iterate conjunction=",">   
+	        <![CDATA[  
+	            (#task[].taskId#,#task[].partId#,#task[].size#,#task[].status#,#task[].createTime#,#task[].modifyTime#,#task[].partRange#)
+	        ]]>
+		</iterate>
+	</insert>
+
+	<select id="countRealTimeCopyTaskPart" parameterClass="java.lang.String" resultClass="int">
+         <![CDATA[
+        select count(*) from copytask_part_rt where taskId=#taskId#
+		]]>
+	</select>
+
+	<select id="countUnSuccessTaskParts" parameterClass="java.lang.String" resultClass="int">
+        <![CDATA[
+        select count(*) from copytask_part_rt where taskId=#taskId# and status in (0,3)
+		]]>
+	</select>
+
+	<select id="listRealTimeCopyTaskPartByTaskId" parameterClass="java.lang.String" resultMap="resultMap.RealTimeCopyTaskPart">
+       <![CDATA[
+        select * from copytask_part_rt where taskId=#taskId# order by partId
+		]]>
+	</select>
+
+	<update id="updateTaskPartsStatus" parameterClass="RealTimeCopyTaskPart">
+	 	<![CDATA[  
+	 		update copytask_part_rt  set 
+	 		size=#size#,
+	 		status=#status#,
+	 		modifyTime=now(),
+	 		partRange=#partRange#
+	 		where taskId=#taskId# and	partId=#partId#
+		]]>
+	</update>
+	<delete id="deleteByTaskId" parameterClass="String">
+		<![CDATA[
+			delete from copytask_part_rt where taskId = #taskId#
+		]]>
+	</delete>
+	<delete id="deleteUnExistTaskPart" parameterClass="String">
+		<![CDATA[
+			delete from copytask_part_rt where taskId <> all (select taskId from copytask_data_rt)
+		]]>
+	</delete>
+	
+</sqlMap>

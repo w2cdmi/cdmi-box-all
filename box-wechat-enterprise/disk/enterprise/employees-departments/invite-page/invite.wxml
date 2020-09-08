@@ -1,0 +1,10 @@
+<!--disk/enterprise/employees-departments/invite-page/invite.wxml-->
+<image class='page bc_image' mode='aspectFit' src='/disk/images/invite-colleagues.png'></image>
+<view class='container'>
+    <text class='explanation_text txt_comm'>邀请链接可以直接发送给微信，对方打开连接即可注册并加入您的企业。</text>
+    <text class='validity_period_text txt_comm'>有效期：7天 ></text>
+    <view class='button_view'>
+        <image  mode='aspectFit' catchtap='' class='button_img' src='/disk/images/invite-button-bc.png'></image>
+        <button class='button_text clear-button-style' open-type='share'>马上邀请</button>
+    </view>
+</view>

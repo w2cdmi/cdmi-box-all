@@ -1,0 +1,116 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "1.9.1",
+	"appid": "wx46ebf294739d7146",
+	"projectname": "%E4%BC%81%E4%B8%9A%E6%96%87%E4%BB%B6%E5%AE%9D",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "成员管理",
+					"pathName": "disk/enterprise/employees-departments/person-details/personState/personState",
+					"query": "name=\"hahaah\""
+				},
+				{
+					"id": 1,
+					"name": "share",
+					"pathName": "disk/index",
+					"query": "ownerId=580&nodeId=1&enterpriseId=48"
+				},
+				{
+					"id": -1,
+					"name": "login",
+					"pathName": "disk/enterprise/login/login",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "离职人员管理",
+					"pathName": "disk/enterprise/leaveManagement/leaveManagement",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "移交主页面",
+					"pathName": "disk/enterprise/leaveManagement/transfer/transfer",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "查看协作空间文件",
+					"pathName": "disk/enterprise/leaveManagement/transfer/seeCoopSpace/seeCoopSpace",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "移交完成",
+					"pathName": "disk/enterprise/leaveManagement/transfer/transferFinish/transferFinish",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收件箱文件上传",
+					"pathName": "disk/inbox/upload/upload",
+					"query": "name=\"hahaah\""
+				},
+				{
+					"id": 8,
+					"name": "收件箱",
+					"pathName": "disk/inbox/inbox",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "首页",
+					"pathName": "disk/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收件箱",
+					"pathName": "disk/inbox/inbox",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "文件分享",
+					"pathName": "disk/fileShare/fileShare",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "发现",
+					"pathName": "disk/find/find",
+					"query": ""
+				}
+			]
+		}
+	}
+}

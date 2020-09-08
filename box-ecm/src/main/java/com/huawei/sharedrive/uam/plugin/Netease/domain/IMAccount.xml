@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="IMAccount">
+
+	<typeAlias alias="IMAccount" type="com.huawei.sharedrive.uam.plugin.Netease.domain.IMAccount" />
+
+	<insert id="insert" parameterClass="IMAccount">
+        <![CDATA[
+       INSERT INTO `im_account` (`accountId`, `name`, `cloudUserId`, `IMaccid`, `IMPwd`, `createdAt`, `enterpriseId`, `userId`, `icon`) 
+       VALUES (#accountId#, #name#, #cloudUserId#, #IMaccid#, #IMPwd#, #createdAt#, #enterpriseId# ,#userId#, #icon#)
+        ]]>
+	</insert>
+	<select id="get" parameterClass="IMAccount" resultClass="IMAccount">
+        <![CDATA[
+        select * from im_account  where accountId=#accountId# and cloudUserId=#cloudUserId#
+        ]]>
+	</select>
+	<select id="getByIMaccid" parameterClass="IMAccount" resultClass="IMAccount">
+        <![CDATA[
+        select * from im_account  where IMaccid=#IMaccid#
+        ]]>
+	</select>
+</sqlMap>
+

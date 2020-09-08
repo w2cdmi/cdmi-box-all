@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RealTimeCopyTask">
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="RealTimeCopyTask" type="pw.cdmi.file.engine.realtime.domain.RealTimeCopyTask" />
+	<resultMap id="resultMap.RealTimeCopyTask" class="RealTimeCopyTask">
+		<result column="taskId" property="taskId" javaType="java.lang.String" />
+		<result column="nodeSize" property="nodeSize" javaType="java.lang.Long" />
+		<result column="triggerType" property="triggerType" javaType="java.lang.Integer" />
+		<result column="status" property="status" javaType="java.lang.Integer" />
+		<result column="createTime" property="createTime" />
+		<result column="modifyTime" property="modifyTime" />
+		<result column="srcObjectId" property="srcObjectId" javaType="java.lang.String" />
+		<result column="destObjectId" property="destObjectId" javaType="java.lang.String" />		
+		<result column="exeAgent" property="exeAgent" javaType="java.lang.String" />
+		<result column="md5" property="md5" javaType="java.lang.String" />
+		<result column="blockMD5" property="blockMD5" javaType="java.lang.String" />
+		<result column="errorCode" property="errorCode" javaType="java.lang.Integer" />
+		<result column="retryNum" property="retryNum" javaType="java.lang.Integer" />
+	</resultMap>
+
+	<insert id="addCopyTask" parameterClass="RealTimeCopyTask">   
+		    <![CDATA[  
+		        replace into copytask_data_rt(taskId,nodeSize,triggerType,status,createTime,modifyTime,srcObjectId,destObjectId,md5,blockMD5,errorCode,exeAgent) values
+		        (#taskId#,#nodeSize#,#triggerType#,#status#,#createTime#,#modifyTime#,#srcObjectId#,#destObjectId#,#md5#,#blockMD5#,#errorCode#,#exeAgent#)  
+		    ]]>
+	</insert>
+	
+	<select id="queryWaitCopyTasks" resultMap="resultMap.RealTimeCopyTask">
+        <![CDATA[
+        select * from copytask_data_rt where status = 0 and exeAgent is null  order by createTime desc limit 100
+		]]>
+	</select>
+	
+	<select id="find" resultMap="resultMap.RealTimeCopyTask">
+        <![CDATA[
+        select * from copytask_data_rt where taskId = #taskId#
+		]]>
+	</select>
+	
+	<select id="queryByDestObjID" resultMap="resultMap.RealTimeCopyTask" parameterClass="java.lang.String">
+        <![CDATA[
+        select * from copytask_data_rt where destObjectId = #destObjectId#
+		]]>
+	</select>
+	
+	<select id="queryCallBackFailedTask" resultMap="resultMap.RealTimeCopyTask">
+        <![CDATA[
+        select * from copytask_data_rt where status = 5 and exeAgent = #exeAgent# 
+		]]>
+	</select>
+	
+	<select id="queryCallBackTask" resultMap="resultMap.RealTimeCopyTask">
+        <![CDATA[
+        select * from copytask_data_rt where status = 2 and DATE_ADD(modifyTime,INTERVAL 2 HOUR) < now() and exeAgent = #exeAgent# 
+		]]>
+	</select>
+	
+	<update id="allocateAgent" parameterClass="RealTimeCopyTask">
+		<![CDATA[
+			update copytask_data_rt set modifyTime =now(), exeAgent = #exeAgent# where taskId=#taskId#
+		]]>
+	</update>
+	
+	<select id="queryWaitCopyTaskByAgent" parameterClass="java.lang.String" resultMap="resultMap.RealTimeCopyTask">
+        <![CDATA[
+        select * from copytask_data_rt where retryNum < 10 and status in (0,3) and exeAgent = #exeAgent# order by createTime desc limit 100
+		]]>
+	</select>
+	
+	<update id="updateTaskStatus" parameterClass="RealTimeCopyTask">
+		<![CDATA[
+			update copytask_data_rt set modifyTime =now(),nodeSize=#nodeSize#,status=#status#,retryNum=#retryNum#,md5= #md5#,blockMD5=#blockMD5#,errorCode=#errorCode# where taskId=#taskId# and exeAgent = #exeAgent#
+		]]>
+	</update>
+	
+	<delete id="deleteTask" parameterClass="RealTimeCopyTask">
+		<![CDATA[
+			delete from copytask_data_rt where taskId=#taskId#
+		]]>
+	</delete>
+	
+	<select id="queryNotFoundTask" resultMap="resultMap.RealTimeCopyTask" parameterClass="java.lang.String">
+		<![CDATA[
+			select * from copytask_data_rt where status = 3 and errorCode = 404 and exeAgent = #exeAgent#
+		]]>
+	</select>
+	
+	<select id="queryFailedManyTimeTasks" resultMap="resultMap.RealTimeCopyTask" parameterClass="java.lang.String">
+		<![CDATA[
+			select * from copytask_data_rt where retryNum >= 10 and exeAgent = #exeAgent#
+		]]>
+	</select>
+	
+	
+	<update id="resetUnSuccessTask" parameterClass="java.lang.String">
+		<![CDATA[
+					update copytask_data_rt set status=0, modifyTime =now() where exeAgent = #exeAgent#   
+			and ((status = 1 and DATE_ADD(modifyTime,INTERVAL 2 HOUR) < now()) or (status = 3  and DATE_ADD(modifyTime,INTERVAL 1 HOUR) < now() and retryNum < 10)) 
+		]]>
+	</update>
+	
+	<delete id="deleteSucessHistoryTask" parameterClass="java.lang.String">
+		<![CDATA[
+			delete from copytask_data_rt where status = 4 and exeAgent = #exeAgent#
+		]]>
+	</delete>
+	
+	<update id="updateBrotherTaskStatus" parameterClass="java.lang.String">
+		<![CDATA[
+			update copytask_data_rt set exeAgent=#exeAgent#,status=3,retryNum=retryNum+1,modifyTime =now() where DATE_ADD(modifyTime,INTERVAL 3 HOUR) < now() and exeAgent != #exeAgent# 
+		]]>
+	</update>
+	
+	<update id="updateMD5ByObjectId" parameterClass="RealTimeCopyTask">
+		<![CDATA[
+			update copytask_data_rt set md5= #md5#,blockMD5=#blockMD5#,modifyTime =now() where destObjectId = #destObjectId#
+		]]>
+	</update>
+</sqlMap>

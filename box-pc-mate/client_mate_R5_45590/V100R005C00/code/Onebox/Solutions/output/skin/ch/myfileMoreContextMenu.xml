@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Menu width="220" menupadding="-30,32" trianglepadding="0,25,-42,0" borderround="7,7" bkcolor="#FFFAFAFA" inset="1,1,1,1" >
+		<Control height="15"/>
+
+		<MenuItem id="0" height="32" normalimage="file='..\Image\ic_toolmenu_more_cancelsync.png' source='0,0,20,20' dest='15,6,35,26'" hotimage="file='..\Image\ic_toolmenu_more_cancelsync.png' source='0,30,20,50' dest='15,6,35,26'">
+			<HorizontalLayout>
+				<Control width="35" />
+				<Label text="取消同步" align="left" font="12" textcolor="#FF000000" textpadding="8,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<MenuItem id="1" height="32" normalimage="file='..\Image\ic_toolmenu_sync.png' source='0,30,20,50' dest='15,6,35,26'" hotimage="file='..\Image\ic_toolmenu_sync.png' source='0,60,20,80' dest='15,6,35,26'">
+			<HorizontalLayout>
+				<Control width="35" />
+				<Label text="设置同步" align="left" font="12" textcolor="#FF000000" textpadding="8,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<MenuItem id="2" height="32" normalimage="file='..\Image\ic_toolmenu_more_transmit.png' source='0,0,20,20' dest='15,6,35,26'" hotimage="file='..\Image\ic_toolmenu_more_transmit.png' source='0,30,20,50' dest='15,6,35,26'">
+			<HorizontalLayout>
+				<Control width="35" />
+				<Label text="转发到团队空间" align="left" font="12" textcolor="#FF000000" textpadding="8,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<MenuItem id="3" height="32" normalimage="file='..\Image\ic_toolmenu_more_copy-move.png' source='0,0,20,20' dest='15,6,35,26'" hotimage="file='..\Image\ic_toolmenu_more_copy-move.png' source='0,30,20,50' dest='15,6,35,26'">
+			<HorizontalLayout>
+				<Control width="35" />
+				<Label text="复制/移动" align="left" font="12" textcolor="#FF000000" textpadding="8,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<MenuItem id="4" height="32" normalimage="file='..\Image\ic_toolmenu_more_delete.png' source='0,0,20,20' dest='15,6,35,26'" hotimage="file='..\Image\ic_toolmenu_more_delete.png' source='0,30,20,50' dest='15,6,35,26'">
+			<HorizontalLayout>
+				<Control width="35" />
+				<Label text="删除" align="left" font="12" textcolor="#FF000000" textpadding="8,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<MenuItem id="5" height="32" normalimage="file='..\Image\ic_toolmenu_more_rename.png' source='0,0,20,20' dest='15,6,35,26'" hotimage="file='..\Image\ic_toolmenu_more_rename.png' source='0,30,20,50' dest='15,6,35,26'">
+			<HorizontalLayout>
+				<Control width="35" />
+				<Label text="重命名" align="left" font="12" textcolor="#FF000000" textpadding="8,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<MenuItem id="6" height="32" normalimage="file='..\Image\ic_popup_share_version.png' source='0,0,20,20' dest='15,6,35,26'" hotimage="file='..\Image\ic_popup_share_version.png' source='0,30,20,50' dest='15,6,35,26'">
+			<HorizontalLayout>
+				<Control width="35" />
+				<Label text="查看版本" align="left" font="12" textcolor="#FF000000" textpadding="8,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<Control height="10"/>
+	</Menu>
+</Window>

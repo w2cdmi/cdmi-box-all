@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="NodeStatistics">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="NodeStatistics"
+		type="com.huawei.sharedrive.app.statistics.domain.NodeStatisticsDay" />
+	<insert id="insert" parameterClass="NodeStatistics">
+    	<![CDATA[
+    	insert into node_statistics_day
+    	(day,appId,regionId,fileCount,trashFileCount,
+    		deletedFileCount,spaceUsed,trashSpaceUsed,deletedSpaceUsed,addedFileCount,
+    		addedTrashFileCount,addedDeletedFileCount,addedSpaceUsed,
+    		addedTrashSpaceUsed,addedDeletedSpaceUsed)
+    	values
+    	(#day#,#appId#,#regionId#,#fileCount#,#trashFileCount#,
+    		#deletedFileCount#,#spaceUsed#,#trashSpaceUsed#,#deletedSpaceUsed#,
+    		#addedFileCount#,#addedTrashFileCount#,#addedDeletedFileCount#,
+    		#addedSpaceUsed#,#addedTrashSpaceUsed#,#addedDeletedSpaceUsed#)
+    	]]>
+	</insert>
+	<select id="getByDay" resultClass="NodeStatistics" parameterClass="Long">
+        <![CDATA[
+        select * from node_statistics_day where day=#day#
+        ]]>
+	</select>
+	
+	<select id="getGroupByApp" resultClass="NodeStatistics" parameterClass="map">
+        SELECT appId, sum(fileCount) as fileCount,sum(spaceUsed) as spaceUsed,
+        	SUM(trashSpaceUsed) as trashSpaceUsed, SUM(trashFileCount) as trashFileCount,
+        	SUM(deletedSpaceUsed) as deletedSpaceUsed,SUM(deletedFileCount) as deletedFileCount
+        FROM node_statistics_day
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="day">
+				day = #day#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="regionId">
+				regionId = #regionId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="appId">
+				appId = #appId#
+			</isNotEmpty>
+		</dynamic>
+		group by appId
+	</select>
+	
+	<select id="getRegionFilesAndSize" resultClass="NodeStatistics" parameterClass="long">
+        SELECT regionId, sum(fileCount) as fileCount,sum(spaceUsed) as spaceUsed,
+        	sum(addedFileCount) as addedFileCount,sum(addedSpaceUsed) as addedSpaceUsed
+        FROM node_statistics_day
+        WHERE day=#day#
+		GROUP BY regionId
+	</select>
+	
+	<select id="getGroupByRegion" resultClass="NodeStatistics" parameterClass="map">
+        SELECT regionId,sum(fileCount) as fileCount,sum(spaceUsed) as spaceUsed,
+        	SUM(trashSpaceUsed) as trashSpaceUsed, SUM(trashFileCount) as trashFileCount,
+        	SUM(deletedSpaceUsed) as deletedSpaceUsed,SUM(deletedFileCount) as deletedFileCount
+        FROM node_statistics_day
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="day">
+				day = #day#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="regionId">
+				regionId = #regionId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="appId">
+				appId = #appId#
+			</isNotEmpty>
+		</dynamic>
+		group by regionId
+		order by day asc
+	</select>
+	
+	<select id="getGroupByRegionAndApp" resultClass="NodeStatistics" parameterClass="map">
+        SELECT regionId,appId, sum(fileCount) as fileCount,sum(spaceUsed) as spaceUsed,
+        	SUM(trashSpaceUsed) as trashSpaceUsed, SUM(trashFileCount) as trashFileCount,
+        	SUM(deletedSpaceUsed) as deletedSpaceUsed,SUM(deletedFileCount) as deletedFileCount
+        FROM node_statistics_day
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="day">
+				day = #day#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="regionId">
+				regionId = #regionId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="appId">
+				appId = #appId#
+			</isNotEmpty>
+		</dynamic>
+		GROUP BY appId,regionId
+	</select>
+	
+	<select id="getByRange" resultClass="NodeStatistics" parameterClass="map">
+        SELECT day,sum(fileCount) as fileCount,sum(spaceUsed) as spaceUsed,
+        	SUM(trashSpaceUsed) as trashSpaceUsed, SUM(trashFileCount) as trashFileCount,
+        	SUM(deletedSpaceUsed) as deletedSpaceUsed,SUM(deletedFileCount) as deletedFileCount,
+        	sum(addedFileCount) as addedFileCount,sum(addedSpaceUsed) as addedSpaceUsed,
+        	SUM(addedTrashSpaceUsed) as addedTrashSpaceUsed, SUM(addedTrashFileCount) as addedTrashFileCount,
+        	SUM(addedDeletedSpaceUsed) as addedDeletedSpaceUsed,SUM(addedDeletedFileCount) as addedDeletedFileCount
+        FROM node_statistics_day
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="beginDay">
+			     <![CDATA[
+				day >= #beginDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDay">
+			     <![CDATA[
+				day <= #endDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="regionId">
+				regionId = #regionId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="appId">
+				appId = #appId#
+			</isNotEmpty>
+		</dynamic>
+		GROUP BY day
+		ORDER BY day ASC
+	</select>
+	<select id="getListByRange" resultClass="NodeStatistics" parameterClass="map">
+        SELECT day,appId,regionId,fileCount,trashFileCount,
+        	deletedFileCount,spaceUsed,
+        	trashSpaceUsed,deletedSpaceUsed,
+        	addedFileCount,addedTrashFileCount,
+        	addedDeletedFileCount,addedSpaceUsed,
+        	addedTrashSpaceUsed,addedDeletedSpaceUsed
+        FROM node_statistics_day
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="beginDay">
+			     <![CDATA[
+				day >= #beginDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDay">
+			     <![CDATA[
+				day <= #endDay#
+			    ]]>	
+			</isNotEmpty>
+		</dynamic>
+		ORDER BY day ASC
+	</select>
+</sqlMap>
+

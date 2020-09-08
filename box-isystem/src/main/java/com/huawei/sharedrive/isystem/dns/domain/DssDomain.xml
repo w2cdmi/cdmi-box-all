@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DssDomain">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="DssDomain"
+		type="com.huawei.sharedrive.isystem.dns.domain.DssDomain" />
+
+	<resultMap id="resultMap.DssDomain" class="DssDomain">
+		<result column="dnsServerId" property="dnsDomain.dnsServerId"	javaType="java.lang.Integer" />
+		<result column="domainName" property="dnsDomain.domainName"	javaType="java.lang.String" />
+		<result column="dss_id" property="dataCenter.id" javaType="java.lang.Integer" />
+		<result column="name" property="dataCenter.name" javaType="java.lang.String" />
+	</resultMap>
+
+	<select id="getAllByDnsServerID" parameterClass="int"
+		resultMap="resultMap.DssDomain">
+		select n.dnsServer_id as dnsServerId, s.domainName as domainName,s.dss_id as dss_id,
+		s.name as name  from dns_domain n ,(select * from dss_domain g left join data_center c on g.dss_id=c.id) s where s.domainName =
+		n.domainName and n.dnsServer_id = #value#
+	</select>
+	
+	<select id="getAllByDataCenterID" parameterClass="int"
+		resultMap="resultMap.DssDomain">
+		select domainName as domainName , dss_id as dss_id , 0 as dnsServerId ,'' as name from dss_domain where dss_id=#value#
+	</select>
+	<select id="select" parameterClass="String" resultMap="resultMap.DssDomain">
+		select domainName as domainName , dss_id as dss_id , 0 as dnsServerId ,'' as name from dss_domain where domainName=#value#
+	</select>
+	
+	 <delete id="delete" parameterClass="String">
+		delete from dss_domain where domainName = #value#
+	</delete>
+
+	 <insert id="insert" parameterClass="DssDomain">
+        insert into dss_domain(dss_id,domainName) values(#dataCenter.id#, #dnsDomain.domainName#);
+    </insert>
+
+</sqlMap>
+

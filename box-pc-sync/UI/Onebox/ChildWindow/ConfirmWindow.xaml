@@ -1,0 +1,103 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cs="clr-namespace:Onebox.CustomControls"
+        xmlns:Microsoft_Windows_Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" 
+        x:Class="Onebox.ConfirmWindow"
+        Title="{StaticResource confirmTitle}" 
+        x:Name="ConfirmWd"
+        Height="260" 
+        Width="520"
+        WindowStyle="None" 
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        Icon="/ImageResource/logo.ico"
+        AllowDrop="True"
+        Foreground="Black"
+        ResizeMode="NoResize" Closing="Window_Closing_1">
+	<Window.Background>
+		<SolidColorBrush Color="#FFF1F1F1" Opacity="0"/>
+	</Window.Background>
+    <Grid ShowGridLines="False">
+		<Grid.RowDefinitions>
+			<RowDefinition   Height="Auto" MinHeight="36"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+         <Border BorderBrush="#FFA3A4A4" Grid.Row="1" d:LayoutOverrides="GridBox" Background="#FFF1F1F1" CornerRadius="0,0,5,5" BorderThickness="1,0,1,1">
+        	<StackPanel Orientation="Vertical" Margin="20,20,20,0">
+        		<Grid Margin="0,0,20,20">
+        			<Grid.ColumnDefinitions>
+        				<ColumnDefinition Width="0.360*"/>
+        				<ColumnDefinition Width="0.640*"/>
+        			</Grid.ColumnDefinitions>
+        			<StackPanel Orientation="Vertical" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Top"  Margin="0,0,0,0" >
+                        <Label Content="{StaticResource userName}" FontSize="14" Foreground="#FF333333" HorizontalAlignment="Right"  />
+                        <Label Content="{StaticResource deviceName}" Margin="0,8,0,0" FontSize="14" Foreground="#FF333333" HorizontalAlignment="Right"  />
+                        <Label Content="{StaticResource syncRootPath}"   Margin="0,15,0,0" FontSize="14" Height="30" Foreground="#FF333333" HorizontalAlignment="Right"  />
+        			</StackPanel>
+        			<StackPanel Orientation="Vertical" Grid.Column="1" Margin="5,0,0,0">
+        				<Label   x:Name="ConfimUserName"  Height="30" FontSize="14" Foreground="#FF333333" Padding="-5,0,0,0" VerticalContentAlignment="Center" />
+                        <TextBlock  x:Name="ConfirmComputerName"  
+                                    Margin="0,6,0,14" 
+                                    FontSize="14" 
+                                    Height="30" 
+                                    Background="#FFF1F1F1" 
+                                    IsEnabled="False" 
+                                    Padding="0,5,0,0"
+                                    ToolTipService.ShowOnDisabled="True"
+                                    Foreground="#FF333333">
+                            <TextBlock.ToolTip>
+                                <ToolTip>
+                                    <TextBlock  x:Name="CfirmPCNameTP" TextWrapping="Wrap" MaxWidth="400" />
+                                </ToolTip>
+                            </TextBlock.ToolTip>
+                        </TextBlock> 
+        				<StackPanel  Orientation="Horizontal">
+        					<TextBox  x:Name ="TBSyncPath" Text="" FontSize="14" Width="225"  Height="30" MaxLength="100"  BorderBrush="#FFC4C4C4" Foreground="#FF333333"   
+        						VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle}"/>
+        					<Button Content="..." x:Name="Button_SyncPathChange"  Margin="8,0,0,0" 
+        						Style="{StaticResource Button_Style_Normal}" Height="30"
+        						HorizontalAlignment="Left" 
+        						Click="Button_SyncPathChange_Click" />
+        				</StackPanel>
+        			</StackPanel>
+        		</Grid>
+        		<Border BorderBrush="#FFDBDBDB" BorderThickness="0,1,0,0"  />
+        		<Border BorderBrush="White" BorderThickness="0,1,0,0"/>
+        		<Button x:Name="ConfirmOK"  HorizontalAlignment="Center" VerticalAlignment="Center"  Margin="0,15,0,0" 
+        			Content="{StaticResource confirm}"   Click="Button_InfoConfirm" 
+        			Style="{StaticResource Button_Style_Focus}"/>
+        	</StackPanel>
+		</Border>
+		
+         <Border Style="{StaticResource Bg_Style_WindowHeader}">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.7*"/>
+					<ColumnDefinition Width="0.3*"/>
+				</Grid.ColumnDefinitions>	
+				<StackPanel  Orientation="Horizontal" HorizontalAlignment="Left">
+					<Grid Margin="10,0,0,0">
+						<Image Source="/Onebox;component/ImageResource/logo.png" Stretch="Fill" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Grid>
+                    <Label Content="{StaticResource confirmTitle}" Style="{StaticResource Font_Style_WindowTtile}" VerticalAlignment="Center" />
+				</StackPanel>
+				<StackPanel Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+					<cs:ImageButton x:Name="CloseButton1"   
+						NormalImage="/Onebox;component/ImageResource/exit.png"
+						OverImage="/Onebox;component/ImageResource/exit.png"
+						PresseImage="/Onebox;component/ImageResource/exit.png"
+						DisableImage="/Onebox;component/ImageResource/exit.png"
+						ImageSize="14"
+						BorderVisibility="Hidden"
+						Style="{StaticResource ImageButtonStyle}" 
+						Click="Button_Close" Cursor="Hand"/>
+				</StackPanel>
+				<Border BorderBrush="#FFA3A4A4" BorderThickness="0,0,0,1" Height="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+				<Border BorderBrush="#FFF1F1F1" BorderThickness="0,0,0,1" Margin="1,0" Grid.ColumnSpan="2"/>
+			</Grid>
+		</Border>
+	</Grid>
+</Window>

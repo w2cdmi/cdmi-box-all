@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="600,400" caption="0,0,0,42" bktrans="true" roundcorner="5,5,5,5">
+	<Include source="Default.xml" />
+
+	<VerticalLayout bkcolor="#FFfafafa">
+		<HorizontalLayout height="42">
+			<Control width="20" />
+			<Label name="ShareLinkDialog_LabelTitle" text="Create Share Link" font="15" valign="vcenter" textcolor="#FF000000" />
+			<Button name="closebtn" width="20" height="20" padding="0,11" normalimage="file='..\Image\ic_popup_delete.png' source='0,0,20,20'" hotimage="file='..\Image\ic_popup_delete.png' source='0,30,20,50'" pushedimage="file='..\Image\ic_popup_delete.png' source='0,60,20,80'" />
+			<Control width="20" />
+		</HorizontalLayout>
+		<Control height="1" bkcolor="#FFd9d9d9" />
+		<HorizontalLayout >
+			<VerticalLayout width="20" />
+
+
+			<VerticalLayout >
+				<Control height="20" />
+				<HorizontalLayout height="30" bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'">
+					<Edit name="ShareLinkDialog_EditUrl" text="" height="28" padding="5,1,5,1" font="12" disabledtextcolor="#FF000000" align="left" valign="vcenter" enabled="false"  bkcolor="#FFf5f5f5"/>	
+				</HorizontalLayout>
+
+				<Control height="15" />
+				<HorizontalLayout height="30">
+					<Label text="Access Permission:" width="130" font="12" textcolor="#FF666666" align="left" valign="vcenter" />
+					<CheckBox name="ShareLinkDialog_CheckDownload" text="Download" width="94" font="12" textcolor="#FF000000" align="left" valign="vcenter" textpadding="22,0" normalimage="file='..\Image\ic_popup_checkbox.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox.png' source='0,26,16,42' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" />
+					<CheckBox name="ShareLinkDialog_CheckPreview" padding="20,0" text="Preview" width="76" font="12" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox.png' source='0,26,16,42' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" />
+					<CheckBox name="ShareLinkDialog_CheckUpload" padding="20,0" text="Upload" width="70" font="12" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox.png' source='0,26,16,42' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" />
+				</HorizontalLayout>
+
+				<Control height="10"/>
+				<HorizontalLayout height="30">
+					<Label text="Extraction Code:" width="130" font="12" textcolor="#FF666666" align="left" valign="vcenter" />
+					<CheckBox name="ShareLinkDialog_CheckUseCode" text="ON" width="94" font="12" textcolor="#FF000000" align="left" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox.png' source='0,26,16,42' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" />
+					<CheckBox name="ShareLinkDialog_CheckDynamicCode" text="Dynamic" padding="20,0" width="200" font="12" textcolor="#FF000000" align="left" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox.png' source='0,26,16,42' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" enabled="false"/>
+				</HorizontalLayout>
+
+				<HorizontalLayout height="70" name="ShareLinkDialog_LayoutSwitch" visible="false">
+					<VerticalLayout height="70" name="ShareLinkDialog_LayoutCode" visible="false">
+						<HorizontalLayout height="30">
+							<Control width="130" />
+							<Label name="label_input_code" text="Enter extraction code" width="180" font="12" textcolor="#FF666666" align="left" valign="vcenter"/>
+						</HorizontalLayout>						
+						<Control height="5" />
+						<HorizontalLayout height="30" >
+							<Control width="130" />
+							<HorizontalLayout width="200" bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'">
+								<SearchTxt name="ShareLinkDialog_EditCode" height="28"  padding="5,1,5,1" width="149" font="12" align="left" valign="vcenter"  maxchar="20"/>
+								<Control name="ShareLinkDialog_ctlRefresh" width="1" bkcolor="#FFcccccc" />									
+								<Button name="ShareLinkDialog_BtnRefresh" tooltip="Refresh" width="40" normalimage="file='..\Image\ic_oper_refresh.png' source='0,0,20,20' dest='10,5,30,25'" hotimage="file='..\Image\ic_oper_refresh.png' source='0,30,20,50' dest='10,5,30,25'" pushedimage="file='..\Image\ic_oper_refresh.png' source='0,60,20,80' dest='10,5,30,25'" />
+							</HorizontalLayout>
+						</HorizontalLayout>
+					</VerticalLayout>
+					<VerticalLayout height="70" name="ShareLinkDialog_LayoutEmail" visible="false">
+						<HorizontalLayout height="30">
+							<Control width="130" />
+							<Label name="label_input_email" text="Enter recipient email address" width="260" font="12" textcolor="#FF666666" align="left" valign="vcenter"/>
+						</HorizontalLayout>						
+						<Control height="5" />
+						<HorizontalLayout height="30" >
+							<Control width="130" />
+							<HorizontalLayout bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'">
+								<SearchTxt name="ShareLinkDialog_EditEmail" height="28" padding="5,1,5,1" font="12" align="left" valign="vcenter" maxchar="250" />
+							</HorizontalLayout>
+						</HorizontalLayout>
+					</VerticalLayout>
+				</HorizontalLayout>
+
+				<Control height="10"/>
+				<HorizontalLayout height="30">
+					<Label text="Validity Period:" width="130" font="12" textcolor="#FF666666" align="left" valign="vcenter" />
+					<Combo name="ShareLinkDialog_ComboTime" width="200" height="30" bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'" normalimage="file='..\Image\ic_input_arrowdown.png' dest='184,11,192,19'" hotimage="file='..\Image\ic_input_arrowdown.png' dest='184,11,192,19'" pushedimage="file='..\Image\ic_input_arrowdown.png' dest='184,11,192,19'" dropboxsize="0,182" itemfont="12" itemtextpadding="15,0,15,0" >
+						<ListLabelElement text="Forever" height="30" valign="vcenter" selected="true"/>
+						<ListLabelElement text="1 Day" height="30" valign="vcenter" />
+						<ListLabelElement text="3 Days" height="30" valign="vcenter" />
+						<ListLabelElement text="1 Week" height="30" valign="vcenter" />
+						<ListLabelElement text="1 Month" height="30" valign="vcenter" />
+						<ListLabelElement text="User defined" height="30" valign="vcenter" />
+					</Combo>
+				</HorizontalLayout>
+
+				<VerticalLayout height="45" name="ShareLinkDialog_LayoutTime" visible="false">
+					<Control height="15"/>
+					<HorizontalLayout height="30">
+						<Control width="130" />
+						<DateTime name="ShareLinkDialog_StartDateTime" width="140" height="30" textpadding="15,2" bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'" />
+						<Text name="ShareLinkDialog_TextDateTime" text="To" textpadding="10,0,10,0" align="center" valign="vcenter" textcolor="#FF666666"/>
+						<DateTime name="ShareLinkDialog_StopDateTime" width="140" height="30" textpadding="15,2" bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'"  />
+					</HorizontalLayout>
+				</VerticalLayout>
+				<HorizontalLayout />
+				<HorizontalLayout height="30">
+					<ScaleIconButton name="ShareLinkDialog_copylink" text="Copy Link" textpadding="20,0,20,0" height="30" font="12" textcolor="#FFffffff" normalimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" />
+					<Control width="10" />
+					<ScaleIconButton name="ShareLinkDialog_sendlink" text="Send Link" textpadding="20,0,20,0" height="30" font="12" textcolor="#FFffffff" align="center" valign="center" normalimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" />
+					<Control />
+
+					<ScaleIconButton name="ShareLinkDialog_finish" text="Finish" textpadding="20,0,20,0" height="30" font="12" textcolor="#FFffffff" align="center" valign="center" normalimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" />
+					<Control width="10" />
+					<ScaleIconButton name="ShareLinkDialog_cancel" text="Cancel" textpadding="20,0,20,0" height="30" font="12" textcolor="#FF000000" hottextcolor="#FF000000" align="center" valign="center" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,66,110' corner='3,3,3,3'" />			
+				</HorizontalLayout>
+			</VerticalLayout>
+
+			<VerticalLayout width="20" />
+		</HorizontalLayout>
+		<HorizontalLayout height="20" />
+	</VerticalLayout>
+</Window>

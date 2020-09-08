@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> 取消了一个文件夹 <strong>${nodeName}</strong> 的共享

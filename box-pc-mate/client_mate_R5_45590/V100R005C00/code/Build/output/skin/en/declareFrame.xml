@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="600,480" caption="0,0,0,42" mininfo="600,480" maxinfo="600,480" roundcorner="5,5">
+	<VerticalLayout bordersize="1" bkcolor="#FFFFFFFF" bordercolor="#FFD9D9D9" borderround="5,5" inset="1,1,1,1">
+		<HorizontalLayout name="background" height="42" bkcolor="#FFFAFAFA">
+			<Label name="label_caption" text="Onebox" width="550" textpadding="20,0,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" font="15" />
+			<Button name="btn_close" width="20" height="20" padding="10,11,20,11" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" normalimage="file=&apos;..\Image\SysBtn\ic_popup_delete.png&apos; source=&apos;0,0,20,20&apos; dest=&apos;0,0,20,20&apos;" hotimage="file=&apos;..\Image\SysBtn\ic_popup_delete.png&apos; source=&apos;0,30,20,50&apos; dest=&apos;0,0,20,20&apos;" />
+		</HorizontalLayout>
+		<HorizontalLayout height="1" bkcolor="#FFD9D9D9" />
+		<VerticalLayout name="TextLayout" padding="20,20,0,0" bkcolor="#FFFFFFFF" borderround="5,5">
+			<RichEdit name="text_declareinfo" enabled="false" width="560" maxwidth="560" maxheight="99999" bordersize="1" bordercolor="#FFD9D9D9" borderround="5,5" inset="20,10,20,10" vscrollbar="true" textcolor="#FF000000" font="0" />
+			<HorizontalLayout height="30" padding="0,20,20,20">
+				<Control name="ctrl_blankspace" width="264" height="30" />
+				<Button name="btn_ok" text="Agree to the privacy statement and start to use it." width="200" height="30" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" font="0" align="center" normalimage="file=&apos;..\Image\ic_button_color.png&apos; source=&apos;0,0,80,30&apos; corner=&apos;3,3,3,3&apos;" hotimage="file=&apos;..\Image\ic_button_color.png&apos; source=&apos;0,40,80,70&apos; corner=&apos;3,3,3,3&apos;" pushedimage="file=&apos;..\Image\ic_button_color.png&apos; source=&apos;0,80,80,110&apos; corner=&apos;3,3,3,3&apos;" />
+				<Button name="btn_cancel" text="Disagree" width="84" height="30" padding="10,0,0,0" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" font="0" align="center" normalimage="file=&apos;..\Image\ic_button_white_nor.png&apos; source=&apos;0,0,80,30&apos; corner=&apos;3,3,3,3&apos;" hotimage="file=&apos;..\Image\ic_button_white_nor.png&apos; source=&apos;0,40,80,70&apos; corner=&apos;3,3,3,3&apos;" pushedimage="file=&apos;..\Image\ic_button_white_nor.png&apos; source=&apos;0,80,80,110&apos; corner=&apos;3,3,3,3&apos;" />
+			</HorizontalLayout>
+		</VerticalLayout>
+	</VerticalLayout>
+</Window>

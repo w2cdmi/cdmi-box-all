@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> 将你在团队空间 <strong>${teamSpaceName}</strong> 中的角色变更为 <strong>${currentRole}</strong>

@@ -1,0 +1,16 @@
+<!--disk/enterprise/shareManagement/shareManagement.wxml-->
+
+ <view class='page'>
+    <view class='list-item'>
+        <text>是否允许主管或知识专员上传</text>
+        <switch color="#36C777" class='switch-comm' bindchange='canUpload'></switch>
+    </view>
+    <view class='list-item'>
+        <text>允许文档外发</text>
+        <switch color="#36C777" class='switch-comm' bindchange='canShare'></switch>
+    </view>
+    <view class='list-item'>
+        <text>文档外发审核</text>
+         <switch color="#36C777" class='switch-comm' bindchange='canVerify'></switch>
+   </view>
+</view> 

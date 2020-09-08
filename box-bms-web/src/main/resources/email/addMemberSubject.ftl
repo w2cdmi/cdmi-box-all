@@ -1,0 +1,1 @@
+[${appEmailTitle}] ${operUserName} 将您加入团队空间 ${teamSpaceName}。 You have been added in team space ${teamSpaceName} by ${operUserName}.

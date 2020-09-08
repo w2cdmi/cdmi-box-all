@@ -1,0 +1,8 @@
+<view class="page">
+
+    <!--显示上传按钮  -->
+    <include src="/disk/widget/filelist.wxml" />
+
+    <tabbar selectIndex="1" bind:onShowMenu="onShowMenu"></tabbar>
+    <menu isShowMenu='{{isShowMenu}}' bind:onUploadImage="onUploadImage" bind:onUploadVideo="onUploadVideo" bind:showCreateFolder="showCreateFolder"></menu>
+</view>

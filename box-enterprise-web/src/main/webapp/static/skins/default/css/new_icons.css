@@ -1,0 +1,233 @@
+
+[class^="new-icon-"],
+[class*=" new-icon-"] {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-top: 0;
+    *margin-right: .3em;
+    line-height: 20px;
+    vertical-align: top;
+    background-image: url("../img/icon/new_home_icons.png")  !important;
+    background-repeat: no-repeat;
+}
+
+.new-icon-topmenu-alert {
+    background-position: -1729px -3px;
+}
+
+.new-icon-topmenu-userinfo-center {
+    background-position: -1791px -68px;
+}
+
+.new-icon-topmenu-userinfo-suggestion {
+    background-position: -1791px -100px;
+}
+
+.new-icon-topmenu-userinfo-logout {
+    background-position: -1791px -133px;
+}
+
+.new-icon-toolbar-upload {
+    background-position: -242px -28px;
+}
+
+.new-icon-toolbar-upload-blue {
+    background-position: -242px -64px;
+}
+
+.new-icon-toolbar-create-folder {
+    background-position: -353px -28px;
+}
+
+.new-icon-toolbar-create-folder-blue {
+    background-position: -353px -64px;
+}
+
+.new-icon-toolbar-share {
+    background-position: -505px -26px;
+}
+
+.new-icon-toolbar-share-blue {
+    background-position: -505px -63px;
+}
+
+.new-icon-toolbar-link {
+    background-position: -616px -26px;
+}
+
+.new-icon-toolbar-link-blue {
+    background-position: -616px -63px;
+}
+
+.new-icon-toolbar-trash {
+    background-position: -755px -26px;
+}
+
+.new-icon-toolbar-trash-blue {
+    background-position: -755px -63px;
+}
+
+.new-icon-toolbar-downland {
+    background-position: -865px -26px;
+}
+
+.new-icon-toolbar-downland-blue {
+    background-position: -865px -63px;
+}
+
+.new-icon-toolbar-dispaytype-list {
+    background-position: -1500px -175px;
+}
+
+.new-icon-toolbar-dispaytype-list-light {
+    background-position: -1500px -207px;
+}
+
+.new-icon-toolbar-dispaytype-thumb {
+    background-position: -1533px -175px;
+}
+
+.new-icon-toolbar-dispaytype-thumb-light {
+    background-position: -1533px -207px;
+}
+
+.new-icon-toolbar-breadcrumb-home {
+    background-position: -203px -123px;
+}
+
+.new-icon-array-down {
+    background-position: -1030px -25px;
+}
+
+.new-icon-array-down-blue {
+    background-position: -1030px -62px;
+}
+
+.new-icon-array-down-gray {
+    background-position: -1863px -15px;
+}
+
+.new-icon-navmenu-folder {
+    background-position: -31px -102px !important;
+}
+
+.new-icon-navmenu-img, #docType2 > i {
+    background-image: url("../img/icon/new_home_icons.png")  !important;
+    background-position: -58px -146px !important;
+}
+
+.new-icon-navmenu-txt, #docType1 > i  {
+    background-image: url("../img/icon/new_home_icons.png")  !important;
+    background-position: -58px -185px !important;
+}
+
+.new-icon-navmenu-vedio, #docType4 > i  {
+    background-image: url("../img/icon/new_home_icons.png")  !important;
+    background-position: -58px -230px !important;
+}
+
+.new-icon-navmenu-audio, #docType3 > i  {
+    background-image: url("../img/icon/new_home_icons.png")  !important;
+    background-position: -58px -268px !important;
+}
+
+.new-icon-navmenu-teamspace {
+    background-position: -31px -313px !important;
+}
+
+.new-icon-navmenu-trash {
+    background-position: -31px -354px !important;
+}
+
+.new-icon-navmenu-share {
+    background-position: -31px -393px !important;
+}
+
+.new-icon-sidebar-online-service {
+    background-position: -40px -900px;
+}
+
+.new-icon-sidebar-client_pc {
+    background-position: 5px -975px;
+}
+
+.new-icon-sidebar-client_android {
+    background-position: -50px -975px;
+}
+
+.new-icon-sidebar-client_iphone {
+    background-position: -115px -975px;
+}
+
+.new-icon-flielist-filetype-folder{
+    background-position: -235px -220px;
+}
+
+.new-icon-flielist-filetype-txt{
+    background-position: -235px -269px;
+}
+
+.new-icon-flielist-filetype-pdf{
+    background-position: -235px -316px;
+}
+
+.new-icon-flielist-filetype-zip{
+    background-position: -235px -364px;
+}
+
+.new-icon-contentmenu-share{
+    background-position: -615px -313px;
+}
+
+.new-icon-contentmenu-downland{
+    background-position: -615px -350px;
+}
+
+.new-icon-contentmenu-transfer{
+    background-position: -615px -388px;
+}
+
+.new-icon-contentmenu-copy{
+    background-position: -615px -423px;
+}
+
+.new-icon-contentmenu-del{
+    background-position: -615px -460px;
+}
+
+.new-icon-contentmenu-rename{
+    background-position: -615px -495px;
+}
+
+.new-icon-contentmenu-view-version{
+    background-position: -615px -532px;
+}
+
+.new-icon-contentmenu-add-favorite{
+    background-position: -615px -566px;
+}
+
+.new-icon-item-share{
+    background-position: -835px -274px;
+}
+
+.new-icon-item-downland{
+    background-position: -878px -273px;
+}
+
+.new-icon-item-downland{
+    background-position: -917px -273px;
+}
+
+.new-icon-preview-panel-array {
+    background-position: -1561px -508px;
+}
+
+.new-icon-pagination-array-left {
+    background-position: -799px -1016px;
+}
+
+.new-icon-pagination-array-right {
+    background-position: -935px -1016px;
+}

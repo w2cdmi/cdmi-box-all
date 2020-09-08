@@ -1,0 +1,22 @@
+.userFeedBackBody{
+	padding: 5px 0;
+    margin: 0;
+    width: 100%;
+    min-width: 980px;
+    min-height: 760px;
+    position: fixed;
+    z-index: 9990;
+    top: 40px;
+    left: 0;
+    /**border-bottom: 1px solid #e3e3e3;*/
+    background-color: #fafafa;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    overflow-y:scroll;
+    height: 850px;
+}
+.userFeedBackBody .userFeedBackContent{
+	margin: 0 auto;
+	padding: 0 20px 0 225px;
+}

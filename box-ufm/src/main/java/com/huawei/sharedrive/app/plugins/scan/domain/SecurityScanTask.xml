@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SecurityScanTask">
+
+    <typeAlias alias="SecurityScanTask" type="com.huawei.sharedrive.app.plugins.scan.domain.SecurityScanTask" />
+	
+	<insert id="create" parameterClass="SecurityScanTask">
+        <![CDATA[
+        insert into security_scan_task(taskId, objectId, nodeId, nodeName, ownedBy, dssId, createdAt, modifiedAt, status, priority)
+         	values 
+        (#taskId#, #objectId#, #nodeId#, #nodeName#, #ownedBy#, #dssId#, #createdAt#, #modifiedAt#, #status#, #priority#)
+        ]]>
+    </insert>
+    
+    <delete id="delete" parameterClass="SecurityScanTask">
+        <![CDATA[
+        delete from security_scan_task where taskId = #taskId#
+        ]]>
+    </delete>
+    
+    <delete id="deleteByObjectId" parameterClass="SecurityScanTask">
+        <![CDATA[
+        delete from security_scan_task where objectId = #objectId#
+        ]]>
+    </delete>
+    
+    <delete id="deleteCreatedBefore" parameterClass="SecurityScanTask">
+        <![CDATA[
+        delete from security_scan_task where createdAt < #createdAt#
+        ]]>
+    </delete>
+    
+    <select id="getTotalTasks" parameterClass="SecurityScanTask" resultClass="Integer">
+        select count(*) from security_scan_task
+        <dynamic prepend="where">
+            <isNotEqual prepend="and" property="status" compareValue="0">
+                status = #status#
+            </isNotEqual>
+        </dynamic>
+    </select>
+    
+    <select id="getByObjectIdAndDSSId" parameterClass="SecurityScanTask" resultClass="SecurityScanTask">
+    	<![CDATA[
+        select * from security_scan_task where objectId = #objectId# and dssId = #dssId#
+        ]]>
+    </select>
+    
+    <update id="updateStatus" parameterClass="SecurityScanTask">
+    	<![CDATA[
+    	update security_scan_task set status = #status#, modifiedAt = #modifiedAt# where taskId = #taskId#
+    	]]>
+    </update>
+    
+    <select id="getOwnedByByObjectId" parameterClass="String" resultClass="Long">
+        select distinct(ownedBy) from security_scan_task where objectId = #value#
+    </select>
+</sqlMap>
+

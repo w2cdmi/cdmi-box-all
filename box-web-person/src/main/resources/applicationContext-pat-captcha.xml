@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+    default-autowire="byName" default-lazy-init="true"
+>
+   <bean id="verifyCodeHelper" class="pw.cdmi.box.disk.system.service.VerifyCodeHelper"
+		lazy-init="false" init-method="init">
+		<property name="cacheClient" ref="uamCacheClient" />
+		<property name="bVariableFont" value="false" />
+		<property name="bVariableFontSize" value="true" />
+		<property name="dictionary" value="2345689ABCDEFGHLRTYabcdefht" />
+		<property name="bIsRotate" value="false" />
+		<property name="iDistance" value="1" />
+		<property name="bIsSetBackground" value="false" />
+		<property name="bIsSetInterferon" value="true" />
+		<property name="iDistort" value="0" />
+		<property name="iCodeCount" value="4" />
+		<property name="iHeight" value="25" />
+	</bean>
+    
+</beans>

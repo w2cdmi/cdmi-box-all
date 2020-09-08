@@ -1,0 +1,23 @@
+<rules>
+    <rule>
+        <sqlmap>INodeShareReverse.listShareToMeByPage</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeShareReverse.listShareToMeByPageV2</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+
+    <rule>
+        <sqlmap>INodeShareReverse.getShareToMeCountBySearchName</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>INodeShareReverse</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

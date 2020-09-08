@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> 在团队空间 <strong>${teamSpaceName}</strong> 中上传了一个文件 <strong>${nodeName}</strong>

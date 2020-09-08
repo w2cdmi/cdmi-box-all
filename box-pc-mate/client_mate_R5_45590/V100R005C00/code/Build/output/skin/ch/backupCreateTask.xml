@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="600,480" caption="0,0,0,42" mininfo="600,480" bktrans="true" roundcorner="5,5,5,5">
+	<Include source="Default.xml" />
+	<VerticalLayout bordersize="1" bordercolor="#FFDDDDDD"  bkcolor="#FFFFFFFF" >
+		<HorizontalLayout height="42" bkcolor="#FFFAFAFA">
+			<Label name="backup_createTask_title" text="创建备份任务" textcolor="#FF000000" valign="vcenter" width="250" padding="20,0" font="3" />
+			<Control />
+			<Button name="backup_createTask_close_btn" width="20" height="20" padding="0,11" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" normalimage="file='..\image\ic_popup_delete.png' source='0,0,20,20'" hotimage="file='..\image\ic_popup_delete.png' source='0,30,20,50'" pushedimage="file='..\image\ic_popup_delete.png' source='0,60,20,80'" />
+		</HorizontalLayout>
+		<Label height="1" bkcolor="#FFDDDDDD"/>
+		<Control height="15" />
+		<HorizontalLayout height="30">
+			<Control width="60" />
+			<Label name="backup_createTask_firstPageImg" width="30" bkimage="file='..\image\ic_popup_backup_step1.png' source='0,80,30,110'"/>
+			<Label name="backup_createTask_firstPageLen" width="185" height="1"  bkcolor="#FFCCCCCC" padding="5,14"/>
+			<Control width="5" />
+			<Label name="backup_createTask_secondPageImg" width="30" bkimage="file='..\image\ic_popup_backup_step2.png' source='0,0,30,30'"/>
+			<Label name="backup_createTask_secondPageLen" width="185" height="1"  bkcolor="#FFCCCCCC"  padding="5,14"/>
+			<Control width="5" />
+			<Label name="backup_createTask_thirdPageImg" width="30" bkimage="file='..\image\ic_popup_backup_step3.png' source='0,0,30,30'"/>
+			<Control width="60" />
+		</HorizontalLayout>
+		<Control height="15" />
+		<HorizontalLayout height="20">
+			<Label name="backup_createTask_firstPageDes" padding="33,0" width="100" text="选择本地目录" algin="center" textcolor="#FF008BE8" font="13"/>
+			<Label name="backup_createTask_secondPageDes" padding="123,0" width="100" text="选择云端目录" algin="center" textcolor="#FF666666" font="12"/>
+			<Label name="backup_createTask_thirdPageDes" padding="126,0" width="100" text="设置备份策略" algin="center" textcolor="#FF666666" font="12"/>
+		</HorizontalLayout>
+		<Control height="15" />
+		<VerticalLayout name="backup_createTask_firstPage" height="270" visible="false">
+			<HorizontalLayout height="30" padding="20,0,20,0" bkimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'">
+				<SearchTxt name="backup_createTask_localPathEdit" align="left"  padding="5,3,0,3" bordersize="0" visible="true" wantreturn="true" autohscroll="true" font="0" multiline="false" rich="false" textcolor="#FF999999" endellipsis="true"/>
+				<Control height="30" bkcolor="#FFCCCCCC" width="1"/>
+				<Button name="backup_createTask_localPathSelect" textpadding="0,5,0,5" align="center" width="80" textcolor="#FF000000" font="12" text="选择"/>
+			</HorizontalLayout>
+			<Control height="10" />
+			<VerticalLayout height="230" padding="20,0,20,0" bkimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'">
+				<TreeView name="backup_createTask_localTreeView" bordersize="1" inset="1,1,1,1" borderround="3,3" bordercolor="#FFCCCCCC" bkcolor="#FFFFFFFF" itemminwidth="480" align="left" itemendellipsis="true"  itemhotbkcolor="#FFEBEBEB" itemselectedbkcolor="#FFDEF0FF" vscrollbar="true" hscrollbar="true"/>
+			</VerticalLayout>
+		</VerticalLayout>
+		<VerticalLayout name="backup_createTask_secondPage" height="270" visible="false" padding="20,0,20,0" bkimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'">
+			<TreeView name="backup_createTask_oneboxTreeView" bordersize="1" inset="1,1,1,1" borderround="3,3" bordercolor="#FFCCCCCC" bkcolor="#FFFFFFFF" itemminwidth="480" align="left" itemendellipsis="true"  itemhotbkcolor="#FFEBEBEB" itemselectedbkcolor="#FFDEF0FF" vscrollbar="true" hscrollbar="true"/>
+		</VerticalLayout>
+		<VerticalLayout name="backup_createTask_thirdPage" height="270" visible="true">
+			<Control height="15" />
+			<HorizontalLayout height="20" padding="20,0">
+				<Label name="backup_createTask_local" text="本地路径:" font="12" textcolor="#FF666666" width="70" padding="0,2,0,2"/>
+				<Label name="backup_createTask_localPath" endellipsis="true" font="12" text="" textcolor="#FF000000" width="490" />
+			</HorizontalLayout>
+			<Control height="20" />
+			<HorizontalLayout height="20" padding="20,0">
+				<Label name="backup_createTask_server" text="云端路径:" font="12" textcolor="#FF666666" width="70"  padding="0,2,0,2"/>
+				<Label name="backup_createTask_serverPath" endellipsis="true" font="12" text="" textcolor="#FF000000" width="490"/>
+			</HorizontalLayout>
+			<Control height="20" />
+			<HorizontalLayout height="26" padding="20,0">
+				<Label name="backup_createTask_Cycle" text="备份周期:" font="12" textcolor="#FF666666" width="70" />
+				<Combo name="backup_createTask_taskCycle" itemtextpadding="5,0,0,0" width="100" text="每周" textcolor="#FF000000" bkimage="file='..\img\combo.png' corner='2,2,30,24'" itemalign="left" font="0" itemfont="0" vscrollbar="true" hscrollbar="true"/>
+				<Control width="20"/>
+				<Combo name="backup_createTask_taskCycleMid" itemtextpadding="5,0,0,0" width="100" text="星期一" textcolor="#FF000000" bkimage="file='..\img\combo.png' corner='2,2,30,24'" itemalign="left" font="0" itemfont="0" vscrollbar="true" hscrollbar="true" visible="false"/>
+			</HorizontalLayout>
+			<Control height="20" />
+			<HorizontalLayout height="26" padding="20,0">
+				<Label name="backup_createTask_time" text="备份时间:" font="12" textcolor="#FF666666" width="70" />
+				<Combo name="backup_createTask_taskCycleMin" width="100" itemtextpadding="5,0,0,0" dropboxsize="0,100" text="00" textcolor="#FF000000" bkimage="file='..\img\combo.png' corner='2,2,30,24'" itemalign="left" font="0" itemfont="0" vscrollbar="true" hscrollbar="true"/>
+				<Label text="时" textcolor="#FF000000" font="12" width="15" padding="5,6,20,6" />
+				<Combo name="backup_createTask_taskCycleSec" width="100" itemtextpadding="5,0,0,0" dropboxsize="0,100" text="00" textcolor="#FF000000" bkimage="file='..\img\combo.png' corner='2,2,30,24'" itemalign="left" font="0" itemfont="0" vscrollbar="true" hscrollbar="true"/>
+				<Label text="分" textcolor="#FF000000" font="12" width="15" padding="5,6,0,6" />
+			</HorizontalLayout>
+			<Control height="35" />
+			<HorizontalLayout height="30">
+				<Option name="backup_createTask_startBackup" text="备份任务创建后立即启动第一次备份" padding="20,0,20,0" textpadding="30,0,0,0" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" align="left" valign="vcenter" normalimage="file='..\Image\ic_popup_checkbox.png' source='0,0,16,16' dest='7,7,23,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='7,7,23,23'"  selectedimage="file='..\Image\ic_popup_checkbox.png' source='0,26,16,42' dest='7,7,23,23'" selected="true"/>
+			</HorizontalLayout>
+			<Control height="20" />
+			<Label name="backup_createTask_tip" height="15" padding="20,0" text="" font="12" textcolor="#FF666666"/>
+			<Control />
+		</VerticalLayout>
+		<Control height="20"/>
+		<HorizontalLayout height="30">
+			<Control width="20"/>
+			<ScaleIconButton name="backup_createTask_newFolder" text="新建文件夹" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110'  corner='3,3,3,3'" textpadding="20,0,20,0" font="0" textcolor="#FF000000" visible="false"/>
+			<Control />
+			<ScaleIconButton name="backup_createTask_previous" text="上一步" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110'  corner='3,3,3,3'" textpadding="20,0,20,0" font="0" textcolor="#FF000000" visible="false"/>
+			<Control width="10"/>
+			<ScaleIconButton name="backup_createTask_next" text="下一步" enabled="false"  normalimage="file='..\image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" textpadding="20,0,20,0"  font="0" textcolor="#FFFFFFFF" visible="false"/>
+			<ScaleIconButton name="backup_createTask_finish" text="完成"  normalimage="file='..\image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" textpadding="20,0,20,0"  font="0" textcolor="#FFFFFFFF" visible="false"/>
+			<Control width="10"/>
+			<ScaleIconButton name="backup_createTask_cancel" text="取消" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110'  corner='3,3,3,3'" textpadding="20,0,20,0" font="0" textcolor="#FF000000"/>
+			<Control width="20" />
+		</HorizontalLayout>
+		<Control height="20" />
+	</VerticalLayout>
+</Window>

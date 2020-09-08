@@ -1,0 +1,11 @@
+
+@@normal
+{
+	"domain":"www.huawei.com",
+	"enterpriseId":100,
+	"status":"enable",
+	"maxSpace":100,
+	"maxMember":1000,
+	"maxFiles":1000,
+	"maxTeamspace":100,
+}

@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{196E0F9E-834B-40FC-8473-CED5AA316E47}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Common</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)output\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\Build\output\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;ENABLE_UTILITY_ALL;WIN32_LEAN_AND_MEAN;ONEBOX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./include;../include;../NetSDK/include;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/boost/include;$(VS2012_THIRD_PART)/openssl/include;$(VS2012_THIRD_PART)/sqlite3/include;$(VS2012_THIRD_PART)/curl/include;$(VS2012_THIRD_PART)/json/include;$(VS2012_THIRD_PART)/KmcCbb/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/openssl/lib;$(VS2012_THIRD_PART)/log4cpp/lib;$(VS2012_THIRD_PART)/thrift/lib;$(VS2012_THIRD_PART)/sqlite3/lib;$(VS2012_THIRD_PART)/KmcCbb/lib;$(VS2012_THIRD_PART)/HuaweiSecureC/lib;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libeay32.lib;ssleay32.lib;libthrift_d.lib;NetSDK.lib;HuaweiSecureC_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;ENABLE_UTILITY_ALL;WIN32_LEAN_AND_MEAN;ONEBOX_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./include;../include;../NetSDK/include;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/boost/include;$(VS2012_THIRD_PART)/openssl/include;$(VS2012_THIRD_PART)/sqlite3/include;$(VS2012_THIRD_PART)/curl/include;$(VS2012_THIRD_PART)/json/include;$(VS2012_THIRD_PART)/KmcCbb/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/openssl/lib;$(VS2012_THIRD_PART)/log4cpp/lib;$(VS2012_THIRD_PART)/thrift/lib;$(VS2012_THIRD_PART)/sqlite3/lib;$(VS2012_THIRD_PART)/KmcCbb/lib;$(VS2012_THIRD_PART)/HuaweiSecureC/lib;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libeay32.lib;ssleay32.lib;libthrift.lib;NetSDK.lib;HuaweiSecureC.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\AsyncTaskCommon.h" />
+    <ClInclude Include="..\include\AsyncTaskMgr.h" />
+    <ClInclude Include="..\include\CommonDefine.h" />
+    <ClInclude Include="..\include\Configure.h" />
+    <ClInclude Include="..\include\ConfigureMgr.h" />
+    <ClInclude Include="..\include\CppSQLite3.h" />
+    <ClInclude Include="..\include\CrashHandler.h" />
+    <ClInclude Include="..\include\CredentialMgr.h" />
+    <ClInclude Include="..\include\crypto\Aes.h" />
+    <ClInclude Include="..\include\crypto\CSha1.h" />
+    <ClInclude Include="..\include\crypto\md5.h" />
+    <ClInclude Include="..\include\crypto\sha1.h" />
+    <ClInclude Include="..\include\ErrorCode.h" />
+    <ClInclude Include="..\include\FilterMgr.h" />
+    <ClInclude Include="..\include\GroupResMgr.h" />
+    <ClInclude Include="..\include\IFile.h" />
+    <ClInclude Include="..\include\IFolder.h" />
+    <ClInclude Include="..\include\InIHelper.h" />
+    <ClInclude Include="..\include\LocalFile.h" />
+    <ClInclude Include="..\include\LocalFolder.h" />
+    <ClInclude Include="..\include\LocalMappingFile.h" />
+    <ClInclude Include="..\include\MsgMgr.h" />
+    <ClInclude Include="..\include\NetworkMgr.h" />
+    <ClInclude Include="..\include\NodeControlResMgr.h" />
+    <ClInclude Include="..\include\NotifyMgr.h" />
+    <ClInclude Include="..\include\NotifyMsg.h" />
+    <ClInclude Include="..\include\NscaSdkMgr.h" />
+    <ClInclude Include="..\include\OneboxExport.h" />
+    <ClInclude Include="..\include\Path.h" />
+    <ClInclude Include="..\include\PathMgr.h" />
+    <ClInclude Include="..\include\RestFile.h" />
+    <ClInclude Include="..\include\RestFolder.h" />
+    <ClInclude Include="..\include\RestTaskMgr.h" />
+    <ClInclude Include="..\include\ShareResMgr.h" />
+    <ClInclude Include="..\include\SmartHandle.h" />
+    <ClInclude Include="..\include\SyncFileSystemMgr.h" />
+    <ClInclude Include="..\include\SysConfigureMgr.h" />
+    <ClInclude Include="..\include\TeamSpaceResMgr.h" />
+    <ClInclude Include="..\include\TimeCounter.h" />
+    <ClInclude Include="..\include\Transmit.h" />
+    <ClInclude Include="..\include\TransTask.h" />
+    <ClInclude Include="..\include\UserContext.h" />
+    <ClInclude Include="..\include\UserContextMgr.h" />
+    <ClInclude Include="..\include\UserInfoMgr.h" />
+    <ClInclude Include="..\include\Utility.h" />
+    <ClInclude Include="..\include\WorkModeMgr.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="source\asyncTask\CommonTransmitNotify.h" />
+    <ClInclude Include="source\asyncTask\LocalCreateFolder.h" />
+    <ClInclude Include="source\asyncTask\LocalMemoryFile.h" />
+    <ClInclude Include="source\asyncTask\OutlookTable.h" />
+    <ClInclude Include="source\asyncTask\OutlookTransmitNotify.h" />
+    <ClInclude Include="source\asyncTask\RestCreateFolder.h" />
+    <ClInclude Include="source\asyncTask\RestDownload.h" />
+    <ClInclude Include="source\asyncTask\RestUpload.h" />
+    <ClInclude Include="source\asyncTask\TransCompleteTable.h" />
+    <ClInclude Include="source\asyncTask\TransDataTable.h" />
+    <ClInclude Include="source\asyncTask\TransDetailTable.h" />
+    <ClInclude Include="source\asyncTask\TransRootTable.h" />
+    <ClInclude Include="source\asyncTask\TransTableDefine.h" />
+    <ClInclude Include="source\asyncTask\TransTableMgr.h" />
+    <ClInclude Include="source\asyncTask\TransTaskScanner.h" />
+    <ClInclude Include="source\asyncTask\TransTaskScheduler.h" />
+    <ClInclude Include="source\UserInfoMgrImpl.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\include\CrashHandler.cpp" />
+    <ClCompile Include="..\include\crypto\Aes.cpp" />
+    <ClCompile Include="..\include\crypto\CSha1.cpp" />
+    <ClCompile Include="..\include\crypto\md5.cpp" />
+    <ClCompile Include="..\include\crypto\sha1.c" />
+    <ClCompile Include="..\include\InIHelper.cpp" />
+    <ClCompile Include="..\include\Utility.cpp" />
+    <ClCompile Include="source\asyncTask\AsyncTaskMgr.cpp" />
+    <ClCompile Include="source\asyncTask\CommonTransmitNotify.cpp" />
+    <ClCompile Include="source\asyncTask\LocalCreateFolder.cpp" />
+    <ClCompile Include="source\asyncTask\OutlookTable.cpp" />
+    <ClCompile Include="source\asyncTask\RestCreateFolder.cpp" />
+    <ClCompile Include="source\asyncTask\RestDownload.cpp" />
+    <ClCompile Include="source\asyncTask\RestUpload.cpp" />
+    <ClCompile Include="source\asyncTask\TransCompleteTable.cpp" />
+    <ClCompile Include="source\asyncTask\TransDataTable.cpp" />
+    <ClCompile Include="source\asyncTask\TransDetailTable.cpp" />
+    <ClCompile Include="source\asyncTask\TransRootTable.cpp" />
+    <ClCompile Include="source\asyncTask\TransTableMgr.cpp" />
+    <ClCompile Include="source\asyncTask\TransTask.cpp" />
+    <ClCompile Include="source\asyncTask\TransTaskScanner.cpp" />
+    <ClCompile Include="source\asyncTask\TransTaskScheduler.cpp" />
+    <ClCompile Include="source\ConfigureMgr.cpp" />
+    <ClCompile Include="source\CppSQLite3.cpp" />
+    <ClCompile Include="source\CredentialMgr.cpp" />
+    <ClCompile Include="source\DeviceInfo.cpp" />
+    <ClCompile Include="source\FilterMgr.cpp" />
+    <ClCompile Include="source\GroupResMgr.cpp" />
+    <ClCompile Include="source\LocalFile.cpp" />
+    <ClCompile Include="source\LocalFolder.cpp" />
+    <ClCompile Include="source\LocalMappingFile.cpp" />
+    <ClCompile Include="source\MsgMgr.cpp" />
+    <ClCompile Include="source\NetworkMgr.cpp" />
+    <ClCompile Include="source\NodeControlResMgr.cpp" />
+    <ClCompile Include="source\NotifyMgr.cpp" />
+    <ClCompile Include="source\NscaSdkMgr.cpp" />
+    <ClCompile Include="source\NTLMDomainAuth.cpp" />
+    <ClCompile Include="source\PathMgr.cpp" />
+    <ClCompile Include="source\RestFile.cpp" />
+    <ClCompile Include="source\RestFolder.cpp" />
+    <ClCompile Include="source\RestTaskMgr.cpp" />
+    <ClCompile Include="source\ShareResMgr.cpp" />
+    <ClCompile Include="source\SyncFileSystemMgr.cpp" />
+    <ClCompile Include="source\SysConfigureMgr.cpp" />
+    <ClCompile Include="source\TeamSpaceResMgr.cpp" />
+    <ClCompile Include="source\UserContext.cpp" />
+    <ClCompile Include="source\UserContextMgr.cpp" />
+    <ClCompile Include="source\UserInfoMgrImpl.cpp" />
+    <ClCompile Include="source\WorkModeMgr.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

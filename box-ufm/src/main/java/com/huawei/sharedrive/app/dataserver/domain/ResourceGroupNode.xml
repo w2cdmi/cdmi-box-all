@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ResourceGroupNode">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="ResourceGroupNode" type="com.huawei.sharedrive.app.dataserver.domain.ResourceGroupNode" />
+    
+    <resultMap id="resultMap.ResourceGroupNode" class="ResourceGroupNode">
+        <result column="name"				property="name" 			javaType="java.lang.String"/>
+        <result column="resourcegroupid"	property="resourceGroupId" 	javaType="java.lang.Integer"/>
+        <result column="dcid"				property="dcId" 			javaType="java.lang.Integer"/>
+        <result column="regionid"			property="regionId" 		javaType="java.lang.Integer"/>
+        <result column="managerip"			property="managerIp" 		javaType="java.lang.String"/>
+        <result column="managerport"		property="managerPort" 		javaType="java.lang.Integer"/>
+        <result column="inneraddr"			property="innerAddr" 		javaType="java.lang.String"/>
+        <result column="serviceaddr"		property="serviceAddr" 		javaType="java.lang.String"/>
+        <result column="nataddr"			property="natAddr" 			javaType="java.lang.String"/>
+        <result column="natpath"			property="natPath" 			javaType="java.lang.String"/>
+        <result column="state"				property="status" 			typeHandler="com.huawei.sharedrive.app.dataserver.domain.typehandler.ResourceGroupNodeStatusTypeHandler"/>
+        <result column="runtimestate"		property="runtimeStatus" 	typeHandler="com.huawei.sharedrive.app.dataserver.domain.typehandler.ResourceGroupNodeRuntimeStatusTypeHandler"/>
+        <result column="priority"			property="priority" 		javaType="java.lang.Integer"/>
+    </resultMap>
+    
+    <select id="getGroupNodes" resultMap="resultMap.ResourceGroupNode">
+        select * from resource_group_node where resourcegroupid=#id# order by name
+    </select>
+
+	<insert id="insert" parameterClass="ResourceGroupNode">
+        insert into resource_group_node(name,resourcegroupid,dcid,regionid,managerip,managerport,inneraddr,
+        serviceaddr,nataddr,natpath,state,runtimestate,priority) 
+        values(#name#, #resourceGroupId#, #dcId#, #regionId#, #managerIp#, #managerPort#, #innerAddr#, 
+        #serviceAddr#, #natAddr#, #natPath#, #status.code#, #runtimeStatus.code#, #priority#)
+    </insert>
+    
+    <delete id="delete" parameterClass="ResourceGroupNode">
+        delete from resource_group_node where name=#name# and resourcegroupid=#resourceGroupId#
+    </delete>
+                
+    <update id="updateRegionByDC" parameterClass="java.lang.Integer">
+        update resource_group_node set regionid=#regionId# where dcid=#dcId#
+    </update>
+    
+    <update id="update" parameterClass="ResourceGroupNode">
+        update resource_group_node set managerip=#managerIp#, managerport=#managerPort#, inneraddr=#innerAddr#, serviceaddr=#serviceAddr#, 
+        	runtimestate=#runtimeStatus.code# 
+        where name=#name# and resourcegroupid=#resourceGroupId#
+    </update>
+    
+    <delete id="deleteByDC" parameterClass="int">
+        delete from resource_group_node where dcid=#value#
+    </delete>
+    
+    <select id="getNodeByManagerIp" resultMap="resultMap.ResourceGroupNode" parameterClass="java.lang.String">
+        select * from resource_group_node where serviceaddr=#value# limit 1;
+    </select>
+    
+    <select id="getNodes" resultMap="resultMap.ResourceGroupNode" >
+        select * from resource_group_node;
+    </select>
+</sqlMap>
+

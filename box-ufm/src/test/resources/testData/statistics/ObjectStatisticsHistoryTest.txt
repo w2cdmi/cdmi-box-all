@@ -1,0 +1,49 @@
+@@day
+ { 
+	"beginTime": 0,
+	"endTime": 1458733796974,
+	"interval": "day"
+}
+
+@@defaultDay
+ { 
+	"beginTime": 0,
+	"endTime": 1428733796974
+}
+
+@@year
+ { 
+	"beginTime": 0,
+	"endTime": 1428733796974,
+	"interval": "year"
+}
+
+
+@@season
+ { 
+	"beginTime": 0,
+	"endTime": 1428733796974,
+	"interval": "season"
+}
+
+@@month
+ { 
+	"beginTime": 0,
+	"endTime": 1428733796974,
+	"interval": "month"
+}
+
+@@week
+ { 
+	"beginTime": 0,
+	"endTime": 1428733796974,
+	"interval": "week"
+}
+
+
+@@errorInterval
+ { 
+	"beginTime": 0,
+	"endTime": 1428733796974,
+	"interval": "day2"
+}

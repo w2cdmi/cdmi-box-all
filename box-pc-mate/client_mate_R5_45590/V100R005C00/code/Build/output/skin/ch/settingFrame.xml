@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window size="680,400" caption="0,0,0,42" roundcorner="5,5,5,5">
+	<Font id="0" name="微软雅黑" size="12"  />
+	<Font id="1" name="微软雅黑" size="14" bold="true" />
+	<Font id="2" name="微软雅黑" size="12" bold="true" />
+	<Font id="3" name="微软雅黑" size="16" />
+	<Font id="4" name="微软雅黑" size="14" />
+
+	<VerticalLayout bkcolor="#FFF0F0F0" inset="1,1,1,1">
+		<HorizontalLayout height="42" bkcolor="#FFFAFAFA">
+			<Label name="settingFrame_title" text="设     置" width="640" textpadding="20,12,0,12" font="3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA"/>
+			<Button name="settingFrame_btnClose" width="20" height="20" padding="0,11,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\Image\SysBtn\ic_popup_delete.png&apos; source=&apos;0,0,20,20&apos;" hotimage="file=&apos;..\Image\SysBtn\ic_popup_delete.png&apos; source=&apos;0,30,20,50&apos;" pushedimage="file=&apos;..\Image\SysBtn\ic_popup_delete.png&apos; source=&apos;0,60,20,80&apos;" />
+		</HorizontalLayout>
+		<HorizontalLayout height="1" bkcolor="#FFD9D9D9" />
+		<HorizontalLayout >
+			<VerticalLayout width="160" bkcolor="#fff0f0f0"  bkimage="file='..\Image\line_right_bk.png' corner='1,1,2,2'" >
+				<LeftOption name="leftRegion_userInfo" text="基本信息" font="4" selectedfont="1" height="40" textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" group="settingTable" selectedbkcolor="#FFFFFFFF" selected="true" textpadding="20,12"/>
+				<LeftOption name="leftRegion_transfer_Setting" text="传输设置" font="4" selectedfont="1" height="40" textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8"  align="left" group="settingTable" selectedbkcolor="#FFFFFFFF" textpadding="20,12" />
+				<LeftOption name="leftRegion_advanced_Setting" text="高       级" font="4" selectedfont="1" height="40"  textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" group="settingTable" selectedbkcolor="#FFFFFFFF" textpadding="20,12" />
+			</VerticalLayout>
+			<VerticalLayout  bkcolor="#FFFFFFFF">
+				<TabLayout name="Setting_tab">
+					<!--用户信息-->
+					<VerticalLayout bkcolor="#FFFFFFFF" inset="20,20,20,0">
+						<HorizontalLayout height="80">
+							<UserPhoto name="settingFrame_UserHead" width="80" height="80" fixedimage="..\Image\ic_popup_setting_portrait.png" bkimage="..\Image\userPhoto.png" />
+							<VerticalLayout inset="10,0,0,0" bkcolor="#FFffffff" >
+								<Control height="17"/>
+								<HorizontalLayout width="400">
+									<Label name="settingFrame_userInfo_title" width="302" height="24" endellipsis="true" font="4" text="MachineSally.Underwood.Frank.Jahson.H.Bubbery." textcolor="#FF000000" disabledtextcolor="#FFA7A6AA"/>
+									<Button name="settingFrame_userInfo_btnAccountType" width="85" height="24" font="4" valign="center" text="查看帐户类型" tooltip="查看帐户类型" align="right" textcolor="#FF008be8"  texthotcolor="#FF006ab0"/>
+								</HorizontalLayout>
+								<Label name="settingFrame_userInfo_context" height="22" font="0" enable="false" align="left" textcolor="#ff666666" endellipsis="true"/>
+								<Control height="17"/>
+							</VerticalLayout>
+						</HorizontalLayout>
+						<Control height="10"/>
+						<Control height="1" bkcolor="#ffe5e5e5"/>
+						<Control height="20"/>
+						<HorizontalLayout height="30">
+							<ScaleIconButton name="settingFrame_userInfo_btnDataCentre" text="查看数据中心" font="1" textpadding="10,6,10,6" float="true" width="102" height="30" textcolor="#ff666666" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,80,110' corner='3,3,3,3'" />
+						</HorizontalLayout>
+						<Control height="10"/>
+						<HorizontalLayout height="72">
+							<RichEdit name="settingFrame_userInfo_dataContext" align="left" valign="top" height="70" text="选择就近的数据中心能够提高传输的效率和得到更好的体验，但每次的变更，我们都需要点时间去做数据迁移。" textcolor="#ff666666" disabledtextcolor="#FFA7A6AA" readonly="true" endellipsis="true" mouse="false" />
+						</HorizontalLayout>
+					</VerticalLayout>
+
+					<!--传输设置-->
+					<VerticalLayout bkcolor="#FFFFFFFF" inset="20,20,20,0">
+						<HorizontalLayout height="30">
+							<Label name="settingFrame_transfer_Task" text="同时传输任务数：" font="4" width="114" height="30" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" />
+							<Control width="20" />
+							<Combo name="settingFrame_transfer_combo" width="100" padding="0,2" height="26" itemtextcolor="#FF666666" normalimage="file='..\Image\ic_combo.png' corner='2,2,30,24'" itemtextpadding="10,0,0,0" >
+								<ListLabelElement text="2" />
+								<ListLabelElement text="3" />
+								<ListLabelElement text="4" />
+								<ListLabelElement text="5" />
+							</Combo>
+						</HorizontalLayout>
+						<HorizontalLayout height="10"/>
+						<HorizontalLayout height="30">
+							<Label name="settingFrame_transfer_Title" font="4" text="传输速率：" width="134" height="30" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" />
+							<CheckBox name="settingFrame_transfer_UploadPlace" font="4" width="16" height="16" padding="0,7,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="left" normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68'" />
+							<Control width="5" />
+							<Label name="settingFrame_transfer_DownloadDes" text="上传限速" font="4" width="75" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+							<Edit name="settingFrame_transfer_edtUploadSpeed" borderround="5,5" text="2048" width="100" height="30" maxchar="6" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" disabledimage="file='..\Image\ic_input.png' source='0,120,40,150' corner='5,5,5,5'" normalimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'" hotimage="file='..\Image\ic_input.png' source='0,40,40,70' corner='5,5,5,5'" focusedimage="file='..\Image\ic_input.png' source='0,40,40,70' corner='5,5,5,5'"/>
+							<Control width="5" />
+							<Label name="settingFrame_transfer_UploadSpeed" text="KB/s" font="4" width="60" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+						</HorizontalLayout>
+						<Control height="10" />
+						<HorizontalLayout height="30">
+							<Control width="134" />
+							<CheckBox name="settingFrame_transfer_DownPlace" font="4" width="16" height="16" padding="0,7,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="left" normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68'" />
+							<Control width="5" />
+							<Label name="settingFrame_transfer_DownloadDes1" text="下载限速" font="4" width="75" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+							<Edit name="settingFrame_transfer_edtDownSpeed" borderround="5,5" text="2048" width="100" height="30" maxchar="6" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" disabledimage="file='..\Image\ic_input.png' source='0,120,40,150' corner='5,5,5,5'" normalimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'" hotimage="file='..\Image\ic_input.png' source='0,40,40,70' corner='5,5,5,5'" focusedimage="file='..\Image\ic_input.png' source='0,40,40,70' corner='5,5,5,5'"/>
+							<Control width="5" />
+							<Label name="settingFrame_transfer_DownSpeed" text="KB/s" font="4" width="60" height="30" maxchar="6" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+						</HorizontalLayout>
+						<Control height="20" />
+						<HorizontalLayout height="30">
+							<Label name="settingFrame_transfer_Title" text="文件下载：" width="134" height="30" font="4" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" />
+							<CheckBox name="settingFrame_transfer_Option_Autodir" font="4" width="16" height="16" padding="0,7,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="left" normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68'" />
+							<Control width="5" />
+							<Label name="settingFrame_transfer_DownloadDes1" text="默认下载目录" font="4" width="100" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+						</HorizontalLayout>
+						<Control height="15" />
+						<HorizontalLayout height="30">
+							<Control width="134" />
+							<HorizontalLayout width="326" bkimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'">
+								<SearchTxt name="settingFrame_transfer_edtAutodir" width="289" align="left" padding="5,3,0,3" bordersize="0" visible="true" wantreturn="true" autohscroll="true" font="2" multiline="false" rich="false" textcolor="#FF999999" endellipsis="true"/>
+								<Control height="30" bkcolor="#FFCCCCCC" width="1"/>
+								<Button name="settingFrame_transfer_btnSelDir" width="20" height="20" padding="5,5,0,5" textcolor="#FF000000" valign="center" align="center" bkimage="..\Image\ic_popup_setting_browse.png"/>
+							</HorizontalLayout>
+						</HorizontalLayout>
+					</VerticalLayout>
+					<!--高级设置-->
+					<VerticalLayout inset="20,0,20,0" bkcolor="#FFFFFFFF">
+						<HorizontalLayout height="30" padding="0,18,0,0">
+              <Label name="settingFrame_advanced_LoginSetting" text="登录设置：" width="70" font="4" textcolor="#FF666666" />
+							<CheckBox name="settingFrame_advanced_AutoRun" font="4" width="110" text="开机自动启动" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0" normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68' dest='0,7,16,23'"/>
+						</HorizontalLayout>
+						<HorizontalLayout height="30" padding="0,10,0,0">
+              <Control width="70" />
+							<CheckBox name="settingFrame_advanced_rempsw" font="4" width="110" text="记住密码" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68' dest='0,7,16,23'"/>
+						</HorizontalLayout>						
+						<HorizontalLayout height="30" padding="0,10,0,0">
+              <Control width="70" />
+							<CheckBox name="settingFrame_advanced_autologin" font="4" width="110" text="自动登录" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68' dest='0,7,16,23'"/>
+						</HorizontalLayout>
+            
+						<HorizontalLayout height="30" padding="0,10,0,0">
+              <Label name="settingFrame_advanced_Notification" text="消息提醒：" width="70" font="4" textcolor="#FF666666"/>
+							<CheckBox name="settingFrame_advanced_SystemNotification" font="4" width="110" text="业务消息提醒" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68' dest='0,7,16,23'"/>
+						</HorizontalLayout>
+            <HorizontalLayout height="30" padding="0,10,0,0">
+              <Control width="70" />
+              <CheckBox name="settingFrame_advanced_ResourceNotification" font="4" width="210" text="网络、电源消息提醒" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68' dest='0,7,16,23'"/>
+            </HorizontalLayout>
+					</VerticalLayout>
+				</TabLayout>
+				<HorizontalLayout bkcolor="#FFFFFFFF" height="30" inset="0,0,20,0" >
+					<Control height="1" />
+					<Button name="settingFrame_btnOk" text="保 存" width="80" height="30" font="4" textcolor="#FFffffff" visible="false" pushedtextcolor="#FFffffff" hottextcolor="#FFffffff" align="center" normalimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" />
+					<Control width="10" />
+					<Button name="settingFrame_btnCancel" text="取 消" width="80" height="30" font="4" textcolor="#FF666666" visible="false" align="center" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,80,110' corner='3,3,3,3'" />
+				</HorizontalLayout>
+				<Control height="20"/>
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Include source="Default.xml" />
+	<Menu width="130" bkcolor="#FFFAFAFA" itemhotbkcolor="#FFdef0ff" borderround="8,8" trianglepadding="79,52, 9, 0" menupadding="0,60,-100,0" inset="1,1,1,1">
+		<Control height="15" />
+		<MenuItem id="1" height="30">
+			<HorizontalLayout inset="20,0,20,0">
+				<Label text="简体中文" align="left" font="0" textcolor="#FF000000" />
+			</HorizontalLayout>
+		</MenuItem>
+		<Control height="5" />
+		<MenuItem id="99" height="1">
+			<HorizontalLayout inset="20,0,20,0">
+				<Control height="1" bkcolor="#FFe5e5e5" />
+			</HorizontalLayout>
+		</MenuItem>
+		<Control height="5" />
+		<MenuItem id="0" height="30">
+			<HorizontalLayout inset="20,0,20,0"> 
+				<Label text="Settings" height="30" align="left" font="12" textcolor="#FF000000"  bktrans="true"/>
+			</HorizontalLayout>
+		</MenuItem>
+		<Control height="5" />
+		<MenuItem id="99" height="1">
+			<HorizontalLayout inset="20,0,20,0">
+				<Control height="1" bkcolor="#FFe5e5e5" />
+			</HorizontalLayout>
+		</MenuItem>
+		<Control height="5" />
+		<MenuItem id="2" height="30">
+			<HorizontalLayout inset="20,0,20,0">
+				<Label text="Switch User" align="left" font="12" textcolor="#FF000000"/>
+			</HorizontalLayout>
+		</MenuItem>
+		<MenuItem id="3" height="30">
+			<HorizontalLayout inset="20,0,20,0">
+				<Label text="Exit" align="left" font="12" textcolor="#FF000000"/>
+			</HorizontalLayout>
+		</MenuItem>
+		<Control height="10" />
+	</Menu>
+</Window>

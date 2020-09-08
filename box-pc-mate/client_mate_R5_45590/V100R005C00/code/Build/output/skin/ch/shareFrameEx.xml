@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="560,440" caption="0,0,0,-1">
+	<Font id="0" name="微软雅黑" size="13" bold="true" />
+	<Font id="1" name="微软雅黑" size="12" bold="true" />
+	<Font id="2" name="微软雅黑" size="11" />
+	<Font id="3" name="微软雅黑" size="14" bold="true" />
+	<Font id="4" name="微软雅黑" size="22" bold="true" italic="true"/>
+	<Font id="5" name="微软雅黑" size="12" default="true" />
+	<Font id="6" name="SimSun" size="12" bold="false" italic="false" />
+	<Font id="7" name="微软雅黑" size="17"/>
+
+	<Default name="VScrollBar" value="width=&quot;13&quot; button1normalimage=&quot;file='..\img\scroll\vscroll_up_normal.png'&quot; button1hotimage=&quot;file='..\img\scroll\vscroll_up_hover.png'&quot; button1pushedimage=&quot;file='..\img\scroll\vscroll_up_down.png'&quot; button1disabledimage=&quot;file='..\img\scroll\vscroll_up_disable.png'&quot; button2normalimage=&quot; file='..\img\scroll\vscroll_down_normal.png'&quot; button2hotimage=&quot;file='..\img\scroll\vscroll_down_hover.png'&quot; button2pushedimage=&quot;file='..\img\scroll\vscroll_down_down.png'&quot; button2disabledimage=&quot;file='..\img\scroll\vscroll_down_disable.png'&quot; thumbnormalimage=&quot;file='..\img\scroll\thumb_normal.png' &quot; thumbhotimage=&quot;file='..\img\scroll\thumb_hover.png' &quot; thumbpushedimage=&quot;file='..\img\scroll\thumb_down.png' &quot; thumbdisabledimage=&quot;file='..\img\scroll\thumb_disable.png' &quot;  bkcolor=&quot;#FF000000&quot;" />
+	<Default name="HScrollBar" value="button1normalimage=&quot;file='..\img\scrollbar.bmp' source='0,0,16,16' mask='#FFFF00FF'&quot; button1hotimage=&quot;file='..\img\scrollbar.bmp' source='18,0,34,16' mask='#FFFF00FF'&quot; button1pushedimage=&quot;file='..\img\scrollbar.bmp' source='36,0,52,16' mask='#FFFF00FF'&quot; button1disabledimage=&quot;file='..\img\scrollbar.bmp' source='54,0,70,16' mask='#FFFF00FF'&quot; button2normalimage=&quot;file='..\img\scrollbar.bmp' source='0,18,16,34' mask='#FFFF00FF'&quot; button2hotimage=&quot;file='..\img\scrollbar.bmp' source='18,18,34,34' mask='#FFFF00FF'&quot; button2pushedimage=&quot;file='..\img\scrollbar.bmp' source='36,18,52,34' mask='#FFFF00FF'&quot; button2disabledimage=&quot;file='..\img\scrollbar.bmp' source='54,18,70,34' mask='#FFFF00FF'&quot; thumbnormalimage=&quot;file='..\img\scrollbar.bmp' source='0,36,16,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbhotimage=&quot;file='..\img\scrollbar.bmp' source='18,36,34,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbpushedimage=&quot;file='..\img\scrollbar.bmp' source='36,36,52,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbdisabledimage=&quot;file='..\img\scrollbar.bmp' source='54,36,70,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; railnormalimage=&quot;file='..\img\scrollbar.bmp' source='0,54,16,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; railhotimage=&quot;file='..\img\scrollbar.bmp' source='18,54,34,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; railpushedimage=&quot;file='..\img\scrollbar.bmp' source='36,54,52,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; raildisabledimage=&quot;file='..\img\scrollbar.bmp' source='54,54,70,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; bknormalimage=&quot;file='..\img\scrollbar.bmp' source='0,72,16,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkhotimage=&quot;file='..\img\scrollbar.bmp' source='18,72,34,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkpushedimage=&quot;file='..\img\scrollbar.bmp' source='36,72,52,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkdisabledimage=&quot;file='..\img\scrollbar.bmp' source='54,72,70,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; " />
+
+	<VerticalLayout bordersize="1" bordercolor="#FF999999" bkcolor="#FFF5FAFC" inset="1,1,1,1">
+		<HorizontalLayout name="shareFrame_background" height="44" bkcolor="#FFFFFFFF" padding="0,0,0,0">
+			<Label name="shareFrame_title" text="分享" width="540" align="left" endellipsis="true" textpadding="10,0,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" font="0" />
+			<Button name="btn_close" width="10" height="10" padding="0,6,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;0,0,10,10&apos;" hotimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;11,0,21,10&apos;" pushedimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;22,0,32,10&apos;" />
+		</HorizontalLayout>
+		<HorizontalLayout name="shareFrame_tabLayout" height="30" padding="0,0,0,0" bkcolor="#FFFFFFFF">
+			<VerticalLayout width="560" padding="0,0,0,0">
+				<HorizontalLayout name="shareFrame_line" float="true" pos="0,29,0,0" width="560" height="1" bkcolor="#FFE6E6E6"/>
+				<Option name="shareFrame_share" text="分享给同事" float="true" pos="120,0,0,0" width="151" height="30" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" align="center" group="shareTable" normalimage="file=&apos;..\img\tab.png&apos; source=&apos;131,0,282,32&apos;" hotimage="" selectedimage="file=&apos;..\img\tab.png&apos; source=&apos;281,0,431,32&apos;" />
+				<Option name="shareFrame_link" text="创建链接" float="true" pos="271,0,0,0" width="151" height="30" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" align="center" group="shareTable" normalimage="file=&apos;..\img\tab.png&apos; source=&apos;131,0,282,32&apos;" hotimage="" selectedimage="file=&apos;..\img\tab.png&apos; source=&apos;281,0,431,32&apos;" />
+			</VerticalLayout>
+		</HorizontalLayout>
+		<HorizontalLayout height="300" bordercolor="#FF000000"  bkcolor="#FFF5FAFC">
+			<TabLayout name="shareFrame_listView">
+				<VerticalLayout>
+					<HorizontalLayout width="520" height="16" padding="20,14,0,0">
+						<Label name="shareFrame_text" text="逐个添加分享人或批量导入" width="300" textpadding="0,0,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+					</HorizontalLayout>
+					<HorizontalLayout width="520" height="40" padding="20,10,0,0">
+						<VerticalLayout width="520">
+							<Combo name="shareFrame_menu" text="浏览者" float="true" pos="0,0,0,0" width="100" height="40" itemendellipsis="true" itemalign="left" font="2" itemfont="2" itemtextpadding="10,2,25,2" bkimage="..\img\shareRoleSelect.png" hotimage="..\img\shareRoleSelect.png" pushedimage="..\img\shareRoleSelect.png" focusedimage="..\img\shareRoleSelect.png" focusedtextcolor="#FFFFFFFF" pushedtextcolor="#FFFFFFFF" hottextcolor="#FFFFFFFF">
+							</Combo>
+							<Edit name="shareFrame_users" text="请输入姓名拼音、工号或邮件地址" width="336" height="40" padding="100,0,0,0" maxchar="2000" bordersize="1" borderround="3,3" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" bkcolor="#FFFFFFFF" textpadding="16,3,4,3" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" />
+							<Button name="shareFrame_add" text="添加" float="true" pos="436,0,0,0" width="84" height="40" bkcolor="#FF0080FF" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\shareAdd.png&apos; source=&apos;0,0,84,40&apos;" hotimage="file=&apos;..\img\shareAdd.png&apos; source=&apos;85,0,169,40&apos;" pushedimage="file=&apos;..\img\shareAdd.png&apos; source=&apos;170,0,254,40&apos;" />
+						</VerticalLayout>
+					</HorizontalLayout>
+					<!--HorizontalLayout width="520" height="1" padding="20,0,0,0" bkcolor="#0x99999999">
+				</HorizontalLayout-->
+					<HorizontalLayout width="520" height="120" padding="20,12,0,0">
+						<List name="shareFrame_sharedUsersList" header="hidden" droptarget="true" itemshowhtml="true" bordersize="1" borderround="3,3" vscrollbar="true" hscrollbar="true"  bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF" itembkimage="file='..\img\list_bg.png' source='0,0,1,32'" itemalternatebkimage="file='..\img\list_bg.png' source='1,0,2,32'" itemhotimage="file='..\img\list_bg.png' source='2,0,3,32'" itemselectedimage="file='..\img\list_bg.png' source='3,0,4,32'">
+						</List>
+					</HorizontalLayout>
+					<HorizontalLayout width="520" height="16" padding="20,9,0,0">
+						<Label name="shareFrame_intro" text="说明信息（非必要）" width="300" textpadding="0,0,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+					</HorizontalLayout>
+					<HorizontalLayout width="520" height="50" padding="20,9,0,0">
+						<RichEdit name="shareFrame_message" text="小于500个字符" height="50" textpadding="16,0,0,0" multiline="true" maxchar="500" bordersize="1" borderround="3,3" autovscroll="true" vscrollbar="true" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" bkcolor="#FFFFFFFF" textcolor="#99999999" />
+					</HorizontalLayout>
+					<List name="shareFrame_listUserView" float="true" pos="120,80,456,210" visible="false" header="hidden" bordersize="1" bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF" vscrollbar="true" hscrollbar="true"/>
+					<Label name="shareFrame_listUserTip" text="点击回车获取更多" float="true" pos="120,210,456,226" align="center" visible="false" header="hidden" bordersize="1" bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF"/>
+				</VerticalLayout>
+
+				<VerticalLayout>
+					<TabLayout name="shareFrame_linklistView">
+						<VerticalLayout>
+							<HorizontalLayout width="520" height="14" padding="20,44,0,0">
+								<Text name="shareFrame_shareLinkText" text="生成下载链接，然后复制链接发送到eSapce、3MS、Email等给同事吧" textpadding="0,0,0,0" textcolor="#99999999" font="2"/>
+							</HorizontalLayout>
+							<HorizontalLayout width="120" height="32" padding="220,42,0,0">
+								<Option name="shareFrame_privateLink" text="创建链接" width="120" height="32" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" group="shareTable" normalimage="file=&apos;..\img\sharelink.png&apos; source=&apos;0,0,120,32&apos;" hotimage="file=&apos;..\img\sharelink.png&apos; source=&apos;121,0,241,32&apos;" selectedimage="file=&apos;..\img\sharelink.png&apos; source=&apos;242,0,362,32&apos;" />
+								<!--Text name="shareFrame_publicText" text="用于发布公开内容，任何人都能下载使用" padding="175,0,0,0" textpadding="4,3,4,3" textcolor="#FF999999"/-->
+							</HorizontalLayout>
+							<HorizontalLayout width="560" height="166" padding="0,1,0,0">
+								<Label name="shareFrame_picture" bkimage="file=&apos;..\img\shareLinkPic.png&apos; corner=&apos;1,1,1,1&apos;"/>
+							</HorizontalLayout>
+						</VerticalLayout>
+
+						<VerticalLayout>
+							<Text name="shareFrame_privatelinkIntro" text="您可以为文件或文件夹创建链接，将链接发送给任何人" padding="20,10,0,0" textpadding="0,0,0,0" textcolor="#FF999999" font="3"/>
+							<HorizontalLayout width="520" height="30" padding="20,20,0,0">
+								<Edit name="shareFrame_privatelinkUrlOne" text="" width="520" height="30" padding="0,0,0,0" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" />
+								<Button name="shareFrame_privateEditOne" text="" tooltip="编辑" width="16" height="16" padding="-104,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_rename.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_rename.png&apos;" pushedimage="file=&apos;..\img\icon_rename.png&apos;" />
+								<Button name="shareFrame_privateCopyUrlOne" text="" tooltip="复制" width="16" height="16" padding="10,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_moveto.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_moveto.png&apos;" pushedimage="file=&apos;..\img\icon_moveto.png&apos;" />
+								<Button name="shareFrame_privateMailOne" text="" tooltip="邮件" width="16" height="16" padding="10,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_mails.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_mails.png&apos;" pushedimage="file=&apos;..\img\icon_mails.png&apos;" />
+								<Button name="shareFrame_privateDeleteOne" text="" tooltip="删除" width="16" height="16" padding="7,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_delete.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_delete.png&apos;" pushedimage="file=&apos;..\img\icon_delete.png&apos;" />
+							</HorizontalLayout>
+							<HorizontalLayout width="520" height="16" padding="20,5,0,0">
+								<Text name="shareFrame_shareLinkTextOneAccessControl" text="访问限制 上传 下载 预览" padding="0,0,0,0" textpadding="0,0,0,0" textcolor="#99999999"/>
+								<Edit name="shareFrame_shareLinkTextOneCode" text="提取码 12345678901234567890" padding="10,0,0,0" textpadding="0,0,0,0" textcolor="#99999999"/>
+								<Button name="shareFrame_shareLinkTextOneDatetime" text="有效期 2015-12-25 20:20 至 2015-12-25 20:20" padding="10,0,0,0" align="left" textpadding="0,0,0,0" textcolor="#99999999"/>
+							</HorizontalLayout>
+							<HorizontalLayout width="520" height="30" padding="20,20,0,0">
+								<Edit name="shareFrame_privatelinkUrlTwo" text="" width="520" height="30" padding="0,0,0,0" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" />
+								<Button name="shareFrame_privateEditTwo" text="" tooltip="编辑" width="16" height="16" padding="-104,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_rename.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_rename.png&apos;" pushedimage="file=&apos;..\img\icon_rename.png&apos;" />
+								<Button name="shareFrame_privateCopyUrlTwo" text="" tooltip="复制" width="16" height="16" padding="10,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_moveto.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_moveto.png&apos;" pushedimage="file=&apos;..\img\icon_moveto.png&apos;" />
+								<Button name="shareFrame_privateMailTwo" text="" tooltip="邮件" width="16" height="16" padding="10,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_mails.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_mails.png&apos;" pushedimage="file=&apos;..\img\icon_mails.png&apos;" />
+								<Button name="shareFrame_privateDeleteTwo" text="" tooltip="删除" width="16" height="16" padding="7,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_delete.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_delete.png&apos;" pushedimage="file=&apos;..\img\icon_delete.png&apos;" />
+							</HorizontalLayout>
+							<HorizontalLayout width="520" height="16" padding="20,5,0,0">
+								<Text name="shareFrame_shareLinkTextTwoAccessControl" text="访问限制 上传 下载 预览" padding="0,0,0,0" textpadding="0,0,0,0" textcolor="#99999999"/>
+								<Edit name="shareFrame_shareLinkTextTwoCode" text="提取码 12345678901234567890" padding="10,0,0,0" textpadding="0,0,0,0" textcolor="#99999999"/>
+								<Button name="shareFrame_shareLinkTextTwoDatetime" text="有效期 2015-12-25 20:20 至 2015-12-25 20:20" padding="10,0,0,0" align="left" textpadding="0,0,0,0" textcolor="#99999999"/>
+							</HorizontalLayout>
+							<HorizontalLayout width="520" height="30" padding="20,20,0,0">
+								<Edit name="shareFrame_privatelinkUrlThree" text="" width="520" height="30" padding="0,0,0,0" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF99999999" disabledtextcolor="#FFA7A6AA" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" />
+								<Button name="shareFrame_privateEditThree" text="" tooltip="编辑" width="16" height="16" padding="-104,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_rename.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_rename.png&apos;" pushedimage="file=&apos;..\img\icon_rename.png&apos;" />
+								<Button name="shareFrame_privateCopyUrlThree" text="" tooltip="复制" width="16" height="16" padding="10,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_moveto.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_moveto.png&apos;" pushedimage="file=&apos;..\img\icon_moveto.png&apos;" />
+								<Button name="shareFrame_privateMailThree" text="" tooltip="邮件" width="16" height="16" padding="10,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_mails.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_mails.png&apos;" pushedimage="file=&apos;..\img\icon_mails.png&apos;" />
+								<Button name="shareFrame_privateDeleteThree" text="" tooltip="删除" width="16" height="16" padding="7,7,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\icon_delete.png&apos; source=&apos;0,0,16,16&apos;" hotimage="file=&apos;..\img\icon_delete.png&apos;" pushedimage="file=&apos;..\img\icon_delete.png&apos;" />
+							</HorizontalLayout>
+							<HorizontalLayout width="520" height="16" padding="20,5,0,0">
+								<Text name="shareFrame_shareLinkTextThreeAccessControl" text="访问限制 上传 下载 预览" padding="0,0,0,0" textpadding="0,0,0,0" textcolor="#99999999"/>
+								<Edit name="shareFrame_shareLinkTextThreeCode" text="提取码 12345678901234567890" padding="10,0,0,0" textpadding="0,0,0,0" textcolor="#99999999"/>
+								<Button name="shareFrame_shareLinkTextThreeDatetime" text="有效期 2015-12-25 20:20 至 2015-12-25 20:20" padding="10,0,0,0" align="left" textpadding="0,0,0,0" textcolor="#99999999"/>
+							</HorizontalLayout>
+							<HorizontalLayout width="120" height="32" padding="20,20,0,0">
+								<Option name="shareFrame_privateLinkEx" text="创建更多链接" width="120" height="32" padding="0,0,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" group="shareTable" normalimage="file=&apos;..\img\sharelink.png&apos; source=&apos;0,0,120,32&apos;" hotimage="file=&apos;..\img\sharelink.png&apos; source=&apos;121,0,241,32&apos;" selectedimage="file=&apos;..\img\sharelink.png&apos; source=&apos;242,0,362,32&apos;" />
+								<Text name="shareFrame_privateTextEx" text="您可以创建多个链接，为访问人设置不同权限" padding="10,0,0,0" textpadding="0,0,0,0" textcolor="#FF999999"/>
+							</HorizontalLayout>
+						</VerticalLayout>
+
+						<VerticalLayout>
+							<HorizontalLayout width="520" height="40" padding="20,28,0,0">
+								<Label name="shareFrame_icon" width="39" bkimage="file=&apos;..\img\shareIcon.png&apos; source=&apos;0,0,39,40&apos;"/>
+								<Text name="shareFrame_privateLinkTextTitle" height="30" text="成功创建链接" padding="10,0,0,0" textpadding="0,12,0,0" textcolor="#FF999999"/>
+							</HorizontalLayout>
+							<HorizontalLayout width="520" height="30" padding="20,20,0,0">
+								<Edit name="shareFrame_privatelinkUrl" text="" width="420" height="30" padding="0,0,0,0" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" />
+								<Button name="shareFrame_privateCopyUrl" text="复制链接" width="84" height="30" padding="17,0,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\shareOK.png&apos; source=&apos;0,0,84,30&apos;" hotimage="file=&apos;..\img\shareOK.png&apos; source=&apos;85,0,169,30&apos;" pushedimage="file=&apos;..\img\shareOK.png&apos; source=&apos;170,0,254,30&apos;" />
+							</HorizontalLayout>
+							<VerticalLayout width="520" height="120" padding="20,0,0,0">
+								<HorizontalLayout height="30" padding="0,10,0,0">
+									<Label name="shareFrame_shareLinkTextAccess" text="访问权限" width="110" height="30" padding="0,0,0,0" textpadding="0,2,0,0" textcolor="#FF999999"/>
+									<CheckBox name="shareFrame_uploadPermissionSelect" padding="0,-6,0,0" width="40" height="30" align="left" selectedimage="file='..\img\checkbox.png' dest='20,16,32,28' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,16,32,28' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,16,32,28' source='26,0,38,12'"/>
+									<Text name="shareFrame_shareLinkTextAccessUpload" text="上传" width="70" height="30" padding="0,0,0,0" textpadding="0,8,0,0" textcolor="#FF999999"/>
+									<CheckBox name="shareFrame_downloadPermissionSelect" padding="0,-6,0,0" width="40" height="30" align="left" selectedimage="file='..\img\checkbox.png' dest='20,16,32,28' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,16,32,28' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,16,32,28' source='26,0,38,12'"/>
+									<Text name="shareFrame_shareLinkTextAccessDownload" text="下载" width="70" height="30" padding="0,0,0,0" textpadding="0,8,0,0" textcolor="#FF999999"/>
+									<CheckBox name="shareFrame_previewPermissionSelect" padding="0,-6,0,0" width="40" height="30" align="left" selectedimage="file='..\img\checkbox.png' dest='20,16,32,28' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,16,32,28' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,16,32,28' source='26,0,38,12'"/>
+									<Text name="shareFrame_shareLinkTextAccessPreview" text="预览" width="70" height="30" padding="0,0,0,0" textpadding="0,8,0,0" textcolor="#FF999999"/>
+								</HorizontalLayout>
+								<HorizontalLayout height="30" padding="0,10,0,0">
+									<Label name="shareFrame_shareLinkTextCodeEx" text="提取密码" width="110" height="30" padding="0,0,0,0" textpadding="0,2,0,0" textcolor="#FF999999"/>
+									<CheckBox name="shareFrame_codeSelect" padding="0,-6,0,0" width="40" height="30" align="left" selectedimage="file='..\img\checkbox.png' dest='20,16,32,28' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,16,32,28' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,16,32,28' source='26,0,38,12'"/>
+									<Text name="shareFrame_shareLinkTextCodeSwitch" text="开启" width="70" height="30" padding="0,0,0,0" textpadding="0,8,0,0" textcolor="#FF999999"/>
+									<CheckBox name="shareFrame_dynamicCodeSelect" padding="0,-6,0,0" width="40" height="30" align="left" selectedimage="file='..\img\checkbox.png' dest='20,16,32,28' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,16,32,28' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,16,32,28' source='26,0,38,12'"/>
+									<Text name="shareFrame_shareLinkTextDynamicCodeSwitch" text="使用动态码" width="70" height="30" padding="0,0,0,0" textpadding="0,8,0,0" textcolor="#FF999999"/>
+									<Edit name="shareFrame_privateCode" text="" width="120" height="30" padding="20,0,0,0" maxchar="20" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" />
+									<Button name="shareFrame_privateCodeRefresh" width="16" padding="-20,7,0,0" tooltip="刷新" maxwidth="16" maxheight="16" visible="false" normalimage="file='..\img\uqdate.png' source='16,0,32,16'"/>
+								</HorizontalLayout>
+								<HorizontalLayout height="30" padding="0,12,0,0">
+									<Label name="shareFrame_shareLinkTextDateEx" text="有效日期" width="110" height="30" padding="0,0,0,0" textpadding="0,2,0,0" textcolor="#FF999999"/>
+									<CheckBox name="shareFrame_dateSelect" padding="0,-6,0,0" width="40" height="30" align="left" selectedimage="file='..\img\checkbox.png' dest='20,16,32,28' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,16,32,28' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,16,32,28' source='26,0,38,12'"/>
+									<Text name="shareFrame_shareLinkTextDateSwitch" text="开启" width="70" height="30" padding="0,0,0,0" textpadding="0,8,0,0" textcolor="#FF999999"/>
+									<DateTime name="shareFrame_shareLinkFirstDatetime" width="140" height="30" padding="20,0,0,0"  bkcolor="#FFFFFFFF" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,140,30&apos; corner=&apos;1,1,1,1&apos;" />
+									<Text name="shareFrame_shareLinkTextDateTip" text="至" padding="5,0,0,0" textpadding="4,3,4,3" textcolor="#FF999999"/>
+									<DateTime name="shareFrame_shareLinkSecondDatetime" width="140" height="30" padding="5,0,0,0"  bkcolor="#FFFFFFFF" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,140,30&apos; corner=&apos;1,1,1,1&apos;" />
+								</HorizontalLayout>
+							</VerticalLayout>
+							<VerticalLayout width="520" height="30" padding="20,15,0,0">
+								<HorizontalLayout>
+									<HorizontalLayout width="520" bkcolor="#FFF5FAFC">
+										<Text name="shareFrame_shareLinkTextTip" text="可以把链接发送到eSapce、3MS、Email等给同事了" padding="0,0,0,0" textpadding="4,3,4,3" textcolor="#99999999" bkcolor="#FFF5FAFC"/>
+									</HorizontalLayout>
+								</HorizontalLayout>
+							</VerticalLayout>
+						</VerticalLayout>
+
+						<VerticalLayout>
+							<Text name="shareFrame_privatelinkIntro" text="您可以为文件或文件夹创建链接，将链接发送给任何人" padding="20,10,0,0" textpadding="0,0,0,0" textcolor="#FF999999" font="3"/>
+							<HorizontalLayout width="520" height="30" padding="20,15,0,0">
+								<Edit name="shareFrame_privatelinkUrlMail" text="" width="520" height="30" padding="0,0,0,0" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" />
+							</HorizontalLayout>
+							<HorizontalLayout width="520" height="16" padding="20,5,0,0">
+								<Text name="shareFrame_shareLinkTextMailAccessControl" text="访问限制 上传 下载 预览" padding="0,0,0,0" textpadding="0,0,0,0" textcolor="#99999999"/>
+								<Text name="shareFrame_shareLinkTextMailCode" text="提取码 12345678901234567890" padding="10,0,0,0" textpadding="0,0,0,0" textcolor="#99999999"/>
+								<Button name="shareFrame_shareLinkTextMailDatetime" text="有效期 2015-12-25 20:20 至 2015-12-25 20:20" padding="10,0,0,0" align="left" textpadding="0,0,0,0" textcolor="#99999999"/>
+							</HorizontalLayout>
+							<HorizontalLayout width="520" height="30" padding="20,10,0,0">
+								<Edit name="shareFrame_usersMail" text="请输入姓名拼音、工号或邮件地址" width="520" height="30" padding="0,0,0,0" maxchar="2000" bordersize="1" borderround="3,3" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" />
+							</HorizontalLayout>
+							<HorizontalLayout width="520" height="100" padding="20,0,0,0">
+								<List name="shareFrame_MailUsersList" header="hidden" droptarget="true" itemshowhtml="true" bordersize="1" borderround="3,3" vscrollbar="true" hscrollbar="true"  bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF" itembkimage="file='..\img\list_bg.png' source='0,0,1,32'" itemalternatebkimage="file='..\img\list_bg.png' source='1,0,2,32'" itemhotimage="file='..\img\list_bg.png' source='2,0,3,32'" itemselectedimage="file='..\img\list_bg.png' source='3,0,4,32'">
+								</List>
+							</HorizontalLayout>
+							<HorizontalLayout width="520" height="50" padding="20,9,0,0">
+								<RichEdit name="shareFrame_mailMessage" text="小于500个字符" height="50" textpadding="16,0,0,0" multiline="true" maxchar="500" bordersize="1" borderround="3,3" autovscroll="true" vscrollbar="true" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" bkcolor="#FFFFFFFF" textcolor="#99999999" />
+							</HorizontalLayout>
+							<List name="shareFrame_mailListUserView" float="true" pos="20,135,520,265" visible="false" header="hidden" bordersize="1" bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF" vscrollbar="true" hscrollbar="true"/>
+							<Label name="shareFrame_mailListUserTip" text="点击回车获取更多" float="true" pos="20,265,520,281" align="center" visible="false" header="hidden" bordersize="1" bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF"/>
+						</VerticalLayout>
+
+					</TabLayout>
+				</VerticalLayout>
+			</TabLayout>
+		</HorizontalLayout>
+		<HorizontalLayout height="30" bkcolor="#FFF5FAFC" padding="0,20,0,0">
+			<HorizontalLayout  />
+			<HorizontalLayout width="195" >
+				<Button name="shareFrame_invite" text="邀请" width="75" height="30" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\shareOK.png&apos; source=&apos;0,0,84,30&apos;" hotimage="file=&apos;..\img\shareOK.png&apos; source=&apos;85,0,169,30&apos;" pushedimage="file=&apos;..\img\shareOK.png&apos; source=&apos;170,0,254,30&apos;" />
+				<Button name="shareFrame_compelete" text="完成" width="75" height="30" float="true" pos="0,0,75,30" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\shareOK.png&apos; source=&apos;0,0,84,30&apos;" hotimage="file=&apos;..\img\shareOK.png&apos; source=&apos;85,0,169,30&apos;" pushedimage="file=&apos;..\img\shareOK.png&apos; source=&apos;170,0,254,30&apos;" />
+				<Button name="shareFrame_save" text="保存" width="75" height="30" float="true" pos="0,0,75,30" visible="false" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\shareOK.png&apos; source=&apos;0,0,84,30&apos;" hotimage="file=&apos;..\img\shareOK.png&apos; source=&apos;85,0,169,30&apos;" pushedimage="file=&apos;..\img\shareOK.png&apos; source=&apos;170,0,254,30&apos;" />
+				<Button name="shareFrame_send" text="发送" width="75" height="30" float="true" pos="0,0,75,30" visible="false" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\shareOK.png&apos; source=&apos;0,0,84,30&apos;" hotimage="file=&apos;..\img\shareOK.png&apos; source=&apos;85,0,169,30&apos;" pushedimage="file=&apos;..\img\shareOK.png&apos; source=&apos;170,0,254,30&apos;" />
+				<Button name="shareFrame_cancel" text="取消" width="75" height="30" float="true" pos="85,0,75,30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\MessageDialog\Cancel_normal.png&apos; corner=&apos;5,5,5,5&apos;" hotimage="file=&apos;..\img\MessageDialog\Cancel_hover.png&apos; corner=&apos;5,5,5,5&apos;" pushedimage="file=&apos;..\img\MessageDialog\Cancel_down.png&apos; corner=&apos;5,5,5,5&apos;" />
+				<Button name="shareFrame_linkCancel" text="取消" width="75" height="30" float="true" pos="85,0,75,30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\MessageDialog\Cancel_normal.png&apos; corner=&apos;5,5,5,5&apos;" hotimage="file=&apos;..\img\MessageDialog\Cancel_hover.png&apos; corner=&apos;5,5,5,5&apos;" pushedimage="file=&apos;..\img\MessageDialog\Cancel_down.png&apos; corner=&apos;5,5,5,5&apos;" />
+				<Button name="shareFrame_back" text="取消" width="75" height="30" float="true" pos="85,0,75,30" visible="false" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\MessageDialog\Cancel_normal.png&apos; corner=&apos;5,5,5,5&apos;" hotimage="file=&apos;..\img\MessageDialog\Cancel_hover.png&apos; corner=&apos;5,5,5,5&apos;" pushedimage="file=&apos;..\img\MessageDialog\Cancel_down.png&apos; corner=&apos;5,5,5,5&apos;" />
+				<Button name="shareFrame_backMail" text="取消" width="75" height="30" float="true" pos="85,0,75,30" visible="false" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\MessageDialog\Cancel_normal.png&apos; corner=&apos;5,5,5,5&apos;" hotimage="file=&apos;..\img\MessageDialog\Cancel_hover.png&apos; corner=&apos;5,5,5,5&apos;" pushedimage="file=&apos;..\img\MessageDialog\Cancel_down.png&apos; corner=&apos;5,5,5,5&apos;" />
+			</HorizontalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window >
+	<GroupManageListUserContainerElement name="GroupManage_listUserItem" >
+		<VerticalLayout height="44" mousechild="true">
+			<HorizontalLayout height="6" />
+			<VerticalLayout mousechild="true">
+				<HorizontalLayout height="16" >
+					<Label name="GroupManage_itemUser_user" align="left" endellipsis="true" width="180" padding="10,0,0,0" font="2" />
+					<Label name="GroupManage_itemUser_email" endellipsis="true" text="" font="2" align="left" padding="5,0,0,0"/>
+				</HorizontalLayout>
+				<Label name="GroupManage_itemUser_dept" endellipsis="true" font="2" align="left" padding="10,0,0,0" />
+			</VerticalLayout>
+			<HorizontalLayout height="5" />
+			<Control height="1" bkcolor="#FFE1E1E1" />
+		</VerticalLayout>
+	</GroupManageListUserContainerElement>
+</Window>

@@ -1,0 +1,35 @@
+<rules>
+
+    <rule>
+        <sqlmap>INodeLinkReverse.listByINodeID</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeLinkReverse.deleteByINodeID</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>    
+    <rule>
+        <sqlmap>INodeLinkReverse.listByOwner</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+
+    <rule>
+        <sqlmap>INodeLinkReverse.listCountByINodeID</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeLinkReverse.listCountByOwner</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+        
+    <rule>
+        <namespace>INodeLinkReverse</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

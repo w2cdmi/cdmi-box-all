@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"
+    default-autowire="byName" default-lazy-init="true"
+>
+   <bean id="zookeeperServer" class="pw.cdmi.core.zk.ZookeeperServer" lazy-init="false" init-method="init" destroy-method="destroy">
+        <property name="connectString" value="${zookeeper.server}" />
+        <property name="connectionTimeoutMs" value="${zookeeper.connectionTimeoutMs}" />
+        <property name="sessionTimeoutMs" value="${zookeeper.sessionTimeoutMs}" />
+        <property name="baseSleepTimeMs" value="${zookeeper.retryPolicy.baseSleepTimeMs}" />
+        <property name="maxRetries" value="${zookeeper.retryPolicy.maxRetries}" />
+    </bean>
+    
+    <bean id="configManager" class="com.huawei.sharedrive.common.config.service.impl.ConfigManagerImpl" lazy-init="false" init-method="init">
+        <property name="zookeeperServer" ref="zookeeperServer" />
+        <property name="configRoot" value="/config" />
+        <property name="listeners">
+            <list><!-- 
+                <ref bean="ldapConfigServiceImpl" />
+                <ref bean="syslogServerService" />
+                <ref bean="customizeLogoServiceImpl" />
+                <ref bean="securityServiceImpl" />
+                <ref bean="accessNetworkServiceImpl" />
+                <ref bean="clientManageServiceImpl" />
+                 -->
+            </list>
+        </property>
+    </bean>
+    
+</beans>

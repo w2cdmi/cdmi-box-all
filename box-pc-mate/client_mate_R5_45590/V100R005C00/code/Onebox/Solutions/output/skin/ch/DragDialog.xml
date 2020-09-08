@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="130,46" bktrans="true" >
+	<HorizontalLayout name="DragDialog" bkcolor="#FFEDEDED">
+		<Label name="NoveName" text="" endellipsis="true" float="true" pos="1, 1, 130, 16" textcolor="#FF999999" />
+		<Control height="1" bkcolor="#FFCDE0E6" float="true" pos="1,17,130,18" />
+		<Label name="Draglogo" bkimage="..\img\icon_folder.png" float="true" pos="1,23,25,45" />
+		<Label name="DragText" text="" float="true" pos="28, 27, 130, 40" endellipsis="true" textcolor="#FF999999" />
+	</HorizontalLayout>
+</Window>

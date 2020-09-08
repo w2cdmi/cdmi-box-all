@@ -1,0 +1,9 @@
+@@normal
+ { 
+ "message":"Message:This is Message.", 
+"sharedUser": 
+	{ 
+  		"id":1434, 
+  		"type":"user" 
+	} 
+}

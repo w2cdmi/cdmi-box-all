@@ -1,0 +1,167 @@
+@@normal
+{
+	"name":"test"
+}
+
+@@blankName
+{
+	"name":"　"
+}
+
+@@allParameter
+{ 
+    "offset":0,
+    "limit":100,
+    "name":"test",
+    "order": 
+    [ 
+        { 
+            "field":"name", 
+            "direction":"desc"
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height":32, 
+            "width":32 
+        } 
+    ] 
+}
+
+@@onlyOffset
+{
+	"name":"a",
+	"offset":0
+}
+
+@@invalidOffset
+{
+	"name":"a",
+	"offset":-1
+}
+
+@@onlyLimit
+{
+	"name":"a",
+	"limit":10
+}
+
+@@invalidLimit
+{
+	"name":"a",
+	"limit":0
+}
+
+@@onlyOrder
+{ 
+	"name":"a",
+    "order": 
+    [ 
+        { 
+            "field":"name", 
+            "direction":"desc"
+        },
+        { 
+            "field":"size", 
+            "direction":"desc"
+        },
+        { 
+            "field":"type", 
+            "direction":"desc"
+        }  
+    ]
+}
+
+@@invalidOrderField
+{ 
+	"name":"a",
+    "order": 
+    [ 
+        { 
+            "field":"invalidOrderFiled", 
+            "direction":"desc"
+        }
+    ]
+}
+
+@@invalidOrderDirection
+{
+	"name":"a",
+	"order": 
+    [ 
+        { 
+            "field":"name", 
+            "direction":"invalidDirection"
+        } 
+    ]
+}
+
+@@onlyThumbnail
+{ 
+	"name":"a",
+    "thumbnail": 
+    [ 
+        { 
+            "height":32, 
+            "width":32 
+        } 
+    ] 
+}
+
+@@thumbnailNumOverLimit
+{ 
+	"name":"a",
+    "thumbnail": 
+    [ 
+        { 
+            "height":10, 
+            "width":10 
+        },
+        { 
+            "height":20, 
+            "width":20 
+        },
+        { 
+            "height":30, 
+            "width":30 
+        },
+        { 
+            "height":40, 
+            "width":40 
+        },
+        { 
+            "height":50, 
+            "width":50
+        },
+        { 
+            "height":60, 
+            "width":60
+        }
+    ] 
+}
+
+@@invalidThumbnailWidth
+{ 
+	"name":"a",
+    "thumbnail": 
+    [ 
+        { 
+            "height":32, 
+            "width":0 
+        } 
+    ] 
+}
+
+@@invalidThumbnailHeigth
+{ 
+	"name":"a",
+    "thumbnail": 
+    [ 
+        { 
+            "height":0, 
+            "width":32 
+        } 
+    ] 
+}
+

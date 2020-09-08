@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Window>
+	<ShareFrameTileLayoutListContainerElement name="shareframe_TileLayoutListItem" mousechild="true" >
+		<HorizontalLayout name="shareframe_TileLayoutListItem_VLayout" height="18" width="130" mousechild="true" padding="8,6,2,6" >
+			<Label name="shareframe_TileLayoutListItem_name" height="18" float="true" pos="0,0,102,18"  bkcolor="#FFE5E5E5" align="left" textpadding="5,0,0,0" textcolor="#FF000000" font="12" />
+			<Button name="shareframe_TileLayoutListItem_delete" height="18" float="true" pos="102,0,120,18"    bkcolor="#FFE5E5E5" tooltip="删除"  bkimage="..\Image\ic_popup_share_persondelete.png " />
+		</HorizontalLayout>
+	</ShareFrameTileLayoutListContainerElement>
+</Window>

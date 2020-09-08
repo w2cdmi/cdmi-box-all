@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window>
+	<VerticalLayout>
+		<Include source="Default.xml" />
+		<HorizontalLayout height="42" inset="20, 10, 0, 0" bkcolor="#fff0f0f0" bkimage="file='..\Image\rightheakerbk.png' corner='1,1,2,2'">
+			<HorizontalLayout>
+				<Option name="transTask_uploadTable" width="84" height="34" textpadding="10,6,10,6" selected="true" tooltip="正在传输"  text="正在传输"   font="0" textcolor="#FF666666" hottextcolor="#FF006ab0" pushedtextcolor="#FF66B0FF" selectedtextcolor="#FF008be8" group="transfersTable" selectedimage="file='..\Image\ic_tab_current.png' source='0,0,84,34'"/>
+				<Option name="transTask_completeTable" width="84" height="34" textpadding="10,6,10,6" padding="2,0,0,0" tooltip="传输完成" text="传输完成" font="0"  textcolor="#FF666666" hottextcolor="#FF006ab0" pushedtextcolor="#FF66B0FF" selectedtextcolor="#FF008be8" group="transfersTable" selectedimage="file='..\Image\ic_tab_current.png' source='0,0,84,34'" />
+			</HorizontalLayout>
+		</HorizontalLayout>
+		<TabLayout name="transTask_table" bkcolor="#FFFAFAFA">
+			<VerticalLayout padding="20,0,20,0">
+				<HorizontalLayout name="tranTask_body" height="50" inset="0,10,0,10">
+					<ScaleIconButton name="transTask_upload_pauseAll" width="80" height="30" font="12" textpadding="10,6,10,6" padding="0,0,0,0" enabled="true" text="全部暂停"  textcolor="#FF333333" disabledtextcolor="#FF999999" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,66,30'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,66,70'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,66,110'" disabledimage="file='..\Image\ic_button_white_nor.png' source='0,0,80,30'"/>
+					<ScaleIconButton name="transTask_upload_resumeAll" width="80" height="30" font="12" textpadding="10,6,10,6" padding="0,0,0,0" visible="false" enabled="true" text="全部恢复"  textcolor="#FF333333" disabledtextcolor="#FF999999" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,66,30'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,66,70'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,66,110'" disabledimage="file='..\Image\ic_button_white_nor.png' source='0,0,80,30'"/>
+					<Control width="10" />
+					<ScaleIconButton name="transTask_upload_cancelAll" width="80" height="30" font="12" textpadding="10,6,10,6" padding="0,0,0,0" enabled="true" text="全部删除"  textcolor="#FF333333" disabledtextcolor="#FF999999" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,66,30'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,66,70'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,66,110'" disabledimage="file='..\Image\ic_button_white_nor.png' source='0,0,80,30'"/>
+					<Control />
+					<Label name="transTask_number" width="30" height="30" font="12" padding="0,4,0,0" endellipsis="true" text="4" valign="top" align="right" textcolor="#ff000000"/>
+					<Control width="5"/>
+					<ScaleButton name="transTask_number_after" height="30" enabled="false" font="10" text="个传输任务" align="left" valign="vcenter" disabledtextcolor="#ff666666"/>
+					<Control width="20"/>
+					<Button name="transTask_upload_sign" width="20" height="20" padding="0,5,0,10" mouse="false" bkimage="..\Image\ic_oper_transfer_upload.png" />
+					<Control width="5"/>
+					<ScaleButton name="transTask_upload_speed" enabled="false" height="30" font="10" text="0 MB/s" valign="vcenter" disabledtextcolor="#FF000000"/>
+					<Control width="15"/>
+					<Button name="transTask_download_sign" width="20" height="20" padding="0,5,0,10" mouse="false" bkimage="..\Image\ic_oper_transfer_download.png" />
+					<Control width="5"/>
+					<ScaleButton name="transTask_download_speed" enabled="false" height="30" font="10" text="0 MB/s" valign="vcenter" disabledtextcolor="#FF000000"/>
+				</HorizontalLayout>
+				<Control name="transTask_line_header" height="1" bkcolor="#FFE1E1E1" />
+				<VerticalLayout name="transTask_upload_tip_text" >
+					<Control />
+					<HorizontalLayout height="180">
+						<Control />
+						<Button name="transTask_upload_tip_text1" width="180" height="180" bkimage="..\Image\ic_null_transfer.png" valign="center" textcolor="#FF999999" mouse="false"/>
+						<Control />
+					</HorizontalLayout>
+					<Control height="26"/>
+					<HorizontalLayout align="center">
+						<Button name="transTask_upload_tip_text2" height="30" text="暂无传输任务" font="0" valign="center" align="center" textcolor="#FF999999" mouse="false"/>
+					</HorizontalLayout>
+					<Control />
+				</VerticalLayout>
+				<List name="transTask_ListView" visible="false" padding="0,0,0,0" mousechild="true" header="hidden" itemshowhtml="true" hscrollbar="true" vscrollbar="true" itemhotbkcolor="0" itemselectedbkcolor="0" />
+			</VerticalLayout>
+
+			<VerticalLayout inset="20, 0, 20, 0">
+				<HorizontalLayout name="tranTask_Complete_body" height="50" inset="0,10,20,10">
+					<ScaleIconButton name="transTask_complete_clearAll" width="80" height="30" font="12" textpadding="10,6,10,6" enabled="true" text="全部删除" textcolor="#FF333333" disabledtextcolor="#FF999999" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,66,30'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,66,70'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,66,110'" disabledimage="file='..\Image\ic_button_white_nor.png' source='0,0,80,30'" />
+					<Control />
+				</HorizontalLayout>
+				<Control name="transTask_complete_line_header" height="1" bkcolor="#FFE1E1E1" />
+				<VerticalLayout name="transTask_complete_tip_text">
+					<Control />
+					<HorizontalLayout height="180">
+						<Control />
+						<Button name="transTask_complete_tip_text1" width="180" height="180" bkimage="..\Image\ic_null_transfer.png" valign="center" textcolor="#FF999999" mouse="false"/>
+						<Control />
+					</HorizontalLayout>
+					<Control height="26"/>
+					<HorizontalLayout align="center">
+						<Button name="transTask_complete_tip_text2" height="30" text="暂无已完成传输任务" font="0" valign="center" align="center" textcolor="#FF999999" mouse="false"/>
+					</HorizontalLayout>
+					<Control />
+				</VerticalLayout>
+
+				<List name="transTask_complete_ListView" visible="false" padding="0,0,0,0" mousechild="true" header="hidden" itemshowhtml="true" hscrollbar="true" vscrollbar="true" itemhotbkcolor="0" itemselectedbkcolor="0" />
+			</VerticalLayout>
+		</TabLayout>
+	</VerticalLayout>
+</Window>

@@ -1,0 +1,205 @@
+#box {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 1.75rem;
+	bottom: 2.75rem;
+	overflow-y: auto;
+	height: auto;
+	overflow-x: hidden;
+}
+.inbox-catalong-header{
+	width: 100%;
+	display: inline-block;
+	background: #FFFFFF;
+}
+.file{
+	float: left;
+}
+.line-buttons{
+	width: 8rem;
+	height: 3.4rem;
+}
+.inbox-catalong-header li i{
+	float: left;
+	width: 1.4rem;
+	height: 2.4rem;
+	margin-top: 0.4rem;
+	margin-left: 4%;
+}
+/*设置为收件箱*/
+.setup-inbox{
+	width: 100%;
+	background: #E4E1E1;
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+.setup-inbox-blank{
+	width: 100%;
+	height: 0.6rem;
+}
+.setup-inbox-header{
+	width: 92%;
+	height: 6rem;
+	padding-left: 4%;
+	padding-right: 4%;
+	background: #FFFFFF;
+	padding-top: 1.5rem;
+}
+.setup-inbox-header-img{
+	width: 100%;
+	background-size:1.8rem 1.8rem;
+	height: 1.8rem;
+	margin: 0;
+	color: #333333;
+}
+.setup-inbox-header-name{
+	text-align: center;
+	font-size: 0.75rem;
+	width: 100%;
+	height: 1.5rem;
+	line-height: 1.5rem;
+	float: left;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.setup-inbox-header-nav{
+	font-size: 0.6rem;
+	width: 100%;
+	height: 1.6rem;
+	text-align: center;
+	line-height: 1.6rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+.setup-inbox-blanks{
+	width: 100%;
+	height: 0.75rem;
+}
+.setup-inbox-ontice{
+	width: 92%;
+	padding-left: 4%;
+	padding-right: 4%;
+	height: 1.8rem;
+	background: #FFFFFF;
+}
+.setup-inbox-ontice-left{
+	float: left;
+	color: #333333;
+	font-size: 0.6rem;
+	line-height: 1.8rem;
+}
+.setup-inbox-ontice-right{
+	float: right;
+	width: 0.3rem;
+	height: 0.5rem;
+	padding-top: 0.65rem;
+	padding-bottom: 0.65rem;
+}
+.setup-inbox-ontice-right img{
+	width: 0.3rem;
+	height: 0.5rem;
+}
+.setting-tail{
+	margin-top: 0;
+}
+
+/*发送的外链 蒙版*/
+.setup-inbox-mask{
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.5);
+	z-index: 3;
+}
+.setup-inbox-mask-middle{
+	width: 100%;
+	height: 6.25rem;
+	position: relative;
+}
+.setup-inbox-mask-middle .setup-inbox-mask-middle-right{
+	width: 6.25rem;
+	height: 6.25rem;
+	float: right;
+	margin-right: 1.1rem;
+}
+.setup-inbox-mask-middle .setup-inbox-mask-middle-right img{
+	width: 6.25rem;
+	height: 6.25rem;
+}
+.setup-inbox-mask-middle-left{
+	float: right;
+	height: 1rem;
+	display: inline-block;
+	font-size: 0.75rem;
+	color: #FFFFFF;
+	line-height: 1rem;
+	position: absolute;
+	top: 5.2rem;
+	right: 8rem;
+}
+.setup-inbox-mask-middle-left span{
+	float: left;
+	margin-left: 0.4rem;
+	margin-right: 0.4rem;
+}
+.setup-inbox-mask-middle-left span img{
+	width: 0.2rem;
+	height: 0.75rem;
+	margin-top: 0.125rem;
+}
+/* 定义模态对话框外面的覆盖层样式 */
+
+#modal-overlay {
+    visibility: hidden;
+    position: absolute;
+    /* 使用绝对定位或固定定位  */
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    z-index: 1000;
+    background: rgba(0,0,0,0.5);
+    /* 背景半透明 */
+}
+
+
+/* 模态框样式 */
+
+.modal-data {
+    width: 500px;
+    height: 200px;
+    margin: 200px auto;
+    background-color: #fff;
+    border: 1px solid #000;
+    padding: 15px;
+	text-align: center;
+	position: relative;
+}
+.modal-data .closes{
+	content: 'X';
+	position: absolute;
+	right: 0;
+	top: 0;
+	font-size: 22px;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	cursor: pointer;
+}
+.modal-data .share-homepage-right{
+	margin-top: 20px;
+}
+.modal-data .fileitem-temple1{
+    background: #f9f9f9;
+}
+.modal-data button{
+	margin-top: 55px;
+	padding-right: 5px;
+}

@@ -1,0 +1,36 @@
+<rules>
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.insertFilelabelLink</sqlmap>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.queryLabelidsByInode</sqlmap>
+        <shards>partition1</shards>
+    </rule>
+
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.unbindAllLabelForInode</sqlmap>
+        <shards>partition1</shards>
+    </rule>
+    
+     <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.unbindFileLabelForInode</sqlmap>
+        <shards>partition1</shards>
+    </rule>
+    
+     <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.queryLabelidsByInode</sqlmap>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.queryLabelCountByInode</sqlmap>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.queryMaxFilelabelLinkId</sqlmap>
+        <shards>partition1</shards>
+    </rule>
+</rules>

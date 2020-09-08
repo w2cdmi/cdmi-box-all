@@ -1,0 +1,14 @@
+<!--disk/enterprise/employees-departments/_blank/as-header/as-header.wxml-->
+<!--disk/enterprise/employees-departments/department-heads/department-heads.wxml-->
+<view>
+    <view class='top_view'>
+        <image class='blank_img' src='/disk/images/blank/depart-header-blank.png'></image>
+        <text class='blank_txt'>尚未指定部门主管</text>
+        <button class='blank_btn' bindtap='toSetManager'>指定主管</button>
+    </view>
+
+    <view class='bottom_view'>
+        <image  class='tip_img' src='/disk/images/tip_icon.png'></image>
+        <text class='tip_txt'>当前部门已开启文档外发审批设置，需设置部门主管或部门只是专员对员工外发行为进行审批</text>
+    </view>
+</view>

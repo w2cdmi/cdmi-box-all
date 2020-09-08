@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WebIconPcLogo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="WebIconPcLogo"
+		type="pw.cdmi.box.uam.enterprise.domain.WebIconPcLogo" />
+
+	<resultMap id="resultMap.WebIconPcLogo" class="WebIconPcLogo">
+		<result column="accountId" property="accountId" />
+		<result column="titleCh" property="titleCh" />
+		<result column="titleEn" property="titleEn" />
+		<result column="webLogo" property="webLogo" jdbcType="BLOB" javaType="byte"
+			typeHandler="com.ibatis.sqlmap.engine.type.BlobTypeHandlerCallback" />
+		<result column="pcLogo" property="pcLogo" jdbcType="BLOB" javaType="byte"
+			typeHandler="com.ibatis.sqlmap.engine.type.BlobTypeHandlerCallback" />
+		<result column="icon" property="icon" jdbcType="BLOB" javaType="byte"
+			typeHandler="com.ibatis.sqlmap.engine.type.BlobTypeHandlerCallback" />
+		<result column="webLogoFormatName" property="webLogoFormatName" />
+		<result column="pcLogoFormatName" property="pcLogoFormatName" />
+		<result column="iconFormatName" property="iconFormatName" />
+	</resultMap>
+
+	<!-- <select id="get" resultClass="CustomizeLogo" parameterClass="Integer">
+		select * from system_logo where id = #value#
+	</select> -->
+	
+	<insert id="insert" parameterClass="WebIconPcLogo">
+        insert into multi_system_logo(accountId,titleCh,titleEn,webLogo,pcLogo,icon,webLogoFormatName,pcLogoFormatName,iconFormatName) 
+        values 
+        (#accountId#,#titleCh#,#titleEn#,#webLogo#,#pcLogo#,#icon#,#webLogoFormatName#,#pcLogoFormatName#,#iconFormatName#)
+    </insert>
+
+	<!-- <update id="update" parameterClass="CustomizeLogo">
+		update system_logo set
+		domainName=#domainName#,title=#title#,titleEn=#titleEn#,logo=#logo#,icon=#icon#,copyright=#copyright#,copyrightEn=#copyrightEn#,logoFormatName=#logoFormatName#,iconFormatName=#iconFormatName#
+		,appId=#appId#,appEmailTitle=#appEmailTitle#
+		where
+		id=#id#
+	</update>
+ -->
+
+</sqlMap>
+

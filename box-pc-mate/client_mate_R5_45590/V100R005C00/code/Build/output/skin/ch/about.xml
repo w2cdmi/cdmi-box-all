@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="600,400" caption="0,0,0,32" roundcorner="5,5" bkcolor="#FFFFFFFF">
+	<Default name="Label" value="textcolor=&quot;#FF666666&quot;" />
+	<VerticalLayout  bkcolor="#FFFAFAFA" inset="1,1,1,1"  borderround="5,5">
+		<HorizontalLayout height="42" >
+			<!--标题栏-->
+			<Label name="about_logo_txt" text="关于" textcolor="#FF000000" font="15" textpadding="20,7,0,0" width="560" height="32" align="left"/>
+			<Button name="closebtn" tooltip="关闭" padding="0,11,20,11" width="20" height="20"  align="left" normalimage="file='..\Image\SysBtn\ic_popup_delete.png' source='0,0,20,20' dest='0,0,20,20'" hotimage="file='..\Image\SysBtn\ic_popup_delete.png' source='0,30,20,50' dest='0,0,20,20'"/>
+		</HorizontalLayout>
+		<!-- client area -->
+
+		<Control width="600" height="1" bkcolor="#FFD9D9D9" />
+
+		<VerticalLayout height="100">
+			<!--Logo显示-->
+			<Control width="210" height="40" bkimage="..\image\ic_about_logo.png" padding="195,20,0,0" />	
+			<Label name="label_ver_num" text="1.2.3.3825" padding="0,10" font="12" align="center"/>
+		</VerticalLayout>
+
+		<VerticalLayout borderround="5,5" padding="20,0,20,0" height="208" bordersize="1" bordercolor="#FFD9D9D9">
+			<RichEdit name="label_privacy_statement" text="Onebox" font="12"  padding="10,5,10,0" enabled="false" mouse="true" vscrollbar="true" rich="true"/>
+		</VerticalLayout>
+
+		<Label name="label_powered_by" text="Powered by Huawei OneBox" padding="0,10" font="10" textcolor="#FF666666" align="center"/>
+		<Control height="20"/>
+	</VerticalLayout>
+</Window>

@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Window>
+	<GroupTileLayoutListContainerElement name="Group_largeIconItem" >		
+		<Label name="Group_nameIcon" float="true" pos="10,15,112,117" bkimage="teamSpaceIcon.png" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+		<VerticalLayout name="Group_Item_Listview" float="true" pos="123,15,350,150">			
+			<Button name="Group_name" endellipsis="true" align="left" height="30" width="210" font="3" textcolor="#FF333333" hottextcolor="#EE2693FF" pushedtextcolor="#EE2693FF" focusedtextcolor="#EE2693FF" />
+			<Label name="Group_description" endellipsis="true" align="left" width="210" font="2" textcolor="#FF333333"  />
+			<Label name="Group_type" align="left" height="25" font="2" textcolor="#FF333333" />
+			<Label name="Group_owner" align="left" height="25" font="2" textcolor="#FF333333" />
+		</VerticalLayout>		
+	</GroupTileLayoutListContainerElement>
+</Window>

@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SystemLog">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="SystemLog" type="pw.cdmi.common.log.SystemLog" />
+                    
+    <insert id="insert" parameterClass="SystemLog">
+       <![CDATA[
+        insert into system_log(id,loginName,showName,type,createdAt,clientType,clientDeviceSN,clientDeviceName,clientAddress,clientOS,
+        clientVersion,level,operateType,operateDescription,description,operateResult,typeContent,descriptionContent) 
+        values
+        (#id#,#loginName#,#showName#,#type#,#createdAt#,#clientType#,#clientDeviceSN#,#clientDeviceName#,#clientAddress#,#clientOS#,
+        #clientVersion#,#level#,#operateType#,#operateDescription#,#description#,#operateResult#,#typeContent#,#descriptionContent#) 
+        ]]>
+    </insert>
+    
+	<select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from system_log
+        <dynamic prepend="where">
+            <isGreaterEqual prepend="and" property="filter.operateType" compareValue="0">
+            	type = #filter.operateType#
+            </isGreaterEqual>
+            <isNotEmpty  prepend="and" property="filter.admin">
+            	showName like concat('%',#filter.admin#,'%')
+            </isNotEmpty>
+            <isNotEmpty  prepend="and" property="filter.operater">
+            	loginName=#filter.operater#
+            </isNotEmpty>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createdAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+    </select>
+	
+    <select id="getFilterd" parameterClass="map" resultClass="SystemLog">
+        select * from system_log
+         <dynamic prepend="where">
+            <isGreaterEqual prepend="and" property="filter.operateType" compareValue="0">
+            	type = #filter.operateType#
+            </isGreaterEqual>
+            <isNotEmpty  prepend="and" property="filter.admin">
+            	showName like concat('%',#filter.admin#,'%')
+            </isNotEmpty>
+             <isNotEmpty  prepend="and" property="filter.operater">
+            	loginName=#filter.operater#
+            </isNotEmpty>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createdAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+        order by createdAt desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getCountByLoginName" parameterClass="map" resultClass="int">
+        select count(id) from system_log where loginName=#filter.loginName#
+            <isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.type">
+                    type = #filter.type#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.level">
+                    level = #filter.level#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientType">
+                    clientType = #filter.clientType#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceSN">
+                    clientDeviceSN like concat('%',#filter.clientDeviceSN#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientVersion">
+                    clientVersion like concat('%',#filter.clientVersion#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientAddress">
+                    clientAddress like concat('%',#filter.clientAddress#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceName">
+                    clientDeviceName like concat('%',#filter.clientDeviceName#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientOS">
+                    clientOS like concat('%',#filter.clientOS#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.beginTime">
+					<![CDATA[
+                    createdAt >= FROM_UNIXTIME(#filter.beginTime#)
+					]]>
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.endTime">
+                    <![CDATA[
+                      createdAt <= FROM_UNIXTIME(#filter.endTime#)
+					]]>
+                </isNotEmpty>
+            </isNotNull>
+    </select>
+	
+    <select id="getByLoginName" parameterClass="map" resultClass="SystemLog">
+        select * from system_log where loginName=#filter.loginName#
+            <isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.type">
+                    type = #filter.type#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.level">
+                    level = #filter.level#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientType">
+                    clientType = #filter.clientType#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceSN">
+                    clientDeviceSN like concat('%',#filter.clientDeviceSN#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientVersion">
+                    clientVersion like concat('%',#filter.clientVersion#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientAddress">
+                    clientAddress like concat('%',#filter.clientAddress#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceName">
+                    clientDeviceName like concat('%',#filter.clientDeviceName#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientOS">
+                    clientOS like concat('%',#filter.clientOS#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.beginTime">
+					<![CDATA[
+                    createdAt >= FROM_UNIXTIME(#filter.beginTime#)
+					]]>
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.endTime">
+                    <![CDATA[
+                    createdAt <= FROM_UNIXTIME(#filter.endTime#)
+					]]>
+                </isNotEmpty>
+            </isNotNull>
+        order by createdAt desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <update id="updateSuccess" parameterClass="String">
+        <![CDATA[
+        update system_log set operateResult=true where id=#value#
+        ]]>
+	</update>
+	
+	 <delete id="deleteById" parameterClass="String">
+        delete from system_log where id=#value#
+    </delete>
+    
+</sqlMap>
+

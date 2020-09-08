@@ -1,0 +1,16 @@
+@@normal
+{ 
+    "tokenTimeout": 18000000, 
+    "parent": 0, 
+     "files": 
+     [ 
+      { 
+          "name": "testfile1", 
+          "size": 10000
+      },
+      { 
+          "name": "testfile2", 
+          "size": 200000
+      }  
+    ]
+}

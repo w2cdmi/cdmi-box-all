@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SecurityScanTask">
+
+    <typeAlias alias="SecurityScanTask" type="com.huawei.sharedrive.isystem.plugin.domain.SecurityScanTask" />
+	
+    <select id="getTotalTasks" parameterClass="SecurityScanTask" resultClass="Integer">
+        select count(*) from security_scan_task
+        <dynamic prepend="where">
+            <isNotEqual prepend="and" property="status" compareValue="0">
+                status = #status#
+            </isNotEqual>
+        </dynamic>
+    </select>
+    
+</sqlMap>
+

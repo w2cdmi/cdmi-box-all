@@ -1,0 +1,52 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+<tocdata>
+<item name="Welcome" url="faq/welcome.html" />
+<book name="Basic Operations" url="faq/basic.html" >
+  <item name="What Is StorBox Synchronization Client?" url="faq/desktop_definition.html" />
+  <item name="How Can I Add or Upload a File?" url="faq/upload_file.html" />
+  <item name="How Can I Share a File or Folder with Other Users?" url="faq/share_file.html" />
+  <item name="How Can I Synchronize Files Among Computers?" url="faq/desktop_sync_file.html" />
+  <item name="How Can I Know that the Synchronization Client Is Synchronizing Data?" url="faq/desktop_syncing.html" />
+  <item name="How Can I Get a Lost File Back?" url="faq/find_lost_file.html" />
+  <item name="How Can I Obtain a File with an Earlier Version?" url="faq/web_gain_multiversion.html" />
+  <item name="How Can I Recover a Deleted File?" url="faq/recover_deleted_file.html" />
+  <item name="What Are the Requirements of StorBox on the System?" url="faq/rundisk_system_require.html" />
+</book>
+<book name="Share" url="faq/share.html" >
+  <item name="How Can I Share a File or Folder with Other Users?" url="faq/share_file_a.html" />
+  <item name="Does a Shared File or Folder Occupy My Disk Space?" url="faq/share_file_occupy_space.html" />
+  <item name="Can I Share a File or Folder with a Non-StorBox User?" url="faq/share_file_nohuawei.html" />
+  <item name="Can I Rename or Move a Shared File or Folder?" url="faq/rename_move_share.html" />
+  <item name="How Can I Remove a Recipient?" url="faq/remove_share_number.html" />
+  <item name="How Can I Cancel a File or Folder Share?" url="faq/cancel_share_file.html" />
+  <item name="How Can I Exit a Share?" url="faq/quit_share.html" />
+  <item name="How Can I Cancel a File or Folder Link?" url="faq/cancel_share_link.html" />
+</book>
+<book name="Desktop Applications" url="faq/pc.html" >
+  <item name="What Is StorBox Synchronization Client?" url="faq/desktop_definition_a.html" />
+  <item name="How Can I Synchronize Files Among Computers?" url="faq/desktop_sync_file_a.html" />
+  <item name="How Can I Know that the Synchronization Client Is Synchronizing Data?" url="faq/desktop_syncing_a.html" />
+  <item name="How Can I Cancel the Synchronization Between the Synchronization Client and the Cloud?" url="faq/desktop_release_sync.html" />
+  <item name="How Can I Pause and Resume Synchronization?" url="faq/desktop_pause_recover_sync.html" />
+  <item name="What Do the Icons Indicate?" url="faq/desktop_file_icon.html" />
+  <item name="Can I Run My StorBox Synchronization Client on Multiple Computers?" url="faq/desktop_multicomputer_oneacc.html" />
+  <item name="Can I Run Multiple StorBox Users on One Computer?" url="faq/desktop_onecomputer_multiacc.html" />
+  <item name="How Can I Delete a File in StorBox?" url="faq/delete_file.html" />
+  <item name="What Can I Do If There Is No Icon on the File or Folder?" url="faq/desktop_icon_dispear.html" />
+  <item name="Can I Perform Selective Syncing When My Disk Space Cannot Fit All Data in StorBox?" url="faq/selected_sync.html" />
+  <item name="What Are the Requirements of StorBox on the System?" url="faq/rundisk_system_require_a.html" />
+</book>
+<book name="Mobile Applications" url="faq/mobile.html" >
+  <item name="How Can I Upload a File from My Mobile Phone to StorBox?" url="faq/mobile_upload_file.html" />
+  <item name="What File Formats Can Be Displayed on My Mobile Phone?" url="faq/mobile_file_type.html" />
+  <item name="Can I Play Videos on My StorBox for Android?" url="faq/mobile_play_film.html" />
+  <item name="How Many Files Can I Store on My Mobile Phone?" url="faq/mobile_store_file.html" />
+  <item name="Why Should I Download Files or Folders in My Mobile Phone?" url="faq/mobile_file_cache.html" />
+  <item name="What Are the Requirements of StorBox on the System?" url="faq/rundisk_system_require_b.html" />
+</book>
+<book name="Security and Privacy" url="faq/security.html" >
+  <item name="How Is Data Security Ensured?" url="faq/webdisk_security.html" />
+  <item name="How Is My Privacy Ensured?" url="faq/webdisk_privacy.html" />
+</book>
+
+</tocdata>

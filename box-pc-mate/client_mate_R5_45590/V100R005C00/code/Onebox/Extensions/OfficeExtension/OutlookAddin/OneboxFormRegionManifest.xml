@@ -1,0 +1,16 @@
+<FormRegion xmlns="http://schemas.microsoft.com/office/outlook/12/formregion.xsd">
+  <name>OneboxFormRegion</name>
+  <title>Onebox</title>
+  <formRegionName>Onebox</formRegionName>
+  <formRegionType>Adjoining</formRegionType>
+  <hidden>false</hidden>
+  <ribbonAccelerator>I</ribbonAccelerator>
+  <showInspectorCompose>true</showInspectorCompose>
+  <showInspectorRead>false</showInspectorRead>
+  <showReadingPane>false</showReadingPane>
+  <addin>OneboxOutlookAddin</addin>
+  <!--<icons>
+    <page>plane.png</page>
+  </icons>
+  <stringOverride file="TravelAgencyRegionCS.%langid%.xml" language="all" />-->
+</FormRegion>

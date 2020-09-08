@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TeamRole">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="TeamRole" type="com.huawei.sharedrive.app.teamspace.domain.TeamRole" />
+    
+    <select id="get" resultClass="TeamRole" parameterClass="String">
+        <![CDATA[
+        select * from teamspace_role  where teamRole=#teamRole#
+        ]]>
+    </select>
+    <select id="getAll" resultClass="TeamRole">
+        <![CDATA[
+        select * from teamspace_role
+        ]]>
+    </select>
+    
+</sqlMap>
+

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window dropenable="true">
+  <VerticalLayout>
+    <VerticalLayout name="fullBackup_haveTask" visible="false">
+      <VerticalLayout  bkcolor="#FFF2F2F2">
+        <Control />
+        <RoundGif height="180" bkimage="..\image\ic_backup_circle_gray.png" foreimage="..\image\ic_backup_circle_gradient.png" roundimage="..\image\ic_backup_circle_refresh.png" roundimageenable="..\image\ic_backup_circle_refresh_gray.png" name="fullBackup_roundprogress"/>
+        <Control height="25"/>
+        <Label height="25" name="fullBackup_state_des" text="Backing Up" font="17" textcolor="#FF000000" align="center"/>
+        <Control height="20"/>
+        <VerticalLayout height="90">
+          <HorizontalLayout name="fullBackup_state_result" height="20" padding="80,0,80,0" visible="false">
+            <Control />
+            <ScaleIconButton name="fullBackup_failed_count" font="3" padding="5,3,5,3" textcolor="#FFFC5043" hottextcolor="#FFFC5043"/>
+            <ScaleIconButton name="fullBackup_failed_des"  font="12" endellipsis="true" align="left" enabled="false" showhtml="true"/>
+            <Control />
+          </HorizontalLayout>
+          <HorizontalLayout  padding="0,20,0,0" height="16">
+            <Control />
+            <ScaleIconButton name="fullBackup_backupCount" font="12" textcolor="#FF000000" showhtml="true" enabled="false"/>
+            <Control />
+          </HorizontalLayout>
+          <Control height="15"/>
+          <HorizontalLayout height="16">
+            <Label name="fullBackup_usedTime" font="12" textcolor="#FF000000" align="center" showhtml="true" enabled="false"/>
+          </HorizontalLayout>
+          <Control />
+        </VerticalLayout>
+        <Control />
+      </VerticalLayout>
+      <VerticalLayout bkcolor="#FFF9F9F9" height="71">
+        <Control height="1" bkcolor="#FFD9D9D9"/>
+        <HorizontalLayout height="70">
+          <Control width="20" />
+          <VerticalLayout>
+            <Control />
+            <HorizontalLayout>
+              <ScaleIconButton text="Cloud Path:" font="12" textcolor="#FF666666"/>
+              <Control width="10" />
+              <ScaleIconButton name="fullBackup_remotePath" font="13" text="My Space/xxx_pc" textcolor="#FF008BE8" hottextcolor="#FF006AB0"/>
+            </HorizontalLayout>
+            <HorizontalLayout>
+              <ScaleIconButton text="Latest Backup:" font="12" textcolor="#FF666666"/>
+              <Control width="10" />
+              <ScaleIconButton name="fullBackup_newTime" font="12" text="2015-01-02 18:18:18" textcolor="#FF000000" disabledtextcolor="#FF000000" enabled="false"/>
+            </HorizontalLayout>
+            <Control />
+          </VerticalLayout>
+          <ScaleIconButton name="fullBackup_close" padding="0,20,0,20" text="Close Backup" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110' corner='3,3,3,3'" textpadding="10,6,10,6" font="0" textcolor="#FF000000"/>
+          <Control width="10" />
+          <ScaleIconButton name="fullBackup_setTask" padding="0,20,0,20" text="Backup Settings" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110' corner='3,3,3,3'" textpadding="10,6,10,6" font="0" textcolor="#FF000000"/>
+          <Control width="20"/>
+        </HorizontalLayout>
+      </VerticalLayout>
+    </VerticalLayout>
+    <VerticalLayout name="fullBackup_noTask" visible="false">
+      <Control />
+      <HorizontalLayout height="180">
+        <Control />
+        <Label bkimage="..\image\ic_null_backup.png" width="180" height="180"/>
+        <Control />
+      </HorizontalLayout>
+      <Control height="25"/>
+      <Label align="center" height="16" text="Local files are automatically uploaded to the cloud, providing continuous protection and preventing data loss." font="12" textcolor="#FF000000"/>
+      <Label align="center" height="16" text="Download and Share Anywhere" font="12" textcolor="#FF000000"/>
+      <Control height="25"/>
+      <HorizontalLayout  height="40">
+        <Control />
+        <ScaleIconButton padding="0,3,0,3" height="30" name="fullBackup_start" text="Back Up Now" normalimage="file='..\image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" textpadding="20,6,20,6" font="0" textcolor="#FFFFFFFF"/>
+        <Control />
+      </HorizontalLayout>
+      <Control />
+      <Control />
+      <Control />
+    </VerticalLayout>
+  </VerticalLayout>
+</Window>

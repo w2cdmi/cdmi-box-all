@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WebIconPcLogo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="WebIconPcLogo"
+		type="pw.cdmi.box.disk.enterpriseindividual.domain.WebIconPcLogo" />
+
+	<resultMap id="resultMap.WebIconPcLogo" class="WebIconPcLogo">
+		<result column="accountId" property="accountId" />
+		<result column="titleCh" property="titleCh" />
+		<result column="titleEn" property="titleEn" />
+		<result column="webLogo" property="webLogo" jdbcType="BLOB" javaType="byte"
+			typeHandler="com.ibatis.sqlmap.engine.type.BlobTypeHandlerCallback" />
+		<result column="pcLogo" property="pcLogo" jdbcType="BLOB" javaType="byte"
+			typeHandler="com.ibatis.sqlmap.engine.type.BlobTypeHandlerCallback" />
+		<result column="icon" property="icon" jdbcType="BLOB" javaType="byte"
+			typeHandler="com.ibatis.sqlmap.engine.type.BlobTypeHandlerCallback" />
+		<result column="webLogoFormatName" property="webLogoFormatName" />
+		<result column="pcLogoFormatName" property="pcLogoFormatName" />
+		<result column="iconFormatName" property="iconFormatName" />
+	</resultMap>
+
+	
+	<insert id="insert" parameterClass="WebIconPcLogo">
+        insert into multi_system_logo(accountId,titleCh,titleEn,webLogo,pcLogo,icon,webLogoFormatName,pcLogoFormatName,iconFormatName) 
+        values 
+        (#accountId#,#titleCh#,#titleEn#,#webLogo#,#pcLogo#,#icon#,#webLogoFormatName#,#pcLogoFormatName#,#iconFormatName#)
+    </insert>
+
+	<update id="update" parameterClass="WebIconPcLogo">
+		update multi_system_logo set
+		titleCh=#titleCh#,titleEn=#titleEn#,titleEn=#titleEn#,webLogo=#webLogo#,icon=#icon#,pcLogo=#pcLogo#,webLogoFormatName=#webLogoFormatName#,pcLogoFormatName=#pcLogoFormatName#,iconFormatName=#iconFormatName#
+		where
+		accountId=#accountId#
+	</update>
+	
+	<select id="get" resultClass="WebIconPcLogo" parameterClass="WebIconPcLogo">
+		select * from multi_system_logo where accountId = #accountId#
+	</select>
+
+	<select id="getAccountId" resultClass="int" parameterClass="WebIconPcLogo">
+		select count(accountId) from multi_system_logo where accountId = #accountId#
+	</select>
+	
+	  <select id="listForUpdate" resultClass="WebIconPcLogo">
+        select * from multi_system_logo for update
+    </select>
+
+</sqlMap>
+

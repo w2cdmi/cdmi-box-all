@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Account">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="Account" type="com.huawei.sharedrive.isystem.account.domain.Account" />
+
+	<resultMap id="resultMap.Account" class="Account">
+        <result column="id" 				property="id" 					javaType="java.lang.Long"/>
+        <result column="appId" 				property="appId" 				javaType="java.lang.String"/>
+        <result column="domain" 			property="name"					javaType="java.lang.String"/>
+        <result column="createdAt" 			property="createdAt" 			javaType="java.util.Date"/>
+        <result column="modifiedAt" 		property="modifiedAt" 			javaType="java.util.Date"/>
+        <result column="status" 			property="status" 				javaType="java.lang.Byte"/>
+        <result column="enterpriseId" 		property="enterpriseId" 		javaType="java.lang.Long"/>
+        <result column="maxSpace" 			property="maxSpace" 			javaType="java.lang.Long"/>
+        <result column="maxMember" 			property="maxMember" 			javaType="java.lang.Integer"/>
+        <result column="maxFiles" 			property="maxFiles" 			javaType="java.lang.Long"/>
+        <result column="maxTeamspace" 		property="maxTeamspaces" 		javaType="java.lang.Integer"/>
+        <result column="filePreviewable" 		property="filePreviewable" 		javaType="java.lang.Boolean"/>
+        <result column="fileScanable" 		property="fileScanable" 		javaType="java.lang.Boolean"/>
+        
+    </resultMap>
+    
+    
+    <select id="getFilterd" parameterClass="map" resultMap="resultMap.Account">
+        select * from account
+        <dynamic prepend="where">
+            <isNotEmpty  prepend="and" property="filter.name">
+            	domain like concat('%',#filter.name#,'%') 
+            </isNotEmpty>
+            <isNotEmpty  prepend="and" property="filter.appId">
+            	appId=#filter.appId#
+            </isNotEmpty>
+             <isNotNull prepend="and" property="filter.startTime">
+        		createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createdAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+        <dynamic prepend="order by">
+        	<isNull property="order">
+        		createdAt desc
+        	</isNull>
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getFilterdCount" parameterClass="map" resultClass="java.lang.Integer">
+        select count(id) from account
+        <dynamic prepend="where">
+            <isNotEmpty  prepend="and" property="filter.name">
+            	domain like concat('%',#filter.name#,'%') 
+            </isNotEmpty>
+            <isNotEmpty  prepend="and" property="filter.appId">
+            	appId=#filter.appId#
+            </isNotEmpty>
+             <isNotNull prepend="and" property="filter.startTime">
+        		createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createdAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+    </select>
+</sqlMap>
+

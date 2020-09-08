@@ -1,0 +1,45 @@
+:host{
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+}
+view{
+    box-sizing: border-box;
+}
+.main{
+    width: 100%;
+    height: 100%;
+    background-color: #FFF;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+.main .tip {
+    padding-top:200rpx;
+    margin: 0 auto;
+    width: 400rpx;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main .tip>image{
+    width: 140rpx;
+    height: 140rpx;
+    margin-bottom: 110rpx;
+}
+.main .tip>text{
+    font-size:35.56rpx;
+    color:rgba(51,51,51,1);
+}
+
+.back-to-index {
+    position: fixed;
+    bottom: 115px;
+    width: 120rpx;
+    height: 120rpx;
+    right: 34rpx;
+    border-radius: 2.5em;
+    overflow: hidden;
+}

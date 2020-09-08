@@ -1,0 +1,43 @@
+<view class='page'>
+    <!-- 文件信息 -->
+    <view class='view-bg file-group'>
+        <image class='img-icon margin-right' src='{{employe.icon}}'></image>
+        <view class='file-info'>
+            <label>{{employe.name}}</label>
+            <text>{{employe.mobile}}</text>
+        </view>
+    </view>
+
+    <!-- body -->
+    <view class='view-bg margin-top'>
+        <view>
+            <!-- crumbs -->
+            <scroll-view scroll-x class='border-bottom' style='height:{{crumbsHeight}}px'>
+                <view class='crumbs font-middle'>
+                    <block wx:for="{{crumbs}}" wx:key="*this">
+                        <view data-crumb='{{item}}' bindtap='clickCrumb' class="{{currentDeptId==item.deptId?'current-dir':''}}">{{item.name}}</view>
+                        <image hidden="{{currentDeptId==item.deptId?true:false}}" src='/disk/images/icon-arrow.png'></image>
+                    </block>
+                </view>
+            </scroll-view>
+
+            <scroll-view class='content' scroll-y style='height:{{listHeight}}px'>
+                <block wx:for="{{departments}}" wx:key="*this">
+                    <view class="file-group border-bottom view-up-down-space" hover-class='button-hover' data-dept-id='{{item.userId}}' data-name='{{item.name}}' bindtap='onClickDepartment'>
+                        <image class="img-icon margin-right" src='/disk/images/department-avatar.png'></image>
+                        <view class='file-info'>
+                            <label>{{item.name}}</label>
+                            <text>部门: {{item.subDepts}}  人员: {{item.subEmployees}}</text>
+                        </view>
+                    </view>
+                </block>
+            </scroll-view>
+        </view>
+    </view>
+
+    <!-- operation -->
+    <view class='view-bg save-to-operation'>
+        <button class="gray-button clear-button-style" bindtap='onCancelMoveEmploye'>取消</button>
+        <button class='clear-button-style' bindtap='onConfirmMove'>确认</button>
+    </view>
+</view>

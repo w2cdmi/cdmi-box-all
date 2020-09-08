@@ -1,0 +1,23 @@
+<!--disk/comments/indextocomments/viewcomments.wxml-->
+<view class='page'>
+    <view class='all_contair' wx:for='{{messages}}' data-item='{{item}}' wx:key="*this" bindtap='jumpSharefile'>
+        <view class='avatar_contair comm_contair'>
+            <image src='{{item.headImageUrl}}' class='avatar_img'></image>
+        </view>
+        <view class='content-style'>
+            <view class='con_contair comment_txt'>
+                <text style='color:#999;font-size:28rpx;'>{{item.showName}}</text>
+                <view class='cotent_txt' wx:if="{{item.text!=''}}">{{item.text}}</view>
+                <view class='cotent_txt' wx:if="{{item.text==''}}"><image src='/disk/images/comments/comments-red.png' class='red-heart'></image></view>
+                <text class='comm_txt' style='color:#999;font-size:26rpx;margin-top:20rpx;width:260rpx;'>{{item.createTime}}</text>
+            </view>
+            <view class='file_info_contair comm_contair'>
+                <image mode='aspectFill' src='{{item.fileImg}}' class='file_image_size'></image>
+                <text class='comm_txt file_title'>{{item.linkName}}</text>
+            </view>
+        </view>
+
+    </view>
+
+    <view catchtap='reuestCommentsMsg' data-type='READED' class='loadMore' wx:if="{{isMoreMessage}}">查看更早消息</view>
+</view>

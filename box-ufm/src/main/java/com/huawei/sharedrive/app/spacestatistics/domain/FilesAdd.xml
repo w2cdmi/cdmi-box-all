@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FilesAdd">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="FilesAdd"
+		type="com.huawei.sharedrive.app.spacestatistics.domain.FilesAdd" />
+
+	<select id="getUserAdd" resultClass="FilesAdd">
+		select ownedBy,MAX(nodeId)
+		as nodeId ,accountId,SUM(size) as size, count(*) as fileCount from
+		files_add GROUP BY ownedBy ;
+	</select>
+
+	<delete id="deleteByMaxNodeId" parameterClass="FilesAdd">
+       <![CDATA[ 
+         delete from files_add where ownedBy=#ownedBy# and nodeId <= #nodeId# ;
+       ]]>
+	</delete>
+
+	<delete id="deleteByUserId" parameterClass="FilesAdd">
+       <![CDATA[ 
+         delete from files_add where ownedBy=#ownedBy# ;
+       ]]>
+	</delete>
+
+	<select id="getAddedAccountInfo" resultClass="FilesAdd">
+		select MAX(ownedBy)
+		as ownedBy,MAX(nodeId) as nodeId ,accountId,SUM(size) as size,
+		count(*) as fileCount from files_add GROUP BY accountId ;
+	</select>
+
+	<insert id="insert" parameterClass="FilesAdd">
+		insert into
+		files_add(ownedBy,accountId,size,nodeId)
+		values(#ownedBy#,#accountId#,#size#,#nodeId#);
+	</insert>
+</sqlMap>    

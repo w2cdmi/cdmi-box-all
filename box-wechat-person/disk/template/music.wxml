@@ -1,0 +1,44 @@
+<template name="music">
+<!-- 音乐播放列表 -->
+<view class='music-list-panel' hidden='{{isShowMusicListPanel?false:true}}'>
+    <view class='list-title'>
+        <text>播放列表（{{musicCount}}首）</text>
+        <image class='clear-all' src='/disk/images/music/clear-all.png' hover-class='button-hover' bindtap='clearMusicList'></image>
+    </view>
+    <view class='music-list'>
+        <scroll-view scroll-y>
+            <block wx:for="{{musics}}" wx:key="*this">
+                <view class='music-info-group'>
+                    <view class='music-name' bindtap='playCurrentMusic' data-music='{{item}}' hover-class='button-hover' style="color:{{item.active?'#ea5036':''}}">{{item.id}}、{{item.fileName}}</view>
+                    <view class='view-delete-image' data-music='{{item}}' bindtap='deleteMusic' hover-class='button-hover'>
+                        <image src='/disk/images/music/delete.png'></image>
+                    </view>
+                </view>
+            </block>
+        </scroll-view>
+    </view>
+    <view class='close-music-list' bindtap='closeMusicList' hover-class='button-hover'>
+        <text>关闭</text>
+    </view>
+</view>
+<!-- 音乐播放器 -->
+<view class='music-panel' hidden='{{isShowMusicPanel?false:true}}'>
+    <view class='music-function-button'>
+        <image src='/disk/images/music/last-music.png' class='last-music' bindtap='lastMusicPlay'></image>
+        <image src="/disk/images/music/{{playOrStopButton?playOrStopButton:'play'}}.png" class='music-play' bindtap='playOrStopMusic'></image>
+        <image src='/disk/images/music/next-music.png' class='next-music' bindtap='nextMusicPlay'></image>
+    </view>
+    <view class='music-info' style='width:{{musicInfoWidth}}px'>
+        <view class='font-middle music-file-name musicName-text'>{{music.fileName}}</view>
+        <view class='music-play-info'>
+            <view style='width:{{progressWidth}}px'>
+                <progress percent="{{progress}}" stroke-width="4" activeColor='#ea5036' backgroundColor='#CDCDCD' />
+            </view>
+            <view class='music-time'>{{currentTime}} / {{duration}}</view>
+        </view>
+    </view>
+    <view hover-class='button-hover' bindtap='openMusicList'>
+        <image class='list-button' src='/disk/images/music/list-button.png'></image>
+    </view>
+</view>
+</template>

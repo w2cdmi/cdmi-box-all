@@ -1,0 +1,39 @@
+<!--disk/enterprise/selectEmployee/selectEmployee.wxml-->
+<!-- <text>disk/enterprise/selectEmployee/selectEmployee.wxml</text> -->
+
+<view class="page">
+    <view class='view-bg serach-bg'>
+        <view class='search-input-bg'>
+            <view class='view-serach-icon'>
+                <image class='serach-icon' src="/disk/images/icon/enterprise/serach-icon.png"></image>
+            </view>
+            <view>
+                <input class="serach-input" placeholder='请输入员工名称' bindconfirm="searchEmployee"></input>
+            </view>
+        </view>
+        <view class='serach-department-view' bindtap='showSelectDepartment'>
+            <view class='company-name' bindtap='back'>取消</view>
+        </view>
+    </view>
+
+    <view class="department-group border-bottom" wx:if="{{isShow}}" wx:for="{{employee}}" wx:key="*this" data-item='{{item}}' data-index='{{index}}' bindtap='setManagerIndex'>
+        <view class='department-info' data-index="{{index}}">
+            <view class='view-select-icon'>
+                <image class="img-icon margin-right" src='{{managerIndex === index ? "/disk/images/icon/enterprise/selected-icon.png" : "/disk/images/icon/enterprise/no-select-icon.png"}}'></image>
+            </view>
+            <view class='view-department-icon'>
+                 <image class="department-icon margin-right" mode='aspectFit' src='{{item.avatar}}'></image> 
+                <!-- <image class="department-icon margin-right" mode='aspectFit' src='/disk/images/department-avatar.png'></image> -->
+            </view>
+            <view>
+                <view>{{item.name}}</view>
+                <text class='department-description' decode='{{true}}'>所属部门&nbsp;&nbsp;|&nbsp;&nbsp;{{item.departmentName}}</text>
+            </view>
+        </view>
+    </view>
+
+
+    <button class='sure-button' bindtap='sureSelectEmploye' wx:if="{{isShow}}">确认</button>
+
+
+</view>

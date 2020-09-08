@@ -1,0 +1,31 @@
+.icon-layout{
+    display:flex;
+    justify-content:center;
+    padding-top:120rpx;
+}
+.icon-view{
+    width:90rpx;
+}
+.enterprise-icon{
+    width:90rpx;
+    height:90rpx;
+}
+.join-enterprise{
+    margin-top:10rpx;
+    text-align: center;
+}
+.join-font{
+    text-align:center;
+    margin-top:16rpx;
+}
+.back-to-index {
+    position: fixed;
+    bottom: 115px;
+    width: 120rpx;
+    height: 120rpx;
+    right: 34rpx;
+    border-radius: 2.5em;
+    overflow: hidden;
+}
+
+@import "../registered/registered.wxss"

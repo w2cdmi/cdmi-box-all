@@ -1,0 +1,502 @@
+﻿a {
+	text-decoration: none;
+	color: #000000;
+}
+
+.box {
+	display: flex;
+	flex-direction: column;
+	position: fixed;
+	top: 0;
+	bottom: 3rem;
+	overflow-y: auto;
+	height: auto;
+	overflow-x: hidden;
+	width: 100%;
+	background: #FFFFFF;
+}
+
+.icon-menu .icon-pull-dowm {
+	line-height: 1.7rem;
+	height: 1.7rem;
+	float: left;
+	color: skyblue;
+	font-size: 0.6rem;
+}
+
+.icon-pull-dowm .icon-bottom {
+	display: block;
+}
+
+.icon-pull-dowm .icon-top {
+	display: none;
+}
+
+label {
+	font-size: 0.6rem;
+}
+
+select {
+	outline: none;
+	border: none;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	font-size: 0.6rem;
+}
+
+.icon-pull-dowm div {
+	color: skyblue;
+	font-weight: bold;
+}
+
+.add-button {
+	float: left;
+	height: 1.7rem;
+	margin-left: 1rem;
+	width: 2rem;
+	background: url(/static/skins/default/img/new-folder.png) center center no-repeat;
+	background-size: 0.8rem 0.8rem;
+}
+
+.space-row {
+	width: 100%;
+	height: 3.4rem;
+	font-size: 0.6rem;
+	/* border-bottom: 0.025rem solid; */
+}
+
+.space-row .space-row-son {
+	height: 3.4rem;
+	position: relative;
+	float: left;
+	width: 100%;
+	border-bottom: 0.025rem solid #E4E1E1;
+}
+
+.line-scroll-wrapper {
+	border-bottom: 0.025rem solid #E4E1E1;
+}
+
+.team-icon {
+	float: left;
+	margin-top: 0.5rem;
+	margin-left: 1rem;
+	margin-right: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.space-row .space-row-son img {
+	width: 2.3rem;
+	height: 2.3rem;
+}
+
+.team-info {
+	float: left;
+	position: absolute;
+	left: 3.5rem;
+	right: 1rem;
+	margin-top: 0.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.team-name span {
+	font-size: 0.75rem;
+	display: block;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.space-row .space-row-son .team-icon {
+	/* width: 95%; */
+	font-weight: normal;
+}
+
+.space-row .space-row-son .team-icon div {
+	float: left;
+	height: 1rem;
+	border: 0.05rem solid #FFFFFF;
+	margin-top: 0.76rem;
+	font-size: 0.75rem;
+}
+
+.space-row .space-row-son .team-icon span {
+	float: left;
+	/* border: 0.05rem solid #FFFFFF; */
+	float: left;
+	line-height: 0.25rem;
+	margin-top: 1.05rem;
+	font-size: 0.25rem;
+}
+
+.space-row .space-row-son i {
+	float: left;
+	line-height: 1.3rem;
+	color: rgb(153, 153, 153);
+	font-style: normal;
+	font-size: 0.6rem;
+	color: #999999;
+}
+
+.space-row .space-row-son .space-list p {
+	float: right;
+	color: rgb(153, 153, 153);
+	line-height: 1.3rem;
+}
+
+.space-row .space-row-son .space-list p span {
+	margin-left: 0.2rem;
+}
+
+/*.staff-picker,
+.address-list-picker {
+	background: rgba(255, 255, 255, 1);
+	padding-top: 0.6rem;
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	display: none;
+	font-size: 0.6rem;
+	color: #333333;
+}*/
+
+.handover-space-return {
+	width: 100%;
+	height: 1.7rem;
+	border-bottom: 0.05rem solid #E4E1E1;
+}
+
+.handover-space-return .space-return-img {
+	float: left;
+	width: 0.3rem;
+	height: 0.5rem;
+	margin-left: 1rem;
+	margin-top: 0.4rem;
+}
+
+.share-address-content {
+	width: 100%;
+	display: inline-block;
+	border-bottom: 0.05rem solid #E4E1E1;
+}
+
+.handover-space-return .space-return-img img {
+	width: 0.3rem;
+	height: 0.5rem;
+}
+
+.handover-space-return .space-return-text {
+	float: left;
+	line-height: 1.7rem;
+	margin-left: 0.5rem;
+}
+
+/*.staff-picker>div:nth-child(1) {
+	text-align: center;
+	height: 1.7rem;
+	line-height: 1.7rem;
+	border-bottom: 0.05rem solid #E4E1E1;
+}*/
+.address-list-picker-tail {
+	width: 92%;
+	float: left;
+	margin-left: 4%;
+	height: 2.2rem;
+	line-height: 2.2rem;
+	text-align: center;
+	font-size: 0.75rem;
+	color: #FFFFFF;
+	border-radius: 0.35rem;
+	margin-top: 1rem;
+	background: #FC6156;
+}
+/*.add-leaguer-nav li i {
+	float: left;
+	margin-top: 0.1rem;
+	margin-left: 1rem;
+	width: 2rem;
+	height: 2rem;
+}*/
+
+.add-leaguer-nav li i img {
+	width: 2rem;
+	height: 2rem;
+}
+
+/*.add-leaguer-nav li span {
+	float: left;
+	line-height: 2.2rem;
+	margin-left: 0.5rem;
+}*/
+
+/*.add-leaguer-nav li p {
+	float: right;
+	margin-right: 1rem;
+}*/
+
+.add-leaguer-nav li p img {
+	width: 0.5rem;
+	height: 1rem;
+}
+
+/*.selectedMemeber-father {
+	width: 100%;
+	height: 5.7rem;
+	border-bottom: 0.05rem solid #E4E1E1;
+	position: relative;
+}*/
+/*#selectedMemeber {
+	height: 5.7rem;
+	width: 10rem;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}	*/
+.staff-picker-prompt{
+	text-align: center;
+	font-size: 0.9rem;
+	color: #333333;
+}
+#selectedMemeber{
+	position: relative;
+	margin-top: 0.8rem;
+	display: inline-block;
+	width: 100%;
+}
+.staff-picker-remarks{
+	height: 1.2rem;
+	width: 100%;
+	position: relative;
+	margin-top: 2.85rem;
+}
+.staff-picker-remarks-s{
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	height: 0.05rem;
+	width: 40%;
+	background: #E4E1E1;
+}
+.staff-picker-remarks-left{
+	left: 4%;
+}
+.staff-picker-remarks-middle{
+	position: absolute;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	font-size: 0.6rem;
+}
+.staff-picker-remarks-brother{
+	height: 2.4rem;
+	width: 100%;
+}
+.staff-picker-remarks-brother p{
+	height: 1.2rem;
+	text-align: center;
+	width: 100%;
+	font-size: 0.6rem;
+	color: #666666;
+	line-height: 1.2rem;
+}
+.staff-picker-remarks-right{
+	right: 4%;
+}
+
+#selectedMemeber p {
+	width: 3.5rem;
+	height: 3.5rem;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.re-seletion-father{
+	height: 3.5rem;
+	width: 100%;
+	position: relative;
+}
+#re-seletion{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	height: 2.2rem;
+	width: 5.9rem;
+	font-size: 0.6rem;
+	color: #666666;
+	border-radius: 0.2rem;
+	background: #FFFFFF;
+	border: 0.05rem solid #666666;
+}
+#selectedMemeber span {
+	float: left;
+	width: 100%;
+	height: 1.4rem;
+	line-height: 1.4rem;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-top: 3.5rem;
+	font-size: 0.75rem;
+}
+
+#selectedMemeber p img {
+	width: 3.5rem;
+	height: 3.5rem;
+}
+
+#searchClose {
+	float: left;
+	width: 92%;
+	height: 2.2rem;
+	line-height: 2.2rem;
+	margin-left: 4%;
+	margin-top: 0.6rem;
+	text-align: center;
+	color: #666;
+	border-radius: 0.2rem;
+	background: #f5f5f5;
+	margin-bottom: 1rem;
+	font-size: 0.75rem;
+	border: 1px solid #ea5036;
+}
+
+.modal-content {
+	display: inline-block;
+	background: #FFFFFF;
+	width: 92%;
+	margin-left: 4%;
+	border-radius: 0.35rem;
+	margin-top: 20%;
+}
+
+#searchBar {
+	margin-top: 1rem;
+}
+
+.staff-picker-member-item div:nth-child(1) {
+	text-align: center;
+}
+
+.staff-picker-member-operation div {
+	background: #ea5036;
+	border-radius: 0.2rem;
+	color: #FFFFFF;
+	height: 2.2rem;
+	font-size: 0.75rem;
+	text-align: center;
+	width: 92%;
+	margin-left: 4%;
+	line-height: 2.2rem;
+	margin-top: 1rem;
+}
+
+.staff-picker-member-row span {
+	display: block;
+	padding-left: 4%;
+	padding-right: 4%;
+	height: 2rem;
+	line-height: 2rem;
+	font-size: 0.7rem;
+	color: #333333;
+}
+
+.staff-picker-member-row i {
+	display: block;
+	padding-left: 4%;
+	padding-right: 4%;
+	height: 2rem;
+	line-height: 2rem;
+	font-style: normal;
+	font-size: 0.6rem;
+	color: #333333;
+	font-size: 0.75rem;
+}
+
+.staff-picker-member-row div:nth-child(1) {
+	text-align: center;
+	width: 92%;
+	margin-left: 4%;
+	font-size: 0.75rem;
+}
+
+.weui-actionsheet__cell {
+	color: #333333;
+}
+
+.primary {
+	color: #333333;
+}
+.weui-dialog .weui-dialog__btn.default{
+	color: #666666;
+}
+.staff-picker-member-row {
+	padding-top: 1rem;
+}
+.weui-dialog__title{
+	font-size: 0.75rem;
+	color: #333333;
+}
+.weui-dialog__bd{
+	font-size: 0.6rem;
+	color: #999999;
+}
+.space-list-view>i {
+	width: 100%;
+	height: 10rem;
+	font-style: normal;
+	font-size: 0.75rem;
+	color: #999999;
+	line-height: 30rem;
+	text-align: center;
+	display: inline-block;
+}
+.not-space{
+	display: none;
+	width: 100%;
+	position: fixed;
+	top: 1.75rem;
+	bottom: 2.75rem;
+    background: url(../../img/join-space.png) center 8.25rem / 8rem 7rem no-repeat;
+}
+
+/*样式覆盖*/
+.recent-detail-name{
+	width: 13rem;
+}
+.index-recent-middle .recent-detail-name p{
+	line-height: 1.45rem;
+}
+.team-img img{
+	width: 2.3rem;
+	height: 2.3rem;
+}
+.weui-actionsheet__title .weui-actionsheet__title-text, .weui-actionsheet__title div {
+	display: inherit;
+	margin-left: 2.6rem;
+}
+
+/*新建空间样式*/
+.add-new-space{
+	width: 94%;
+	position: fixed;
+	bottom: 0.5rem;
+	left: 3%;
+	text-align: center;
+	background: #EA5036;
+	border-radius: 0.25rem;
+}
+.add-new-space-title{
+	font-size: 0.75rem;
+	color: #fff;
+	padding: 0.5rem 0;
+}

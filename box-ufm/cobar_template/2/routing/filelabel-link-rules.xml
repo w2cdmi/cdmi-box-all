@@ -1,0 +1,74 @@
+<rules>
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.insertFilelabelLink</sqlmap>
+        <shardingExpression>ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.insertFilelabelLink</sqlmap>
+        <shardingExpression>ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.queryLabelidsByInode</sqlmap>
+        <shardingExpression>ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.queryLabelidsByInode</sqlmap>
+        <shardingExpression>ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.unbindAllLabelForInode</sqlmap>
+        <shardingExpression>ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.unbindAllLabelForInode</sqlmap>
+        <shardingExpression>ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    
+     <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.unbindFileLabelForInode</sqlmap>
+        <shardingExpression>ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.unbindFileLabelForInode</sqlmap>
+        <shardingExpression>ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.queryLabelCountByInode</sqlmap>
+        <shardingExpression>ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.queryLabelCountByInode</sqlmap>
+        <shardingExpression>ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    
+    
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.queryMaxFilelabelLinkId</sqlmap>
+        <shardingExpression>ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>com.huawei.sharedrive.app.filelabel.queryMaxFilelabelLinkId</sqlmap>
+        <shardingExpression>ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

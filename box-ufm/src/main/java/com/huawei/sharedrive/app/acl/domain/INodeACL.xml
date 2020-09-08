@@ -1,0 +1,223 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="INodeACL">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="INodeACL" type="com.huawei.sharedrive.app.acl.domain.INodeACL" />
+	
+	<insert id="insert" parameterClass="INodeACL">
+        <![CDATA[
+        insert into inode_acl_$tableSuffix$(id,ownedBy,iNodeId,iNodePid,accessUserId,userType,resourceRole,createdBy,createdAt,modifiedBy,modifiedAt) 
+        values 
+        (#id#,#ownedBy#,#iNodeId#,#iNodePid#,#accessUserId#,#userType#,#resourceRole#,#createdBy#,#createdAt#,#modifiedBy#,#modifiedAt#)
+        ]]>
+	</insert>
+
+	<delete id="delete" parameterClass="INodeACL">
+        <![CDATA[
+        delete from  inode_acl_$tableSuffix$ where ownedBy=#ownedBy# and id=#id#
+        ]]>
+	</delete>
+
+	<delete id="deleteSpaceAll" parameterClass="INodeACL">
+        <![CDATA[
+        delete from  inode_acl_$tableSuffix$ where ownedBy=#ownedBy# 
+        ]]>
+	</delete>
+	
+    <delete id="deleteByUser" parameterClass="INodeACL">
+        <![CDATA[
+        delete from  inode_acl_$tableSuffix$ where ownedBy=#ownedBy# and accessUserId=#accessUserId# and userType=#userType#
+        ]]>
+	</delete>
+
+    <delete id="deleteByResource" parameterClass="INodeACL">
+        <![CDATA[
+        delete from  inode_acl_$tableSuffix$ where ownedBy=#ownedBy# and iNodeId=#iNodeId#
+        ]]>
+	</delete>
+	
+	<delete id="deleteByResourceAndUser" parameterClass="INodeACL">
+        <![CDATA[
+        delete from  inode_acl_$tableSuffix$ where ownedBy=#ownedBy# and iNodeId=#iNodeId# and accessUserId=#accessUserId# and userType=#userType# 
+        ]]>
+	</delete>
+
+	<select id="get" resultClass="INodeACL" parameterClass="INodeACL">
+        <![CDATA[
+        select * from inode_acl_$tableSuffix$   where  ownedBy=#ownedBy# and id=#id#
+        ]]>
+	</select>
+
+    <select id="getMaxINodeACLId" resultClass="Long" parameterClass="INodeACL">
+        <![CDATA[
+        select max(id) from inode_acl_$tableSuffix$ where ownedBy=#ownedBy#
+        ]]>
+    </select>
+    
+	<select id="getByResourceAndUser" resultClass="INodeACL"
+		parameterClass="INodeACL">
+        <![CDATA[
+        select * from inode_acl_$tableSuffix$   where  ownedBy=#ownedBy# and iNodeId=#iNodeId# and accessUserId=#accessUserId# and userType=#userType#
+        ]]>
+	</select>
+	
+	
+	<select id="getUserAllINodeACLOfCloudUserID" resultClass="INodeACL"
+		parameterClass="INodeACL">
+        <![CDATA[
+        select * from inode_acl_$tableSuffix$   where  ownedBy=#ownedBy# and accessUserId=#accessUserId# and userType=#userType#
+        ]]>
+	</select>
+	
+		
+	<select id="getAllByOwnedBy" resultClass="INodeACL"
+		parameterClass="INodeACL">
+        <![CDATA[
+        select * from inode_acl_$tableSuffix$   where  ownedBy=#ownedBy#  and userType=#userType#
+        ]]>
+	</select>
+
+	<select id="getAllCount" resultClass="Long"  parameterClass="INodeACL">
+        <![CDATA[
+        select count(id) from inode_acl_$tableSuffix$   where  ownedBy=#ownedBy#
+        ]]>
+	</select>
+	
+	<select id="getAll" resultClass="INodeACL"  parameterClass="map">
+        select * from inode_acl_$filter.tableSuffix$ 
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                $limit.offset$,$limit.length$
+            </isNotNull>
+        </dynamic>
+
+	</select>
+
+	<select id="getAllCountNoLink" resultClass="Long"  parameterClass="INodeACL">
+        <![CDATA[
+        select count(id) from inode_acl_$tableSuffix$   where  ownedBy=#ownedBy# and userType!=#userType#
+        ]]>
+	</select>
+	
+	<select id="getAllNoLink" resultClass="INodeACL"  parameterClass="map">
+        select * from inode_acl_$filter.tableSuffix$ 
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.userType">
+                    userType != #filter.userType#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                $limit.offset$,$limit.length$
+            </isNotNull>
+        </dynamic>
+
+	</select>
+	
+	<select id="getByResourceCount" resultClass="Long"  parameterClass="INodeACL">
+        <![CDATA[
+        select count(id) from inode_acl_$tableSuffix$   where  ownedBy=#ownedBy# and iNodeId=#iNodeId#
+        ]]>
+	</select>
+	
+	<select id="getByResource" resultClass="INodeACL"  parameterClass="map">
+        select * from inode_acl_$filter.tableSuffix$ 
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.iNodeId">
+                    iNodeId = #filter.iNodeId#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                $limit.offset$,$limit.length$
+            </isNotNull>
+        </dynamic>
+
+	</select>
+
+	<select id="getByResourceCountNoLink" resultClass="Long"  parameterClass="INodeACL">
+        <![CDATA[
+        select count(id) from inode_acl_$tableSuffix$   where  ownedBy=#ownedBy# and iNodeId=#iNodeId# and userType!=#userType#
+        ]]>
+	</select>
+	
+	<select id="getByResourceNoLink" resultClass="INodeACL"  parameterClass="map">
+        select * from inode_acl_$filter.tableSuffix$ 
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.iNodeId">
+                    iNodeId = #filter.iNodeId#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.userType">
+                    userType != #filter.userType# and  userType!='secret'
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                $limit.offset$,$limit.length$
+            </isNotNull>
+        </dynamic>
+
+	</select>
+	
+	<update id="updateRole" parameterClass="INodeACL">
+        <![CDATA[
+        update inode_acl_$tableSuffix$ set resourceRole=#resourceRole#,modifiedBy=#modifiedBy#,modifiedAt=#modifiedAt# where id=#id# and ownedBy=#ownedBy#
+        ]]>
+	</update>
+
+	<update id="updateRoleByResourceAndUser" parameterClass="INodeACL">
+        <![CDATA[
+        update inode_acl_$tableSuffix$ set resourceRole=#resourceRole#,modifiedBy=#modifiedBy#,modifiedAt=#modifiedAt#  where  ownedBy=#ownedBy# and iNodeId=#iNodeId# and accessUserId=#accessUserId# and userType=#userType#
+        ]]>
+	</update>
+
+
+</sqlMap>
+

@@ -1,0 +1,4 @@
+@@normal
+{  
+    "newOwnerId":#userId#
+}

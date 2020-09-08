@@ -1,0 +1,11 @@
+@@normal
+ { 
+	"groupBy":"all",
+	"regionId":2,
+	"appId":"OneBox"
+}
+
+@@groupBy
+ { 
+	"groupBy":"region"
+}

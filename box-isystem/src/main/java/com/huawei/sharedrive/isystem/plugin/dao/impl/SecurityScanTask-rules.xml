@@ -1,0 +1,7 @@
+<rules>
+    <rule>
+        <namespace>SecurityScanTask</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+</rules>

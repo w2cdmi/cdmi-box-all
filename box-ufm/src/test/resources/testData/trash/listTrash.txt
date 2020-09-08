@@ -1,0 +1,148 @@
+@@allParameter
+{ 
+    "limit":5, 
+    "offset":0,
+    "order": 
+    [ 
+        { 
+            "field":"name", 
+            "direction":"desc"
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height":32, 
+            "width":32 
+        } 
+    ] 
+}
+
+@@onlyOffset
+{
+	"offset":0
+}
+
+@@invalidOffset
+{
+	"offset":-1
+}
+
+@@onlyLimit
+{
+	"limit":10
+}
+
+@@invalidLimit
+{
+	"limit":0
+}
+
+@onlyOrder
+{ 
+    "order": 
+    [ 
+        { 
+            "field":"name", 
+            "direction":"desc"
+        },
+        { 
+            "field":"size", 
+            "direction":"desc"
+        },
+        { 
+            "field":"type", 
+            "direction":"desc"
+        }  
+    ]
+}
+
+@@invalidOrderField
+{ 
+    "order": 
+    [ 
+        { 
+            "field":"invalidOrderFiled", 
+            "direction":"desc"
+        }
+    ]
+}
+
+@@invalidOrderDirection
+{
+	"order": 
+    [ 
+        { 
+            "field":"name", 
+            "direction":"invalidDirection"
+        } 
+    ]
+}
+
+@@onlyThumbnail
+{ 
+    "thumbnail": 
+    [ 
+        { 
+            "height":32, 
+            "width":32 
+        } 
+    ] 
+}
+
+@@thumbnailNumOverLimit
+{ 
+    "thumbnail": 
+    [ 
+        { 
+            "height":10, 
+            "width":10 
+        },
+        { 
+            "height":20, 
+            "width":20 
+        },
+        { 
+            "height":30, 
+            "width":30 
+        },
+        { 
+            "height":40, 
+            "width":40 
+        },
+        { 
+            "height":50, 
+            "width":50
+        },
+        { 
+            "height":60, 
+            "width":60
+        }
+    ] 
+}
+
+@@invalidThumbnailWidth
+{ 
+    "thumbnail": 
+    [ 
+        { 
+            "height":32, 
+            "width":0 
+        } 
+    ] 
+}
+
+@@invalidThumbnailHeigth
+{ 
+    "thumbnail": 
+    [ 
+        { 
+            "height":0, 
+            "width":32 
+        } 
+    ] 
+}
+
+@@noSuchFolder
+999999
+

@@ -1,0 +1,48 @@
+/*
+ * Copyright Notice:
+ *      Copyright  1998-2009, Huawei Technologies Co., Ltd.  ALL Rights Reserved.
+ *
+ *      Warning: This computer software sourcecode is protected by copyright law
+ *      and international treaties. Unauthorized reproduction or distribution
+ *      of this sourcecode, or any portion of it, may result in severe civil and
+ *      criminal penalties, and will be prosecuted to the maximum extent
+ *      possible under the law.
+ */
+package com.huawei.sharedrive.isystem.adminlog.domain;
+
+import java.sql.SQLException;
+
+import com.ibatis.sqlmap.client.extensions.ParameterSetter;
+import com.ibatis.sqlmap.client.extensions.ResultGetter;
+import com.ibatis.sqlmap.client.extensions.TypeHandlerCallback;
+
+/**
+ * 
+ * @author s90006125
+ * 
+ */
+public class OperateTypeHandler implements TypeHandlerCallback
+{
+    @Override
+    public Object valueOf(String value)
+    {
+        int val = -1;
+        val = Integer.parseInt(value);
+        return OperateType.parseType(val);
+    }
+    
+    @Override
+    public Object getResult(ResultGetter getter) throws SQLException
+    {
+        return valueOf(getter.getString());
+    }
+    
+    @Override
+    public void setParameter(ParameterSetter setter, Object parameter) throws SQLException
+    {
+        if (null != parameter)
+        {
+            setter.setInt(((OperateType) parameter).getCode());
+        }
+    }
+}

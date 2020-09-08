@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WxUser">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="WxUser" type="pw.cdmi.box.disk.weixin.domain.WxUser" />
+
+    <insert id="insert" parameterClass="WxUser">
+        <![CDATA[
+        insert into wx_user(unionId,openId,nickName,gender,mobile,email,country,province,city,`language`,avatarUrl)
+        values (#unionId#,#openId#,#nickName#,#gender#,#mobile#,#email#,#country#,#province#,#city#,#language#,#avatarUrl#)
+        ]]>
+	</insert>
+
+    <update id="update" parameterClass="WxUser">
+        UPDATE wx_user SET
+        `nickName`=#nickName#,
+        gender=#gender#,
+        mobile=#mobile#,
+        email=#email#,
+        country=#country#,
+        province=#province#,
+        city=#city#,
+        `language`=#language#,
+        avatarUrl=#avatarUrl#
+        WHERE unionId=#unionId#
+    </update>
+
+    <delete id="deleteByUnionId" parameterClass="string">
+        <![CDATA[
+        DELETE FROM wx_user WHERE unionId=#unionId#
+        ]]>
+    </delete>
+
+    <select id="getByOpenId" parameterClass="string" resultClass="WxUser">
+        <![CDATA[
+    	select * from wx_user where openId=#openId#
+        ]]>
+    </select>
+
+    <select id="getByUnionId" parameterClass="string" resultClass="WxUser">
+        <![CDATA[
+    	select * from wx_user where unionId=#unionId#
+        ]]>
+    </select>
+     <select id="getByUin" parameterClass="string" resultClass="WxUser">
+        <![CDATA[
+    	select * from wx_user where uin=#uin#
+        ]]>
+    </select>
+    
+    <select id="getByCloudUserId" parameterClass="long" resultClass="WxUser">
+        <![CDATA[
+    	select * from wx_user where cloudUserId=#cloudUserId#
+        ]]>
+    </select>
+    
+    <update id="updateUinByUnionId" parameterClass="map">
+        UPDATE wx_user SET `uin`=#uin#  WHERE unionId=#unionId#
+    </update>
+    
+</sqlMap>
+

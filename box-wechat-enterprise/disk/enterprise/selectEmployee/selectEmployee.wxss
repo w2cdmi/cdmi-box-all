@@ -1,0 +1,94 @@
+/* disk/enterprise/selectEmployee/selectEmployee.wxss */
+
+.serach-bg {
+    background: #f5f5f5;
+    display: flex;
+}
+
+.view-serach-icon {
+    height: 38rpx;
+}
+
+.search-input-bg {
+    width:570rpx;
+    background: #fff;
+    border-radius: 1.5em;
+    height: 70rpx;
+    display: flex;
+    align-items: center;
+    padding-left: 32rpx;
+}
+
+.serach-icon {
+    width: 38rpx;
+    height: 38rpx;
+}
+
+.show-serach {
+    width: 20rpx;
+    height: 20rpx;
+    margin-left:6rpx;
+}
+.serach-input{
+    width:530rpx;
+    margin-left:14rpx;
+}
+.serach-department-view{
+    display:flex;
+    align-items:center;
+    margin-left:14rpx;
+}
+
+
+.company-name{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width:140rpx;
+    color:#1D97FF;
+    font-weight:light;
+}
+
+/* 搜索出来的人员 */
+.border-bottom{
+    border-bottom: 1px solid #f5f5f5;
+}
+.department-group{
+    padding: 20rpx 30rpx;
+    display: flex;
+    align-items:center;
+    background:#fff;
+}
+.department-info{
+    display:flex;
+    align-items:center;
+}
+.view-select-icon{
+    height:40rpx;
+}
+.img-icon{
+    height:40rpx;
+    width:40rpx;
+}
+.margin-right{
+    margin-right:20rpx;
+}
+.view-department-icon{
+    height:80rpx;
+}
+.department-icon{
+    width:80rpx;
+    height:80rpx;
+    border-radius:50%;
+}
+.department-description{
+    font-size:26rpx;
+    color:#666;
+}
+.sure-button{
+  background-color: #EA5036;
+  color: #fff;
+  width: 690rpx;
+  height: 88rpx;
+  font-size: 16px;
+}

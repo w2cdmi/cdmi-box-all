@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="com.huawei.sharedrive.app.filelabel">
+	<typeAlias alias="FileLabel" type="com.huawei.sharedrive.app.filelabel.domain.FileLabel" />
+	<typeAlias alias="FileLabelQueryCondition" type="com.huawei.sharedrive.app.filelabel.dto.FileLabelQueryCondition" />
+	<typeAlias alias="FileLabelLink" type="com.huawei.sharedrive.app.filelabel.domain.FileLabelLink" />
+	<typeAlias alias="BaseFileLabelInfo" type="com.huawei.sharedrive.app.filelabel.domain.BaseFileLabelInfo" />
+   	
+   	<resultMap id="resuleMap.fileLabel" class="FileLabel">
+		<result column="id"               property="id"            javaType="java.lang.Long" />
+		<result column="labelName"        property="labelName"     javaType="java.lang.String" />
+	</resultMap>
+	
+	<!-- element -->
+	<sql id="fl.selector">
+		select 
+		<dynamic>
+			<isNotEmpty property="fields">
+				$fields$
+			</isNotEmpty>
+			
+			<isEmpty>
+				id, labelName, enterpriseId, createBy, createTime
+			</isEmpty>
+		</dynamic>
+		
+		from filelabel
+	</sql>
+	
+	<sql id="fl.where">
+		<dynamic prepend=" where ">
+			<isNotNull prepend=" and " property="id">
+				id = #id#
+			</isNotNull>
+			
+			<isNotNull prepend=" and " property="enterpriseId">
+				id = #enterpriseId#
+			</isNotNull>
+			
+			<isNotNull prepend=" and " property="labelName">
+				<isEqual property="isNameLike" compareValue="false">
+					labelName = #labelName#
+				</isEqual>
+				
+				<isEqual property="isNameLike" compareValue="true">
+					<![CDATA[
+						labelName like '%$labelName$%'
+					]]>
+				</isEqual>
+			</isNotNull>
+		</dynamic>
+	</sql>
+	
+	<sql id="fl.order">
+		<dynamic prepend=" order by ">
+			<isNotEmpty property="orderFields">
+				<iterate property="orderFields" conjunction="," open="" close="">
+					$orderFields[].filedName$ $orderFields[].orderType$
+				</iterate>
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	<sql id="fl.limit">
+		<dynamic prepend=" limit ">
+			<isNotEmpty property="startRow">
+				#startRow#, #pageSize#
+			</isNotEmpty>
+		</dynamic>
+	</sql>
+	
+	<!-- 新增文件标签 -->
+	<insert id = "insertFilelabel" parameterClass = "FileLabel">
+		<![CDATA[
+			insert into filelabel(id, labelName, enterpriseId, createBy, createTime, bindedTimes, labelType )
+				values
+			(#id#, #labelName#, #enterpriseId#, #createBy#, #createTime#, #bindedTimes#, #labelType#)
+		]]>
+	</insert>
+
+	<!-- 更新文件标签的绑定次数 
+	<update id = "updateBindTimes" parameterClass="map">
+		 <![CDATA[
+		 	update filelabel set bindedTimes = bindedTimes + #increTimes# where id = #ids#
+		 ]]>
+	</update>
+	-->
+	<!-- 更新文件标签的绑定次数 -->
+	<update id = "updateBindTimes" parameterClass="map">
+		 <![CDATA[
+		 	update filelabel set bindedTimes = bindedTimes + #increTimes# where enterpriseId = #enterpriseId# and id in 
+		 ]]>
+		 
+		 <iterate conjunction="," open="(" close=")" property="keys">
+		 	<![CDATA[
+				#keys[]#
+			]]>
+		 </iterate>
+	</update>
+		
+	<!-- 删除文件标签 -->
+	<delete id = "deleteFilelabelByIds" parameterClass="map">
+		 <![CDATA[
+		 	delete from filelabel where id in
+		 ]]>
+		 
+		 <iterate conjunction="," open="(" close=")" property="keys">
+		 	<![CDATA[
+				#keys[]#
+			]]>
+		 </iterate>
+	</delete>
+	
+	<!-- 删除文件标签绑定次数小于1的标签信息 -->
+	<delete id = "deleteFilelabelsWithBindtimesLessThanOne">
+		 <![CDATA[
+		 	delete from filelabel where bindedTimes < 1
+		 ]]>
+	</delete>
+	
+	<!-- 根据主键查询文件标签 -->
+	<select id = "queryByPrimaryKey" parameterClass = "FileLabel" resultClass = "FileLabel">
+		<![CDATA[
+			select * from filelabel where id = #id#
+		]]> 
+	</select>
+	
+	<!-- 根据企业查询文件标签信息 -->
+	<select id = "queryFilelabelByEnterprise" parameterClass = "FileLabelQueryCondition" resultClass = "BaseFileLabelInfo">
+		select $fields$ from filelabel where enterpriseId = #enterpriseId#
+			
+			<dynamic prepend=" and ">
+				<isNotEmpty property="labelName">
+					labelName like '%$labelName$%'
+				</isNotEmpty>
+			</dynamic>
+		
+			 <dynamic prepend=" order by ">
+				id asc 
+			</dynamic>
+			
+			<dynamic prepend=" limit ">
+				<isNotEmpty property="startRow">
+					#startRow#, #pageSize#
+				</isNotEmpty>
+			</dynamic>
+	</select>
+	
+	<!-- 查询用户最近添加的5条记录 -->
+	<select id = "queryFilelabelByUser" parameterClass = "map" resultClass = "BaseFileLabelInfo">
+		select id, labelName from filelabel where enterpriseId = #enterpriseId# 
+			and createBy = #createBy# 
+			limit 0, 5
+			order by createTime desc
+	</select>
+
+	<!-- 根据企业查询企业文件标签总数 -->
+	<select id = "queryTotalCountFilelabelByEnterprise" parameterClass = "FileLabelQueryCondition" resultClass = "Long">
+		select count(id) from filelabel where enterpriseId = #enterpriseId# 
+		
+		<dynamic prepend=" and ">
+			<isNotEmpty property="labelName">
+				labelName like '%$labelName$%'
+			</isNotEmpty>
+		</dynamic>
+		
+	</select>
+	
+	<!-- 根据标签名称查询文件标签 -->
+	<select id = "queryByLabelName" parameterClass = "FileLabel" resultClass = "FileLabel">
+		<![CDATA[
+			select id, labelName from filelabel where enterpriseId = #enterpriseId# and labelName = #labelName# 
+		]]>
+	</select>
+
+	<!-- 根据文件标签名称模糊查询文件标签列表 -->
+	<select id = "queryByLikeLabelName" parameterClass = "FileLabelQueryCondition" resultClass = "FileLabel">
+		select id, labelName from filelabel where enterpriseId = #enterpriseId# and labelName like '%$labelName$%'
+		<dynamic prepend=" limit ">
+			<isNotEmpty property="startRow">
+				#startRow#, #pageSize#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<!-- 根据文件标签编号列表查询文件标签信息 -->
+	<select id = "queryFilelabelByIds" parameterClass = "map" resultClass = "FileLabel">
+		<![CDATA[
+			select id, labelName from filelabel where id in 
+		]]>
+		<iterate conjunction="," open="(" close=")" property="keys">
+			<![CDATA[
+				#keys[]#
+			]]>
+		</iterate>	
+	</select>
+	
+	<!-- 查詢文件標簽最大值 -->
+	<select id = "queryMaxFilelabelId" resultClass = "Long">
+		<![CDATA[
+			select max(id) from filelabel
+		]]>
+	</select>
+
+	<!-- 新增文件标签与文件关系 -->
+	<insert id = "insertFilelabelLink" parameterClass = "FileLabelLink">
+		<![CDATA[
+			insert into filelabel_link_$tableSuffix$(id, labelId, inodeId, createBy, ownerId, bindTime)
+				values
+			(#id#, #labelId#, #inodeId#, #bindUserId#, #ownedBy#, #bindTime#)
+		]]>
+	</insert>
+
+	<!-- 根据文件编号查询文件标签编号 -->
+	<select id = "queryLabelidsByInode" parameterClass = "map" resultClass = "Long">
+		<![CDATA[
+			select labelId from filelabel_link_#tableSuffix# where inodeId = #inodeId#
+		]]>
+	</select>
+	
+	<!-- 解除文件标签的绑定 -->
+	<delete id = "unbindFileLabelForInode" parameterClass = "FileLabelLink">
+		<![CDATA[
+			delete from filelabel_link_$tableSuffix$ where inodeId = #inodeId# and labelId = #labelId#
+		]]>
+	</delete>
+	
+	<!-- 根据文件编号刪除所綁定的標簽信息 -->
+	<delete id = "unbindAllLabelForInode" parameterClass = "FileLabelLink">
+		<![CDATA[
+			delete from filelabel_link_$tableSuffix$ where inodeId = #inodeId#
+		]]>
+	</delete>
+	
+	<!-- 查询文件绑定的标签数 -->
+	<select id = "queryLabelCountByInode" parameterClass = "FileLabelLink" resultClass = "Integer">
+		<![CDATA[
+			select count(labelId) from filelabel_link_#tableSuffix# where inodeId = #inodeId#
+		]]>
+	</select>
+	
+	<!-- 查詢文件標簽最大值 -->
+	<select id = "queryMaxFilelabelLinkId" parameterClass = "map" resultClass = "Long">
+		<![CDATA[
+			select max(id) from filelabel_link_#tableSuffix#
+		]]>
+	</select>
+
+</sqlMap>
+

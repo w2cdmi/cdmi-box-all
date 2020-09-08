@@ -1,0 +1,23 @@
+@@typeTotal
+{
+	"type": "total"
+}
+
+@@typeUser
+{
+	"type":"user"
+}
+
+@@typeTeamSpace
+{
+	"type":"teamSpace"
+}
+
+@@errorType
+{
+	"type":"dsdfs"
+}
+
+@@typeNull
+{
+}

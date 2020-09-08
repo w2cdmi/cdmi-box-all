@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1" metadata-complete="true">
+	<display-name>ufm</display-name>
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>ufm</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath*:/applicationContext*.xml
+		</param-value>
+	</context-param>
+	<context-param>
+		<param-name>logbackConfigLocation</param-name>
+		<param-value>classpath:logback.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>contextErrorTagFilePath</param-name>
+		<param-value>
+			/opt/tomcat_ufm/security/error_tag
+		</param-value>
+	</context-param>
+
+	<listener>
+		<listener-class>pw.cdmi.common.web.HWContextLoaderListener</listener-class>
+	</listener>
+
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>springServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/spring-mvc.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>heartbeat</servlet-name>
+		<servlet-class>com.huawei.sharedrive.app.cluster.manage.HeartbeatCheckServlet</servlet-class>
+	</servlet>
+
+	<!-- Catch all requests -->
+	<servlet-mapping>
+		<servlet-name>heartbeat</servlet-name>
+		<url-pattern>/checkRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>newHeartbeat</servlet-name>
+		<servlet-class>com.huawei.sharedrive.app.cluster.manage.NewHeartbeatCheckServlet</servlet-class>
+	</servlet>
+
+	<!-- Catch all requests -->
+	<servlet-mapping>
+		<servlet-name>newHeartbeat</servlet-name>
+		<url-pattern>/newCheckRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb</url-pattern>
+	</servlet-mapping>
+
+	<session-config>
+		<session-timeout>30</session-timeout>
+	</session-config>
+
+	<welcome-file-list>
+		<welcome-file>folders</welcome-file>
+	</welcome-file-list>
+
+	<!-- config the default error information -->
+	<error-page>
+		<error-code>401</error-code>
+		<location>/login/turnToError</location>
+	</error-page>
+	<error-page>
+		<error-code>404</error-code>
+		<location>/login/turnToError</location>
+	</error-page>
+	<error-page>
+		<error-code>500</error-code>
+		<location>/login/turnToError</location>
+	</error-page>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>ufm</web-resource-name>
+			<url-pattern>/*</url-pattern>
+			<http-method>OPTIONS</http-method>
+			<http-method>HEAD</http-method>
+			<http-method>TRACE</http-method>
+		</web-resource-collection>
+		<auth-constraint>
+		</auth-constraint>
+	</security-constraint>
+
+</web-app>

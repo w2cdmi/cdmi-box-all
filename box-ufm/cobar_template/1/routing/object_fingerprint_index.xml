@@ -1,0 +1,8 @@
+<rules>
+    <rule>
+    	<!-- hash.apply(sha1) -->
+        <namespace>ObjectFingerprintIndex</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

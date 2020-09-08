@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+	<MsgFrameListContainerElement name="msgFrame_listItem" height="40"  singularrowcolor="#ffffffff" dualrowcolor="#fffafafa">
+		<!--
+		<ItemCheckBox float="true" pos="0,1,32,31" align="left" selectedimage="file='..\img\checkbox.png' dest='20,13,32,25' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,13,32,25' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,13,32,25' source='26,0,38,12'"/>
+		-->
+		<HorizontalLayout>
+			<HorizontalLayout name="msgFrame_tooltip">
+				<Button name="msgFrame_icon" mouse="false"  padding="10,12,0,12" width="20" height="20" />
+				<Label name="msgFrame_info" padding="10,0,0,0" align="left" mouse="false" endellipsis="true" showhtml="true" font="13" textcolor="#FF000000"/>
+			</HorizontalLayout>
+			<HorizontalLayout name="msgFrame_control" padding="10,0" width="45">
+				<Button name="msgFrame_view" width="30" text="查看" tooltip="查看" font="12" textcolor="#FF008BE8" hottextcolor="#FF006ab0" align="center" visible="false"/>
+				<Button name="msgFrame_more" menu="false" menuxmlfile="msgMoreMenu.xml" width="6" height="6" padding="5,17,0,17" normalimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,0,6,6'" hotimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,16,6,22'" align="center"  visible="false"/>
+			</HorizontalLayout>
+
+			<Label name="msgFrame_time" align="center" textcolor="#FF666666"  width="120" padding="20,12,0,12" font="12" endellipsis="true"/>	
+
+			<HorizontalLayout padding="20,0,10,0" width="20">
+				<Button name="msgFrame_delete" tooltip="删除" width="20" height="20" padding="0,10,0,10" normalimage="file='..\Image\ic_oper_delete.png' source='0,0,20,20'" hotimage="file='..\Image\ic_oper_delete.png' source='0,30,20,50'" visible="false"/>
+			</HorizontalLayout>	
+		</HorizontalLayout>
+	</MsgFrameListContainerElement>
+</Window>

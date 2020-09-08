@@ -1,0 +1,123 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="StorBox如何保证数据安全">
+<meta name="DC.Relation" scheme="URI" content="../faq/security.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="webdisk_security">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<title>StorBox如何保证数据安全</title>
+<script type="text/javascript" language="JavaScript">
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+</script>
+<style type="text/css">
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+</style>
+<script type="text/javascript" language="javascript1.2" src="../whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whtopic.js"></script>
+
+ <meta name="generator" content="Adobe RoboHelp 9">
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><script type="text/javascript" language="javascript1.2">
+if (window.gbWhTopic)
+{
+	var strUrl = decodeURI(document.location.href);
+	var bc = 0;
+	var n = strUrl.toLowerCase().indexOf("bc-");
+	if(n != -1)
+	{
+		document.location.href = encodeURI(strUrl.substring(0, n));
+		bc = strUrl.substring(n+3);
+	}
+
+	if (window.addTocInfo)
+	{
+	addTocInfo("安全和隐私\nStorBox如何保证数据安全");
+addButton("show",BTN_TEXT,"显示","","","","",0,0,"","","");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(1);
+
+	
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../clouddrive_faq.htm", "", ">", "Home", "welcome.html");
+document.write("<a href=\"security.html\">安全和隐私<\/a> > StorBox如何保证数据安全<\/p>");
+
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("../clouddrive_faq.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+
+</script><a name="webdisk_security"></a><a name="webdisk_security"></a>
+
+
+<h1 class="topictitle1"><span>StorBox</span>如何保证数据安全</h1>
+
+<div>
+<div class="p"><span>StorBox</span>的安全特性如下：<ul><li>访问安全<div class="p"><ul><li><span>StorBox</span>提供登录失败锁定机制，防止暴力方式破解您的登录密码。</li><li><span>StorBox</span>提供访问文件和文件夹链接的提取码，防止非法用户访问文件和文件夹。</li><li><span>StorBox</span>对所有URL（Uniform Resource Locator）采用了权限划分，特定URL需要用户具有特定权限或角色才能访问。用户认证通过后，根据用户信息进行角色和权限授权，每次URL访问需要校验授权信息，无法越权访问。</li><li><span>StorBox</span>采用对象存储机制，数据均以对象的形式存储于指定的容器中，必须通过授权码和签名密钥访问。各容器之间逻辑隔离，保证了数据访问的安全性。</li></ul>
+</div>
+</li><li>传输安全<p><span>StorBox</span>支持数据传输加密，支持通过HTTPS（Hypertext Transfer Protocol Secure）通道方式传输数据，从而保证数据在传输环节不被破坏和影响。</p>
+</li><li>存储安全<ul><li>数据分片存储<p>数据被分片后，通过分布式Hash算法随机保存在不同的存储节点、不同的硬盘上，恶意用户无法利用单个存储节点或硬盘获取您的数据。当业务生命周期结束或用户自行终止业务的使用时，数据分片存储技术支持数据的安全销毁，您的数据不会被泄露。</p>
+</li><li>用户数据隔离<p>每个用户拥有独立的逻辑空间和存储策略，用户数据完全隔离，实现用户数据安全，确保用户数据的私密性。</p>
+</li><li>用户敏感数据加密存储<p>用户敏感数据、隐私数据（如鉴权信息、邮箱信息等）采用AES（Advanced Encryption
+Standard）算法加密后存储。</p>
+</li></ul>
+</li></ul>
+</div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="security.html">安全和隐私</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为专有和保密信息</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div><script type="text/javascript" language="javascript1.2">
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+
+
+highlightSearch();
+</script>
+</body>
+</html>

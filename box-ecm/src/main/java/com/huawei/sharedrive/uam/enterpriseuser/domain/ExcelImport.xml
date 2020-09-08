@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ExcelImport">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="ExcelImport" type="com.huawei.sharedrive.uam.enterpriseuser.domain.ExcelImport" />
+    
+    <select id="getByEnterAuthId" parameterClass="ExcelImport" resultClass="ExcelImport">
+    <![CDATA[
+        select * from excel_importresult where enterpriseId=#enterpriseId# and authServerId=#authServerId#
+        ]]>
+    </select>
+    
+    <select id="getByID" parameterClass="String" resultClass="ExcelImport">
+    <![CDATA[
+        select * from excel_importresult where id=#value#
+        ]]>
+    </select>
+    
+    <delete id="delete" parameterClass="String">
+        <![CDATA[
+        delete from excel_importresult where id=#value#
+        ]]>
+	</delete>
+	
+	<insert id="insert" parameterClass="ExcelImport">
+        <![CDATA[
+        insert into excel_importresult(id,runtime,enterpriseId,authServerId) 
+        values 
+        (#id#,#runtime#,#enterpriseId#,#authServerId#)
+        ]]>
+	</insert>
+	
+	<update id="update" parameterClass="ExcelImport">
+        <![CDATA[
+        update excel_importresult set status=#status#, errData=#errData#, completeTime=#completeTime# where id=#id#
+        ]]>
+	</update>
+    
+</sqlMap>
+

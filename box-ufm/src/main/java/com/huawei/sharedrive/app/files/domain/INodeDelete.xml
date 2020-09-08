@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="INodeDelete">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="INode" type="com.huawei.sharedrive.app.files.domain.INode" />
+
+    <select id="getFilterd" parameterClass="map" resultClass="INode">
+        select * from inode_delete_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by type asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    ,$order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getbystatus" parameterClass="map" resultClass="INode">
+        select * from inode_delete_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.status">
+                    status = #filter.status#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by type asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    ,convert($order.field$ using gb2312) 
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+  
+    <select id="get" resultClass="INode" parameterClass="INode">
+        <![CDATA[
+        select * from inode_delete_$tableSuffix$ where id=#id# and  ownedBy=#ownedBy#
+        ]]>
+    </select>
+
+    <insert id="insert" parameterClass="INode">
+        <![CDATA[
+        insert into inode_delete_$tableSuffix$(id,parentId,objectId,name,size,description,type,status,version,ownedBy
+        ,createdAt,modifiedAt,contentCreatedAt,contentModifiedAt,createdBy,modifiedBy,shareStatus,syncStatus
+        ,syncVersion,linkCode,encryptKey,sha1,resourceGroupId) 
+        values 
+        (#id#,#parentId#,#objectId#,#name#,#size#,#description#,#type#,#status#,#version#,#ownedBy#,#createdAt#,
+        #modifiedAt#,#contentCreatedAt#,#contentModifiedAt#,#createdBy#,#modifiedBy#,#shareStatus#,#syncStatus#,
+        #syncVersion#,#linkCode#,#encryptKey#,#sha1#,#resourceGroupId#)
+        ]]>
+    </insert>
+
+    <update id="update" parameterClass="INode">
+        <![CDATA[
+        update inode_delete_$tableSuffix$ set parentId=#parentId#,objectId=#objectId#,name=#name#,size=#size#,
+        description=#description#,type=#type#,status=#status#,version=#version#,createdAt=#createdAt#,
+        modifiedAt=#modifiedAt#,contentCreatedAt=#contentCreatedAt#,contentModifiedAt=#contentModifiedAt#,
+        createdBy=#createdBy#,modifiedBy=#modifiedBy#,shareStatus=#shareStatus#,syncStatus=#syncStatus#,
+        syncVersion=#syncVersion#,linkCode=#linkCode#,encryptKey=#encryptKey#,sha1=#sha1#,
+        resourceGroupId=#resourceGroupId# 
+        where id=#id# and ownedBy=#ownedBy#
+        ]]>
+    </update>
+    
+    <delete id="delete" parameterClass="INode">
+        <![CDATA[
+        delete from inode_delete_$tableSuffix$ where id=#id# and ownedBy=#ownedBy#
+        ]]>
+    </delete>
+    
+</sqlMap>
+

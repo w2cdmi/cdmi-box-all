@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+    default-autowire="byName" default-lazy-init="true"
+>
+    
+    <bean id="chechServiceProcessor" class="com.huawei.sharedrive.thrift.echo.ChechService.Processor">
+        <constructor-arg>
+            <bean class="pw.cdmi.common.monitor.thrift.server.ChechServiceImpl" />
+        </constructor-arg>
+    </bean>
+    
+    <bean id="oAuth2ThriftProcessor" class="com.huawei.sharedrive.thrift.app2dc.OAuth2ThriftService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.app.dataserver.thrift.impl.OAuth2ThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="fileObjectThriftProcessor" class="com.huawei.sharedrive.thrift.app2dc.FileObjectThriftService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.app.dataserver.thrift.impl.FileObjectThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="dcThriftProcessor" class="com.huawei.sharedrive.thrift.app2dc.DCThriftService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.app.dataserver.thrift.impl.DCThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+    <bean id="mirrorThriftProcessor" class="com.huawei.sharedrive.thrift.mirror.app2dc.MirrorThriftService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.app.mirror.thrift.impl.MirrorThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+    
+    <bean id="pluginServiceClusterThriftProcessor" class="com.huawei.sharedrive.thrift.plugins.cluster.PluginServiceClusterThriftService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.app.plugins.cluster.thrift.PluginServiceClusterThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+    
+    <bean id="thriftServer" class="pw.cdmi.common.thrift.ThriftServer" lazy-init="false" init-method="start" destroy-method="destroy">
+        <property name="processorMap">
+            <map>
+                <entry key="OAuth2ThriftService">
+                    <ref local="oAuth2ThriftProcessor" />
+                </entry>
+                <entry key="FileObjectThriftService">
+                    <ref local="fileObjectThriftProcessor" />
+                </entry>
+                <entry key="DCThriftService">
+                    <ref local="dcThriftProcessor" />
+                </entry>
+                <entry key="pluginServiceClusterThriftService">
+                    <ref local="pluginServiceClusterThriftProcessor" />
+                </entry>
+                <entry key="MirrorThriftService">
+                    <ref local="mirrorThriftProcessor" />
+                </entry>
+                <entry key="ChechService">
+                    <ref local="chechServiceProcessor" />
+                 </entry>
+            </map>
+        </property>
+        <property name="minWorkerThreads" value="10" />
+        <property name="maxWorkerThreads" value="300" />
+        <property name="maxSelectorThreads" value="8" />
+        <property name="port" value="${thrift.dataserver.port}" />
+        <property name="clientTimeout" value="40000" />
+        <property name="useSSL" value="${thrift.use.ssl}" />
+        <property name="keyStorePath" value="${thrift.ssl.keystore.path}" />
+        <property name="keyStorePass" value="${thrift.ssl.keystore.password}" />
+        <property name="keyStorePassKey" value="${thrift.ssl.keystore.password.encodekey}" />
+        <property name="trustStorePath" value="${thrift.ssl.truststore.path}" />
+        <property name="trustStorePass" value="${thrift.ssl.truststore.password}" />
+        <property name="trustStorePassKey" value="${thrift.ssl.truststore.password.encodekey}" />
+        <property name="cipherSuites">
+            <list>
+                <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+            </list>
+        </property>
+        <property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+        <property name="name" value="UFM for DSS Thrift Service" />
+    </bean>
+    
+    <bean id="dcServiceProcessor" class="com.huawei.sharedrive.thrift.app2isystem.DCThriftService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.app.isystem.thrift.DCThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="storageResourceProcessor" class="com.huawei.sharedrive.thrift.filesystem.StorageResouceThriftServiceOnUfm.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.app.isystem.thrift.StorageResouceThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+    
+    <bean id="previewProcessor" class="com.huawei.sharedrive.thrift.pluginserver.PluginServerThriftService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.app.isystem.thrift.PluginThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+    
+    <bean id="userManageResourceProcessor" class="com.huawei.sharedrive.thrift.app2isystem.UserThriftService.Processor">
+        <constructor-arg>
+            <bean class="com.huawei.sharedrive.app.isystem.thrift.UserThriftServiceImpl" />
+        </constructor-arg>
+    </bean>
+     
+    <bean id="iSystemThriftServer" class="pw.cdmi.common.thrift.ThriftServer" lazy-init="false" init-method="start" destroy-method="destroy">
+        <property name="processorMap">
+            <map>
+                <entry key="dcService">
+                    <ref local="dcServiceProcessor" />
+                </entry>
+                <entry key="storageResourceService">
+                    <ref local="storageResourceProcessor" />
+                </entry>
+                <entry key="userManageService">
+                    <ref local="userManageResourceProcessor" />
+                </entry>
+                <entry key="JobThriftService">
+                    <ref local="jobThriftServiceProcessor" />
+                </entry>
+                <entry key="previewService">
+                    <ref local="previewProcessor" />
+                </entry>
+                 <entry key="ChechService">
+                    <ref local="chechServiceProcessor" />
+                 </entry>
+            </map>
+        </property>
+        <property name="minWorkerThreads" value="1" />
+        <property name="maxWorkerThreads" value="10" />
+        <property name="maxSelectorThreads" value="2" />
+        <property name="clientTimeout" value="40000" />
+        <property name="port" value="${thrift.isystem.port}" />
+        <property name="useSSL" value="${thrift.use.ssl}" />
+        <property name="bindAddr" value="${self.privateAddr}" />
+        <property name="name" value="UFM for iSystem Thrift Service" />
+        <property name="keyStorePath" value="${thrift.ssl.keystore.path}" />
+        <property name="keyStorePass" value="${thrift.ssl.keystore.password}" />
+        <property name="keyStorePassKey" value="${thrift.ssl.keystore.password.encodekey}" />
+        <property name="trustStorePath" value="${thrift.ssl.truststore.path}" />
+        <property name="trustStorePass" value="${thrift.ssl.truststore.password}" />
+        <property name="trustStorePassKey" value="${thrift.ssl.truststore.password.encodekey}" />
+        <property name="cipherSuites">
+            <list>
+                <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+            </list>
+        </property>
+        <property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+    </bean>
+    
+</beans>

@@ -1,0 +1,67 @@
+<rules>
+    <rule>
+    	<sqlmap>fileObjectDeleteTask.insert</sqlmap>
+    	<shardingExpression>hash.apply(object.objectID) % 1024 &lt; 512</shardingExpression>
+    	<shards>partition1</shards>
+  	</rule>
+  	<rule>
+    	<sqlmap>fileObjectDeleteTask.insert</sqlmap>
+    	<shardingExpression>hash.apply(object.objectID) % 1024 &gt;= 512</shardingExpression>
+    	<shards>partition2</shards>
+  	</rule>
+  	
+  	<rule>
+    	<sqlmap>fileObjectDeleteTask.delete</sqlmap>
+    	<shardingExpression>hash.apply(object.objectID) % 1024 &lt; 512</shardingExpression>
+    	<shards>partition1</shards>
+  	</rule>
+  	<rule>
+    	<sqlmap>fileObjectDeleteTask.delete</sqlmap>
+    	<shardingExpression>hash.apply(object.objectID) % 1024 &gt;= 512</shardingExpression>
+    	<shards>partition2</shards>
+  	</rule>
+  	
+  	<rule>
+    	<sqlmap>fileObjectDeleteTask.update</sqlmap>
+    	<shardingExpression>hash.apply(object.objectID) % 1024 &lt; 512</shardingExpression>
+    	<shards>partition1</shards>
+  	</rule>
+  	<rule>
+    	<sqlmap>fileObjectDeleteTask.update</sqlmap>
+    	<shardingExpression>hash.apply(object.objectID) % 1024 &gt;= 512</shardingExpression>
+    	<shards>partition2</shards>
+  	</rule>
+  	
+  	<rule>
+    	<sqlmap>fileObjectDeleteTask.markFileObjectDeleteTask</sqlmap>
+    	<shardingExpression>hash.apply(object.objectID) % 1024 &lt; 512</shardingExpression>
+    	<shards>partition1</shards>
+  	</rule>
+  	<rule>
+    	<sqlmap>fileObjectDeleteTask.markFileObjectDeleteTask</sqlmap>
+    	<shardingExpression>hash.apply(object.objectID) % 1024 &gt;= 512</shardingExpression>
+    	<shards>partition2</shards>
+  	</rule>
+  	
+  	<rule>
+    	<sqlmap>fileObjectDeleteTask.list</sqlmap>
+    	<shardingExpression>dbIndex == 1</shardingExpression>
+    	<shards>partition1</shards>
+  	</rule>
+  	<rule>
+    	<sqlmap>fileObjectDeleteTask.list</sqlmap>
+    	<shardingExpression>dbIndex == 2</shardingExpression>
+    	<shards>partition2</shards>
+  	</rule>
+  	
+  	<rule>
+    	<sqlmap>fileObjectDeleteTask.resumeFailed</sqlmap>
+    	<shardingExpression>dbIndex == 1</shardingExpression>
+    	<shards>partition1</shards>
+  	</rule>
+  	<rule>
+    	<sqlmap>fileObjectDeleteTask.resumeFailed</sqlmap>
+    	<shardingExpression>dbIndex == 2</shardingExpression>
+    	<shards>partition2</shards>
+  	</rule>
+</rules>

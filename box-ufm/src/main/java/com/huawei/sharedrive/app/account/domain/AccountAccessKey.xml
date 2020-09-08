@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccountAccessKey">
+
+	<typeAlias alias="AccountAccessKey"
+		type="com.huawei.sharedrive.app.account.domain.AccountAccessKey" />
+
+	<insert id="insert" parameterClass="AccountAccessKey">
+		<![CDATA[
+			insert into account_accesskey(id,secretKey,accountId,createdAt,secretKeyEncodeKey)
+			values(#id#,#secretKey#,#accountId#,#createdAt#,#secretKeyEncodeKey#)
+		]]>
+	</insert>
+	
+	<select id="getById" parameterClass="String" resultClass="AccountAccessKey">
+		<![CDATA[
+       	 	select * from account_accesskey where id = #id#
+        ]]>
+	</select>
+
+
+</sqlMap>

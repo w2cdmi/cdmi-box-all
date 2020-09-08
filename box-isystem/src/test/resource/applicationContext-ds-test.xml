@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+	default-autowire="byName" default-lazy-init="true">
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}" />
+        <property name="url" value="${jdbc.url}" />
+        <property name="username" value="${jdbc.username}" />
+        <property name="password" value="${jdbc.password}" />
+        <property name="initialSize" value="${jdbc.pool.initialSize}" />
+        <property name="maxActive" value="${jdbc.pool.maxActive}" />
+        <property name="maxIdle" value="${jdbc.pool.maxIdle}" />
+        <property name="minIdle" value="${jdbc.pool.minIdle}" />
+        <property name="maxWait" value="${jdbc.pool.maxWait}" />
+        <property name="validationQuery" value="${jdbc.pool.validationQuery}" />
+        <property name="testWhileIdle" value="${jdbc.pool.testWhileIdle}" />
+        <property name="testOnReturn" value="${jdbc.pool.testOnReturn}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.pool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.pool.minEvictableIdleTimeMillis}" />
+    </bean>
+    
+    <bean id="monitordb" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.monitor.driverClassName}" />
+        <property name="url" value="${jdbc.monitor.url}" />
+        <property name="username" value="${jdbc.monitor.username}" />
+        <property name="password" value="${jdbc.monitor.password}" />
+        <property name="initialSize" value="${jdbc.pool.initialSize}" />
+        <property name="maxActive" value="${jdbc.pool.maxActive}" />
+        <property name="maxIdle" value="${jdbc.pool.maxIdle}" />
+        <property name="minIdle" value="${jdbc.pool.minIdle}" />
+        <property name="maxWait" value="${jdbc.pool.maxWait}" />
+        <property name="validationQuery" value="${jdbc.pool.validationQuery}" />
+        <property name="testWhileIdle" value="${jdbc.pool.testWhileIdle}" />
+        <property name="testOnReturn" value="${jdbc.pool.testOnReturn}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.pool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.pool.minEvictableIdleTimeMillis}" />
+    </bean>
+    <bean id="monitorSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="dataSource" ref="monitordb" />
+        <property name="configLocation" value="classpath:sqlmap-monitor-config.xml" />
+    </bean>
+    <bean id="monitorSqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+        <property name="sqlMapClient" ref="monitorSqlMapClient" />
+        <property name="dataSource" ref="monitordb" />
+    </bean>
+    
+     <bean id="logdb" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.logdb.driverClassName}" />
+        <property name="url" value="${jdbc.logdb.url}" />
+        <property name="username" value="${jdbc.logdb.username}" />
+        <property name="password" value="${jdbc.logdb.password}" />
+        <property name="initialSize" value="${jdbc.logdb.pool.initialSize}" />
+        <property name="maxActive" value="${jdbc.logdb.pool.maxActive}" />
+        <property name="maxIdle" value="${jdbc.logdb.pool.maxIdle}" />
+        <property name="minIdle" value="${jdbc.logdb.pool.minIdle}" />
+        <property name="maxWait" value="${jdbc.logdb.pool.maxWait}" />
+        <property name="validationQuery" value="${jdbc.logdb.pool.validationQuery}" />
+        <property name="testWhileIdle" value="${jdbc.logdb.pool.testWhileIdle}" />
+        <property name="testOnReturn" value="${jdbc.logdb.pool.testOnReturn}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.logdb.pool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.logdb.pool.minEvictableIdleTimeMillis}" />
+    </bean>
+    
+    <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="configLocation" value="classpath:sqlmap-config.xml" />
+    </bean>
+    <bean id="logsqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="dataSource" ref="logdb" />
+        <property name="configLocation" value="classpath:sqlmap-log-config.xml" />
+    </bean>
+
+    <bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+        <property name="sqlMapClient" ref="sqlMapClient" />
+    </bean>
+	 
+	 <bean id="logSqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+        <property name="sqlMapClient" ref="logsqlMapClient" />
+    </bean>
+	
+    <bean id="transactionManager" class="com.huawei.sharedrive.common.cache.transaction.CacheSupportDataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+        <property name="cacheSupported" value="${cache.supported}" />
+    </bean>
+    
+    <bean id="monitroDBtransactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="monitordb" />
+    </bean>
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="monitroDBtransactionManager" />
+    
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
+	
+</beans>

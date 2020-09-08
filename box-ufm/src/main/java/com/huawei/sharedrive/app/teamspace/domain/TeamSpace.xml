@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TeamSpace">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="TeamSpace" type="com.huawei.sharedrive.app.teamspace.domain.TeamSpace" />
+
+   <insert id="insert" parameterClass="TeamSpace">
+        <![CDATA[
+        insert into teamspace(cloudUserId,name,type,description,ownerBy,createdBy,createdAt,modifiedBy,modifiedAt,status,maxMembers,appId,accountId)
+        values 
+        (#cloudUserId#,#name#,#type#,#description#,#ownerBy#,#createdBy#,#createdAt#,#modifiedBy#,#modifiedAt#,#status#,#maxMembers#,#appId#,#accountId#)
+        ]]>
+    </insert>
+    
+    <select id="get" resultClass="TeamSpace" parameterClass="Long">
+     <![CDATA[
+        select * from teamspace  where cloudUserId=#cloudUserId# 
+     ]]>
+    </select>
+    
+    <select id="getByName" resultClass="TeamSpace" parameterClass="map">
+        <![CDATA[
+        select * from teamspace where name=#name# and accountId =#accountId# limit 1
+        ]]>
+    </select>
+    
+     <select id="getByType" resultClass="TeamSpace" parameterClass="map">
+        <![CDATA[
+        select * from teamspace where type=#type# and  cloudUserId=#cloudUserId#
+        ]]>
+    </select>
+    
+    <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(cloudUserId) from teamspace
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="filter.name">
+                name like concat('%',#filter.name#,'%')
+            </isNotEmpty>
+            <isNotEqual prepend="and" property="filter.type" compareValue="-1">
+              type = #filter.type#
+            </isNotEqual>
+           <!--  <isNotEmpty prepend="and" property="filter.type">
+                type = #filter.type#
+            </isNotEmpty> -->
+            <isNotEmpty prepend="and" property="filter.appId">
+                appId = #filter.appId#
+            </isNotEmpty>
+           
+             <isNotEmpty prepend="and" property="filter.accountId">
+                accountId = #filter.accountId#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+
+    <select id="getFilterd" parameterClass="map" resultClass="TeamSpace">
+        select * from teamspace
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="filter.name">
+                name like concat('%',#filter.name#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.appId">
+                appId = #filter.appId#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.accountId">
+                accountId = #filter.accountId#
+            </isNotEmpty>
+            <isNotEqual prepend="and" property="filter.type" compareValue="-1">
+              type = #filter.type#
+            </isNotEqual>
+       <!--      <isNotEmpty prepend="and" property="filter.type">
+                type = #filter.type#
+            </isNotEmpty> -->
+        </dynamic>
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+        
+    <delete id="delete" parameterClass="Long">
+        <![CDATA[
+        delete from teamspace where cloudUserId=#cloudUserId#
+        ]]>
+    </delete>
+
+    <update id="changeOwner" parameterClass="TeamSpace">
+        <![CDATA[
+        update teamspace set ownerBy=#ownerBy#,modifiedBy=#modifiedBy#,modifiedAt=#modifiedAt# where cloudUserId=#cloudUserId#
+        ]]>
+    </update>
+        
+    <update id="update" parameterClass="TeamSpace">
+        <![CDATA[
+        update teamspace set name=#name#,description=#description#,modifiedBy=#modifiedBy#,modifiedAt=#modifiedAt#,
+        status=#status#,maxMembers=#maxMembers# where cloudUserId=#cloudUserId#
+        ]]>
+    </update>
+
+    
+    <update id="updateStatus" parameterClass="TeamSpace">
+        <![CDATA[
+        update teamspace set modifiedBy=#modifiedBy#,modifiedAt=#modifiedAt#,status=#status# where cloudUserId=#cloudUserId#
+        ]]>
+    </update>
+    
+    <update id="updateUploadNotice" parameterClass="TeamSpace">
+        <![CDATA[
+        update teamspace set uploadNotice=#uploadNotice# where cloudUserId=#cloudUserId#
+        ]]>
+    </update>
+    
+</sqlMap>
+

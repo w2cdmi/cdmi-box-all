@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SyncRules>
+  <!--***********  Local file no change  ************-->
+  <SyncRule id="1i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Local" ActionCommand="NoAction"/>
+  </SyncRule>
+  <SyncRule id="2i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="3i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+  </SyncRule>
+  <SyncRule id="4i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="5i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="6i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="7i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="8i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <!--***********  Local file edited  ************-->
+  <SyncRule id="9i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="10i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="11i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="12i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="13i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="14i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="15i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="16i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <!--***********  Local file renamed  ************-->
+  <SyncRule id="17i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+  </SyncRule>
+  <SyncRule id="18i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="19i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+  </SyncRule>
+  <SyncRule id="20i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="21i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="22i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="23i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="24i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="25i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="26i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="27i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="28i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="29i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="30i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="31i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="32i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <!--***********  Local file move  ************-->
+  <SyncRule id="33i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="34i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="35i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="36i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="37i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="38i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="39i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="40i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="41i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="42i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="43i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="44i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="45i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="46i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="47i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="48i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="49i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="50i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="51i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="52i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="53i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="54i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="55i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+  </SyncRule>
+  <SyncRule id="56i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="57i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="58i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="copied"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="59i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="60i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="61i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="62i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="63i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <SyncRule id="64i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Hard" Resolution="moved and renamed"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Rename"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Move"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <!--***********  Local file created  ************-->
+  <SyncRule id="65i">
+    <SDChangeStatus ItemMapType="Local" Created="1" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Create"/>
+  </SyncRule>
+  <!--***********  Remote file created  ************-->
+  <SyncRule id="66i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="1" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Create"/>
+  </SyncRule>
+  <!--***********  Local file deleted  ************-->
+  <SyncRule id="67i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="68i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="69i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="70i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="71i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="72i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="73i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="74i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Remote" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="75i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Local" ActionCommand="NoAction"/>
+  </SyncRule>
+  <!--***********  Remote file deleted  ************-->
+  <SyncRule id="76i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="No" Resolution=""/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="77i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="78i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="79i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="0" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="80i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="81i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="0" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="82i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="0"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Delete"/>
+  </SyncRule>
+  <SyncRule id="83i">
+    <SDChangeStatus ItemMapType="Local" Created="0" Deleted="0" Moved="1" Renamed="1" Edited="1"/>
+    <SDChangeStatus ItemMapType="Remote" Created="0" Deleted="1" Moved="0" Renamed="0" Edited="0"/>
+    <SDConflictStatus ConflictType="Soft" Resolution="delete"/>
+    <SDExecuteAction ActionType="Local" ActionCommand="Delete"/>
+  </SyncRule>
+</SyncRules>

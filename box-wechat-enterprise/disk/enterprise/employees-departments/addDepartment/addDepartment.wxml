@@ -1,0 +1,46 @@
+<view class='page'>
+    <view class='view-bg serach-bg' bindtap='toSearchDepartment'>
+        <view class='search-input-bg'>
+            <view class='view-serach-icon'>
+                <image class='serach-icon' src="/disk/images/icon/enterprise/serach-icon.png"></image>
+            </view>
+            <view>
+                <input class="serach-input" placeholder='{{enterpriseName}}'></input>
+            </view>
+        </view>
+    </view>
+
+    <view class='view-bg department-title department-list'>部门列表</view>
+
+    <!-- 部门列表 -->
+
+     <scroll-view scroll-x class='border-bottom' class='crumbs-scroll'>
+        <view class='crumbs font-middle'>
+            <block wx:for="{{crumbs}}" wx:key="*this">
+                <view data-crumb='{{item}}' bindtap='clickCrumb' class="{{currentDeptId==item.deptId?'current-dir':''}}">{{item.name}}</view>
+                <image hidden="{{currentDeptId==item.deptId?true:false}}" src='/disk/images/icon-arrow.png'></image>
+            </block>
+        </view>
+    </scroll-view>
+
+    <scroll-view class='content' scroll-y class='departmentList-H'>
+        <block wx:for="{{departments}}" wx:key="*this">
+            <view class="file-group border-bottom view-up-down-space" hover-class='button-hover' data-dept-id='{{item.userId}}' data-name='{{item.name}}' data-item="{{item}}" bindtap='onClickDepartment'>
+                <view class='view-select-icon' catchtap='onSelectDepartment' data-index="{{index}}" data-item="{{item}}">
+                    <image class="select-icon margin-right" src='{{selectedDepartment === index ? "/disk/images/icon/enterprise/selected-icon.png" : "/disk/images/icon/enterprise/no-select-icon.png"}}'></image>
+                </view>
+                <view class='view-department-icon'>
+                    <image class="img-icon margin-right" src='/disk/images/department-avatar.png'></image>
+                </view>
+                <view class='file-info'>
+                    <label>{{item.name}}</label>
+                    <view>
+                        <text>部门: {{item.subDepts}}  人员: {{item.subEmployees}}</text>
+                    </view>
+                </view>
+            </view>
+        </block>
+    </scroll-view> 
+
+    <button class='sure-button' bindtap='toRoleSet'>下一步</button>
+</view>

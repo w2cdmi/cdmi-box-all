@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+    default-autowire="byName" default-lazy-init="true"
+>
+
+    <description>Spring Public Config </description>
+
+    <bean class="pw.cdmi.core.spring.ext.CustomPropertyPlaceholderConfigurer">
+        <property name="order" value="1" />
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="locations">
+            <list>
+                <value>classpath*:application.properties</value>
+                <value>classpath*:job.properties</value>
+            </list>
+        </property>
+        <property name="parsers">
+            <list>
+                <bean class="pw.cdmi.core.utils.DBAccessKeyParserEnhance">
+                    <property name="includes">
+                        <list>
+                    		 <!-- <value>*.password</value> -->
+                        </list>
+                    </property>
+                    <property name="excludes">
+                        <list>
+                            <value>uam.client.truststore.password</value>
+                            <value>ufm.client.truststore.password</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+    
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n/messages" />
+		<property name="useCodeAsDefaultMessage" value="true" />
+	</bean>
+
+    <context:component-scan base-package="pw.cdmi.box.*">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+    </context:component-scan>
+
+    <bean id="springContextUtil" class="pw.cdmi.core.utils.SpringContextUtil" lazy-init="false" />
+	<bean class="pw.cdmi.core.spring.ext.DoAfterSpringLoadComplete" lazy-init="false" />
+
+    <bean id="deamonService" class="pw.cdmi.common.deamon.DeamonServiceImpl" lazy-init="false" destroy-method="destroy">
+        <property name="capacity" value="10000" />
+        <property name="maxConsumerWorkers" value="10" />
+    </bean>
+
+    <bean id="refererMatchFilter" class="pw.cdmi.common.web.RefererMatchFilter">
+        <property name="excludes">
+            <list>
+                <value>/login*</value>
+                <value>/login/**</value>
+                <value>/static/**</value>
+                <value>/checkRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb</value>
+                <value>/newCheckRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb</value>
+                <value>/crossdomain.xml</value>
+                <value>/verifycode*</value>
+                <value>/api/**</value>
+                <value>/crossdomain.xml</value>
+                <value>/syscommon/**</value>
+                <value>/favicon.ico</value>
+                <value>/clientapp/**</value>
+                <value>/p/**</value>
+                <value>/v/**</value>
+                <value>/shared</value>
+                <value>/teamspace</value>
+            </list>
+        </property>
+     <!--    <property name="checkHost">
+             <value>false</value>
+        </property> -->
+        <property name="allowedHost">
+            <list>
+            	  <!-- must be set after deploy -->
+            	  <value>127.0.0.1</value>
+            	  <value>*.*.*.*</value>
+            </list>
+        </property>
+    </bean>
+    <import resource="classpath*:applicationContext-loadbalance.xml"/>
+    <import resource="classpath*:pw/cdmi/common/job/applicationContext-job.xml"/>
+</beans>

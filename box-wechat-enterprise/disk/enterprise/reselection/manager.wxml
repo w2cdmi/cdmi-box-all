@@ -1,0 +1,27 @@
+<!--disk/enterprise/reselection/manager.wxml-->
+<!-- <text>disk/enterprise/reselection/manager.wxml</text> -->
+
+<view class='page'>
+    <view class='title'>{{departmentName}}部门主管</view>
+    <view class='member-item'>
+        <!-- <view>
+            <view>{{manager.name}}</view>
+            <view>{{manager.department}}</view>
+        </view> -->
+        <scroll-view scroll-x="true" class='scroll-view-item'>
+            <view class='inline-block'>
+                <view class='department-info' bindtap='setManager'>
+                    <view class='view-department-icon'>
+                         <image class="department-icon margin-right" mode='aspectFit' src='{{manager.avatar}}'></image> 
+                        <!-- <image class="department-icon margin-right" mode='aspectFit' src='/disk/images/department-avatar.png'></image> -->
+                    </view>
+                    <view>
+                        <view>{{manager.name}}</view>
+                        <text class='department-description' decode='{{true}}'>所属部门&nbsp;&nbsp;|&nbsp;&nbsp;{{department}}</text>
+                    </view>
+                </view>
+            </view>
+             <view class='reselection inline-block' bindtap='reselectionManager'>重新指定</view> 
+        </scroll-view>
+    </view>
+</view>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SystemLoginLog">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="SystemLoginLog" type="pw.cdmi.common.log.SystemLog" />
+                    
+    <insert id="insert" parameterClass="SystemLoginLog">
+       <![CDATA[
+        insert into system_login_log(id,loginName,createdAt,clientType,clientDeviceSN,clientDeviceName,clientAddress,operateType) 
+        values
+        (#id#,#loginName#,#createdAt#,#clientType#,#clientDeviceSN#,#clientDeviceName#,#clientAddress#,#operateType#) 
+        ]]>
+    </insert>
+    
+	<select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from system_login_log
+        <dynamic prepend="where">
+            <isGreaterEqual prepend="and" property="filter.operateType" compareValue="0">
+            	type = #filter.operateType#
+            </isGreaterEqual>
+            <isNotEmpty  prepend="and" property="filter.operater">
+            	loginName=#filter.operater#
+            </isNotEmpty>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createdAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+    </select>
+	
+    <select id="getFilterd" parameterClass="map" resultClass="SystemLoginLog">
+        select * from system_login_log
+         <dynamic prepend="where">
+            <isGreaterEqual prepend="and" property="filter.operateType" compareValue="0">
+            	type = #filter.operateType#
+            </isGreaterEqual>
+             <isNotEmpty  prepend="and" property="filter.operater">
+            	loginName=#filter.operater#
+            </isNotEmpty>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createdAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+        order by createdAt desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+	 <delete id="deleteById" parameterClass="String">
+        delete from system_login_log where id=#value#
+    </delete>
+    
+</sqlMap>
+

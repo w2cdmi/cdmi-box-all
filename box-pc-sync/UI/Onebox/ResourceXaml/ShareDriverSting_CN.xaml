@@ -1,0 +1,7 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Label x:Key="Account_str" Content="账号" />
+    <Label x:Key="Setting_str" Content="设置" />
+    <Label x:Key="Transfer_str" Content="传输" />
+</ResourceDictionary>

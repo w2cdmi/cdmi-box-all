@@ -1,0 +1,75 @@
+HKCR
+{
+	OneboxOfficeAddin.1 = s 'OfficeAddinImpl Class'
+	{
+		CLSID = s '{2A91A4AC-0C65-4C67-895C-181447733643}'
+	}
+	OneboxOfficeAddin = s 'OfficeAddinImpl Class'
+	{		
+		CurVer = s 'OneboxOfficeAddin.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {2A91A4AC-0C65-4C67-895C-181447733643} = s 'OfficeAddinImpl Class'
+		{
+			ProgID = s 'OneboxOfficeAddin.1'
+			VersionIndependentProgID = s 'OneboxOfficeAddin'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{C66DD079-BDF2-4A57-933B-AECECB0E3933}'
+			Version = s '1.0'
+		}
+	}
+}
+
+HKCU
+{
+    NoRemove Software
+    {
+        NoRemove Microsoft
+        {
+            NoRemove Office
+            {
+                NoRemove Word
+                {
+                    NoRemove Addins
+                    {
+                        OneboxOfficeAddin
+                        {
+                            val Description = s 'Onebox Addin'
+                            val FriendlyName = s 'Onebox Addin'
+                            val LoadBehavior = d 3
+                        }
+                    }
+                }
+				NoRemove Excel
+                {
+                    NoRemove Addins
+                    {
+                        OneboxOfficeAddin
+                        {
+                            val Description = s 'Onebox Addin'
+                            val FriendlyName = s 'Onebox Addin'
+                            val LoadBehavior = d 3
+                        }
+                    }
+                }
+				NoRemove PowerPoint
+                {
+                    NoRemove Addins
+                    {
+                        OneboxOfficeAddin
+                        {
+                            val Description = s 'Onebox Addin'
+                            val FriendlyName = s 'Onebox Addin'
+                            val LoadBehavior = d 3
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

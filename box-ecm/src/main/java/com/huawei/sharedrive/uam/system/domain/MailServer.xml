@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MailServer">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="MailServer" type="com.huawei.sharedrive.uam.system.domain.MailServer" />
+    
+    <select id="get" parameterClass="Long" resultClass="MailServer">
+        select * from mailserver where id=#value#
+    </select>
+    
+    <select id="getByAccountId" parameterClass="Long" resultClass="MailServer">
+        select * from mailserver where accountId=#accountId#
+    </select>
+    
+    <select id="getByAppId" parameterClass="String" resultClass="MailServer">
+        select * from mailserver where appId=#value#
+    </select>
+    
+    <select id="getDefaultMailServer" resultClass="MailServer">
+        select * from mailserver where defaultFlag='1'
+    </select>
+
+    <select id="getFilterd" parameterClass="map" resultClass="MailServer">
+        select * from mailserver
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from mailserver
+    </select>
+
+    <insert id="insert" parameterClass="MailServer">
+        insert into mailserver(id,server,port,senderMail,senderName,mailSecurity,enableAuth,authUsername,authPassword,authPasswordEncodeKey,defaultFlag,appId,testMail，accountId) 
+        values 
+        (#id#,#server#,#port#,#senderMail#,#senderName#,#mailSecurity#,#enableAuth#,#authUsername#,#authPassword#,#authPasswordEncodeKey#,#defaultFlag#,#appId#,#testMail#，#accountId#)
+    </insert>
+
+    <update id="updateMailServer" parameterClass="MailServer">
+        update mailserver set server=#server#,port=#port#,senderMail=#senderMail#,senderName=#senderName#,mailSecurity=#mailSecurity#,enableAuth=#enableAuth#,
+        authUsername=#authUsername#,authPassword=#authPassword#,authPasswordEncodeKey=#authPasswordEncodeKey#,testMail=#testMail#
+        where id=#id#
+    </update>
+    <update id="setDefaultMailServer" parameterClass="MailServer">
+        update mailserver set defaultFlag=#defaultFlag# where id=#id#
+    </update>
+
+    <delete id="delete" parameterClass="Long">
+        delete from mailserver where id=#value#
+    </delete>
+
+</sqlMap>
+

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd"
+	default-lazy-init="true">
+
+	<description>Shiro安全配置</description>
+    
+    <!-- 
+	<bean id="ntlmManagerService" class="com.huawei.sharedrive.isystem.user.service.impl.NtlmManagerServiceImpl" init-method="init">
+	 	<property name="zookeeperServer" ref="zookeeperServer" />
+	</bean>
+	 --> 
+	
+	<!-- 集群版安全管理服务配置--> 
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="sessionManager" ref="defaultWebSessionManager" />
+		<property name="rememberMeManager" ref="rememberMeManager"/>
+		<property name="realm" ref="myAuthorizingRealm" />
+	</bean>
+	
+	<!-- 項目自定义的数据库实现Realm, 所有userService依赖的dao都需要用depends-on声明 -->
+	<bean id="myAuthorizingRealm" class="com.huawei.sharedrive.isystem.user.shiro.MyAuthorizingRealm">
+	    <property name="cachingEnabled" value="false" />
+	</bean>
+ 	
+ 	<!-- 登录登出 -->
+ 	<bean id="myLogoutFilter" class="com.huawei.sharedrive.isystem.user.shiro.MyLogoutAuthenticationFilter"/>
+ 	<bean id="myCaptchaFilter" class="com.huawei.sharedrive.isystem.user.shiro.FormAuthenticationCaptchaFilter"/>
+ 	<bean id="myUserFilter" class="com.huawei.sharedrive.isystem.user.shiro.MyUserFilter"/>
+
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login" />
+		<property name="successUrl" value="/" />
+		<property name="filters">
+        	<map>
+        		<entry key="authc" value-ref="myCaptchaFilter"/>
+            	<entry key="user" value-ref="myUserFilter"/>
+            	<entry key="logout" value-ref="myLogoutFilter"/>
+        	</map>
+    	</property>
+		<property name="filterChainDefinitions">
+			<value>
+				/ = noSessionCreation
+				/login = authc
+				/index = authc
+				/logout = logout
+				/static/** = anon
+                /checkRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb = anon
+				 /syscommon/** = anon
+				/api/** = noSessionCreation
+				/register/** = anon
+				/verifycode = anon
+				/favicon.ico = anon
+				/systeminit/** = user,roles[ADMIN_MANAGER]
+				/authorize/** = user,roles[ADMIN_MANAGER]
+				/cluster/** = user,roles[CLUSTER_MANAGER]
+				/appmanage/** = user,roles[APP_MANAGER]
+				/pluginServer/** = user,roles[SYSCONFIG_MANAGER]
+				/accountManage/** = user,roles[APP_MANAGER]
+				/mirror/copyPolicy/** = user,roles[SYSCONFIG_MANAGER]
+				/mirror/copyTask/** = user,roles[JOB_MANAGER]
+				/usermanage/** = user,roles[USER_MANAGER]
+				/sysconfig/** = user,roles[SYSCONFIG_MANAGER]
+				/adminlog/** = user,roles[LOG_MANAGER]
+				/userlog/** = user,roles[LOG_MANAGER]
+				/log/** = user,roles[LOG_MANAGER]
+				/job/** = user,roles[JOB_MANAGER]
+				/convertTask/** = user,roles[JOB_MANAGER]
+				/monitor/** = user,roles[JOB_MANAGER]
+				/statisticsmanage/** = user,roles[SYSCONFIG_MANAGER]
+				/** = user
+			</value>
+		</property>
+	</bean>
+	
+	<!-- 由zk做session存储容器 ，实现集群session共享访问和授权信息缓存 -->
+	<bean id="defaultWebSessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">  
+    	<property name="globalSessionTimeout" value="${session.expire}" />  
+    	<property name="sessionDAO" ref="memCacheShiroSessionDAO" />
+    	<property name="sessionValidationSchedulerEnabled" value="false"/>
+    	<property name="sessionIdCookie" ref="wapsession"/>  
+	</bean>
+
+	<bean id="sessionIdGenerator" class="pw.cdmi.core.utils.SecRandomSessionIdGenerator"/>
+	<!--
+	指定本系统SESSIONID, 默认为: JSESSIONID
+	问题: 与SERVLET容器名冲突, 如JETTY, TOMCAT 等默认JSESSIONID,
+	当跳出SHIRO SERVLET时如ERROR-PAGE容器会为JSESSIONID重新分配值导致登录会话丢失!
+	-->
+	<bean id="wapsession" class="org.apache.shiro.web.servlet.SimpleCookie">
+    	<constructor-arg name="name" value="WAPSESSIONID"/>
+    	<property name="secure" value="false"/>
+	</bean>
+	
+	<bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">  
+        <property name="cookie" ref="rememberMeCookie"/>
+    </bean>
+  
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">  
+        <constructor-arg value="rememberMe"/>    
+        <property name="secure" value="false"/>
+    </bean>
+	
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
+</beans>

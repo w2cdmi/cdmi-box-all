@@ -1,0 +1,37 @@
+<rules>
+   <rule>
+        <namespace>FavoriteNode</namespace>
+        <shardingExpression>ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>FavoriteNode</namespace>
+        <shardingExpression>ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+    <rule>
+        <sqlmap>FavoriteNode.getFilterd</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>FavoriteNode.getFilterd</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+
+    <rule>
+        <sqlmap>FavoriteNode.getbyparent</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>FavoriteNode.getbyparent</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+
+</rules>

@@ -1,0 +1,26 @@
+<view class="page">
+    <!-- 暂无离职人员 -->
+    <view class="not-list-detail-bg blankBackground" hidden='{{!leaveEmployeList.length==0?true:false}}'>
+        <image src='../../images/blank/not-leave-member-bg.png'></image>
+        <view class="not-list-title">暂无离职人员</view>
+    </view>
+    <!-- 离职人员列表 -->
+    <view class="view-leave-page" hidden='{{leaveEmployeList.length>0?false:true}}'>
+        <view style='height:20rpx;background:#f5f5f5'></view>
+        <view class="view-bg view-member-title">
+            <text>待移交离职人员列表</text>
+        </view>
+        <scroll-view scroll-y style='height:{{scrollHeight}}'>
+            <view class="file-group border-bottom view-bg" wx:for="{{leaveEmployeList}}" wx:key="*this" data-alias="{{item.alias}}" data-id='{{item.cloudUserId}}' data-user-id='{{item.id}}' bindtap='toTransfer'>
+                <view>
+                    <image class="img-icon img-icon-border" src='{{item.icon}}'></image>
+                </view>
+                <view class='file-info cell_2_body_content'>
+                    <label>{{item.alias}}</label>
+                    <text>{{item.deptNames}}</text>
+                </view>
+                <view class="view-leave-status">未移交</view>
+            </view>
+        </scroll-view>
+    </view>
+</view>

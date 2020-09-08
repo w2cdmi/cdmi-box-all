@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> 把你加入了群组 <strong>${groupName}</strong>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window size="900,600" caption="0,0,0,0" roundcorner="5,5,5,5">
+  <Include source="Default.xml" />
+  <VerticalLayout  transparent="true" inset="0,0,0,0">
+    <HorizontalLayout  transparent="true" >
+      <Label transparent="true" bkimage="..\Image\ic_bg_fullDisk_cn.png" />
+    </HorizontalLayout>
+    <HorizontalLayout transparent="true" float="true" pos="325,183,645,213">
+      <Label name="backuplead_title" align="center" valign="center" font="15" textcolor="#FF2e90e5" transparent="true" readonly="true" text="持续保护您的文件永不丢失" />
+    </HorizontalLayout>
+    <HorizontalLayout float="true" pos="635,168,659,192">
+      <Button name="backupguide_close" height="24" bkimage="..\Image\delete.png" />
+    </HorizontalLayout>
+    <HorizontalLayout float="true" pos="330,358,695,380">
+      <RichEdit name="backuplead_new_function_2"  align="left" font="12" textcolor="#FF666666" readonly="true" text="选择本地备份目录。" />
+    </HorizontalLayout>
+    <HorizontalLayout float="true" pos="305,358,325,378">
+      <Label bkimage="..\Image\ic_backup_tips.png" />
+    </HorizontalLayout>
+    <HorizontalLayout float="true" pos="330,385,690,430">
+      <RichEdit name="backuplead_new_function_2"  align="left" font="12" textcolor="#FF666666" readonly="true" text="本地备份目录将备份至云端“个人空间\C00100000的备份”。" />
+    </HorizontalLayout>
+    <HorizontalLayout float="true" pos="305,385,325,405">
+      <Label bkimage="..\Image\ic_backup_result.png" />
+    </HorizontalLayout>
+    <HorizontalLayout float="true" pos="330,430,670,475">
+      <RichEdit name="backuplead_new_function_2"  align="left" font="12" textcolor="#FF666666" readonly="true" text="云端备份文件夹结构与本地文件夹结构一致。" />
+    </HorizontalLayout>
+    <HorizontalLayout float="true" pos="305,430,325,450">
+      <Label bkimage="..\Image\ic_backup_appear.png" />
+    </HorizontalLayout>
+    <HorizontalLayout float="true" pos="550,475,630,505">
+      <Button name="backupguide_ok" font="18" text="立即体验" textcolor="#FFffffff" normalimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" />
+    </HorizontalLayout>
+  </VerticalLayout>
+</Window>

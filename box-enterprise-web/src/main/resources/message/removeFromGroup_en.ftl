@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> has removed you from group <strong>${groupName}</strong>

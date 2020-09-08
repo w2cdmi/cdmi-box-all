@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserFeedBack">
+    <typeAlias alias="UserFeedBackInfo" type="com.huawei.sharedrive.uam.feedback.domain.RestFeedBackInfo" />
+    <typeAlias alias="RestFeedBackCreateRequest" type="com.huawei.sharedrive.uam.feedback.domain.RestFeedBackCreateRequest" />
+    <typeAlias alias="RestFeedBackSubInfo" type="com.huawei.sharedrive.uam.feedback.domain.RestFeedBackSubInfo" />
+     <typeAlias alias="RestFeedBackDetail" type="com.huawei.sharedrive.uam.feedback.domain.RestFeedBackDetail" />
+    
+    
+	<select id="queryUserFeedBackByPage" parameterClass="map" resultClass="UserFeedBackInfo">
+        select * from user_feedback_info
+        <dynamic prepend="where">
+                <isNotEmpty prepend="and" property="filter.problemTitle">
+                	problemTitle like concat('%',#filter.problemTitle#,'%') 
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.customerID">
+                    customerID = #filter.customerID#
+                </isNotEmpty>
+                
+                <isNotEmpty prepend="and" property="filter.customerName">
+                    customerName like concat('%',#filter.customerName#,'%') 
+                </isNotEmpty>
+                
+
+ 				<isEqual property="filter.problemStatus" compareValue="1" prepend="and">
+                    i.problemStatus in ('1','3')
+                </isEqual>
+                
+                <isEqual property="filter.problemStatus" compareValue="0" prepend="and">
+                    i.problemStatus = #filter.problemStatus#
+                </isEqual>
+				
+				<isNotEmpty prepend="and" property="filter.twBeginTime">
+                    newestTwTime &gt;= #filter.twBeginTime#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.twEndTime">
+                    newestTwTime &lt;= #filter.twEndTime#
+                </isNotEmpty>
+                
+                <isNotEmpty prepend="and" property="filter.dfBeginTime">
+                    managerAnswerTime &gt;= #filter.dfBeginTime#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.dfEndTime">
+                    managerAnswerTime &lt;= #filter.dfEndTime#
+                </isNotEmpty>
+        </dynamic>
+       	order by newestTwTime desc
+		<dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    
+	<select id="countFeedBack" parameterClass="map" resultClass="java.lang.Integer">
+        select count(problemID) count  from user_feedback_info
+          <dynamic prepend="where">
+                <isNotEmpty prepend="and" property="filter.problemTitle">
+                	problemTitle like concat('%',#filter.problemTitle#,'%') 
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.customerID">
+                    customerID = #filter.customerID#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.customerName">
+                    customerName like concat('%',#filter.customerName#,'%') 
+                </isNotEmpty>
+                
+ 				<isEqual property="filter.problemStatus" compareValue="1" prepend="and">
+                     i.problemStatus in ('1','3')
+                </isEqual>
+                
+                <isEqual property="filter.problemStatus" compareValue="0" prepend="and">
+                    i.problemStatus = #filter.problemStatus#
+                </isEqual>
+				
+				<isNotEmpty prepend="and" property="filter.twBeginTime">
+                   newestTwTime  &gt;= #filter.twBeginTime#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.twEndTime">
+                    newestTwTime &lt;= #filter.twEndTime#
+                </isNotEmpty>
+                
+                <isNotEmpty prepend="and" property="filter.dfBeginTime">
+                    managerAnswerTime &gt;= #filter.dfBeginTime#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.dfEndTime">
+                    managerAnswerTime &lt;= #filter.dfEndTime#
+                </isNotEmpty>
+        </dynamic>
+    </select>
+    
+    <select id="get" parameterClass="java.lang.Long" resultClass="UserFeedBackInfo">
+        
+     <![CDATA[
+        select * from user_feedback_info where problemID = #value#
+     ]]>
+        
+    </select>
+    
+    <select id="querySubList" parameterClass="java.lang.Long" resultClass="RestFeedBackSubInfo">
+    <![CDATA[
+        select * from user_feedback_sub where problemID = #value#
+        order by updateTime asc
+     ]]>
+    </select>
+    
+
+	
+    
+    <select id="queryRestFeedBack" parameterClass="map" resultClass="UserFeedBackInfo">
+   			select DISTINCT(i.problemID),i.problemType,i.problemTitle,i.problemDescription,i.customerID,i.customerName,i.customerTwTime,i.problemStatus,i.newestTwTime,i.managerAnswerTime,i.customerEmail
+			from user_feedback_info i LEFT JOIN user_feedback_sub s on i.problemID = s.problemID
+  			where 1=1
+
+                <isNotEmpty prepend="and" property="filter.problemTitle">
+                	((i.problemTitle like concat('%',#filter.problemTitle#,'%'))or(i.problemDescription like concat('%',#filter.problemTitle#,'%'))or(s.description like concat('%',#filter.problemTitle#,'%')) ) 
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.customerID">
+                    i.customerID = #filter.customerID#
+                </isNotEmpty>
+                
+                <isNotEmpty prepend="and" property="filter.customerName">
+                    i.customerName like concat('%',#filter.customerName#,'%') 
+                </isNotEmpty>
+                
+                <isEqual property="filter.problemStatus" compareValue="1" prepend="and">
+                    i.problemStatus in ('1','3')
+                </isEqual>
+                
+                <isEqual property="filter.problemStatus" compareValue="0" prepend="and">
+                    i.problemStatus = #filter.problemStatus#
+                </isEqual>
+                
+				<!-- 查询当天的数据 -->
+                <isEqual property="filter.cycle" compareValue="dayRound" prepend="and">
+                    to_days(i.newestTwTime) = to_days(now())
+               	</isEqual>
+               	<!-- 查询最近7天数据 -->
+               	<isEqual property="filter.cycle" compareValue="weekRound" prepend="and">
+                    date_sub(curdate(), INTERVAL 7 DAY) &lt; date(i.newestTwTime)
+                </isEqual>
+               	
+               	
+               	<!-- 查询最近30天数据 -->
+               	<isEqual property="filter.cycle" compareValue="monthRound" prepend="and">
+                    date_sub(curdate(), INTERVAL 30 DAY) &lt; date(i.newestTwTime)
+                </isEqual>
+               	
+                <!-- 查询当周的数据（从上个礼拜天开始）
+                <isEqual property="filter.cycle" compareValue="weekRound" prepend="and">
+                    YEARWEEK(date_format(i.newestTwTime,'%Y-%m-%d')) = YEARWEEK(now())
+                </isEqual>
+                 -->
+                <!-- 查询当月的数据 
+                <isEqual property="filter.cycle" compareValue="monthRound" prepend="and">
+                    date_format(i.newestTwTime,'%Y-%m')=date_format(now(),'%Y-%m')
+                </isEqual>
+                --> 
+
+				<isNotEmpty prepend="and" property="filter.twBeginTime">
+                    i.newestTwTime &gt;= #filter.twBeginTime#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.twEndTime">
+                    i.newestTwTime &lt;= #filter.twEndTime#
+                </isNotEmpty>
+                
+                <isNotEmpty prepend="and" property="filter.dfBeginTime">
+                    i.managerAnswerTime &gt;= #filter.dfBeginTime#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.dfEndTime">
+                    i.managerAnswerTime &lt;= #filter.dfEndTime#
+                </isNotEmpty>
+       			and i.problemStatus!='4' and i.problemStatus !='5' order by i.newestTwTime desc
+				<dynamic prepend="limit">
+            		 #filter.offset#, #filter.limit#
+       			</dynamic>
+    </select>
+    
+    
+    <select id="countRestFeedBack" parameterClass="map" resultClass="java.lang.Integer">
+        select count(DISTINCT(i.problemID)) count  from  user_feedback_info i LEFT JOIN user_feedback_sub s on i.problemID = s.problemID
+          <dynamic prepend="where">
+                <isNotEmpty prepend="and" property="filter.problemTitle">
+                ((i.problemTitle like concat('%',#filter.problemTitle#,'%'))or(i.problemDescription like concat('%',#filter.problemTitle#,'%'))or(s.description like concat('%',#filter.problemTitle#,'%'))) 
+                <!--标题，答复，追问中如果任意包含上述内容都予以展示-->
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.customerID">
+                    i.customerID = #filter.customerID#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.customerName">
+                    i.customerName like concat('%',#filter.customerName#,'%') 
+                </isNotEmpty>
+                
+                 <isEqual property="filter.problemStatus" compareValue="1" prepend="and">
+                     i.problemStatus in ('1','3')
+                </isEqual>
+                
+                <isEqual property="filter.problemStatus" compareValue="0" prepend="and">
+                    i.problemStatus = #filter.problemStatus#
+                </isEqual>
+
+                 <isEqual property="filter.cycle" compareValue="dayRound" prepend="and">
+                    	to_days(i.newestTwTime) = to_days(now())
+                 </isEqual>
+                    
+                 <!-- 查询最近7天数据 -->
+               	<isEqual property="filter.cycle" compareValue="weekRound" prepend="and">
+                    date_sub(curdate(), INTERVAL 7 DAY) &lt; date(i.newestTwTime)
+                </isEqual>
+               	
+               	<!-- 查询最近30天数据 -->
+               	<isEqual property="filter.cycle" compareValue="monthRound" prepend="and">
+                    date_sub(curdate(), INTERVAL 30 DAY) &lt; date(i.newestTwTime)
+                </isEqual>
+                
+               	<isEqual property="filter.cycle" compareValue="monthRound" prepend="and">
+                    date_sub(curdate(), INTERVAL 30 DAY) &lt; date(i.newestTwTime)
+                </isEqual>
+
+				
+				<isNotEmpty prepend="and" property="filter.twBeginTime">
+                   i.newestTwTime  &gt;= #filter.twBeginTime#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.twEndTime">
+                    i.newestTwTime &lt;= #filter.twEndTime#
+                </isNotEmpty>
+                
+                <isNotEmpty prepend="and" property="filter.dfBeginTime">
+                    i.managerAnswerTime &gt;= #filter.dfBeginTime#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.dfEndTime">
+                    i.managerAnswerTime &lt;= #filter.dfEndTime#
+                </isNotEmpty>
+                 and i.problemStatus not in ('4','5')
+        </dynamic>
+    </select>
+    
+    <delete id="deleteByID" parameterClass="java.lang.Long">
+        <![CDATA[
+        delete from user_feedback_info where problemID=#value#
+        ]]>
+	</delete>
+    
+	<update id="updateStatus" parameterClass="map">
+        update user_feedback_info 
+        set problemStatus=#problemStatus# 
+        where problemID=#problemID#
+    </update>
+    
+	
+	 <delete id="deleteSubByID" parameterClass="java.lang.Long">
+        <![CDATA[
+        delete from user_feedback_sub where problemID=#value#
+        ]]>
+	</delete>
+	
+	<insert id="insert" parameterClass="RestFeedBackCreateRequest">
+        <![CDATA[
+        insert into user_feedback_info(problemID,problemTitle,problemType,problemDescription,customerID,customerName,customerTwTime,managerAnswerTime,newestTwTime,problemStatus,customerEmail) 
+        values 
+        (#problemID#,#problemTitle#,#problemType#,#problemDescription#,#customerID#,#customerName#,#customerTwTime#,#managerAnswerTime#,#newestTwTime#,#problemStatus#,#customerEmail#) 
+        ]]>
+	</insert>
+	
+	
+	<update id="update" parameterClass="UserFeedBackInfo">
+        update user_feedback_info 
+        set problemTitle=#problemTitle#, problemTitle=#problemTitle#, problemDescription=#problemDescription#,customerID=#customerID#,customerName=#customerName#,customerTwTime=#customerTwTime#,managerAnswerTime=#managerAnswerTime#,newestTwTime=#newestTwTime#,problemStatus=#problemStatus# 
+        where problemID=#problemID#
+    </update>
+	
+	
+	<update id="updateTime" parameterClass="RestFeedBackDetail">
+        update user_feedback_info 
+        set managerAnswerTime=#managerAnswerTime#,newestTwTime=#newestTwTime#,problemStatus=#problemStatus#
+        where problemID=#problemID#
+    </update>
+    
+    
+    <insert id="addNewFeedBackSub" parameterClass="RestFeedBackSubInfo">
+        <![CDATA[
+        insert into user_feedback_sub(problemID,userID,userName,description,updateTime,isAnswer) 
+        values 
+        (#problemID#,#userID#,#userName#,#description#,#updateTime#,#isAnswer#) 
+        ]]>
+	</insert>
+    
+	
+</sqlMap>
+

@@ -1,0 +1,2 @@
+<include src="../template/createFolder.wxml" />
+<include src="../template/selectFolder.wxml" />

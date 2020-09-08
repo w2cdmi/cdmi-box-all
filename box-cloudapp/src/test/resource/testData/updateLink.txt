@@ -1,0 +1,8 @@
+{
+
+   "effectiveAt" : "",
+   "expireAt" : "",
+   "plainAccessCode" : "%&6$oq4ffeeeeeeeeeee"
+
+	
+}

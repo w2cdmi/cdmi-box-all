@@ -1,0 +1,140 @@
+.unit-price {
+    margin: 10px 0px;
+    padding: 0 15px;
+    line-height: 80rpx;
+    height: 80rpx;
+    background: #fff;
+}
+
+.item {
+    background: #fff;
+    padding: 0 15px;
+    padding-top: 5px;
+}
+
+.item-title {
+    font-size: 24rpx;
+    color: #999;
+    line-height: 56rpx;
+}
+
+.item-content {
+    display: flex;
+    /* justify-content: space-between; */
+    padding-bottom: 12px;
+    flex-wrap: wrap;
+}
+
+.option {
+    position: relative;
+    width: 180rpx;
+    height: 50px;
+    background: #f9f9f9;
+    text-align: center;
+    line-height: 50px;
+    margin-bottom: 8px;
+    color: #666;
+}
+.option+.option{
+    margin-left: 10.6%;
+}
+.option:nth-child(4){
+    margin-left: 0;
+}
+.current {
+    background: #ea5036;
+    color: #fff;
+}
+
+.pay-view {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.total-price {
+    background: #fff;
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.pay-button {
+    width: 248rpx;
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    background: #ea5036;
+    color: #fff;
+}
+
+.rebate-triangle {
+    width: 0;
+    height: 0;
+    border-bottom: 30px solid #ea5036;
+    border-left: 45px solid transparent;
+    position: absolute;
+    top: 19px;
+    right: 1px;
+}
+
+.rebate {
+    font-size: 10px;
+    color: #fff;
+    position: absolute;
+    top: -2px;
+    right: 4px;
+    width: 20px;
+}
+
+.product-name {
+    height: 30px;
+    line-height: 40px;
+}
+
+.product-storgae-size {
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+}
+
+.item-row {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+}
+
+.font-color-red {
+    color: red;
+}
+
+.select-img-view {
+    width: 26rpx;
+    height: 26rpx;
+    position: absolute;
+    top: 10rpx;
+    left: 10rpx;
+}
+
+.select-img {
+    width: 26rpx;
+    height: 26rpx;
+    display: block;
+}
+
+.view-border-bottom {
+    border-bottom: 1px solid #eaeaea;
+}
+
+.view-padding {
+    padding-bottom: 10px;
+}
+.price-line{
+    text-decoration:line-through;
+}
+.gray-bg{
+    background:#999;
+}

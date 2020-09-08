@@ -1,0 +1,258 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!--公共-->
+    <sys:String x:Key="confirm">确定</sys:String>
+    <sys:String x:Key="cancel">取消</sys:String>
+    <sys:String x:Key="close">关闭</sys:String>
+    <sys:String x:Key="appNameTitle">Onebox</sys:String>
+    <sys:String x:Key="StartNoticeTitle">Onebox启动</sys:String>
+    <sys:String x:Key="NetworkNotice">网络连接超时，请在网络连接正常后重新启动。</sys:String>
+    <sys:String x:Key="PortUsedNotice">Onebox使用的端口被其他程序占用，请先关闭占用程序再启动。</sys:String>
+    <sys:String x:Key="startErr">服务启动异常</sys:String>
+    <sys:String x:Key="startErrInfo">同步客户端服务启动异常，同步客户端将退出!</sys:String>
+    <sys:String x:Key="startErrRecover">可尝试重新启动客户端。</sys:String>
+    <sys:String x:Key="OneboxSysInfo">Onebox系统提示</sys:String>
+    <sys:String x:Key="FileCntLimitHead">当前用户文件数量为</sys:String>
+    <sys:String x:Key="FileCntLimitBetween">个，系统限额为</sys:String>
+    <sys:String x:Key="FileCntLimitTail">个，同步客户端即将退出，请在WEB端删除部分数据后重新登录客户端。</sys:String>
+    <sys:String x:Key="wizardFile">Onebox 快速入门.pdf</sys:String>
+    <sys:String x:Key="helpUrl">/static/help/zh/helpcenter.html</sys:String>
+    <sys:String x:Key="InstallFileIncomplete">Onebox 安装文件已经损坏，需要重新安装。</sys:String>
+    <sys:String x:Key="rootChangeMsg">同步文件夹已被修改，请重新设置同步文件夹。</sys:String>
+
+    <!--信息确认、登录(冒号为英文冒号)-->
+    <sys:String x:Key="userName">域帐号:</sys:String>
+    <sys:String x:Key="password">域密码:</sys:String>
+    <sys:String x:Key="userNameNotice">如c00100000</sys:String>
+    <sys:String x:Key="userLoginTitle">Onebox 用户登录</sys:String>
+    <sys:String x:Key="confirmTitle">Onebox 同步文件夹设置</sys:String>
+    <sys:String x:Key="deviceName">计算机名:</sys:String>
+    <sys:String x:Key="syncRootPath">本地同步文件夹:</sys:String>
+    <sys:String x:Key="choiceSyncRoot">选择本地同步文件夹</sys:String>
+    <sys:String x:Key="deviceErr">验证设备</sys:String>
+    <sys:String x:Key="deviceErrInfo">当前设备不支持运行Onebox客户端。</sys:String>
+    <sys:String x:Key="userErr">关联关系</sys:String>
+    <sys:String x:Key="currentUser">当前登录用户</sys:String>
+    <sys:String x:Key="bindingUserErr">非当前关联用户!</sys:String>
+    <sys:String x:Key="login">登录</sys:String>
+    <sys:String x:Key="remPassword">记住密码</sys:String>
+    <sys:String x:Key="autoLogin">自动登录</sys:String>
+    <sys:String x:Key="loginFailedInfo">登录鉴权失败。</sys:String>
+    <sys:String x:Key="loginLockError">账户已锁定，请5分钟后重试。</sys:String>
+    <sys:String x:Key="autoLoginFailedInfo">自动登录鉴权失败。</sys:String>
+    <sys:String x:Key="syncPathSetErrr">本地同步文件夹设置失败，请重新设置。</sys:String>
+    <sys:String x:Key="noSyncPath">本地同步文件夹路径不能为空</sys:String>
+    <sys:String x:Key="pathTooLong">本地同步文件夹路径长度超过100个字符，请重新输入或选择。</sys:String>
+    <sys:String x:Key="illegalSyncPath">本地同步文件夹路径不合法，请重新输入或选择。</sys:String>
+    <sys:String x:Key="lackOfSpaceHead">磁盘 </sys:String>
+    <sys:String x:Key="lackOfSpaceEnd"> 剩余空间小于500M，请重新选择本地同步文件夹</sys:String>
+    <sys:String x:Key="noExistDiskHead">盘 </sys:String>
+    <sys:String x:Key="noExistDiskEnd"> 不存在，请重新选择本地同步文件夹</sys:String>
+    <sys:String x:Key="syncPathSupport">本地同步文件夹暂只支持空文件夹，(</sys:String>
+    <sys:String x:Key="syncPathNotEmpty">) 不为空文件夹，请重新选择!</sys:String>
+    <sys:String x:Key="SyncPathSupportCh">本地同步文件夹路径只支持字母、数字、下划线、()以及中文组成的路径，</sys:String>
+    <sys:String x:Key="illegalSyncPath2">含有特殊字符，请重新输入或选择。</sys:String>
+    <sys:String x:Key="networkSyncPath">本地同步文件夹不能在网络盘上创建,    请重新输入或选择。</sys:String>
+    <sys:String x:Key="loninInfoEmpty">用户名或密码不能为空。</sys:String>
+    <sys:String x:Key="couldntConnect">网络异常，请检查网络状态。</sys:String>
+    <sys:String x:Key="requestFailed">请求服务器失败，请稍后重试。</sys:String>
+    <sys:String x:Key="NotAdmini">当前帐号不具有管理员权限，请使用具有管理员权限的帐号启动Onebox。</sys:String>
+    <sys:String x:Key="autoAuthSuccess">自动登录已成功。</sys:String>
+
+
+    <!--设置-->
+    <sys:String x:Key="setting">设置</sys:String>
+    <sys:String x:Key="userInfo">此电脑的用户信息</sys:String>
+    <sys:String x:Key="device">此电脑 </sys:String>
+    <sys:String x:Key="already">  已与 </sys:String>
+    <sys:String x:Key="binding"> 的Onebox用户关联。</sys:String>
+    
+    <sys:String x:Key="unbind2">取消关联关系</sys:String>
+    <sys:String x:Key="autoRun">开机时自动启动</sys:String>
+    
+    <!--<sys:String x:Key="settingSave">保存设置</sys:String>
+    <sys:String x:Key="useProxy">使用代理</sys:String>
+    <sys:String x:Key="server">地址:</sys:String>-->
+    
+    <sys:String x:Key="localSpace">本地空间信息</sys:String>
+    <sys:String x:Key="usedSpace">同步文件夹占用空间:</sys:String>
+    <sys:String x:Key="unbindConfirm">是否要解除关联关系？</sys:String>
+    <!--<sys:String x:Key="unbindConfirm2">是否要解除同步关系？</sys:String>-->
+    <sys:String x:Key="unbindConfirm_Device">此操作会停止你的电脑 (</sys:String>
+    <sys:String x:Key="unbindConfirm_stetFolder">) 中的文件与Onebox的同步，但不会删除此电脑上的Onebox文件夹中的文件。</sys:String>
+    <sys:String x:Key="unbindFailedInfo">取消关联关系失败。</sys:String>
+    <sys:String x:Key="unbindSuccess">取消关联关系成功。</sys:String>
+    <sys:String x:Key="availableSpace">所在磁盘剩余空间:</sys:String>
+    <sys:String x:Key="noticedifcnt">个文件或文件夹待同步</sys:String>
+    <sys:String x:Key="fileDownloadPolicy">下载策略</sys:String>
+    <sys:String x:Key="openFileDownload">自动下载</sys:String>
+    <sys:String x:Key="openDownloadTitle">开启自动下载</sys:String>
+    <sys:String x:Key="openDownloadMsg">切换到自动下载模式后，会重新比较本地和云端文件，是否开启自动下载？</sys:String>
+    <sys:String x:Key="closeDownloadTitle">关闭自动下载</sys:String>
+    <sys:String x:Key="closeDownloadMsg">是否取消自动下载？</sys:String>
+    <sys:String x:Key="FileDownloadHelp">（注：不勾选状态下，云端的数据更新不会自动下载到本地，选中后，云端文件变化后会自动下载到本地。）</sys:String>
+
+    <!--传输-->
+    <sys:String x:Key="transStatus">传输状态</sys:String>
+    <sys:String x:Key="status">状态</sys:String>
+    <sys:String x:Key="filePath">文件</sys:String>
+    <sys:String x:Key="fileSize">大小</sys:String>
+    <sys:String x:Key="progress">进度</sys:String>
+    <sys:String x:Key="upload">上传:</sys:String>
+    <sys:String x:Key="download">下载:</sys:String>
+    <sys:String x:Key="remainSpaceTile">磁盘空间提示</sys:String>
+    <sys:String x:Key="RemainSpace500M">同步文件夹所在磁盘剩余空间已不足500M，请清理。</sys:String>
+    <sys:String x:Key="RemainSpace100M">同步文件夹所在盘剩余空间已不足100MB，Onebox将暂停同步，清理空间后自动恢复同步。</sys:String>
+    <sys:String x:Key="CRemainSpace200M">C盘剩余空间已不足200MB，Onebox将退出。请清理后重新登录使用。</sys:String>
+    <sys:String x:Key="noTaskMsg">暂无待处理文件</sys:String>
+    <sys:String x:Key="remainSize">剩余大小:</sys:String>
+    <sys:String x:Key="remainTime">剩余时间:</sys:String>
+    <sys:String x:Key="remainFileNum">待处理文件数:</sys:String>
+    <sys:String x:Key="buttonAll">全部</sys:String>
+    <sys:String x:Key="buttonUpload">上传</sys:String>
+    <sys:String x:Key="buttonDownload">下载</sys:String>
+    <sys:String x:Key="ScanningMsg">准备待处理文件</sys:String>
+    <sys:String x:Key="AnalyseMsg">正在分析文件</sys:String>
+
+    <!--错误列表-->
+    <sys:String x:Key="ErrorListTableTitle">失败列表</sys:String>
+    <sys:String x:Key="fileItem">文件</sys:String>
+    <sys:String x:Key="errorCodeItem">错误码</sys:String>
+    <sys:String x:Key="errorMsgItem">错误描述</sys:String>
+    <sys:String x:Key="disposeMsgItem">处理建议</sys:String>
+    <sys:String x:Key="FaiedNum">失败文件数:</sys:String>
+    <sys:String x:Key="ExportFile">导出</sys:String>
+
+    <!--任务栏-->
+    <sys:String x:Key="syncPause">暂停同步</sys:String>
+    <sys:String x:Key="syncRecover">恢复同步</sys:String>
+    <sys:String x:Key="options">选项</sys:String>
+    <sys:String x:Key="openSyncRoot">打开同步文件夹</sys:String>
+    <sys:String x:Key="openWebServer">浏览Onebox网站</sys:String>
+    <sys:String x:Key="CollectLogs">日志收集</sys:String>
+    <sys:String x:Key="help">帮助</sys:String>
+    <sys:String x:Key="about">关于</sys:String>
+    <sys:String x:Key="quit">退出</sys:String>
+    <sys:String x:Key="syncPathNotExist">本地同步文件夹不存在，请解除同步关系后重新设置本地同步文件夹。</sys:String>
+
+
+    <!--共享-->
+    <sys:String x:Key="shareInvite">邀请共享人</sys:String>
+    <sys:String x:Key="shareMgr">管理共享人</sys:String>
+    <sys:String x:Key="invite">邀请</sys:String>
+    <sys:String x:Key="unshared1">移除全部</sys:String>
+    <sys:String x:Key="inputnotice">请输入工号、域账号或者姓名，按回车添加</sys:String>
+    <sys:String x:Key="nextinputnotice">点击继续添加</sys:String>
+    <sys:String x:Key="sharingUser">共享人</sys:String>
+    <sys:String x:Key="department">部门</sys:String>
+    <sys:String x:Key="operation">操作</sys:String>
+    <sys:String x:Key="remove">移除</sys:String>
+    <sys:String x:Key="removeConfirm">是否移除所有共享人？</sys:String>
+    <sys:String x:Key="inviteSuccess">邀请共享人成功。</sys:String>
+    <sys:String x:Key="inviteFailed">邀请共享人失败。</sys:String>
+    <sys:String x:Key="cancelConfirm">是否取消邀请？</sys:String>
+    <sys:String x:Key="userAreadyIn">该用户已经存在于待邀请列表.</sys:String>
+    <sys:String x:Key="emptyinvitenotice">你尚未设定有效的共享人。</sys:String>
+    <sys:String x:Key="sharedPerson">个共享人</sys:String>
+    <sys:String x:Key="addMsg">添加消息</sys:String>
+    <sys:String x:Key="unSharedFailed">取消文件共享失败</sys:String>
+    <sys:String x:Key="share">共享</sys:String>
+    <sys:String x:Key="inviteMore">邀请更多共享人</sys:String>
+    <sys:String x:Key="unshared">取消文件共享</sys:String>
+    <sys:String x:Key="invitePerson">邀请共享人</sys:String>
+    <sys:String x:Key="shareSelfErr">不允许共享给自己</sys:String>
+    <sys:String x:Key="batchAddNotice">部分条件没有找到合适的结果，继续提交将被忽略。</sys:String>
+    <sys:String x:Key="notFind">没有找到</sys:String>
+
+    <!--链接-->
+    <sys:String x:Key="linkShare">分享链接</sys:String>
+    <sys:String x:Key="copy">复制</sys:String>
+    <sys:String x:Key="linkCancel">取消分享</sys:String>
+    <sys:String x:Key="accessLimit">访问限制:</sys:String>
+    <sys:String x:Key="readCode">提取码:</sys:String>
+    <sys:String x:Key="validTimes">有效期:</sys:String>
+    <sys:String x:Key="forever">永久</sys:String>
+    <sys:String x:Key="custom">自定义</sys:String>
+    <sys:String x:Key="savingLimit">保存</sys:String>
+    <sys:String x:Key="timeError">时间选择错误</sys:String>
+    <sys:String x:Key="timeRule1">开始时间不能大于结束时间</sys:String>
+    <sys:String x:Key="timeRule2">选择时间小于当前时间，请重新选择</sys:String>
+    <sys:String x:Key="updateFailed">更新分享链接失败</sys:String>
+    <sys:String x:Key="updateFailedInfo">更新分享链接失败。</sys:String>
+    <sys:String x:Key="updateSuccess">更新分享链接成功</sys:String>
+    <sys:String x:Key="updateSuccessInfo">更新分享链接成功。</sys:String>
+    <sys:String x:Key="getLinkFailedInfo">服务端异常，获取链接失败。</sys:String>
+    <sys:String x:Key="linkCancelConfirm">如果此文件已分享其他人，它将不可访问，你想继续吗？</sys:String>
+    <sys:String x:Key="readCodeErr">提取码不满足规定的有效位数(1~20)</sys:String>
+    <sys:String x:Key="dateTimeErr">不合法的日期格式或者日期超出限定范围，需要撤消吗？</sys:String>
+    <sys:String x:Key="copyErr">复制失败</sys:String>
+    <sys:String x:Key="copyErrInfo">复制失败，可尝试选中内容ctrl+c复制。</sys:String>
+    <sys:String x:Key="linkPublic">公开访问</sys:String>
+    <sys:String x:Key="linkLimitChange">修改</sys:String>
+    <sys:String x:Key="to">至</sys:String>
+    <sys:String x:Key="readCode1">提取码</sys:String>
+    <sys:String x:Key="validTimes1">有效期</sys:String>
+    <sys:String x:Key="accessLimit1">访问限制</sys:String>
+    <sys:String x:Key="readCodeEmpty">提取码不能为空!</sys:String>
+    <sys:String x:Key="current">当前</sys:String>
+    <sys:String x:Key="CodeNotMach">提取码只能由字母和数字组成</sys:String>
+    <sys:String x:Key="CancelLinkFailed">取消分享链接失败。</sys:String>
+    <sys:String x:Key="StartTimeBlank">开始时间不能为空。</sys:String>
+    <sys:String x:Key="sendMail">发送</sys:String>
+    <sys:String x:Key="cancelSend"> 取消</sys:String>
+    <sys:String x:Key="emailInputnotice">请输入工号、域账号、邮箱或者姓名拼音，按回车</sys:String>
+    <sys:String x:Key="addEmailPerson">添加收件人</sys:String>
+    <sys:String x:Key="invalidRecipients">你尚未设定有效的收件人。</sys:String>
+
+    <!--向导、安装-->
+    <sys:String x:Key="AboutWindowTile">关于</sys:String>
+    <sys:String x:Key="appNameT">产品名称:</sys:String>
+    <sys:String x:Key="appVersionT">版本:</sys:String>
+    <sys:String x:Key="copyRightT">版权所有:</sys:String>
+    <sys:String x:Key="copyRight">中软技术有限公司 © 2014 。保留一切权利。</sys:String>
+    <sys:String x:Key="warnning">温馨提示：您通过中软云盘进行任何的数据访问操作时，相关日志将被记录，请遵守中软公司信息安全规定。</sys:String>
+    <sys:String x:Key="contactT">联系方式:</sys:String>
+    <sys:String x:Key="contactIT">IT联系人-wuzhiyuan (00186884)</sys:String>
+    <sys:String x:Key="contantDep">产品维护-zhubiao(00178165)</sys:String>
+    
+
+    <sys:String x:Key="wizard">Onebox 使用向导</sys:String>
+    <sys:String x:Key="welcom">欢迎使用Onebox</sys:String>
+    <sys:String x:Key="wizardContext1">Onebox在电脑中生成一个同步文件夹，默认名称 Onebox，同步文件夹所有文件同步到云端。</sys:String>
+    <sys:String x:Key="wizard2">随时随地访问Onebox</sys:String>
+    <sys:String x:Key="wizard2Context">不限时间和地点，只要您接入网络，就可以随心选择网页、同步客户端、移动终端等形式访问Onebox。</sys:String>
+    <sys:String x:Key="wizard3">Onebox通知区域图标</sys:String>
+    <sys:String x:Key="wizard3Context">右键单击通知区域图标，是您访问和操作Onebox的快速通道。</sys:String>
+    <sys:String x:Key="wizard4">与他人分享文件和文件夹</sys:String>
+    <sys:String x:Key="wizard4Context">&quot;共享&quot;功能加载在右键功能菜单，操作方便快捷。</sys:String>
+    <sys:String x:Key="step1">4中的1部分</sys:String>
+    <sys:String x:Key="step2">4中的2部分</sys:String>
+    <sys:String x:Key="step3">4中的3部分</sys:String>
+    <sys:String x:Key="step4">4中的4部分</sys:String>
+    <sys:String x:Key="quiteWizard">跳过向导</sys:String>
+    <sys:String x:Key="next">下一页</sys:String>
+    <sys:String x:Key="previous">上一页</sys:String>
+    <sys:String x:Key="finish">完成</sys:String>
+    
+    <!--升级-->
+    <sys:String x:Key="UpgradeTitle">Onebox升级提醒</sys:String>
+    <sys:String x:Key="NewVersionDetected">发现新版本 </sys:String>
+    <sys:String x:Key="UpgradeNotice">更新需要大约两分钟时间，且升级过程中会重启资源管理器</sys:String>
+    <sys:String x:Key="UpgradeContent">更新内容:</sys:String>
+    <sys:String x:Key="UpgradeButtonContent">立即更新</sys:String>
+    <sys:String x:Key="CloseButtonContent">关闭</sys:String>
+    <sys:String x:Key="UpgradeSuccess">Onebox已升级到最新版本。</sys:String>
+
+    <!--右键上传-->
+    <sys:String x:Key="uploadToCloud">上传至Onebox</sys:String>
+    <sys:String x:Key="uploadToCloudMsg">请选择云端目录。</sys:String>
+    <sys:String x:Key="dirChooseNotice">请选择云端目录：</sys:String>
+    <sys:String x:Key="uploadNotice">提醒：通过右键上传的文件，如果本地变化后不会自动再次上传</sys:String>
+    <sys:String x:Key="uploadAddNotice">已开始上传，</sys:String>
+    <sys:String x:Key="uploadInMainWindow">查看任务进度>></sys:String>
+    <sys:String x:Key="uploadOpenWebNotice">请稍后查看云端文件：</sys:String>
+    <sys:String x:Key="uploadButtonContent">上传</sys:String>
+    <sys:String x:Key="emptyDir">（空）</sys:String>
+
+</ResourceDictionary>

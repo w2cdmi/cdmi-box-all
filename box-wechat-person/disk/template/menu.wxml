@@ -1,0 +1,58 @@
+<template name="menu">
+    <view class="modal-mask-white" bindtap="hideMenuPanel" wx:if="{{isShowMenuPanel}}"></view>
+    <view class='menu-panel {{isShowMenuPanel ? "showPanel" : "hidePanel"}}'>
+        <view hover-class='button-hover' bindtap='jumpForwardPage' style='margin-top:15px;'>
+            <image src='/disk/images/menu/batch.png'></image>
+            <text>外发</text>
+        </view>
+        <view hover-class='button-hover' bindtap='chooseUploadImage' style='margin-top:15px;'>
+            <image src='/disk/images/menu/image.png'></image>
+            <text>图片</text>
+        </view>
+        <view hover-class='button-hover' bindtap='chooseUploadVedio'>
+            <image src='/disk/images/menu/movie.png'></image>
+            <text>视频</text>
+        </view>
+        <block wx:if="{{isShowUpButton}}">
+            <view hover-class='button-hover' bindtap='showCreateFolderPanel'>
+                <image src='/disk/images/menu/folder.png'></image>
+                <text>新建</text>
+            </view>
+        </block>
+        <block wx:if="{{isShowChatButton}}">
+            <view hover-class='button-hover' bindtap='onShareAppMessage'>
+                <image src='/disk/images/menu/chat-p2p.png'></image>
+                <button open-type='share' class='clear-button-style button-share-p2p'>私聊</button>
+            </view>
+            <view hover-class='button-hover' bindtap='jumpCreateChatPage'>
+                <image src='/disk/images/menu/chat-team.png'></image>
+                <text>群聊</text>
+            </view>
+        </block>
+        <view hover-class='button-hover' bindtap='switchMusicPanel' style="display:{{isShowMusicButton?'flex':'none'}}">
+            <image src='/disk/images/menu/music.png'></image>
+            <text>音乐</text>
+        </view>
+        <block wx:if="{{isOpenRobot}}">
+            <view hover-class='button-hover' bindtap='exitBackup'>
+                <image src='{{userIcon}}'></image>
+                <text>备份中</text>
+            </view>
+        </block>
+        <block wx:if="{{isOpenRobot == false}}">
+            <view hover-class='button-hover' bindtap='backupIntroduction'>
+                <image src='/disk/images/menu/backup.png'></image>
+                <text>备份</text>
+            </view>
+        </block>
+        <view></view>
+    </view>
+
+    <view class='add-panel {{isShowMenuPanel ? "btnRotate0" : "btnRotate45"}}' bindtap='switchMenuPanel'>
+        <image src='/disk/images/icon/add-icon.png'></image>
+    </view>
+</template>
+
+<template name="up-progress">
+    <progress percent="{{percent}}" show-info wx:if="{{isShowUplodProgress}}" />
+</template>

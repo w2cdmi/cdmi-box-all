@@ -1,0 +1,73 @@
+<!--disk/inbox/inbox.wxml-->
+
+<view class='page'>
+    <!--文件列表  -->
+    <view wx:if="{{!showBlank}}">
+        <scroll-view scroll-y="{{true}}" class='scroll-view-Height' bindscrolltolower='getMoreList' style='height: {{viewHeight}}rpx'>
+            <scroll-view scroll-x="{{true}}" class='scroll-view-width' wx:for="{{folderList}}" wx:key="*this" bindtap='gotoFileList' data-folder-item='{{item}}'>
+                <view class='folder-inline'>
+                    <view class='folder-item'>
+                        <view class='folder-item-flex'>
+                            <view>
+                                <image src='/disk/images/icon/folder-icon.png' class='folder-icon'></image>
+                            </view>
+                            <view>
+                                <view>
+                                    <view class='folder-name'>{{item.name}}</view>
+                                </view>
+                                <view class='folder-info'>
+                                    <text>{{item.date}}</text>
+                                </view>
+                            </view>
+                        </view>
+                        <view class='dept-more' data-folder-item='{{item}}' catchtap='setModalStatus'>
+                            <image class='plug_icon' src='/disk/images/depart-plug.png'></image>
+                        </view>
+                    </view>
+                </view>
+                <!-- <view class="deleteFolder" data-index="{{index}}" data-item='{{item}}' catchtap='onDeleteDeptOrEmploye'>
+                发送
+            </view> -->
+            </scroll-view>
+
+        </scroll-view>
+    </view>
+
+    <!--三个原点唤起的弹出层  -->
+    <view class="drawer_screen" bindtap="cancelModalStatus" wx:if="{{showModalStatus}}"></view>
+    <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+        <view class='margin-bottom'>
+            <button open-type='share' class='cancel_view draw_view_content_comm'> 发送</button>
+            <view bindtap="deleteFolderItem" class='cancel_view draw_view_content_comm'> 删除</view>
+        </view>
+        <view bindtap="cancelModalStatus" class='cancel_view draw_view_content_comm'> 取消</view>
+    </view>
+
+    <!--空白文件  -->
+    <view class='blank-file' wx:if="{{showBlank}}">
+        <view class='blank-item'>
+            <image src='/disk/images/file-black.png' class='blank-image'></image>
+        </view>
+        <view class='blank-item'>
+            <view class='blank-tip'>您还没有收集到任何文件</view>
+        </view>
+
+        <view>
+            <view class='blank-title'>收集流程：</view>
+            <view class=' blank-text'>1.点击下方的【新建收件箱】创建；</view>
+            <view class=' blank-text'>
+                <text space="ensp">2.点击收件箱右侧【 </text>
+                <image class='plug_icon_blank' src='/disk/images/depart-plug.png'></image>
+                <text space="ensp"> 】将创建的收集箱发送给对方</text>
+            </view>
+            <view class=' blank-text'>3.别人点开您的收集箱上传文件；</view>
+            <view class=' blank-text'>4.在此处查看</view>
+        </view>
+    </view>
+
+    <!--新建文件夹  -->
+    <createFolder id="createFolder" title='请输入收件箱名' createCancel='取消' createConfirm='确定' createFailText='不能出现特殊字符' createFailTextBtn='知道了' placeholderText='不能输入特殊字符' bind:onCreateFolderCancel="_onCreateFolderCancel" bind:onCreateFolderConfirm="_onCreateFolderConfirm"
+        catch:onCreateFolderFail="_onCreateFolderCancel"></createFolder>
+
+    <view class='add-btn' bindtap='addFolder'>新建收件箱</view>
+</view>

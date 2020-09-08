@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="LoginInfo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="LoginInfo" type="com.huawei.sharedrive.uam.logininfo.domain.LoginInfo" />
+
+	<insert id="insert" parameterClass="LoginInfo">
+        <![CDATA[
+        insert into logininfo$tableSuffix$(loginName,enterpriseId,userId,loginType,domainName) 
+        values 
+        (#loginName#,#enterpriseId#,#userId#,#loginType#,#domainName#)
+        ]]>
+	</insert>
+	<select id="getByLoginName" parameterClass="LoginInfo" resultClass="LoginInfo">
+        <![CDATA[
+        select * from logininfo$tableSuffix$ where loginName=#loginName#
+        ]]>
+	</select>
+	<select id="getByNameDomain" parameterClass="LoginInfo" resultClass="LoginInfo">
+        <![CDATA[
+        select * from logininfo$tableSuffix$ where loginName=#loginName# and domainName=#domainName#
+        ]]>
+    </select>
+    <select id="getBySuffix" parameterClass="String" resultClass="LoginInfo">
+        <![CDATA[
+        select * from logininfo$tableSuffix$
+        ]]>
+    </select>
+	 <delete id="delByNameEnterId" parameterClass="LoginInfo">
+    	<![CDATA[
+        delete from logininfo$tableSuffix$ where loginName=#loginName# and enterpriseId=#enterpriseId#
+        ]]>
+	</delete>
+	
+</sqlMap>
+

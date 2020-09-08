@@ -1,0 +1,85 @@
+/* disk/batchShare/batchShare.wxss */
+
+.bc-white {
+    background-color: #fff;
+}
+
+.delete-file-img {
+    width: 38rpx;
+    height: 38rpx;
+    position: absolute;
+    margin-left: -76rpx;
+    margin-top: -58rpx;
+}
+
+.view-input {
+    padding-bottom: 20rpx;
+    min-height: 457rpx;
+    position: relative;
+}
+
+.input-class {
+    font-size: 34rpx;
+    color: rgba(3, 3, 3, 0.4);
+}
+
+.select-files-box {
+    position: relative;
+    overflow: hidden;
+    padding: 20rpx;
+}
+
+.textarea {
+    width: 100%;
+    height: 75px;
+    margin-top: 34rpx;
+    font-size: 34rpx;
+}
+
+.select-files-box > view {
+    height: 264rpx;
+    width: 33%;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    float: left;
+}
+
+.view-dotted image {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.blank-bg {
+    text-align: center;
+    width: 198rpx;
+    height: 198rpx;
+}
+
+.share-button {
+    position: absolute;
+    bottom: 55rpx;
+    left: 5%;
+    text-align: center;
+    background: #ea5036;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    font-size: 28rpx;
+    color: #fff;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.img {
+    width: 198rpx;
+    height: 198rpx;
+}
+
+.select-file-name {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

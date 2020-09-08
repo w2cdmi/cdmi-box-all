@@ -1,0 +1,19 @@
+<view class="page">
+    <view class="grids" wx:if="{{isShowGrids}}">
+        <block wx:for="{{grids}}" wx:key="*this">
+            <view id="{{item.id}}" bindtap="onclick" class="grid" hover-class="button-hover">
+                <image class="grid-icon" src="{{item.icon}}" />
+                <view class="grid-label">{{item.text}}</view>
+                <view class="grid-description">{{item.description}}</view>
+            </view>
+        </block>
+    </view>
+
+    <!--显示上传按钮  -->
+    <view wx:if='{{!isShowGrids}}'>
+        <include src="/disk/widget/filelist.wxml" />
+    </view>
+
+    <tabbar selectIndex="3" bind:onShowMenu="onShowMenu"></tabbar>
+    <menu isShowMenu='{{isShowMenu}}' bind:onUploadImage="onUploadImage" bind:onUploadVideo="onUploadVideo" bind:showCreateFolder="showCreateFolder"></menu>
+</view>

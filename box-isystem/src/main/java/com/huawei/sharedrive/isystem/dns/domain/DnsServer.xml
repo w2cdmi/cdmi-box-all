@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DnsServer">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="DnsServer"
+		type="com.huawei.sharedrive.isystem.dns.domain.DnsServer" />
+
+	<resultMap id="resultMap.DnsServer" class="DnsServer">
+		<result column="id" property="id" javaType="java.lang.Integer" />
+		<result column="manageIp" property="manageIp" javaType="java.lang.String" />
+		<result column="managePort" property="managePort" javaType="java.lang.Integer" />
+	</resultMap>
+
+	<select id="select" resultMap="resultMap.DnsServer"
+		parameterClass="int">
+		select * from dns_server where id=#value#
+	</select>
+	
+	
+	<select id="getAll" resultMap="resultMap.DnsServer">
+		select * from dns_server order by id
+	</select>
+
+	<select id="getByIPandPort" resultMap="resultMap.DnsServer"
+		parameterClass="DnsServer">
+		select * from dns_server where manageIp=#manageIp# and
+		managePort=#managePort#
+	</select>
+
+
+	<insert id="insert" parameterClass="DnsServer">
+		insert into dns_server(id,manageIp,managePort) values(#id#, #manageIp#,
+		#managePort#);
+	</insert>
+
+	<delete id="delete" parameterClass="int">
+		delete from dns_server where id=#id#
+	</delete>
+
+</sqlMap>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+    default-autowire="byName" default-lazy-init="true">
+
+    <bean id="previewConvertThriftService" class="pw.cdmi.file.preview.PreviewConvertThriftServiceImpl" init-method="init" destroy-method="destroy">
+        <property name="jmsUrl" value="${jms.url}" />
+        <property name="jobQueue" value="${jms.preview.convert.job.queue}" />
+    </bean>
+
+    <bean id="previewConvertThriftServiceProcessor" class="com.huawei.sharedrive.thrift.plugins.preview.convert.PreviewConvertThriftService$Processor">
+        <constructor-arg ref="previewConvertThriftService">
+        </constructor-arg>
+    </bean>
+    
+    <bean id="previewConvertPluginThriftService" class="pw.cdmi.file.preview.PreviewPluginServiceAgentThriftServiceImpl" init-method="init" destroy-method="destroy">
+        <property name="configManager" ref="previewPluginConfigManager" />
+        <property name="zookeeperServer" ref="zookeeperServer" />
+        <property name="clusterRoot" value="/PreviewPluginWorkers" />
+    </bean>
+    
+    <bean id="previewConvertPluginThriftServiceProcessor" class="com.huawei.sharedrive.thrift.plugins.agent.PluginServiceAgentThriftService$Processor">
+        <constructor-arg ref="previewConvertPluginThriftService">
+        </constructor-arg>
+    </bean>
+    
+</beans>

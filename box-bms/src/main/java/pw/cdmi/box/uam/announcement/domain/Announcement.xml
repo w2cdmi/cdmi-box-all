@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Announcement">
+
+    <typeAlias alias="Announcement" type="pw.cdmi.box.uam.announcement.domain.Announcement" />
+	
+	<resultMap id="resultMap.Announcement" class="Announcement">
+        <result column="id" 				property="id" 				javaType="java.lang.Long"/>
+        <result column="title" 				property="title" 			javaType="java.lang.String"/>
+        <result column="content" 			property="content" 			javaType="java.lang.String"/>
+        <result column="publisherId" 		property="publisherId" 		javaType="java.lang.Long"/>
+        <result column="publishTime" 		property="publishTime" 		javaType="java.util.Date"/>
+        <result column="topTime" 			property="topTime" 			javaType="java.util.Date"/>
+    </resultMap>
+    
+	<insert id="insert" parameterClass="Announcement">
+        <![CDATA[
+        insert into announcement(id,title,content,publisherId,publishTime,topTime) values 
+        (#id#,#title#,#content#,#publisherId#,#publishTime#,#topTime#)
+        ]]>
+    </insert>
+    
+    <select id="select" parameterClass="java.lang.Long" resultMap="resultMap.Announcement">
+        select * from announcement where id = #value#
+    </select>
+    
+    <delete id="delete" parameterClass="java.lang.Long">
+        <![CDATA[
+        delete from announcement where id = #value#
+        ]]>
+    </delete>
+    
+    <update id="update" parameterClass="Announcement">
+        update announcement s
+        <dynamic prepend="set">
+        	<isNotNull prepend="," property="content">
+        		s.content=#content#
+        	</isNotNull>
+        	<isNotNull prepend="," property="topTime">
+        		s.topTime=#topTime#
+        	</isNotNull>
+        </dynamic>
+        where s.id = #id#
+    </update>
+    
+    <select id="listAll" resultMap="resultMap.Announcement">
+        select * from announcement order by publishTime desc
+    </select>
+    
+    <select id="getMaxId" resultClass="Long" parameterClass="Announcement">
+        <![CDATA[
+        select max(id) from announcement
+        ]]>
+    </select>
+    
+    <select id="getTotalCount" parameterClass="java.lang.Long" resultClass="java.lang.Integer">
+        select count(*) from announcement t where t.id >= #value#
+    </select>
+    
+    <select id="listAnnouncement" parameterClass="map" resultMap="resultMap.Announcement">
+        select * from announcement t
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="startId">
+                t.id >= #startId# 
+            </isNotEmpty>
+        </dynamic>
+        order by t.publishTime desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#, #limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+</sqlMap>
+

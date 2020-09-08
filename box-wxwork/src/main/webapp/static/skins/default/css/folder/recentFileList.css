@@ -1,0 +1,18 @@
+.two-index-not-recent{
+    display: block;
+    width: 5.8rem;
+    margin: 7.5rem auto 0;
+}
+.two-index-not-recent img{
+    width: 100%;
+}
+.two-index-not-recent-title{
+    font-size:0.6rem;
+    color:#999;
+    line-height:0.45rem;
+    text-align: center;
+    margin:0.5rem 0 1.5rem 0;
+}
+#list{
+    border:none
+}

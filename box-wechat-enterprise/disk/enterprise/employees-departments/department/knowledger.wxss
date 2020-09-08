@@ -1,0 +1,2 @@
+/* disk/enterprise/employees-departments/_blank/as-knowledger/as-knowledger.wxss */
+@import "manager.wxss"

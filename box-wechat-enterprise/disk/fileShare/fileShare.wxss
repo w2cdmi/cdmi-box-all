@@ -1,0 +1,197 @@
+/* disk/fileShare/fileShare.wxss */
+
+.page {
+    overflow-x: hidden;
+}
+
+.flex-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recentlyViewed-title {
+    background: #fff;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-bottom: 2rpx solid #f1f1f1;
+}
+
+.recentlyViewed-title > view {
+    display: flex;
+    align-items: center;
+}
+.margin-bottom{
+    margin-bottom: 120rpx;
+}
+/*消息提示  */
+
+.tab-panel {
+    box-sizing: border-box;
+    padding-top: 50px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.tip_view {
+    background-color: #fff;
+    border-radius: 1.5em;
+    width: 220rpx;
+    height: 50rpx;
+    margin: 0 auto;
+    margin-top: 20rpx;
+    margin-bottom: 20rpx;
+    display: flex;
+    align-items: center;
+}
+
+.tip_img {
+    width: 50rpx;
+    height: 50rpx;
+    float: left;
+    border-radius: 1.5em;
+}
+
+.tip_txt {
+    display: inline-block;
+    font-size: 26rpx;
+    margin-left: 20rpx;
+    line-height: 50rpx;
+}
+
+.image-icon {
+    width: 20rpx;
+    height: 20rpx;
+    margin-left: 20rpx;
+}
+
+/*快捷文件夹  */
+
+.arrow-image {
+    width: 10rpx;
+    height: 18rpx;
+    margin: 0 30rpx 0 20rpx;
+}
+
+.shortcutFolder {
+    margin-top: 20rpx;
+}
+
+.shortcutFolder-image {
+    width: 34rpx;
+    height: 34rpx;
+    margin: 0 20rpx 0 30rpx;
+}
+
+.folderList {
+    height: 130rpx;
+    width: 930rpx;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-bottom: 2rpx solid #f1f1f1;
+    -webkit-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.folderList-item {
+    width: 750rpx;
+}
+
+.folderIcon {
+    width: 90rpx;
+    height: 90rpx;
+    margin: 0 20rpx 0 30rpx;
+}
+
+.nodeName {
+    font-size: 30rpx;
+    color: #333;
+    width: 400rpx;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ownerName {
+    color: #999;
+    font-size: 24rpx;
+    margin-top: 15rpx;
+}
+
+.share-view {
+    height: 130rpx;
+    width: 15%;
+}
+
+.folder-item {
+    width: 85%;
+    justify-content: flex-start;
+}
+
+.share-btn {
+    height: 130rpx;
+    width: 130rpx;
+    justify-content: center;
+    background-color: transparent;
+}
+
+.share-btn::after {
+    border: none;
+}
+
+.share-icon {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.blankContainer {
+    padding: 20rpx 0;
+    background: #fff;
+}
+
+.blank-icon {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.blank-text {
+    color: #a9a9a9;
+    text-align: center;
+}
+
+.blank-folder-text {
+    color: #a9a9a9;
+    padding-left: 40rpx;
+}
+
+.plug_icon {
+    width: 8rpx;
+    height: 44rpx;
+    padding: 0 15rpx;
+}
+
+/*侧滑  */
+
+.deleteBtn {
+    background-color: #ea5036;
+    width: 180rpx;
+    height: 100%;
+    color: #fff;
+    line-height: 130rpx;
+    text-align: center;
+}
+
+.touch-moveToLeft-active {
+    -webkit-transform: translateX(-180rpx);
+    transform: translateX(-180rpx);
+}
+
+.touch-moveToRight-active {
+    -webkit-transform: translateX(0rpx);
+    transform: translateX(0rpx);
+}

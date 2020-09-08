@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="130,46" bktrans="true" >
+	<HorizontalLayout name="SelectDialog" bordersize="1" bordercolor="#FF666666" bkcolor="#FF2e90e5">
+
+	</HorizontalLayout>
+</Window>

@@ -1,0 +1,52 @@
+@@addShareMessage
+{
+ "message":"Message:This is Message.", 
+"sharedUser": 
+	{ 
+  		"id":1430, 
+  		"type":"user" 
+	} 
+}
+
+@@normal
+{
+	"srcOwnerId":62,
+	"type":"delete",
+	"srcNodeList":
+	[
+	    {"srcNodeId":274}
+	]
+
+}
+
+@@nodeIdNull
+{ 
+    "type":"delete",  
+    "destFolderId":#destFolderId#, 
+    "destOwnerId":#destOwnerId#, 
+    "srcOwnerId":#srcOwnerId#, 
+    "autoRename":true
+}
+
+@@srcOwnerId
+{ 
+    "type":"delete",  
+    "destFolderId":#destFolderId#, 
+    "destOwnerId":#destOwnerId#, 
+     "srcNodeList": 
+    [ 
+        {"srcNodeId":#srcNodeId#} 
+    ], 
+    "autoRename":true
+}
+
+@@shareToMe
+{
+	"srcOwnerId":1430,
+	"type":"delete",
+	"srcNodeList":
+	[
+	    {"srcNodeId":879}
+	]
+
+}

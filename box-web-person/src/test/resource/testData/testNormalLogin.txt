@@ -1,0 +1,9 @@
+{
+	"loginName":"test001",
+	"password":"*******",
+    "deviceType":"2",
+    "deviceSN":"111",
+    "deviceOS":"MIUI 2.3.5",
+    "deviceName":"xiaomi-one",
+    "deviceAgent":"V1.1"
+}

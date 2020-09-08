@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Window>#
+	<MyFilesListContainerElement name="myFile_listItem" height="44" singularrowcolor="#ffffffff" dualrowcolor="#fffafafa">
+		<!--ItemCheckBox float="true" pos="0,1,32,31" align="left" selectedimage="file='..\img\checkbox.png' dest='20,13,32,25' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,13,32,25' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,13,32,25' source='26,0,38,12'"/-->
+		<HorizontalLayout float="true" pos="0,0,480,44">
+			<HorizontalLayout padding="10,0" width="32" height="44">
+				<Button name="myFile_icon"  mouse="false" height="32" float="true" pos="0,6,32,38" align="left" />
+			</HorizontalLayout>
+			<MyFilesRichEditUI name="myFile_listName" limitchars="/ \ * | ' : ? &lt; &gt; &quot;" focusbordercolor="#FFFAFAFA" borderround="5,5" padding="5,8" multiline="false" endellipsis="true" maxchar="246" height="28" maxheight="28" mouse="false" inset="5,6,5,6" align="left" font="12"/>
+			<Button name="myFile_version" visible="false" padding="10,14,0,14" width="26" height="16" text="V9" font="10" textcolor="#FFFFFFFF" normalimage="file='..\Image\ic_popup_view_version - small.png' source='0,26,26,42'" hotimage="file='..\Image\ic_popup_view_version - small.png' source='0,0,26,16'"/>
+			<HorizontalLayout name="myFile_listOperation"  padding="2,12,20,12" width="63" mouse="true">
+				<Button name="myFile_isShare" width="20" height="20" tooltip="Share with specific users." padding="5,0,0,0" normalimage="file='..\Image\ic_toolmenu_share.png' source='0,0,20,20'" disabledimage="file='..\Image\ic_toolmenu_share.png' source='0,60,20,80'" hotimage="file='..\Image\ic_toolmenu_share.png' source='0,30,20,50'" visible="false" enabled="false"/>
+				<Button name="myFile_isShare_control" padding="5,0,0,0" width="20"  visible="false"/>		
+				<Button name="myFile_isShareLink" width="20" height="20" tooltip="Create links to share with anyone."  disabledimage="file='..\Image\ic_toolmenu_link.png' source='0,0,20,20'" padding="5,0,0,0" normalimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50'" hotimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50'" visible="false" enabled="false"/>
+				<Button name="myFile_isShareLink_control" padding="5,0,0,0" width="20"  visible="false"/>		
+				<Button name="myFile_isSync" width="20" height="20" tooltip="Sync" disabledimage="file='..\Image\ic_toolmenu_sync.png' source='0,0,20,20'" padding="5,0,0,0" normalimage="file='..\Image\ic_toolmenu_sync.png' source='0,30,20,50'" hotimage="file='..\Image\ic_toolmenu_sync.png' source='0,60,20,80'" visible="false" enabled="false"/>
+				<Button name="myFile_isSync_control" width="20"  visible="false"/>
+			</HorizontalLayout>
+		</HorizontalLayout>
+		<Button name="myFile_path" float="true" align="left" textpadding="5,15"  pos="480,0,680,44" font="12" textcolor="#FF008BE8" endellipsis="true" width="200" />
+	</MyFilesListContainerElement>
+</Window>

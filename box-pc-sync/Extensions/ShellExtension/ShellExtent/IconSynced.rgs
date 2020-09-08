@@ -1,0 +1,53 @@
+HKCR
+{
+    ShellExtent.IconSynced.1 = s 'IconSynced Class'
+	{
+		CLSID = s '{37DC0263-963E-45B1-9219-13E51F4468D5}'
+	}
+	ShellExtent.IconSynced = s 'IconSynced Class'
+	{
+		CLSID = s '{37DC0263-963E-45B1-9219-13E51F4468D5}'
+		CurVer = s 'ShellExtent.IconSynced.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {37DC0263-963E-45B1-9219-13E51F4468D5} = s 'IconSynced Class'
+		{
+		    ProgID = s 'ShellExtent.IconSynced.1'
+			VersionIndependentProgID = s 'ShellExtent.IconSynced'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			TypeLib = s '{75791D4A-A3B7-43F4-ADEB-A27A7988BB1D}'
+			Version = s '1.0'
+		}
+	}
+}
+
+HKLM
+{
+  NoRemove SOFTWARE
+  {
+    NoRemove Microsoft
+    {
+      NoRemove Windows
+      {
+        NoRemove CurrentVersion
+        {
+          NoRemove Explorer
+          {
+            NoRemove ShellIconOverlayIdentifiers
+            {
+              ForceRemove 0OneboxSyncedIcon = s '{37DC0263-963E-45B1-9219-13E51F4468D5}'
+              {
+              }           
+            }
+          }
+        }
+      }
+    }
+  }
+}

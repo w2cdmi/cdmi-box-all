@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window dropenable="true">
+	<VerticalLayout>
+		<VerticalLayout name="backup_haveTask" visible="false">
+			<VerticalLayout  bkcolor="#FFF9F9F9">
+				<AnimationTabLayout name="backup_pageTab" selectedid="1" animation_direction="horizontal" animation_speed="50">
+					<VerticalLayout>			
+						<HorizontalLayout height="54" bkcolor="#FFF9F9F9">
+							<Label padding="20,0,0,0" text="Backup Tasks" textcolor="#FF666666" font="0" />
+							<Control />
+							<VerticalLayout width="115">
+								<HorizontalLayout height="7">
+									<Control width="20"/>
+									<Control width="50" bkimage="file='..\image\ic_backup_circle_linehide.png' source='0,0,50,5'"/>
+									<Control />
+								</HorizontalLayout>
+								<ScaleIconButton name="backup_retract" iconimage="file='..\image\ic_backup_circle_linehide.png' source='0,5,50,50' dest='0,0,50,45'" height="45" 
+							textpadding="45,15,0,15" font="0" text="Hide" padding="20,0,0,0" textcolor="#FF008BE8" hottextcolor="#FF006AB0"/>
+							</VerticalLayout>
+						</HorizontalLayout>
+
+						<CustomList name="backup_listView" droptarget="false" header="true"  menu="true" itemshowhtml="true" vscrollbar="true" hscrollbar="true" itemlinecolor="#FFE5E5E5" itemhotbkcolor="#FFEBEBEB" itemselectedbkcolor="#FFDEF0FF" inset="20,0,20,0">
+							<ListHeader height="27" menu="true" bkimage="file='..\Image\listheaderbk.png' corner='1,1,2,2'">
+								<ListHeaderItem name="backup_listheaderitem_fileName" font="0" intset="1,0,1,0" width="155" minwidth="155" textcolor="#FF999999" sepimage="..\image\ic_tab_head_devideline.png" sepwidth="1">
+									<HorizontalLayout mousechild="false" padding="10,4,2,4">
+										<Label name="backup_listheaderitemFileName" text="Name" font="2" textcolor="#FF999999" align="left"/>
+									</HorizontalLayout>
+								</ListHeaderItem>
+								<ListHeaderItem name="backup_listheaderitem_taskPath" intset="1,0,1,0" font="0" width="115" minwidth="115" textcolor="#FF999999"  sepimage="..\image\ic_tab_head_devideline.png" sepwidth="1">
+									<HorizontalLayout mousechild="false" padding="5,4,2,4">
+										<Label name="backup_listheaderitemTaskPath" text="Local Path" font="2" textcolor="#FF999999" align="left"/>
+									</HorizontalLayout>
+								</ListHeaderItem>
+								<ListHeaderItem name="backup_listheaderitem_taskTime" intset="1,0,1,0" font="0" width="140" minwidth="140" textcolor="#FF999999" sepimage="..\image\ic_tab_head_devideline.png" sepwidth="1">
+									<HorizontalLayout mousechild="false" padding="5,4,2,4">
+										<Label name="backup_listheaderitemTaskTime" text="Backup Time" font="2" textcolor="#FF999999" align="left"/>
+									</HorizontalLayout>
+								</ListHeaderItem>
+								<ListHeaderItem name="backup_listHeaderItem_taskStatus" intset="1,0,1,0" font="0" width="255" minwidth="255" textcolor="#FF999999">
+									<HorizontalLayout mousechild="false" padding="5,4,0,4">
+										<Label name="backup_listHeaderItemTaskStatus" text="Status" font="2" textcolor="#FF999999" align="left"/>
+									</HorizontalLayout>
+								</ListHeaderItem>
+							</ListHeader>
+						</CustomList>
+					</VerticalLayout>
+					<VerticalLayout bkcolor="#FFF2F2F2">
+						<HorizontalLayout>
+							<Control width="115" />
+							<VerticalLayout>
+								<Control />
+								<RoundGif height="200" bkimage="..\image\ic_backup_circle_gray.png" foreimage="..\image\ic_backup_circle_gradient.png" roundimage="..\image\ic_backup_circle_refresh.png" roundimageenable="..\image\ic_backup_circle_refresh_gray.png" name="backup_roundprogress"/>
+								<Control height="30"/>
+								<Label name="backup_state_des"  text="In the Backup" font="17" textcolor="#FF000000" align="center" endellipsis="true"/>
+								<Control height="10"/>
+								<HorizontalLayout height="20">
+									<Control />
+									<ScaleIconButton name="backup_failed_count" font="0" padding="5,3,5,3" textcolor="#FFFC5043" hottextcolor="#FFFC5043"/>
+									<ScaleIconButton name="backup_failed_des" text="file(s) backup failed" font="0" align="left" enabled="false"/>
+									<Control />
+								</HorizontalLayout>
+								<Control />
+							</VerticalLayout>
+							<VerticalLayout width="115">
+								<HorizontalLayout height="127">
+									<Control />
+									<Control width="50" bkimage="file='..\image\ic_backup_circle_line.png' source='0,0,50,127'" />
+									<Control width="65"/>
+								</HorizontalLayout>
+								<Button name="backup_retract" normalimage="file='..\image\ic_backup_circle_line.png' source='0,127,50,173'" width="50" height="46" padding="0,0,0,0" />
+							</VerticalLayout>				
+						</HorizontalLayout>	
+					</VerticalLayout >
+				</AnimationTabLayout>		  
+			</VerticalLayout>
+			<VerticalLayout bkcolor="#FFF9F9F9" height="71">
+				<Control height="1" bkcolor="#FFD9D9D9"/>
+				<HorizontalLayout height="70">
+					<ScaleIconButton name="backup_taskcount" font="13" text="0" enabled="false" textcolor="#FF000000" disabledtextcolor="#FF000000" padding="20,6,0,6"/>
+					<Label text="backup tasks" font="10" padding="2,6,0,6" textcolor="#FF666666" align="left"/>
+					<Control />
+					<ScaleIconButton  name="backup_create" padding="0,20,0,20" text="Create Backup Task" normalimage="file='..\image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" textpadding="10,6,10,6" font="0" textcolor="#FFFFFFFF"/>
+					<!--<Control width="10" />
+			<ScaleIconButton padding="0,20,0,20" text="备份过滤设置" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110' corner='3,3,3,3'" textpadding="10,6,10,6" font="0" textcolor="#FF000000"/>
+			<Control width="20"/>-->
+				</HorizontalLayout>
+			</VerticalLayout>
+		</VerticalLayout>   
+		<VerticalLayout name="backup_noTask" visible="false">
+			<Control />
+			<Control />
+			<HorizontalLayout height="200">
+				<Control />
+				<Label bkimage="..\image\ic_null_backup.png" width="180" height="180" padding="0,5,0,5"/>
+				<Control />
+			</HorizontalLayout>
+			<Control height="10"/>
+			<Label align="center" height="18" text="No Backup Tasks" font="17" />
+			<Control height="10"/>
+			<Label align="center" height="16" text="Back up local files to the cloud and never lose your data." font="12" />
+			<Control height="10"/>
+			<Button name="backup_interpret" align="center" text="What Is Backup?" textcolor="#FF008BE8" hottextcolor="#FF006AB0" font="12" />
+			<Control height="20"/>
+			<HorizontalLayout  height="40">
+				<Control />
+				<ScaleIconButton padding="0,3,0,3" height="38" name="backup_create" text="Create Backup" normalimage="file='..\image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" textpadding="10,6,10,6" font="0" textcolor="#FFFFFFFF"/>
+				<Control />
+			</HorizontalLayout>
+			<Control />
+		</VerticalLayout>	
+	</VerticalLayout>
+</Window>

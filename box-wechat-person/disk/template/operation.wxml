@@ -1,0 +1,13 @@
+<!-- <view class='operation-menu' hidden='{{isShowMenu?false:true}}' style='top:{{menu_top}};left:{{menu_left}}'>
+    <view data-node-id='{{node.nodeId}}' bindtap='updateNodeName'>重命名</view>
+    <view data-node-id='{{node.nodeId}}' bindtap='deleteNode'>删除</view>
+</view> -->
+
+<template name="operation-menu">
+    <view class="modal-mask-white" bindtap="hideOperation" wx:if="{{isShowMenu}}"></view>
+    <view class='operation-menu' hidden='{{isShowMenu?false:true}}' style='top:{{menu_top}}px;left:{{menu_left}}px'>
+        <view hover-class='button-hover' data-owner-id='{{node.ownerId}}' data-node-id='{{node.nodeId}}' data-name='{{node.name}}' data-type='{{node.type}}' bindtap='updateNodeName'>重命名</view>
+        <view hover-class='button-hover' data-owner-id='{{node.ownerId}}' data-node-id='{{node.nodeId}}' bindtap='moveTo'>移动文件{{node.type==1?'':'夹'}}到</view>
+        <view hover-class='button-hover' data-owner-id='{{node.ownerId}}' data-node-id='{{node.nodeId}}' data-name='{{node.name}}' bindtap='deleteNode'>删除该文件{{node.type==1?'':'夹'}}</view>
+    </view>
+</template>

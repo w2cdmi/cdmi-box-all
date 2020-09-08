@@ -1,0 +1,14 @@
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\Onebox\AutoStartOnebox
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\Onebox\BackupTask
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\Onebox\DataCache
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\Onebox\Extensions\OfficeExtension\OfficeAddin
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\Onebox\Extensions\OfficeExtension\OutlookAddin
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\Extensions\ShellExtension\ShellExtent
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\Onebox\OneboxCMBAdapter
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\Onebox\SyncService
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\Onebox\UI
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\OneboxCommon\Common
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\OneboxCommon\include
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\OneboxCommon\MessageProxy
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\OneboxCommon\NetSDK
+$code_path\clent_v2\projects\client\pc\V100R005C00\code\OneboxCommon\Test

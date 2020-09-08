@@ -1,0 +1,22 @@
+<rules>
+    <rule>
+        <namespace>fileObjectAttachment</namespace>
+        <shardingExpression>hash.apply(object.objectID) % 1024 &lt; 256</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>fileObjectAttachment</namespace>
+        <shardingExpression>hash.apply(object.objectID) % 1024 &gt;= 256 and hash.apply(object.objectID) % 1024 &lt; 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    <rule>
+        <namespace>fileObjectAttachment</namespace>
+        <shardingExpression>hash.apply(object.objectID) % 1024 &gt;= 512 and hash.apply(object.objectID) % 1024 &lt; 768</shardingExpression>
+        <shards>partition3</shards>
+    </rule>
+    <rule>
+        <namespace>fileObjectAttachment</namespace>
+        <shardingExpression>hash.apply(object.objectID) % 1024 &gt;= 768</shardingExpression>
+        <shards>partition4</shards>
+    </rule>
+</rules>

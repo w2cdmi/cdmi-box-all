@@ -1,0 +1,29 @@
+<rules>
+    <rule>
+    	<!-- hash.apply(filter.sharedUserId) -->
+        <sqlmap>INodeShareReverse.listShareToMeByPage</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+
+    <rule>
+    	<!-- hash.apply(filter.sharedUserId) -->
+        <sqlmap>INodeShareReverse.listShareToMeByPageV2</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+
+    <rule>
+		<!-- hash.apply(filter.sharedUserId) -->
+        <sqlmap>INodeShareReverse.getShareToMeCountBySearchName</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+
+    <rule>
+    	<!-- hash.apply(sharedUserId) -->
+        <namespace>INodeShareReverse</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

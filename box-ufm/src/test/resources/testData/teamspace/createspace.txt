@@ -1,0 +1,113 @@
+@@normal
+{ 
+ "name":"testSpac1231", 
+ "description":"ss",
+ "spaceQuota":-1,
+ "status":0,
+ "maxMembers":100,
+ "maxVersions":2
+}
+@@repeat
+{ 
+ "name":"testSpace1", 
+ "description":"ss",
+ "spaceQuota":-1,
+ "status":0,
+ "maxMembers":100
+}
+
+@@emptyName
+{ 
+ "name":"", 
+ "description":"ss",
+ "spaceQuota":1000,
+ "status":0
+}
+
+@@noName
+{ 
+ "description":"ss",
+ "spaceQuota":1000,
+ "status":0
+}
+
+@@nodescp
+{ 
+ "name":"testSpace1", 
+ "spaceQuota":1000,
+ "status":0
+}
+
+@@emptydescp
+{ 
+ "name":"testSpace1", 
+ "description":"",
+ "spaceQuota":1000,
+ "status":0
+}
+
+@@nosize
+{ 
+ "name":"testSpace1", 
+ "description":"ss",
+ "status":0
+}
+@@nostatus
+{ 
+ "name":"testSpace1", 
+ "description":"ss",
+ "spaceQuota":-1
+}
+
+@@invalidsize
+{ 
+ "name":"testSpace1", 
+ "description":"ss",
+ "spaceQuota":-100,
+ "status":0
+}
+@@zerosize
+{ 
+ "name":"testSpace1", 
+ "description":"ss",
+ "spaceQuota":0,
+ "status":0
+}
+
+@@invalidstatus
+{ 
+ "name":"testSpace1", 
+ "description":"ss",
+ "spaceQuota":-1,
+ "status":-1
+}
+@@longname
+{ 
+ "name":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", 
+ "description":"ss",
+ "spaceQuota":-1,
+ "status":1
+}
+@@longname1
+{ 
+ "name":"ccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc", 
+ "description":"ss",
+ "spaceQuota":-1,
+ "status":1
+}
+@@normalstatus
+{ 
+ "name":"testSpacwerwer", 
+ "description":"ss",
+ "spaceQuota":-1,
+ "status":0,
+ "maxMembers":100
+}
+@@abnormalstatus
+{ 
+ "name":"testSpace51111", 
+ "description":"ss",
+ "spaceQuota":-1,
+ "status":1,
+ "maxMembers":100
+}

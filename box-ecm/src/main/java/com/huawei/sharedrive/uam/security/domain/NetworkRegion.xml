@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="NetworkRegion">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="NetworkRegion" type="com.huawei.sharedrive.uam.security.domain.NetworkRegion" />
+
+	<resultMap id="resultMap.NetworkRegion" class="NetworkRegion">
+		<result column="id" property="id" />
+		<result column="ipStart" property="ipStart"/>
+		<result column="ipEnd" property="ipEnd" />
+		<result column="ipStartValue" property="ipStartValue"/>
+		<result column="ipEndValue" property="ipEndValue"/>
+		<result column="networkType" property="networkType" />
+		<result column="regionId" property="regionId" />
+		<result column="regionName" property="regionName" />
+		<result column="location" property="location" />
+		<result column="uploadBandWidth" property="uploadBandWidth" />
+		<result column="downloadBandWidth" property="downloadBandWidth" />
+	</resultMap>
+
+	<delete id="delete" parameterClass="long">
+		delete from network_region where id=#id#
+	</delete>
+	
+	<update id="update" parameterClass="NetworkRegion">
+		<![CDATA[
+		update network_region set
+		ipStart=#ipStart#,ipEnd=#ipEnd#,ipStartValue=#ipStartValue#,
+		ipEndValue=#ipEndValue#,networkType=#networkType#,
+		regionId=#regionId#,regionName=#regionName#,location=#location#,uploadBandWidth=#uploadBandWidth#,downloadBandWidth=#downloadBandWidth#  where id=#id#
+		]]>
+	</update>
+	
+	<insert id="insert" parameterClass="NetworkRegion">
+		insert into network_region(id,ipStart,ipEnd,ipStartValue,ipEndValue,networkType,regionId,regionName,location,uploadBandWidth,downloadBandWidth) 
+		values 
+		(#id#,#ipStart#,#ipEnd#,#ipStartValue#,#ipEndValue#,#networkType#,#regionId#,#regionName#,#location#,#uploadBandWidth#,#downloadBandWidth#)
+	</insert>
+	
+	<select id="uniquelyCheck" parameterClass="map" resultClass="int">
+		<![CDATA[
+		select count(id) from network_region where 
+		((ipStartValue>=#networkRegion.ipStartValue# and ipEndValue<=#networkRegion.ipEndValue#) 
+		or 
+		(ipStartValue<=#networkRegion.ipStartValue# and ipEndValue>=#networkRegion.ipStartValue#) 
+		or
+		(ipEndValue>=#networkRegion.ipEndValue# and ipStartValue<=#networkRegion.ipEndValue#)) 
+        ]]>
+        <isNotEqual prepend="and" property="networkRegion.id" compareValue="0">
+        	<![CDATA[
+        	id!=#networkRegion.id# 
+        	]]>
+        </isNotEqual>
+	</select>
+	
+	<select id="queryCount" parameterClass="map" resultClass="int" >
+		select count(id) from network_region where 1=1 
+        <isNotEmpty prepend="and" property="networkRegion.ipStart">
+	    	 ipStart like concat('%',#networkRegion.ipStart#,'%')
+		</isNotEmpty>
+        <isNotEmpty prepend="and" property="networkRegion.ipEnd">
+	    	 ipEnd like concat('%',#networkRegion.ipEnd#,'%')
+		</isNotEmpty>
+        <isNotEqual prepend="and" property="networkRegion.networkType" compareValue="0">
+           	<![CDATA[
+               networkType=#networkRegion.networkType#  
+              ]]>
+         </isNotEqual>
+         <isNotEqual prepend="and" property="networkRegion.regionId" compareValue="0">
+           	<![CDATA[
+              regionId=#networkRegion.regionId#  
+              ]]>
+         </isNotEqual>
+         <isNotEmpty prepend="and" property="networkRegion.location">
+           	<![CDATA[
+              location like concat('%',#networkRegion.location#,'%')
+              ]]>
+         </isNotEmpty>
+	</select>
+	
+	<select id="query" parameterClass="map" resultMap="resultMap.NetworkRegion">
+		select * from network_region where 1=1 
+        <isNotEmpty prepend="and" property="networkRegion.ipStart">
+	    	 ipStart like concat('%',#networkRegion.ipStart#,'%') 
+		</isNotEmpty>
+        <isNotEmpty prepend="and" property="networkRegion.ipEnd">
+	    	 ipEnd like concat('%',#networkRegion.ipEnd#,'%')
+		</isNotEmpty>
+         <isNotEqual prepend="and" property="networkRegion.networkType" compareValue="0">
+           	<![CDATA[
+               networkType=#networkRegion.networkType#  
+              ]]>
+         </isNotEqual>
+         <isNotEqual prepend="and" property="networkRegion.regionId" compareValue="0">
+           	<![CDATA[
+              regionId=#networkRegion.regionId#  
+              ]]>
+         </isNotEqual>
+         <isNotEmpty prepend="and" property="networkRegion.location">
+           	<![CDATA[
+              location like concat('%',#networkRegion.location#,'%')
+              ]]>
+         </isNotEmpty>
+         <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+	</select>
+	
+	<select id="getById" parameterClass="long" resultClass="NetworkRegion">
+		select * from network_region where id=#id#
+	</select>
+	
+	<select id="getByIpValue" parameterClass="long" resultClass="NetworkRegion">
+		<![CDATA[
+		select * from network_region where  ipStartValue<=#ipValue# and ipEndValue>=#ipValue#  
+		]]>
+	</select>
+</sqlMap>
+

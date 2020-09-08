@@ -1,0 +1,1 @@
+[${appEmailTitle}] ${operUserName} 已从群组 ${groupName}退出。 ${operUserName} has quit from group ${groupName}.

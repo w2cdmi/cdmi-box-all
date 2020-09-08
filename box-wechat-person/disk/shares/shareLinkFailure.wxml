@@ -1,0 +1,10 @@
+<view class="main">
+    <view class="tip">
+        <image src="/disk/images/error-link.png" />
+        <text>您访问的链接已失效</text>
+    </view>
+</view>
+
+<navigator class='back-to-index' url="/disk/index" open-type="reLaunch">
+    <image class='back-to-index' src='/disk/images/icon/back-to-home.png'></image>
+</navigator>

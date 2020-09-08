@@ -1,0 +1,52 @@
+.ico-folder {
+    background: url("ico/folder.png") no-repeat;
+}
+.ico-folder-forbid{
+    background: url("ico/folder-forbid.png") no-repeat;
+}
+.ico-folder-secret{
+    background: url("ico/folder-secret.png") no-repeat;
+}
+.ico-sharefolder {
+    background: url("ico/share_folder.png") no-repeat;
+}
+
+.ico-word {
+    background: url("ico/word.png") no-repeat;
+}
+
+.ico-excel {
+    background: url("ico/excel.png") no-repeat;
+}
+
+.ico-ppt {
+    background: url("ico/ppt.png") no-repeat;
+}
+
+.ico-img {
+    background: url("ico/img.png") no-repeat;
+}
+
+.ico-music {
+    background: url("ico/music.png") no-repeat;
+}
+
+.ico-video {
+    background: url("ico/video.png") no-repeat;
+}
+
+.ico-txt {
+    background: url("ico/txt.png") no-repeat;
+}
+
+.ico-pdf {
+    background: url("ico/pdf.png") no-repeat;
+}
+
+.ico-zip {
+    background: url("ico/zip.png") no-repeat;
+}
+
+.ico-none {
+    background: url("ico/none.png") no-repeat;
+}

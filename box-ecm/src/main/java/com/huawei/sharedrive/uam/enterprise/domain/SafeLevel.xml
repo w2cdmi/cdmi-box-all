@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SafeLevel">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="SafeLevel" type="com.huawei.sharedrive.uam.enterprise.domain.SafeLevel" />
+	
+	<insert id="insert" parameterClass="SafeLevel">
+        <![CDATA[
+        insert into resource_security_level(id,accountId,safeLevelName,safeLevelDesc,createdAt,modifiedAt) 
+        values 
+        (#id#,#accountId#,#safeLevelName#,#safeLevelDesc#,#createdAt#,#modifiedAt#)
+        ]]>
+	</insert>
+	
+	<select id="getDuplicateValues" parameterClass="SafeLevel" resultClass="int">
+    	<![CDATA[
+    	select count(id) from resource_security_level where safeLevelName=#safeLevelName#;
+        ]]>
+	</select>
+	
+	 <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from resource_security_level where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.id">
+                id =#filter.id#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    
+    <select id="getFilterd" parameterClass="map" resultClass="SafeLevel">
+        select * from resource_security_level where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.id">
+                id =#filter.id#
+            </isNotEmpty>
+        </dynamic>
+        order by modifiedAt desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+        
+    </select>
+    
+    <select id="getById" parameterClass="Long" resultClass="SafeLevel">
+        select * from resource_security_level where id=#id#
+    </select>
+    
+     <update id="modify" parameterClass="SafeLevel">
+        update resource_security_level set safeLevelName=#safeLevelName#, safeLevelDesc=#safeLevelDesc#,modifiedAt=#modifiedAt# where id=#id#
+    </update>
+    
+    	<select id="getMaxId" parameterClass="String" resultClass="Long">
+        <![CDATA[
+        select max(id) from resource_security_level
+        ]]>
+    </select>
+    
+    <delete id="delete" parameterClass="Long">
+        delete from resource_security_level where id=#id#
+    </delete>
+    
+</sqlMap>
+

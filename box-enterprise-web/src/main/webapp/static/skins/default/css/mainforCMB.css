@@ -1,0 +1,201 @@
+.pop-share-invite .user-form{
+	max-height:1000px;
+	padding:0;
+}
+.pop-share-invite .department-con{
+	border-bottom:1px solid #b8b8b8;
+	background:#f6f6f6;
+	white-space: nowrap;
+	display:none;
+}
+.pop-share-invite .department-con .ztree{
+	width:50%;
+	height:240px;
+	border-right:1px solid #b8b8b8;
+	float:left;
+	overflow:auto;
+}
+.pop-share-invite .department-con .treelist-user{
+	width:47%;
+	height:240px;
+	float:right;
+}
+.pop-share-invite .department-con .treelist-user > p{
+	padding:3px 0;
+	margin-right:5px;
+	border-bottom:1px solid #b8b8b8;
+}
+.pop-share-invite .department-con .treelist-user > p strong{
+	display:inline-block;
+	max-width:110px;
+	color:#008aff;
+	vertical-align:middle;
+	/*text overflow done*/
+	overflow:hidden;
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	text-overflow:ellipsis;
+}
+.pop-share-invite .department-con .treelist-user > div{
+	margin-right:5px;
+}
+
+.pop-share-invite .search-user-con{
+	position:relative;
+	max-height:80px;
+	min-height:20px;
+	overflow:auto;
+	padding:5px 5px 0;
+}
+
+.pop-share-invite .share-message{
+	margin-top:10px;
+}
+.pop-share-invite .share-message textarea{
+	border:1px solid #b8b8b8;
+	height:60px;
+	    -webkit-border-top-left-radius: 3px;
+       -moz-border-top-left-radius: 3px;
+          	border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+       -moz-border-top-right-radius: 3px;
+          	border-top-right-radius: 3px;
+}
+
+.pop-share-invite .member-type{
+	margin-top:0;
+}
+
+.pop-share-invite .member-type .btn{
+	border-top:0 none;
+	    -webkit-border-top-left-radius: 0;
+       -moz-border-top-left-radius: 0;
+          	border-top-left-radius: 0;
+    -webkit-border-top-right-radius: 0;
+       -moz-border-top-right-radius: 0;
+          	border-top-right-radius: 0;
+}
+
+/*basicGrid-add-collaborator*/
+.basicGrid-add-collaborator{ background:none;}
+.basicGrid-add-collaborator .icon-selected{ background:url("../img/icon-right.png") no-repeat center center;}
+
+
+
+
+
+.pop-share-link .user-form{
+	max-height:1000px;
+	padding:0;
+}
+.pop-share-link .department-con{
+	border-bottom:1px solid #b8b8b8;
+	background:#f6f6f6;
+	white-space: nowrap;
+}
+.pop-share-link .department-con .ztree{
+	width:50%;
+	height:200px;
+	border-right:1px solid #b8b8b8;
+	float:left;
+	overflow:auto;
+}
+.pop-share-link .department-con .treelist-user{
+	width:47%;
+	height:200px;
+	float:right;
+}
+.pop-share-link .department-con .treelist-user > p{
+	padding:3px 0;
+	margin-right:5px;
+	border-bottom:1px solid #b8b8b8;
+}
+.pop-share-link .department-con .treelist-user > p strong{
+	display:inline-block;
+	max-width:110px;
+	color:#008aff;
+	vertical-align:middle;
+	/*text overflow done*/
+	overflow:hidden;
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	text-overflow:ellipsis;
+}
+.pop-share-link .department-con .treelist-user > div{
+	margin-right:5px;
+}
+
+.pop-share-link .search-user-con{
+	position:relative;
+	max-height:80px;
+	min-height:20px;
+	overflow:auto;
+	padding:5px 5px 0;
+}
+
+.pop-share-link .share-message{
+	margin-top:10px;
+}
+.pop-share-link .share-message textarea{
+	border:1px solid #b8b8b8;
+	height:60px;
+	    -webkit-border-top-left-radius: 3px;
+       -moz-border-top-left-radius: 3px;
+          	border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+       -moz-border-top-right-radius: 3px;
+          	border-top-right-radius: 3px;
+}
+
+
+/* teamspace member management [pop] */
+.pop-member-management .user-form{
+	max-height:1000px;
+	padding:0;
+}
+.pop-member-management .add-collaborator-help{ display:none;}
+.pop-member-management .search-user-con{
+	position:relative;
+	max-height:80px;
+	min-height:20px;
+	overflow:auto;
+	padding:5px 5px 0;
+}
+.pop-member-management .department-con{
+	border-bottom:1px solid #b8b8b8;
+	background:#f6f6f6;
+	white-space: nowrap;
+	display:none;
+}
+.pop-member-management .department-con .ztree{
+	width:50%;
+	height:200px;
+	border-right:1px solid #b8b8b8;
+	float:left;
+	overflow:auto;
+}
+.pop-member-management .department-con .treelist-user{
+	width:47%;
+	height:210px;
+	float:right;
+}
+.pop-member-management .department-con .treelist-user > p{
+	padding:3px 0;
+	margin-right:5px;
+	border-bottom:1px solid #b8b8b8;
+}
+.pop-member-management .department-con .treelist-user > p strong{
+	display:inline-block;
+	max-width:110px;
+	color:#008aff;
+	vertical-align:middle;
+	/*text overflow done*/
+	overflow:hidden;
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	text-overflow:ellipsis;
+}
+.pop-member-management .department-con .treelist-user > div{
+	margin-right:5px;
+}
+

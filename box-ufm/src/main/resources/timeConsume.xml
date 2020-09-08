@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<consumeList>
+	<consume>
+		<name>listFolder</name>
+		<method>post</method>
+		<apiPath>/api/v2/folders/*/*/itmes</apiPath>
+		<picketLine>150</picketLine>
+	</consume>
+	<consume>
+		<name>listTeamspace</name>
+		<method>post</method>
+		<apiPath>/api/v2/teamspaces/items</apiPath>
+		<picketLine>200</picketLine>
+	</consume>
+	<consume>
+		<name>preUpload</name>
+		<method>put</method>
+		<apiPath>/api/v2/files/*</apiPath>
+		<picketLine>300</picketLine>
+	</consume>
+	<consume>
+		<name>preDownload</name>
+		<method>get</method>
+		<apiPath>/api/v2/files/*/*/url</apiPath>
+		<picketLine>300</picketLine>
+	</consume>
+</consumeList>
+
+

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SecurityPermission">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="SecurityPermission" type="com.huawei.sharedrive.uam.security.domain.SecurityPermission" />
+    
+    <select id="getFilterd" parameterClass="map" resultClass="SecurityPermission" >
+        select * from security_permission where 1=1
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.keyName">
+            	keyName = #filter.keyName#
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.permissionDesc">
+            	permissionDesc = #filter.permissionDesc#
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.apiPath">
+            	apiPath = #filter.apiPath#
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="order by">
+        	<isNull property="order">
+        		keyName desc
+        	</isNull>
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getFilterdCount" parameterClass="SecurityPermission" resultClass="java.lang.Integer">
+        select count(*) from security_permission where 1=1
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="keyName">
+            	keyName = #keyName#
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="permissionDesc">
+            	permissionDesc = #permissionDesc#
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="apiPath">
+            	apiPath = #apiPath#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+
+    <select id="isExist" resultClass="java.lang.Integer" parameterClass="SecurityPermission">
+        <![CDATA[
+        select count(*) from security_permission where permissionDesc=#permissionDesc#
+        ]]>
+    </select>
+    
+    <select id="getByPermissionDesc" resultClass="SecurityPermission" parameterClass="String">
+        <![CDATA[
+        select * from security_permission where permissionDesc=#permissionDesc#
+        ]]>
+    </select>
+    
+    <select id="getByKeyName" resultClass="SecurityPermission" parameterClass="String">
+        <![CDATA[
+        select * from security_permission where keyName=#keyName#
+        ]]>
+    </select>
+    
+    <insert id="insert" parameterClass="SecurityPermission">
+    	 <![CDATA[
+    	insert into security_permission(keyName,permissionDesc,apiPath) values(#keyName#, #permissionDesc#, #apiPath#)
+    	]]>
+    </insert>
+    
+    <update id="update" parameterClass="map">
+        <![CDATA[
+        update security_permission set keyName=#filter.keyName#,permissionDesc=#filter.permissionDesc#,apiPath=#filter.apiPath#
+        where permissionDesc=#oldPermissionDesc#
+        ]]>
+    </update>
+    
+    <delete id="delete" parameterClass="String">
+        <![CDATA[
+        delete from security_permission 
+        where permissionDesc=#permissionDesc#
+        ]]>
+    </delete>
+</sqlMap>
+

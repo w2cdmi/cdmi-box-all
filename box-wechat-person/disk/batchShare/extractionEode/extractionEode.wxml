@@ -1,0 +1,21 @@
+<!--disk/batchShare/extractionEode/extractionEode.wxml-->
+<view>
+    <image class="bc-img"  src="/disk/images/shares/shareLink/bc.png"></image>
+
+    <view class="content-conia">
+        <view class='link-info'>
+            <image class="logo-img" mode='aspectFit' src="/disk/images/icon/batch-file-icon.png">test</image>
+            <view class='link-name'>{{linkName}}</view>
+        </view>
+
+        <view class='con-container'>
+            <view class='in-put'>
+                <image class="code-icon" mode='aspectFit' src="/disk/images/shares/shareLink/suo.png"></image>
+                <input class="code-input" bindinput='inputChange' maxlength="6" placeholder-class="placeholder" confirm-type ="done" type="number" placeholder="请输入提取码"></input>
+            </view>
+            <view class="tip-text" hidden='{{errorTip}}'>(请输入正确的提取码再提交)</view>
+            <button bindtap='takeResources' class="code-btn">提取文件</button>
+        </view>
+    </view>
+
+</view>

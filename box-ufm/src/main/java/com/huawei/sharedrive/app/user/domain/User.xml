@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="User">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="User" type="com.huawei.sharedrive.app.user.domain.User" />
+
+	<insert id="insert" parameterClass="User">
+        <![CDATA[
+        insert into user_$tableSuffix$(id,objectSid,loginName,name,email,createdAt,modifiedAt,spaceUsed,status
+        ,domain,spaceQuota,recycleDays,regionId,type,appId,maxVersions,accountId,versionFileSize,versionFileType) 
+        values 
+        (#id#,#objectSid#,#loginName#,#name#
+        ,#email#,#createdAt#,#modifiedAt#,#spaceUsed#,#status#,#domain#,#spaceQuota#,#recycleDays#,#regionId#,#type#,#appId#,#maxVersions#,#accountId#,#versionFileSize#,#versionFileType#)
+        ]]>
+	</insert>
+	
+	<delete id="delete" parameterClass="User">
+        <![CDATA[
+        delete from user_$tableSuffix$ where id=#id#
+        ]]>
+	</delete>
+	
+	<select id="get" resultClass="User" parameterClass="User">
+        <![CDATA[
+        select * from user_$tableSuffix$ where id=#id#
+        ]]>
+	</select>
+
+
+		
+	<select id="getMaxUserId" resultClass="Long" parameterClass="User">
+        <![CDATA[
+        select max(id) from user_$tableSuffix$
+        ]]>
+	</select>
+	
+	<select id="getMaxVersions" resultClass="Int" parameterClass="User">
+        <![CDATA[
+        select maxVersions from user_$tableSuffix$ where id=#id#
+        ]]>
+	</select>
+
+	<select id="getUserByLoginNameAppId" parameterClass="map"
+		resultClass="User">
+    	<![CDATA[
+        select * from user where loginName=#loginName# and appId=#appId#
+        ]]>
+	</select>
+
+	<select id="getUserByObjectSid" parameterClass="String"
+		resultClass="User">
+        <![CDATA[
+        select * from user_$tableSuffix$ where objectSid=#value#
+        ]]>
+	</select>
+	<select id="getByStatus" resultClass="User" parameterClass="User">
+        <![CDATA[
+        select * from user_$tableSuffix$ where status=#status#
+        ]]>
+	</select>
+
+	<select id="getUserCountByAppId" parameterClass="String"
+		resultClass="int">
+		select count(*) from user where appId = #appId#
+	</select>
+
+	<update id="update" parameterClass="User">
+        <![CDATA[
+        update user_$tableSuffix$ set objectSid=#objectSid#,name=#name#, loginName=#loginName#, 
+        email=#email#, createdAt=#createdAt#, modifiedAt=#modifiedAt#, spaceUsed=#spaceUsed#, 
+        status=#status#,domain=#domain#, spaceQuota=#spaceQuota#, recycleDays=#recycleDays#, regionId=#regionId#, maxVersions=#maxVersions#,securityId=#securityId#,
+        versionFileSize=#versionFileSize#,versionFileType=#versionFileType#
+        where id=#id#
+        ]]>
+	</update>
+
+	<update id="updateStatus" parameterClass="User">
+        <![CDATA[
+        update user_$tableSuffix$ set status=#status#, modifiedAt=#modifiedAt# where id=#id#
+        ]]>
+	</update>
+
+	<update id="updateRegion" parameterClass="User">
+        <![CDATA[
+        update user_$tableSuffix$ set regionId=#regionId#, modifiedAt=#modifiedAt# where id=#id#
+        ]]>
+	</update>
+
+	<update id="updateLastLoginAt" parameterClass="User">
+        <![CDATA[
+        update user_$tableSuffix$ set lastLoginAt=#lastLoginAt# where id=#id#
+        ]]>
+	</update>
+
+	<update id="updateStatisticInfo" parameterClass="User">
+		update user_$tableSuffix$
+		<dynamic prepend="set">
+			<isNotEmpty property="spaceUsed" prepend=",">
+				spaceUsed=#spaceUsed#
+			</isNotEmpty>
+			<isNotEmpty property="fileCount" prepend=",">
+				fileCount=#fileCount#
+			</isNotEmpty>
+			<isNotEmpty property="lastStatisticsTime" prepend=",">
+				lastStatisticsTime=#lastStatisticsTime#
+			</isNotEmpty>
+		</dynamic>
+		where id=#id#
+	</update>
+
+	<update id="updateSecurityId" parameterClass="User">
+		update user_$tableSuffix$ set securityId=#securityId# where id=#id#
+	</update>
+
+	<update id="updateSpaceQuota" parameterClass="User">
+		<![CDATA[
+        update user_$tableSuffix$ set spaceQuota=#spaceQuota# where id=#id#
+        ]]>
+	</update>
+</sqlMap>
+

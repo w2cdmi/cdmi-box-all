@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ImgObject">
+
+	<typeAlias alias="ImgObject"
+		type="pw.cdmi.box.app.convertservice.domain.ImgObject" />
+
+	<insert id="addImgObject" parameterClass="ImgObject">
+		<![CDATA[
+			insert into image_object(sourceObjectId,accountId,imageObjectId,totalPages,pageIndex,resourceGroupId,convertTime)
+			values(#sourceObjectId#,#accountId#,#imageObjectId#,#totalPages#,#pageIndex#,#resourceGroupId#,#convertTime#)
+		]]>
+	</insert>
+
+
+
+	<select id="getImageByObjectId" resultClass="ImgObject" parameterClass="String">
+		<![CDATA[
+       	 select * from image_object where sourceObjectId =#appId#
+        ]]>
+	</select>
+	
+	<select id="checkImageObjectId" resultClass="String" parameterClass="String">
+		<![CDATA[
+		 select imageObjectId from image_object where sourceObjectId=#objectId#
+		]]>
+	</select>
+	
+	<delete id="deleteImageObject" parameterClass="String">
+		<![CDATA[
+			delete from image_object where sourceObjectId=#objectId#
+		]]>
+	</delete>
+
+</sqlMap>

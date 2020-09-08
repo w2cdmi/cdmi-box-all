@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Window>
+	<TeamSpaceTileLayoutListContainerElement name="teamSpace_largeIconItem" padding="20,0,20,0">
+		<HorizontalLayout width="320" height="120">
+			<Label name="teamSpace_nameIcon" float="true" pos="10,10,110,110" bkimage="..\Image\ic_teamspace_sysnote.png" align="center"/>
+			<VerticalLayout name="teamSpace_Item_Listview" float="true" pos="120,0,320,120">			
+				<Button name="teamSpace_name" endellipsis="true" float="true" pos="0,10,200,32" align="left"  width="200" font="15" textcolor="#FF000000"/>
+				<Label name="teamSpace_description" float="true" pos="0,34,200,52" endellipsis="true" align="left"  width="200" font="0" textcolor="#FF666666"  />
+				<Label name="teamSpace_memNum" float="true" pos="0,65,200,80" align="left"  font="2" textcolor="#FF666666" />
+				<Label name="teamSpace_owner"  float="true" pos="0,85,200,102" align="left"  font="2" textcolor="#FF666666" />	
+			</VerticalLayout>
+		</HorizontalLayout>
+	</TeamSpaceTileLayoutListContainerElement>
+</Window>

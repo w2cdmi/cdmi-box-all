@@ -1,0 +1,37 @@
+<view class="page">
+
+    <view class="coop-space-file">
+        <view>
+            <view class="coop-list-title">
+                <view class="list-detail-left">
+                    <view data-name='{{name}}' data-parent="{{parentId}}" bindtap='returnPrevFolder'>上级目录</view>
+                    <view class="coop-title-middle"></view>
+                    <view>{{name}}</view>
+                </view>
+            </view>
+            <view>
+                <!-- 暂无文件背景 -->
+                <view class="not-list-detail-bg blankBackground" hidden='{{!nodes.length==0?true:false}}'>
+                    <image src='../../../../images/blank/not-document-bg.png'></image>
+                    <view class="not-list-title">暂无文件</view>
+                </view>
+                <scroll-view hidden='{{nodes.length>0?false:true}}'>
+                    <view class='touch-item' wx:for="{{nodes}}" wx:key="*this">
+                        <view class="file-group view-bg" data-node-info="{{item}}" catchtap="coopNodeItemClick">
+                            <view>
+                                <image class="img-icon" src='{{item.icon}}'></image>
+                            </view>
+                            <view class='file-info cell_2_body_content'>
+                                <label>{{item.name}}</label>
+                                <text>{{item.fileSize?item.fileSize + ' | ':''}}{{item.modifiedTime}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </scroll-view>
+                <!-- <view class="seeCoop-space-confirm">
+                    <button class='clear-button-style coop-button-style'>确定</button>
+                </view> -->
+            </view>
+        </view>
+    </view>
+</view>

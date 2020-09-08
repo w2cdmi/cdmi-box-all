@@ -1,0 +1,49 @@
+@@normal
+{
+	"groupRole":"member",
+	"member":
+    {
+        "userId": 184,
+        "userType":"user"
+    }
+}
+
+@@noSuchUser
+{
+	"groupRole":"manager",
+	"member":
+    {
+        "userId": #userId#, 
+        "userType":"user"
+    }
+}
+
+@@manager
+{
+	"groupRole":"manager",
+	"member":
+    {
+        "userId": #userId#, 
+        "userType":"user"
+    }
+}
+
+@@teamSpaceUser
+{
+	"groupRole":"manager",
+	"member":
+    {
+        "userId": #userId#, 
+        "userType":"user"
+    }
+}
+
+@@addUser
+{
+	"groupRole":"manager",
+	"member":
+    {
+        "userId": #userId#, 
+        "userType":"user"
+    }
+}

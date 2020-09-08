@@ -1,0 +1,175 @@
+body {
+  background: #ccc;
+}
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+#app {
+  width: 100%;
+  height: 100%;
+}
+.dialog {
+  width: 470px;
+  height: 502px;
+
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.dialog .header {
+  width: 100%;
+  height: 40px;
+  background: rgba(245, 245, 245, 1);
+  color: #333333;
+  line-height: 40px;
+  text-align: center;
+}
+.dialog .stpes {
+  margin-top: 20px;
+}
+.dialog .stpes .el-step__title,
+.is-process {
+  font-weight: normal;
+}
+
+.dialog .form {
+  padding: 20px;
+  color: #666666;
+  position: absolute;
+  top: 120px;
+  left: 0;
+  height: 400px;
+}
+.dialog .form .row,
+.dialog .form .tip {
+  width: 100%;
+  float: left;
+}
+.dialog .form .tip {
+  height: 25px;
+  line-height: 25px;
+}
+.dialog .form .row .label {
+  float: left;
+  width: 80px;
+  height: 30px;
+  text-align: left;
+  line-height: 30px;
+}
+.dialog .form .row .input {
+  float: right;
+  width: 350px;
+}
+.dialog .form .row .input .el-input__inner {
+  height: 30px;
+  line-height: 30px;
+}
+.dialog .form .row .el-button {
+  height: 30px;
+  line-height: 29px;
+  padding: 0px 20px;
+}
+.footer {
+  width: 100%;
+  position: absolute;
+  bottom: 30px;
+  left: 0;
+  padding: 0 20px;
+  z-index: 10;
+}
+.footer .butnext {
+  width: 420px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0px 20px;
+  margin: auto;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+#qrcode {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.success {
+  padding: 0 40px;
+  margin: 0 auto;
+  margin-top: 100px;
+  height: 58px;
+  width: 250px;
+}
+.success i {
+  color: #09bb07;
+  font-size: 58px;
+}
+.success > div {
+  float: left;
+}
+
+.success > div:nth-of-type(2) {
+  height: 58px;
+  padding: 5px 0;
+  margin-left: 25px;
+}
+.success > div:nth-of-type(2) span {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+}
+.success > div:nth-of-type(2) span:nth-of-type(1) {
+  font-size: 18px;
+  color: #333333;
+}
+.success > div:nth-of-type(2) span:nth-of-type(2) {
+  font-size: 12px;
+}
+.error {
+  padding: 0 40px;
+  margin: 0 auto;
+  margin-top: 190px;
+  height: 58px;
+  width: 250px;
+}
+.error i {
+  color: rgb(247, 98, 96);
+  font-size: 58px;
+}
+.error > div {
+  float: left;
+}
+
+.error > div:nth-of-type(2) {
+  height: 58px;
+  padding: 5px 0;
+  margin-left: 25px;
+}
+.error > div:nth-of-type(2) span {
+  display: block;
+  height: 24px;
+  line-height: 24px;
+}
+.error > div:nth-of-type(2) span:nth-of-type(1) {
+  font-size: 18px;
+  color: #333333;
+}
+.error > div:nth-of-type(2) span:nth-of-type(2) {
+  font-size: 12px;
+}
+
+/* rgb(247, 98, 96) */

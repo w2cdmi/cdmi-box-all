@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+<sqlMap namespace="MirrorObject">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="MirrorObject"
+		type="com.huawei.sharedrive.app.mirror.domain.MirrorObject" />
+		
+	<resultMap id="resultMap.MirrorObject" class="MirrorObject">
+		<result column="ownedBy" 				property="ownedBy" 					javaType="java.lang.Long" />
+		<result column="srcObjectId" 			property="srcObjectId" 				javaType="java.lang.String" />
+		<result column="srcResourceGroupId" 	property="srcResourceGroupId"  		javaType="java.lang.Integer" />
+		<result column="destObjectId" 			property="destObjectId" 			javaType="java.lang.String" />
+		<result column="destResourceGroupId" 	property="destResourceGroupId" 		javaType="java.lang.Integer" />
+		<result column="createAt" 				property="createAt" 				javaType="java.util.Date" />
+		<result column="policyId" 				property="policyId" 				javaType="java.lang.Integer" />
+		<result column="type" 					property="type" 					javaType="java.lang.Integer" />
+	</resultMap>
+
+	<select id="getBySrcObjectId" resultMap="resultMap.MirrorObject" parameterClass="MirrorObject">
+		select * from mirror_object_$tableSuffix$ where srcObjectId=#srcObjectId# 
+	</select>
+	
+	<insert id="insert" parameterClass="MirrorObject">
+		insert into
+		mirror_object_$tableSuffix$(ownedBy,srcObjectId,srcResourceGroupId,destObjectId,destResourceGroupId,createAt,policyId,type)
+		values(#ownedBy#,#srcObjectId#,#srcResourceGroupId#,#destObjectId#,#destResourceGroupId#,#createAt#,#policyId#,#type#)
+	</insert>
+	
+	<delete id="deleteBySrcObjectidAndDestObjectidAndOwnedBy" parameterClass="MirrorObject">
+		delete from mirror_object_$tableSuffix$ where ownedBy=#ownedBy# and srcObjectId=#srcObjectId# and destObjectId=#destObjectId#
+	</delete>
+	
+	<select id="getByOwnedByAndSrcObjectId" resultMap="resultMap.MirrorObject" parameterClass="MirrorObject">
+		select * from mirror_object_$tableSuffix$ where ownedBy=#ownedBy# and srcObjectId=#srcObjectId# 
+	</select>
+	
+	<!-- 该方法有问题，在一张通过srcobject来删除不对，不以object分表分库 -->
+	<delete id="deleteBySrcObjectId" parameterClass="MirrorObject">
+		delete from mirror_object_$tableSuffix$ where srcObjectId=#srcObjectId#
+	</delete>
+	
+	<select id="getBySrcObjectIdAndDestObjectIdAndOwnedBy" resultMap="resultMap.MirrorObject" parameterClass="MirrorObject">
+		select * from mirror_object_$tableSuffix$ where ownedBy=#ownedBy# and srcObjectId=#srcObjectId# and destObjectId=#destObjectId#
+	</select>
+	
+	<select id="getMirrorObjectByOwnedByAndSrcObjectId" resultMap="resultMap.MirrorObject" parameterClass="MirrorObject">
+		select * from mirror_object_$tableSuffix$ where ownedBy=#ownedBy# and srcObjectId=#srcObjectId#
+	</select>
+	
+	<delete id="deleteBySrcObjectIdAndOwnedBy" parameterClass="MirrorObject">
+		delete from mirror_object_$tableSuffix$ where ownedBy=#ownedBy# and srcObjectId=#srcObjectId#
+	</delete>
+	
+	<update id="changeUsersSrcObjectId" parameterClass="MirrorObject">
+		update mirror_object_$tableSuffix$ set srcObjectId=#destObjectId# where ownedBy=#ownedBy# and srcObjectId=#srcObjectId#
+	</update>
+</sqlMap>

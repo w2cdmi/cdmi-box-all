@@ -1,0 +1,115 @@
+// ShellExtent.idl : ShellExtent 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(ShellExtent.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(02C1E4B5-95FC-486D-8AFB-00314743D981),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IContextMenuExt : IDispatch{
+};
+[
+	object,
+	uuid(E939FE8A-2297-45B3-B1F5-8F70E0ECB3DE),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IIconSyncFailed : IDispatch{
+};
+[
+	object,
+	uuid(6E76762D-2EEE-410A-9165-A7AA66209F7F),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IIconSynced : IDispatch{
+};
+[
+	object,
+	uuid(55FBD50F-5BF9-4753-9619-4871B1E3CB1F),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IIconSyncIng : IDispatch{
+};
+[
+	object,
+	uuid(6F22547E-A3B6-4B20-95AE-8FC05B3AE4B4),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IIconSyncNoAction : IDispatch{
+};
+[
+	object,
+	uuid(9970A264-9C30-43B3-BF55-A91DAEF5128F),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IDirWatchEx : IDispatch{
+};
+[
+	uuid(75791D4A-A3B7-43F4-ADEB-A27A7988BB1D),
+	version(1.0),
+]
+library ShellExtentLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(C7FF7383-5B59-4C1A-8EA7-79EAD1D10E35)		
+	]
+	coclass ContextMenuExt
+	{
+		[default] interface IContextMenuExt;
+	};
+	[
+		uuid(4A4AD55D-FCD9-408F-8D3B-360FFB949D9B)		
+	]
+	coclass IconSyncFailed
+	{
+		[default] interface IIconSyncFailed;
+	};
+	[
+		uuid(37DC0263-963E-45B1-9219-13E51F4468D5)		
+	]
+	coclass IconSynced
+	{
+		[default] interface IIconSynced;
+	};
+	[
+		uuid(A264276C-ECD0-4345-A554-04EFAA8D8A64)		
+	]
+	coclass IconSyncIng
+	{
+		[default] interface IIconSyncIng;
+	};
+	[
+		uuid(6F20CDCF-7848-4C24-A3F0-048DADF3D20C)		
+	]
+	coclass IconSyncNoAction
+	{
+		[default] interface IIconSyncNoAction;
+	};
+	[
+		uuid(B3D4FE89-3CDF-456D-AC25-C0F726D5CF24)		
+	]
+	coclass DirWatchEx
+	{
+		[default] interface IDirWatchEx;
+	};
+};
+
+import "shobjidl.idl";

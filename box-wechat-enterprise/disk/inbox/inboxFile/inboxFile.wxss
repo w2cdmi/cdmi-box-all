@@ -1,0 +1,188 @@
+/* disk/inbox/file/file.wxss */
+
+.page {
+    overflow: hidden;
+}
+
+/*面包屑  */
+
+.crumbs-list {
+    width: 750rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    white-space: nowrap;
+    overflow: hidden;
+    background: #fff;
+    border-bottom: 1rpx solid #f1f1f1;
+    padding-left: 40rpx;
+}
+
+.crumb-item {
+    display: inline-block;
+}
+
+.crumb-arrow-icon {
+    width: 14rpx;
+    height: 26rpx;
+    padding: 0 15rpx;
+}
+
+.flex-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/*文件列表  */
+
+.scroll-view-height {
+    height: 950rpx;
+}
+
+.scroll-view-width {
+    white-space: nowrap;
+    overflow: hidden;
+    height: 120rpx;
+}
+
+.folder-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 118rpx;
+    background: #fff;
+    border-bottom: 2rpx solid #f1f1f1;
+}
+
+.folder-inline {
+    display: inline-block;
+    width: 750rpx;
+}
+
+.folder-item-flex {
+    display: flex;
+    align-items: center;
+    line-height: 45rpx;
+}
+
+.folder-icon {
+    width: 90rpx;
+    height: 90rpx;
+    padding: 0 25rpx 0 40rpx;
+}
+
+.folder-name {
+    font-size: 30rpx;
+    color: #333;
+}
+
+.folder-info {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.menderName {
+    max-width: 220rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*三个原点  */
+
+.dept-more {
+    width: 118rpx;
+    height: 118rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.plug_icon {
+    width: 8rpx;
+    height: 44rpx;
+}
+
+/*圆点唤起的层  */
+
+.drawer_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.2;
+    overflow: hidden;
+    z-index: 1000;
+    color: #fff;
+}
+
+.drawer_attr_box {
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2000;
+    background: #f4f4f4;
+}
+
+.cancel_view {
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.margin-bottom {
+    margin-bottom: 20rpx;
+}
+
+.draw_view_content_comm {
+    width: 100%;
+    height: 90rpx;
+    background-color: #fff;
+    margin-bottom: 2rpx;
+    line-height: 90rpx;
+    text-align: center;
+    font-size: 30rpx;
+    border-bottom: 2rpx solid #f1f1f1;
+}
+
+/*空文件  */
+
+.blank-file {
+    margin-top: 250rpx;
+}
+
+.blank-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.blank-image {
+    width: 252rpx;
+    height: 200rpx;
+}
+
+.blank-text {
+    font-size: 30rpx;
+    color: #333;
+    margin-top: 40rpx;
+}
+
+/*新建收件箱按钮  */
+
+.add-btn {
+    width: 690rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    color: #fff;
+    background: #ea5036;
+    position: absolute;
+    bottom: 40rpx;
+    left: 30rpx;
+    text-align: center;
+    border-radius: 10rpx;
+    font-size: 32rpx;
+}

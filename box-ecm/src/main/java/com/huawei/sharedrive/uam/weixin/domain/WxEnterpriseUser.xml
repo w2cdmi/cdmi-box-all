@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WxEnterpriseUser">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="WxEnterpriseUser" type="com.huawei.sharedrive.uam.weixin.domain.WxEnterpriseUser" />
+
+    <insert id="insert" parameterClass="WxEnterpriseUser">
+        <![CDATA[
+        insert into wx_enterprise_user(corpId,departmentId,userId,`name`,`order`,position,mobile,gender,email,isLeader,avatar,telephone,englishName,`status`,boxEnterpriseId,boxEnterpriseUserId,createdAt,modifiedAt)
+        values
+        (#corpId#,#departmentId#,#userId#,#name#,#order#,#position#,#mobile#,#gender#,#email#,#isLeader#,#avatar#,#telephone#,#englishName#,#status#,#boxEnterpriseId#,#boxEnterpriseUserId#,#createdAt#,#modifiedAt#)
+        ]]>
+	</insert>
+
+    <update id="update" parameterClass="WxEnterpriseUser">
+        UPDATE wx_enterprise_user SET `modifiedAt`=#modifiedAt#
+        <dynamic>
+            <isNotNull prepend="," property="name">
+                `name`=#name#
+            </isNotNull>
+            <isNotNull prepend="," property="departmentId">
+                `departmentId`=#departmentId#
+            </isNotNull>
+            <isNotNull prepend="," property="mobile">
+                `mobile`=#mobile#
+            </isNotNull>
+            <isNotNull prepend="," property="position">
+                `position`=#position#
+            </isNotNull>
+            <isNotNull prepend="," property="gender">
+                `gender`=#gender#
+            </isNotNull>
+            <isNotNull prepend="," property="email">
+                `email`=#email#
+            </isNotNull>
+            <isNotNull prepend="," property="status">
+                `status`=#status#
+            </isNotNull>
+            <isNotNull prepend="," property="englishName">
+                `englishName`=#englishName#
+            </isNotNull>
+            <isNotNull prepend="," property="isLeader">
+                `isLeader`=#isLeader#
+            </isNotNull>
+            <isNotNull prepend="," property="telephone">
+                `telephone`=#telephone#
+            </isNotNull>
+            <isNotNull prepend="," property="avatar">
+                `avatar`=#avatar#
+            </isNotNull>
+            <isNotNull prepend="," property="boxEnterpriseUserId">
+                `boxEnterpriseUserId`=#boxEnterpriseUserId#
+            </isNotNull>
+        </dynamic>
+        WHERE corpId=#corpId# AND userId=#userId#
+    </update>
+
+    <delete id="delete" parameterClass="WxEnterpriseUser">
+        <![CDATA[
+        DELETE FROM wx_enterprise_user WHERE corpId=#corpId# AND userId=#userId#
+        ]]>
+    </delete>
+
+    <select id="get" parameterClass="map" resultClass="WxEnterpriseUser">
+        <![CDATA[
+    	select * from wx_enterprise_user where corpId=#corpId# AND userId=#userId#
+        ]]>
+    </select>
+
+    <select id="getByCorpId" parameterClass="String" resultClass="WxEnterpriseUser">
+        <![CDATA[
+    	select * from wx_enterprise_user where corpId=#corpId#
+        ]]>
+    </select>
+
+    <select id="getByEnterpriseIdAndUserId" parameterClass="map" resultClass="WxEnterpriseUser">
+        <![CDATA[
+    	select * from wx_enterprise_user where boxEnterpriseId=#boxEnterpriseId# and boxEnterpriseUserId=#boxEnterpriseUserId#
+        ]]>
+    </select>
+
+    <update id="changeStatus" parameterClass="WxEnterpriseUser">
+        <![CDATA[
+        UPDATE wx_enterprise_user SET `status`=#status#, `modifiedAt`=#modifiedAt# WHERE corpId=#corpId#
+        ]]>
+    </update>
+
+    <delete id="deleteByStatus" parameterClass="WxEnterpriseUser">
+        <![CDATA[
+        DELETE FROM wx_enterprise_user WHERE corpId=#corpId# AND `status`=#status#
+        ]]>
+    </delete>
+</sqlMap>
+

@@ -1,0 +1,256 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+    <!--公共-->
+    <sys:String x:Key="confirm">Ok</sys:String>
+    <sys:String x:Key="cancel">Cancel</sys:String>
+    <sys:String x:Key="close">Close</sys:String>
+    <sys:String x:Key="appNameTitle">Onebox</sys:String>
+    <sys:String x:Key="StartNoticeTitle">Start Onebox</sys:String>
+    <sys:String x:Key="NetworkNotice">Network connection timed out. Start it again when the network connection is normal.</sys:String>
+    <sys:String x:Key="PortUsedNotice">The port assigned to Onebox is now occupied by another program. Stop the program and start Onebox again.</sys:String>
+    <sys:String x:Key="startErr">Service Startup</sys:String>
+    <sys:String x:Key="startErrInfo">An exception occurs when the sync client service starts. The client will exit.</sys:String>
+    <sys:String x:Key="startErrRecover">Try to restart the client.</sys:String>
+    <sys:String x:Key="OneboxSysInfo">Information</sys:String>
+    <sys:String x:Key="FileCntLimitHead">Currently, there are</sys:String>
+    <sys:String x:Key="FileCntLimitBetween">user files, exceeding the upper limit of </sys:String>
+    <sys:String x:Key="FileCntLimitTail">, The synchronization client will now exit. Delete some data on the web client and log in to the client again.</sys:String>
+    <sys:String x:Key="wizardFile">Onebox Quick Start.pdf</sys:String>
+    <sys:String x:Key="helpUrl">/static/help/en/helpcenter.html</sys:String>
+    <sys:String x:Key="InstallFileIncomplete">The Onebox installation file has been corrupted. Reinstall Onebox.</sys:String>
+    <sys:String x:Key="rootChangeMsg">The synchronization folder has been modified. Please configure a synchronization folder again.</sys:String>
+
+    <!--信息确认、登录(冒号为英文冒号)-->
+    <sys:String x:Key="userName">Domain account:</sys:String>
+    <sys:String x:Key="password">Domain password:</sys:String>
+    <sys:String x:Key="userNameNotice">such as c00100000</sys:String>
+    <sys:String x:Key="userLoginTitle">Onebox Login</sys:String>
+    <sys:String x:Key="confirmTitle">Onebox Sync Folder Settings</sys:String>
+    <sys:String x:Key="deviceName">PC name:</sys:String>
+    <sys:String x:Key="syncRootPath">Local sync folder:</sys:String>
+    <sys:String x:Key="choiceSyncRoot">Select Local Sync Folder</sys:String>
+    <sys:String x:Key="deviceErr">Verify Device</sys:String>
+    <sys:String x:Key="deviceErrInfo">The current device does not support the Onebox client.</sys:String>
+    <sys:String x:Key="userErr">Link Relationship</sys:String>
+    <sys:String x:Key="currentUser">The currently logged in user</sys:String>
+    <sys:String x:Key="bindingUserErr">has not been linked.</sys:String>
+    <sys:String x:Key="login">Log In</sys:String>
+    <sys:String x:Key="remPassword">Remember password</sys:String>
+    <sys:String x:Key="autoLogin">Automatic login</sys:String>
+    <sys:String x:Key="loginFailedInfo">Login authentication failed.</sys:String>
+    <sys:String x:Key="loginLockError">The account has been locked. Please retry 5 minutes later.</sys:String>
+    <sys:String x:Key="autoLoginFailedInfo">Automatic login authentication failed.</sys:String>
+    <sys:String x:Key="syncPathSetErrr">Failed to set the local synchronization folder. Please retry.</sys:String>
+    <sys:String x:Key="noSyncPath">The local synchronization folder path cannot be blank.</sys:String>
+    <sys:String x:Key="pathTooLong">The path of the local synchronization folder cannot contain more than 100 characters. Please retry or select one.</sys:String>
+    <sys:String x:Key="illegalSyncPath">Invalid local synchronization folder path. Please retry.</sys:String>
+    <sys:String x:Key="lackOfSpaceHead">The </sys:String>
+    <sys:String x:Key="lackOfSpaceEnd"> disk where the selected synchronization folder resides has less than 500 MB of space. Please select another folder.</sys:String>
+    <sys:String x:Key="noExistDiskHead">Disk </sys:String>
+    <sys:String x:Key="noExistDiskEnd"> does not exist. Select another local synchronization folder.</sys:String>
+    <sys:String x:Key="syncPathSupport">The local synchronization folder must be an empty folder,</sys:String>
+    <sys:String x:Key="syncPathNotEmpty">is not empty. Please retry.</sys:String>
+    <sys:String x:Key="SyncPathSupportCh">The local synchronization folder path can contain only letters, digits, underscores (_), and round brackets.</sys:String>
+    <sys:String x:Key="illegalSyncPath2"> contain special characters. Please retry.</sys:String>
+    <sys:String x:Key="networkSyncPath">The local synchronization folder cannot be created on a web disk. Please retry.</sys:String>
+    <sys:String x:Key="loninInfoEmpty">The username and password cannot be blank.</sys:String>
+    <sys:String x:Key="couldntConnect">Abnormal network. Check the network status.</sys:String>
+    <sys:String x:Key="requestFailed">Failed to connect to the server. Retry later.</sys:String>
+    <sys:String x:Key="NotAdmini">The current account does not have the administrator permission. Start Onebox using an account that has the administrator permission.</sys:String>
+    <sys:String x:Key="autoAuthSuccess">Automatic login succeeded.</sys:String>
+
+    <!--设置-->
+    <sys:String x:Key="setting">Settings</sys:String>
+    <sys:String x:Key="userInfo">User information for this computer</sys:String>
+    <sys:String x:Key="device">This computer </sys:String>
+    <sys:String x:Key="already"> is linked to </sys:String>
+    <sys:String x:Key="binding">&apos;s Onebox user.</sys:String>
+
+    <sys:String x:Key="unbind2">Unlink Computer</sys:String>
+    <sys:String x:Key="autoRun">Enabled upon system startup</sys:String>
+
+    <!--<sys:String x:Key="settingSave">保存设置</sys:String>
+    <sys:String x:Key="useProxy">使用代理</sys:String>
+    <sys:String x:Key="server">地址:</sys:String>-->
+
+    <sys:String x:Key="localSpace">Local space information</sys:String>
+    <sys:String x:Key="usedSpace">Space occupied by the sync folder:</sys:String>
+    <sys:String x:Key="unbindConfirm">Unlink?</sys:String>
+    <!--<sys:String x:Key="unbindConfirm2">是否要解除同步关系？</sys:String>-->
+    <sys:String x:Key="unbindConfirm_Device">This will stop syncing your files on (</sys:String>
+    <sys:String x:Key="unbindConfirm_stetFolder">) with Onebox, but won‘t delete the files in the Onebox folder on this computer.</sys:String>
+    <sys:String x:Key="unbindFailedInfo">Unlink failed.</sys:String>
+    <sys:String x:Key="unbindSuccess">Unlink succeeded.</sys:String>
+    <sys:String x:Key="availableSpace">Remaining disk space:</sys:String>
+    <sys:String x:Key="noticedifcnt">files or folders to be synchronized</sys:String>
+    <sys:String x:Key="fileDownloadPolicy">Download Policy</sys:String>
+    <sys:String x:Key="openFileDownload">Auto download</sys:String>
+    <sys:String x:Key="openDownloadTitle">Enable Automatic Download</sys:String>
+    <sys:String x:Key="openDownloadMsg">After switching to the automatic download mode, the system will compare files in the local computer and the cloud again, Are you sure you want to enable automatic download?</sys:String>
+    <sys:String x:Key="closeDownloadTitle">Disable Automatic Download</sys:String>
+    <sys:String x:Key="closeDownloadMsg">Are you sure you want to disable automatic download?</sys:String>
+    <sys:String x:Key="FileDownloadHelp">(Note: automatic download is not selected and data updates in the cloud will not be automatically downloaded to local computer. After automatic download is selected, data updates in the cloud are automatically downloaded to the local computer.)</sys:String>
+
+    <!--传输-->
+    <sys:String x:Key="transStatus">Transmit State</sys:String>
+    <sys:String x:Key="status">Status</sys:String>
+    <sys:String x:Key="filePath">File</sys:String>
+    <sys:String x:Key="fileSize">Size</sys:String>
+    <sys:String x:Key="progress">Progress</sys:String>
+    <sys:String x:Key="upload">Upload:</sys:String>
+    <sys:String x:Key="download">Download:</sys:String>
+    <sys:String x:Key="remainSpaceTile">Disk Space Information</sys:String>
+    <sys:String x:Key="RemainSpace500M">The disk where the synchronization folder resides has less than 500 MB of space. Please clear the disk.</sys:String>
+    <sys:String x:Key="RemainSpace100M">The remaining space on the drive where the synchronization folder resides is less than 100 MB. Onebox stops synchronization. The synchronization is automatically resumed when the remaining space is sufficient.</sys:String>
+    <sys:String x:Key="CRemainSpace200M">The remaining space on drive C is less than 200 MB. Onebox will exit. Clear the space before starting Onebox again.</sys:String>
+    <sys:String x:Key="noTaskMsg">No files to be processed</sys:String>
+    <sys:String x:Key="remainSize">Remaining size:</sys:String>
+    <sys:String x:Key="remainTime">Remaining time:</sys:String>
+    <sys:String x:Key="remainFileNum">Number of files to be processed:</sys:String>
+    <sys:String x:Key="buttonAll">All</sys:String>
+    <sys:String x:Key="buttonUpload">Upload</sys:String>
+    <sys:String x:Key="buttonDownload">Download</sys:String>
+    <sys:String x:Key="ScanningMsg">Preparing files to be processed</sys:String>
+    <sys:String x:Key="AnalyseMsg">Analyzing files</sys:String>
+
+    <!--错误列表-->
+    <sys:String x:Key="ErrorListTableTitle">Error List</sys:String>
+    <sys:String x:Key="fileItem">File</sys:String>
+    <sys:String x:Key="errorCodeItem">Error Code</sys:String>
+    <sys:String x:Key="errorMsgItem">Description</sys:String>
+    <sys:String x:Key="disposeMsgItem">Recommended Action</sys:String>
+    <sys:String x:Key="FaiedNum">Number of Failed Files:</sys:String>
+    <sys:String x:Key="ExportFile">Export</sys:String>
+
+    <!--任务栏-->
+    <sys:String x:Key="syncPause">Pause Sync</sys:String>
+    <sys:String x:Key="syncRecover">Resume Sync</sys:String>
+    <sys:String x:Key="options">Options</sys:String>
+    <sys:String x:Key="openSyncRoot">Open Sync Folder</sys:String>
+    <sys:String x:Key="openWebServer">Visit Onebox</sys:String>
+    <sys:String x:Key="CollectLogs">Collect Logs</sys:String>
+    <sys:String x:Key="help">Help</sys:String>
+    <sys:String x:Key="about">About</sys:String>
+    <sys:String x:Key="quit">Exit</sys:String>
+    <sys:String x:Key="syncPathNotExist">Nonexistent local synchronization folder. Terminate the synchronization relationship and set the local synchronization folder again.</sys:String>
+
+
+    <!--共享-->
+    <sys:String x:Key="shareInvite">Invite Recipient</sys:String>
+    <sys:String x:Key="shareMgr">Manage Recipient</sys:String>
+    <sys:String x:Key="invite">Invite</sys:String>
+    <sys:String x:Key="inputnotice">Enter employee ID,domian account,or name and press Enter to add the user.</sys:String>
+    <sys:String x:Key="nextinputnotice">Click Continue to add.</sys:String>
+    <sys:String x:Key="unshared1">Remove All</sys:String>
+    <sys:String x:Key="sharingUser">Recipient</sys:String>
+    <sys:String x:Key="department">Department</sys:String>
+    <sys:String x:Key="operation">Operation</sys:String>
+    <sys:String x:Key="remove">Move</sys:String>
+    <sys:String x:Key="removeConfirm">Are you sure you want to remove all the recipients from the item?</sys:String>
+    <sys:String x:Key="inviteSuccess">Succeeded in inviting recipients.</sys:String>
+    <sys:String x:Key="inviteFailed">Failed to invite recipients.</sys:String>
+    <sys:String x:Key="cancelConfirm">Cancel invitation?</sys:String>
+    <sys:String x:Key="userAreadyIn">The user has been in the list of users to be invited.</sys:String>
+    <sys:String x:Key="emptyinvitenotice">No valid recipient !</sys:String>
+    <sys:String x:Key="sharedPerson">recipient(s)</sys:String>
+    <sys:String x:Key="addMsg">Add messages.</sys:String>
+    <sys:String x:Key="unSharedFailed">Failed to cancel the file share.</sys:String>
+    <sys:String x:Key="share">Share</sys:String>
+    <sys:String x:Key="inviteMore">Invite more recipients.</sys:String>
+    <sys:String x:Key="unshared">Cancel File Sharing</sys:String>
+    <sys:String x:Key="invitePerson">Invite recipients</sys:String>
+    <sys:String x:Key="shareSelfErr">Cannot share with yourself.</sys:String>
+    <sys:String x:Key="batchAddNotice">Part of condition cannot found the correct user, continuing to submit will be ignored.</sys:String>
+    <sys:String x:Key="notFind">Not result found</sys:String>
+
+    <!--链接-->
+    <sys:String x:Key="linkShare">Share Link</sys:String>
+    <sys:String x:Key="copy">Copy</sys:String>
+    <sys:String x:Key="linkCancel">Unshare</sys:String>
+    <sys:String x:Key="accessLimit">Access control:</sys:String>
+    <sys:String x:Key="readCode">Extraction code:</sys:String>
+    <sys:String x:Key="validTimes">Validity period:</sys:String>
+    <sys:String x:Key="forever">Permanent</sys:String>
+    <sys:String x:Key="custom">Customization</sys:String>
+    <sys:String x:Key="savingLimit">Save</sys:String>
+    <sys:String x:Key="timeError">Incorrect Time</sys:String>
+    <sys:String x:Key="timeRule1">The start time cannot be later than the end time.</sys:String>
+    <sys:String x:Key="timeRule2">The selected time is earlier than the current time. Please retry.</sys:String>
+    <sys:String x:Key="updateFailed">Failed to set the link</sys:String>
+    <sys:String x:Key="updateFailedInfo">Failed to set the link.</sys:String>
+    <sys:String x:Key="updateSuccess">succeeded to set the link</sys:String>
+    <sys:String x:Key="updateSuccessInfo">succeeded to set the link.</sys:String>
+    <sys:String x:Key="getLinkFailedInfo">Abnormal service end. Failed to obtain the link.</sys:String>
+    <sys:String x:Key="linkCancelConfirm">If the file is shared with others, the file cannot be accessed. Are you sure you want to continue?</sys:String>
+    <sys:String x:Key="readCodeErr">The extraction code must contain 1 to 20 characters.</sys:String>
+    <sys:String x:Key="dateTimeErr">Invalid date or the date out of range,redo or not?</sys:String>
+    <sys:String x:Key="copyErr">Failed to copy</sys:String><!--复制失败-->
+    <sys:String x:Key="copyErrInfo">Replication failed. Please implement manual replication.</sys:String><!--复制操作遇到系统错误，可尝试选中内容ctrl+c复制.-->
+    <sys:String x:Key="linkPublic">Public</sys:String>
+    <sys:String x:Key="linkLimitChange">Modify</sys:String>
+    <sys:String x:Key="to">to</sys:String>
+    <sys:String x:Key="readCode1">Extraction code</sys:String>
+    <sys:String x:Key="validTimes1">Validity period</sys:String>
+    <sys:String x:Key="accessLimit1">Access control</sys:String>
+    <sys:String x:Key="readCodeEmpty">The extraction code cannot be blank.</sys:String>
+    <sys:String x:Key="current">Now</sys:String>
+    <sys:String x:Key="CodeNotMach">The extraction code must contain only letters or digits.</sys:String>
+    <sys:String x:Key="CancelLinkFailed">Failed to cancel the link share.</sys:String>
+    <sys:String x:Key="StartTimeBlank">The start time cannot be blank.</sys:String>
+    <sys:String x:Key="sendMail">Send</sys:String>
+    <sys:String x:Key="cancelSend">Cancel</sys:String>
+    <sys:String x:Key="emailInputnotice">Input your employee ID,domain account,email,or name and press Enter.</sys:String>
+    <sys:String x:Key="addEmailPerson">Add recipients</sys:String>
+    <sys:String x:Key="invalidRecipients">No valid recipients.</sys:String>
+
+    <!--向导、安装-->
+    <sys:String x:Key="AboutWindowTile">About</sys:String>
+    <sys:String x:Key="appNameT">Product:</sys:String>
+    <sys:String x:Key="appVersionT">Version:</sys:String>
+    <sys:String x:Key="copyRightT">Copyright:</sys:String>
+    <sys:String x:Key="copyRight">Copyright © Chinasoft Technologies Co. , Ltd. 2014. All rights reserved.</sys:String>
+    <sys:String x:Key="warnning">Note: Logs of your operations on Onebox are recorded. Please observe information security regulations of Chinasoft.</sys:String>
+    <sys:String x:Key="contactT">Contact Info:</sys:String>
+    <sys:String x:Key="contactIT">IT contact-wuzhiyuan (00186884)</sys:String>
+    <sys:String x:Key="contantDep">Product maintenance-zhubiao(00178165)</sys:String>
+
+    <sys:String x:Key="wizard">Onebox Wizard</sys:String>
+    <sys:String x:Key="welcom">Welcome to Use Onebox</sys:String>
+    <sys:String x:Key="wizardContext1">Onebox automatically generates a synchronization folder  with the default name of Onebox. All operations in the folder are synchronized to the Website.</sys:String>
+    <sys:String x:Key="wizard2">Access Onebox Anytime and Anywhere</sys:String>
+    <sys:String x:Key="wizard2Context">As long as your computer is connected to the Internet, you can access Onebox using the website, synchronization client, or mobile terminal devices anytime and anywhere.</sys:String>
+    <sys:String x:Key="wizard3">Onebox Icon in the Taskbar</sys:String>
+    <sys:String x:Key="wizard3Context">Right-clicking the icon in the taskbar is the fastest way to access and operate Onebox.</sys:String>
+    <sys:String x:Key="wizard4">Share a File or Folder with Others</sys:String>
+    <sys:String x:Key="wizard4Context">The Share function is added to the shortcut menu.</sys:String>
+    <sys:String x:Key="step1">Part 1 of 4</sys:String>
+    <sys:String x:Key="step2">Part 2 of 4</sys:String>
+    <sys:String x:Key="step3">Part 3 of 4</sys:String>
+    <sys:String x:Key="step4">Part 4 of 4</sys:String>
+    <sys:String x:Key="quiteWizard">Skip the Wizard</sys:String>
+    <sys:String x:Key="next">Next</sys:String>
+    <sys:String x:Key="previous">Previous</sys:String>
+    <sys:String x:Key="finish">Finish</sys:String>
+
+    <!--升级-->
+    <sys:String x:Key="UpgradeTitle">OneBox Upgrade Reminder</sys:String>
+    <sys:String x:Key="NewVersionDetected">Discover New Version</sys:String>
+    <sys:String x:Key="UpgradeNotice">The update takes about two minutes and will restart the resource manager</sys:String>
+    <sys:String x:Key="UpgradeContent">Update Content:</sys:String>
+    <sys:String x:Key="UpgradeButtonContent">Update</sys:String>
+    <sys:String x:Key="CloseButtonContent">Close</sys:String>
+    <sys:String x:Key="UpgradeSuccess">Onebox has been upgraded to the latest version.</sys:String>
+
+    <!--右键上传-->
+    <sys:String x:Key="uploadToCloud">Upload to Onebox</sys:String>
+    <sys:String x:Key="uploadToCloudMsg">Please select a cloud directory.</sys:String>
+    <sys:String x:Key="dirChooseNotice">Please select a cloud directory:</sys:String>
+    <sys:String x:Key="uploadNotice">Note: Files uploaded to the cloud by right-click will not be automatically updated after they are changed in the local computer.</sys:String>
+    <sys:String x:Key="uploadAddNotice">Upload started,</sys:String>
+    <sys:String x:Key="uploadInMainWindow">View task progress>></sys:String>
+    <sys:String x:Key="uploadOpenWebNotice">Please check files in the cloud later:</sys:String>
+    <sys:String x:Key="uploadButtonContent">Upload</sys:String>
+    <sys:String x:Key="emptyDir">( Empty )</sys:String>
+
+</ResourceDictionary>

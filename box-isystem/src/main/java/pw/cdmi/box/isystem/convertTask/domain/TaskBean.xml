@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TaskBean">
+
+	<typeAlias alias="TaskBean"
+		type="pw.cdmi.box.isystem.convertTask.domain.TaskBean" />
+
+	<select id="getTaskBeanList" resultClass="TaskBean" parameterClass="map">
+		select * from convert_task where destfileFlag = 0
+        <isNotEmpty  prepend="and" property="filter.fileName">
+		  fileName like concat('%',#filter.fileName#,'%') 
+        </isNotEmpty>
+        <isNotNull prepend="and" property="filter.startTime">
+    		converttime &gt;= #filter.startTime#
+    	</isNotNull>
+    	<isNotNull prepend="and" property="filter.endTime">
+    		converttime &lt;= #filter.endTime#
+    	</isNotNull>
+        order by converttime desc
+		<dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+	</select>
+	
+	<select id="getTaskBeanCount" parameterClass="map" resultClass="java.lang.Integer">
+        select count(objectid) count from convert_task where destfileFlag = 0
+        <isNotEmpty  prepend="and" property="filter.fileName">
+		  fileName like concat('%',#filter.fileName#,'%') 
+        </isNotEmpty>
+        <isNotNull prepend="and" property="filter.startTime">
+    		converttime &gt;= #filter.startTime#
+    	</isNotNull>
+    	<isNotNull prepend="and" property="filter.endTime">
+    		converttime &lt;= #filter.endTime#
+    	</isNotNull>
+    </select>
+	
+	<select id="checkStatus" parameterClass="map" resultClass="java.lang.Integer">
+        select status from convert_task where taskId = #taskId#
+    </select>
+    
+    <update id="updateLevel" parameterClass="map" >
+    	update convert_task set level = #level# where taskId = #taskId#
+    </update>
+	
+	<update id="resetState" parameterClass="String">
+		update convert_task set status=9,retryCount=0 where taskId = #taskId#
+	</update>
+	
+</sqlMap>

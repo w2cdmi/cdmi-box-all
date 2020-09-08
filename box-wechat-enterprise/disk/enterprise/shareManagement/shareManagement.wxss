@@ -1,0 +1,15 @@
+/* disk/enterprise/shareManagement/shareManagement.wxss */
+
+.page{
+    font-size: 30rpx;
+}
+.list-item {
+    line-height: 100rpx;
+    height: 100rpx;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-bottom: 1rpx solid #e0e0e0;
+    padding-left: 36rpx;
+}

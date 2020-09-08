@@ -1,0 +1,100 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<style type="text/css">
+html,body{ margin:0; padding:0;}
+.container{ position:relative; width:600px; height:338px; overflow:hidden; background:#006fe3;}
+[class*="step"]{ position:absolute; left:0; top:0; }
+[class*="water"]{ position:absolute; }
+.step-login{ background:url(img/image.png) no-repeat left top; width:600px; height:338px;}
+.step-change{ background:url(img/image.png) no-repeat left -338px; width:600px; height:3544px;}
+.water01{ background:url(img/water01.png) no-repeat left top; width:1120px; height:170px; left:0; top:168px;}
+.water02{ background:url(img/water02.png) no-repeat left top; width:1120px; height:200px; right:-70px; top:148px;}
+.water03{ background:url(img/water03.png) no-repeat left top; width:1120px; height:124px; left:0; top:254px;}
+
+[class*="fish-water"]{ position:absolute; width:15px; height:15px; background:url(img/fish-water.png) no-repeat;}
+.fish-water{ width:600px; height:232px; overflow:hidden; left:0; top:0; background:none;}
+.fish-water-pillar{ left:290px; top:232px; background-position: left bottom;}
+.fish-water-SL{ left:285px; top:201px; background-position: left -30px; display:none;}
+.fish-water-SR{ left:295px; top:198px; background-position: left -45px; display:none;}
+.fish-water-BL{ left:273px; top:200px; background-position: left 0px; display:none;}
+.fish-water-BR{ left:308px; top:195px; background-position: left -15px; display:none;}
+</style>
+<script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+<script type="text/javascript">
+var timeObj;
+var i = 1;
+var fadeTimer = 3000;
+var moveTimer = 1600;
+var waitTimer = 2000;
+$(function(){
+	timeObj = setTimeout("loginFadeout()",waitTimer);
+	
+	$(".water01").animate({left: -420, top: 338}, 4000, function(){
+		$(this).fadeOut();
+	});
+	$(".water02").animate({right: -520, top: 260}, 4000, function(){
+		$(this).fadeOut();
+	});
+	$(".water03").animate({left: -520, top: 338}, 4000, function(){
+		$(this).fadeOut();
+	});
+})
+function loginFadeout(){
+	clearTimeout(timeObj);
+	$(".step-login").fadeOut(fadeTimer,function(){
+		timeObj = setTimeout("imgMove()",waitTimer);
+	});
+}
+function imgMove(){
+	clearTimeout(timeObj); 
+	$(".step-change").animate({top: -i*(338+140)}, moveTimer, function(){
+		if(i<5){
+			i++;
+			timeObj = setTimeout("imgMove()",waitTimer);
+		}else{
+			fishWater();
+		}
+	})
+}
+function fishWater(){
+	setInterval(function(){
+		$(".fish-water-pillar").animate({top: 212}, 200,function(){
+			$(this).animate({opacity: 0}, 300, function(){
+				$(this).css({"top":"232px","opacity":"100"});
+			});
+			
+			$(".fish-water-SL, .fish-water-SR").show().animate({opacity: 0}, 700, function(){
+					$(this).css({"display":"none","opacity":"100"});
+				});
+				
+				setTimeout(function(){
+					$(".fish-water-BL, .fish-water-BR").show().animate({opacity: 0}, 600, function(){
+						$(this).css({"display":"none","opacity":"100"});
+					});
+				},400)
+			
+		});
+	},2000);
+}
+</script>
+</head>
+
+<body>
+<div class="container">
+    <div class="step-change"></div>
+	<div class="step-login"></div>
+    <div class="water01"></div>
+    <div class="water02"></div>
+    <div class="water03"></div>
+    <div class="fish-water">
+    	<div class="fish-water-pillar"></div>
+        <div class="fish-water-SL"></div>
+        <div class="fish-water-SR"></div>
+        <div class="fish-water-BL"></div>
+        <div class="fish-water-BR"></div>
+    </div>
+</div>
+</body>
+</html>

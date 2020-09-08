@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WxEnterprise">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="WxEnterprise" type="com.huawei.sharedrive.uam.weixin.domain.WxEnterprise" />
+
+    <insert id="insert" parameterClass="WxEnterprise">
+        <![CDATA[
+        insert into wx_enterprise(id,name,type,squareLogoUrl,userMax,fullName,subjectType,verifiedEndTime,wxqrCode,email,mobile,userId,permanentCode,boxEnterpriseId, state,createdAt,modifiedAt)
+        values 
+        (#id#,#name#,#type#,#squareLogoUrl#,#userMax#,#fullName#,#subjectType#,#verifiedEndTime#,#wxqrCode#,#email#,#mobile#,#userId#,#permanentCode#,#boxEnterpriseId#,#state#,#createdAt#,#modifiedAt#)
+        ]]>
+	</insert>
+
+    <update id="update" parameterClass="WxEnterprise">
+        UPDATE wx_enterprise SET `modifiedAt`=#modifiedAt#
+        <dynamic>
+            <isNotNull prepend="," property="type">
+                `type` = #type#
+            </isNotNull>
+            <isNotNull prepend="," property="squareLogoUrl">
+                squareLogoUrl = #squareLogoUrl#
+            </isNotNull>
+            <isNotNull prepend="," property="userMax">
+                userMax = #userMax#
+            </isNotNull>
+            <isNotNull prepend="," property="fullName">
+                fullName = #fullName#
+            </isNotNull>
+            <isNotNull prepend="," property="subjectType">
+                subjectType = #subjectType#
+            </isNotNull>
+            <isNotNull prepend="," property="verifiedEndTime">
+                verifiedEndTime = #verifiedEndTime#
+            </isNotNull>
+            <isNotNull prepend="," property="wxqrCode">
+                wxqrCode = #wxqrCode#
+            </isNotNull>
+            <isNotNull prepend="," property="email">
+                email = #email#
+            </isNotNull>
+            <isNotNull prepend="," property="mobile">
+                mobile = #mobile#
+            </isNotNull>
+            <isNotNull prepend="," property="userId">
+                userId = #userId#
+            </isNotNull>
+            <isNotNull prepend="," property="state">
+                `state` = #state#
+            </isNotNull>
+            <isNotNull prepend="," property="permanentCode">
+                permanentCode = #permanentCode#
+            </isNotNull>
+            <isNotNull prepend="," property="boxEnterpriseId">
+                boxEnterpriseId = #boxEnterpriseId#
+            </isNotNull>
+        </dynamic>
+        WHERE id=#id#
+    </update>
+
+    <update id="updateState" parameterClass="WxEnterprise">
+        UPDATE wx_enterprise SET `state`=#state#, `modifiedAt`=#modifiedAt# WHERE id=#id#
+    </update>
+
+    <select id="get" parameterClass="String" resultClass="WxEnterprise">
+        select * from wx_enterprise where id=#id#
+    </select>
+
+</sqlMap>
+

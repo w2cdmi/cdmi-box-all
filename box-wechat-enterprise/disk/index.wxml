@@ -1,0 +1,122 @@
+<import src="/disk/template/fileList.wxml" />
+<import src="/disk/template/menu.wxml" />
+<import src="/disk/template/music.wxml" />
+<view class="page">
+    <!--备份中  -->
+    <view class='weixinBackups flex-item' bindtap='goToBackupsing' wx:if="{{isBackupsing}}">
+        <view class='flex-item'>
+            <image src='{{avatarUrl}}' class='weixin-image'></image>
+            <view class='weixin-text'>微信备份中...</view>
+        </view>
+        <view class='flex-item'>
+            <view class='weixin-text'>查看详情</view>
+            <view><image src='/disk/images/arrow.png' class='arrow-image'></image></view>
+        </view>
+    </view>
+    <!-- 未备份 -->
+    <view class='weixinBackups flex-item' bindtap='goToBackups' wx:if="{{!isBackupsing}}">
+        <view class='flex-item'>
+            <image src='/disk/images/index/weixinBackups.png' class='weixin-image'></image>
+            <view class='weixin-text'>开启你的微信备份</view>
+        </view>
+        <view class='flex-item'>
+            <view class='weixin-text'>立即开启</view>
+            <view><image src='/disk/images/arrow.png' class='arrow-image'></image></view>
+        </view>
+    </view>
+    <!-- 音乐播放状态 -->
+    <view class='weixinBackups flex-item' bindtap='goToPlayMusic' wx:if="{{isShowMusicPlay}}">
+        <view class='flex-item'>
+            <view class='view-image'><image src='/disk/images/index/music-play.png' class='music-play-icon'></image></view>
+            <view class='weixin-text'>正在播放</view>
+            <view class='weixin-text music-name'>{{musicName}}</view>
+        </view>
+        <view class='flex-item'>
+            <image src='/disk/images/arrow.png' class='arrow-image'></image>
+        </view>
+    </view>
+    
+    <view class='tip_container' wx:if="{{commonsCount>0 ? true : false }}">
+        <view class='tip_view' catchtap="navigateToComms">
+            <image class='tip_img' src='{{userAvatarUrl}}'></image>
+            <text class='tip_txt' decode='{{true}}'>{{commonsCount}} 条信息</text>
+            <image src='/disk/images/arrow2.png' class="image-icon"></image>
+        </view>
+    </view>
+    
+    <!--文件分类显示  -->
+    <view class='flex-container docspace-list'>
+        <view class='flex-column' bindtap="navigatePersonSpace" hover-class="button-hover">
+            <image src='/disk/images/persion-file.png' class='item-image'></image>
+            <view class='item-text'>个人文件</view>
+        </view>
+        <view class='flex-column' bindtap="navigateDepartmentSpace" hover-class="button-hover">
+            <image src='/disk/images/depfile.png' class='item-image'></image>
+            <view class='item-text'>部门文件</view>
+        </view>
+        <view class='flex-column' bindtap="navigateTeamSpace" hover-class="button-hover">
+            <image src='/disk/images/teamfile.png' class='item-image'></image>
+            <view class='item-text'>协作空间</view>
+        </view>
+    </view>
+    <!--最近浏览  -->
+    <view class='recentlyViewed'>
+        <view class='recentlyViewed-title flex-item' bindtap='goToRecentlyViewed'>
+            <view>
+                <view class='title-view-image'><image src='/disk/images/index/recentlyViewed.png' class='recentlyViewed-image'></image></view>
+                <text class='title-text'>最近浏览</text>
+            </view>
+            <view wx:if="{{data.files.length==0 ? false : true}}">
+                <image src='/disk/images/arrow.png' class='arrow-image'></image>
+            </view>
+        </view>
+        <!-- 最近浏览为空的背景图片 -->
+        <view class='blankContainer' wx:if="{{data.files.length == 0 ? true : false}}">
+            <image src='./images/blank/not-document-bg.png' class='blank-icon'></image>
+            <view class='blank-text'>暂无最近浏览文件</view>
+        </view>
+        <!-- 显示加载更多、显示无更多内容 、 是否显示 ScrollView   -->
+        <filelist id="recentlyViewed" dataList="{{data.files}}" symbol="recentlyViewed" checkSymbol="{{checkSymbol}}" bind:fileItemClick="fileItemClick" bind:getSymbol="getSymbol" bind:deleteEvent="deleteBrowseRecords"></filelist>
+    </view>
+
+    <!--快捷文件夹  -->
+    <view class='shortcutFolder'>
+        <view class='recentlyViewed-title'>
+            <view class='title-view-image'><image src='/disk/images/index/shortcutFolder.png' class='shortcutFolder-image'></image></view>
+            <text class='title-text'>快捷文件夹</text>
+        </view>
+        <!-- 快捷文件夹为空的背景图片 -->
+        <view class='blankContainer' hidden='{{folderList.length==0 ? false : true}}'>
+            <image src='./images/blank/not-document-bg.png' class='blank-icon'></image>
+            <view class='blank-folder-text'>
+                <view class='text-align'>暂无快捷文件夹，设置方法：</view> 
+                <view class='text-align'>点击文件夹【<image class='plug_icon' src='/disk/images/depart-plug.png'></image>】选择【设置为快捷文件夹】即可</view>
+            </view>
+        </view>
+
+        <filelist id="shortcutFolder" dataList="{{folderList}}" showShareBtn="{{true}}" symbol="shortcutFolder" checkSymbol="{{checkSymbol}}" bind:fileItemClick="folderItemClick" bind:getSymbol="getSymbol" bind:deleteEvent="deleteShortcutFolder"></filelist>
+
+    </view>
+    <!-- <view class="navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+            <view data-index='{{item.index}}' class="navbar-item {{activeIndex == item.index ? 'bar-item-on' : ''}}" catchtap="tabClick">
+                <image src='{{item.imgPath}}'></image>
+                <view class="navbar-title">{{item.name}}</view>
+            </view>
+        </block>
+    </view> -->
+    <!-- <view class="tab-panel" style='padding-top:90px;height:{{WXh}}px'>
+        <view class='tip_container' wx:if="{{commonsCount>0 ? true : false }}">
+            <view class='tip_view' catchtap="navigateToComms">
+                <image class='tip_img' src='{{userAvatarUrl}}'></image>
+                <text class='tip_txt' decode='{{true}}'>{{commonsCount}}条信息</text>
+                <image src='/disk/images/arrow2.png' class="image-icon"></image>
+            </view>
+        </view>
+    </view> -->
+    <tabbar selectIndex="0" mCount="{{mCount}}" bind:onShowMenu="onShowMenu"></tabbar>
+    <menu isShowMenu='{{isShowMenu}}' bind:onUploadImage="onUploadImage" bind:onUploadVideo="onUploadVideo" bind:showCreateFolder="showCreateFolder"></menu>
+</view>
+
+<!-- <template is="menu" data="{{isShowMenuPanel, animationMenuPanel, isShowMusicButton, isOpenRobot, userIcon, isOpenRobot, animationAddPanel, isShowUpButton}}" /> -->
+<template is="music" data="{{isShowMusicListPanel, musicCount, musics, isShowMusicPanel, playOrStopButton, musicInfoWidth, music, progressWidth, progress, currentTime, duration}}" />

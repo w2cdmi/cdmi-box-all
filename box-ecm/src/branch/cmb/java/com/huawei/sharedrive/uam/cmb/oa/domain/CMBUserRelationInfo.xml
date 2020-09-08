@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CMBUserRelationInfo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CMBUserRelationInfo" type="com.huawei.sharedrive.uam.cmb.oa.domain.CMBUserRelationInfo" />
+	<typeAlias alias="CMBSapUser" type="com.huawei.sharedrive.uam.cmb.oa.domain.CMBSapUser" />
+	<insert id="insert" parameterClass="CMBUserRelationInfo">
+        <![CDATA[
+        insert into cmb_orguser_relation_info(orgId,groupId,name,userId,userOrd) 
+        values (#orgId#,#groupId#,#name#,#userId#,#userOrd#)
+        ]]>
+	</insert>
+	<select id="getById" resultClass="CMBUserRelationInfo" parameterClass="map">
+    	<![CDATA[
+        select * from cmb_orguser_relation_info where orgId=#orgId# and userId=#userId#
+        ]]>
+	</select>
+	<select id="getByOrgId" resultClass="CMBUserRelationInfo" parameterClass="int">
+    	<![CDATA[
+        select * from cmb_orguser_relation_info where orgId=#value#
+        ]]>
+	</select>
+	<select id="getByUserId" resultClass="CMBUserRelationInfo" parameterClass="String">
+    	<![CDATA[
+        select * from cmb_orguser_relation_info where userId=#value#
+        ]]>
+	</select>
+	<update id="updateById" parameterClass="CMBUserRelationInfo">
+    	<![CDATA[
+    	update cmb_orguser_relation_info set groupId=#groupId#,name=#name#,userOrd=#userOrd#
+    	where orgId=#orgId# and userId=#userId#
+        ]]>
+	</update>
+	<update id="updateNormolStatus">
+    	<![CDATA[
+    	update cmb_orguser_relation_info i set i.status=0 where EXISTS 
+		(select * FROM cmb_orguser_relation_info_tmp t 
+		where i.userId=t.userId and i.orgId=t.orgId);
+        ]]>
+	</update>
+	<update id="updateUnNormolStatus">
+    	<![CDATA[
+    	update cmb_orguser_relation_info i set i.status=1 where not EXISTS 
+		(select * FROM cmb_orguser_relation_info_tmp t 
+		where i.userId=t.userId and i.orgId=t.orgId);
+        ]]>
+	</update>
+	<select id="getByGroupIds" resultClass="CMBSapUser" parameterClass="java.util.ArrayList">
+    	<![CDATA[
+        select u.* from cmb_user_info u,cmb_orguser_relation_info r
+		where u.userId=r.userId and  r.groupId in
+        ]]>
+        <dynamic>  
+            <iterate open="(" close=")" conjunction=",">  
+                #list[]#
+            </iterate>  
+        </dynamic>
+	</select>
+</sqlMap>
+

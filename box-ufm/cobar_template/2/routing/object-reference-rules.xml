@@ -1,0 +1,23 @@
+<rules>
+    <rule>
+        <namespace>ObjectReference</namespace>
+        <shardingExpression>hash.apply(id) % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>ObjectReference</namespace>
+        <shardingExpression>hash.apply(id) % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    
+  <rule>
+        <sqlmap>ObjectReference.lstNeedDeleteObjects</sqlmap>
+        <shardingExpression>partitionNum==1</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>ObjectReference.lstNeedDeleteObjects</sqlmap>
+        <shardingExpression>partitionNum==2</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+</rules>

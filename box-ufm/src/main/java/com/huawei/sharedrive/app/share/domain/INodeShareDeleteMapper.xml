@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="INodeShareDelete">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="INodeShareDelete" type="com.huawei.sharedrive.app.share.domain.INodeShareDelete" />
+    
+    
+    <insert id="create" parameterClass="INodeShareDelete">
+    
+      INSERT INTO `inode_share_delete` (`iNodeId`, `ownerId`, `shareType`, `linkCode`, `sharedUserId`, `sharedUserType`,`deleteUserId`) 
+                                VALUES (#iNodeId#, #ownerId#, #shareType#, #linkCode#, #sharedUserId#, #sharedUserType#,#deleteUserId#)
+    </insert>
+    
+    <delete id="delete" parameterClass="INodeShareDelete">
+      
+       delete from inode_share_delete where ownerId=#ownerId# and iNodeId=#iNodeId#
+       <dynamic>
+          <isNotNull property="shareType" prepend="and">
+           shareType = #shareType# and linkCode=#linkCode#
+          </isNotNull>
+       </dynamic>
+    
+    </delete>
+    
+</sqlMap>
+

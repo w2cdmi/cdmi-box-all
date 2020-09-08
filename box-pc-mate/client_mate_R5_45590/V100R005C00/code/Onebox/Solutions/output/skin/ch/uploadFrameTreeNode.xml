@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+	<UploadFrameTreeNode name="uploadFrame_listItem"  height="30" mousechilid="false" itemattr="valign=&quot;vcenter&quot; align=&quot;left&quot; font=&quot;2&quot;" folderattr="padding=&quot;10,9,0,9&quot; width=&quot;12&quot; height=&quot;12&quot; name=&quot;uploadFrame_itemState&quot; normalimage=&quot;..\Image\ic_popup_backup_launch.png&quot; selectedimage=&quot;..\Image\ic_popup_backup_add.png&quot; selected=&quot;true&quot;">
+		<HorizontalLayout padding="5,0" width="560">
+			<Label name="uploadFrame_itemIcon" width="24" height="24" padding="5,3,0,3"/>
+			<MyFilesRichEditUI name="uploadFrame_itemName" limitchars="/ \ * | ' : ? &lt; &gt; &quot;" padding="5,0,0,0" focusbordercolor="#FFFAFAFA" borderround="5,5" tooltip="text" inset="5,5,5,0" valign="center" multiline="false" endellipsis="true" height="28" width="410" font="12" textcolor="#FF000000" align="left" mouse="false"/>
+		</HorizontalLayout>
+	</UploadFrameTreeNode>
+</Window>

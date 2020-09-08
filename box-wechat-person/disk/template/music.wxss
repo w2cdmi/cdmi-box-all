@@ -1,0 +1,146 @@
+/* music play */
+
+.music-panel {
+    height: 40px;
+    background: #eaeaea;
+    padding: 10px 15px;
+    display: flex;
+    align-content: space-between;
+    position: absolute;
+    bottom: 0px;
+}
+
+.list-button {
+    width: 20px;
+    height: 20px;
+    margin-top: 12px;
+}
+
+.music-time {
+    font-size: 8px;
+    color: #999;
+    line-height: 26px;
+    width: 58px;
+    white-space: nowrap;
+}
+
+.music-info {
+    padding: 0 10px;
+}
+
+.music-play-info {
+    height: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.music-function-button {
+    width: 100px;
+    height: 40px;
+    display: flex;
+}
+
+.last-music {
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+}
+
+.music-play {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+}
+
+.next-music {
+    width: 20px;
+    height: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.music-list-panel {
+    background: #ededed;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    z-index: 12;
+}
+
+.list-title {
+    height: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 15px;
+    align-items: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.list-title text {
+    font-size: 15px;
+    height: 20px;
+    line-height: 20px;
+}
+
+.clear-all {
+    width: 16px;
+    height: 20px;
+}
+
+.music-list {
+    padding: 0 15px;
+}
+
+.music-list scroll-view {
+    height: 280px;
+}
+
+.music-info-group {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #d9d9d9;
+    align-items: center;
+}
+
+.close-music-list {
+    height: 40px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #d9d9d9;
+}
+
+.close-music-list text {
+    font-size: 15px;
+}
+
+.view-delete-image {
+    width: 16px;
+    height: 16px;
+}
+
+.view-delete-image image {
+    width: 16px;
+    height: 16px;
+}
+
+.music-name {
+    font-size: 14px;
+    line-height: 40px;
+    height: 40px;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.music-file-name {
+    width: 300rpx;
+    height: 24px;
+    line-height: 28px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

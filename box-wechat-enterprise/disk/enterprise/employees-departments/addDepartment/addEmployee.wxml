@@ -1,0 +1,25 @@
+<!--disk/enterprise/template/selectEmploye.wxml-->
+<view class='page'>
+    <!-- 员工列表 -->
+    <view class='margin-top'>
+        <view class='department-group border-bottom' wx:for="{{roles}}" wx:key="*this" bindtap='onSelectRole' data-index="{{index}}" data-item="{{item}}">
+            <label>{{item}}</label>
+            <view class='view-select-icon' wx:if="{{selectedRole === index}}">
+                <image class="img-icon margin-right" src='/disk/images/pitch-on-icon.png'></image>
+            </view>
+        </view>
+    </view>
+    <view class='description'>
+        <view class='description-title'>角色说明: </view>
+        <view class='description-text'>
+            <view>
+                <!-- <image src=''></image> -->
+                <text>知识专员</text>
+            </view>
+            <view>可对部门空间文档进行访问权限设置，并代替主管对部门员工文档外发行为进行审批</view>
+            <view>主管</view>
+            <view>可对部门空间文档进行访问权限设置，对部门员工文档外发行为进行审批，或将工作委托给部门知识专员。</view>
+        </view>
+    </view>
+    <button class='sure-button' bindtap='completed'>确定</button>
+</view>

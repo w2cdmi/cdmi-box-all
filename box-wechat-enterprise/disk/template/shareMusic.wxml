@@ -1,0 +1,21 @@
+<view class='page'>
+    <view class='top'>
+        <image class='turntable' animation="{{turntable}}" style="transform:rotate(30deg)" src='../images/shareMusic/turntable.png'></image>
+        <image class='pole' animation="{{pole}}" src='../images/shareMusic/pole.png'></image>
+    </view>
+    <!-- musicPlayer  -->
+    <view class="page-body" style='margin-top:260rpx;'>
+        <view class="page-section page-section-gap" style="text-align: center;">
+            <image class='audio-bc' src='../images/shareMusic/rectangle.png'></image>
+            <view class='audio'>
+                <image catchtap='playVoice' data-playorpause='{{playorpause}}' class='play-img' src='{{playButtonImg}}'></image>
+                <view class='audio-content' style='display:inline-block;'>
+                    <!--名字不能大于13个字 大了就...  -->
+                    <view class='file-name'>{{musicName}}</view>
+                    <text class='file-size'>{{musicSize}}</text>
+                </view>
+                <text class='play-time'>{{musicTime}}</text>
+            </view>
+        </view>
+    </view>
+</view>

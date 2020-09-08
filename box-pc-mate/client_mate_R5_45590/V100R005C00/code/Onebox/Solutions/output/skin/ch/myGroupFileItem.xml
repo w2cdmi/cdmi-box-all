@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+	<GroupListFileContainerElement name="Group_listItem" height="40">
+		<Label name="Group_List_listName" float="true" pos="0,0,120,40" align="center" textcolor="#FF999999"  width="120"/>
+		<Label name="Group_List_desc" float="true" pos="120,0,220,40" align="center" textcolor="#FF999999"  width="100"/>
+		<Label name="Group_List_type" float="true" pos="220,0,300,40" align="center" textcolor="#FF999999"  width="80"/>
+		<Label name="Group_List_memNum" float="true" pos="300,0,380,40" align="center" textcolor="#FF999999"  width="80"/>
+		<Label name="Group_List_owner" float="true" pos="380,0,500,40" align="center" textcolor="#FF999999"  width="120"/>
+		<!--<Label name="Group_List_oper" float="true" pos="500,0,624,40" align="center" textcolor="#FF999999"  width="124"/>-->
+		<HorizontalLayout float="true" pos="32,0,280,38">
+			<HorizontalLayout name="Group_List_oper"  padding="2,8,0,2" mouse="true">
+				<Button name="Group_List_memManager" width="80" height="24" visible="false"  text="成员管理" tooltip="成员管理" textcolor="#FF999999" padding="5,0,0,0" normalimage="..\img\allbtn_over.png" hotimage="..\img\allbtn_over.png" pushedimage="..\img\allbtn_over.png" disabledimage="..\img\allbtn_over.png" />
+				<Button name="Group_List_modify" width="80" height="24" visible="false" text="修改" tooltip="修改" textcolor="#FF999999" padding="5,0,0,0" normalimage="..\img\allbtn_over.png" hotimage="..\img\allbtn_over.png" pushedimage="..\img\allbtn_over.png" disabledimage="..\img\allbtn_over.png" />
+				<Button name="Group_List_delete" width="80" height="24" visible="false" text="解散" tooltip="解散" textcolor="#FF999999" padding="5,0,0,0" normalimage="..\img\allbtn_over.png" hotimage="..\img\allbtn_over.png" pushedimage="..\img\allbtn_over.png" disabledimage="..\img\allbtn_over.png" />
+				<Button name="Group_List_look" width="80" height="24" visible="false" text="查看成员" tooltip="查看成员" textcolor="#FF999999" padding="5,0,0,0" normalimage="..\img\allbtn_over.png" hotimage="..\img\allbtn_over.png" pushedimage="..\img\allbtn_over.png" disabledimage="..\img\allbtn_over.png" />
+				<Button name="Group_List_quit" width="80" height="24" visible="false" text="退出" tooltip="退出" textcolor="#FF999999" padding="5,0,0,0" normalimage="..\img\allbtn_over.png" hotimage="..\img\allbtn_over.png" pushedimage="..\img\allbtn_over.png" disabledimage="..\img\allbtn_over.png" />
+			</HorizontalLayout>
+		</HorizontalLayout>
+	</GroupListFileContainerElement>
+</Window>

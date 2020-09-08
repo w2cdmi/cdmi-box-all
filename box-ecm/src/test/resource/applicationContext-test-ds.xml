@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.2.xsd"
+	default-autowire="byName" default-lazy-init="true">
+    
+    <bean id="uamdb" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.uamdb.driverClassName}" />
+        <property name="url" value="${jdbc.uamdb.url}" />
+        <property name="username" value="${jdbc.uamdb.username}" />
+        <property name="password" value="${jdbc.uamdb.password}" />
+        <property name="initialSize" value="${jdbc.uamdb.pool.initialSize}" />
+        <property name="maxActive" value="${jdbc.uamdb.pool.maxActive}" />
+        <property name="maxIdle" value="${jdbc.uamdb.pool.maxIdle}" />
+        <property name="minIdle" value="${jdbc.uamdb.pool.minIdle}" />
+        <property name="maxWait" value="${jdbc.uamdb.pool.maxWait}" />
+        <property name="validationQuery" value="${jdbc.uamdb.pool.validationQuery}" />
+        <property name="testWhileIdle" value="${jdbc.uamdb.pool.testWhileIdle}" />
+        <property name="testOnReturn" value="${jdbc.uamdb.pool.testOnReturn}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.uamdb.pool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.uamdb.pool.minEvictableIdleTimeMillis}" />
+    </bean>
+    
+    <bean id="userlogdb" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="${jdbc.userlogdb.driverClassName}" />
+        <property name="url" value="${jdbc.userlogdb.url}" />
+        <property name="username" value="${jdbc.userlogdb.username}" />
+        <property name="password" value="${jdbc.userlogdb.password}" />
+        <property name="initialSize" value="${jdbc.userlogdb.pool.initialSize}" />
+        <property name="maxActive" value="${jdbc.userlogdb.pool.maxActive}" />
+        <property name="maxIdle" value="${jdbc.userlogdb.pool.maxIdle}" />
+        <property name="minIdle" value="${jdbc.userlogdb.pool.minIdle}" />
+        <property name="maxWait" value="${jdbc.userlogdb.pool.maxWait}" />
+        <property name="validationQuery" value="${jdbc.userlogdb.pool.validationQuery}" />
+        <property name="testWhileIdle" value="${jdbc.userlogdb.pool.testWhileIdle}" />
+        <property name="testOnReturn" value="${jdbc.userlogdb.pool.testOnReturn}" />
+        <property name="timeBetweenEvictionRunsMillis" value="${jdbc.userlogdb.pool.timeBetweenEvictionRunsMillis}" />
+        <property name="minEvictableIdleTimeMillis" value="${jdbc.userlogdb.pool.minEvictableIdleTimeMillis}" />
+    </bean>
+    
+    <bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="dataSource" ref="uamdb" />
+        <property name="configLocation" value="classpath:sqlmap-config.xml" />
+    </bean>
+    
+    <bean id="userLogSqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="dataSource" ref="userlogdb" />
+        <property name="configLocation" value="classpath:userlog-sqlmap-config.xml" />
+    </bean>
+
+    <bean id="sqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+        <property name="sqlMapClient" ref="sqlMapClient" />
+    </bean>
+    
+    <bean id="userLogSqlMapClientTemplate" class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+        <property name="sqlMapClient" ref="userLogSqlMapClient" />
+    </bean>
+
+	<!--DataSource TransactionManager -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="uamdb" />
+    </bean>
+    
+    <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager" />
+
+</beans>

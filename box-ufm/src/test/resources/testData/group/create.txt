@@ -1,0 +1,74 @@
+
+@@normal
+{ 
+    "name": "测试",
+    "ownedBy":173,
+    "description":"dsssd",
+    "status":"enable",
+    "maxMembers":-1,
+    "type":"private"
+}
+
+@@nameEmpty
+{ 
+    "ownedBy":71,
+    "description":"dsssd",
+    "status":"enable",
+    "maxMembers":-1,
+    "type":"private"
+}
+
+@@overLength
+{ 
+    "name": "acdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasfacdbcdsasf",
+    "ownedBy":71,
+    "description":"dsssd",
+    "status":"enable",
+    "maxMembers":100,
+    "type":"private"
+}
+@@onlyOneMember
+{ 
+    "name": "eww",
+    "ownedBy":1,
+    "description":"sss",
+    "status":"enable",
+    "maxMembers":1,
+    "type":"private"
+}
+
+@@normal2
+{ 
+    "name": "dddd",
+    "ownedBy":2,
+    "description":"dsssd",
+    "status":"enable",
+    "maxMembers":100,
+    "type":"public"
+}
+
+@@private
+{ 
+    "name": "dddd",
+    "ownedBy":1,
+    "description":"dsssd",
+    "status":"enable",
+    "maxMembers":100,
+    "type":"private"
+}
+
+@@errorType
+{ 
+    "name": "dddd",
+    "ownedBy":1,
+    "description":"dsssd",
+    "status":"enable",
+    "maxMembers":100,
+    "type":"dsdfsd"
+}
+
+@@withOutOwnedBy
+{ 
+    "name": "dddd",
+    "type":"private"
+}

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WxRobot">
+
+	<typeAlias alias="WxRobot" type="com.huawei.sharedrive.uam.wxrobot.domain.WxRobot"/>
+
+	
+	<insert id="insert" parameterClass="WxRobot">
+	     INSERT INTO `wx_robot` (`id`,`accountId`, `cloudUserId`, `wxUin`, `wxName`, `status`, `createdAt`,`lastStartAt`) VALUES (#id#,#accountId#, #cloudUserId#, #wxUin#, #wxName#, #status#, #createdAt#, #lastStartAt#)
+	</insert>
+	
+	<select id="getByUinAndUser" parameterClass="WxRobot" resultClass="WxRobot">
+	      select * from wx_robot where  accountId=#accountId# and cloudUserId=#cloudUserId# and wxUin=#wxUin#
+	</select>
+	
+	<select id="listByCloudUserId" parameterClass="map" resultClass="WxRobot">
+		  select * from wx_robot where  accountId=#accountId# and cloudUserId=#cloudUserId# 
+	</select>
+	
+	<select id="listRuning"  parameterClass="map" resultClass="WxRobot">
+	      select * from wx_robot where  status=#status# order by cloudUserId desc limit #offset#, #limit# 
+	</select>
+	
+	<update id="updateRobotStatus" parameterClass="WxRobot">
+	  <![CDATA[
+        update wx_robot set status=#status#, lastStartAt=#lastStartAt# where accountId=#accountId# and cloudUserId=#cloudUserId# and wxUin=#wxUin#
+        ]]>
+	</update>
+	
+	<update id="stopRobot" parameterClass="long">
+	  <![CDATA[
+        update wx_robot set status=0 where id=#id# 
+        ]]>
+	</update>
+    
+    <delete id="deleteRobot" parameterClass="WxRobot">
+       <![CDATA[
+        delete from wx_robot where accountId=#accountId# and cloudUserId=#cloudUserId# and wxUin=#wxUin#
+        ]]>
+    </delete>
+    
+    
+    <select id="getMaxRobotId" resultClass="Long">
+        <![CDATA[
+        select max(id) from wx_robot
+        ]]>
+    </select>
+</sqlMap>
+

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Intranet">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="Intranet"
+		type="com.huawei.sharedrive.isystem.dns.domain.Intranet" />
+
+	<resultMap id="resultMap.Intranet" class="Intranet">
+		<result column="netAddress" property="netAddress" javaType="java.lang.String" />
+		<result column="netMask" property="netMask" javaType="java.lang.String" />
+	</resultMap>
+
+	<select id="select"  resultClass="Intranet"
+		parameterClass="String">
+		select * from intranet  where netAddress=#value# 
+	</select>
+
+	<select id="selectAll" resultMap="resultMap.Intranet">
+		select * from intranet
+	</select>
+
+
+	<delete id="delete" parameterClass="String">
+		delete from intranet where netAddress=#value#
+	</delete>
+
+	<insert id="insert" parameterClass="Intranet">
+		insert into intranet(netAddress,netMask) values(#netAddress#, #netMask#);
+	</insert>
+</sqlMap>
+

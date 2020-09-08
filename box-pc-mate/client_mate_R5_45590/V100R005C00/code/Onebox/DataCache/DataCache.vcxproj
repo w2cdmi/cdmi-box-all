@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BE11F500-0F29-41DA-B230-6E04ED4240ED}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>DataCache</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>false</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)output\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\Build\output\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;ONEBOX_EXPORTS;ENABLE_UTILITY_FS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\include;..\..\OneboxCommon\include;..\..\OneboxCommon\NetSDK\include;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/boost/include;$(VS2012_THIRD_PART)/curl/include;$(VS2012_THIRD_PART)/sqlite3/include;$(VS2012_THIRD_PART)/json/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir);$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/HuaweiSecureC/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/log4cpp/lib;$(VS2012_THIRD_PART)/sqlite3/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Common.lib;NetSDK.lib;HuaweiSecureC_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;ONEBOX_EXPORTS;ENABLE_UTILITY_FS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./include;../../OneboxCommon/include;../../OneboxCommon/NetSDK/include;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/boost/include;$(VS2012_THIRD_PART)/curl/include;$(VS2012_THIRD_PART)/sqlite3/include;$(VS2012_THIRD_PART)/json/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(OutDir);$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/HuaweiSecureC/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/log4cpp/lib;$(VS2012_THIRD_PART)/sqlite3/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Common.lib;NetSDK.lib;HuaweiSecureC.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>
+      </EntryPointSymbol>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\OneboxCommon\include\Utility.h" />
+    <ClInclude Include="include\CacheCommon.h" />
+    <ClInclude Include="include\CacheMetaData.h" />
+    <ClInclude Include="include\CacheMgr.h" />
+    <ClInclude Include="include\CacheMsgInfo.h" />
+    <ClInclude Include="include\CacheMyShare.h" />
+    <ClInclude Include="include\CacheReceiveShare.h" />
+    <ClInclude Include="include\CacheUserInfo.h" />
+    <ClInclude Include="include\MsgListener.h" />
+    <ClInclude Include="include\ProxyMgr.h" />
+    <ClInclude Include="include\ThumbMgr.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\OneboxCommon\include\Utility.cpp" />
+    <ClCompile Include="source\CacheMetaData.cpp" />
+    <ClCompile Include="source\CacheMgr.cpp" />
+    <ClCompile Include="source\CacheMsgInfo.cpp" />
+    <ClCompile Include="source\CacheMyShare.cpp" />
+    <ClCompile Include="source\CacheReceiveShare.cpp" />
+    <ClCompile Include="source\CacheUserInfo.cpp" />
+    <ClCompile Include="source\MsgListener.cpp" />
+    <ClCompile Include="source\ProxyMgr.cpp" />
+    <ClCompile Include="source\ThumbMgr.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

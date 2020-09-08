@@ -1,0 +1,9 @@
+<!--disk/recentlyViewed/recentlyViewed.wxml-->
+<import src="/disk/template/fileList.wxml" />
+
+<template is="file-list" data="{{data,showShareBtn,isTouchMoveIndex,currentPageIcon,loadMoreIcon}}" />
+
+<view class='blankFolder' hidden='{{isShowBlankPage?fales:true}}'>
+    <image src='../images/blank/blank-bg.png'></image>
+    <view>矮油，还没有文件</view>
+</view>

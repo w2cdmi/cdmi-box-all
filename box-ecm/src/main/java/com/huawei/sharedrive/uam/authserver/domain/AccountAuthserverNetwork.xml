@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccountAuthserverNetwork">
+
+    <typeAlias alias="AccountAuthserverNetwork" type="com.huawei.sharedrive.uam.authserver.domain.AccountAuthserverNetwork" />
+  	
+  	<select id="getMaxId" resultClass="Long">
+        <![CDATA[
+        select max(id) from account_authserver_network
+        ]]>
+    </select>
+    <select id="getById" parameterClass="long" resultClass="AccountAuthserverNetwork">
+        select * from account_authserver_network where id=#value#
+	</select>
+    <select id="getNetworkCount" parameterClass="map" resultClass="int">
+        select count(id) from account_authserver_network where authServerId=#authServerId# and accountId=#accountId#
+	</select>
+	
+	<select id="getNetworkList" parameterClass="map" resultClass="AccountAuthserverNetwork">
+        select * from account_authserver_network where authServerId=#authServerId# and accountId=#accountId#
+         <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    <select id="getNetworkListByAccount" parameterClass="long" resultClass="AccountAuthserverNetwork">
+        select * from account_authserver_network where accountId=#value#
+    </select>
+    <select id="getByAccountAuthId"  parameterClass="map" resultClass="AccountAuthserverNetwork"> 
+         <![CDATA[
+         select * from account_authserver_network where accountId=#accountId# and authServerId=#authServerId#
+         ]]>
+    </select> 
+   
+    <insert id="insert" parameterClass="AccountAuthserverNetwork">
+    	insert into account_authserver_network(id,authServerId,accountId,ipStart,ipEnd,ipStartValue,ipEndValue) 
+        values 
+        (#id#,#authServerId#,#accountId#,#ipStart#,#ipEnd#,#ipStartValue#,#ipEndValue#)
+    </insert>
+    <update id="update" parameterClass="AccountAuthserverNetwork">
+        <![CDATA[
+        update account_authserver_network set ipStart=#ipStart#,ipEnd=#ipEnd#,ipStartValue=#ipStartValue#,ipEndValue=#ipEndValue# 
+        where id=#id#
+        ]]>
+	</update>
+	<delete id="deleteByIds" parameterClass="String">
+		delete from account_authserver_network where
+    	id in(  
+        <dynamic>  
+            #value#
+        </dynamic>  
+         ) 
+	</delete>
+	<delete id="deleteAll" parameterClass="map">
+        <![CDATA[
+        delete from account_authserver_network where authServerId=#authServerId# and accountId=#accountId#
+        ]]>
+	</delete>
+</sqlMap>
+

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SecurityFactor">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="SecurityFactor" type="com.huawei.sharedrive.uam.security.domain.SecurityFactor" />
+    
+    <resultMap id="resultMap.SecurityFactor" class="SecurityFactor">
+        <result column="type" 		   	    property="type" 						typeHandler="com.huawei.sharedrive.uam.security.domain.SecurityFactorTypeHandler"/>
+        <result column="code" 				property="code"    						javaType="java.lang.Integer"/>
+        <result column="name" 				property="name" 						javaType="java.lang.String"/>
+        <result column="description" 		property="description" 					javaType="java.lang.String"/>
+        <result column="isSystem" 			property="isSystem" 					javaType="java.lang.Boolean"/>
+    </resultMap>
+    
+    <select id="getFilterd" parameterClass="map" resultMap="resultMap.SecurityFactor">
+        select * from security_factor where 1=1
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.type.type">
+            	type = #filter.type.type#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.code">
+            	code = #filter.code#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.name">
+            	name like concat('%',#filter.name#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.description">
+            	description like concat('%',#filter.description#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.isSystem">
+            	isSystem = #filter.isSystem#
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="order by">
+        	<isNull property="order">
+        		type desc
+        	</isNull>
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getFilterdCount" parameterClass="map" resultClass="java.lang.Integer">
+        select count(*) from security_factor where 1=1
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.type.type">
+            	type = #filter.type.type#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.code">
+            	code = #filter.code#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.name">
+            	name like concat('%',#filter.name#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.description">
+            	description like concat('%',#filter.description#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.isSystem">
+            	isSystem = #filter.isSystem#
+            </isNotEmpty>
+         </dynamic>
+    </select>
+    
+    <select id="getSecurityFactorByCode" parameterClass="map" resultMap="resultMap.SecurityFactor">
+        select * from security_factor where type=#type# and code=#code#
+    </select>
+    
+    <select id="getSecurityFactorByName" parameterClass="map" resultMap="resultMap.SecurityFactor">
+        select * from security_factor where type=#type# and name=#name#
+    </select>
+        
+    <select id="isExist" parameterClass="map" resultClass="java.lang.Integer">
+        select count(type) from security_factor where 1=1
+         <dynamic prepend="and">
+            <isNotEmpty prepend="and" property="filter.type">
+            	type = #filter.type.type#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.code">
+            	code = #filter.code#
+            </isNotEmpty>
+         </dynamic>
+    </select>
+    
+    <insert id="insert" parameterClass="SecurityFactor">
+    	 <![CDATA[
+    	insert into security_factor(type,code,name,description,isSystem) 
+    	values(#type.type#, #code#, #name#, #description#, #isSystem#)
+    	]]>
+    </insert>
+    
+    <update id="update" parameterClass="map">
+        <![CDATA[
+        update security_factor set type=#filter.type.type#, code=#filter.code#, name=#filter.name#, description=#filter.description#, isSystem=#filter.isSystem#
+        where type=#oldType# and code=#oldCode#
+        ]]>
+    </update>
+    
+    <delete id="delete" parameterClass="map">
+        <![CDATA[
+        delete from security_factor 
+        where type=#type# and code=#code#
+        ]]>
+    </delete>
+</sqlMap>
+

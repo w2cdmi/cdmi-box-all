@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> 将你在群组 <strong>${groupName}</strong> 中的角色变更为 <strong>${currentRole}</strong>

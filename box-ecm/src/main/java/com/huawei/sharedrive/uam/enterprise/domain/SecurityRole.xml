@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SecurityRole">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="SecurityRole" type="com.huawei.sharedrive.uam.enterprise.domain.SecurityRole" />
+	
+	<insert id="insert" parameterClass="SecurityRole">
+        <![CDATA[
+        insert into security_role(id,accountId,roleName,roleDesc,createdAt,modifiedAt) 
+        values 
+        (#id#,#accountId#,#roleName#,#roleDesc#,#createdAt#,#modifiedAt#)
+        ]]>
+	</insert>
+	
+	<select id="getDuplicateValues" parameterClass="SecurityRole" resultClass="int">
+    	<![CDATA[
+    	select count(id) from security_role where roleName=#roleName# and accountId=#accountId#;
+        ]]>
+	</select>
+	
+	 <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from security_role where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.id">
+                id =#filter.id#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    
+    <select id="getFilterd" parameterClass="map" resultClass="SecurityRole">
+        select * from security_role where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.id">
+                id =#filter.id#
+            </isNotEmpty>
+        </dynamic>
+        order by modifiedAt desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getById" parameterClass="Long" resultClass="SecurityRole">
+        select * from security_role where id=#id#
+    </select>
+    
+     <update id="modify" parameterClass="SecurityRole">
+        update security_role set roleName=#roleName#, roleDesc=#roleDesc#,modifiedAt=#modifiedAt# where id=#id#
+    </update>
+    
+     <select id="getMaxId" parameterClass="String" resultClass="Long">
+        <![CDATA[
+        select max(id) from security_role
+        ]]>
+    </select>
+    
+    <delete id="delete" parameterClass="SecurityRole">
+        delete from security_role where id=#id#
+    </delete>
+</sqlMap>
+

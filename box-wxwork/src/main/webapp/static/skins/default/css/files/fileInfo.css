@@ -1,0 +1,157 @@
+.file-details-subject{
+	width: 100%;
+	background: rgb(240,240,240);
+	overflow-y: scroll;
+}
+.share-homepage-header{
+	margin-top: 0;
+	position: relative;
+	height: auto !important;
+	min-height: 3.4rem;
+}
+.share-homepage-bottom-size>div{
+	float: left;
+	font-size:0.6rem;
+	color: #333333;
+	margin-right: 0.8rem;
+}
+.share-homepage-middle>div{
+	float: left;
+	word-break: break-all;
+	font-size: 0.75rem;
+	height: auto;
+	clear: both;
+	min-height: 1.2rem;
+	margin-top: 0.6rem;
+}
+.share-homepage-bottom{
+	margin-bottom: 0.6rem;
+}
+.share-homepage-top{
+	width: 3.4rem;
+	height: 100%;
+	position: absolute;
+	left: 0;
+}
+.share-homepage-top>span{
+	position: absolute;
+	left: 0.5rem;
+	top: 50%;
+	transform: translateY(-50%);
+	margin: 0;
+}
+.the-outer-hair{
+	width: 92%;
+	height: 1.5rem;
+	margin: auto;
+	border-bottom: 0.05rem solid #dadada;
+	background: #FFFFFF;
+}
+.the-outer-hair span{
+	color: #333333;
+	font-size: 0.6rem;
+	line-height: 1.5rem;
+}
+#shareListWrapper{
+	display: inline-block;
+	background: #FFFFFF;
+	width: 100%;
+}
+.putting-links{
+	margin-top: 0;
+}
+.file-details-content li{
+	float: left;
+	width: 92%;
+	height: 3rem;
+	margin-left: 4%;
+	line-height: 3rem;
+	color: #333333;
+	font-size: 0.6rem;
+	border-bottom: 0.05rem solid #E4E1E1;
+}
+.file-details-content li i{
+	float: left;
+	font-style: normal;
+	color: #333333;
+	font-size: 0.6rem;
+}
+.file-details-content li h1{
+	float: right;
+}
+.file-details-content li h1 img{
+	width: 0.3rem;
+	height: 0.5rem;
+	margin-top: 0.725rem;
+}
+.file-details-content li i img{
+	width: 1.6rem;
+	height: 1.6rem;
+	margin-top: 0.8rem;
+}
+.file-details-content li .not-share-img{
+	width: 2rem;
+	float: left;
+	margin: 0.5rem 1.25rem 0 5.4rem;
+}
+.not-link-img{
+	width: 2rem;
+	float: left;
+	margin: 0.9rem 1.25rem 0 6.1rem;
+}
+.not-links{
+	float: left;
+	color: #999999;
+	display: inline-block;
+	line-height: 3.8rem
+}
+.file-details-content li .not-share-person{
+	float: left;
+	color: #999999;
+}
+.file-details-content li p{
+	float: left;
+	margin-left: 1rem;
+}
+.file-details-content li span{
+	float: right;
+	margin-right: 1rem;
+}
+.subject-content-size-left{
+	float: left;
+	margin-left: 2rem;
+}
+.putting-links li i{
+	display: inline-block;
+	font-style: normal;
+	font-size: 0.6rem;
+	color: #333333;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	/*padding-left: 1rem;*/
+}
+.putting-link{
+	border-bottom: 0.05rem solid #E4E1E1;
+}
+.putting-link:last-child{
+	border-bottom: none;
+}
+.putting-links ul>li:nth-child(1){
+	width: 92%;
+	margin: auto;
+	border-bottom: 0.05rem solid #dadada;
+}
+.share-homepage-right{
+	margin-left: 3.4rem;
+}
+.puttinglink-two span{
+	margin-left: 0;
+	margin-right: 0.5rem;
+}
+.puttinglink-two{
+	margin-top: 0.2rem;
+}
+.putting-links .putting-link{
+	height: 3.8rem;
+	padding-top: 0.2rem;
+}

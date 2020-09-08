@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AdminLog">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="AdminLog" type="pw.cdmi.box.uam.adminlog.domain.AdminLog" />
+
+	<resultMap id="resultMap.AdminLog" class="AdminLog">
+        <result column="id" 				property="id" 					javaType="java.lang.Long"/>
+        <result column="logid" 				property="logid" 				javaType="java.lang.String"/>
+        <result column="adminId" 			property="adminInfo.id" 		javaType="java.lang.Long" nullValue="-1"/>
+        <result column="adminLoginName" 	property="adminInfo.loginName" 	javaType="java.lang.String"/>
+        <result column="adminShowName" 		property="adminInfo.name" 		javaType="java.lang.String"/>
+        <result column="operateType" 		property="operateType" 			typeHandler="pw.cdmi.box.uam.adminlog.domain.OperateTypeHandler"/>
+        <result column="createAt" 			property="createAt" 			javaType="java.util.Date"/>
+        <result column="success" 			property="success" 				javaType="java.lang.Boolean"/>
+        <result column="description" 		property="description" 			javaType="java.lang.String"/>
+        <result column="clientAddress" 		property="clientAddress" 		javaType="java.lang.String"/>
+        <result column="serverName" 		property="serverName" 			javaType="java.lang.String"/>
+        <result column="beforeOper" 		property="beforeOper" 			javaType="java.lang.String"/>
+        <result column="afterOper" 			property="afterOper" 			javaType="java.lang.String"/>
+        <result column="appId" 			property="appId" 			javaType="java.lang.String"/>
+    </resultMap>
+    
+    <insert id="insert" parameterClass="AdminLog">
+    	insert into admin_log(id,logid,adminId,adminLoginName,adminShowName,operateType,createAt,success,description,clientAddress,serverName,beforeOper,afterOper,appId) 
+    	values(#id#,#logid#, #adminInfo.id#, #adminInfo.loginName#, #adminInfo.name#, #operateType.code#, #createAt#, #success#, #description#, #clientAddress#, #serverName#, #beforeOper#, #afterOper#, #appId#)
+    </insert>
+    
+    <select id="getFilterd" parameterClass="map" resultMap="resultMap.AdminLog">
+        select * from admin_log
+        <dynamic prepend="where">
+            <isGreaterEqual prepend="and" property="filter.operateType" compareValue="0">
+            	operateType = #filter.operateType#
+            </isGreaterEqual>
+            <isNotEmpty  prepend="and" property="filter.admin">
+            	(adminLoginName like concat('%',#filter.admin#,'%') 
+            	or 
+            	adminShowName like concat('%',#filter.admin#,'%') ) 
+            </isNotEmpty>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+        <dynamic prepend="order by">
+        	<isNull property="order">
+        		createAt desc
+        	</isNull>
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getFilterdCount" parameterClass="map" resultClass="java.lang.Integer">
+        select count(id) from admin_log
+        <dynamic prepend="where">
+            <isGreaterEqual prepend="and" property="filter.operateType" compareValue="0">
+            	operateType = #filter.operateType#
+            </isGreaterEqual>
+            <isNotEmpty  prepend="and" property="filter.admin">
+            	(adminLoginName like concat('%',#filter.admin#,'%') 
+            	or 
+            	adminShowName like concat('%',#filter.admin#,'%') ) 
+            </isNotEmpty>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getSelfFilterd" parameterClass="map" resultMap="resultMap.AdminLog">
+        select * from admin_log where adminId = #filter.adminId#
+        <dynamic>
+            <isGreaterEqual prepend="and" property="filter.operateType" compareValue="0">
+            	operateType = #filter.operateType#
+            </isGreaterEqual>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+        <dynamic prepend="order by">
+        	<isNull property="order">
+        		createAt desc
+        	</isNull>
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getSelfFilterdCount" parameterClass="map" resultClass="java.lang.Integer">
+        select count(id) from admin_log where adminId = #filter.adminId#
+        <dynamic>
+            <isGreaterEqual prepend="and" property="filter.operateType" compareValue="0">
+            	operateType = #filter.operateType#
+            </isGreaterEqual>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+    </select>
+</sqlMap>
+

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="User">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="User" type="com.huawei.sharedrive.isystem.user.domain.User" />
+
+    <select id="getUserByLoginName" parameterClass="String" resultClass="User">
+    	<![CDATA[
+        select * from user where loginName=#value#
+        ]]>
+    </select>
+
+    <select id="getUserByObjectSid" parameterClass="String" resultClass="User">
+        <![CDATA[
+        select * from user where objectSid=#value#
+        ]]>
+    </select>
+
+    <select id="getFilterd" parameterClass="map" resultClass="User">
+        select * from user
+        <dynamic prepend="where">
+            <isNotNull prepend="and" property="filter">
+                type = #filter.type#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.loginName">
+                loginName like concat('%',#filter.loginName#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.name">
+                name like concat('%',#filter.name#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.email">
+                email like concat('%',#filter.email#,'%') 
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from user
+        <dynamic prepend="where">
+            <isNotNull prepend="and" property="filter">
+                type = #filter.type#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.loginName">
+                loginName like concat('%',#filter.loginName#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.name">
+                name like concat('%',#filter.name#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.email">
+                email like concat('%',#filter.email#,'%') 
+            </isNotEmpty>
+        </dynamic>
+    </select>
+
+    <select id="get" resultClass="User" parameterClass="long">
+        <![CDATA[
+        select * from user where id=#value#
+        ]]>
+    </select>
+
+    <insert id="insert" parameterClass="User">
+        <![CDATA[
+        insert into user(id,objectSid,loginName,password,name,department,email,createdAt,modifiedAt,spaceUsed,status
+        ,domain,spaceQuota,recycleDays,regionId,type) 
+        values 
+        (#id#,#objectSid#,#loginName#,#password#,#name#,#department#
+        ,#email#,#createdAt#,#modifiedAt#,#spaceUsed#,#status#,#domain#,#spaceQuota#,#recycleDays#,#regionId#,#type#)
+        ]]>
+    </insert>
+
+    <update id="update" parameterClass="User">
+        <![CDATA[
+        update user set objectSid=#objectSid#,name=#name#, password=#password#, loginName=#loginName#, 
+        department=#department#, email=#email#, createdAt=#createdAt#, modifiedAt=#modifiedAt#, spaceUsed=#spaceUsed#, 
+        status=#status#,domain=#domain#, spaceQuota=#spaceQuota#, recycleDays=#recycleDays#, regionId=#regionId# 
+        where id=#id#
+        ]]>
+    </update>
+
+    <update id="updateStatus" parameterClass="User">
+        <![CDATA[
+        update user set status=#status#, modifiedAt=#modifiedAt# where id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateRegion" parameterClass="User">
+        <![CDATA[
+        update user set regionId=#regionId#, modifiedAt=#modifiedAt# where id=#id#
+        ]]>
+    </update>
+
+    <update id="updatePassword" parameterClass="User">
+        <![CDATA[
+        update user set password=#password#, modifiedAt=#modifiedAt# where id=#id#
+        ]]>
+    </update>
+
+    <update id="sacle" parameterClass="User">
+        <![CDATA[
+        update user set spaceQuota=#spaceQuota#, modifiedAt=#modifiedAt# where id=#id#
+        ]]>
+    </update>
+
+    <delete id="delete" parameterClass="long">
+        <![CDATA[
+        delete from user where id=#value#
+        ]]>
+    </delete>
+
+</sqlMap>
+

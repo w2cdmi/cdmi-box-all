@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="StatisticsTempChart">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="StatisticsTempChart"
+		type="com.huawei.sharedrive.uam.statistics.domain.StatisticsTempChart" />
+
+	<select id="getTempChart" parameterClass="string" resultClass="StatisticsTempChart">
+        select * from statistics_temp_chart where id=#id#;
+    </select>
+
+	<insert id="insert" parameterClass="StatisticsTempChart">
+		insert into statistics_temp_chart(id,createdAt,chartImage)
+		values
+		(#id#,#createdAt#,#chartImage#);
+	</insert>
+
+	<delete id="deleteByCreatedAt" parameterClass="map">
+		<![CDATA[
+			delete from statistics_temp_chart where createdAt < #map.createdAt#;
+		]]>
+	</delete>
+
+</sqlMap>

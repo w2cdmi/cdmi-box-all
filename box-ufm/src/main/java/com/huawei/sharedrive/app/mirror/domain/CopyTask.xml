@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CopyTask">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CopyTask"
+		type="com.huawei.sharedrive.app.mirror.domain.CopyTask" />
+		
+<resultMap id="resultMap.CopyTask" class="CopyTask">
+		<result column="taskId"                property="taskId"               javaType="java.lang.String" />
+		<result column="srcOwnedBy"            property="srcOwnedBy"           javaType="java.lang.Long" />
+		<result column="srcINodeId"            property="srcINodeId"           javaType="java.lang.Long" />
+		<result column="srcObjectId"           property="srcObjectId"          javaType="java.lang.String" />
+		<result column="fileName"              property="fileName"             javaType="java.lang.String" />
+		<result column="destOwnedBy"           property="destOwnedBy"          javaType="java.lang.Long" />
+		<result column="destINodeId"           property="destINodeId"          javaType="java.lang.Long" />
+		<result column="destObjectId"          property="destObjectId"         javaType="java.lang.String" />
+		<result column="size"                  property="size"                 javaType="java.lang.Long" />
+		<result column="copyType"              property="copyType"             javaType="java.lang.Integer" />
+		<result column="exeType"               property="exeType"              javaType="java.lang.Integer" />
+		<result column="createdAt"             property="createdAt"            javaType="java.util.Date" />
+		<result column="modifiedAt"            property="modifiedAt"           javaType="java.util.Date" />
+		<result column="isPop"             	   property="isPop"            	   javaType="java.lang.Boolean" />
+		<result column="exeStartAt"            property="exeStartAt"           javaType="java.lang.String" />
+		<result column="exeEndAt"              property="exeEndAt"             javaType="java.lang.String" />
+		<result column="policyId"              property="policyId"             javaType="java.lang.Integer" />
+		<result column="srcRegionId"           property="srcRegionId"          javaType="java.lang.Integer" />
+		<result column="srcResourceGroupId"    property="srcResourceGroupId"   javaType="java.lang.Integer" />
+		<result column="destRegionId"          property="destRegionId"         javaType="java.lang.Integer" />
+		<result column="destResourceGroupId"   property="destResourceGroupId"  javaType="java.lang.Integer" />
+		<result column="state"                 property="state"                javaType="java.lang.Integer" />
+		<result column="priority"              property="priority"             javaType="java.lang.Integer" />
+		<result column="exeResult"             property="exeResult"            javaType="java.lang.Integer" />
+	</resultMap>
+	
+	<resultMap id="resultMap.MirrorStatistic" class="java.util.HashMap">
+		<result column="number"               property="key"            javaType="java.lang.Long" />
+		<result column="allSize"              property="value"            javaType="java.lang.Long" />
+	</resultMap>
+
+	<select id="get" resultMap="resultMap.CopyTask" parameterClass="String">
+		select * from copy_task where
+		taskId=#value#
+	</select>
+	
+	<select id="statisticByState" resultMap="resultMap.MirrorStatistic" parameterClass="Integer">
+		SELECT count(state) as number,SUM(size) as allSize from copy_task  where state=#value#
+	</select>
+	
+	<insert id="insert" parameterClass="CopyTask">
+		insert into
+		copy_task(taskId,srcOwnedBy,srcINodeId,srcObjectId,fileName,destOwnedBy,destINodeId,destObjectId,size,copyType,
+		exeType,createdAt,modifiedAt,isPop,exeStartAt,exeEndAt,policyId,srcRegionId,srcResourceGroupId,destRegionId,destResourceGroupId,state,priority,exeResult)
+		values(#taskId#, #srcOwnedBy#,#srcINodeId#, #srcObjectId#,#fileName#,#destOwnedBy#, #destINodeId#,
+		#destObjectId#,
+		#size#, #copyType#,
+		#exeType#, #createdAt#,#modifiedAt#,#isPop#,
+		#exeStartAt#, #exeEndAt#, #policyId#,
+		#srcRegionId#,#srcResourceGroupId#,#destRegionId#,#destResourceGroupId#,#state#,#priority#,#exeResult#)
+	</insert>
+
+	<delete id="delete" parameterClass="String">
+		delete from copy_task where
+		taskId=#value#
+	</delete>
+	
+	<delete id="deleteTaskByErrorCode" parameterClass="CopyTask">
+		delete from copy_task where state=#state# and exeResult=#exeResult#
+	</delete>
+	
+	<select id="lstTaskByErrorCode" resultMap="resultMap.CopyTask" parameterClass="CopyTask">
+		select * from copy_task where state=#state# and exeResult=#exeResult#
+	</select>
+
+	<update id="update" parameterClass="CopyTask">
+		update copy_task set
+		exeType=#exeType#, exeStartAt=#exeStartAt#, exeEndAt=#exeEndAt#,modifiedAt=#modifiedAt#,isPop=#isPop#,srcObjectId=#srcObjectId#,
+		state=#state#,priority=#priority#,exeResult=#exeResult#,destResourceGroupId =#destResourceGroupId# where taskId=#taskId#
+	</update>
+	
+	<update id="updateForPop" parameterClass="CopyTask">
+		update copy_task set modifiedAt=#modifiedAt#,isPop=#isPop# where taskId=#taskId#
+	</update>
+	
+	<update id="recoveryFailedTask" parameterClass="map">
+		update copy_task set state=#filter.state#,isPop=#filter.isPop#,exeResult=#filter.exeResult# where state=#state# and exeType=#exeType#
+	</update>
+	
+	<update id="updateTimeTaskStateForSerial" parameterClass="map">
+	 <![CDATA[ 
+		update copy_task set state=#filter.state# where exeType=#filter.exeType# and exeStartAt<exeEndAt and exeStartAt<#curTime# and exeEndAt>#curTime#
+		 ]]>
+	</update>
+	
+	<update id="updateTimeTaskStateForReverse1" parameterClass="map">
+		 <![CDATA[ 
+		update copy_task set state=#filter.state# where exeType=#filter.exeType# and exeStartAt>exeEndAt and exeStartAt<#curTime#
+		  ]]>
+	</update>
+
+	<update id="updateTimeTaskStateForReverse2" parameterClass="map">
+		 <![CDATA[ 
+		update copy_task set state=#filter.state# where exeType=#filter.exeType# and exeStartAt>exeEndAt and exeEndAt>#curTime#
+		]]>
+	</update>
+
+	<update id="deactivatOverdueTimeTaskForSerial1" parameterClass="map">
+	  <![CDATA[ 
+		update copy_task set state=#state# where state=#filter.state# and isPop=#filter.isPop# and exeType=#filter.exeType# and exeStartAt<exeEndAt and exeStartAt>#curTime# 
+		]]>
+	</update>
+	
+	<update id="deactivatOverdueTimeTaskForSerial2" parameterClass="map">
+	<![CDATA[ 
+		update copy_task set state=#state# where state=#filter.state# and isPop=#filter.isPop# and exeType=#filter.exeType# and exeStartAt<exeEndAt and exeEndAt<#curTime#
+		]]>
+	</update>
+	
+	<update id="deactivatOverdueTimeTaskForReverse" parameterClass="map">
+		<![CDATA[ 
+		update copy_task set state=#state# where state=#filter.state# and isPop=#filter.isPop# and exeType=#filter.exeType# and exeStartAt>exeEndAt and exeStartAt>#curTime# and exeEndAt<#curTime# 
+		]]>
+	</update>
+	
+	<update id="recoveryNoExeTaskForPopState" parameterClass="map">
+		<![CDATA[ 
+		update copy_task set isPop=#pop# where state=#filter.state# and isPop=#filter.isPop# and modifiedAt<#filter.modifiedAt# 
+		 ]]>
+	</update>
+	
+	
+	<update id="recoveryExeTimeOutTask" parameterClass="map">
+		<![CDATA[ 
+		update copy_task set state=#filter.state#,isPop=#filter.isPop# where state=#state# and modifiedAt<#filter.modifiedAt# 
+		 ]]>
+	</update>
+
+
+	<select id="getBystatusAndExeType" parameterClass="map" resultMap="resultMap.CopyTask">
+        select * from copy_task
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.state">
+                    state = #filter.state#
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.isPop">
+                    isPop = #filter.isPop# 
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        order by copyType desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    
+	<select id="getTaskBySrcObjectAndResourceGroupID" resultMap="resultMap.CopyTask" parameterClass="CopyTask">
+		select * from copy_task where srcObjectId=#srcObjectId# and destResourceGroupId =#destResourceGroupId# and copyType =#copyType# limit 1
+	</select>
+	
+	<select id="getBySrcObjectID" resultMap="resultMap.CopyTask" parameterClass="String">
+		select * from copy_task where srcObjectId=#value#
+	</select>
+
+	<select id="getNotCompleteTaskForDataMigration"  parameterClass="CopyTask">
+		select count(*) from copy_task where  srcOwnedBy = #srcOwnedBy# and copyType=#copyType#
+	</select>
+	
+	<delete id="deleteTaskForDataMigration"  parameterClass="CopyTask">
+		delete from copy_task where  srcOwnedBy = #srcOwnedBy# and copyType=#copyType#
+	</delete>
+	
+	<delete id="clearNotExeTaskForDataMigration"  parameterClass="CopyTask">
+		<![CDATA[ 
+		delete from copy_task where  srcOwnedBy = #srcOwnedBy# and copyType=#copyType# and state <> #state# and isPop=#isPop#
+		 ]]>
+	</delete>
+	
+	<delete id="cleanMirrorCopyTaskBySrcOwnedby"  parameterClass="Long">
+		delete from copy_task where  srcOwnedBy = #value#
+	</delete>
+
+	<update id="updateTaskStateSameWithSystemConfigState" parameterClass="map">
+		<![CDATA[ 
+		update copy_task set state=#newstate# where state = #oldstate#
+		 ]]>
+	</update>
+
+	<select id="selectAllPolicyId" resultClass="Integer">
+		select policyId from copy_task  group by policyId
+	</select>
+	
+	<delete id="deleteTaskByPolicy" parameterClass="Integer">
+		delete from copy_task where	state=0 and isPop=false and policyId=#policyId# limit 10000
+	</delete>
+	
+</sqlMap>
+

@@ -1,0 +1,1 @@
+[${appEmailTitle}] 链接动态码已经生成，请注意保管。 [${appEmailTitle}] A dynamic link code has been generated. Please keep it safe. 

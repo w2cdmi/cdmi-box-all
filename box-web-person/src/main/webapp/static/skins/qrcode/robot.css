@@ -1,0 +1,160 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.robot_header{
+	width: 100%;
+	height: 61px;
+	background-color: #333333;
+}
+.robot_header_con{
+	width: 1200px;
+	margin: auto;
+	overflow: hidden;
+}
+.robot_colud_logo{
+	float: left;
+	margin-left: 64px;
+}
+.logo_bg{
+	display: inline-block;
+	width: 28px;
+    height: 25px;
+    background-position: -295px -179px;
+    background-image: url(./images/icon.png);
+    background-repeat: no-repeat;
+    line-height: 61px;
+    vertical-align: middle;
+}
+.logo_title{
+	color: #fff;
+	font-size: 18px;
+	display: inline-block;
+	line-height: 61px;
+}
+.return_index{
+	float: right;
+}
+.return_index a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 18px;
+	display: inline-block;
+	line-height: 61px;
+	margin-right: 76px;
+}
+.robot_content{
+	width: 1200px;
+	margin: auto;
+	height: 100%;
+}
+.robot_con_left{
+	width: 432px;
+	height: 600px;
+	float: left;
+	background-color: #f8f8f8;
+	border-radius: 5px;
+	margin: 116px 0 0 125px;
+}
+.robot_staus{
+	text-align: center;
+}
+.robot_staus img{
+	width: 294px;
+	/*height: 222px;*/
+	display: inline-block;
+	margin: 80px auto 0;
+}
+.robot_staus p{
+	text-align: center;
+	color: #666;
+	font-size: 20px;
+}
+.robot_set_con{
+	margin-bottom: 30px;
+}
+.robot_stop,.robot_run{
+	cursor: pointer;
+	width: 106px;
+	margin: auto;
+}
+.change_status{
+	margin-top: 110px;
+}
+
+
+
+
+.robot_con_right{
+	width: 431px;
+	float: right;
+	margin: 116px 100px 0 0;
+}
+.robot_set_con,.blacklist_con{
+	width: 100%;
+	height: 283px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+}
+.robot_set_title,.person_con,.group_con,
+.black_title,.blacklist_company{
+	margin-left: 30px;
+}
+.robot_set_title p:first-of-type,
+.black_title p:first-of-type{
+	font-size: 20px;
+	color: #666;
+	margin-top: 23px;
+}
+.robot_set_title p:last-of-type,
+.black_title p:last-of-type{
+	font-size: 14px;
+	color: #ccc;
+	margin-top: 6px;
+}
+.person_con p,.group_con p{
+	font-size: 18px;
+	color: #666;
+	margin-top: 23px;
+	margin-bottom: 19px;
+}
+.person_con label,.group_con label{
+	display:inline-block;
+	font-size: 18px;
+	color: #666;
+	cursor: pointer;
+	margin: 0 30px 0 0;
+}
+.person_con label input,.group_con label input{
+	margin-top: -4px;
+}
+.blacklist_company{
+	margin-top: 22px;
+}
+.company_info{
+	overflow: hidden;
+}
+.company_info span{
+	font-size: 18px;
+	color: #666;
+	display: inline-block;
+	line-height: 36px;
+}
+.company_info a{
+	display: inline-block;
+	text-decoration: none;
+	font-size: 18px;
+	color: #37D3A2;
+	float: right;
+	margin-right: 59px;
+	line-height: 36px;
+}
+.add_button button{
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 16px;
+	color: #37D3A2;
+	outline: none;
+	margin-top: 20px;
+}

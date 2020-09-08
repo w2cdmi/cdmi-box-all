@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Rebate">
+
+	<typeAlias alias="Rebate" type="com.huawei.sharedrive.uam.product.domain.Rebate" />
+    
+    <select id="list" resultClass="Rebate">
+       SELECT * FROM product_rebate
+    </select>
+    
+    <select id="getRebate" resultClass="Rebate" parameterClass="Rebate">
+       <![CDATA[
+       SELECT * FROM product_rebate where productId=#productId# and duration<=#duration#  order by duration  desc  limit 0,1
+       ]]>
+    </select>
+    
+    <select id="getByProductId" resultClass="Rebate" parameterClass="long">
+       SELECT * FROM product_rebate where productId=#productId#
+    </select>
+</sqlMap>

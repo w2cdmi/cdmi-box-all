@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window dropenable="true">
+	<VerticalLayout>
+		<HorizontalLayout height="41" bkcolor="#FFf0f0f0">
+			<HorizontalLayout >
+				<Button name="share2Me_back"  padding="20,8" tooltip="后退" width="26" height="26" normalimage="file='..\Image\ic_crumbs.png' source='0,108,32,134'" hotimage="file='..\Image\ic_crumbs.png' source='0,180,26,206'" disabledimage="file='..\Image\ic_crumbs.png' source='0,72,26,98'" enabled="false"/>
+				<Button name="share2Me_next" padding="5,8" tooltip="前进" width="26" height="26" normalimage="file='..\Image\ic_crumbs.png' source='0,36,26,62'" hotimage="file='..\Image\ic_crumbs.png' source='0,144,26,170'" disabledimage="file='..\Image\ic_crumbs.png' source='0,0,26,26'" enabled="false"/>
+				<GroupButton  padding="10,6,0,6" name="share2Me_groupBtn" width="0"/>
+			</HorizontalLayout>
+			<HorizontalLayout width="200" height="30" padding="0,6" name="share2Me_searchLayout" bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'">
+				<SearchTxt name="share2Me_searchtxt" maxchar="246" padding="8,2" height="26" visible="true" wantreturn="true" autohscroll="true" font="10" valign="vcenter" multiline="false" rich="false"/>
+				<Button name="share2Me_clearsearchbtn" padding="5,7,10,0" width="16" height="16" normalimage="file='..\Image\ic_input_search_delete.png' source='0,0,16,16' dest='0,0,16,16'" hotimage="file='..\Image\ic_input_search_delete.png' source='0,26,16,42' dest='0,0,16,16'" pushedimage="file='..\Image\ic_input_search_delete.png' source='0,26,16,42' dest='0,0,16,16'" visible="false"/>	
+				<Button name="share2Me_searchbtn" padding="0,5" showhtml="true" height="20" width="20" text="{i ..\Image\ic_input_search.png}{/i}" />
+			</HorizontalLayout>
+			<Control width="20"/>
+		</HorizontalLayout>
+		<HorizontalLayout height="1">
+			<Label height="1" bkcolor="#FFe0e0e0" />
+		</HorizontalLayout>
+
+		<HorizontalLayout height="50">
+			<HorizontalLayout>
+				<Text name="share2Me_count" padding="20,0" font="12" float="true" pos="20,5,320,45" valign="vcenter" visible="false" showhtml="true" />
+				<ScaleIconButton name="share2Me_upload" padding="20,10" font="12"  text="上传" textpadding="40,0,15,0" align="left" valign="vcenter" height="30" normalimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,74,24'" hotimage="file='..\Image\ic_button_color.png' source='0,40,80,70' corner='3,3,74,24'" pushedimage="file='..\Image\ic_button_color.png' source='0,80,80,110' corner='3,3,74,24'" textcolor="#FFfefefe" iconimage="file='..\Image\ic_toolmenu_upload.png' source='0,0,20,20' dest='15,5,35,25'" />
+				<ScaleIconButton name="share2Me_create" padding="10,10" font="12"  text="创建文件夹" textpadding="40,0,15,0" align="left" valign="vcenter" height="30" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,60,24'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,60,24'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,60,24'" disabledimage="file='..\Image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,60,24'" textcolor="#FF008be8"  iconimage="file='..\Image\ic_toolmenu_creatfloder.png' source='0,0,20,20' dest='15,5,35,25'" />
+				<ScaleIconButton name="share2Me_share" padding="20,10" font="12"  text="分享链接" textpadding="25,0,0,0" align="left" valign="vcenter" height="30" textcolor="#FF008be8" hottextcolor="#FF006ab0" pushedtextcolor="#FF006ab0" disabledtextcolor="#FF999999" iconimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50' dest='0,5,20,25'" iconhotimage="file='..\Image\ic_toolmenu_link.png' source='0,60,20,80' dest='0,5,20,25'"/>
+				<ScaleIconButton name="share2Me_download" padding="20,10"  text="下载" textpadding="25,0,0,0" align="left" valign="vcenter" font="12" height="30" textcolor="#FF008be8" hottextcolor="#FF006ab0" pushedtextcolor="#FF006ab0" disabledtextcolor="#FF999999" iconimage="file='..\Image\ic_toolmenu_download.png' source='0,0,20,20' dest='0,5,20,25'" iconhotimage="file='..\Image\ic_toolmenu_download.png' source='0,30,20,50' dest='0,5,20,25'" />			
+				<ScaleIconButton name="share2Me_version" padding="20,10"  text="查看版本" textpadding="25,0,0,0" align="left" valign="vcenter" font="12" height="30" textcolor="#FF008be8" hottextcolor="#FF006ab0" pushedtextcolor="#FF006ab0" disabledtextcolor="#FF999999" iconimage="file='..\Image\ic_popup_share_version.png' source='0,0,20,20' dest='0,5,20,25'" iconhotimage="file='..\Image\ic_popup_share_version.png' source='0,30,20,50' dest='0,5,20,25'" />
+				<ScaleIconButton name="share2Me_more" menu="false" menuxmlfile="share2MeMoreContextMenu.xml" padding="20,10" text="更多" textpadding="25,0,0,0" align="left" valign="vcenter" font="12" height="30" textcolor="#FF008be8" hottextcolor="#FF006ab0" pushedtextcolor="#FF006ab0" disabledtextcolor="#FF999999" iconimage="file='..\Image\ic_toolmenu_more.png' source='0,0,20,20' dest='0,5,20,25'" iconhotimage="file='..\Image\ic_toolmenu_more.png' source='0,30,20,50' dest='0,5,20,25'" />
+				<ScaleIconButton name="share2Me_save" padding="20,10"  text="保存到个人空间" textpadding="25,0,0,0" align="left" valign="vcenter" font="12" height="30" textcolor="#FF008be8" hottextcolor="#FF006ab0" pushedtextcolor="#FF006ab0" disabledtextcolor="#FF999999" iconimage="file='..\Image\ic_popup_share_save.png' source='0,0,20,20' dest='0,5,20,25'" iconhotimage="file='..\Image\ic_popup_share_save.png' source='0,30,20,50' dest='0,5,20,25'" />
+				<ScaleIconButton name="share2Me_exit" padding="20,10"  text="退出分享" textpadding="25,0,0,0" align="left" valign="vcenter" font="12" height="30" textcolor="#FF008be8" hottextcolor="#FF006ab0" pushedtextcolor="#FF006ab0" disabledtextcolor="#FF999999" iconimage="file='..\Image\ic_toolmenu_share-cancel.png' source='0,0,20,20' dest='0,5,20,25'" iconhotimage="file='..\Image\ic_toolmenu_share-cancel.png' source='0,30,20,50' dest='0,5,20,25'" />
+			</HorizontalLayout>
+			<HorizontalLayout width="87" height="20" padding="0,15">
+				<HorizontalLayout >
+					<Option name="share2Me_listOpt" tooltip="列表" width="20" group="share2Me_changeTable" normalimage="file='..\Image\ic_oper_list.png' source='0,0,20,20'" pushedimage="file='..\Image\ic_oper_list.png' source='0,30,20,50'" selectedimage="file='..\Image\ic_oper_list.png' source='0,30,20,50'" selected="true"/>
+					<Option name="share2Me_tabloidOpt" tooltip="缩略图" width="20" padding="10,0" group="share2Me_changeTable" normalimage="file='..\Image\ic_oper_list_largeicon.png' source='0,0,20,20'" pushedimage="file='..\Image\ic_oper_list_largeicon.png' source='0,30,20,50'" selectedimage="file='..\Image\ic_oper_list_largeicon.png' source='0,30,20,50'" />
+				</HorizontalLayout>
+				<Control width="1" padding="8,0" bkcolor="#FFd9d9d9" />
+				<Button name="share2Me_flush" padding="8,0" tooltip="刷新" width="20" normalimage="file='..\Image\ic_oper_refresh.png' source='0,0,20,20'" hotimage="file='..\Image\ic_oper_refresh.png' source='0,30,20,50'" disabledimage="file='..\Image\ic_oper_refresh.png' source='0,60,20,80'"/>
+			</HorizontalLayout>
+			<Control width="20"/>
+		</HorizontalLayout>
+
+		<TabLayout name="share2Me_listTab">
+			<VerticalLayout>
+				<CustomList name="share2Me_List" menu="true" encloseselect="true" menuxmlfile="share2MeContextMenu.xml" droptarget="true" header="false" itemshowhtml="true" vscrollbar="true" hscrollbar="true" itemlinecolor="#FFE5E5E5" itemhotbkcolor="#FFEBEBEB" itemselectedbkcolor="#FFDEF0FF" inset="20,0,20,0" >
+					<ListHeader height="28" bkimage="file='..\Image\listheaderbk.png' corner='1,1,2,2'" >
+						<!--
+						<ListHeaderItem font="0" width="32" minwidth="32" normalimage="..\img\list_tit_bg.png" pushedimage="..\img\list_tit_bg.png">
+							<SelectallCheckBox endelipsis="true"   selectedimage="file='..\img\checkbox.png' dest='20,16,32,28' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,16,32,28' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,16,32,28' source='26,0,38,12'"/>
+						</ListHeaderItem>
+						-->
+						<ListHeaderItem name="share2Me_listheaderitem_name" font="10" intset="1,0,1,0" width="289" minwidth="189" textcolor="#FF666666" sepimage="..\Image\ic_tab_head_devideline.png" sepwidth="1">
+							<HorizontalLayout mousechild="true" padding="10,0,2,0" childpadding="5">
+								<HorizontalLayout width="60">
+									<ScaleIconButton name="share2Me_listHeaderItemName" text="名称" font="10" textcolor="#FF666666"/>
+									<Button name="share2Me_listHeaderItemNameSortIcon" visible="false" padding="0,5" width="18" height="18" normalimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,0,6,6' dest='0,0,6,6'" hotimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,16,6,22' dest='0,0,6,6'" />
+								</HorizontalLayout>
+							</HorizontalLayout>
+						</ListHeaderItem>
+						<ListHeaderItem name="share2Me_listheaderitem_owner" font="10" intset="1,0,1,0" width="111" minwidth="111" textcolor="#FF666666" sepimage="..\Image\ic_tab_head_devideline.png" sepwidth="1">
+							<HorizontalLayout mousechild="true" padding="15,0,2,0" childpadding="5">
+								<ScaleIconButton name="share2Me_listHeaderItemOwner" text="分享人" font="10" textcolor="#FF666666"/>
+								<Button name="share2Me_listHeaderItemOwnerSortIcon" visible="false" padding="0,5" width="18" height="18" normalimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,0,6,6' dest='0,0,6,6'" hotimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,16,6,22' dest='0,0,6,6'" />
+							</HorizontalLayout>
+						</ListHeaderItem>
+						<ListHeaderItem name="share2Me_listheaderitem_size" font="10" intset="1,0,1,0" width="115" minwidth="85" textcolor="#FF666666" sepimage="..\Image\ic_tab_head_devideline.png" sepwidth="1">
+							<HorizontalLayout mousechild="true" padding="20,0,0,0" childpadding="1">
+								<HorizontalLayout >
+									<Control />
+									<ScaleIconButton name="share2Me_listHeaderItemSize" text="大小" width="25" font="10" textcolor="#FF666666"/>
+									<Button name="share2Me_listHeaderItemSizeSortIcon" visible="false" padding="0,5" width="18" height="18" normalimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,0,6,6' dest='0,0,6,6'" hotimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,16,6,22' dest='0,0,6,6'" />
+								</HorizontalLayout>
+							</HorizontalLayout>
+						</ListHeaderItem>
+						<ListHeaderItem name="share2Me_listheaderitem_time" font="10" intset="1,0,1,0" width="150" minwidth="100" textcolor="#FF666666" sepimage="..\Image\ic_tab_head_devideline.png" sepwidth="0">
+							<HorizontalLayout mousechild="true" padding="15,0,2,0" childpadding="5">
+								<HorizontalLayout >
+									<ScaleIconButton name="share2Me_listHeaderItemTime" text="分享日期" font="10" width="50" textcolor="#FF666666" />
+									<Button name="share2Me_listHeaderItemTimeSortIcon" visible="false" padding="0,5" width="18" height="18" normalimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,0,6,6' dest='0,0,6,6'" hotimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,16,6,22' dest='0,0,6,6'" />
+								</HorizontalLayout>
+							</HorizontalLayout>
+						</ListHeaderItem>
+					</ListHeader>
+				</CustomList>
+			</VerticalLayout>
+			<VerticalLayout>
+				<TileLayoutList droptarget="true" name="share2Me_Tile" menu="true" encloseselect="true" menuxmlfile="share2MeContextMenu.xml" header="hidden" visible="true" mouse="true" inset="24,15,25,25" childpadding="10" itemsize="122,123" itemshowhtml="true" vscrollbar="true" hscrollbar="false"/>
+			</VerticalLayout>
+
+			<CustomList name="share2Me_noFiles" visible="false" droptarget="true" header="false">
+				<Control />
+				<HorizontalLayout height="200" >
+					<Control />
+					<Label bkimage="..\image\ic_null_shared_with_me.png" width="180" height="180" />
+					<Control />
+				</HorizontalLayout>
+
+				<VerticalLayout height="54">
+					<Label align="center" valign="vcenter" height="18" text="暂时没有收到任何分享" font="17"  textcolor="#FF666666"/>
+				</VerticalLayout>
+				<Control height="138" />
+				<Control />
+			</CustomList>
+			
+			<CustomList name="share2Me_noFiles" visible="false" droptarget="true"  padding="0,10">
+				<HorizontalLayout height="200">
+					<Control />
+					<Label bkimage="..\image\ic_null_files.png" align="center" width="180" height="180" padding="5,5,5,5"/>
+					<Control />
+				</HorizontalLayout>
+				<Label align="center" height="18" text="该文件夹为空" textpadding="10,0" font="17"  textcolor="#FF666666"/>
+				<Control height="10"/>
+				<Label align="center" height="16" text="您可以通过“上传”按钮进行文件上传或直接拖拽上传。" font="0" textcolor="#FF666666"/>
+				<Control height="10"/>
+				<Control />
+		</CustomList>
+
+		</TabLayout>
+	</VerticalLayout>
+</Window>

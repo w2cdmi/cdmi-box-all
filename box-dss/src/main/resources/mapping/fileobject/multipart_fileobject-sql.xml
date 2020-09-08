@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="multipartFileObject">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="MultipartFileObject" type="pw.cdmi.file.engine.object.domain.MultipartFileObject" />
+    
+	<resultMap id="resultMap.MultipartFileObject" class="MultipartFileObject">
+		<result column="uploadid" 		property="uploadID" 			javaType="java.lang.String"/>
+        <result column="objectid" 		property="objectID" 			javaType="java.lang.String"/>
+        <result column="partsize" 		property="partSize"		 		javaType="java.lang.Long"/>
+        <result column="state"	 		property="status" 				typeHandler="pw.cdmi.file.engine.object.domain.FileObjectStatusTypeHandler"/>
+        <result column="path" 			property="storagePath" 			javaType="java.lang.String"/>
+        <result column="callbackkey" 	property="callBackKey" 			javaType="java.lang.String"/>
+        <result column="mergeAt" 		property="mergeAt" 				javaType="java.util.Date"/>
+        <result column="mergeTimes" 	property="mergeTimes" 			javaType="java.lang.Integer"/>
+        <result column="clearTimes" 	property="clearTimes" 			javaType="java.lang.Integer"/>
+        <result column="etag" 			property="etag" 				javaType="java.lang.String"/>
+        <result column="partCRC" 		property="partCRC" 				javaType="java.lang.String"/>
+    </resultMap>
+	<insert id="insert" parameterClass="MultipartFileObject">
+		<![CDATA[
+		insert into slice_fileobject(objectid,uploadid,callbackkey,partsize,state,path,mergeAt,mergeTimes,clearTimes,modified,etag, partCRC) 
+		values(#objectID#,#uploadID#,#callBackKey#,#partSize#,#status.code#,#storagePath#,#mergeAt#,#mergeTimes#,#clearTimes#, now(),#etag#,#partCRC#)
+		]]>
+	</insert>
+	
+	<select id="select" parameterClass="MultipartFileObject" resultMap="resultMap.MultipartFileObject">
+		<![CDATA[
+		select * from slice_fileobject where objectid = #objectID#
+		]]>
+	</select>
+	
+	<select id="selectMultipartForUploadId" parameterClass="java.util.Map" resultMap="resultMap.MultipartFileObject">
+		<![CDATA[
+		select * from slice_fileobject where objectid = #objectID# and uploadid =#uploadID#
+		]]>
+	</select>
+	
+	<delete id="delete" parameterClass="MultipartFileObject">
+		<![CDATA[
+		delete from slice_fileobject where objectid = #objectID#
+		]]>
+	</delete>
+	
+	<update id="update" parameterClass="MultipartFileObject">
+		<![CDATA[
+		update slice_fileobject set state=#status.code#, mergeAt=#mergeAt#, mergeTimes=#mergeTimes#,clearTimes=#clearTimes#, modified=now(),etag=#etag#,partCRC=#partCRC# where objectid = #objectID#
+		]]>
+	</update>
+	
+	<update id="updateLastModifyTime" parameterClass="MultipartFileObject">
+		<![CDATA[
+		update slice_fileobject set modified=now() where objectid = #objectID#
+		]]>
+	</update>
+	
+	<select id="selectCommittingMultipartFileObject" parameterClass="java.util.Map" resultMap="resultMap.MultipartFileObject">
+		<![CDATA[
+		select * from slice_fileobject where state = 1 and (mergeAt is null or (mergeAt is not null and mergeAt < #timeout# and mergeTimes < #maxMergeTimes#)) order by objectid limit 1
+		]]>
+	</select>
+	
+	<select id="selectWaitClearMultipartFileObject" parameterClass="java.util.Map" resultMap="resultMap.MultipartFileObject">
+		<![CDATA[
+		select * from slice_fileobject where state = 3 and clearTimes < #maxClearTimes# and modified is not null and modified <= #reserveTime# order by modified,clearTimes limit #limit#
+		]]>
+	</select>
+	
+	<delete id="deleteInvalidData" parameterClass="java.util.Map">
+		<![CDATA[
+		insert into slice_fileobject_failed select * from slice_fileobject where (state=1 and mergeTimes >= #maxMergeTimes# and mergeAt is not null and mergeAt < #timeout#) or (state=3 and clearTimes >= #maxClearTimes#)
+		]]>
+	</delete>
+</sqlMap>

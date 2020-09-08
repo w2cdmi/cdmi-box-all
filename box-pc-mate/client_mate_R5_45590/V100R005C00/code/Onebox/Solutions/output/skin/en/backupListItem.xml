@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<Window>
+	<BackUpListContainerElement name="backup_listItem" height="44" shadecolor="#ffdef0ff" shadecolor2="#ffe7ffd6" itemaltbk="ture">
+		<HorizontalLayout float="true" pos="0,0,155,44">
+			<Button name="backup_item_fileIcon" mouse="false" padding="10,10,0,10" width="24" height="24" />
+			<Button name="backup_item_fileName" padding="10,15,0,10" mouse="true" intset="0,1,0,1" align="left" valign="center" textcolor="#FF000000" hottextcolor="#FF006AB0" pushedtextcolor="#FF006AB0" font="0" endellipsis="true"/>
+		</HorizontalLayout>
+		<Button name="backup_item_filePath" float="true" textpadding="5,15,5,10" pos="155,0,270,44" endellipsis="true" align="left" font="0" textcolor="#FF008BE8" hottextcolor="#FF006AB0" pushedtextcolor="#FF006AB0"/>
+		<Label name="backup_item_taskNextTime" float="true" endellipsis="true" padding="5,0,2,0" pos="270,0,410,44" align="left" textcolor="#FF666666" font="0"/>
+		<HorizontalLayout float="true" padding="5,0,2,0" pos="410,0,665,44">
+			<ScaleIconButton enabled="false" name="backup_item_state"  align="left" textpadding="5,15,0,0" font="0" textcolor="#FF666666" disabledtextcolor="#FF666666"/>
+			<HorizontalLayout padding="5,0,0,0">
+				<Label name="backup_state_line" height="1" width="5" padding="0,22,0,21" bkcolor="#FF666666" visible="false"/>
+				<ScaleIconButton name="backup_state_showerror" font="0" padding="5,0" textcolor="#FFFC5043" hottextcolor="#FFFC5043" visible="false"/>
+				<Label name="backup_state_progress" font="0" padding="5,0" textcolor="#FF666666" disabledtextcolor="#FF666666" enabled="false" visible="false"/>
+				<Label name="backup_state_logout" font="0" textcolor="#FFE0E0E0"  disabledtextcolor="#FFE0E0E0" enabled="false" visible="false"/>
+			</HorizontalLayout>
+			<HorizontalLayout width="80" padding="2,0,0,0">
+				<Button name="backup_state_start" padding="0,12,0,12" tooltip="Start" width="20" normalimage="file='..\image\ic_oper_play.png' source='0,0,20,20'" hotimage="file='..\image\ic_oper_play.png' source='0,30,20,50'" disabledimage="file='..\image\ic_oper_play.png' source='0,60,20,80'"/>
+				<Button name="backup_state_setting" padding="10,12,0,12" tooltip="Setting" width="20" normalimage="file='..\image\ic_oper_setting.png' source='0,0,20,20'" hotimage="file='..\image\ic_oper_setting.png' source='0,30,20,50'" disabledimage="file='..\image\ic_oper_setting.png' source='0,60,20,80'"/>
+				<Button name="backup_state_delete" padding="10,12,0,12" tooltip="Delete" width="20" normalimage="file='..\image\ic_oper_delete.png' source='0,0,20,20'" hotimage="file='..\image\ic_oper_delete.png' source='0,30,20,50'" disabledimage="file='..\image\ic_oper_delete.png' source='0,60,20,80'" />
+			</HorizontalLayout>
+		</HorizontalLayout>
+	</BackUpListContainerElement>
+</Window>

@@ -1,0 +1,3 @@
+<view class="section">
+    <include src="/disk/template/video.wxml" />
+</view>

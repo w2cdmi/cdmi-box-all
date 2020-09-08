@@ -1,0 +1,372 @@
+/*审计审批首页*/
+.tab-active {
+	border-bottom: 0.15rem solid #18b4ed;
+}
+.tab {
+	border-bottom: 0.15rem solid #E4E1E1;
+}
+.box{
+	width: 100%;
+	height: 100%;
+}
+.careful-header{
+	width: 100%;
+	height: 5rem;
+	background: #FFFFFF;
+	position: fixed;
+	z-index: 2;
+}
+.careful-header li{
+	width: 33.33%;
+	height: 5rem;
+	float: left;
+	color: #333333;
+	font-size: 0.6rem;
+	position: relative;
+}
+
+.careful-header i img{
+	width: 2.2rem;
+	height: 2.2rem;
+	position: absolute;
+	top: 1rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.careful-header li span{
+	display: block;
+	width: 100%;
+	text-align: center;
+	margin-top: 3.6rem;
+}
+#careful-content{
+	width: 100%;
+	display: inline-block;
+    position: fixed;
+    top: 5.15rem;
+    bottom: 3rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+#careful-content i{
+	height: 2.4rem;
+	width: 2.4rem;
+    margin-top: 0.45rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    float: left;
+}
+#careful-content i img{
+	width: 2.1rem;
+	height: 2.1rem;
+}
+.careful-content-top{
+	float: left;
+	font-size: 0.75rem;
+	color: #333333;
+	height: 1.2rem;
+	width: 100%;
+	margin-right: 4%;
+	margin-top: 0.4rem;
+}
+.careful-content-top h1 img{
+	width: 0.3rem;
+	height: 0.5rem;
+	margin-bottom: 0.25rem;
+}
+.careful-content-top p{
+	float: left;
+	line-height: 1.7rem;
+	width: 14rem;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.careful-content-bottom{
+	font-size: 0.6rem;
+	color: #333333;
+	height: 1.2rem;
+	width: 100%;
+	float: left;
+	line-height: 1.5rem;
+	margin-bottom: 0.5rem;
+}
+
+.careful-content-bottom span{
+	float: left;
+	font-size: 0.6rem;
+	color: #999999;
+}
+.careful-content-bottom p{
+	float: left;
+	font-size: 0.6rem;
+	color: #999999;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	width: 7rem;
+	white-space:nowrap;
+}
+.careful-content-bottom h1{
+	float: right;
+	font-weight: normal;
+	color: #999999;
+	font-size: 0.6rem;
+}
+.careful-content-bottom h2{
+	float: right;
+	width: 0.05rem;
+	height: 0.6rem;
+	background: #E4E1E1;
+	margin-top: 0.45rem;
+	margin-right: 0.3rem;
+	margin-left: 0.3rem;
+}
+.careful-content-bottom h3{
+	float: right;
+	font-weight: normal;
+	color: #999999;
+	font-size: 0.6rem;
+}
+.careful-content-bottoms{
+	float: left;
+	height: 3.4rem;
+	width: 15rem;
+}
+
+.isubmit-content{
+	width: 100%;
+	background: #FFFFFF;
+}
+.isubmit-content li{
+	width: 92%;
+	height: 3.4rem;
+	border-bottom: 1px solid #E4E1E1;
+	margin-left: 4%;
+}
+.isubmit-content i{
+	height: 3.4rem;
+	width: 2.1rem;
+	float: left;
+}
+.isubmit-content i img{
+	width: 1.6rem;
+	height: 2.2rem;
+	margin-top: 0.6rem;
+}
+.isubmit-content-top{
+	float: left;
+	font-size: 0.6rem;
+	color: #333333;
+	height: 1.6rem;
+	width: 100%;
+}
+.isubmit-content-top h1 img{
+	width: 0.3rem;
+	height: 0.5rem;
+	margin-bottom: 0.25rem;
+}
+.isubmit-content-top span{
+	float: left;
+	line-height: 1.7rem;
+}
+.isubmit-content-top h1{
+	float: right;
+}
+.isubmit-content-top h2{
+	float: right;
+	font-weight: normal;
+	color: #333333;
+	font-size: 0.6rem;
+	line-height: 1.7rem;
+	margin-right: 0.5rem;
+}
+.isubmit-content-bottom{
+	font-size: 0.6rem;
+	color: #333333;
+	height: 1.7rem;
+	width: 100%;
+	float: left;
+}
+.isubmit-content-bottom h1{
+	float: left;
+	font-weight: normal;
+	color: #999999;
+	font-size: 0.4rem;
+}
+.isubmit-content-bottom h2{
+	float: left;
+	width: 0.05rem;
+	height: 0.6rem;
+	background: #E4E1E1;
+	margin-right: 0.3rem;
+	margin-left: 0.4rem;
+}
+.isubmit-content-bottom h3{
+	float: left;
+	font-weight: normal;
+	color: #999999;
+	font-size: 0.4rem;
+}
+.isubmit-content-bottoms{
+	float: right;
+	width: 84%;
+	height: 3.4rem;
+}
+/*审计审批详情*/
+.careful-details{
+	width: 100%;
+	height: 33.325rem;
+	background: #E4E1E1;
+	overflow: hidden;
+	display: none;
+}
+.details-content{
+	width: 100%;
+	height: 2.2rem;
+	margin-top: 0.8rem;
+	font-size: 0.6rem;
+	color: #333333;
+	background: #FFFFFF;
+}
+.details-content p{
+	float: left;
+	margin-left: 4%;
+	line-height: 2.2rem;
+}
+.details-content span{
+	float: right;
+	margin-right: 4%;
+	line-height: 2.2rem;
+}
+.line-buttons .line-button-detail{
+	background: #f19a1e;
+}
+.line-buttons .line-button-delete{
+	background: #cb1616;
+}
+/*审批详情二*/
+.careful-details-two{
+	width: 100%;
+	height: 33.325rem;
+	overflow: hidden;
+	background: #E4E1E1;
+	display: none;
+}
+.details-two-input{
+	width: 92%;
+	height: 2rem;
+	color: #FFFFFF;
+	font-size: 0.6rem;
+	text-align: center;
+	line-height: 2rem;
+	border-radius: 0.35rem;
+	margin-top: 1.25rem;
+	background: #FC6156;
+	margin-left: 4%;
+}
+/*审批详情第三页*/
+.careful-details-three{
+	width: 100%;
+	height: 33.325rem;
+	background: #E4E1E1;
+	overflow: hidden;
+	display: none;
+}
+.details-three-input1{
+	width: 92%;
+	height: 2rem;
+	text-align: center;
+	line-height: 2rem;
+	color: #FFFFFF;
+	border-radius: 0.35rem;
+	margin-left: 4%;
+	background: #18B4ED;
+	margin-top: 1rem;
+}
+.details-three-input2{
+	width: 92%;
+	height: 2rem;
+	text-align: center;
+	line-height: 2rem;
+	color: #FFFFFF;
+	border-radius: 0.35rem;
+	margin-left: 4%;
+	background: #FC6156;
+	margin-top: 1rem;
+}
+/*审批详情第四页*/
+.careful-details-four{
+	width: 100%;
+	height: 33.325rem;
+	background: #E4E1E1;
+	overflow: hidden;
+}
+.details-process{
+	width: 100%;
+	display: inline-block;
+	background: #FFFFFF;
+	margin-top: 0.8rem;
+}
+.details-process h1{
+	float: left;
+	width: 92%;
+	height: 1.9rem;
+	margin-left: 4%;
+	font-weight: normal;
+	color: #333333;
+	font-size: 0.6rem;
+	line-height: 1.9rem;
+}
+.process-nav{
+	float: left;
+	width: 92%;
+	margin-left: 4%;
+	height: 1.9rem;
+	border-top: 1px solid #E4E1E1;
+	line-height: 1.9rem;
+}
+.process-nav i{
+	float: left;
+	width: 1rem;
+	height: 1rem;
+	margin-top: 0.45rem;
+	border-radius: 50%;
+	overflow: hidden;
+}
+.process-nav i img{
+	width: 1rem;
+	height: 1rem;
+}
+.process-nav p{
+	float: left;
+	color: #333333;
+	font-size: 0.6rem;
+	margin-left: 0.4rem;
+}
+.process-nav h2{
+	float: left;
+	font-weight: normal;
+	color: #333333;
+	font-size: 0.6rem;
+	margin-left: 3rem;
+}
+.process-nav h3{
+	float: right;
+	font-weight: normal;
+	color: #333333;
+	font-size: 0.6rem;
+}
+.careful-content-background1{
+	background: url(../../img/careful-content-background1.png) no-repeat center center;
+	background-size: 5rem 5rem;
+}
+.careful-content-background2{
+	background: url(../../img/careful-content-background2.png) no-repeat center center;
+	background-size:5rem 5rem;
+}
+.careful-content-background3{
+	background: url(../../img/careful-content-background3.png) no-repeat center center;
+	background-size: 5rem 5rem;
+}
+

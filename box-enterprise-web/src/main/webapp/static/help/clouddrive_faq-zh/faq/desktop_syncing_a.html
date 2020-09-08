@@ -1,0 +1,181 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="如何了解同步客户端什么时间正在同步">
+<meta name="DC.Relation" scheme="URI" content="../faq/pc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="desktop_syncing_2">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<title>如何了解同步客户端什么时间正在同步</title>
+<script type="text/javascript" language="JavaScript">
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+</script>
+<style type="text/css">
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+</style>
+<script type="text/javascript" language="javascript1.2" src="../whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whtopic.js"></script>
+
+ <meta name="generator" content="Adobe RoboHelp 9">
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><script type="text/javascript" language="javascript1.2">
+if (window.gbWhTopic)
+{
+	var strUrl = decodeURI(document.location.href);
+	var bc = 0;
+	var n = strUrl.toLowerCase().indexOf("bc-");
+	if(n != -1)
+	{
+		document.location.href = encodeURI(strUrl.substring(0, n));
+		bc = strUrl.substring(n+3);
+	}
+
+	if (window.addTocInfo)
+	{
+	addTocInfo("桌面应用\n如何了解同步客户端什么时间正在同步");
+addButton("show",BTN_TEXT,"显示","","","","",0,0,"","","");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(1);
+
+	
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../clouddrive_faq.htm", "", ">", "Home", "welcome.html");
+document.write("<a href=\"pc.html\">桌面应用<\/a> > 如何了解同步客户端什么时间正在同步<\/p>");
+
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("../clouddrive_faq.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+
+</script><a name="desktop_syncing_2"></a><a name="desktop_syncing_2"></a>
+
+
+<h1 class="topictitle1">如何了解同步客户端什么时间正在同步</h1>
+
+<div>
+<div class="p">同步客户端托盘图标位于系统任务栏。当托盘图标上叠加的双向旋转的箭头消失时，表示同步客户端同步完成。
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="void" border="0" rules="none" style="border-style:none">
+<tbody>
+<tr>
+<td class="cellrowborder" style="border:none" valign="top" width="16.5%"><p><span><img src="../icon/pause_sync_tray.png"></span></p>
+</td>
+
+<td class="cellrowborder" style="border:none" valign="top" width="83.5%"><p>暂停同步</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" style="border:none" valign="top" width="16.5%"><p><span><img src="../icon/sync_tray.png"></span></p>
+</td>
+
+<td class="cellrowborder" style="border:none" valign="top" width="83.5%"><p>同步中</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" style="border:none" valign="top" width="16.5%"><p><span><img src="../icon/online_tray.png"></span></p>
+</td>
+
+<td class="cellrowborder" style="border:none" valign="top" width="83.5%"><p>同步完成</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div>
+
+<div class="p">此外，同步客户端托盘图标还有另外两种状态：
+<div class="tablenoborder"><table cellpadding="4" cellspacing="0" summary="" frame="void" border="0" rules="none" style="border-style:none">
+<tbody>
+<tr>
+<td class="cellrowborder" style="border:none" valign="top" width="17%"><p><span><img src="../icon/offline_tray.png"></span></p>
+</td>
+
+<td class="cellrowborder" style="border:none" valign="top" width="83%"><p>离线</p>
+<p>当用户未登录同步客户端或取消电脑与<span>StorBox</span>的关联关系时出现该图标。</p>
+</td>
+
+</tr>
+
+<tr>
+<td class="cellrowborder" style="border:none" valign="top" width="17%"><p><span><img src="../icon/abnormal_tray.png"></span></p>
+</td>
+
+<td class="cellrowborder" style="border:none" valign="top" width="83%"><p>异常</p>
+<p>当用户登录认证失败时出现该图标。</p>
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+</div>
+</div>
+
+<p></p>
+
+<p></p>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="pc.html">桌面应用</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为专有和保密信息</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div><script type="text/javascript" language="javascript1.2">
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+
+
+highlightSearch();
+</script>
+</body>
+</html>

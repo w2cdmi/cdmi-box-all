@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WxRobotConfig">
+
+	<typeAlias alias="WxRobotConfig" type="com.huawei.sharedrive.uam.wxrobot.domain.WxRobotConfig"/>
+
+	<select id="listByRobotId" parameterClass="long" resultClass="WxRobotConfig">
+	  select * from wx_robot_config where robotId=#robotId#
+	</select>
+	<insert id="insert" parameterClass="WxRobotConfig">
+	  INSERT INTO `wx_robot_config` (`robotId`, `name`, `value`, `type`) VALUES (#robotId#, #name#, #value#, #type#)
+	</insert>
+	<delete id="delete" parameterClass="WxRobotConfig" >
+	  delete from wx_robot_config where robotId=#robotId#  and type=#type#
+	  <dynamic>
+	    <isNotNull prepend="and" property="name">
+	       name=#name#
+	    </isNotNull>
+	  </dynamic>
+	</delete>
+	<update  id="update" parameterClass="WxRobotConfig" >
+	 update wx_robot_config set value=#value# where robotId=#robotId# and  type=#type#
+	</update>
+</sqlMap>
+

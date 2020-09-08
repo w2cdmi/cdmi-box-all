@@ -1,0 +1,67 @@
+<!-- 点赞面板 -->
+<view class='thumb'>
+    <view class='btn'>
+        <view bindtap='giveOrCancelPraise' data-is-praised='{{isPraised}}' data-id="{{praisedId}}"  class='praise' style='background-color:{{isPraised?"#999":"#ea5036"}};'>
+            <image wx:if="{{!isPraised}}" src='../images/comments/pr-white.png'></image>
+            {{isPraised?"取消赞":"赞"}}
+        </view>
+    </view>
+    <view class='num'>已有{{amount}}人觉得赞</view>
+    <view class='portrait'>
+        <view wx:for="{{praiseList}}" wx:key="*this" class='head-portrait'>
+            <image src='{{item.headImage}}' data-name="{{item.name}}" data-id="{{item.id}}" alt="{{item.name}}"></image>
+        </view>
+        <view class='head-portrait' wx:if="{{praiseList.length>=5}}" bindtap='getMorePraiseList' data-lists="{{praiseList}}">
+            <image src='../images/comments/more.png'></image>
+        </view>
+    </view>
+</view>
+
+<!-- 评论面板 -->
+<view>
+    <view class='comment-count'>评论({{commentCount}})</view>
+    <view class='comment'>
+        <view class='comment-lists' wx:for="{{commentList}}" wx:key="*this" wx:for-index="index">
+            <image class='portrait' src='{{item.owner.headImage}}' data-id="{{item.owner.id}}"></image>
+            <view class='info'>
+                <view class='info-user'>
+                    <text class='username'>{{item.owner.name}}</text>
+                </view>
+                <view class='comment-message' >{{item.content}}</view>
+                <view class='comment-info-times-count'>
+                    <text class='times'>{{item.create_time}}</text>
+                    <view class='count-msg'>
+                        <view class='count' bindtap="commentGiveOrCancelPraise" data-target='{{item}}' data-praise-id='{{item.praiseId}}'  data-is-praised='{{item.isPraised}}'>
+                            <image wx:if="{{!item.isPraised}}" src='../images/comments/comments-white.png'></image>
+                            <image wx:if="{{item.isPraised}}" src='../images/comments/comments-red.png'></image>
+                            <text>{{item.praiseNumber}}</text>
+                        </view>
+                        <view class='msg' data-target='{{item}}' bindtap='commentReply'>
+                            <image src='../images/comments/messages.png'></image>
+                            <text>{{item.commentNumber}}</text>
+                        </view>
+                    </view>
+                </view>
+                <view class='replay-view' wx:if="{{item.children.length > 0}}">
+                    <view class='comment-reply' wx:for="{{item.children}}" wx:for-item="childComment" wx:key="*this">
+                        <view class='reply' data-target='{{childComment}}' data-target-id='{{item.id}}' data-target-owner-id='{{item.owner.id}}' data-index='{{item.index}}' bindtap='replySomeoneComment'>
+                            <view class='reply-message'>
+                                <text class="username" style='color:#5176AB;' data-target="{{childComment}}">{{childComment.owner.showName}}:</text>{{childComment.content}}
+                            </view>
+                        </view>
+                    </view>
+                    <view class='reply-all' wx:if="{{item.cursor}}" style='color: #5176AB;' bindtap="moreReplyMessage" data-target="{{item}}">查看更多回复</view>
+                </view>
+            </view>
+        </view>
+
+    </view>
+    <view class="loading" wx:if="{{loading || firstLoading}}">
+        加载中...
+    </view>
+</view>
+
+<view class='input'>
+    <input style="color:#999;" cursor-spacing="10" value="{{content}}" bindinput="bindTextInput" focus="{{inputIsFocus}}" bindtap='onClickInput' placeholder-class='font-size:28rpx;' placeholder="我来说一说..."></input>
+    <button class='clear-button-style send-button' bindtap='sendContent' disabled='{{content?false:true}}'>发送</button>
+</view>

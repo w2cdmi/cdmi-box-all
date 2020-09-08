@@ -1,0 +1,52 @@
+/* disk/shares/sharefolder.wxss */
+
+/*面包屑*/
+#breadcrumb{
+    width:100%;
+    background:#fff;
+    overflow:scroll;
+    display:-webkit-box;
+    display: inline-flex;
+    padding-left:10rpx;
+    border-bottom:1px solid #F5F5F5;
+}
+
+#breadcrumb .icon {
+    font-size: 14px;
+}
+
+#breadcrumb .crumb-name {
+    display: inline-flex;
+}
+
+#breadcrumb .crumb-name image {
+    width: 30rpx;
+    height: 80rpx;
+    float: left;
+}
+
+#breadcrumb .crumb-name .item {
+    float: left;
+    background: #fff;
+    text-decoration: none;
+    position: relative;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0 20rpx 0 20rpx;
+    text-align: center;
+    color: #5b8cff;
+}
+
+#breadcrumb .crumb-name .item text {
+    float: left;
+    max-width: 200rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#breadcrumb .crumb-name:last-child .item {
+    color: #000;
+}
+
+@import "../template/nodeList.wxss"

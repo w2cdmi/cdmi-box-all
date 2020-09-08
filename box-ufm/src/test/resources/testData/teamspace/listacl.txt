@@ -1,0 +1,48 @@
+@@normal
+{  
+    "nodeId": 0,  
+    "limit":100,  
+    "offset":0 
+}
+@@invalidnodeId
+{  
+    "nodeId": -10,  
+    "limit":100,  
+    "offset":0 
+}
+@@invalidlimit
+{  
+    "nodeId": 0,  
+    "limit":-1002,  
+    "offset":0 
+}
+@@invalidoffset
+{  
+    "nodeId": 0,  
+    "limit":100,  
+    "offset":-100 
+}
+
+@@nonodeId
+{     
+    "limit":100,  
+    "offset":0   
+}
+@@nolimit
+{    
+    "nodeId": 0,    
+    "offset":0   
+}
+@@nooffset
+{  
+    "nodeId": 0,  
+    "limit":100
+}
+
+@@nosuchnode
+{  
+    "nodeId": 2,  
+    "limit":100,  
+    "offset":0 
+}
+

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccountBasicConfig">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="AccountBasicConfig" type="com.huawei.sharedrive.uam.enterprise.domain.AccountBasicConfig" />
+    
+    <insert id="insert" parameterClass="AccountBasicConfig">
+        insert into multi_system_config(accountId,userSpaceQuota,userVersions,enableTeamSpace,maxTeamSpaces,teamSpaceQuota,teamSpaceVersions) 
+        values 
+        (#accountId#,#userSpaceQuota#,#userVersions#,#enableTeamSpace#,#maxTeamSpaces#,#teamSpaceQuota#,#teamSpaceVersions#)
+    </insert>
+
+	<update id="update" parameterClass="AccountBasicConfig">
+        update multi_system_config
+        <dynamic prepend="set">
+        	<isNotNull property="userSpaceQuota" prepend=",">
+        		userSpaceQuota=#userSpaceQuota#
+        	</isNotNull>
+        	<isNotNull property="userVersions" prepend=",">
+        		userVersions=#userVersions#
+        	</isNotNull>
+        	<isNotNull property="enableTeamSpace" prepend=",">
+        		enableTeamSpace=#enableTeamSpace#
+        	</isNotNull>
+        	<isNotNull property="maxTeamSpaces" prepend=",">
+        		maxTeamSpaces=#maxTeamSpaces#
+        	</isNotNull>
+        	<isNotNull property="teamSpaceQuota" prepend=",">
+        		teamSpaceQuota=#teamSpaceQuota#
+        	</isNotNull>
+        	<isNotNull property="teamSpaceVersions" prepend=",">
+        		teamSpaceVersions=#teamSpaceVersions#
+        	</isNotNull>
+        	<isNotNull property="maxVersionFileSize" prepend=",">
+        		maxVersionFileSize=#maxVersionFileSize#
+        	</isNotNull>
+        	<isNotNull property="teamSpaceVersions" prepend=",">
+        		multiVersionContent=#multiVersionContent#
+        	</isNotNull>       	
+        </dynamic>
+        where accountId = #accountId#
+    </update>
+
+	<select id="get" resultClass="AccountBasicConfig" parameterClass="AccountBasicConfig">
+		select * from multi_system_config where accountId = #accountId#
+	</select>
+
+	<select id="getAidNum" resultClass="int" parameterClass="AccountBasicConfig">
+		select count(accountId) from multi_system_config where accountId = #accountId#
+	</select>
+    
+</sqlMap>
+

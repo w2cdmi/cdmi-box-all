@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserConfig">
+
+    <typeAlias alias="UserConfig" type="com.huawei.sharedrive.app.user.domain.UserConfig" />
+
+	<insert id="create" parameterClass="UserConfig">
+        <![CDATA[
+        insert into user_config(userId, name, value) values (#userId#, #name#,#value#)
+        ]]>
+    </insert>
+    
+    <update id="update" parameterClass="UserConfig">
+    	<![CDATA[
+        update user_config set value=#value# where userId = #userId# and name=#name#
+        ]]>
+    </update>
+    
+    <select id="get" parameterClass="UserConfig" resultClass="UserConfig">
+        select * from user_config where userId = #userId# and name=#name#
+    </select>
+    
+    <select id="list" parameterClass="UserConfig" resultClass="UserConfig">
+        select * from user_config where userId = #userId#
+    </select>
+
+</sqlMap>
+

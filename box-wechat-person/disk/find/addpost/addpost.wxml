@@ -1,0 +1,33 @@
+<!--disk/batchShare/batchShare.wxml-->
+<view class='page bc-white'>
+    <view class='view-input view-bg'>
+        <textarea maxlength="144" placeholder='写下您的内容描述...' class='textarea' placeholder-class='input-class' focus='{{true}}' bindinput='inputChange'></textarea>
+        <view class='view-dotted' wx:if="{{isShowDotted}}">
+            <view class='blank-bg' bindtap='jumpSelectFile'>
+                <view>
+                    <image mode='aspectFill' style='width:198rpx;height:198rpx;' src='/disk/images/icon/share-add.png'></image>
+                </view>
+                <view class="default-txt">添加文件</view>
+            </view>
+        </view>
+
+        <view class='select-files-box' wx:else>
+            <block wx:for="{{checkedList}}" wx:key="*this">
+                <view>
+                    <view>
+                        <image src='{{item.icon}}' mode='aspectFill' class='img'></image>
+                    </view>
+                    <image bindtap='deleteChecked' data-ownerId='{{item.ownerId}}' wx:if='{{hiddenDEL}}' data-id='{{item.id}}' src='/disk/images/icon/share-file-del.png' class='delete-file-img'></image>
+                    <view class='select-file-name'>{{item.name}}</view>
+                </view>
+            </block>
+            <view bindtap='jumpSelectFile' hidden='{{isShowAddBtn}}'>
+                <view>
+                    <image mode='aspectFill' src='/disk/images/icon/share-add.png' class='img'></image>
+                </view>
+                <view>添加文件</view>
+            </view>
+        </view>
+    </view>
+    <view class='share-button' data-status="1" bindtap='releasePost'>发布</view>
+</view>

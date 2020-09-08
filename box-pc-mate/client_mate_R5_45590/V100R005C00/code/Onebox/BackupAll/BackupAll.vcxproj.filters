@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{543b042b-951e-46b2-a513-9876c38e24a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dbMgr">
+      <UniqueIdentifier>{1c3b4fe7-ff91-4937-a463-39e4d7705b6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fileMgr">
+      <UniqueIdentifier>{667a3df4-b8a4-4c01-b050-80e3b2aa413a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="backupMgr">
+      <UniqueIdentifier>{24423f1d-8d76-4554-a331-f78d1e2b5406}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\OneboxCommon\include\CppSQLite3.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\Utility.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\InIHelper.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllCommon.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllLocalDb.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllTaskDb.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllDbMgr.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllMgr.h">
+      <Filter>backupMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllProcess.h">
+      <Filter>backupMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MFTReader.h">
+      <Filter>fileMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllTransTask.h">
+      <Filter>fileMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllLocalFile.h">
+      <Filter>fileMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllScan.h">
+      <Filter>backupMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllUtility.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllIncScan.h">
+      <Filter>backupMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllFullScan.h">
+      <Filter>backupMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupAllFilterMgr.h">
+      <Filter>fileMgr</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\OneboxCommon\Common\source\CppSQLite3.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\Utility.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\InIHelper.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllMgr.cpp">
+      <Filter>backupMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllProcess.cpp">
+      <Filter>backupMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllDbMgr.cpp">
+      <Filter>dbMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllTaskDb.cpp">
+      <Filter>dbMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllLocalDb.cpp">
+      <Filter>dbMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MFTReader.cpp">
+      <Filter>fileMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllTransTask.cpp">
+      <Filter>fileMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllLocalFile.cpp">
+      <Filter>fileMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllScan.cpp">
+      <Filter>backupMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllUtility.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllIncScan.cpp">
+      <Filter>backupMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllFullScan.cpp">
+      <Filter>backupMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupAllFilterMgr.cpp">
+      <Filter>fileMgr</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

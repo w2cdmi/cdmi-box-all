@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserTag">
+
+	<typeAlias alias="UserTag" type="pw.cdmi.box.uam.user.domain.UserTag" />
+	<typeAlias alias="UserTagExtend" type="pw.cdmi.box.uam.user.domain.UserTagExtend" />
+	<typeAlias alias="UserExtend" type="pw.cdmi.box.uam.user.domain.UserExtend" />
+	<typeAlias alias="User" type="pw.cdmi.box.uam.user.domain.User" />
+    <resultMap id="resultMap.UserTagExtend" class="UserTagExtend">
+        <result column="userId"				property="userId" 				javaType="java.lang.Long"/>
+        <result column="tagId"			property="tagId" 			javaType="java.lang.String"/>
+        <result column="tag"		property="tag" 		javaType="java.lang.String"/>
+    </resultMap>
+    <resultMap id="resultMap.UserExtend" class="UserExtend">
+        <result column="id"				property="id" 				javaType="java.lang.Long"/>
+        <result column="objectSid"		property="objectSid" 		javaType="java.lang.String"/>
+        <result column="loginName"		property="loginName" 		javaType="java.lang.String"/>
+        <result column="password"		property="password" 		javaType="java.lang.String"/>
+        <result column="department"		property="department" 		javaType="java.lang.String"/>
+        <result column="departmentCode"		property="departmentCode" 		javaType="java.lang.String"/>
+        <result column="name"		property="name" 		javaType="java.lang.String"/>
+        <result column="email"		property="email" 		javaType="java.lang.String"/>
+        <result column="createdAt"		property="createdAt" 		javaType="java.util.Date"/>
+        <result column="modifiedAt"		property="modifiedAt" 		javaType="java.util.Date"/>
+        <result column="lastLoginAt"		property="lastLoginAt" 		javaType="java.util.Date"/>
+        <result column="status"		property="status" 		javaType="java.lang.String"/>
+        <result column="domain"		property="domain" 		javaType="java.lang.String"/>
+        <result column="cloudUserId"		property="cloudUserId" 		javaType="java.lang.Long"/>
+        <result column="principalType"		property="principalType" 		javaType="java.lang.Integer"/>
+        <result column="resourceType"		property="resourceType" 		javaType="java.lang.Integer"/>
+        <result column="appId"		property="appId" 		javaType="java.lang.String"/>
+        <result column="regionId"		property="regionId" 		javaType="java.lang.Integer"/>
+        <result column="maxVersions"		property="maxVersions" 		javaType="java.lang.Integer"/>
+        <result column="spaceQuota"		property="spaceQuota" 		javaType="java.lang.Long"/>
+        <result column="teamSpaceFlag"		property="teamSpaceFlag" 		javaType="java.lang.Byte"/>
+        <result column="teamSpaceMaxNum"		property="teamSpaceMaxNum" 		javaType="java.lang.Integer"/>
+        <result column="validateKey"		property="validateKey" 		javaType="java.lang.String"/>
+        <result column="iterations"		property="iterations" 		javaType="java.lang.Integer"/>
+        <result column="salt"		property="salt" 		javaType="java.lang.String"/>
+        <result column="tagId"		property="tagId" 		javaType="java.lang.String"/>
+        <result column="tag"		property="tag" 		javaType="java.lang.String"/>
+        <result column="uploadBandWidth"		property="uploadBandWidth" 		javaType="java.lang.Long"/>
+        <result column="downloadBandWidth"		property="downloadBandWidth" 		javaType="java.lang.Long"/>
+    </resultMap>
+	<update id="update" parameterClass="UserTag">
+        <![CDATA[
+        update user_tag set tagId=#tagId#
+        where userId=#userId#
+        ]]>
+	</update>
+	<insert id="insert" parameterClass="UserTag">
+        <![CDATA[
+        insert into user_tag(tagId,userId) 
+        values 
+        (#tagId#,#userId#)
+        ]]>
+	</insert>
+	<delete id="delete" parameterClass="String">
+        <![CDATA[
+        delete from user_tag where tagId=#value#
+        ]]>
+	</delete>
+	<delete id="deleteByUserId" parameterClass="Long">
+        <![CDATA[
+        delete from user_tag where userId=#value#
+        ]]>
+	</delete>
+	<select id="selectByUserTag" parameterClass="UserTag" resultClass="UserTag">
+        <![CDATA[
+        select * from user_tag where tagId=#tagId# and userId=#userId#
+        ]]>
+	</select>
+	<select id="selectUserTagByUserId" parameterClass="Long" resultMap="resultMap.UserTagExtend">
+        <![CDATA[
+        select ut.userId as userId,ut.tagId as tagId,t.tag as tag from user_tag ut,tag t where userId=#value# and ut.tagId=t.id
+        ]]>
+	</select>
+	<select id="getUserTagFilterdOrderList" parameterClass="map" resultMap="resultMap.UserExtend">
+         select DISTINCT(u.id),objectSid,loginName,email,password,department,departmentCode,name,loginName,createdAt,modifiedAt,lastLoginAt,
+         status,domain,cloudUserId,principalType,resourceType,appId,regionId,maxVersions,spaceQuota,teamSpaceFlag,teamSpaceMaxNum,validateKey,iterations,salt,
+         tagId,tag,uploadBandWidth,downloadBandWidth from user u,user_tag ut,tag t where ut.userId=u.id and ut.tagId=t.id
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.loginName">
+                loginName like concat('%',#filter.loginName#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.name">
+                name like concat('%',#filter.name#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.email">
+                email like concat('%',#filter.email#,'%') 
+            </isNotEmpty>         
+        </dynamic>
+        <isNotEqual prepend="and" property="filter.regionId" compareValue="0">
+           	<![CDATA[
+              regionId=#filter.regionId#  
+              ]]>
+         </isNotEqual>
+         <isNotNull prepend="and" property="filter.status">
+           	<![CDATA[
+              status=#filter.status#  
+              ]]>
+         </isNotNull>
+         <isNotNull prepend="and" property="filter.tagId">
+           	<![CDATA[
+              ut.tagId=#filter.tagId#  
+              ]]>
+         </isNotNull>
+        <isNotNull prepend="and" property="filter.appId">
+           	<![CDATA[
+              appId=#filter.appId#  
+              ]]>
+         </isNotNull>
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    <select id="getUserTagFilterdCount" parameterClass="map" resultClass="int">
+    	select count(DISTINCT(u.id)) from user u,user_tag ut,tag t where ut.userId=u.id and ut.tagId=t.id
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.loginName">
+                loginName like concat('%',#filter.loginName#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.name">
+                name like concat('%',#filter.name#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.email">
+                email like concat('%',#filter.email#,'%') 
+            </isNotEmpty>
+        </dynamic>
+        
+         <isNotEqual prepend="and" property="filter.regionId" compareValue="0">
+           	<![CDATA[
+              regionId=#filter.regionId#  
+              ]]>
+         </isNotEqual>
+         <isNotNull prepend="and" property="filter.status">
+           	<![CDATA[
+              status=#filter.status#  
+              ]]>
+         </isNotNull>
+         <isNotNull prepend="and" property="filter.tagId">
+           	<![CDATA[
+              ut.tagId=#filter.tagId#  
+              ]]>
+         </isNotNull>
+        <isNotNull prepend="and" property="filter.appId">
+           	<![CDATA[
+              appId=#filter.appId#  
+              ]]>
+         </isNotNull>   
+	</select>
+</sqlMap>
+

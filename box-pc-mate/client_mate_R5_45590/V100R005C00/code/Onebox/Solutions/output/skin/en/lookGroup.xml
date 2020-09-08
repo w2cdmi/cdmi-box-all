@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="550,478" caption="0,0,0,-1" mininfo="550,378">
+	<Font id="0" name="微软雅黑" size="13" bold="true" />
+	<Font id="1" name="微软雅黑" size="12" bold="true" />
+	<Font id="2" name="微软雅黑" size="12" />
+	<Font id="3" name="微软雅黑" size="14" bold="true" />
+	<Font id="4" name="宋体" size="22" bold="true" />
+	<Font id="5" name="宋体" size="18" bold="true" />	
+	<Default name="VScrollBar" value="width=&quot;13&quot; button1normalimage=&quot;file='..\img\scroll\vscroll_up_normal.png'&quot; button1hotimage=&quot;file='..\img\scroll\vscroll_up_hover.png'&quot; button1pushedimage=&quot;file='..\img\scroll\vscroll_up_down.png'&quot; button1disabledimage=&quot;file='..\img\scroll\vscroll_up_disable.png'&quot; button2normalimage=&quot; file='..\img\scroll\vscroll_down_normal.png'&quot; button2hotimage=&quot;file='..\img\scroll\vscroll_down_hover.png'&quot; button2pushedimage=&quot;file='..\img\scroll\vscroll_down_down.png'&quot; button2disabledimage=&quot;file='..\img\scroll\vscroll_down_disable.png'&quot; thumbnormalimage=&quot;file='..\img\scroll\thumb_normal.png' &quot; thumbhotimage=&quot;file='..\img\scroll\thumb_hover.png' &quot; thumbpushedimage=&quot;file='..\img\scroll\thumb_down.png' &quot; thumbdisabledimage=&quot;file='..\img\scroll\thumb_disable.png' &quot;  bkcolor=&quot;#FF000000&quot;" />
+	<Default name="HScrollBar" value="button1normalimage=&quot;file='..\img\scrollbar.bmp' source='0,0,16,16' mask='#FFFF00FF'&quot; button1hotimage=&quot;file='..\img\scrollbar.bmp' source='18,0,34,16' mask='#FFFF00FF'&quot; button1pushedimage=&quot;file='..\img\scrollbar.bmp' source='36,0,52,16' mask='#FFFF00FF'&quot; button1disabledimage=&quot;file='..\img\scrollbar.bmp' source='54,0,70,16' mask='#FFFF00FF'&quot; button2normalimage=&quot;file='..\img\scrollbar.bmp' source='0,18,16,34' mask='#FFFF00FF'&quot; button2hotimage=&quot;file='..\img\scrollbar.bmp' source='18,18,34,34' mask='#FFFF00FF'&quot; button2pushedimage=&quot;file='..\img\scrollbar.bmp' source='36,18,52,34' mask='#FFFF00FF'&quot; button2disabledimage=&quot;file='..\img\scrollbar.bmp' source='54,18,70,34' mask='#FFFF00FF'&quot; thumbnormalimage=&quot;file='..\img\scrollbar.bmp' source='0,36,16,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbhotimage=&quot;file='..\img\scrollbar.bmp' source='18,36,34,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbpushedimage=&quot;file='..\img\scrollbar.bmp' source='36,36,52,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbdisabledimage=&quot;file='..\img\scrollbar.bmp' source='54,36,70,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; railnormalimage=&quot;file='..\img\scrollbar.bmp' source='0,54,16,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; railhotimage=&quot;file='..\img\scrollbar.bmp' source='18,54,34,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; railpushedimage=&quot;file='..\img\scrollbar.bmp' source='36,54,52,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; raildisabledimage=&quot;file='..\img\scrollbar.bmp' source='54,54,70,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; bknormalimage=&quot;file='..\img\scrollbar.bmp' source='0,72,16,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkhotimage=&quot;file='..\img\scrollbar.bmp' source='18,72,34,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkpushedimage=&quot;file='..\img\scrollbar.bmp' source='36,72,52,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkdisabledimage=&quot;file='..\img\scrollbar.bmp' source='54,72,70,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; " />
+	<VerticalLayout bordersize="1" bordercolor="#FFDDDDDD"  bkcolor="#FFF6F9FC" >
+		<HorizontalLayout height="46" width="540" padding="1,1,1,0" >
+			<HorizontalLayout>
+				<Label name="lookGroup_title" text="群组详情" textcolor="#FF000000" width="530" align="center" font="2" />
+			</HorizontalLayout>
+			<Button name="lookGroup_close_btn" padding="0,6,0,0" width="10" height="10" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;0,0,10,10&apos;" hotimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;11,0,21,10&apos;" pushedimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;22,0,32,10&apos;" />
+		</HorizontalLayout>
+		<Control height="1" bkcolor="#FFDDDDDD" padding="10,0,10,0" />
+		<HorizontalLayout height="26" padding="1,0,1,0" />
+		<HorizontalLayout height="30" width="430" padding="30,0,30,0" >
+			<Label name="lookGroup_name" text="名称:" align="right" textcolor="#FF000000" width="130" padding="0,0,0,0" font="2" />
+			<Edit name="lookGroup_nameCreate" bordersize="1" bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF" textcolor="#FF000000" padding="20,0,0,0" inset="5,8,5,8" />
+		</HorizontalLayout>
+		<HorizontalLayout height="10" padding="1,0,1,0" />
+		<HorizontalLayout height="105" width="430" padding="30,0,30,0" >
+			<Label name="lookGroup_description" text="描述:" align="right" textcolor="#FF000000" width="130" padding="0,0,0,90" font="2" />
+			<RichEdit name="lookGroup_descriptionCreate" bordersize="1" bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF" textcolor="#FF000000" padding="20,0,0,0" inset="5,8,5,8" autovscroll="true" />
+		</HorizontalLayout>
+		<HorizontalLayout height="30" padding="1,0,1,0" >
+			<Button name="lookGroup_ok" text="修改" width="50" padding="200,0,20,0" textcolor="#FF999999" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='..\img\MessageDialog\Cancel_normal.png' corner='5,5,5,5'" hotimage="file='..\img\MessageDialog\Cancel_hover.png' corner='5,5,5,5'" pushedimage="file='..\img\MessageDialog\Cancel_down.png' corner='5,5,5,5'" />
+			<Button name="lookGroup_cancel" text="取消" width="50" padding="10,0,20,0" textcolor="#FF999999" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='..\img\MessageDialog\Cancel_normal.png' corner='5,5,5,5'" hotimage="file='..\img\MessageDialog\Cancel_hover.png' corner='5,5,5,5'" pushedimage="file='..\img\MessageDialog\Cancel_down.png' corner='5,5,5,5'" />
+		</HorizontalLayout>
+		<HorizontalLayout name="mianFrame_NoticeArea" float="true" pos="0,49,0,0" width="550" height="24" bkcolor="#FF70CC70" visible="false">
+			<Text name="text_simpleNoticeMsg" text="任务已经添加，进度请在传输列表查看" width="525" height="22" maxheight="22" maxwidth="525" minwidth="525" minheight="22" textpadding="2,5,2,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" font="2" align="centerwrap" />
+			<Button name="btn_closeNotice" width="14" height="14" padding="5,4,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="..\img\exit.png" />
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

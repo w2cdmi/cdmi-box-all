@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Region">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="Region" type="com.huawei.sharedrive.isystem.cluster.domain.Region" />
+
+	<resultMap id="resultMap.Region" class="Region">
+        <result column="id"					property="id" 				javaType="java.lang.Integer"/>
+        <result column="name"				property="name" 			javaType="java.lang.String"/>
+        <result column="code"				property="code" 			javaType="java.lang.String"/>
+        <result column="isdefault"			property="defaultRegion" 	javaType="java.lang.Boolean"/>
+        <result column="description"        property="description"      javaType="java.lang.String"/>
+    </resultMap>
+    
+    <select id="getAll" resultMap="resultMap.Region">
+        select * from region order by id
+    </select>
+
+    <select id="get" resultMap="resultMap.Region" parameterClass="int">
+        select * from region where id=#value#
+    </select>
+    
+    <select id="getDefault" resultMap="resultMap.Region">
+        select * from region where isdefault='1';
+    </select>
+
+    <select id="findBycode" resultMap="resultMap.Region" parameterClass="String">
+        select * from region where code=#value#;
+    </select>
+    
+    <insert id="insert" parameterClass="Region">
+        insert into region(id,name,code,isdefault,description) values(#id#,#name#,#code#,#defaultRegion#,#description#)
+    </insert>
+
+    <update id="update" parameterClass="Region">
+        update region set name=#name#, code=#code#, isdefault=#defaultRegion#, description=#description# where id=#id#
+    </update>
+
+    <delete id="delete" parameterClass="int">
+        delete from region where id=#value#
+    </delete>
+</sqlMap>
+

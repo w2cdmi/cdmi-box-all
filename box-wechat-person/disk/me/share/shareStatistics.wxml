@@ -1,0 +1,87 @@
+<!--disk/me/share/shareStatistics.wxml-->
+<view class='page'>
+    <view class='view-bg share-title'>
+        <view class='share-title-left'>
+            <view class='view-avatar-icon'>
+                <image class='avatar-img' src='{{avatarUrl}}'></image>
+            </view>
+            <view class='view-user-name'>
+                <view class='user-name'>{{username}}</view>
+                <view class='view-level-small'>
+                      <image class='level-small-img' src='/disk/images/me/share/level.png'></image>  
+                </view>
+            </view>
+        </view>
+        <view class='view-commission' bindtap='jumpToDetail'>
+            <view class='commission-title'>提成比例{{proportions}}%</view>
+            <view class='arrow-img-icon'>
+                <image class='small-img' src='/disk/images/arrow.png'></image>
+            </view>
+        </view>
+    </view>
+
+    <view class='view-bg border-bottom'>
+        <view class='history-view'>
+            <view class='history-view-left' bindtap='gotoPersonDetail' data-detail="personDetail">
+                <view class='history-view-title'>历史分享总人数</view>
+                <view class='font-size-color'>{{countInvitByMe}}</view>
+                <view class='history-view-today-title'>今日+{{countTodayInvitByMe}}</view>
+            </view>
+            <view class='history-view-middle'></view>
+            <view class='history-view-right' bindtap='gotoProfitDetail' data-detail="profitDetail">
+                <view class='history-view-title'>历史分享总收益
+                    <image class='small-img history-show' src='/disk/images/me/show.png'></image>
+                </view>
+                <!-- <view><image class='small-img' src='/disk/images/star.png'></image></view>
+            <view><image class='small-img' src='/disk/images/me/share/me/share/gray-star.png'></image></view>  -->
+                <view class='font-size-color'>{{countTotalProfits/100}}</view>
+                <view class='history-view-today-title'>今日+{{countTodayProfits/100}}</view>
+            </view>
+        </view>
+    </view>
+
+    <view class='view-bg'>
+        <view class='my-grade-growth'>我的等级成长</view>
+        <view class='level-view'>
+            <view>
+                <view>
+                    <image class='big-img' src='/disk/images/me/share/share-level{{shareLevel}}.png'></image>
+                </view>
+                <view>{{currentLevelName}}</view>
+            </view>
+            <view class='level-view-middle'>
+                <view>还差{{endRange-countInvitByMe}}人升级为{{nextLevelName}}</view>
+                <view>
+                    <view class='gray-bg'>
+                        <view class='red-bg' style='width:{{(countInvitByMe/endRange)*100}}%'></view>
+                    </view>
+                </view>
+                <view class='level-number-view'>
+                    <view class='level-between'>{{startRange}}</view>
+                    <view>{{countInvitByMe}}/{{endRange}}</view>
+                    <view class='level-between'>{{endRange}}</view>
+                </view>
+            </view>
+            <view>
+                <view>
+                    <image class='big-img' src='/disk/images/me/share/share-level{{shareLevel+1}}.png'></image>
+                </view>
+                <view>{{nextLevelName}}</view>
+            </view>
+        </view>
+    </view>
+
+    <view class='page-middle-bg'></view>
+    <view class='vip-description view-bg'>
+        <view>分享的好处：</view>
+        <view class='font-middle share-font-middle'>新用户打开您分享的内容将与您产生绑定，以后在平台上的消费您都可以获得提成，提升比例按照您的分享等级计算。</view>
+
+        <view class='margin-top'>分享的方法：</view>
+        <view class='font-middle share-font-middle'>将您觉得好的内容保存或者上传到文件宝，分享出去即可。</view>
+
+        <view class='margin-top'>分享收益：</view>
+        <view class='font-middle share-font-middle'>你所得到的收益将实时发放到你的微信零钱包</view>
+    </view>
+
+    <!-- <view class='vip-button-share'>我要分享</view> -->
+</view>

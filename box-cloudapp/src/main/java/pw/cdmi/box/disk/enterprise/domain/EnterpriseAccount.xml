@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EnterpriseAccount">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="EnterpriseAccount" type="pw.cdmi.common.domain.enterprise.EnterpriseAccount" />
+    
+    <select id="getByEnterpriseApp" parameterClass="map" resultClass="EnterpriseAccount">
+        select * from enterprise_account where enterpriseId=#enterpriseId# and authAppId=#authAppId#
+    </select>
+
+    <select id="getByAccountId" parameterClass="Long" resultClass="EnterpriseAccount">
+        <![CDATA[
+        select * from enterprise_account where accountId=#value#
+        ]]>
+    </select>
+    
+</sqlMap>
+

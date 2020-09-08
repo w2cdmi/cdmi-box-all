@@ -1,0 +1,74 @@
+.folder-list-bd{
+    overflow: hidden;
+    cursor: pointer;
+}
+.index-recent-left,.index-recent-middle{
+    float: left;
+}
+.index-recent-middle{
+    margin-top: 14px;
+}
+.fileitem-temple > i {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    margin: 16px 10px 10px 10px;
+}
+.form-controls{
+    line-height: 60px;
+}
+#cancelButton{
+    font-size: 12px;
+    color: #333;
+    outline: none;
+    border: 1px solid #eaeaea;
+    padding: 0 32px;
+    cursor: pointer;
+}
+#selectFolderButton{
+    font-size: 12px;
+    color: #fff;
+    outline: none;
+    border: 1px solid #eaeaea;
+    padding: 0 32px;
+    background: #ea5036;
+    cursor: pointer;
+    margin-right: 20px;
+}
+.bread-crumb-content{
+    overflow: hidden;
+}
+.bread-arrow-right {
+    width: 6px;
+    height: 6px;
+    border-top: 1px solid #999;
+    border-right: 1px solid #999;
+    transform: rotate(45deg);
+    float: left;
+    margin: 5px 0 0 10px;
+}
+.bread-crumb-content div {
+    float: left;
+    cursor: pointer;
+    background-size: 3.4rem 1.7rem;
+    text-align: center;
+    color: #999;
+    max-width: 240px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 10px;
+}
+.bread-crumb-content div:hover{
+    color: #000;
+}
+.bread-crumb-content div:last-of-type {
+    float: left;
+    text-align: center;
+    color: #666666;
+    max-width: 240px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}

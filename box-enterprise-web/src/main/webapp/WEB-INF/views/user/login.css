@@ -1,0 +1,234 @@
+
+body{ background:#fafafa;}
+/*header*/
+
+.header{ width:100%; min-width:980px; height:80px;
+	/*background-color: #2e90e5;*/
+	background-color: #333333;
+  	*background-color: #2e90e5;
+ 	background-image: -moz-linear-gradient(top, #2e90e5, #2e90e5);
+ 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#2e90e5), to(#2e90e5));
+ 	background-image: -webkit-linear-gradient(top, #2e90e5, #2e90e5);
+	background-image: -o-linear-gradient(top, #2e90e5, #2e90e5);
+	/*background-image: linear-gradient(to bottom, #2e90e5, #2e90e5);*/
+	background-image: linear-gradient(to bottom, #333333, #333333);
+  	background-repeat: repeat-x;
+}
+.header-con{
+	margin:0 auto;
+	padding:0 40px;
+	height:80px;
+}
+
+.header .logo{
+	float:left;
+	padding:20px 20px 0 0;
+	white-space:nowrap;
+}
+.header .logo img{
+	max-height:40px;
+	max-width:200px!important;
+	vertical-align: middle;
+}
+
+/*page body*/
+.body{
+	background:none;
+	width:100%;
+	min-width:980px;
+	margin:-20px auto 0;
+	padding-top:0;
+}
+.body-con{
+	width:100%;
+	max-width:10000px;
+}
+
+/*footer*/
+.footer{ width:100%; min-width:980px; height:0; overflow:hidden;
+}
+.footer-con{
+	max-width:1400px;
+	min-width:960px;
+	margin:0 auto;
+	padding:7px 10px 8px;
+}
+.footer-con p{ text-align:center; font-size:12px; color:#666;
+	word-break:break-all;
+	word-wrap:break-word;
+}
+
+/* login index==========================*/
+.login-block{ position:relative; margin:0 auto; width:900px; z-index:1000;}
+.login-form{ position:absolute; right:15px; top:140px; width:240px; min-height:240px; padding:30px 50px; 
+	background:#fff;
+	-webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+	-webkit-box-shadow: 0 3px 10px #bbb;
+       -moz-box-shadow: 0 3px 10px #bbb;
+            box-shadow: 0 3px 10px #bbb;
+}
+.login-form h3{
+	color:#111;
+	margin-top:0;
+	font-weight:normal;
+	font-size:18px;
+}
+.login-form .form-con{ padding:0;}
+.login-form .name, .login-form .password, .login-form .verify-code{
+	border:1px solid #ccc;
+	padding-left: 10px;
+	margin-bottom:12px;
+	-webkit-border-radius: 3px;
+       -moz-border-radius: 3px;
+            border-radius: 3px;
+}
+.login-form .name i, .login-form .password i, .login-form .verify-code i{
+	vertical-align:middle;
+	width:25px;
+}
+.login-form .name input, .login-form .password input, .login-form .verify-code input{
+	margin-bottom:0;
+	padding:7px 5px;
+	width:192px;
+	background:none;
+	border:0 none;
+}
+.login-form .verify-code input{
+	width:110px;
+}
+.login-form .forget-pwd{ display:block; height:20px; padding:0 5px 5px;}
+.login-form .login-submit{ margin-top:5px;}
+.login-form .login-submit .btn{ padding:12px 0; font-size: 16px;}
+.login-form .handlePrompt{ width:240px;}
+.login-form .handlePrompt p{ padding-top:7px; padding-bottom:7px;}
+
+/*banner style*/
+.banner-con{ padding-top:140px; overflow:hidden;}
+.banner-img-list{ margin:0 auto; width:870px; height:300px; position:relative;}
+.banner-img-list > div{
+	position:absolute;
+	left:1600px;
+	top:0;
+	width:450px;
+	height:300px;
+	background-repeat:no-repeat;
+	background-position: 10px top;
+}
+.banner-btn{ margin:0 auto; width:900px; height:0px; position:relative;}
+.banner-btn ul{ width:200px; height:20px; position:absolute; left:200px; top:-10px;}
+.banner-btn li{
+	cursor:pointer;
+	float:left;
+	margin-right:12px;
+	width:8px;
+	height:8px;
+	background:#a7cff2;
+	line-height:1000px;
+	overflow:hidden;
+	-webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+            border-radius: 10px;
+}
+.banner-btn li:hover{ background:#ddd;}
+.banner-btn li.active{
+	cursor:default;
+	background:#2e91e6;
+}
+
+
+/*register页面的register-qrcode样式*/
+.bodys{
+	overflow-y: hidden;
+	margin-top: 300px;
+	padding: 0 100px;
+	min-width: 880px;
+	background-color: #09122b;
+}
+.register-qrcode{
+	min-height: 673px;
+	margin-top: -140px;
+	/*padding-left: 100px;
+	padding-right: 100px;
+	width: 820px;*/
+}
+.register-qrcode .register-qrcode-left{
+	width: 400px;
+	height: 304px;
+	float: left;
+	background: rgba(16,24,52,0.5);
+}
+.register-qrcode .register-qrcode-right{
+	width: 400px;
+	height: 304px;
+	float: right;
+	background: rgba(16,24,52,0.5);
+}
+.login-header-middles{
+	margin: 0 0 0 -500px;
+}
+.backgrounds>img{
+	left: 10%;
+	width: 80%;
+	top: 80px;
+	position: absolute;
+}
+.register-qrcode-header{
+	width: 100%;
+	height: 72px;
+	font-size: 20px;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 40px;
+	margin-top: 30px;
+}
+.register-qrcode-middle{
+	width: 100%;
+	height: 100px;
+	position: relative;
+}
+.register-qrcode-left .register-qrcode-middle>a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background: url(/static/skins/default/img/wxwork_install_blank_middle.png) no-repeat 50% 40px;
+	background-size: 200px 40px;
+}
+.register-qrcode-left .register-qrcode-middle:hover>a{
+	background: url(/static/skins/default/img/wxwork_install_blue_middle.png) no-repeat 50% 40px;
+	background-size: 200px 40px;
+}
+.register-qrcode-right .register-qrcode-middle>a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background: url(/static/skins/default/img/wxwork_register_white_middle.png) no-repeat 50% 40px;
+	background-size: 200px 40px;
+}
+.register-qrcode-right .register-qrcode-middle:hover>a{
+	background: url(/static/skins/default/img/wxwork_register_blue_middle.png) no-repeat 50% 40px;
+	background-size: 200px 40px;
+}
+.register-qrcode-middle>.register-qrcode-middles{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.register-explain{
+	width: 100%;
+	height: 30px;
+	font-size: 30px;
+	margin-top: 40px;
+	text-align: center;
+	color: #FFFFFF;
+}
+.register-prompt{
+	height: 62px;
+	line-height: 62px;
+	width: 100%;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-align: center;
+}

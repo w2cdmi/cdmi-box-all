@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="LdapCheck">
+
+	<!-- UseLdap type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="LdapCheck" type="com.huawei.sharedrive.uam.enterpriseuser.domain.LdapCheck" />
+		
+	  <insert id="insert" parameterClass="LdapCheck">
+          <![CDATA[
+          insert into ldap_check(enterpriseId, lastCheckTime, checkStatus) values (#enterpriseId#, #lastCheckTime#, #checkStatus#)
+          ]]>
+      </insert>
+      
+     <select id="get" parameterClass="long" resultClass="LdapCheck">
+       <![CDATA[
+        select * from ldap_check where enterpriseId=#value#
+        ]]>
+    </select>
+    
+    <update id="update" parameterClass="LdapCheck">
+       <![CDATA[
+        update ldap_check set lastCheckTime=#lastCheckTime#,checkStatus=#checkStatus# where
+        enterpriseId=#enterpriseId#
+        ]]>
+    </update>
+</sqlMap>
+

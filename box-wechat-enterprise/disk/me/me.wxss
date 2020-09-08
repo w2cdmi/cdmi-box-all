@@ -1,0 +1,180 @@
+.page{
+    padding-bottom:60px;
+}
+.avatar{
+    height:90rpx;
+    width:90rpx;
+    background-size:90rpx 90rpx;
+    border-radius:50%;
+}
+.name{
+    margin-left: 30rpx;
+    width: 100%;
+}
+.progress-view{
+    height: 50rpx;
+}
+.person-item{
+    display: flex;
+    padding:0px 30rpx;
+    background: #fff;
+    margin-bottom:30rpx;
+}
+
+.item-flow {
+    padding: 20rpx 30rpx;
+}
+
+.item {
+    display: flex;
+    justify-content: space-between;
+    height:80rpx;
+    background: #fff;
+    padding: 10rpx 30rpx;
+    border-top: 1px solid #f8f8f8;
+}
+
+.contact-customer-service {
+    position: relative;
+    width: 400rpx;
+    height: 80rpx;
+    margin: 0 auto;
+    background: #ea5036;
+    border-radius: 10rpx;
+    text-align: center;
+    line-height: 80rpx;
+    margin-top: 60rpx;
+    color: #fff;
+}
+
+.contact-customer-service contact-button {
+    position: absolute;
+    opacity: 0;
+}
+
+.image-size {
+    width: 16rpx;
+    height: 28rpx;
+    margin-left: 20rpx;
+}
+
+.image-vip {
+    width: 36rpx;
+    height: 25rpx;
+    margin-top: 6rpx;
+    margin-left: 20rpx;
+}
+
+.img-enterprise-manange {
+    width: 24rpx;
+    height: 24rpx;
+    margin-top: 28rpx;
+}
+
+/* 小图标  */
+
+.image-icon {
+    width: 40rpx;
+    height: 40rpx;
+    padding-right: 20rpx;
+}
+
+.align-center view{
+    height:40rpx;
+    line-height:45rpx;
+}
+
+.flex-align-center {
+    display: flex;
+    align-items: center;
+}
+
+.name-title {
+    height: 40rpx;
+    line-height: 40rpx;
+    display: flex;
+}
+
+.name-title label {
+    max-width: 180rpx;
+    white-space: nowrap;
+    text-align: left;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.vip-validity {
+    color: #999;
+    font-size: 11px;
+    margin-left: 5px;
+}
+
+.progress-used {
+    height: 18rpx;
+    background: #75d7a3;
+    border-radius: 1.5em;
+    width: 0%;
+}
+
+.progress-space {
+    height: 18rpx;
+    background: #e7e7e7;
+    border-radius: 1.5em;
+}
+
+.progress-size {
+    font-size: 26rpx;
+    color: #999;
+    margin-top:6rpx;
+}
+
+.delete-btn {
+    width: 26rpx;
+    height: 26rpx;
+}
+
+.add-btn {
+    width: 26rpx;
+    height: 26rpx;
+    margin-left: 44rpx;
+}
+
+.text-operation {
+    font-size: 13px;
+    color: #333;
+    margin-left: 10rpx;
+}
+
+.align-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*文字  */
+
+.comm-text {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width:300rpx;
+}
+
+.align-center text{
+    height: 28rpx;
+    line-height: 28rpx;
+}
+
+.footer{
+    text-align:center;
+    padding-bottom:20rpx;
+    margin-top:60rpx;
+}
+.footer view{
+    font-size: 24rpx;
+    color: #666;
+    margin-top:4rpx;
+}
+contact-button{
+    z-index: 8;
+}

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SysConcStatistics">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="SysConcStatistics"
+		type="com.huawei.sharedrive.app.statistics.domain.SysConcStatisticsDay" />
+	<insert id="insert" parameterClass="SysConcStatistics">
+    	<![CDATA[
+    	insert into sys_conc_statistics_day
+    	(day,maxUpload,maxDownload)
+    	values
+    	(#day#,#maxUpload#,#maxDownload#)
+    	]]>
+	</insert>
+	
+	<select id="get" resultClass="SysConcStatistics" parameterClass="int">
+        <![CDATA[
+        SELECT *
+        FROM sys_conc_statistics_day
+        WHERE day=#day#
+        ]]>
+	</select>
+	
+	<select id="getByRange" resultClass="SysConcStatistics" parameterClass="map">
+        SELECT *
+        FROM sys_conc_statistics_day
+        <dynamic prepend="where">
+			<isNotEmpty prepend="and" property="beginDay">
+			     <![CDATA[
+				day >= #beginDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDay">
+			     <![CDATA[
+				day <= #endDay#
+			    ]]>	
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<update id="update" parameterClass="SysConcStatistics">
+        <![CDATA[
+        UPDATE sys_conc_statistics_day
+        SET maxUpload=#maxUpload#,maxDownload=#maxDownload#
+        WHERE day=#day#
+        ]]>
+	</update>
+</sqlMap>
+

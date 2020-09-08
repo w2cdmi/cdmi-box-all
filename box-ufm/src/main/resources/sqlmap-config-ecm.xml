@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig  PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+         "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+    <settings lazyLoadingEnabled="true" useStatementNamespaces="true" />
+
+    <!-- 以下的配置都是从ECM模块复制的，将来整体重构完成后，UFM和ECM合二为一，此配置文件将与ECM合并 -->
+    <sqlMap resource="pw/cdmi/common/domain/AccountConfig.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/user/domain/Department.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/app/user/domain/Privilege.xml"/>
+</sqlMapConfig>
+

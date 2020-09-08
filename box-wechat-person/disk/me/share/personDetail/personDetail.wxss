@@ -1,0 +1,85 @@
+/* disk/me/share/personDetail/personDetail.wxss */
+
+.detail-list {
+    height: 120rpx;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #f6f6f6;
+    background: #fff;
+}
+
+.avatar-comm {
+    width: 72rpx;
+    height: 72rpx;
+    border-radius: 50%;
+    margin: 0rpx 30rpx 0rpx 40rpx;
+}
+
+.person-name {
+    font-size: 30rpx;
+    color: #333;
+}
+
+.level-comm {
+    width: 30rpx;
+    height: 24rpx;
+    margin-left: 10rpx;
+}
+
+.name-text {
+    font-size: 32rpx;
+    color: #333;
+}
+
+.date-text {
+    font-size: 22rpx;
+    color: #666;
+}
+
+.profit-text-align {
+    text-align: right;
+}
+
+.profit-text {
+    font-size: 36rpx;
+    color: #ea5036;
+}
+
+.state-text {
+    font-size: 22rpx;
+    color: #333;
+}
+
+.payment {
+    color: #36c777;
+}
+
+.profit-list {
+    height: 120rpx;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f6f6f6;
+    background: #fff;
+    padding: 0 40rpx;
+}
+
+.blank-bg{
+    padding-top:300rpx;
+}
+
+.blank-bg-image{
+    display:flex;
+    justify-content:center;
+}
+
+.blank-bg-image image{
+    width:260rpx;
+    height:200rpx;
+}
+
+.blank-bg-font{
+    color:#666;
+    text-align:center;
+    margin-top:30rpx;
+}

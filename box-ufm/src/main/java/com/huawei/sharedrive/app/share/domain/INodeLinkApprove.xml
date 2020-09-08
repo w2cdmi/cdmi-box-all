@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="INodeLinkApprove">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="INodeLinkApprove" type="com.huawei.sharedrive.app.share.domain.INodeLinkApprove" />
+
+    <insert id="insert" parameterClass="INodeLinkApprove">
+       INSERT INTO `inode_link_approve` (`linkCode`, `status`, `approveBy`, `startTime`, `endTime`, `applyReason`,`approveAt`,`accountId`,`nodeId`,`linkOwner`,`linkStatus`,`approveName`,`nodeName`,`linkOwnerName`) 
+                                 VALUES (#linkCode#, #status#, #approveBy#, #startTime#, #endTime#, #applyReason#,#approveAt#,#accountId#,#nodeId#,#linkOwner#,#linkStatus#,#approveName#,#nodeName#,#linkOwnerName#)
+    </insert>
+    
+    <insert id="update" parameterClass="INodeLinkApprove">
+       UPDATE `inode_link_approve` SET `status`=#status#, `approveAt`=#approveAt# WHERE `linkCode`=#linkCode#
+    </insert>
+
+    <select id="list"   parameterClass="map" resultClass="INodeLinkApprove">
+      select * FROM link_approve_user u LEFT JOIN inode_link_approve a ON u.linkCode=a.linkCode 
+      
+      <dynamic prepend="where">
+          <isGreaterThan prepend="and" property="filter.type" compareValue="0">
+              u.type=#filter.type#
+          </isGreaterThan>
+          <isGreaterThan prepend="and" property="linkApprove.status" compareValue="-1">
+              a.status=#linkApprove.status#
+          </isGreaterThan>
+          <isGreaterThan prepend="and" property="linkApprove.linkOwner" compareValue="0">
+              a.linkOwner =#linkApprove.linkOwner#
+          </isGreaterThan>
+          <isGreaterThan prepend="and" property="linkApprove.approveBy" compareValue="0">
+              u.cloudUserId=#linkApprove.approveBy#
+          </isGreaterThan>
+         <isNotNull property="filter">
+            order by $filter.orderField$ $filter.order$ limit $filter.offset$,$filter.limit$ 
+         </isNotNull>
+      </dynamic>
+    </select>
+
+    <select id="listCount"   parameterClass="map" resultClass="int">
+    
+      select count(*) FROM link_approve_user u LEFT JOIN inode_link_approve a ON u.linkCode=a.linkCode 
+      <dynamic prepend="where">
+          <isGreaterThan prepend="and" property="filter.type" compareValue="0">
+              u.type=#filter.type#
+          </isGreaterThan>
+          <isGreaterThan prepend="and" property="linkApprove.status" compareValue="-1">
+              a.status=#linkApprove.status#
+          </isGreaterThan>
+          <isGreaterThan prepend="and" property="linkApprove.linkOwner" compareValue="0">
+              a.linkOwner =#linkApprove.linkOwner#
+          </isGreaterThan>
+          <isGreaterThan prepend="and" property="linkApprove.approveBy" compareValue="0">
+              u.cloudUserId=#linkApprove.approveBy#
+          </isGreaterThan>
+         <isNotNull property="filter">
+            order by $filter.orderField$ $filter.order$ limit $filter.offset$,$filter.limit$ 
+         </isNotNull>
+      </dynamic>
+    </select>
+    
+    
+    <select id="listAll"   parameterClass="map" resultClass="INodeLinkApprove">
+      select * from inode_link_approve where accountId=#linkApprove.accountId#
+      <dynamic>
+          <isGreaterThan prepend="and" property="linkApprove.status" compareValue="-1">
+              `status`=#linkApprove.status#
+          </isGreaterThan>
+         <isNotNull property="filter">
+            order by $filter.orderField$ $filter.order$ limit $filter.offset$,$filter.limit$ 
+         </isNotNull>
+      </dynamic>
+    </select>
+    
+    <select id="listAllCount"   parameterClass="map" resultClass="int">
+      select count(*) from inode_link_approve where accountId=#linkApprove.accountId#
+        <dynamic>
+            <isGreaterThan prepend="and" property="linkApprove.status" compareValue="-1">
+                `status`=#linkApprove.status#
+            </isGreaterThan>
+            <isNotNull property="filter">
+                order by $filter.orderField$ $filter.order$ limit $filter.offset$,$filter.limit$
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    
+    <update id="updateLinkStatus" parameterClass="map">
+       UPDATE `inode_link_approve` SET `linkStatus`=#linkStatus# WHERE (`nodeId`=#nodeId#) AND (`linkOwner`=#linkOwner#) 
+    </update>
+    
+    <update id="updateStatus" parameterClass="INodeLinkApprove">
+       UPDATE `inode_link_approve` SET `status`=#status#, `approveAt`=#approveAt#, `approveBy` = #approveBy#, `approveName`=#approveName# WHERE (`linkCode`=#linkCode#)
+    </update> 
+    
+    <select id="getApproveByLinkCode"   parameterClass="string" resultClass="INodeLinkApprove">
+      select * from inode_link_approve where linkCode=#linkCode#
+    </select>
+
+    <delete id="deleteByLinkCode" parameterClass="string">
+      delete from inode_link_approve where linkCode=#linkCode#
+    </delete>
+    <delete id="deleteByNodeId" parameterClass="map">
+      delete from inode_link_approve where nodeId=#nodeId# and linkOwner=#linkOwner# and  status=1
+    </delete>
+    
+    
+    <select id="listUserApprove"   parameterClass="map" resultClass="INodeLinkApprove">
+        select * from inode_link_approve where accountId=#linkApprove.accountId# and approveBy=#linkApprove.approveBy#
+      <dynamic >
+         <isNotNull property="filter">
+            order by $filter.orderField$ $filter.order$ limit $filter.offset$,$filter.limit$ 
+         </isNotNull>
+      </dynamic>
+    </select>
+    <select id="listCountUserApprove"   parameterClass="map" resultClass="int">
+        select  count(*) from inode_link_approve where accountId=#linkApprove.accountId# and approveBy=#linkApprove.approveBy#
+      <dynamic >
+         <isNotNull property="filter">
+            order by $filter.orderField$ $filter.order$ limit $filter.offset$,$filter.limit$ 
+         </isNotNull>
+      </dynamic>
+    </select>
+</sqlMap>
+

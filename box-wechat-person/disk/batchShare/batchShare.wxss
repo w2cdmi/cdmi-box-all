@@ -1,0 +1,375 @@
+/* disk/batchShare/batchShare.wxss */
+
+.actionsheet__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.bottom-view {
+    position: absolute;
+    width: 100%;
+    height: 273rpx;
+    bottom: 0;
+    background-color: #fff;
+    z-index: 20;
+}
+
+.select-icon {
+    height: 30rpx;
+    width: 30rpx;
+}
+
+.default-ele {
+    width: 90%;
+    display: flex;
+}
+
+.flug-icon {
+    width: 11rpx;
+    height: 22rpx;
+    right: 8px;
+    position: absolute;
+    top: 9rpx;
+}
+
+.plug-view {
+    position: absolute;
+    right: 0;
+}
+
+.page-height {
+    min-height: 78%;
+    height: auto;
+}
+
+.default-title {
+    width: 115rpx;
+}
+
+.default-txt {
+    color: #999;
+}
+
+.default-line {
+    margin-top: 20rpx;
+}
+
+.sharePerson {
+    height: 30px;
+    width: 30px;
+}
+
+.share-txt {
+    bottom: 46rpx;
+    color: #ea5036;
+    z-index: 21;
+    display: flex;
+    align-items: center;
+    width: auto;
+}
+
+.share-btn {
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    padding: 0px;
+}
+
+button::after {
+    border: 0;
+}
+
+.view-input {
+    border-bottom: 1px solid #f1f1f1;
+    padding-bottom: 20rpx;
+    min-height: 457rpx;
+    position: relative;
+    background-color: #fff;
+}
+
+.view-input input {
+    background: #f8f8f8;
+    padding: 0 20rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 5px;
+}
+
+.input-class {
+    font-size: 34rpx;
+    color: rgba(3, 3, 3, 0.4);
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1f1f1;
+    height: 47rpx;
+}
+
+.item-view {
+    background-color: #f4f4f4;
+    width: 100%;
+    height: 129rpx;
+    text-align: center;
+    bottom: 0px;
+}
+
+.confirm-button {
+    background-color: #fff;
+    width: 100%;
+    height: 100rpx;
+    left: 0px;
+    position: absolute;
+    bottom: 0px;
+    line-height: 100rpx;
+}
+
+.view-select {
+    display: flex;
+    align-items: center;
+    margin-left: 17px;
+    width: 160rpx;
+}
+
+.view-default {
+    display: flex;
+    align-items: center;
+    margin-left: 17px;
+}
+
+.share-title {
+    width: 140rpx;
+}
+
+.view-select view {
+    padding-right: 10rpx;
+    line-height: 30rpx;
+}
+
+.view-dotted {
+    border-radius: 10rpx;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    min-height: 238rpx;
+}
+
+.select-files-box {
+    position: relative;
+    overflow: hidden;
+    padding: 20rpx;
+}
+
+.textarea {
+    width: 100%;
+    height: 75px;
+    margin-top: 34rpx;
+    font-size: 34rpx;
+}
+
+.select-files-box > view {
+    height: 264rpx;
+    width: 33%;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    float: left;
+}
+
+.delete-file-img {
+    width: 38rpx;
+    height: 38rpx;
+    position: absolute;
+    margin-left: -76rpx;
+    margin-top: -58rpx;
+}
+
+.bottom-page {
+    margin-top: 20rpx;
+}
+
+.view-dotted image {
+    width: 100rpx;
+    height: 100rpx;
+}
+
+.blank-bg {
+    text-align: center;
+    width: 198rpx;
+    height: 198rpx;
+}
+
+.share-button {
+    text-align: center;
+    background: #ea5036;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 5px;
+    font-size: 28rpx;
+    color: #fff;
+    position: relative;
+    width: 90%;
+    margin: 0 auto;
+    margin-top: 140rpx;
+    margin-bottom: 61rpx;
+}
+
+.number-code {
+    letter-spacing: 4rpx;
+}
+
+.blank-img {
+    width: 198rpx;
+    height: 198rpx;
+}
+
+.img {
+    width: 198rpx;
+    height: 198rpx;
+}
+
+.copy-code {
+    background-color: #f1f1f1;
+    justify-content: center;
+    border-radius: 10rpx;
+    color: #666;
+    height: 40rpx;
+    line-height: 40rpx;
+}
+
+.select-file-name {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+radio {
+    width: 48rpx;
+}
+
+radio .wx-radio-input {
+    border-radius: 50%;
+    width: 30rpx;
+    height: 30rpx;
+    margin-right: 50rpx;
+}
+
+radio .wx-radio-input.wx-radio-input-checked {
+    border: 1px solid #1d97ff;
+    background: #1d97ff;
+}
+
+radio .wx-radio-input.wx-radio-input-checked::before {
+    border-radius: 50%;
+    width: 30rpx;
+    height: 30rpx;
+    line-height: 30rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: #fff;
+    background: transparent;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.share-screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.2;
+    overflow: hidden;
+    z-index: 1000;
+}
+
+.bg-color {
+    background: transparent;
+}
+
+.drawer-screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.2;
+    overflow: hidden;
+    z-index: 1000;
+    color: #fff;
+}
+
+.drawer_attr_box {
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2000;
+    background: #fff;
+}
+
+.share-draw-txt {
+    text-align: center;
+    color: #666;
+    font-size: 26rpx;
+    margin-top: 20rpx;
+    height: 70rpx;
+}
+
+.cancel-txt {
+    width: 100%;
+    height: 90rpx;
+    text-align: center;
+    color: #333;
+    font-size: 32rpx;
+    line-height: 90rpx;
+}
+
+.share-drawer-attr-content {
+    overflow-y: scroll;
+    height: auto;
+    background-color: #fafafa;
+}
+
+.share-draw-img {
+    width: 121rpx;
+    height: 186rpx;
+    margin-left: 54rpx;
+}
+
+.wechat-friends {
+    display: block;
+    color: #333;
+    font-size: 25rpx;
+    font-weight: bold;
+    margin-top: 15rpx;
+    text-align: center;
+}
+
+.icon-contair {
+    border-bottom: 1px solid #dcdcdc;
+    height: 174rpx;
+}
+
+.drawer_attr_content {
+    overflow-y: scroll;
+}
+
+.share-wechat-image {
+    width: 100rpx;
+    height: 100rpx;
+    display: block;
+    margin-left: 10rpx;
+}

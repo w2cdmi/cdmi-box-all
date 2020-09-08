@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc version="1.0">
+	<properties font="宋体,10,1" windowstyles="8388645">
+	</properties>
+	<item name="欢迎" link="faq\welcome.html" imagenumber="9">
+	</item>
+	<item name="基本" link="faq\basic.html">
+		<item name="什么是StorBox同步客户端" link="faq\desktop_definition.html" imagenumber="9">
+		</item>
+		<item name="如何添加或上传文件" link="faq\upload_file.html" imagenumber="9">
+		</item>
+		<item name="如何与他人分享文件或文件夹" link="faq\share_file.html" imagenumber="9">
+		</item>
+		<item name="如何在电脑之间同步文件" link="faq\desktop_sync_file.html" imagenumber="9">
+		</item>
+		<item name="如何了解同步客户端什么时间正在同步" link="faq\desktop_syncing.html" imagenumber="9">
+		</item>
+		<item name="我的文件丢失了，怎样才能找回" link="faq\find_lost_file.html" imagenumber="9">
+		</item>
+		<item name="如何获取旧版本文件" link="faq\web_gain_multiversion.html" imagenumber="9">
+		</item>
+		<item name="如何恢复已删除的文件" link="faq\recover_deleted_file.html" imagenumber="9">
+		</item>
+		<item name="StorBox对系统有哪些要求" link="faq\rundisk_system_require.html" imagenumber="9">
+		</item>
+	</item>
+	<item name="共享" link="faq\share.html">
+		<item name="如何与他人分享文件或文件夹" link="faq\share_file_a.html" imagenumber="9">
+		</item>
+		<item name="加入其他人的共享文件夹是否会占用我的空间" link="faq\share_file_occupy_space.html" imagenumber="9">
+		</item>
+		<item name="我是否可以共享文件或文件夹给非StorBox用户" link="faq\share_file_nohuawei.html" imagenumber="9">
+		</item>
+		<item name="能否重命名或移动共享文件或文件夹" link="faq\rename_move_share.html" imagenumber="9">
+		</item>
+		<item name="如何删除共享成员" link="faq\remove_share_number.html" imagenumber="9">
+		</item>
+		<item name="如何取消文件或文件夹共享" link="faq\cancel_share_file.html" imagenumber="9">
+		</item>
+		<item name="如何退出共享" link="faq\quit_share.html" imagenumber="9">
+		</item>
+		<item name="如何取消文件或文件夹链接" link="faq\cancel_share_link.html" imagenumber="9">
+		</item>
+	</item>
+	<item name="桌面应用" link="faq\pc.html">
+		<item name="什么是StorBox同步客户端" link="faq\desktop_definition_a.html" imagenumber="9">
+		</item>
+		<item name="如何在电脑之间同步文件" link="faq\desktop_sync_file_a.html" imagenumber="9">
+		</item>
+		<item name="如何了解同步客户端什么时间正在同步" link="faq\desktop_syncing_a.html" imagenumber="9">
+		</item>
+		<item name="如何取消同步客户端与云端的同步关系" link="faq\desktop_release_sync.html" imagenumber="9">
+		</item>
+		<item name="如何暂停和恢复同步" link="faq\desktop_pause_recover_sync.html" imagenumber="9">
+		</item>
+		<item name="图标含义是什么" link="faq\desktop_file_icon.html" imagenumber="9">
+		</item>
+		<item name="是否能在多台电脑上运行我的StorBox同步客户端" link="faq\desktop_multicomputer_oneacc.html" imagenumber="9">
+		</item>
+		<item name="是否能在同一台电脑上运行多个StorBox用户" link="faq\desktop_onecomputer_multiacc.html" imagenumber="9">
+		</item>
+		<item name="如何删除StorBox中的文件" link="faq\delete_file.html" imagenumber="9">
+		</item>
+		<item name="当文件或文件夹上没有显示任何状态图标时，如何解决" link="faq\desktop_icon_dispear.html" imagenumber="9">
+		</item>
+		<item name="如果我的硬盘空间无法容纳整个StorBox中的内容，是否可以进行选择性同步" link="faq\selected_sync.html" imagenumber="9">
+		</item>
+		<item name="StorBox对系统有哪些要求" link="faq\rundisk_system_require_a.html" imagenumber="9">
+		</item>
+	</item>
+	<item name="移动应用" link="faq\mobile.html">
+		<item name="如何从手机上传文件" link="faq\mobile_upload_file.html" imagenumber="9">
+		</item>
+		<item name="我可以在手机上查看哪些类型的文件" link="faq\mobile_file_type.html" imagenumber="9">
+		</item>
+		<item name="能否播放StorBox Android应用中的视频" link="faq\mobile_play_film.html" imagenumber="9">
+		</item>
+		<item name="我可以在手机上储存多少文件" link="faq\mobile_store_file.html" imagenumber="9">
+		</item>
+		<item name="在我的手机上，下载StorBox中的文件或文件夹后起什么作用" link="faq\mobile_file_cache.html" imagenumber="9">
+		</item>
+		<item name="StorBox对系统有哪些要求" link="faq\rundisk_system_require_b.html" imagenumber="9">
+		</item>
+	</item>
+	<item name="安全和隐私" link="faq\security.html">
+		<item name="StorBox如何保证数据安全" link="faq\webdisk_security.html" imagenumber="9">
+		</item>
+		<item name="StorBox如何保证隐私" link="faq\webdisk_privacy.html" imagenumber="9">
+		</item>
+	</item>
+</toc>

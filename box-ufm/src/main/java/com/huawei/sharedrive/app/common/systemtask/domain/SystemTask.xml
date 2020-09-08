@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="SystemTask">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="SystemTask" type="com.huawei.sharedrive.app.common.systemtask.domain.SystemTask" />
+
+	<resultMap id="resultMap.SystemTask" class="SystemTask">
+		<result column="taskId" 			property="taskId" 				javaType="java.lang.String" />
+		<result column="pTaskID" 			property="pTaskId" 				javaType="java.lang.String" />
+		<result column="state" 				property="state" 				javaType="java.lang.Integer" />
+		<result column="createTime" 		property="createTime" 			javaType="java.util.Date" />
+		<result column="exeAgent" 			property="exeAgent" 			javaType="java.lang.String" />
+		<result column="taskInfo" 			property="taskInfo" 			javaType="java.lang.String" />
+		<result column="exeUpdateTime" 		property="exeUpdateTime" 		javaType="java.util.Date" />
+		<result column="exeRuningInfo" 		property="exeRuningInfo" 		javaType="java.lang.String" />
+		<result column="taskKey" 		    property="taskKey" 				javaType="java.lang.String" />
+		<result column="TimeOut" 	        property="timeout" 				javaType="java.lang.Long" />
+	</resultMap>
+
+
+    <select id="get" resultMap="resultMap.SystemTask" parameterClass="string">
+        select * from systask where taskID=#value#
+    </select>
+    
+    <select id="listSystemTaskByTaskKey" resultMap="resultMap.SystemTask" parameterClass="string">
+        select * from systask where taskKey=#value#
+    </select>
+    
+     <select id="listSystemTaskByTaskKeyAndState" resultMap="resultMap.SystemTask" parameterClass="SystemTask">
+        select * from systask where taskKey=#taskKey# and state = #state#
+    </select>
+    
+     <select id="getSystemTaskTotalsByTaskKeyAndState" resultClass="Long" parameterClass="SystemTask">
+        select count(taskKey) from systask where taskKey=#taskKey# and state = #state#
+    </select>
+
+     <select id="listSystemTaskByPTaskID" resultMap="resultMap.SystemTask" parameterClass="map">
+        select * from systask 
+        <dynamic prepend="where">
+            <isNotNull property="pTask">
+            	pTaskID = #pTask#
+            </isNotNull>
+         </dynamic>
+         <dynamic prepend="limit">
+         	 <isNotNull property="limit">
+                 #limit.offset#, #limit.length#
+             </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="listSystemTaskByState" resultMap="resultMap.SystemTask" parameterClass="map">
+        select * from systask 
+        <dynamic prepend="where">
+            <isNotNull property="pTask">
+                    state = #state#
+            </isNotNull>
+         </dynamic>
+         <dynamic prepend="limit">
+             #limit.offset#, #limit.length#
+        </dynamic>
+    </select>
+    
+    
+     <select id="getOneTaskByTaskKey" resultMap="resultMap.SystemTask" parameterClass="SystemTask">
+        select * from systask where
+        <dynamic>
+         	<isNotNull property="pTaskId">
+            	pTaskID=#pTaskId# and 
+            </isNotNull>
+        </dynamic>
+		taskKey=#taskKey# and state=0 and exeAgent is NULL limit 1 
+    </select>
+    
+    <select id="getOneTaskByTaskIdAndLock" resultMap="resultMap.SystemTask" parameterClass="SystemTask">
+        select * from systask where taskID=#taskId# for update
+    </select>
+    
+    <select id="checkExistingTask" resultMap="resultMap.SystemTask" parameterClass="String">
+        select * from systask where  pTaskID=#value# and state=0 and exeAgent is NULL  limit 1 
+    </select>
+
+    <insert id="insert" parameterClass="SystemTask">
+        insert into systask(taskID,pTaskID,state,createTime,exeAgent,taskInfo,exeUpdateTime,exeRuningInfo,taskKey,timeOut) 
+        values(#taskId#,#pTaskId#,#state#,#createTime#,#exeAgent#,#taskInfo#,#exeUpdateTime#,#exeRuningInfo#,#taskKey#,#timeout#)
+    </insert>
+    
+    <update id="update" parameterClass="SystemTask">
+       update systask set state=#state#,exeAgent=#exeAgent#,taskInfo=#taskInfo#,exeUpdateTime=#exeUpdateTime#,exeRuningInfo=#exeRuningInfo# where taskID=#taskId#
+    </update>
+
+    <update id="updateState" parameterClass="SystemTask">
+        update systask set state=#state# where taskID=#taskId#
+    </update>
+    
+    <update id="updateExecuteAgent" parameterClass="SystemTask">
+        update systask set exeAgent=#exeAgent# where taskID=#taskId# and exeAgent is NULL
+    </update>
+    
+    <update id="updateExecuteState" parameterClass="SystemTask">
+        update systask set state=#state#, exeUpdateTime=#exeUpdateTime# where taskID=#taskId#
+    </update>
+    
+    <delete id="deleteByTaskID" parameterClass="string">
+        delete from systask where taskID=#value#
+    </delete>
+    
+     <delete id="deleteByPTaskID" parameterClass="string">
+        delete from systask where pTaskID=#value#
+    </delete>
+    
+     <delete id="deleteByTaskKey" parameterClass="string">
+        delete from systask where taskKey=#value#
+    </delete>
+
+</sqlMap>
+

@@ -1,0 +1,50 @@
+@@onlyRename
+{ 
+ "name":"renameFolwerwERTER223dsder001"
+}
+
+@@onlySetSync
+{ 
+ "syncStatus":"true"
+}
+
+@@renameAndSetSync
+{ 
+ "name":"renameFoERWTlder002",
+ "syncStatus":"true"
+}
+
+@@repeatName
+{ 
+ "name":"a"
+}
+
+@@emptyName
+{ 
+ "name":"　"
+}
+
+@@longName
+{ 
+ "name":"11111111112222222222333WERT33333334444444444555555555511111111112222222222333333333344444444445555555555111111111122222222223333333333444444444455555555551111111111222222222233333333334444444444555555555511111111112222222222333333333344444444441234567"
+}
+
+@@nameContainSlash
+{ 
+ "name":"abEWRTc/"
+}
+
+@@nameContainBackSlash
+{ 
+ "name":"abWERTc\\"
+}
+
+@@nameStartWithPeriod
+{ 
+ "name":".aWRT"
+}
+
+@@nameEndWithPeriod
+{ 
+ "name":"WRETa."
+}

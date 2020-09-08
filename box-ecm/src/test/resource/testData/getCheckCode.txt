@@ -1,0 +1,4 @@
+{
+	"version":"20151015002",
+    "type":"Android"
+}

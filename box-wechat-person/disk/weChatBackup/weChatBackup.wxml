@@ -1,0 +1,29 @@
+<view class='wechat-backup-page'>
+    <view class='wechat-bakup-content'>
+        <view class='wechat-backup-top'>
+            <image src='../images/wxBackup-bg.png'></image>
+            <view class='spread-one'></view>
+            <view class='spread-two'></view>
+            <view class='spread-three'></view>
+        </view>
+        <view class='wechat-backup-top-middle'>
+            <view class='wechat-backup-title'>机器人正在备份你的数据...</view>
+            <view class='wechat-data-storage'>微信备份后的数据存放在：</view>
+            <view class='wechat-data-storage'>文件>来自微信{{charLt}}{{wxName}}{{charGt}}的数据</view>
+        </view>
+        <view class='wechat-group-button'>
+            <button class='clear-button-style sure-button' bindtap='stopRobot'>停止备份</button>
+            <button class='clear-button-style wechat-backup-set-button' bindtap='toWechatBackupSet'>微信备份策略设置</button>
+        </view>
+        <view class='wechat-backup-setlist' hidden='{{listRobotConfigData.length==0?true:false}}'>
+            <view class='backup-bg'></view>
+            <view class='backup-set-title'>已设置的备份列表</view>
+            <view class='wechat-backup-setlist-con'>
+                <view class='wechat-group-list' wx:for="{{listRobotConfigData}}" wx:key="*this">
+                    <image src="../images/group-head.png"></image>
+                    <text>{{item.name}}</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

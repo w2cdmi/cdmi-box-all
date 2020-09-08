@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AuthClient">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="AuthClient" type="com.huawei.sharedrive.app.oauth2.domain.AuthClient" />
+    
+	<resultMap id="mapToAuthClient" class="AuthClient">
+		<result column="id" property="id"/>
+		<result column="password" property="password"/>
+		<result column="name" property="name"/>
+		<result column="description" property="description"/>
+		<result column="status" property="status"/>
+		<result column="created_at" property="createdAt"/>
+		<result column="modified_at" property="modifiedAt"/>
+		<result column="redirect_url" property="redirectUrl"/>
+	</resultMap>
+
+    <select id="get" parameterClass="String" resultMap="mapToAuthClient">
+        <![CDATA[
+        select * from auth_client where id=#value#
+        ]]>
+    </select>
+    
+    <insert id="insert" parameterClass="AuthClient">
+        <![CDATA[
+        insert into auth_client
+        (id,password,name,description,created_at,modified_at,redirect_url,status)
+         values 
+        (#id#,#password#,#name#,#description#,#createdAt#,#modifiedAt#,#redirectUrl#,#status#)
+        ]]>
+    </insert>
+
+    <delete id="delete" parameterClass="String">
+        <![CDATA[
+        delete from auth_client where id=#value#
+        ]]>
+    </delete>
+
+    <update id="update" parameterClass="AuthClient">
+        <![CDATA[
+        update auth_client set password=#password#,name=#name#,
+        description=#description#,created_at=#createdAt#,modified_at=#modifiedAt#
+        redirect_url=#redirectUrl#,status=#status# where id=#id#
+        ]]>
+    </update>
+
+</sqlMap>
+

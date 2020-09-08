@@ -1,0 +1,12 @@
+<template name="drawer">
+    <view class="drawer_screen" bindtap="setModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
+    <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+        <view class="drawer_attr_content">
+            <view class="drawer_content">
+                <view class="drawer_title line" bindtap="menurestore">恢复文件</view>
+                <view class="drawer_title line" bindtap="menudelete">删除</view>
+                <view class="drawer_title close" bindtap="menuclose">取消</view>
+            </view>
+        </view>
+    </view>
+</template>

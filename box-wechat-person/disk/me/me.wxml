@@ -1,0 +1,120 @@
+<import src="/disk/template/menu.wxml" />
+<view class='page'>
+    <view class='item-flow person-item'>
+        <view>
+            <view class='avatar' style="background-image:url({{avatarUrl}})"></view>
+        </view>
+        <view class='name'>
+            <view class="name-title">
+                <label>{{nick}}</label>
+                <block wx:if="{{expireDate}}">
+                    <view class='vip-validity'>{{expireDate}}会员到期</view>
+                    <image src='../images/vip-icon.png' class='image-vip'></image>
+                </block>
+            </view>
+            <view class="progress-view">
+                <view class='progress-space'>
+                    <view class='progress-used' style='width:{{spaceUsed==0?0:spaceUsed}}%'></view>
+                </view>
+                <label class='progress-size'>容量 ({{spaceSize==0?"0/0":spaceSize}})</label>
+            </view>
+        </view>
+    </view>
+    <view class='item person-item flex-between' bindtap='toInbox'>
+        <!-- <image class='img-enterprise-manange' src='/disk/images/me-management.png'></image> -->
+        <view class='align-center'>
+            <image src='../images/inbox/inbox.png' class='image-icon'></image>
+            <view>收件箱</view>
+        </view>
+        <view class='flex-align-center'>
+            <image src='../images/arrow.png' class='image-size'></image>
+        </view>
+    </view>
+
+    <!-- <view class='item person-item flex-between' bindtap='switchEnterprise'>
+    <label>账号切换</label>
+    <view class='flex-align-center'><image src='../images/arrow.png' class='image-size'></image></view>
+</view> -->
+
+    <!-- <view class='person-item view-block'>
+    <view class='flex-between border-bottom' wx:if="{{accountType<100 && accountType>0}}">
+        <label>公司</label>
+        <view>{{enterpriseName==""?"无":enterpriseName}}</view>
+    </view>
+    <view class='flex-between'>
+        <label>账号类型</label>
+        <view>{{accountTypeName}}</view>
+    </view>
+</view> -->
+
+    <view class='item person-item flex-between' bindtap='bindtoEnterpriseManage' style="display:{{isAdmin?'flex':'none'}}">
+        <!-- <image class='img-enterprise-manange' src='/disk/images/me-management.png'></image> -->
+        <label>企业管理</label>
+        <view class='flex-align-center'>
+            <image src='../images/arrow.png' class='image-size'></image>
+        </view>
+    </view>
+
+
+    <view class='item person-item flex-between' bindtap='gotoBuyPage'>
+        <view class='align-center'>
+            <image src='../images/icon/buy.png' class='image-icon'></image>
+            <view>扩容与续费</view>
+        </view>
+        <view class='flex-align-center'>
+            <image src='../images/arrow.png' class='image-size'></image>
+        </view>
+    </view>
+
+    <view class='item person-item flex-between' bindtap='gotoShareStatistics'>
+        <view class='align-center'>
+            <image src='../images/icon/me_spread.png' class='image-icon'></image>
+            <view>分享达人</view>
+        </view>
+        <view class='flex-align-center'>
+            <image src='../images/arrow.png' class='image-size'></image>
+        </view>
+    </view>
+
+    <view class='item person-item flex-between' bindtap='jumpToEnterprise'>
+        <view class='align-center'>
+            <image src='../images/icon/person-file.png' class='image-icon'></image>
+            <view>企业文件宝</view>
+        </view>
+        <view class='flex-align-center'>
+            <image src='../images/arrow.png' class='image-size'></image>
+        </view>
+    </view>
+
+    <view class='contact-customer-service'>
+        <contact-button type='default-light' size="20" session-from="weapp"></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='left:20px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='left:40px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='left:60px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='left:80px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='left:100px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='left:120px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='left:140px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='left:160px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='left:180px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='top:20px;'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='top:20px;left:20px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='top:20px;left:40px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='top:20px;left:60px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='top:20px;left:80px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='top:20px;left:100px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='top:20px;left:120px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='top:20px;left:140px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='top:20px;left:160px'></contact-button>
+        <contact-button type='default-light' size="20" session-from="weapp" style='top:20px;left:180px'></contact-button>
+        <text style='position:relative;'>联系客服</text>
+    </view>
+    <view class="footer">
+        <view style='color:#ea5036;' bindtap='jumpToProtocol'>《文件宝用户服务协议》</view>
+        <view>版本(v1.1.002)</view>
+        <!-- <view>版权所有 © 华一云网科技成都有限公司 2017-2018.</view> -->
+    </view>
+    
+    <tabbar selectIndex="4" bind:onShowMenu="onShowMenu"></tabbar>
+    <menu isShowMenu='{{isShowMenu}}' bind:onUploadImage="onUploadImage" bind:onUploadVideo="onUploadVideo" bind:showCreateFolder="showCreateFolder"></menu>
+</view>

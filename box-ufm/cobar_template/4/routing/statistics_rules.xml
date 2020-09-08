@@ -1,0 +1,37 @@
+<rules>
+    <rule>
+        <namespace>NodeStatistics</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+        <namespace>ObjectStatistics</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+        <namespace>SysConcStatistics</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+        <namespace>TempConcStatistics</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+        <namespace>TempObjectStatistics</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+        <namespace>TempUserNodeStatistics</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+        <namespace>StatisticsAccessKey</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+</rules>

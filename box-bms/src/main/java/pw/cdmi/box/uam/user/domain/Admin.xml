@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Admin">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="Admin" type="pw.cdmi.box.uam.user.domain.Admin" />
+    <typeAlias alias="AdminRoleTypeHandler" type="pw.cdmi.box.uam.user.domain.typehandler.AdminRoleTypeHandler"/>
+    
+    <resultMap id="resultMap.Admin" class="Admin">
+        <result column="id"               property="id" />
+        <result column="type"             property="type" />
+        <result column="domainType"       property="domainType" />
+        <result column="roles"            property="roles" typeHandler="AdminRoleTypeHandler"/>
+        <result column="loginName"        property="loginName" />
+        <result column="password"         property="password" />
+        <result column="name"             property="name" />
+        <result column="email"            property="email" />
+        <result column="createdAt"        property="createdAt" />
+        <result column="modifiedAt"       property="modifiedAt" />
+        <result column="objectSid"        property="objectSid" />
+        <result column="lastLoginTime"    property="lastLoginTime" />
+        <result column="validateKey"      property="validateKey" />
+        <result column="dynamicPassword"  property="dynamicPassword" />
+        <result column="noteDesc"         property="noteDesc" />
+        <result column="status"           property="status" />
+        <result column="iterations"  	  property="iterations" />
+        <result column="salt"  		 	  property="salt" />
+        <result column="enterpriseId"  	  property="enterpriseId" />
+        <result column="resetPasswordAt"  property="resetPasswordAt" />
+        <result column="lastLoginIP"  property="lastLoginIP" />
+        
+    </resultMap>
+    
+    <select id="getByLoginName" parameterClass="String" resultMap="resultMap.Admin">
+        select * from admin where loginName=#value#
+    </select>
+    
+    <select id="getAdminByIds"  resultMap="resultMap.Admin"> 
+         select * from admin where id in 
+         <iterate open="(" close=")" conjunction="," > 
+              #[]# 
+         </iterate>        
+    </select> 
+    <update id="updateStatus" parameterClass="map">
+        update admin set status=#status#, modifiedAt=#modifiedAt# where id=#id#
+    </update>
+    <select id="getAdminExcludeIds"  resultMap="resultMap.Admin"> 
+         select * from admin where type = 1 and id not in 
+         <iterate open="(" close=")" conjunction="," > 
+              #[]# 
+         </iterate>        
+    </select> 
+    
+    <select id="getByObjectSID" parameterClass="String" resultMap="resultMap.Admin">
+        select * from admin where objectSid=#value#
+    </select>
+
+    <select id="getFilterd" parameterClass="map" resultMap="resultMap.Admin">
+        select * from admin
+       <dynamic prepend="where">
+        <isNotNull prepend="and" property="filter">
+                type = #filter.type#
+        </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.loginName">
+                loginName like concat('%',#filter.loginName#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.name">
+                name like concat('%',#filter.name#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.email">
+                email like concat('%',#filter.email#,'%') 
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from admin
+        <dynamic prepend="where">
+         <isNotNull prepend="and" property="filter">
+                type = #filter.type#
+         </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.loginName">
+                loginName like concat('%',#filter.loginName#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.name">
+                name like concat('%',#filter.name#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.email">
+                email like concat('%',#filter.email#,'%') 
+            </isNotEmpty>
+        </dynamic>
+    </select>
+
+    <select id="get" resultMap="resultMap.Admin" parameterClass="long">
+        select * from admin where id=#value#
+    </select>
+
+    <insert id="insert" parameterClass="Admin">
+        insert into admin(id,type,domainType,roles,objectSid,loginName,password,name,email,createdAt,modifiedAt
+        ,lastLoginTime,validateKey,dynamicPassword,noteDesc,iterations,salt,enterpriseId,lastLoginIP) 
+        values 
+        (#id#,#type#,#domainType#,#roles,handler=AdminRoleTypeHandler#,#objectSid#,#loginName#,#password#,#name#
+        ,#email#,#createdAt#,#modifiedAt#,#lastLoginTime#,#validateKey#,#dynamicPassword#,#noteDesc#,#iterations#,#salt#,#enterpriseId#,#lastLoginIP#)
+    </insert>
+
+    <update id="update" parameterClass="Admin">
+        update admin set name=#name#, email=#email#, 
+        createdAt=#createdAt#, modifiedAt=#modifiedAt#,noteDesc=#noteDesc#,roles=#roles,handler=AdminRoleTypeHandler# where id=#id#
+    </update>
+
+    <update id="updateLastLoginTime" parameterClass="Admin">
+        update admin set lastLoginTime=#lastLoginTime# where id=#id#
+    </update>
+
+    <update id="updatePassword" parameterClass="Admin">
+        update admin set password=#password#,iterations=#iterations#,salt=#salt#, modifiedAt=#modifiedAt# where id=#id#
+    </update>
+
+    <update id="updateName" parameterClass="Admin">
+        update admin set name=#name#, modifiedAt=#modifiedAt# where id=#id#
+    </update>
+    
+    <update id="updateValidKeyAndDynamicPwd" parameterClass="Admin">
+        update admin set validateKey=#validateKey#,dynamicPassword=#dynamicPassword#, modifiedAt=#modifiedAt#, resetPasswordAt=#resetPasswordAt#  where id=#id#
+    </update>
+    
+    <update id="updateEmail" parameterClass="Admin">
+        update admin set email=#email#, modifiedAt=#modifiedAt# where id=#id#
+    </update>
+    
+    <update id="updateRoles" parameterClass="Admin">
+        update admin set roles=#roles,handler=AdminRoleTypeHandler#, modifiedAt=#modifiedAt# where id=#id# and type != -1
+    </update>
+
+    <delete id="delete" parameterClass="long">
+        delete from admin where id=#value#
+    </delete>
+
+	<update id="updateLastLoginIP" parameterClass="Admin">
+        update admin set lastLoginIP=#lastLoginIP# where id=#id#
+    </update>
+</sqlMap>
+

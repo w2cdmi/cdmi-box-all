@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserLdap">
+
+	<!-- UseLdap type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UserLdap" type="com.huawei.sharedrive.uam.enterpriseuser.domain.UserLdap" />
+	<typeAlias alias="EnterpriseUser" type="com.huawei.sharedrive.uam.enterpriseuser.domain.EnterpriseUser" />
+	<typeAlias alias="UserAccount" type="com.huawei.sharedrive.uam.accountuser.domain.UserAccount" />
+		
+	  <insert id="insertUserList" parameterClass="java.util.List">
+          <![CDATA[
+          insert into user_ldap(id,sessionId, dn, loginName, authServerId) values
+          ]]>
+          <iterate conjunction=",">
+          <![CDATA[
+             (
+           	  #list[].id#,
+              #list[].sessionId#,
+              #list[].dn#,
+              #list[].loginName#,
+              #list[].authServerId#
+              )
+             ]]>
+          </iterate>
+      </insert>
+      
+     <select id="getByUserLdap" parameterClass="UserLdap" resultClass="UserLdap">
+       <![CDATA[
+        select * from user_ldap where sessionId=#sessionId# and dn=#dn# and authServerId=#authServerId#
+        ]]>
+    </select>
+    
+     <select id="getSessionList" resultClass="String">
+       <![CDATA[
+        select distinct(sessionId) from user_ldap
+        ]]>
+    </select>
+	
+	 <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(eu.id) from enterprise_user$tableSuffix$ eu, user_ldap ul where ul.sessionId=#sessionId# and ul.dn=#dn# and ul.authServerId=#authServerId# and eu.enterpriseId=#enterpriseId# and
+	    eu.name=ul.loginName and eu.userSource=ul.authServerId and eu.userSource=#authServerId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                eu.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%') 
+            </isNotEmpty>
+        </dynamic>
+	</select>
+	
+	 <select id="getFilterd" parameterClass="map" resultClass="EnterpriseUser">
+	 select eu.* from enterprise_user$tableSuffix$ eu, user_ldap ul where ul.sessionId=#sessionId# and ul.dn=#dn# and ul.authServerId=#authServerId# and eu.enterpriseId=#enterpriseId# and 
+	    eu.name=ul.loginName and eu.userSource=ul.authServerId and eu.userSource=#authServerId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                eu.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%') 
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                     <isEqual property="order.desc" compareValue="false">
+                        asc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getUserAccountFilterdCount" parameterClass="map" resultClass="int">
+    select count(1) from enterprise_user$tableSuffix$ eu, user_ldap ul,user_account$accountTableSuffix$ ua where ul.sessionId=#sessionId# and ul.dn=#dn# and ul.authServerId=#authServerId# and eu.enterpriseId=#enterpriseId# and 
+	    eu.name=ul.loginName and eu.userSource=ul.authServerId and eu.userSource=#authServerId# and ua.userId=eu.id and ua.accountId=#accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                eu.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%') 
+            </isNotEmpty>
+        </dynamic>
+        <isNotNull prepend="and" property="status">
+           	<![CDATA[
+              ua.status=#status#  
+              ]]>
+         </isNotNull>
+	</select>
+	
+	 <select id="getUserAccountFilterd" parameterClass="map" resultClass="UserAccount">
+	 select eu.name,eu.alias,eu.email,ua.* from enterprise_user$tableSuffix$ eu, user_ldap ul,user_account$accountTableSuffix$ ua where ul.sessionId=#sessionId# and ul.dn=#dn# and ul.authServerId=#authServerId# and eu.enterpriseId=#enterpriseId# and 
+	    eu.name=ul.loginName and eu.userSource=ul.authServerId and eu.userSource=#authServerId# and ua.userId=eu.id and ua.accountId=#accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                eu.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%') 
+            </isNotEmpty>
+        </dynamic>
+        <isNotNull prepend="and" property="status">
+           	<![CDATA[
+              ua.status=#status#  
+              ]]>
+         </isNotNull>
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+     <select id="getFilterdId" parameterClass="UserLdap" resultClass="String">
+	 select user.id from user, user_ldap where user_ldap.sessionId=#sessionId# and user_ldap.dn=#dn# and
+	    user.loginName=user_ldap.loginName and user.appId=user_ldap.appId and user.appId=#appId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="loginName">
+                user.loginName like concat('%',#loginName#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="name">
+                name like concat('%',#name#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="email">
+                email like concat('%',#email#,'%') 
+            </isNotEmpty>         
+        </dynamic>
+        <isNotEqual prepend="and" property="regionId" compareValue="0">
+           	<![CDATA[
+              regionId=#regionId#  
+              ]]>
+         </isNotEqual>
+         <isNotNull prepend="and" property="status">
+           	<![CDATA[
+              status=#status#  
+              ]]>
+         </isNotNull>
+    </select>
+    <delete id="deleteBysessionId" parameterClass="String">
+        <![CDATA[
+        delete from user_ldap where sessionId=#value#
+        ]]>
+	</delete>
+	
+</sqlMap>
+

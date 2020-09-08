@@ -1,0 +1,82 @@
+<!--disk/enterprise/template/selectEmploye.wxml-->
+<view class='page'>
+    <view wx:if="{{hiddenView}}" class='view-bg department-title'>请为【{{departmentName}}】指定部门主管</view>
+    <view class='view-bg serach-bg'>
+        <view class='search-input-bg'>
+            <view class='view-serach-icon'>
+                <image class='serach-icon' src="/disk/images/icon/enterprise/serach-icon.png"></image>
+            </view>
+            <view bindtap='toSelectEmployee'>
+                <input class="serach-input" placeholder='请输入员工名称'></input>
+            </view>
+        </view>
+        <view class='serach-department-view' bindtap='showSelectDepartment'>
+            <view class='company-name'>{{crumbs[crumbs.length - 1].name}}</view>
+            <view>
+                <image class='show-serach' src='/disk/images/icon/enterprise/show-serach.png'></image>
+            </view>
+        </view>
+    </view>
+
+    <view class='view-bg department-title department-list'>部门成员列表</view>
+
+    <!-- 员工列表 -->
+    <scroll-view scroll-y style='height:700rpx;'>
+        <!-- <block wx:for="{{employees}}" wx:key="*this">
+            <view class="file-group border-bottom view-up-down-space" hover-class='button-hover' data-folder-name='{{item.name}}' data-owner-id='{{item.ownedBy}}' data-node-id='{{item.id}}' bindtap='openFolder'>
+                <image class="img-icon margin-right" src='/disk/images/icon/folder-icon.png'></image>
+                <view class='file-info'>
+                    <label>{{item.name}}</label>
+                    <text>{{item.menderName}} | {{item.modifiedTime}}</text>
+                </view>
+            </view>
+        </block> -->
+        <view class="department-group border-bottom" wx:for="{{employee}}" data-index="{{index}}" data-item="{{item}}" wx:key="*this"  bindtap='setManagerIndex'>
+            <view class='department-info'>
+                <view class='view-select-icon'>
+                    <image class="img-icon margin-right" src='{{managerIndex === index ? "/disk/images/icon/enterprise/selected-icon.png" : "/disk/images/icon/enterprise/no-select-icon.png"}}'></image>
+                </view>
+                <view class='view-department-icon'>
+                      <image class="department-icon margin-right" mode='aspectFit' src='{{item.avatar}}'></image>  
+                     <!-- <image class="department-icon margin-right" mode='aspectFit' src='/disk/images/department-avatar.png'></image>  -->
+                </view>
+                <view>
+                    <view class='dpt-name'>{{item.name}}</view>
+                    <text class='department-description' decode='{{true}}'>所属部门&nbsp;&nbsp;|&nbsp;&nbsp;{{item.departmentName}}</text>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+
+    <button class='sure-button' bindtap='sureSelectEmploye'>确认</button>
+
+    <view class='select-department' wx:if="{{showSelectDepartment}}">
+        <view class='select-department-item'>
+            <view class='flex-item'>
+                <view class='cancel-select' bindtap='cancelhideSelectDepartment'>
+                    <!-- <image src='/disk/images/icon/enterprise/cancel-select.png' class='cancel-select-icon'></image> -->
+                </view>
+                <view class='selected-department-title'>
+                    <text>当前选中{{crumbs[crumbs.length - 1].name}}</text>
+                </view>
+                <view class='sure-select' bindtap='hideSelectDepartment'>
+                    <image src='/disk/images/icon/enterprise/sure-select.png' class='sure-select-icon'></image>
+                </view>
+            </view>
+            <scroll-view scroll-x="true" class='scroll-view_H'>
+                <view wx:for="{{crumbs}}" data-crumb='{{item}}' wx:key="*this" class="department-item {{(crumbs.length - 1) === index ? 'selected-department-item' : ''}}" bindtap='crumbDepartment' data-index="{{index}}">
+                    {{item.name}}
+                </view>
+            </scroll-view>
+            <scroll-view scroll-y="true" class='scroll-view_Y'>
+                <view wx:for="{{departments}}" wx:key="*this" class="department-group department2-item" bindtap='selectDepartment' data-index="{{index}}" data-name="{{item}}" data-dept-id='{{item.userId}}'  data-name='{{item.name}}'>
+                    <view class='view-select-icon'>
+                        <image class="img-icon margin-right" src='{{department2Index === index ? "/disk/images/icon/enterprise/selected-icon.png" : "/disk/images/icon/enterprise/no-select-icon.png"}}'></image>
+                    </view>
+                    <label>{{item.name}}</label>
+                </view>
+            </scroll-view>
+        </view>
+    </view>
+
+</view>

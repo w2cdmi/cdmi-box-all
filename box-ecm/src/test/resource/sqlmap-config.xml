@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig  PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+         "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+    <settings lazyLoadingEnabled="true" useStatementNamespaces="true" />
+
+    
+    <sqlMap resource="com/huawei/sharedrive/uam/core/domain/SystemLock.xml" />
+    <sqlMap resource="pw/cdmi/common/domain/SystemConfig.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/user/domain/Admin.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/user/domain/AdminAppPermission.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/user/domain/User.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/enterpriseuser/domain/UserLdap.xml" />
+    <sqlMap resource="pw/cdmi/common/domain/CustomizeLogo.xml" />
+    <sqlMap resource="pw/cdmi/common/domain/ClientManage.xml" />
+    <sqlMap resource="pw/cdmi/common/domain/AuthServer.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/security/domain/SecurityMatrix.xml" />  
+    <sqlMap resource="com/huawei/sharedrive/uam/security/domain/NetworkRegion.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/security/domain/ProxyNetwork.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/security/domain/SecurityPermission.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/security/domain/SecretStaff.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/security/domain/SecurityFactor.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/authapp/domain/AuthApp.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/authapp/domain/AppAccessKey.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/enterpriseuser/domain/ExcelImport.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/security/domain/UserSpecial.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/system/domain/MailServer.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/terminal/domain/Terminal.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/log/domain/ExportExcel.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/system/statistic/domain/SystemStat.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/user/domain/Tag.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/user/domain/UserTag.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/Enterprise.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/EnterpriseAccount.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterpriseuser/domain/EnterpriseUser.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterpriseuseraccount/domain/EnterpriseUserAccount.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/logininfo/domain/LoginInfo.xml"/>
+    <sqlMap resource="pw/cdmi/common/job/manage/dao/systemjob-sql.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/authserver/domain/AccountAuthserver.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/accountuser/domain/UserAccount.xml" />
+    <sqlMap resource="com/huawei/sharedrive/uam/statistics/domain/StatisticsTempChart.xml"/>
+    <sqlMap resource="pw/cdmi/common/slavedb/domain/DatabaseAddr.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/SecurityRole.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/NetRegion.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/NetRegionIp.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/SafeLevel.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/AccessConfig.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/AccessSpaceConfig.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/AccountSecConfig.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/ResourceStrategy.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/NetworkRegionIpExcelImport.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/message/domain/Message.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/statistics/domain/TerminalStatisticsDay.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/enterpriseuser/domain/LdapCheck.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/authserver/domain/AccountAuthserverNetwork.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/accountrole/domain/AccountRole.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/statistics/domain/UserInterzone.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/FileCopySecurity.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/authapp/domain/AuthAppNetRegionIp.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/user/domain/UserLocked.xml"/>
+	<sqlMap resource="pw/cdmi/common/domain/AccountConfig.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/WebIconPcLogo.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/user/domain/UserImage.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/enterprise/domain/AccountBasicConfig.xml"/>
+	<sqlMap resource="pw/cdmi/common/domain/ConcealDeclare.xml"/>
+	<sqlMap resource="pw/cdmi/common/domain/UserSignDeclare.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/user/domain/ManagerLocked.xml" />
+	<sqlMap resource="com/huawei/sharedrive/uam/announcement/domain/Announcement.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/feedback/domain/UserFeedBack.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/organization/domain/Department.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/enterpriseuser/domain/MigrationRecord.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/enterpriseuser/domain/EnterpriseSecurityPrivilege.xml"/>
+	<sqlMap resource="com/huawei/sharedrive/uam/organization/domain/DepartmentAccount.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/weixin/domain/WxDepartment.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/weixin/domain/WxEnterprise.xml"/>
+    <sqlMap resource="com/huawei/sharedrive/uam/weixin/domain/WxEnterpriseUser.xml"/>
+</sqlMapConfig>
+
+

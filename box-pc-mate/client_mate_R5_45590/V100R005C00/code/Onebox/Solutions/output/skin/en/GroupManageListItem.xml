@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window >
+	<GroupManageListContainerElement name="GroupManage_listItem" >
+		<VerticalLayout height="32" mousechild="true">
+			<HorizontalLayout height="6" />
+			<HorizontalLayout mousechild="true">				
+				<Label name="GroupManage_item_icon" align="center" textcolor="#FFFFFFFF" bkimage="..\img\GroupManage.png" width="18" padding="10,0,0,0" font="2" />
+				<Label name="GroupManage_item_name" endellipsis="true" text="" width="150" font="2" align="left" padding="5,2,0,2"/>
+				<Label name="GroupManage_item_dept" width="170" endellipsis="true" padding="10,2,0,2" />
+				<Combo name="GroupManage_item_Combo" width="82" bkimage="..\img\combo.png" itemalign="left" font="2" itemfont="2" itemtextpadding="2,0,0,0"/>
+				<Label name="GroupManage_item_comboIcon" width="10" padding="0,7,0,7" />
+				<Button name="GroupManage_item_delete" width="16" tooltip="删除" padding="0,2,0,2" normalimage="file='..\img\transfersUploadStatus.png' source='0,26,16,42'" hotimage="file='..\img\transfersUploadStatus.png' source='17,26,33,42'" pushedimage="file='..\img\transfersUploadStatus.png' source='17,26,33,42'" disabledimage="file='..\img\transfersUploadStatus.png' source='0,26,16,42'" />
+			</HorizontalLayout>
+			<HorizontalLayout height="5" />
+			<Control height="1" bkcolor="#FFE1E1E1" />
+		</VerticalLayout>
+	</GroupManageListContainerElement>
+</Window>

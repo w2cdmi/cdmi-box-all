@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+	<UploadFrameTreeNode name="uploadFrame_listItem" height="32" mousechilid="false" itemattr="valign=&quot;vcenter&quot; align=&quot;left&quot; textpadding=&quot;5,0,0,0&quot; font=&quot;3&quot;" folderattr="padding=&quot;0,8,0,0&quot; width=&quot;16&quot; height=&quot;12&quot; name=&quot;uploadFrame_itemState&quot; normalimage=&quot;expland_down.png&quot; selectedimage=&quot;expland_normal.png&quot; selected=&quot;true&quot;">
+		<HorizontalLayout padding="2,0" height="32" width="500">
+			<Label name="uploadFrame_itemIcon" width="24" height="24" padding="2,0" bkimage="file='icon_excel.png'" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA"/>
+			<RichEdit name="uploadFrame_itemName" width="24" height="22" padding="3,3,0,3" width="450" multiline="true" mouse="false" autohscroll="true" intset="0,1,0,1"  textcolor="#FF333333" font="2"/>
+		</HorizontalLayout>
+	</UploadFrameTreeNode>
+</Window>

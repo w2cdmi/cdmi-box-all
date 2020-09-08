@@ -1,0 +1,51 @@
+<import src="./drawer.wxml" />
+<view class="page">
+    <view class='toolbar' hidden='{{!data.files.length==0&&!isClearOldDate?false:true}}'>
+        <view>回收站文件列表</view>
+        <view wx-if="{{!check}}" bindtap='deleteitem' class='title-icon'>
+            <image src='../images/recycledelete.png'></image>删除</view>
+        <!-- <view style='margin-right:-35%;' wx-if="{{check}}" bindtap='checkall'>
+            <checkbox/>全选</view> -->
+        <view wx-if="{{check}}" bindtap='closecheck' class='title-icon'>
+            <image src='../images/recycledelete.png'></image>取消</view>
+    </view>
+    <!-- 最近浏览为空的背景图片 -->
+    <view class='blankBackground' hidden='{{data.files.length==0&&!isClearOldDate?false:true}}'>
+        <image src='../images/blank/blank-bg.png'></image>
+        <view>您的回收站为空噢～</view>
+    </view>
+    <view class="weui-tab__content">
+        <!-- <scroll-view class='content cell_2' enable-back-to-top scroll-left="{{item.scrollLeft}}" scroll-y> -->
+            <scroll-view wx:for="{{data.files}}" wx:key="*this" data-fileInfo='{{item}}' bindscrolltolower="scrollToLeft" scroll-left='{{scrollLeft}}' scroll-x='{{isScrollX}}'>
+                <checkbox-group bindchange="checkboxChange">
+                    <view hover-class='weui-cell_active' class="file-group border-bottom view-bg" data-fileInfo="{{item}}">
+                        <checkbox class="checkbox-item" wx-if="{{check}}" value="{{item[index].ownerId}}" checked="{{item.checked}}" bindtap='checkitem' data-id='{{item.nodeId}}' data-check='{{item}}' />{{item.value}}
+                        <view>
+                            <image class="img-icon" src='{{item.icon}}'></image>
+                        </view>
+                        <view class='file-info cell_2_body_content'>
+                            <label>{{item.name}}</label>
+                            <text>{{item.modifiedTime}}</text>
+                        </view>
+                        <view style='width: 136rpx;' wx-if="{{!check}}" bindtap='clickitem' data-item='{{item}}'>
+                            <image src='../images/depart-plug.png' class='depart'></image>
+                        </view>
+                        <button class='clear-button-style button-size' data-file-info='{{item}}' catchtap='saveToPersion' hidden='{{data.isShowSaveMenu?false:true}}'>
+                        </button>
+                    </view>
+                </checkbox-group>
+                <!-- <view class="cell_2_delete2" data-index="{{index}}" data-fileInfo='{{item}}' catchtap='scrollToLeft'>恢复</view> -->
+            </scroll-view>
+        <!-- </scroll-view> -->
+    </view>
+
+
+    <view wx-if="{{confim}}" class='btn'>
+        <view bindtap='newteamspace' class='sure-button' bindtap="confim">确定({{checknum}})</view>
+    </view>
+
+    <!-- <button class='confim' wx-if="{{confim}}" bindtap="confim">确定
+        <view style='display: inline-block;'>({{checknum}})</view>
+    </button> -->
+</view>
+<template is="drawer" data="{{showModalStatus,animationData}}"></template>

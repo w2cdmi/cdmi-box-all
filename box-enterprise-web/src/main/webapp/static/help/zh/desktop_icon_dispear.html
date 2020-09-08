@@ -1,0 +1,50 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>帮助中心</title>
+<link href="help.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="header"><div class="header_top">帮助中心</div></div>
+<div class="main clearfix">
+	<div class="main_con fl main_detail">
+        <div class="clearfix">
+            <h1>当文件或文件夹上没有显示任何状态图标时，如何解决</h1>
+            <a class="return" href="helpcenter.html"><<返回帮助中心</a>
+        </div>         
+		 
+		<p>当文件或文件夹上没有显示任何状态图标时，可能是安装同步客户端时写注册表失败造成的。请参考下文的方法解决。
+		<ol>
+		   <li>以管理员身份运行<strong>cmd.exe</strong>，进入命令行界面。</li>
+		   <li>运行<strong>cd</strong> <em>/d C:\Program Files\StorBox</em>进入同步客户端安装目录。此处以同步客户端安装在<em>C</em>盘，安装目录是<em>C:\ProgramFiles\StorBox</em>为例。</li>
+		   <li>运行<strong>regsvr32 ShellExtent.dll</strong>手动注册shell扩展。</li>
+           <li>运行以下命令手动重启资源管理器。
+		     <ol>
+			 <li><strong>taskkill</strong> <strong>/f /im</strong> <em>explorer.exe</em></li>
+             <li><em>explorer.exe</em></li>
+             </ol>
+		   </li>
+        </ol>
+		</p>
+     
+       
+       
+    </div> 
+    
+
+  
+<div class="sidebar clearfix fr">
+    	<h2>类别</h2>
+       
+<ul class="help_list type clearfix">
+           <li><a  class="type_icon" href="basic.html">基本</a></li>
+            <li ><a class="type_icon type_icon1" href="share.html">共享</a></li>
+            <li ><a class="type_icon type_icon2" href="pc.html">桌面应用</a></li>
+            <li ><a class="type_icon type_icon3" href="mobile.html">移动应用</a></li>
+            <li ><a class="type_icon type_icon4" href="security.html">安全与隐私</a></li>
+        </ul>
+		
+    </div>
+</div>
+</body>
+</html>

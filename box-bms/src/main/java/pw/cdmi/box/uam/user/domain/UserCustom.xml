@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserCustom">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="UserCustom" type="pw.cdmi.box.uam.user.domain.UserCustom" />
+
+    <select id="get" resultClass="UserCustom" parameterClass="UserCustom">
+        <![CDATA[
+        select * from user_custom where id=#id#
+        ]]>
+    </select>
+
+    <insert id="insert" parameterClass="UserCustom">
+        <![CDATA[
+        insert into user_custom(id,language,datePattern,timePattern,timeZone,avatar) 
+        values 
+        (#id#,#language#,#datePattern#,#timePattern#,#timeZone#,#avatar#)
+        ]]>
+    </insert>
+
+    <update id="update" parameterClass="UserCustom">
+        <![CDATA[
+        update user_custom set language=#language#, datePattern=#datePattern#, timePattern=#timePattern#, timeZone=#timeZone#, 
+        avatar=#avatar# where id=#id#
+        ]]>
+    </update>
+
+    <delete id="delete" parameterClass="UserCustom">
+        <![CDATA[
+        delete from user_custom where id=#id#
+        ]]>
+    </delete>
+
+</sqlMap>
+

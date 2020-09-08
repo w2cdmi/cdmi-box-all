@@ -1,0 +1,552 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="resource">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="mainFrame">
+      <UniqueIdentifier>{a2e60a88-5a54-4265-9dde-9f67ef81b412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{3d8e739b-a26b-4d21-82f7-c9a25b2062a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="custom">
+      <UniqueIdentifier>{d675bad6-7eed-41f6-aad7-2e9592605e82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="others">
+      <UniqueIdentifier>{c7493356-c43a-4512-a145-969638bfc84b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="myFiles">
+      <UniqueIdentifier>{e899f452-afa6-4959-a8cb-fc7fa30fb240}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="leftRegion">
+      <UniqueIdentifier>{ff921e64-686b-4ca6-817a-85a2c833c344}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="share2Me">
+      <UniqueIdentifier>{22a3eaec-5956-4f8e-86cb-192cc633ab6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="skinConf">
+      <UniqueIdentifier>{de283df0-2205-4396-8f14-fbfa970686b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="myShare">
+      <UniqueIdentifier>{c25eb5e2-5e21-496b-8b23-c498d339c87e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="teamSpace">
+      <UniqueIdentifier>{714f8a51-964d-4fd7-9ba7-b3d1ad521f8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="transTasks">
+      <UniqueIdentifier>{66cbd0ac-d079-4555-be5f-8a44b0ccd06e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shareFrame">
+      <UniqueIdentifier>{40cf3289-d0a9-4de4-bc11-1f4f6b956933}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="uploadFrame">
+      <UniqueIdentifier>{def549ce-c2a4-433d-89c4-dfa806ae621e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="crumbBtn">
+      <UniqueIdentifier>{e76498fe-536d-4849-8dc0-95851e36d423}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dragDialog">
+      <UniqueIdentifier>{a7863df3-e37d-45cc-ad97-5ed60114073e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="noticeFrame">
+      <UniqueIdentifier>{f4796475-b494-43e4-a731-95f5aec0a480}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FileVersionDialog">
+      <UniqueIdentifier>{0b42ad14-6644-4edf-8618-83cb2f7713d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="backup">
+      <UniqueIdentifier>{ea255fdb-8ea8-4d33-ab97-0e800e3b7cdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="backupDialog">
+      <UniqueIdentifier>{ee7ff406-bcfa-463e-b049-ef6f86d93759}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="msgFrame">
+      <UniqueIdentifier>{d3321f24-5ed4-4542-b725-8cea65d3de7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="upgrade">
+      <UniqueIdentifier>{4965131e-e40d-42a3-83d7-527ac0822591}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="login">
+      <UniqueIdentifier>{f67bcf72-6416-4c8d-adcc-28096210040b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="about">
+      <UniqueIdentifier>{97447300-da35-4ab3-8e0a-1dcf0d2e6892}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="settingFrame">
+      <UniqueIdentifier>{63269ff5-ef2f-4986-b672-a159bf8899ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="notifyIcon">
+      <UniqueIdentifier>{5a536fdd-47e8-4245-8c84-ea253404705e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="loginInfo">
+      <UniqueIdentifier>{f124e7d8-2d86-49ab-a629-8298a4ef767a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="SelectDialog">
+      <UniqueIdentifier>{ef4c4cde-44e2-4bf0-b9bb-6eaf94bd99d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="declareFrame">
+      <UniqueIdentifier>{c36f5992-5d32-457b-97dd-1f82d72bf9b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Guide">
+      <UniqueIdentifier>{60093747-8e93-4bfb-a55f-1d60ce0098d0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\MainFrame.h">
+      <Filter>mainFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ControlNames.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ChildLayout.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafxOnebox.h">
+      <Filter>others</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>others</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Common.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ListContainerElement.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TileLayoutListUI.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyFileMgr.h">
+      <Filter>myFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LeftRegionMgr.h">
+      <Filter>leftRegion</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Share2MeMgr.h">
+      <Filter>share2Me</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SkinConfMgr.h">
+      <Filter>skinConf</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\Utility.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DialogBuilderCallbackImpl.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CustomListUI.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShareFrame.h">
+      <Filter>shareFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TransTaskMgr.h">
+      <Filter>transTasks</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FileDialog.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SearchTxt.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyShareMgr.h">
+      <Filter>myShare</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShareFrameHiddenList.h">
+      <Filter>shareFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\InIHelper.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Share2MeElement.h">
+      <Filter>share2Me</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UploadFrame.h">
+      <Filter>uploadFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GroupButton.h">
+      <Filter>crumbBtn</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DragDialog.h">
+      <Filter>dragDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ItemCheckBox.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TeamSpaceMgr.h">
+      <Filter>teamSpace</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NoticeFrame.h">
+      <Filter>noticeFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FileVersionDialog.h">
+      <Filter>FileVersionDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AboutFrame.h">
+      <Filter>about</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SimpleNoticeFrame.h">
+      <Filter>noticeFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\InILanguage.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\crypto\Aes.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SettingFrame.h">
+      <Filter>settingFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MsgFrame.h">
+      <Filter>msgFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IrregularWindow.h">
+      <Filter>upgrade</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ErrorConfMgr.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShareFrameV1.h">
+      <Filter>shareFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShareFrameV2.h">
+      <Filter>shareFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UserConfigure.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UICommonDefine.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MyFileElement.h">
+      <Filter>myFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TeamspaceElement.h">
+      <Filter>teamSpace</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LoginMgr.h">
+      <Filter>login</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UpgradeMgr.h">
+      <Filter>upgrade</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="include\MyShareElement.h">
+      <Filter>myShare</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MsgElement.h">
+      <Filter>msgFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CustomComboUI.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ScaleButton.h">
+      <Filter>crumbBtn</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CommonLoadingFrame.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UILeftOption.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UIScaleImgButton.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UIScaleIconButton.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\ShellCommonFileDialog.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RoundGif.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\CrashHandler.h">
+      <Filter>others</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NotifyIconMgr.h">
+      <Filter>notifyIcon</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OpenFileDbClick.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UIUserPhoto.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\loginInfo.h">
+      <Filter>loginInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShareLinkCountDialog.h">
+      <Filter>shareFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShareLinkContextDialog.h">
+      <Filter>shareFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SendShareLink.h">
+      <Filter>shareFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SelectDialog.h">
+      <Filter>SelectDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DeclareFrame.h">
+      <Filter>declareFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UserListControl.h">
+      <Filter>shareFrame</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RenameRichEdit.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TransTaskErrorShowDialog.h">
+      <Filter>transTasks</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FullBackUpTree.h">
+      <Filter>backupDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FullBackUpMgr.h">
+      <Filter>backup</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FullBackUpErrorDialog.h">
+      <Filter>backupDialog</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DelayLoadingFrame.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupGuideInstall.h">
+      <Filter>Guide</Filter>
+    </ClInclude>
+    <ClInclude Include="include\BackupGuideUpgrade.h">
+      <Filter>Guide</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="source\MainFrame.cpp">
+      <Filter>mainFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ControlNames.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ChildLayout.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafxOnebox.cpp">
+      <Filter>others</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Common.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ListContainerElement.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TileLayoutListUI.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MyFileMgr.cpp">
+      <Filter>myFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LeftRegionMgr.cpp">
+      <Filter>leftRegion</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SkinConfMgr.cpp">
+      <Filter>skinConf</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\Utility.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Share2MeMgr.cpp">
+      <Filter>share2Me</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DialogBuilderCallbackImpl.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CustomListUI.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TransTaskMgr.cpp">
+      <Filter>transTasks</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SearchTxt.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MyShareMgr.cpp">
+      <Filter>myShare</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ShareFrameHiddenList.cpp">
+      <Filter>shareFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\InIHelper.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Share2MeElement.cpp">
+      <Filter>share2Me</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UploadFrame.cpp">
+      <Filter>uploadFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\GroupButton.cpp">
+      <Filter>crumbBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DragDialog.cpp">
+      <Filter>dragDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MyShareElement.cpp">
+      <Filter>myShare</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ItemCheckBox.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TeamSpaceMgr.cpp">
+      <Filter>teamSpace</Filter>
+    </ClCompile>
+    <ClCompile Include="source\NoticeFrame.cpp">
+      <Filter>noticeFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FileVersionDialog.cpp">
+      <Filter>FileVersionDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AboutFrame.cpp">
+      <Filter>about</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SimpleNoticeFrame.cpp">
+      <Filter>noticeFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\crypto\Aes.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SettingFrame.cpp">
+      <Filter>settingFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MsgFrame.cpp">
+      <Filter>msgFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\IrregularWindow.cpp">
+      <Filter>upgrade</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ErrorConfMgr.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ShareFrameV1.cpp">
+      <Filter>shareFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ShareFrameV2.cpp">
+      <Filter>shareFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MyFileElement.cpp">
+      <Filter>myFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TeamspaceElement.cpp">
+      <Filter>teamSpace</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LoginMgr.cpp">
+      <Filter>login</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UpgradeMgr.cpp">
+      <Filter>upgrade</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MsgElement.cpp">
+      <Filter>msgFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\CommonFileDialogImpl.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CustomComboUI.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ScaleButton.cpp">
+      <Filter>crumbBtn</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CommonLoadingFrame.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UILeftOption.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UIScaleImgButton.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UIScaleIconButton.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\ShellCommonFileDialog.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RoundGif.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\CrashHandler.cpp">
+      <Filter>others</Filter>
+    </ClCompile>
+    <ClCompile Include="source\NotifyIconMgr.cpp">
+      <Filter>notifyIcon</Filter>
+    </ClCompile>
+    <ClCompile Include="source\OpenFileDbClick.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UIUserPhoto.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="source\loginInfo.cpp">
+      <Filter>loginInfo</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ShareLinkCountDialog.cpp">
+      <Filter>shareFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ShareLinkContextDialog.cpp">
+      <Filter>shareFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SendShareLink.cpp">
+      <Filter>shareFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SelectDialog.cpp">
+      <Filter>SelectDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DeclareFrame.cpp">
+      <Filter>declareFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UserListControl.cpp">
+      <Filter>shareFrame</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RenameRichEdit.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TransTaskErrorShowDialog.cpp">
+      <Filter>transTasks</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FullBackUpTree.cpp">
+      <Filter>backupDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FullBackUpMgr.cpp">
+      <Filter>backup</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FullBackUpErrorDialog.cpp">
+      <Filter>backupDialog</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DelayLoadingFrame.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupGuideInstall.cpp">
+      <Filter>Guide</Filter>
+    </ClCompile>
+    <ClCompile Include="source\BackupGuideUpgrade.cpp">
+      <Filter>Guide</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>others</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Onebox.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\Solutions\output\skin\Image\ic_explorer.ico">
+      <Filter>resource</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

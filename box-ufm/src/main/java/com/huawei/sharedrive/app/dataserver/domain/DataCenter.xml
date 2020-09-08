@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DataCenter">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="DataCenter" type="com.huawei.sharedrive.app.dataserver.domain.DataCenter" />
+    
+    <resultMap id="resultMap.DataCenter" class="DataCenter">
+        <result column="id"				property="id" 				javaType="java.lang.Integer"/>
+        <result column="name"			property="name" 			javaType="java.lang.String"/>
+        <result column="regionid"		property="region.id" 		javaType="java.lang.Integer"/>
+        <result column="regionName"		property="region.name" 		javaType="java.lang.String"/>
+        <result column="priority"		property="priority"			javaType="java.lang.Integer"/>
+        <result column="state" 			property="status" 			typeHandler="com.huawei.sharedrive.app.dataserver.domain.typehandler.DCStatusTypeHandler"/>
+    </resultMap>
+    
+    <select id="select" resultMap="resultMap.DataCenter" parameterClass="int">
+        select d.*,r.name as regionName from data_center d, region r where d.id=#value# and d.regionid = r.id
+    </select>
+    
+    <select id="selectAll" resultMap="resultMap.DataCenter">
+        select d.*,r.name as regionName from data_center d, region r where d.regionid = r.id order by id
+    </select>
+    
+    <select id="selectAllPriority" resultMap="resultMap.DataCenter">
+        select d.*,r.name as regionName from data_center d, region r where d.regionid = r.id and d.priority=1 order by id  
+    </select>
+    
+    <select id="selectAllByRegion" resultMap="resultMap.DataCenter"  parameterClass="int">
+        select d.*,r.name as regionName from data_center d, region r where d.regionid = r.id and d.regionid=#value# order by id
+    </select>
+    
+    <select id="selectByName" resultMap="resultMap.DataCenter">
+        select d.*,r.name as regionName from data_center d, region r where d.name = #value# and d.regionid=r.id order by id
+    </select>
+    
+    <update id="update" parameterClass="DataCenter">
+        update data_center set name=#name#, regionid=#region.id#, state=#status.code# where id=#id#
+    </update>
+    
+    <delete id="delete" parameterClass="int">
+        delete from data_center where id=#id#
+    </delete>
+    
+    <insert id="insert" parameterClass="DataCenter">
+        insert into data_center(id,name,regionId,state) values(#id#, #name#, #region.id#, #status.code#);
+    </insert>
+</sqlMap>
+

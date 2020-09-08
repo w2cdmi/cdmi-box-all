@@ -1,0 +1,180 @@
+/* layout start ============================================================*/
+/*header*/
+.header{ width:120px; position:fixed; z-index:9995; top:0; left:0; bottom:0;
+	background-color: #3282c4;
+}
+.header-con{
+	width:120px;
+	height:100%;
+	position:relative;
+}
+
+.header .logo{
+	padding:5px 0 0;
+	margin-bottom:10px;
+}
+.header .logo a{
+	display:block;
+	width:120px;
+	height:20px;
+	padding-top:60px;
+	line-height:20px;
+	font-size:18px;
+	text-align:center;
+	color:#fff;
+	text-decoration:none;
+	overflow:hidden;
+	background-position:center top;
+	background-repeat:no-repeat;
+	cursor:pointer;
+	text-shadow: 0 2px 3px rgba(0, 0, 0, 0.35);
+}
+
+.header .nav-menu{
+	padding-top:20px;
+	background:url(../default/img/header-Vline.png) no-repeat center top;
+}
+.header .nav-menu li{
+	margin:0 0 5px 0;
+	height:50px;
+	list-style:none;
+	position:relative;
+}
+.header .nav-menu li.over, .header .nav-menu li.current{
+	background-color: #2b71ad;
+	
+	-webkit-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2) inset;
+       -moz-box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2) inset;
+			box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2) inset;
+}
+.header .nav-menu li .badge{ position:absolute; top:10px; right:15px; font-size:11px; padding:0 4px; }
+
+.header .nav-menu li a, .header .nav-menu li a:visited, .header .nav-menu li a:hover, .header .nav-menu li a:focus{
+	display:block;
+	padding:0;
+	height:50px;
+	text-indent:-6000px;
+	position:relative;
+	text-align:center;
+	text-decoration:none;
+	font-size:18px;
+	color:#fff;
+	text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
+	background-image:url(../default/img/nav.png);
+	background-repeat:no-repeat;
+}
+.header .nav-menu li.current a{ color:#fff;}
+.header .nav-menu li a#navAllFile{ background-position:center -5px;}
+.header .nav-menu li a#navShare{ background-position:center -125px;}
+.header .nav-menu li a#navTeamSpace{background-position:center -365px;}
+.header .nav-menu li a#navAPP{ background-position:center -245px;}
+.header .nav-menu li.current a#navAllFile{ background-position:center -65px;}
+.header .nav-menu li.current a#navShare{ background-position:center -185px;}
+.header .nav-menu li.current a#navTeamSpace{ background-position:center -425px;}
+.header .nav-menu li.current a#navAPP{ background-position:center -305px;}
+
+.header-R{ position:absolute; left:0; bottom:0; width:120px;}
+.header .user-info{ width:auto;}
+.header .user-info .user-logo{ padding-left:41px;}
+.header .user-info .user-logo > a{ display:block; width:36px; height:36px; border:1px solid #fff; cursor:default;
+	-webkit-box-shadow: 0 0 5px #333;
+       -moz-box-shadow: 0 0 5px #333;
+            box-shadow: 0 0 5px #333;
+}
+.header .user-info .user-name{ padding:5px 10px;}
+.header .user-info .user-name a{
+	display:inline-block;
+	width:100px;
+	font-size:12px;
+	line-height:20px;
+	color:#fff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+	overflow:hidden;
+	white-space: nowrap;
+	-o-text-overflow: ellipsis;
+	text-overflow:ellipsis;
+}
+.header .user-info .space-count{ padding:0 5px;}
+.header .user-info .space-count .progress{
+	margin:0 10px;
+	height:6px;
+	background-color: #145e9c;
+	background-image:none;
+	-webkit-border-radius: 0;
+     -moz-border-radius: 0;
+          border-radius: 0;
+}
+.header .user-info .space-count .progress .bar{
+	background-color: #00e4ff;
+	background-image:none;
+}
+.header .user-info .space-count p{ padding-top:5px; font-size:10px; line-height:14px; text-align:center;}
+.header .user-handle{ height:45px; margin-top:15px; padding-top:10px; padding-right:5px; text-align:center; background:url(../default/img/header-Vline.png) no-repeat center top;}
+.header .user-handle > a, .header .user-handle > span{ padding-left:0; padding-right:0; margin-left:5px;}
+.header .user-handle .dropdown-menu a{ text-align:left;}
+
+/* for link header */
+.header .header-info{ padding:20px 5px 0; background:url(../default/img/header-Vline.png) no-repeat center top;}
+.header .header-info span{ color:#fff; display:inline-block; margin-bottom:10px; text-align:center;}
+
+/*breadcrumb*/
+.breadcrumb{
+	padding:3px 0;
+  	margin: 0;
+	width:100%;
+	min-width:980px;
+	position:fixed;
+	z-index:9990;
+	top:0;
+	left:0;
+	border-bottom:1px solid #e3e3e3;
+	background-color: #fafafa;
+	-webkit-border-radius: 0;
+       -moz-border-radius: 0;
+            border-radius: 0;
+}
+.breadcrumb-con {
+	margin:0 auto;
+	padding: 0 20px 0 140px;
+	height:30px;
+}
+
+/*page body*/
+.body{
+	background:#fff;
+	width:100%;
+	min-width:980px;
+	margin:0 auto;
+}
+.body-con{
+	padding:36px 40px 0 160px;
+}
+.no-breadcrumb{
+	padding-top:20px;
+}
+.app-con{ padding:36px 0 0 120px; }
+
+/*public-bar*/
+.public-bar-con{
+	width:100%;
+	min-width:980px;
+	position:fixed;
+	bottom:10px;
+	left:0;
+}
+
+/*footer*/
+.footer{ width:100%; min-width:980px; height:0; overflow:hidden;
+}
+.footer-con{
+	max-width:1400px;
+	min-width:960px;
+	margin:0 auto;
+	padding:7px 10px 8px;
+}
+.footer-con p{ text-align:center; font-size:12px; color:#666;
+	word-break:break-all;
+	word-wrap:break-word;
+}
+
+/* layout end ============================================================*/

@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> has canceled the sharing of folder <strong>${nodeName}</strong>

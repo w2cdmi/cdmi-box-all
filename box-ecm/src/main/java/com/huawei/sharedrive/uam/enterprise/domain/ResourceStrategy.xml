@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ResourceStrategy">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="ResourceStrategy" type="com.huawei.sharedrive.uam.enterprise.domain.ResourceStrategy" />
+	
+	<insert id="insert" parameterClass="ResourceStrategy">
+        <![CDATA[
+        insert into resource_strategy(id,accountId,netRegionId,securityRoleId,resourceSecurityLevelId,createdAt,modifiedAt) 
+        values 
+        (#id#,#accountId#,#netRegionId#,#securityRoleId#,#resourceSecurityLevelId#,#createdAt#,#modifiedAt#)
+        ]]>
+	</insert>
+	
+	<select id="getDuplicateValues" parameterClass="ResourceStrategy" resultClass="int">
+    	<![CDATA[
+    	select count(id) from resource_strategy 
+    	where 
+    	netRegionId=#netRegionId# and 
+    	securityRoleId=#securityRoleId#
+        ]]>
+	</select>
+	
+	 <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from resource_strategy where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.resourceSecurityLevelId">
+                resourceSecurityLevelId = #filter.resourceSecurityLevelId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.securityRoleId">
+                securityRoleId = #filter.securityRoleId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.netRegionId">
+                netRegionId = #filter.netRegionId#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    
+    <select id="getFilterd" parameterClass="map" resultClass="ResourceStrategy">
+        select * from resource_strategy where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+           <isNotEmpty prepend="and" property="filter.resourceSecurityLevelId">
+                resourceSecurityLevelId=#filter.resourceSecurityLevelId#
+            </isNotEmpty>
+        </dynamic>
+        order by modifiedAt desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getById" parameterClass="Long" resultClass="ResourceStrategy">
+        select * from resource_strategy where resourceSecurityLevelId=#resourceSecurityLevelId#
+    </select>
+    
+    <select id="getResourceStrategyByCondition" parameterClass="ResourceStrategy" resultClass="ResourceStrategy">
+		select rs.accountId,rs.netRegionId,rs.securityRoleId,rsl.id from resource_security_level rsl ,resource_strategy rs
+		where rsl.id=rs.resourceSecurityLevelId and rs.accountId=#accountId#
+        <dynamic prepend="and" open="(" close=")">
+           <isNotEmpty prepend="and" property="netRegionId">
+                rs.netRegionId=#netRegionId#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="securityRoleId">
+                rs.securityRoleId=#securityRoleId#
+            </isNotEmpty>
+        </dynamic>
+        order by rsl.id desc
+    </select>
+    
+    
+    <select id="getResourceStrategyById" parameterClass="ResourceStrategy" resultClass="ResourceStrategy">
+		select* from resource_strategy where id=#id# and accountId=#accountId#
+    </select>
+    
+    <delete id="delete" parameterClass="Long">
+        delete from resource_strategy where resourceSecurityLevelId=#resourceSecurityLevelId#
+    </delete>
+    
+    <select id="getMaxId" parameterClass="String" resultClass="Long">
+        <![CDATA[
+        select max(id) from resource_strategy
+        ]]>
+    </select>
+    
+    <delete id="deleteByContidion" parameterClass="ResourceStrategy">
+    		delete from resource_strategy where accountId =#accountId#
+    	<dynamic prepend="and" open="(" close=")">
+    	       <isNotEmpty prepend="and" property="id">
+                id = #id# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="securityRoleId">
+                securityRoleId = #securityRoleId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="netRegionId">
+                netRegionId = #netRegionId#
+            </isNotEmpty>
+        </dynamic>
+    </delete>
+    
+    
+    <update id="modify" parameterClass="ResourceStrategy">
+        update resource_strategy set netRegionId=#netRegionId#, resourceSecurityLevelId=#resourceSecurityLevelId#,securityRoleId=#securityRoleId#,modifiedAt=#modifiedAt# where id=#id# and accountId=#accountId#
+    </update>
+    
+    <select id="getByStrategyId" parameterClass="Long" resultClass="ResourceStrategy">
+        select * from resource_strategy where id=#id#
+    </select>
+    
+    <delete id="deleteStrategy" parameterClass="Long">
+        delete from resource_strategy where resourceSecurityLevelId=#id#
+    </delete>
+</sqlMap>
+

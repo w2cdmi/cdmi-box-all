@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Message">
+
+    <typeAlias alias="Message" type="com.huawei.sharedrive.app.message.domain.Message" />
+
+	<insert id="create" parameterClass="Message">
+        <![CDATA[
+        insert into message_$tableSuffix$(id, providerId,receiverId,appId,type,status,createdAt,expiredAt,params)
+        	values 
+        (#id#, #providerId#,#receiverId#,#appId#,#type#,#status#,#createdAt#,#expiredAt#,#params#)
+        ]]>
+    </insert>
+    
+    <update id="updateStatus" parameterClass="Message">
+    	<![CDATA[
+        update message_$tableSuffix$ set status=#status# where receiverId = #receiverId# and id=#id#
+        ]]>
+    </update>
+    
+    <select id="get" parameterClass="Message" resultClass="Message">
+        select * from message_$tableSuffix$ where receiverId = #receiverId# and id=#id#
+    </select>
+    
+    <select id="getTotalMessages" parameterClass="Message" resultClass="Integer">
+        select count(*) from message_$tableSuffix$
+        <dynamic prepend="where">
+        	<isNotEmpty prepend="and" property="receiverId">
+            	receiverId = #receiverId#
+            </isNotEmpty>
+            <isNotEqual prepend="and" property="status" compareValue="0">
+                status = #status#
+            </isNotEqual>
+            <isNotEmpty prepend="and" property="id">
+                id >= #id# 
+            </isNotEmpty>
+        </dynamic>
+    </select>
+
+    <select id="listMessage" parameterClass="map" resultClass="Message">
+        select * from message_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.receiverId">
+                    receiverId = #filter.receiverId#
+                </isNotEmpty>
+                <isNotEqual prepend="and" property="filter.status" compareValue="0" >
+                    status = #filter.status#
+                </isNotEqual>
+                <isNotEmpty prepend="and" property="filter.id">
+                    id >= #filter.id# 
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        order by createdAt desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getMaxId" resultClass="Long" parameterClass="Message">
+        <![CDATA[
+        select max(id) from message_$tableSuffix$ where receiverId=#receiverId#
+        ]]>
+    </select>
+    
+    <delete id="delete" parameterClass="Message">
+        <![CDATA[
+        delete from message_$tableSuffix$ where receiverId = #receiverId# and id=#id#
+        ]]>
+    </delete>
+    
+    <delete id="cleanExpiredMessage" parameterClass="Map">
+        <![CDATA[
+        delete from message_$filter.tableSuffix$ where expiredAt <= #filter.expiredAt#
+        ]]>
+    </delete>
+</sqlMap>
+

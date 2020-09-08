@@ -1,0 +1,36 @@
+<import src="/disk/template/menu.wxml" />
+<view class="page">
+    <!--收件箱  -->
+    <view class='flex-row' bindtap='navigateInbox'>
+        <view class='flex-column'>
+            <image src='/disk/images/inbox/big-inbox.png' class='content-image'></image>
+        </view>
+        <view class='flex-column'>
+            <label class="content-title">收件箱</label>
+            <text class="content-desc">您可以创建目录向好友和同事收取文件</text>
+        </view>
+    </view>
+    <!--我的分享  -->
+    <view class='flex-row' bindtap='goToShareByMePage'>
+        <view class='flex-column'>
+            <image src='/disk/images/icon/tab-files-share-byme.png' class='content-image'></image>
+        </view>
+        <view class='flex-column'>
+            <label class="content-title">我的分享</label>
+            <text class="content-desc">统一管理您分享给别人的文件</text>
+        </view>
+    </view>
+    <!-- 他人分享 -->
+    <view class='flex-row' bindtap='goToShareToMePage'>
+        <view class='flex-column'>
+            <image src='/disk/images/icon/tab-files-share-tome.png' class='content-image'></image>
+        </view>
+        <view class='flex-column'>
+            <label class="content-title">他人分享</label>
+            <text class="content-desc">统一管理他人分享给您的文件</text>
+        </view>
+    </view>
+
+    <tabbar selectIndex="3" bind:onShowMenu="onShowMenu"></tabbar>
+    <menu isShowMenu='{{isShowMenu}}' bind:onUploadImage="onUploadImage" bind:onUploadVideo="onUploadVideo" bind:showCreateFolder="showCreateFolder"></menu>
+</view>

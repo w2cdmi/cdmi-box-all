@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="fileObjectAttachment">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="FileObjectAttachment" type="pw.cdmi.file.engine.object.domain.FileObjectAttachment" />
+    
+	<resultMap id="resultMap.FileObjectAttachment" class="FileObjectAttachment">
+        <result column="objectid" 		property="objectID" 			javaType="java.lang.String"/>
+        <result column="attachment" 	property="attachment" 			javaType="java.lang.String"/>
+        <result column="path" 			property="storagePath" 			javaType="java.lang.String"/>
+        <result column="length" 		property="objectLength" 		javaType="java.lang.Long"/>
+    </resultMap>
+	<insert id="insert" parameterClass="java.util.Map">
+		<![CDATA[
+		insert into $table$(objectid,attachment,length,path) values(#object.objectID#,#object.attachment#,#object.objectLength#,#object.storagePath#)
+		]]>
+	</insert>
+	
+	<select id="select" parameterClass="java.util.Map" resultMap="resultMap.FileObjectAttachment">
+		<![CDATA[
+		select * from $table$ where objectid = #object.objectID# and attachment=#object.attachment#
+		]]>
+	</select>
+	
+	<select id="selectAllByFileObject" parameterClass="java.util.Map" resultMap="resultMap.FileObjectAttachment">
+		<![CDATA[
+		select * from $table$ where objectid = #object.objectID#
+		]]>
+	</select>
+	
+	<delete id="delete" parameterClass="java.util.Map">
+		<![CDATA[
+		delete from $table$ where objectid = #object.objectID# and attachment=#object.attachment#
+		]]>
+	</delete>
+	
+	<delete id="deleteByFileObject" parameterClass="java.util.Map">
+		<![CDATA[
+		delete from $table$ where objectid = #object.objectID#
+		]]>
+	</delete>
+</sqlMap>

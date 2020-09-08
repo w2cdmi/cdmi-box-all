@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CMBUserRelationInfoTmp">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CMBUserRelationInfo" type="com.huawei.sharedrive.uam.cmb.oa.domain.CMBUserRelationInfo" />
+	
+	<insert id="insert" parameterClass="CMBUserRelationInfo">
+        <![CDATA[
+        insert into cmb_orguser_relation_info_tmp(orgId,groupId,name,userId,userOrd) 
+        values (#orgId#,#groupId#,#name#,#userId#,#userOrd#)
+        ]]>
+	</insert>
+	<select id="getAll" resultClass="CMBUserRelationInfo">
+    	<![CDATA[
+        select * from cmb_orguser_relation_info_tmp
+        ]]>
+	</select>
+	<delete id="deleteAll">
+    	<![CDATA[
+        delete from cmb_orguser_relation_info_tmp
+        ]]>
+	</delete>
+	
+</sqlMap>
+

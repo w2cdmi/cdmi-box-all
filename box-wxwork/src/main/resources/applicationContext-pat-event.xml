@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+	default-autowire="byName" default-lazy-init="true">
+   
+    <bean id="eventService" class="pw.cdmi.box.disk.event.service.impl.DefaultEventServiceImpl" lazy-init="false" destroy-method="destroy">
+        <property name="capacity" value="10000" />
+        <property name="maxConsumerWorkers" value="10" />
+        <property name="consumers">
+            <list>
+            </list>
+        </property>
+    </bean>
+    
+ 	<bean id="securityService" class="pw.cdmi.box.disk.system.service.impl.SecurityServiceImpl" lazy-init="false"/>
+</beans>

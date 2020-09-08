@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WxUserEnterprise">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="WxUserEnterprise" type="pw.cdmi.box.disk.weixin.domain.WxUserEnterprise" />
+
+    <insert id="insert" parameterClass="WxUserEnterprise">
+        <![CDATA[
+        insert into wx_user_enterprise(unionId,enterpriseId,enterpriseUserId)
+        values (#unionId#,#enterpriseId#,#enterpriseUserId#)
+        ]]>
+	</insert>
+
+    <delete id="delete" parameterClass="WxUserEnterprise">
+        <![CDATA[
+        DELETE FROM wx_user_enterprise WHERE unionId=#unionId# AND enterpriseId=#enterpriseId#
+        ]]>
+    </delete>
+
+    <delete id="deleteByUnionId" parameterClass="String">
+        <![CDATA[
+        DELETE FROM wx_user_enterprise WHERE unionId=#unionId#
+        ]]>
+    </delete>
+
+
+    <select id="getByUnionIdAndEnterpriseId" parameterClass="map" resultClass="WxUserEnterprise">
+        <![CDATA[
+    	select * from wx_user_enterprise where unionId=#unionId# AND enterpriseId=#enterpriseId#
+        ]]>
+    </select>
+
+    <select id="listByUnionId" parameterClass="String" resultClass="WxUserEnterprise">
+        <![CDATA[
+    	select * from wx_user_enterprise where unionId=#unionId#
+        ]]>
+    </select>
+    
+      <select id="getByEnterpriseUser" parameterClass="map" resultClass="WxUserEnterprise">
+        <![CDATA[
+    	select * from wx_user_enterprise where enterpriseUserId=#enterpriseUserId# and enterpriseId=#enterpriseId#
+        ]]>
+    </select>
+    
+    
+</sqlMap>
+

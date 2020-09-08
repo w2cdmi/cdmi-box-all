@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MigrationEverydayProcess">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="MigrationEverydayProcess"
+		type="com.huawei.sharedrive.isystem.mirror.appdatamigration.domain.MigrationEverydayProcess" />
+		
+	<select id="getByParentId" resultClass="MigrationEverydayProcess" parameterClass="String">
+		select * from history_data_copy_process_info_everyday where parendId=#value#
+	</select>	
+	
+	<insert id="insert" parameterClass="MigrationEverydayProcess">
+		insert into	history_data_copy_process_info_everyday(id,parentId,policyId,startTime,endTime,newAddFiles,newAddSizes)
+		values(#id#, #parentId#,#policyId#, #startTime#,#endTime#,#newAddFiles#, #newAddSizes#)
+	</insert>
+	
+	<update id="update" parameterClass="MigrationEverydayProcess">
+		update history_data_copy_process_info_everyday set newAddFiles=#newAddFiles#,newAddSizes=#newAddSizes#,endTime=#endTime# where id=#id#
+	</update>
+	
+	
+	<select id="getUnCompleteDayProcess" resultClass="MigrationEverydayProcess" parameterClass="String">
+		select * from history_data_copy_process_info_everyday where endTime is null and parentId=#value#
+	</select>
+	
+	
+	<update id="closeUnCompleteDayProcess" parameterClass="MigrationEverydayProcess">
+		update history_data_copy_process_info_everyday set endTime=#endTime# where id=#id#
+	</update>
+	
+	
+	<update id="updateForCompleteAFile" parameterClass="MigrationEverydayProcess">
+		update history_data_copy_process_info_everyday set newAddFiles=#newAddFiles#,newAddSizes=#newAddSizes# where id=#id#
+	</update>
+	
+	<select id="getMigrationEverydayProcessById" resultClass="MigrationEverydayProcess" parameterClass="String">
+		select * from history_data_copy_process_info_everyday where parentId=#value# order by startTime desc
+	</select>
+</sqlMap>
+

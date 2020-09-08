@@ -1,0 +1,125 @@
+/* 云文档菜单样式 */
+.cloud-menu {
+    font-size: 26rpx;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.menu-select {
+    color: #ea5036;
+    border-bottom: 1px solid #ea5036;
+}
+
+.current-dir {
+    color: #999;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* 底部按钮 */
+.save-to-operation {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    height: 57px;
+    padding: 0 15px;
+}
+
+.save-to-operation button {
+    width: 320rpx;
+    font-size: 14px;
+    background: #ea5036;
+    color: #fff;
+    margin: 10px 0;
+    height: 37px;
+    line-height: 37px;
+}
+
+.save-to-operation .gray-button {
+    background:#fff;
+    color:#333;
+    border:1px solid rgba(153, 153, 153, 0.5);
+}
+
+/* 空背景 */
+.blankBackground {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transform: none;
+}
+
+.blankBackground view image {
+    width: 250px;
+    height: 200px;
+}
+
+.blankBackground view text {
+    font-size: 14px;
+    color: #a9a9a9;
+}
+
+/* crumbs */
+.crumbs {
+    display: flex;
+    height: 30px;
+    display: -webkit-box;
+}
+
+.crumbs view {
+    max-width: 80px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.crumbs image {
+    height: 13px;
+    width: 8px;
+    margin: 8px 10px;
+}
+
+.view-select-icon{
+    width: 60rpx;
+    display:flex;
+}
+.img-icon-small{
+    height:40rpx;
+    width:40rpx;
+}
+
+checkbox {
+    width:70rpx;
+}
+
+checkbox .wx-checkbox-input {
+    border-radius: 50%;
+    width: 35rpx;
+    height: 35rpx;
+    margin-top: 24rpx;
+    margin-right: 50rpx;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+    border: 1rpx solid #1d97ff;
+    background: #1d97ff;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+    border-radius: 50%;
+    width: 35rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: #fff;
+    background: transparent;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+}

@@ -1,0 +1,20 @@
+/**
+ * @public style
+ */
+
+/* new bootstrap start ============================================================*/
+
+.header .nav-menu li a, .header .nav-menu li a:visited, .header .nav-menu li a:hover, .header .nav-menu li a:focus{
+	padding:0 10px 0;
+}
+.header-R{ width:auto;}
+.header-R > ul > li{ margin:20px 0 0 5px; }
+.header-R > ul > li > a > strong{ width:100px;}
+
+.sys-content-en .form-horizontal .control-label{width:270px;}
+.sys-content-en .form-horizontal .controls {margin-left: 290px; *margin-left: 0;}
+.sys-content-en .form-horizontal .controls:first-child { *padding-left: 290px;}
+
+.pop-content-en .form-horizontal .control-label{width:220px;}
+.pop-content-en .form-horizontal .controls{margin-left:240px;*margin-left: 0;}
+.pop-content-en .form-horizontal .controls:first-child {*padding-left: 240px;}

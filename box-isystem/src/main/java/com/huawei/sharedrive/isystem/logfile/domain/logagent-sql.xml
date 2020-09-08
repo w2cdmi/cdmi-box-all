@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="LogAgent">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="LogAgent" type="com.huawei.sharedrive.isystem.logfile.domain.LogAgent" />
+    
+	<resultMap id="resultMap.LogAgent" class="LogAgent">
+        <result column="id" 			property="id" 					javaType="java.lang.Integer"/>
+        <result column="clusterId" 		property="clusterId" 			javaType="java.lang.Integer"/>
+        <result column="protocol" 		property="protocol" 			javaType="java.lang.String"/>
+        <result column="address" 		property="address" 				javaType="java.lang.String"/>
+        <result column="port" 			property="port" 				javaType="java.lang.Integer"/>
+        <result column="contextpath" 	property="serviceContextPath" 	javaType="java.lang.String"/>
+        <result column="createdAt" 		property="createdAt" 			javaType="java.util.Date"/>
+        <result column="modifiedAt" 	property="modifiedAt" 			javaType="java.util.Date"/>
+    </resultMap>
+    
+    <select id="select" resultMap="resultMap.LogAgent" parameterClass="java.lang.Integer">
+		<![CDATA[
+		select * from logagent.logagent where id=#value#;
+        ]]>
+    </select>
+    
+	<select id="selectByClusterId" resultMap="resultMap.LogAgent" parameterClass="java.lang.Integer">
+		<![CDATA[
+		select * from logagent.logagent where clusterId=#value#;
+        ]]>
+    </select>
+    
+    <select id="selectAll" resultMap="resultMap.LogAgent">
+		<![CDATA[
+		select * from logagent.logagent;
+        ]]>
+    </select>
+</sqlMap>
+

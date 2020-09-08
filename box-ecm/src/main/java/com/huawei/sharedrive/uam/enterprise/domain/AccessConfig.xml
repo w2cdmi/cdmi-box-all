@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccessConfig">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="AccessConfig" type="com.huawei.sharedrive.uam.enterprise.domain.AccessConfig" />
+	
+	<insert id="insert" parameterClass="AccessConfig">
+        <![CDATA[
+        insert into access_config(id,accountId,safeRoleId,spaceRoleId,netRegionId,clientType,downLoadResrouceTypeIds,previewResourceTypeIds,createdAt,modifiedAt) 
+        values 
+        (#id#,#accountId#,#safeRoleId#,#spaceRoleId#,#netRegionId#,#clientType#,#downLoadResrouceTypeIds#,#previewResourceTypeIds#,#createdAt#,#modifiedAt#)
+        ]]>
+	</insert>
+	
+	<select id="getDuplicateValues" parameterClass="AccessConfig" resultClass="int">
+    	<![CDATA[
+    	select count(id) from access_config where safeRoleId=#safeRoleId# and spaceRoleId=#spaceRoleId# and netRegionId=#netRegionId#
+     and clientType=#clientType# and accountId=#accountId#;
+        ]]>
+	</select>
+	
+	 <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from access_config where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.safeRoleId">
+                safeRoleId = #filter.safeRoleId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.spaceRoleId">
+                spaceRoleId = #filter.spaceRoleId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.netRegionId">
+                netRegionId = #filter.netRegionId#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.clientType">
+                clientType = #filter.clientType#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    
+    <select id="getFilterd" parameterClass="map" resultClass="AccessConfig">
+        select * from access_config where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.safeRoleId">
+                safeRoleId = #filter.safeRoleId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.spaceRoleId">
+                spaceRoleId = #filter.spaceRoleId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.netRegionId">
+                netRegionId = #filter.netRegionId#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.clientType">
+                clientType = #filter.clientType#
+            </isNotEmpty>
+        </dynamic>
+        order by modifiedAt desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getById" parameterClass="Long" resultClass="AccessConfig">
+        select * from access_config where id=#id#
+    </select>
+    
+    <select id="getByAccountId" parameterClass="Long" resultClass="AccessConfig">
+        select * from access_config where accountId=#accountId#
+    </select>
+    
+     <update id="modify" parameterClass="AccessConfig">
+        update access_config set
+        accountId=#accountId#,
+        safeRoleId=#safeRoleId#,
+        spaceRoleId=#spaceRoleId#,
+        netRegionId=#netRegionId#,
+        downLoadResrouceTypeIds=#downLoadResrouceTypeIds#,
+        previewResourceTypeIds=#previewResourceTypeIds#,
+        clientType=#clientType#,
+	   modifiedAt=#modifiedAt# 
+	   where id=#id#
+    </update>
+    
+    <select id="getMaxId" parameterClass="String" resultClass="Long">
+        <![CDATA[
+        select max(id) from access_config
+        ]]>
+    </select>
+    
+    <delete id="delete" parameterClass="long">
+    	delete from access_config where id =#id#
+    </delete>
+    
+    <delete id="deleteByContidion" parameterClass="AccessConfig">
+    	delete from access_config where accountId =#accountId#
+    	<dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="safeRoleId">
+                safeRoleId = #safeRoleId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="spaceRoleId">
+                spaceRoleId = #spaceRoleId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="netRegionId">
+                netRegionId = #netRegionId#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="clientType">
+                clientType = #clientType#
+            </isNotEmpty>
+        </dynamic>
+    </delete>    
+    
+   <select id="getFilterdByAll" parameterClass="map" resultClass="AccessConfig">
+        select * from access_config where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.safeRoleId">
+                safeRoleId = #filter.safeRoleId# 
+            </isNotEmpty>
+             <isNotEmpty prepend="and" property="filter.targetSafeRoleId">
+                spaceRoleId = #filter.targetSafeRoleId# 
+            </isNotEmpty> 
+            <isNotEmpty prepend="and" property="filter.netRegionId">
+                netRegionId = #filter.netRegionId#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.clientType">
+                clientType = #filter.clientType#
+            </isNotEmpty>
+        </dynamic>
+        order by modifiedAt desc
+    </select>
+    
+</sqlMap>
+

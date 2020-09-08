@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	<bean id="dssClientService" class="pw.cdmi.file.engine.mirro.httpclient.CopyHttpClient">
+		<property name="routeHosts">
+			<list>
+				<value>d.huawei.com</value>
+				<value>onebox.huawei.com</value>
+				<value>cd.huawei.com</value>
+				<value>clouddrive.huawei.com</value>
+				<value>clouddrive-lhr.huawei.com</value>
+			</list>
+		</property>
+		<property name="httpPorts">
+			<list>
+				<value>80</value>
+			</list>
+		</property>
+		<property name="httpsPorts">
+			<list>
+				<value>443</value>
+			</list>
+		</property>
+        <property name="cipherSuites">
+            <list>
+                <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+                <value>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</value>
+            </list>
+        </property>
+        <property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+        <property name="validateServerCert" value="${https.client.valid.server.cert}" />
+        <property name="trustStorePath" value="${https.client.truststore.path}" />
+        <property name="trustStorePass" value="${https.client.truststore.password}" />
+        <property name="trustStorePassKey" value="${https.client.truststore.password.encodekey}" />
+	</bean>
+	<bean id="realTimeClientService" class="pw.cdmi.file.engine.realtime.httpclient.RealTimeCopyHttpClient">
+		<property name="routeHosts">
+			<list>
+				<value>d.huawei.com</value>
+				<value>onebox.huawei.com</value>
+				<value>cd.huawei.com</value>
+				<value>clouddrive.huawei.com</value>
+				<value>clouddrive-lhr.huawei.com</value>
+			</list>
+		</property>
+		<property name="httpPorts">
+			<list>
+				<value>80</value>
+			</list>
+		</property>
+		<property name="httpsPorts">
+			<list>
+				<value>443</value>
+			</list>
+		</property>
+        <property name="cipherSuites">
+            <list>
+                <value>TLS_RSA_WITH_AES_128_CBC_SHA</value>
+                <value>TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA</value>
+            </list>
+        </property>
+        <property name="enabledProtocols">
+            <list>
+                <value>TLSv1.2</value>
+                <value>TLSv1.1</value>
+            </list>
+        </property>
+        <property name="validateServerCert" value="${https.client.valid.server.cert}" />
+        <property name="trustStorePath" value="${https.client.truststore.path}" />
+        <property name="trustStorePass" value="${https.client.truststore.password}" />
+        <property name="trustStorePassKey" value="${https.client.truststore.password.encodekey}" />
+	</bean>
+</beans>

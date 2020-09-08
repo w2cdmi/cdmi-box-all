@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="生成的文件">
+      <UniqueIdentifier>{d814e17b-57d1-4f91-bd62-24f16456063e}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="ctxmenu">
+      <UniqueIdentifier>{f9b194d9-59e7-4232-b814-092ef74d70c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{812c597d-42dd-44ac-8818-ebe13d186f2e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thrift">
+      <UniqueIdentifier>{374f9872-0457-4f26-9858-2e8ef138e29b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ControlNames">
+      <UniqueIdentifier>{e2301872-73d3-42b5-abf8-018380df84cd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Upload">
+      <UniqueIdentifier>{d72a6c0f-e68b-4d44-84ad-c13c522f77c6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ShellExtent_i.c">
+      <Filter>生成的文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ShellExtent.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\include\Utility.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="ContextMenuExt.cpp">
+      <Filter>ctxmenu</Filter>
+    </ClCompile>
+    <ClCompile Include="Global.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\OneboxThriftService_constants.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\OneboxThriftService_types.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\ThriftService.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="ThriftClient.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="ContrlolNames.cpp">
+      <Filter>ControlNames</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\include\InIHelper.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\include\CommonFileDialogImpl.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="Upload.cpp">
+      <Filter>Upload</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\include\CommonFileDialogThriftClient.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UI\source\SkinConfMgr.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UI\source\RenameRichEdit.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UI\source\SimpleNoticeFrame.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UI\source\ErrorConfMgr.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UI\source\CommonLoadingFrame.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dllmain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ShellExtent_i.h">
+      <Filter>生成的文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\include\ErrorCode.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\include\Utility.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="ContextMenuExt.h">
+      <Filter>ctxmenu</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\OneboxThriftService_constants.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\OneboxThriftService_types.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\ThriftService.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="ThriftClient.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="ControlNames.h">
+      <Filter>ControlNames</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UI\include\InILanguage.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\include\InIHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\include\NotifyMsg.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="Upload.h">
+      <Filter>Upload</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UI\include\RenameRichEdit.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UI\include\SimpleNoticeFrame.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ContextMenuExt.rgs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="ShellExtent.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="ShellExtent.rgs">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\outchain.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Share.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\ShareLink.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\cloudlogo.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Res\addbackup.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Res\ic_shell_backup.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="Res\ic_shell_upload.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="ShellExtent.idl">
+      <Filter>源文件</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ShellExtent.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,1 @@
+[${appEmailTitle}] ${operUserName} 已将您从群组 ${groupName}删除。 you have been removed by ${operUserName} from this group.

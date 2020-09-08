@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MailMsg">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="MailMsg" type="com.huawei.sharedrive.app.files.domain.MailMsg" />
+
+    <select id="get" resultClass="MailMsg" parameterClass="MailMsg">
+        <![CDATA[
+        select * from inode_mail_msg where userId=#userId# and  source=#source# and  ownerId=#ownerId# and  nodeId=#nodeId#
+        ]]>
+    </select>
+
+    <insert id="insert" parameterClass="MailMsg">
+        <![CDATA[
+        insert into inode_mail_msg(userId,source,ownerId,nodeId,subject,message) 
+        values 
+        (#userId#,#source#,#ownerId#,#nodeId#,#subject#,#message#)
+        ]]>
+    </insert>
+
+    <update id="update" parameterClass="MailMsg">
+        <![CDATA[
+        update inode_mail_msg set subject=#subject#,message=#message# 
+        where userId=#userId# and source=#source# and  ownerId=#ownerId# and  nodeId=#nodeId#
+        ]]>
+    </update>
+  
+    <delete id="delete" parameterClass="MailMsg">
+        <![CDATA[
+        delete from inode_mail_msg where userId=#userId# and  source=#source# and  ownerId=#ownerId# and  nodeId=#nodeId#
+        ]]>
+    </delete>  
+    <delete id="deleteUserAll" parameterClass="MailMsg">
+        <![CDATA[
+        delete from inode_mail_msg where userId=#userId#
+        ]]>
+    </delete> 
+</sqlMap>
+

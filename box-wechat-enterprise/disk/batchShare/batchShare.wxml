@@ -1,0 +1,162 @@
+<!--disk/batchShare/batchShare.wxml-->
+<view class='actionsheet__mask' hidden='{{isShowShareBtn}}'></view>
+<view class='page page-height'>
+    <view class=''>
+        <view class='view-input view-bg' style='{{isSharing ? "height:353px;":""}}'>
+            <textarea maxlength="100" placeholder='请输入分享描述...' bindfocus="hiddenDrawerScreen" hidden='{{isSharing}}' disabled="{{!isOperable}}" class='textarea ' placeholder-class='input-class' focus='{{true}}' bindinput='inputChange'></textarea>
+            <view class='view-dotted' wx:if="{{isShowDotted}}">
+                <view class='blank-bg' bindtap='jumpSelectFile'>
+                    <view>
+                        <image mode='aspectFill' style='width:198rpx;height:198rpx;' src='/disk/images/icon/share-add.png'></image>
+                    </view>
+                    <view class="default-txt">添加文件</view>
+                </view>
+            </view>
+
+            <view class='select-files-box' wx:else>
+                <block wx:for="{{checkedList}}" wx:key="*this">
+                    <view>
+                        <view>
+                            <image src='{{item.icon}}' mode='aspectFill' class='img'></image>
+                        </view>
+
+                        <image bindtap='deleteChecked' data-ownerId='{{item.ownerId}}' wx:if='{{hiddenDEL}}' data-id='{{item.id}}' src='/disk/images/icon/share-file-del.png' class='delete-file-img'></image>
+                        <view class='select-file-name'>{{item.name}}</view>
+                    </view>
+                </block>
+                <view bindtap='jumpSelectFile' hidden='{{isSharing || isShowAddBtn}}'>
+                    <view>
+                        <image mode='aspectFill' src='/disk/images/icon/share-add.png' class='img'></image>
+                    </view>
+                    <view>添加文件</view>
+                </view>
+            </view>
+        </view>
+        <view class='item view-bg default-line' bindtap="setPlugModalStatus" data-status="1">
+            <view class='default-title'>设置</view>
+            <view class='default-ele'>
+                <view class='view-default' bindtap='onShareType' data-type='open'>
+                    <view style='margin-right:15rpx;'>
+                    </view>
+                    <view class='default-txt'>{{shareType=="open" ? "公开" : "提取码"}}</view>
+                </view>
+                <text class='view-default default-txt'>{{validityDateTxT}}</text>
+                <text class='view-default default-txt'>{{allowSave ==0 ? "不能转存":"允许转存"}}</text>
+                <view class="plug-view">
+                    <image class='flug-icon' src='/disk/images/arrow.png'></image>
+                </view>
+            </view>
+            <!-- 布局占位 -->
+
+        </view>
+
+    </view>
+
+</view>
+
+<view class='share-button' data-status="1" bindtap='onCreateBatchFileLink'>
+    确认
+</view>
+<view hidden='{{isShowShareBtn}}'>
+    <button class='share-btn' open-type="share">分享给朋友</button>
+    <view class='share-txt'>(链接已生成，点击分享给朋友)</view>
+</view>
+<view class='bottom-view' hidden='{{isShowShareBtn}}'> </view>
+<!-- 外链条件的选项的扩展层  -->
+<view class="drawer-screen" bindtap="setPlugModalStatus" data-status="0" wx:if="{{showModalStatus}}"></view>
+<view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+    <view class="drawer_attr_content">
+        <view class='item view-bg'>
+            <view class='share-title'>分享形式</view>
+            <view class='view-select' bindtap='onShareType' data-type='open'>
+                <view>
+                    <image class='select-icon' src='/disk/images/icon/enterprise/{{shareType=="open"?"selected-icon":"no-select-icon"}}.png'></image>
+                </view>
+                <view>公开</view>
+            </view>
+            <view class='view-select' bindtap='onShareType' data-type='code'>
+                <view>
+                    <image class='select-icon' src='/disk/images/icon/enterprise/{{shareType=="code"?"selected-icon":"no-select-icon"}}.png'></image>
+                </view>
+                <view>提取码</view>
+            </view>
+            <!-- 布局占位 -->
+            <view class='view-select'></view>
+            <!-- <view class='view-select'></view> -->
+        </view>
+
+        <view class='item view-bg' wx:if="{{shareType == 'code'}}">
+            <view class='share-title'>提取码</view>
+            <view class='view-select number-code'>
+                {{extractionCode}}
+            </view>
+            <view class='view-select copy-code' bindtap='onExtractionCode' data-code='{{extractionCode}}'>
+                复制
+            </view>
+            <!-- 布局占位 -->
+            <view class='view-select'></view>
+        </view>
+
+        <view class='item view-bg'>
+            <view class='share-title'>有效期</view>
+            <view class='view-select' bindtap='onValidityDate' data-date='0'>
+                <view>
+                    <image class='select-icon' src='/disk/images/icon/enterprise/{{validityDate==0?"selected-icon":"no-select-icon"}}.png'></image>
+                </view>
+                <view>永久</view>
+            </view>
+            <view class='view-select' bindtap='onValidityDate' data-date='1'>
+                <view>
+                    <image class='select-icon' src='/disk/images/icon/enterprise/{{validityDate==1?"selected-icon":"no-select-icon"}}.png'></image>
+                </view>
+                <view>一天</view>
+            </view>
+            <view class='view-select' bindtap='onValidityDate' data-date='7'>
+                <view>
+                    <image class='select-icon' src='/disk/images/icon/enterprise/{{validityDate==7?"selected-icon":"no-select-icon"}}.png'></image>
+                </view>
+                <view>七天</view>
+            </view>
+        </view>
+
+        <view class='item view-bg'>
+            <view class='share-title'>转存</view>
+            <view class='view-select' bindtap='onAllowSave' data-allow='1'>
+                <view>
+                    <image class='select-icon' src='/disk/images/icon/enterprise/{{allowSave==1?"selected-icon":"no-select-icon"}}.png'></image>
+                </view>
+                <view>允许</view>
+            </view>
+            <view class='view-select' bindtap='onAllowSave' data-allow='0'>
+                <view>
+                    <image class='select-icon' src='/disk/images/icon/enterprise/{{allowSave==0?"selected-icon":"no-select-icon"}}.png'></image>
+                </view>
+                <view>不允许</view>
+            </view>
+            <!-- 布局占位 -->
+            <view class='view-select'></view>
+        </view>
+        <!-- 布局占位 -->
+        <view class='view-select'></view>
+    </view>
+    <view class='item-view'>
+        <view class='confirm-button' bindtap="setPlugModalStatus" data-status="0">确定</view>
+    </view>
+</view>
+
+<!-- 分享按钮  -->
+<view class="share-screen {{isSharing? 'bg-color' : ''}}" bindtap="delLink" data-status="0" wx:if="{{showShareModal}}"></view>
+<view animation="{{ShareAnimationData}}" class="drawer_attr_box" wx:if="{{showShareModal}}">
+    <view class="drawer_attr_content">
+        <view class="share-draw-txt">分享到</view>
+        <view class='icon-contair'>
+            <view class="share-draw-img">
+                <button class='share-btn' open-type="share">
+                    <image class="share-wechat-image" src="/disk/images/icon/share-to-fr.png"></image>
+                    <text class='wechat-friends'>微信好友</text>
+                </button>
+            </view>
+        </view>
+        <view class='cancel-txt' bindtap="delLink" data-status="0">取消</view>
+    </view>
+</view>

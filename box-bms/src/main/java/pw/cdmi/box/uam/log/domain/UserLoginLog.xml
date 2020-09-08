@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserLoginLog">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="UserLoginLog" type="pw.cdmi.common.log.UserLog" />
+	<typeAlias alias="List" type="java.util.List" />
+    
+    <insert id="insert" parameterClass="UserLoginLog">
+        insert into user_login_log_$tableSuffix$(id,loginName,userId,createdAt,clientType,clientDeviceSN,
+        clientAddress,clientDeviceName,appId) 
+        values
+        (#id#,#loginName#,#userId#,#createdAt#,#clientType#,#clientDeviceSN#,
+        #clientAddress#,#clientDeviceName#,#appId#) 
+    </insert>
+    
+    <delete id="dropTable" parameterClass="UserLoginLog">
+        drop table if exists user_login_log_$tableSuffix$
+    </delete>
+    
+    <delete id="createTable" parameterClass="UserLoginLog">
+        create table if not exists user_login_log_$tableSuffix$ like user_login_log;
+    </delete>
+	<select id="getTotalForOneLog" parameterClass="map" resultClass="long">
+        select count(1) from $tableName$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.loginName">
+                    loginName like concat('%',#filter.loginName#,'%')
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.userId">
+                    userId =#filter.userId#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientTypeDb">
+                    clientType = #filter.clientTypeDb#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceSN">
+                    clientDeviceSN like concat('%',#filter.clientDeviceSN#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientAddress">
+                    clientAddress like concat('%',#filter.clientAddress#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceName">
+                    clientDeviceName like concat('%',#filter.clientDeviceName#,'%')
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.appId">
+                    appId = #filter.appId#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.beginTime">
+					<![CDATA[
+                    createdAt >= FROM_UNIXTIME(#filter.beginTime#)
+					]]>
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.endTime">
+                    <![CDATA[
+                      createdAt <= FROM_UNIXTIME(#filter.endTime#)
+					]]>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+    </select>
+	
+    <select id="getList" parameterClass="map" resultClass="UserLoginLog">
+        select * from $tableName$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.loginName">
+                    loginName like concat('%',#filter.loginName#,'%')
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.userId">
+                    userId = #filter.userId#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientTypeDb">
+                    clientType = #filter.clientTypeDb#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceSN">
+                    clientDeviceSN like concat('%',#filter.clientDeviceSN#,'%')
+                </isNotEmpty>>
+				<isNotEmpty prepend="and" property="filter.clientAddress">
+                    clientAddress like concat('%',#filter.clientAddress#,'%')
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.clientDeviceName">
+                    clientDeviceName like concat('%',#filter.clientDeviceName#,'%')
+                </isNotEmpty>
+                <isNotEmpty prepend="and" property="filter.appId">
+                    appId = #filter.appId#
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.beginTime">
+					<![CDATA[
+                    createdAt >= FROM_UNIXTIME(#filter.beginTime#)
+					]]>
+                </isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.endTime">
+                    <![CDATA[
+                    createdAt <= FROM_UNIXTIME(#filter.endTime#)
+					]]>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+		order by createdAt desc
+        <dynamic prepend="limit">
+                #offset#,#limit#
+        </dynamic>
+    </select>
+</sqlMap>
+

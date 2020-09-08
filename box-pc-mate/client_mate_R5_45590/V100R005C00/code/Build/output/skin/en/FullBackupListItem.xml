@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+	<ListContainerElement name="fullBackup_listItem" height="30">
+		<Option name="fullBackup_ItemInfo" float="true" pos="15,0,400,30" text="Create"  textpadding="25,0,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="left" valign="vcenter" normalimage="file='..\Image\ic_radiobutton_unselect.png' source='0,78,16,94' dest='0,7,16,23'" hotimage="file='..\Image\ic_radiobutton_unselect.png' source='0,26,16,42' dest='0,7,16,23'"  selectedimage="file='..\Image\ic_radiobutton_select.png' source='0,26,16,42' dest='0,7,16,23'" group="fullBackUp_selectGroup"/>
+		<Label name="fullBackup_itemType" float="true" pos="410,5,500,25"  text="Recommend" align="center" textcolor="#FF4CB4FF" bkcolor="#FFBFE8FE" font="0" visible="false"/>
+	</ListContainerElement>
+</Window>

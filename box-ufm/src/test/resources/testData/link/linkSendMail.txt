@@ -1,0 +1,24 @@
+@@normal
+{
+"emails":"puguangqiao@huawei.com",
+"message":"This is mesage."
+}
+
+@@messageEmpty
+{
+"emails":"puguangqiao@huawei.com",
+"message":"This is mesage."
+}
+
+@@emailEmpty
+{
+"emails":"",
+"message":"This is mesage."
+}
+
+@@emailNotExist
+{
+"emails":"pugudsfsdf3o@huawei.com",
+"message":"This is mesage."
+
+}

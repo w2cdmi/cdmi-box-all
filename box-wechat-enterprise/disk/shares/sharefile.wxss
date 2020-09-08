@@ -1,0 +1,231 @@
+/* disk/sharefile.wxss */
+@import "../template/comment.wxss";
+@import "../template/nodeList.wxss";
+
+page {
+    overflow-y: scroll;
+    min-height: 100%;
+    background-color: #fff;
+    width: 100%;
+}
+
+.scroll-height {
+    height: 1060rpx;
+}
+
+.scroll-view-height {
+    height: 835px;
+}
+
+.picture-lits {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20rpx 30rpx;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    overflow: hidden;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.picture-lits .item {
+    width: 33.33%;
+    height: 269rpx;
+    margin-bottom: 20rpx;
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+}
+
+.picture-lits .checkicon {
+    display: block;
+    position: absolute;
+    right: 60rpx;
+    top: 10rpx;
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.picture-lits .item image {
+    width: 210rpx;
+    height: 210rpx;
+}
+
+.picture-lits .checkicon image {
+    width: 30rpx;
+    height: 30rpx;
+}
+
+.picture-lits .item .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-top: 10rpx;
+    padding: 0 10rpx;
+}
+
+.button {
+    display: inline-block;
+    width: 70px;
+    height: 33px;
+    border-radius: 30px;
+    font-size: 16px;
+    line-height: 33px;
+    background: #ea5036;
+    margin-top: 5px;
+}
+
+.save-button {
+    width: 139rpx;
+    height: 68rpx;
+    border-radius: 30px;
+    font-size: 28rpx;
+    line-height: 68rpx;
+    background: #ea5036;
+    color: #fff;
+    text-align: center;
+}
+
+button {
+    width: 70px;
+    height: 50rpx;
+    border-radius: 30px;
+    font-size: 28rpx;
+    line-height: 33px;
+}
+
+.send-button {
+    width: 130rpx;
+    height: 70rpx;
+    line-height: 70rpx;
+    background: #36c777;
+    border-radius: 8rpx;
+    margin-left: 20rpx;
+    color: #fff;
+}
+
+/* 文件信息 */
+
+.file-group {
+    border-bottom: none;
+}
+
+.view-save-button {
+    display: flex;
+    align-items: center;
+    padding-right:30rpx;
+}
+
+label{
+    width: 400rpx;
+}
+
+.tool {
+    background: #fff;
+    padding: 0 20px 0 10px;
+    overflow: hidden;
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.tool .view label {
+    width: 120px;
+}
+
+.tool .right {
+    float: right;
+    display: flex;
+}
+
+.i-tool {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    float: left;
+}
+
+.i-tool:not(:nth-last-of-type(1)) {
+    margin-right: 45rpx;
+}
+
+.i-tool .icon {
+    margin-right: 10rpx;
+    width: 28rpx;
+    height: 24rpx;
+    margin-bottom: 8rpx;
+}
+
+.shareicon {
+    margin-right: 10rpx;
+    width: 28rpx;
+    height: 24rpx;
+    margin-bottom: 8rpx;
+}
+
+.mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #f1f1f1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 999;
+}
+
+.mask-bottom {
+    box-sizing: border-box;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 140rpx;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 30rpx;
+    justify-content: space-between;
+}
+
+.mask-bottom .but {
+    width: 45%;
+    height: 80rpx;
+    line-height: 80rpx;
+    font-size: 28rpx;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 20rpx;
+}
+
+.mask-bottom .sure {
+    background: #ccc;
+    color: #fff;
+}
+
+.mask-bottom .checked {
+    background: #ea5036;
+}
+
+.mask-bottom .cancel {
+    border: 1rpx solid #eaeaea;
+    color: #999;
+}
+
+.back-to-index {
+    position: fixed;
+    bottom: 115px;
+    width: 120rpx;
+    height: 120rpx;
+    right: 34rpx;
+    border-radius: 2.5em;
+    overflow: hidden;
+}
+
+/* 选中文件变化效果  */
+
+.darker-style {
+    opacity: 0.7;
+}
+
+.lighter-style {
+    opacity: 1;
+}

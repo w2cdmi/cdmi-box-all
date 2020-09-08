@@ -1,0 +1,12 @@
+<view class='page'>
+    <view class='error-bg'>
+        <view class='img-view'><image src='/disk/images/refuse-auth.png' class='refuse-auth-img'></image></view>
+        <view class='font-big error-title'>系统获取你的用户信息失败...</view>
+    </view>
+    <view class='view-bg'>
+        <view class='font-middle'>可能原因：您在进入文件宝的时候未点击允许，请你执行如下操作，以便我们能够继续为您服务：</view>
+        <view class='font-middle tip'>1、在微信小程序列表中删除文件宝。</view>
+        <view class='font-middle tip'>2、重新搜索文件宝，并再次点击将纳入。</view>
+        <view class='font-middle tip'>3、在页面授权提示中选择允许。</view>
+    </view>
+</view>

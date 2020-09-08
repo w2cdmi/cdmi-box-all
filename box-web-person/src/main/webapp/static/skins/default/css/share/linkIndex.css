@@ -1,0 +1,182 @@
+.weui-cells_radio{
+	overflow: hidden;
+}
+/* .weui-check__label+.weui-check__label{
+	margin-left: 15px;
+	float: left;
+} */
+.weui-cells_radio label,.weui-cells_radio li{
+	overflow: hidden;
+	line-height: 30px;
+	margin-bottom: 10px;
+	display: block;
+}
+.weui-cells_radio label>div{
+	float: left;
+	margin: 1px;
+}
+.weui-cells_radio label>div input{
+	display: inline-block;
+    line-height: 30px;
+    vertical-align: sub;
+    margin-left: 210px;
+}
+.weui-cells_radio li span,
+.weui-cells_radio li i,
+.weui-cells_radio li p{
+	float: left
+}
+.weui-cells_radio li p{
+	margin: 0px 10px;
+	cursor: pointer;
+}
+.weui-cells_radio li p:hover{
+	color: #d64d4a;
+}
+.share-senior-content ul li{
+	overflow: hidden;
+	height: 30px;
+	line-height: 30px
+	margin-bottom: 10px;
+}
+.share-senior-content ul li>div{
+	float: left;
+}
+.share-senior-content ul li input{
+	outline: none;
+	border: none;
+	float: left;
+
+}
+.share-senior-content ul li span{
+	float: left;
+}
+.share-senior-content ul li:first-of-type input{
+	float: left;
+    margin-left: 35px;
+    margin-left: 226px;
+}
+
+.weui-flex{
+	overflow: hidden;
+	border: 1px solid #eee;
+    margin: 25px 0;
+    padding: 5px 0;
+}
+.weui-flex>div{
+	float: left;
+}
+.puttinglink-title>div{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 30px;
+}
+.weui-flex__item{
+	width: 320px;
+}
+.puttinglink-one{
+	overflow:hidden;
+}
+.puttinglink-one>div{
+	float: left;
+}
+.puttinglink-one{
+	line-height: 18px;
+}
+.puttinglink-two{
+	line-height: 20px;
+}
+.deleteDiv .placeholder span,
+.copyDiv .placeholder span{
+	display: inline-block;
+    line-height: 66px;
+    margin: inherit;
+    margin-left: 30px;
+    color:#18b4ed;
+    cursor: pointer;
+}
+
+.link_all_operate div{
+	float: right;
+	line-height: 28px;
+	border: 1px solid #e3e3e3;
+	padding: 0 16px;
+	font-size: 14px;
+	border-radius: 3px;
+	cursor: pointer;
+	margin-left: 16px;
+}
+.setting-delete{
+	color: #fff;
+	background: #18b4ed;
+}
+.tail-add-links{
+	color: #fff;
+	background: #d64d4a;
+}
+#schedule-box{
+	width: 320px;
+	margin: 0 auto;
+	padding: 35px 20px;
+	font-size: 13px;
+	position: absolute;
+	top: 240px;
+	z-index: 999999;
+	background: #fff
+}
+.schedule-hd{
+	display: flex;
+	justify-content: space-between;
+	padding: 0 15px;
+}
+.today{
+	flex: 1;
+	text-align: center;
+}
+.ul-box{
+	overflow: hidden;
+}
+.ul-box > li{
+	float: left;
+	width: 14.28%;
+	text-align: center;
+	padding: 5px 0;
+}
+.other-month{
+	color: #999999;
+}
+.current-month{
+	color: #333333;
+}
+.today-style{
+	border-radius: 50%;
+	background: #58d321;
+}
+.arrow{
+	cursor: pointer;
+}
+.dayStyle{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 35px;
+	cursor: pointer;
+}
+.current-month > .dayStyle:hover{
+	background: #00BDFF;
+	color: #ffffff;
+}
+.today-flag{
+	background: #00C2B1;
+	color: #fff;
+}
+.boxshaw{
+	box-shadow: 2px 2px 15px 2px #e3e3e3;
+}
+.selected-style {
+	background: #00BDFF;
+	color: #ffffff;
+}

@@ -1,0 +1,32 @@
+<!--disk/enterprise/registered.wxml-->
+<view>
+    <view class='icon-layout'><view class='icon-view'><image class='enterprise-icon' src='/disk/images/icon/enterprise-icon.png'></image></view></view>
+    <view class='join-enterprise'>{{enterpriseName}}</view>
+    <view class='font-middle join-font'>邀请你加入</view>
+</view>
+<view class='content_container' style='top:360rpx;'>
+    <view class='view_comm'>
+        <image class='icon_comm' style='width:34rpx;height:28rpx;' src='/disk/images/enter-name.png'></image>
+        <input class='input_comm' maxlength='255' bindblur="saveUserName" value='{{userName}}' placeholder="请输入您的名字" placeholder-class="placeholder"></input>
+    </view>
+    <view class='view_comm'>
+        <image class='icon_comm' src='/disk/images/enter-tel.png'></image>
+        <input class='input_comm' maxlength='11' value='{{phoneNumber}}' bindblur="savePhoneNumber" type="number" placeholder="请输入手机号" placeholder-class="placeholder"></input>
+        <button class='view_button button_comm margin-left' open-type='getPhoneNumber'bindgetphonenumber="getPhoneNumber">
+            <text>点我快捷获取</text>
+        </button>
+    </view>
+     <view class='view_comm'>
+        <image class='icon_comm' src='/disk/images/enter-verifi.png'></image>
+        <input class='input_comm' type="number" maxlength='6' placeholder="请输入6位验证码" placeholder-class="placeholder" bindinput='setIdentifyCode'></input>
+        <view class='view_button button_comm margin-left' catchtap="getIdentifyingCode">
+        <text>{{count!=60?count+' s':'获取验证码'}}</text>
+        </view>
+    </view> 
+<button class='register_confirm button_comm' style='margin-top:250rpx;' bindtap='onEnterpriseLogin'>员工登录</button>
+</view>
+
+<navigator class='back-to-index'  wx:if='{{backIndexBtn}}'  url="/disk/index" open-type="reLaunch">
+    <image class='back-to-index' src='/disk/images/icon/back-to-home.png'></image>
+</navigator>
+

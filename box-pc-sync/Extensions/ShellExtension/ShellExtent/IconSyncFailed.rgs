@@ -1,0 +1,54 @@
+HKCR
+{
+    ShellExtent.IconSyncFailed.1 = s 'IconSyncFailed Class'
+	{
+		CLSID = s '{4A4AD55D-FCD9-408F-8D3B-360FFB949D9B}'
+	}
+	ShellExtent.IconSyncFailed = s 'IconSyncFailed Class'
+	{
+		CLSID = s '{4A4AD55D-FCD9-408F-8D3B-360FFB949D9B}'
+		CurVer = s 'ShellExtent.IconSyncFailed.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4A4AD55D-FCD9-408F-8D3B-360FFB949D9B} = s 'IconSyncFailed Class'
+		{
+		    ProgID = s 'ShellExtent.IconSyncFailed.1'
+			VersionIndependentProgID = s 'ShellExtent.IconSyncFailed'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			val AppID = s '%APPID%'
+			TypeLib = s '{75791D4A-A3B7-43F4-ADEB-A27A7988BB1D}'
+			Version = s '1.0'
+		}
+	}
+}
+
+
+HKLM
+{
+  NoRemove SOFTWARE
+  {
+    NoRemove Microsoft
+    {
+      NoRemove Windows
+      {
+        NoRemove CurrentVersion
+        {
+          NoRemove Explorer
+          {
+            NoRemove ShellIconOverlayIdentifiers
+            {
+              ForceRemove 0ShareDriveSyncFailedIcon = s '{4A4AD55D-FCD9-408F-8D3B-360FFB949D9B}'
+              {
+              }           
+            }
+          }
+        }
+      }
+    }
+  }
+}

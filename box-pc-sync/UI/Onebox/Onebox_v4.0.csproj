@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{26F72A1F-3A22-4E3D-B3B0-EADFD1965C8C}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Onebox</RootNamespace>
+    <AssemblyName>Onebox</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <Utf8Output>true</Utf8Output>
+    <ExpressionBlendVersion>4.0.20621.0</ExpressionBlendVersion>
+    <PublishUrl>发布\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\OneboxSync\output\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release_v3.5|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Build\x86\v3.5\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>logo.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>Onebox.Startup</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_v4.5|AnyCPU'">
+    <OutputPath>bin\Release_v4.5\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release_v4.0|AnyCPU'">
+    <OutputPath>C:\Program Files %28x86%29\Chinasoft\Onebox\1.0.0.0\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\x86\v4.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\x86\v4.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\x86\v4.0\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\x86\v4.0\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Thrift">
+      <HintPath>..\..\Build\x86\Thrift.dll</HintPath>
+    </Reference>
+    <Reference Include="vhCalendar, Version=1.5.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Build\x86\v4.0\vhCalendar.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ChildWindow\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildWindow\ConfirmWindow.xaml.cs">
+      <DependentUpon>ConfirmWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildWindow\LinkShare.xaml.cs">
+      <DependentUpon>LinkShare.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildWindow\Login.xaml.cs">
+      <DependentUpon>Login.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildWindow\notice.xaml.cs">
+      <DependentUpon>notice.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildWindow\Share.xaml.cs">
+      <DependentUpon>Share.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildWindow\SyncDirTree.xaml.cs">
+      <DependentUpon>SyncDirTree.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChildWindow\UsingWizard.xaml.cs">
+      <DependentUpon>UsingWizard.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\DataType\BootStartRunType.cs" />
+    <Compile Include="Common\DataType\IconRelativePath.cs" />
+    <Compile Include="Common\DataType\SyncModelType.cs" />
+    <Compile Include="Common\DataType\XmlNodeAttribute.cs" />
+    <Compile Include="Common\DataType\XmlNodeInfo.cs" />
+    <Compile Include="Common\Method\Common.cs" />
+    <Compile Include="Common\Method\TrayIconManager.cs" />
+    <Compile Include="Common\Method\XmlDocument.cs" />
+    <Compile Include="CusDatePicker\ButtonType.cs" />
+    <Compile Include="CusDatePicker\DateFormatType.cs" />
+    <Compile Include="CusDatePicker\DatePicker.cs" />
+    <Compile Include="CusDatePicker\PlacementType.cs" />
+    <Compile Include="Common\Method\ConstomControl.cs" />
+    <Compile Include="Common\Method\ConstomConvertor.cs" />
+    <Compile Include="Common\DataType\RetunCode.cs" />
+    <Compile Include="Common\DataType\LoginType.cs" />
+    <Compile Include="Common\DataType\Message.cs" />
+    <Compile Include="Common\DataType\NoticeType.cs" />
+    <Compile Include="Common\DataType\ObjectFlag.cs" />
+    <Compile Include="Common\Method\ProcessManage.cs" />
+    <Compile Include="Common\Method\RegisterValue.cs" />
+    <Compile Include="ListInfoControl\ErrorInfo.delaration.cs" />
+    <Compile Include="ListInfoControl\ShareInfo.delarations.cs" />
+    <Compile Include="ListViewManager\LayoutColumn.cs" />
+    <Compile Include="ListViewManager\ListViewLayoutManager.cs" />
+    <Compile Include="ListViewManager\RangeColumn.cs" />
+    <Compile Include="MainWindow\AttachMethod.cs" />
+    <Compile Include="MainWindow\ControlEvents.cs" />
+    <Compile Include="MainWindow\DelegateMethod.cs" />
+    <Compile Include="MainWindow\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow\MessageHander.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Common\DataType\TrayIconStatus.cs" />
+    <Compile Include="Common\Method\ZipHelper.cs" />
+    <Compile Include="INIFileRW\ConfigureFileRW.cs" />
+    <Compile Include="ListInfoControl\SharePerson.delarations.cs" />
+    <Compile Include="ListInfoControl\TaskInfo.delarations.cs" />
+    <Compile Include="ThriftClient\Authen_Type.cs" />
+    <Compile Include="ThriftClient\Error_Info.cs" />
+    <Compile Include="ThriftClient\File_Type.cs" />
+    <Compile Include="ThriftClient\List_Info.cs" />
+    <Compile Include="ThriftClient\Node_Info.cs" />
+    <Compile Include="ThriftClient\OverlayIcon_Status.cs" />
+    <Compile Include="ThriftClient\Service_Status.cs" />
+    <Compile Include="ThriftClient\Share_Link_Info.cs" />
+    <Compile Include="ThriftClient\Share_Right.cs" />
+    <Compile Include="ThriftClient\Share_User_Info.cs" />
+    <Compile Include="ThriftClient\SyncService.cs" />
+    <Compile Include="ThriftClient\Teamspace_Info.cs" />
+    <Compile Include="ThriftClient\Teamspace_Membership.cs" />
+    <Compile Include="ThriftClient\Teamspace_Member_Info.cs" />
+    <Compile Include="ThriftClient\ThriftClient.cs" />
+    <Compile Include="ThriftClient\Trans_Speed_Info.cs" />
+    <Compile Include="ThriftClient\Update_Info.cs" />
+    <Compile Include="Update\Upgrade.cs" />
+    <Compile Include="Update\UpgradeNotice.xaml.cs">
+      <DependentUpon>UpgradeNotice.xaml</DependentUpon>
+    </Compile>
+    <Page Include="ChildWindow\About.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChildWindow\ConfirmWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChildWindow\LinkShare.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChildWindow\Login.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChildWindow\notice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChildWindow\Share.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChildWindow\SyncDirTree.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChildWindow\UsingWizard.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Language\resources_en-US.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MainWindow\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ResourceXaml\CustomConvertor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Language\resources_zh-CN.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ResourceXaml\ShareDriverStyle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Update\UpgradeNotice.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="NotifyIconWpf\BalloonIcon.cs" />
+    <Compile Include="NotifyIconWpf\Interop\BalloonFlags.cs" />
+    <Compile Include="NotifyIconWpf\Interop\IconDataMembers.cs" />
+    <Compile Include="NotifyIconWpf\Interop\IconState.cs" />
+    <Compile Include="NotifyIconWpf\Interop\MouseEvent.cs" />
+    <Compile Include="NotifyIconWpf\Interop\NotifyCommand.cs" />
+    <Compile Include="NotifyIconWpf\Interop\NotifyIconData.cs" />
+    <Compile Include="NotifyIconWpf\Interop\NotifyIconVersion.cs" />
+    <Compile Include="NotifyIconWpf\Interop\Point.cs" />
+    <Compile Include="NotifyIconWpf\Interop\TrayInfo.cs" />
+    <Compile Include="NotifyIconWpf\Interop\WinApi.cs" />
+    <Compile Include="NotifyIconWpf\Interop\WindowClass.cs" />
+    <Compile Include="NotifyIconWpf\Interop\WindowMessageSink.cs" />
+    <Compile Include="NotifyIconWpf\PopupActivationMode.cs" />
+    <Compile Include="NotifyIconWpf\RoutedEventHelper.cs" />
+    <Compile Include="NotifyIconWpf\TaskbarIcon.cs" />
+    <Compile Include="NotifyIconWpf\TaskbarIcon.Declarations.cs" />
+    <Compile Include="NotifyIconWpf\Util.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\app.manifest" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\err.png" />
+    <Resource Include="ImageResource\docment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\account.png" />
+    <Resource Include="ImageResource\arrow-down.png" />
+    <Resource Include="ImageResource\exit.png" />
+    <Resource Include="ImageResource\logo.png" />
+    <Resource Include="ImageResource\setting.png" />
+    <Resource Include="ImageResource\transfer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\about-logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\Control_MonthCalendar.bmp" />
+    <Resource Include="ImageResource\downbt.png" />
+    <Resource Include="ImageResource\file.png" />
+    <Resource Include="ImageResource\logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\menu_exit.png" />
+    <Resource Include="ImageResource\menu_openIE.png" />
+    <Resource Include="ImageResource\menu_openMonitor.png" />
+    <Resource Include="ImageResource\menu_setting.png" />
+    <Resource Include="ImageResource\menu_startSync.png" />
+    <Resource Include="ImageResource\menu_stopSync.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\tran_download.png" />
+    <Resource Include="ImageResource\tran_upload.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\tsk_error.ico" />
+    <Resource Include="ImageResource\tsk_inactive.ico" />
+    <Resource Include="ImageResource\tsk_normal.ico" />
+    <Resource Include="ImageResource\tsk_syncing.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="logo.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\UserCloseButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\info.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\ask.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\upbt.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\Wizard1.png" />
+    <Resource Include="ImageResource\Wizard2.png" />
+    <Resource Include="ImageResource\Wizard3.png" />
+    <Resource Include="ImageResource\Wizard4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\copy.png" />
+    <Resource Include="ImageResource\refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\en-US\Wizard1.png" />
+    <Resource Include="ImageResource\en-US\Wizard2.png" />
+    <Resource Include="ImageResource\en-US\Wizard3.png" />
+    <Resource Include="ImageResource\en-US\Wizard4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ImageResource\DefaultTrayIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\tsk_suspend.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\calendar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\share_cancle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\SyncFloder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\NoSyncFolder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\ErrorList.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\null.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\SyncModelhelp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\erriListEmpty.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\tsk_failed.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\window_max.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\window_min.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\window_restore.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ImageResource\upgrade64.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

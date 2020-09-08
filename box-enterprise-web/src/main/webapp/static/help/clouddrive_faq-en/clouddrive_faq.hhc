@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<toc version="1.0">
+	<properties font="Arial,9,1" windowstyles="8388645">
+	</properties>
+	<item name="Welcome" link="faq\welcome.html" imagenumber="9">
+	</item>
+	<item name="Basic Operations" link="faq\basic.html">
+		<item name="What Is StorBox Synchronization Client?" link="faq\desktop_definition.html" imagenumber="9">
+		</item>
+		<item name="How Can I Add or Upload a File?" link="faq\upload_file.html" imagenumber="9">
+		</item>
+		<item name="How Can I Share a File or Folder with Other Users?" link="faq\share_file.html" imagenumber="9">
+		</item>
+		<item name="How Can I Synchronize Files Among Computers?" link="faq\desktop_sync_file.html" imagenumber="9">
+		</item>
+		<item name="How Can I Know that the Synchronization Client Is Synchronizing Data?" link="faq\desktop_syncing.html" imagenumber="9">
+		</item>
+		<item name="How Can I Get a Lost File Back?" link="faq\find_lost_file.html" imagenumber="9">
+		</item>
+		<item name="How Can I Obtain a File with an Earlier Version?" link="faq\web_gain_multiversion.html" imagenumber="9">
+		</item>
+		<item name="How Can I Recover a Deleted File?" link="faq\recover_deleted_file.html" imagenumber="9">
+		</item>
+		<item name="What Are the Requirements of StorBox on the System?" link="faq\rundisk_system_require.html" imagenumber="9">
+		</item>
+	</item>
+	<item name="Share" link="faq\share.html">
+		<item name="How Can I Share a File or Folder with Other Users?" link="faq\share_file_a.html" imagenumber="9">
+		</item>
+		<item name="Does a Shared File or Folder Occupy My Disk Space?" link="faq\share_file_occupy_space.html" imagenumber="9">
+		</item>
+		<item name="Can I Share a File or Folder with a Non-StorBox User?" link="faq\share_file_nohuawei.html" imagenumber="9">
+		</item>
+		<item name="Can I Rename or Move a Shared File or Folder?" link="faq\rename_move_share.html" imagenumber="9">
+		</item>
+		<item name="How Can I Remove a Recipient?" link="faq\remove_share_number.html" imagenumber="9">
+		</item>
+		<item name="How Can I Cancel a File or Folder Share?" link="faq\cancel_share_file.html" imagenumber="9">
+		</item>
+		<item name="How Can I Exit a Share?" link="faq\quit_share.html" imagenumber="9">
+		</item>
+		<item name="How Can I Cancel a File or Folder Link?" link="faq\cancel_share_link.html" imagenumber="9">
+		</item>
+	</item>
+	<item name="Desktop Applications" link="faq\pc.html">
+		<item name="What Is StorBox Synchronization Client?" link="faq\desktop_definition_a.html" imagenumber="9">
+		</item>
+		<item name="How Can I Synchronize Files Among Computers?" link="faq\desktop_sync_file_a.html" imagenumber="9">
+		</item>
+		<item name="How Can I Know that the Synchronization Client Is Synchronizing Data?" link="faq\desktop_syncing_a.html" imagenumber="9">
+		</item>
+		<item name="How Can I Cancel the Synchronization Between the Synchronization Client and the Cloud?" link="faq\desktop_release_sync.html" imagenumber="9">
+		</item>
+		<item name="How Can I Pause and Resume Synchronization?" link="faq\desktop_pause_recover_sync.html" imagenumber="9">
+		</item>
+		<item name="What Do the Icons Indicate?" link="faq\desktop_file_icon.html" imagenumber="9">
+		</item>
+		<item name="Can I Run My StorBox Synchronization Client on Multiple Computers?" link="faq\desktop_multicomputer_oneacc.html" imagenumber="9">
+		</item>
+		<item name="Can I Run Multiple StorBox Users on One Computer?" link="faq\desktop_onecomputer_multiacc.html" imagenumber="9">
+		</item>
+		<item name="How Can I Delete a File in StorBox?" link="faq\delete_file.html" imagenumber="9">
+		</item>
+		<item name="What Can I Do If There Is No Icon on the File or Folder?" link="faq\desktop_icon_dispear.html" imagenumber="9">
+		</item>
+		<item name="Can I Perform Selective Syncing When My Disk Space Cannot Fit All Data in StorBox?" link="faq\selected_sync.html" imagenumber="9">
+		</item>
+		<item name="What Are the Requirements of StorBox on the System?" link="faq\rundisk_system_require_a.html" imagenumber="9">
+		</item>
+	</item>
+	<item name="Mobile Applications" link="faq\mobile.html">
+		<item name="How Can I Upload a File from My Mobile Phone to StorBox?" link="faq\mobile_upload_file.html" imagenumber="9">
+		</item>
+		<item name="What File Formats Can Be Displayed on My Mobile Phone?" link="faq\mobile_file_type.html" imagenumber="9">
+		</item>
+		<item name="Can I Play Videos on My StorBox for Android?" link="faq\mobile_play_film.html" imagenumber="9">
+		</item>
+		<item name="How Many Files Can I Store on My Mobile Phone?" link="faq\mobile_store_file.html" imagenumber="9">
+		</item>
+		<item name="Why Should I Download Files or Folders in My Mobile Phone?" link="faq\mobile_file_cache.html" imagenumber="9">
+		</item>
+		<item name="What Are the Requirements of StorBox on the System?" link="faq\rundisk_system_require_b.html" imagenumber="9">
+		</item>
+	</item>
+	<item name="Security and Privacy" link="faq\security.html">
+		<item name="How Is Data Security Ensured?" link="faq\webdisk_security.html" imagenumber="9">
+		</item>
+		<item name="How Is My Privacy Ensured?" link="faq\webdisk_privacy.html" imagenumber="9">
+		</item>
+	</item>
+</toc>

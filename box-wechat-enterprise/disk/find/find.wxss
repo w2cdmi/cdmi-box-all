@@ -1,0 +1,31 @@
+.page {
+  overflow-x: hidden;
+  background: #fff;
+}
+
+.flex-row {
+    display: flex;
+    align-items: center;
+    border-bottom:1px solid #f1f1f1;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+}
+.content-image{
+    width: 90rpx;
+    height: 90rpx;
+    margin: 20rpx 20rpx 20rpx 30rpx;
+    border-radius: 50%;
+}
+.content-title{
+    height: 50rpx;
+    line-height: 50rpx;
+}
+.content-desc{
+    font-size: 26rpx;
+    color: #999;
+    height: 40rpx;
+    line-height: 40rpx;
+}

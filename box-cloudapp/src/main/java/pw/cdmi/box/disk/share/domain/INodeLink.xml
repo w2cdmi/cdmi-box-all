@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="INodeLink">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="INodeLink" type="pw.cdmi.box.disk.share.domain.INodeLink" />
+
+
+    <select id="get" resultClass="INodeLink" parameterClass="INodeLink">
+        <![CDATA[
+        select * from inode_link_$tableSuffix$ where id=#id#
+        ]]>
+    </select>
+
+    <select id="getByINodeID" resultClass="INodeLink" parameterClass="INodeLink">
+        <![CDATA[
+        select * from inode_link_$tableSuffix$ where iNodeId=#iNodeId# 
+        ]]>
+    </select>
+      
+    <insert id="insert" parameterClass="INodeLink">
+        <![CDATA[
+        insert into inode_link_$tableSuffix$ (id,iNodeId,url,downloadUrl,password,access,role,effectiveAt,expireAt,createdAt,modifiedAt,ownedBy,createdBy,modifiedBy)
+        values 
+        (#id#,#iNodeId#,#url#,#downloadUrl#,#password#,#access#,#role#,#effectiveAt#,#expireAt#,#createdAt#,#modifiedAt#,#ownedBy#,#createdBy#,#modifiedBy#)
+        ]]>
+    </insert>
+
+    <update id="update" parameterClass="INodeLink">
+        <![CDATA[
+        update inode_link_$tableSuffix$ set password=#password#,access=#access#,role=#role#,effectiveAt=#effectiveAt#,expireAt=#expireAt#,modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy#,status=#status# 
+        where id=#id#
+        ]]>
+    </update>
+    
+    <update id="updateStatus" parameterClass="INodeLink">
+        <![CDATA[
+        update inode_link_$tableSuffix$ set status=#status# where id=#id#
+        ]]>
+    </update>
+    
+    <select id="check" resultClass="Long" parameterClass="INodeLink">
+        <![CDATA[
+        select id from inode_link_$tableSuffix$ where id=#id#
+        ]]>
+    </select>
+    
+    <delete id="delete" parameterClass="INodeLink">
+        <![CDATA[
+        delete from inode_link_$tableSuffix$ where id=#id#
+        ]]>
+    </delete>
+
+    <delete id="deleteByINodeID" parameterClass="INodeLink">
+        <![CDATA[
+        delete from inode_link_$tableSuffix$ where iNodeId=#iNodeId# 
+        ]]>
+    </delete>
+
+    <delete id="deleteALL" parameterClass="INodeLink">
+        delete from inode_link_$tableSuffix$  where ownedBy=#ownedBy# and iNodeId=#iNodeId# 
+    </delete>
+    
+</sqlMap>
+

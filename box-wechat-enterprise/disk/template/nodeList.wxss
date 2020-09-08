@@ -1,0 +1,39 @@
+@import "../template/fileList.wxss";
+
+.file-group{
+    border-bottom: 1px solid #f1f1f1;
+}
+.button-size image{
+    width:36rpx;
+    height:44rpx;
+}
+
+.button-size{
+    width: 140rpx;
+}
+
+.view-bg{
+    padding: 20rpx 0 20rpx 30rpx;
+}
+
+/*空文件夹  */
+
+.blankFolder {
+    position: none;
+    top: 0;
+    transform: none;
+    margin-top: 40px;
+}
+
+.blankFolder image {
+    width: 250px;
+    height: 200px;
+    position: relative;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.blankFolder view {
+    color: #a9a9a9;
+    text-align: center;
+}

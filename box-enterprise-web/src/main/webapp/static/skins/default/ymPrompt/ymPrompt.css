@@ -1,0 +1,97 @@
+/*container*/
+#ym-window{
+	background:#fff;
+	overflow:hidden;
+	font-size:14px;
+	font-family: Arial, Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", STHeiti, "宋体";
+	  -webkit-border-radius: 5px;
+		 -moz-border-radius: 5px;
+			  border-radius: 5px;
+}
+
+#ym-shadow{
+	-webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+       -moz-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    -webkit-border-radius: 5px;
+		 -moz-border-radius: 5px;
+			  border-radius: 5px;
+}
+
+.ym-tl{
+	padding-left:20px;
+	background:#fafafa;
+	border-bottom:1px solid #d9d9d9;
+    -webkit-border-top-left-radius: 5px;
+		 -moz-border-top-left-radius: 5px;
+			  border-top-left-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+		 -moz-border-top-right-radius: 5px;
+			  border-top-right-radius: 5px;
+}
+.ym-tr{padding-right:16px;}
+.ym-tc{overflow:hidden;height:30px;line-height:30px; padding:6px 0; position:relative;}
+.ym-ttc{height:3px; padding:5px 0; border-bottom:0 none;}
+.ym-header-text{font-size:16px; color:#000; text-align:left;}
+.ym-header-tools{ position:absolute; right:0; top:10px; }
+
+/*body*/
+.ym-ml{padding-left:0px}
+.ym-mr{padding-right:0px}
+.ym-mc{padding: 0 20px;}
+.ym-body{overflow:auto;padding:0;}
+.ym-header-tools strong{display:none}
+
+/*button*/
+.ym-btn{text-align:right; padding:10px 20px;}
+
+/*footer*/
+.ym-bl{padding-left:20px}
+.ym-br{padding-right:20px}
+.ym-bc{height:10px;font-size:2px}
+
+.ymPrompt_alert{
+	padding-left:80px;
+	background:url(images/info.png) no-repeat 10px 50%
+}
+.ymPrompt_succeed{
+	padding-left:80px;
+	background:url(images/right.png) no-repeat 10px 50%
+}
+.ymPrompt_error{
+	padding-left:80px;
+	background:url(images/err.png) no-repeat 10px 50%
+}
+.ymPrompt_confirm{
+	padding-left:80px;
+	background:url(images/ask.png) no-repeat 10px 50%
+}
+.ymPrompt_alert .ym-content td,.ymPrompt_succeed .ym-content td,.ymPrompt_error .ym-content td,.ymPrompt_confirm .ym-content td{padding:0 0; vertical-align:middle; }
+/*handler style*/
+.ym-header-tools div{
+	cursor:pointer;
+	width:20px;height:20px;float:left;margin: 0;
+	background:url(images/ico.png) no-repeat 0 0;
+}
+.ymPrompt_close{
+	background-position:0 0 !important;
+}
+.ymPrompt_close:hover{
+	background-position:0 -30px !important;
+}
+.ymPrompt_close:active{
+	background-position:0 -60px !important;
+}
+.ymPrompt_max{
+	background-position:0 0 !important;
+}
+.ymPrompt_min{
+	background-position:-32px 0 !important;
+}
+.ymPrompt_normal{
+	background-position:-16px 0 !important;
+}
+/*button style*/
+.ym-btn .btn{
+	min-width:80px;
+}

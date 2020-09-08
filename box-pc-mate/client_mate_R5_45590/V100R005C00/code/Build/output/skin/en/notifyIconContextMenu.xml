@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Include source="Default.xml" />
+	<Menu width="200" bkcolor="#FFFAFAFA" itemhotbkcolor="#FFdef0ff" borderround="8,8">
+		<Control height="10"/>
+		<MenuItem id="0" height="30"  disabledtextcolor="#ff666666">
+			<HorizontalLayout inset="15,0,15,0">
+				<Control width="20" height="20" padding="0,6,0,0" font="0" bkimage="..\Image\ic_tray_show_onebox.png" enableimage=""/>
+				<Control width="10"/>
+				<Label name="notifyicon_showonebox" text="Show Onebox" font="0" textcolor="#ff000000" disabledtextcolor="#ff666666" align="left"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<MenuItem id="1" height="30">
+			<HorizontalLayout inset="15,0,15,0">
+				<Control width="20" height="20" padding="0,6,0,0" font="0" bkimage="file='..\Image\ic_oper_setting.png' source='0,0,20,20'"/>
+				<Control width="10"/>
+				<Label name="notifyicon_settings" text="Settings" font="0" textcolor="#ff000000" disabledtextcolor="#ff666666" align="left"/>
+			</HorizontalLayout>
+		</MenuItem>
+		<Control height="5" />
+		<MenuItem id="99" height="1">
+			<HorizontalLayout inset="15,0,15,0">
+				<Control height="1" bkcolor="#FFe5e5e5" />
+			</HorizontalLayout>
+		</MenuItem>
+		<Control height="5" />
+		<MenuItem id="2" height="30">
+			<HorizontalLayout inset="15,0,15,0">
+				<Control width="20" height="20" padding="0,6,0,0" font="0" bkimage="..\Image\ic_tray_browse_web.png"/>
+				<Control width="10"/>
+				<Label text="Website Access" font="0" textcolor="#ff000000" align="left"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<MenuItem id="3" height="30">
+			<HorizontalLayout inset="15,0,15,0">
+				<Control width="30"/>
+				<Label text="Collect Logs" font="0" textcolor="#ff000000" disabledtextcolor="#ff666666" align="left"/>
+			</HorizontalLayout>
+		</MenuItem>
+		<Control height="5" />
+		<MenuItem id="99" height="1">
+			<HorizontalLayout inset="15,0,15,0">
+				<Control height="1" bkcolor="#FFe5e5e5" />
+			</HorizontalLayout>
+		</MenuItem>
+		<Control height="5" />
+		<MenuItem id="4" height="30">
+			<HorizontalLayout inset="15,0,15,0">
+				<Control width="30"/>
+				<Label text="Help" font="0" textcolor="#ff000000" align="left"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<MenuItem id="5" height="30">
+			<HorizontalLayout inset="15,0,15,0">
+				<Control width="30"/>
+				<Label text="About" font="0" textcolor="#ff000000" align="left"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<MenuItem id="6" height="30">
+			<HorizontalLayout inset="15,0,15,0">
+				<Control width="20" height="20" padding="0,6,0,0" font="0" bkimage="..\Image\ic_tray_exit.png"/>
+				<Control width="10"/>
+				<Label text="Exit" font="0" textcolor="#ff000000" align="left"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<Control height="10"/>
+	</Menu>
+</Window>

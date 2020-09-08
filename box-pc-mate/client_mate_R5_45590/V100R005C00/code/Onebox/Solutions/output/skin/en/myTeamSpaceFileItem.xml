@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+	<TeamspaceListFileContainerElement name="teamSpace_listItem" height="44" itemaltbk="ture" singularrowcolor="#ffffffff" dualrowcolor="#fffafafa">
+		<!--ItemCheckBox float="true" pos="0,1,32,31" align="left" selectedimage="file='..\img\checkbox.png' dest='20,13,32,25' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,13,32,25' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,13,32,25' source='26,0,38,12'"/-->
+		<HorizontalLayout float="true" pos="0,0,380,44">
+			<HorizontalLayout padding="10,0,0,0" width="32" height="44">
+				<Button name="teamSpace_List_icon"  mouse="false" height="32" float="true" pos="0,6,32,38" align="left" />
+			</HorizontalLayout>
+			<MyFilesRichEditUI name="teamSpace_List_listName" limitchars="/ \ * | ' : ? &lt; &gt; &quot;" focusbordercolor="#FFFAFAFA" borderround="5,5" padding="5,8" font="12" textcolor="#FF000000" multiline="false" endellipsis="true" maxchar="246" height="28" mouse="false" inset="5,6,5,6" align="left"/>
+			<Button name="teamSpace_List_version" visible="false" padding="10,14,0,14" width="26" height="16" text="V9" font="10" tooltip="FileVersion" textcolor="#FFFFFFFF" normalimage="file='..\Image\ic_popup_view_version - small.png' source='0,26,26,42'" hotimage="file='..\Image\ic_popup_view_version - small.png' source='0,0,26,16'"/>
+			<HorizontalLayout name="teamSpace_List_listOperation"  padding="2,12,20,12" width="20" mouse="true">
+				<Button name="teamSpace_List_isShareLink" width="20" height="20" visible="false" tooltip="Share with anyone using a link." disabledimage="file='..\Image\ic_toolmenu_link.png' source='0,0,20,20'" padding="5,0,0,0" normalimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50'" hotimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50'"/>
+			</HorizontalLayout>
+		</HorizontalLayout>
+		<Label name="teamSpace_List_size" float="true"  textpadding="0,0,30,0"  pos="380,0,500,44"  font="12" align="right" textcolor="#FF666666"  width="120"/>
+		<Label name="teamSpace_List_mtime" float="true"  textpadding="10,0,0,0" pos="500,0,660,44" font="12" align="left" textcolor="#FF666666"  width="160"/>
+	</TeamspaceListFileContainerElement>
+</Window>

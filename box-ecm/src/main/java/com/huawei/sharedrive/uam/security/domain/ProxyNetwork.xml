@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ProxyNetwork">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="ProxyNetwork"	type="com.huawei.sharedrive.uam.security.domain.ProxyNetwork" />
+
+	<resultMap id="resultMap.ProxyNetwork" class="ProxyNetwork">
+		<result column="id" property="id" />
+		<result column="accessIp" property="accessIp" />
+		<result column="networkType" property="networkType"	typeHandler="com.huawei.sharedrive.uam.security.domain.NetworkTypeHandler" />
+		<result column="description" property="description" />
+	</resultMap>
+
+	<select id="getAll" resultMap="resultMap.ProxyNetwork">
+		select * from proxy_network
+	</select>
+
+	<select id="getList" resultMap="resultMap.ProxyNetwork"
+		parameterClass="Integer">
+		select * from proxy_network where netWorkType = #value#
+	</select>
+
+	<insert id="insert" parameterClass="ProxyNetwork">
+		insert into proxy_network(id,accessIp,netWorkType)
+		values
+		(#id#,#accessIp#,#networkType.type#)
+	</insert>
+
+	<delete id="delete" parameterClass="Integer">
+		delete from proxy_network where netWorkType = #value#
+	</delete>
+	<select id="getNextId" resultClass="Long">
+		select max(id) + 1 as nextId from proxy_network
+	</select>
+</sqlMap>
+

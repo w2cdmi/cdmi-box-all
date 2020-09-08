@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EnterpriseUser">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="EnterpriseUser" type="pw.cdmi.box.disk.user.domain.EnterpriseUser" />
+
+	<select id="get" parameterClass="map" resultClass="EnterpriseUser">
+    	<![CDATA[
+        select * from enterprise_user$tableSuffix$ where id=#userId# and enterpriseId=#enterpriseId#
+        ]]>
+	</select>
+	<select id="getByLoginname" parameterClass="map" resultClass="EnterpriseUser">
+    	<![CDATA[
+        select * from enterprise_user$tableSuffix$ where name=#name# and enterpriseId=#enterpriseId#
+        ]]>
+	</select>
+</sqlMap>
+

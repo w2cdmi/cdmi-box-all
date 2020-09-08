@@ -1,0 +1,138 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.0.0",
+	"appid": "wxfbc7b65a9edb00f9",
+	"projectname": "%E6%96%87%E4%BB%B6%E5%AE%9D-%E4%B8%AA%E4%BA%BA%E7%89%88",
+	"isGameTourist": false,
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": 0,
+					"name": "batchShare",
+					"pathName": "disk/inbox/upload/upload",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "云文档",
+					"pathName": "disk/inbox/inbox",
+					"query": ""
+				},
+				{
+					"id": 2,
+					"name": "上拉",
+					"pathName": "test/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "淡入",
+					"pathName": "tests/tests",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "链接失效",
+					"pathName": "disk/shares/shareLinkFailure",
+					"query": "",
+					"scene": "1001"
+				},
+				{
+					"id": -1,
+					"name": "外发",
+					"pathName": "disk/batchShare/batchShare",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "提取码",
+					"pathName": "disk/batchShare/extractionEode/extractionEode",
+					"query": ""
+				},
+				{
+					"id": 7,
+					"name": "打开外发卡片",
+					"pathName": "disk/batchShare/batchShare",
+					"query": "type=code&linkCode=956d3e2f4d651f21081ad14a0b6913fb&plainAccessCode=415861&forWardId=865",
+					"scene": "1007"
+				},
+				{
+					"id": 8,
+					"name": "上传",
+					"pathName": "disk/inbox/upload/upload",
+					"query": "",
+					"scene": "1007"
+				},
+				{
+					"id": -1,
+					"name": "收件箱上传",
+					"pathName": "disk/inbox/upload/upload",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "收件箱上传",
+					"pathName": "disk/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "batchShare",
+					"pathName": "disk/inbox/inbox",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "share",
+					"pathName": "disk/index",
+					"query": "ownerId=640&nodeId=98&enterpriseId=0"
+				},
+				{
+					"id": -1,
+					"name": "底部菜单",
+					"pathName": "components/menu/menu",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "微信备份策略设置",
+					"pathName": "disk/weChatBackup/weChatBackupSet/weChatBackupSet",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "直达",
+					"pathName": "disk/widget/filelist",
+					"query": "view=zhida",
+					"scene": "1005"
+				}
+			]
+		}
+	}
+}

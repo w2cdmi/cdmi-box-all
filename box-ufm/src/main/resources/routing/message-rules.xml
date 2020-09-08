@@ -1,0 +1,24 @@
+<rules>
+    <rule>
+    	<!-- receiverId -->
+        <namespace>Message</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+    	<!-- filter.receiverId -->
+        <sqlmap>Message.listMessage</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+  		<!-- ASSIGNED_PARTITION -->
+        <sqlmap>Message.cleanExpiredMessage</sqlmap>
+        <shardingExpression>partitionNum==1</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>
+
+

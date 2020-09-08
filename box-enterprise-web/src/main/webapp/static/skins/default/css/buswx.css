@@ -1,0 +1,131 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	font-family: "思源黑体";
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+.buswx-header{
+	min-width: 1100px;
+	background-color: #191919;
+	height: 60px;
+}
+.pub-width{
+	width: 1100px;
+	margin: auto;
+}
+.bus-header-logo a{
+	font-size: 18px;
+	color: #fff;
+	display: inline-block;
+	line-height: 60px;
+}
+.bus-header-logo a img{
+	width: 44px;
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: 16px;
+}
+.all-bus-con{
+	position: relative;
+}
+.buswx-content{
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 99;
+	width: 100%;
+	min-height: 1016px;
+	background-color: #ECF1F5;
+	overflow: hidden;
+}
+.qywechat{
+	width: 100%;
+	min-height: 1016px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 90;
+}
+.buswx-register-con{
+	width: 400px;
+	height: 520px;
+	margin: 135px auto 330px;
+	background-color: #fff;
+	text-align: center;
+	overflow: hidden;
+	border-bottom: 5px solid #3F9BE9;
+}
+.register-title{
+	font-size: 18px;
+	margin-top: 102px;
+	color: #FF6600;
+}
+.title-line{
+	width: 68px;
+	margin: 11px auto 0;
+	height: 2px;
+	background-color: #3F9BE9;
+}
+.install-buswx-code{
+	width: 212px;
+	height: 212px;
+	margin: 28px auto 0;
+	overflow: hidden;
+	background-color: #ECF1F5;
+}
+.ins-buswx-code{
+	/*width: 415px;
+    height: 415px;*/
+    /*margin: -131px 0px 0px -538px;*/
+}
+.install-blue-img{
+	display: inline-block;
+	margin: 32px 0 26px 0;
+}
+.buswx-alert-info{
+	font-size: 14px;
+	color: #666;
+	font-weight: bold;
+	margin-top: 12px;
+}
+.register-or{
+	overflow: hidden;
+	width: 350px;
+	margin: 40px auto 24px;
+}
+.register-or i{
+	display: inline-block;
+	width: 146px;
+	height: 2px;
+	float: left;
+	background-color: #3F9BE9;
+	margin-top: 13px;
+}
+.register-or span{
+	float: left;
+	font-size: 18px;
+	color: #666;
+	margin: 0 18px;
+}
+.no-install-wx{
+	font-size: 14px;
+	color: #FF6600;
+	margin-top: 24px;
+	margin-bottom: 16px;
+}
+.buswx-bottom{
+	text-align: center;
+}
+.register-buswx-btn{
+	display: inline-block;
+	margin-top: 12px;
+}
+.buswx-bottom p{
+	font-size: 14px;
+	color: #333;
+}

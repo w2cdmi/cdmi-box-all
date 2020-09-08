@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+    default-autowire="byName" default-lazy-init="false">
+    
+   <bean id="logAgentClientService" class="pw.cdmi.core.restrpc.RestClient" init-method="init" destroy-method="destroy">
+        <property name="maxTotal" value="${logagent.client.max.total}" />
+        <property name="defaultMaxPerRoute" value="${logagent.client.default.max.per.route}" />
+        <property name="defaultRedirectMax" value="${logagent.client.default.redirect.max}" />
+        <property name="connectionRequestTimeout" value="${logagent.client.connection.request.timeout}" />
+        <property name="connectTimeout" value="${logagent.client.connection.timeout}" />
+        <property name="socketTimeout" value="${logagent.client.socket.timeout}" />
+        <property name="requireClientCert" value="${logagent.client.require.client.cert}" />
+        <property name="validateServerCert" value="${logagent.client.valid.server.cert}" />
+    </bean>
+    
+</beans>

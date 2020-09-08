@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccountWatermark">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="AccountWatermark"
+		type="com.huawei.sharedrive.app.plugins.preview.domain.AccountWatermark" />
+
+	<resultMap id="AccountWatermark" class="AccountWatermark">
+		<result column="accountId" property="accountId" />
+		<result column="watermark" property="watermark"
+			typeHandler="org.springframework.orm.ibatis.support.BlobByteArrayTypeHandler" />
+		<result column="lastConfigTime" property="lastConfigTime" />
+	</resultMap>
+
+	<insert id="replace" parameterClass="AccountWatermark">
+		replace into account_watermark(accountId, watermark, lastConfigTime) values
+		(#accountId#, #watermark#, #lastConfigTime#)
+	</insert>
+
+	<select id="get" parameterClass="long" resultMap="AccountWatermark">
+		select * from account_watermark where accountId=#value#
+	</select>
+
+</sqlMap>
+

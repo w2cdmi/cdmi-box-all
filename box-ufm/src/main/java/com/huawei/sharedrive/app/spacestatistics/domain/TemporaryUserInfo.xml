@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TemporaryUserInfo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="TemporaryUserInfo"
+		type="com.huawei.sharedrive.app.spacestatistics.domain.TemporaryUserInfo" />
+
+	<insert id="insert" parameterClass="TemporaryUserInfo">
+		insert into
+		temporary_userinfo(ownedBy,accountId,spaceUsed,spaceChanged,createdAt,currentFileCount,changedFileCount)
+		values(#ownedBy#,#accountId#,#spaceUsed#,#spaceChanged#,#createdAt#,#currentFileCount#,#changedFileCount#);
+	</insert>
+
+	<delete id="deleteByTime" parameterClass="TemporaryUserInfo">
+     <![CDATA[ 
+         delete from temporary_userinfo where ownedBy=#ownedBy# and createdAt <= #createdAt#;
+     ]]>
+	</delete>
+
+	<select id="getAccountChangedInfoById" parameterClass="Long"
+		resultClass="com.huawei.sharedrive.app.spacestatistics.domain.AccountStatisticsInfo">
+		select accountId, sum(spaceChanged) as currentSpace,
+		sum(changedFileCount)
+		as currentFiles from temporary_userinfo where
+		accountId=#accountId#;
+	</select>
+
+	<select id="getAccountIds" resultClass="Long">
+		select
+		distinct(accountId) from temporary_userinfo;
+	</select>
+
+	<select id="getCurrentUserInfo" resultClass="TemporaryUserInfo">
+     <![CDATA[ 
+        select * from  temporary_userinfo where createdAt in (select max(createdAt) from temporary_userinfo group by ownedBy) group by ownedBy;
+      ]]>
+	</select>
+
+</sqlMap>    

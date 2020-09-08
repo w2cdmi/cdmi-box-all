@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EnterpriseVip">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="EnterpriseVip" type="com.huawei.sharedrive.uam.uservip.domain.EnterpriseVip" />
+	<typeAlias alias="Product" type="com.huawei.sharedrive.uam.product.domain.Product" />
+
+	<select id="get" parameterClass="EnterpriseVip" resultClass="EnterpriseVip">
+	   select * from enterprise_vip where enterpriseId=#enterpriseId# and enterpriseAccountId=#enterpriseAccountId#
+	</select>
+	
+    <insert id="insert" parameterClass="EnterpriseVip">
+        <![CDATA[
+        insert into enterprise_vip(`enterpriseAccountId`,`enterpriseId`,`productId`,`startDate`,`expireDate`)
+                           values (#enterpriseAccountId#,#enterpriseId#,#productId#,#startDate#,#expireDate#)
+           ]]>
+	</insert>
+	<update id="update" parameterClass="EnterpriseVip" >
+	   UPDATE `enterprise_vip` SET `productId`=#productId#, `startDate`=#startDate#, `expireDate`=#expireDate# 
+	   WHERE `enterpriseAccountId`=#enterpriseAccountId# and enterpriseId=#enterpriseId#
+	</update>
+	
+	<select id="listAll" resultClass="EnterpriseVip">
+	   select * from enterprise_vip
+	</select>
+
+
+	<select id="getProductByEnterpriseAccountId" parameterClass="map" resultClass="Product">
+		select * from `product` where id = (select productId from enterprise_vip where `enterpriseAccountId`=#enterpriseAccountId#  and `expireDate` > #expireDate#)
+	</select>
+
+</sqlMap>
+

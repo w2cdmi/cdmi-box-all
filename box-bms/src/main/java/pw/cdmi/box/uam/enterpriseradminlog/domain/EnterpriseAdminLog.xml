@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EnterpriseAdminLog">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="EnterpriseAdminLog" type="pw.cdmi.box.uam.enterpriseradminlog.domain.EnterpriseAdminLog" />
+	
+	<select id="getEnterpriseAdminlog" parameterClass="map" resultClass="EnterpriseAdminLog">
+        select * from userlogdb.admin_userlog$tableSuffix$
+         <dynamic prepend="where">
+            <isNotNull prepend="and" property="enterpriseId">
+        		enterpriseId= #enterpriseId#
+        	</isNotNull>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createTime &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createTime &lt;= #filter.endTime#
+        	</isNotNull>
+            <isNotNull prepend="and" property="filter.operatDesc">
+                operatDesc like concat('%',#filter.operatDesc#,'%')
+            </isNotNull>
+          </dynamic>
+         <dynamic prepend="order by">
+             createTime desc
+        </dynamic>
+       <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getCount" parameterClass="map" resultClass="Integer">
+        select count(*) from userlogdb.admin_userlog$tableSuffix$
+         <dynamic prepend="where">
+            <isNotNull prepend="and" property="enterpriseId">
+        		enterpriseId= #enterpriseId#
+        	</isNotNull>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createTime &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createTime &lt;= #filter.endTime#
+        	</isNotNull>
+            <isNotNull prepend="and" property="filter.operatDesc">
+                operatDesc like concat('%',#filter.operatDesc#,'%')
+            </isNotNull>
+          </dynamic>
+    </select>
+</sqlMap>
+

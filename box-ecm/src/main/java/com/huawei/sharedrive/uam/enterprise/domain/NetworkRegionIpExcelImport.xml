@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="NetworkRegionIpExcelImport">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="NetworkRegionIpExcelImport" type="com.huawei.sharedrive.uam.enterprise.domain.NetWorkRegionIpExcelImport" />
+    
+    <select id="getByAppID" parameterClass="String" resultClass="NetworkRegionIpExcelImport">
+    <![CDATA[
+        select * from network_region_excel_importresult where id=#appId#
+        ]]>
+    </select>
+    
+    <select id="getList" parameterClass="long" resultClass="NetworkRegionIpExcelImport">
+    <![CDATA[
+        select * from network_region_excel_importresult where accountId=#accountId# order by id desc limit 0,10
+        ]]>
+    </select>
+    
+    <select id="getByID" parameterClass="long" resultClass="NetworkRegionIpExcelImport">
+    <![CDATA[
+        select * from network_region_excel_importresult where id=#value#
+        ]]>
+    </select>
+    
+    <delete id="delete" parameterClass="long">
+        <![CDATA[
+        delete from network_region_excel_importresult where id=#value#
+        ]]>
+	</delete>
+	
+	<insert id="insert" parameterClass="NetworkRegionIpExcelImport">
+        <![CDATA[
+        insert into network_region_excel_importresult(id,accountId,runtime,appId,succeededCount,failedCount,totalCount,status) 
+        values 
+        (#id#,#accountId#,#runtime#,#appId#,#succeededCount#,#failedCount#,#totalCount#,#status#)
+        ]]>
+	</insert>
+	
+	<update id="update" parameterClass="NetworkRegionIpExcelImport">
+        <![CDATA[
+        update network_region_excel_importresult 
+        set status=#status#, resultData=#resultData#,
+         completeTime=#completeTime# ,succeededCount=#succeededCount#,failedCount=#failedCount#,
+         totalCount=#totalCount# ,totalCount=#totalCount#
+         where id=#id#
+        ]]>
+	</update>
+	
+	 <select id="getMaxId" parameterClass="String" resultClass="Long">
+        <![CDATA[
+        select max(id) from network_region_excel_importresult
+        ]]>
+    </select>
+    
+</sqlMap>
+

@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:cv="clr-namespace:Onebox.CustomConvertor">
+    
+    <cv:TaskStateToImagePathConverter x:Key="TaskStateToImagePathConverter"/>
+    <cv:FileSizeToShowCoverter x:Key="FileSizeToShowCoverter"/>
+    <cv:ProcessToStringConverter x:Key ="ProcessToStringConverter"/>
+    <cv:ProcessToWidthConverter  x:Key ="ProcessToWidthConverter"/>
+    <cv:BackgroundConverter  x:Key ="BackgroundConverter"/>
+    <cv:BorderBrushConverter  x:Key ="BorderBrushConverter"/>
+    <!--<cv:FileTypeIconConverter x:Key="FileTypeIconConverter"/>-->
+    <cv:ShowControlConverter x:Key="ShowControlConverter" />
+    <cv:StyleVisibilityConverter x:Key="StyleVisibilityConverter" />
+    <cv:StyleEnableConverter x:Key="StyleEnableConverter" /> 
+    <cv:StyleForegroundConverter x:Key="StyleForegroundConverter" />
+    <cv:StyleBordBackgroundConverter x:Key="StyleBordBackgroundConverter" />
+    <cv:StringShow30ByteConverter x:Key="StringShow30ByteConverter" />
+    <cv:NoticeTypeToImagePathConverter x:Key="NoticeTypeToImagePathConverter" />
+    <cv:StringShow20ByteConverter x:Key="StringShow20ByteConverter"/>
+    <cv:ListFolderTypeConverter x:Key="ListFolderTypeConverter"/> 
+    <cv:ListFolderShowImageConverter x:Key="ListFolderShowImageConverter"/>
+    <cv:StringShow10ByteConverter x:Key="StringShow10ByteConverter"/>
+    <cv:ConvertNoticeLength x:Key="ConvertNoticeLength"/>
+    <cv:ConvertMarginForsp_Scan x:Key="ConvertMarginForsp_Scan"/>
+    <cv:ConvertMaxWidthForTB_openFileDownloadHelp x:Key="ConvertMaxWidthForTB_openFileDownloadHelp"/>
+</ResourceDictionary>

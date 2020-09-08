@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Terminal">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="Terminal" type="pw.cdmi.common.domain.Terminal" />
+	
+	<select id="getClientTerminalBySnUser" resultClass="Terminal" parameterClass="Terminal">
+        select * from user_terminal_$tableSuffix$ where deviceSn=#deviceSn# and cloudUserId=#cloudUserId#
+    </select>
+    
+	<insert id="insert" parameterClass="Terminal">
+        insert into user_terminal_$tableSuffix$(id,accountId,deviceSn,cloudUserId,deviceName,
+        	createdAt,lastAccessAt,lastAccessIP,status,deviceOS,deviceType,deviceAgent,appId,token) 
+        values(#id#,#accountId#,#deviceSn#,#cloudUserId#,#deviceName#,#createdAt#,#lastAccessAt#,#lastAccessIP#,
+        	#status#,#deviceOS#,#deviceType#,#deviceAgent#,#appId#,#token#)
+    </insert>
+    <select id="getWebTerminal" resultClass="Terminal" parameterClass="Terminal">
+        select * from user_terminal_$tableSuffix$ 
+        where cloudUserId=#cloudUserId# and lastAccessIP=#lastAccessIP#
+        and deviceAgent=#deviceAgent# and deviceType=#deviceType#
+    </select>
+    
+    <update id="updateWebTerminal" parameterClass="Terminal">
+        update user_terminal_$tableSuffix$ 
+        set token=#token#,createdAt=#createdAt#,lastAccessAt=#lastAccessAt#,status=#status#,deviceOS=#deviceOS# 
+        where deviceType=#deviceType# and deviceAgent=#deviceAgent# and lastAccessIP=#lastAccessIP# and cloudUserId=#cloudUserId#
+    </update>
+    
+    <update id="updateNoWebStatus" parameterClass="Terminal">
+        update user_terminal_$tableSuffix$ 
+        set status=#status#,token=#token#
+        where deviceSn=#deviceSn# and cloudUserId=#cloudUserId# and deviceType=#deviceType#
+    </update>
+    
+    <update id="updateLastAccessAt" parameterClass="Terminal">
+        update user_terminal_$tableSuffix$ set lastAccessAt=#lastAccessAt# where deviceType=#deviceType# and deviceAgent=#deviceAgent# and lastAccessIP=#lastAccessIP# and cloudUserId=#cloudUserId#
+    </update>
+    
+    <update id="updateToken" parameterClass="map">
+        update user_terminal_$tableSuffix$ 
+        set token=#newToken# 
+        where cloudUserId=#cloudUserId# and token=#oldToken#
+    </update>
+    
+    <update id="updateNoWebTerminal" parameterClass="Terminal">
+        update user_terminal_$tableSuffix$ 
+        set token=#token#,deviceName=#deviceName#,createdAt=#createdAt#,lastAccessAt=#lastAccessAt#,lastAccessIP=#lastAccessIP#,status=#status#,deviceOS=#deviceOS#,deviceAgent=#deviceAgent# 
+        where deviceSn=#deviceSn# and cloudUserId=#cloudUserId# and deviceType=#deviceType#
+    </update>
+    
+    
+    <select id="getByUser" resultClass="Terminal" parameterClass="map">
+        select * from user_terminal_$tableSuffix$ where cloudUserId=#cloudUserId#
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$  
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+             #offset#, #limit#
+        </dynamic>
+    </select>
+    
+    <select id="getByUserCount" resultClass="int" parameterClass="map">
+        select count(1) from user_terminal_$tableSuffix$ where cloudUserId=#cloudUserId#
+    </select>
+    
+    <select id="getMaxTerminalId" resultClass="Long" parameterClass="String">
+        <![CDATA[
+        select max(id) from user_terminal_$tableSuffix$
+        ]]>
+    </select>
+    
+    <select id="getBySn" resultClass="Terminal" parameterClass="Terminal">
+        select * from user_terminal where deviceSn=#deviceSn#
+    </select>
+    
+    
+    
+
+    <delete id="delete" parameterClass="Terminal">
+        delete from user_terminal where deviceSn=#deviceSn#
+    </delete>
+    
+    <update id="updateStatus" parameterClass="Terminal">
+        update user_terminal set status=#status#
+        <dynamic prepend="where">
+            <isNotNull prepend="and" property="deviceSn">
+                deviceSn=#deviceSn#
+            </isNotNull>
+        </dynamic>
+    </update>
+    
+
+     <select id="getAgentCountByLoginAt" resultClass="Long" parameterClass="map">
+        select count(*) from user_terminal_$tableSuffix$ where 1=1
+        <isNotNull prepend="and" property="appId">
+           	<![CDATA[
+              appId=#appId#
+              ]]>
+         </isNotNull>
+        <isNotNull prepend="and" property="beginDate">
+           	<![CDATA[
+              lastAccessAt>=#beginDate#  
+              ]]>
+         </isNotNull>
+         <isNotNull prepend="and" property="endDate">
+           	<![CDATA[
+              lastAccessAt<#endDate#  
+              ]]>
+         </isNotNull>
+        <isNotNull prepend="and" property="deviceType">
+           	<![CDATA[
+              deviceType=#deviceType#  
+              ]]>
+         </isNotNull>   
+    </select>
+    
+    <select id="getByUserLastLogin" resultClass="Terminal" parameterClass="map">
+        select * from user_terminal_$tableSuffix$ where cloudUserId=#cloudUserId# order by lastAccessAt desc limit 1;
+    </select>
+    
+</sqlMap>
+

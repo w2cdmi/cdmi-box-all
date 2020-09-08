@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "createFolder": "/components/createFolder/createFolder"
+    },
+    "navigationBarTitleText": "收件箱"
+}

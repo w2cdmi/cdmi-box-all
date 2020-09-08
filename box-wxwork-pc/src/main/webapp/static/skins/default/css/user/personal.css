@@ -1,0 +1,108 @@
+body{
+        background-color: #f8f8f8
+}
+.box ul {
+	 background-color: #fff;
+	 border-top: 1px solid #E4E1E1;
+	 border-bottom: 1px solid #E4E1E1;
+}
+.per-header ul{
+	position: relative; 
+	width: 100%;
+	height: 4.1rem;
+}
+.per-header .per-header-portrait{
+	border-radius: 50%;
+	position: absolute;
+	left: 1rem;
+	overflow: hidden;
+	margin-top: 0.3rem;
+}
+.per-header p img{
+	float: left;
+	width: 3.5rem;
+	height: 3.5rem;
+}
+.per-header .per-name{
+	width: 10rem;
+	height: 3.5rem;
+	float: left;
+	margin-left: 5.5rem;
+}
+.per-header .per-name i{
+	display: inline-block;
+	height: 1.2rem;
+	width: 100%;
+	line-height: 1.2rem;
+	font-style: normal;
+	font-size: 0.75rem;
+	color: #333333;
+	margin-top: 0.8rem;
+	font-weight: 600;
+}
+.per-header .per-name span{
+	display: inline-block;
+	width: 100%;
+	height: 1.2rem;
+	line-height: 1.2rem;
+	color: #333333;
+	font-size: 0.6rem;
+}
+.per-content{
+	width: 100%;
+}
+.per-content li{
+	width: 94%;
+	height: 2.2rem;
+	border-bottom: 1px solid #E4E1E1;
+	/*margin-left: 5%;*/
+	margin: auto;
+	font-size: 0.75rem;
+	color: #333333;
+}
+.per-content li:last-child{
+	border-bottom: 0;
+}
+
+.per-content li p{
+	float: left;
+}
+.per-content li p img{
+	width: 0.8rem;
+	height: 0.8rem;
+	margin-top: 0.7rem;
+}
+.per-content li span{
+	float: left;
+	margin-left: 1rem;
+	line-height: 2.2rem;
+}
+.per-content li i{
+	width: 0.3rem;
+	margin-top: 0.5rem;
+	float: right;
+}
+.per-content li i img{
+	width: 0.3rem;
+	height: 0.5rem;
+}
+.per-content li:nth-child(5){
+	border-bottom: none;
+}
+.per-content .per-gap{
+	width: 100%;
+	height: 1.1rem;
+}
+.totalSize{
+	width: 12rem;
+    background: #4E4E4E;
+    height: 0.3rem;
+}
+#spaceBar{
+	width: 0%;
+    background: #18b4ed;
+    height: 0.3rem;
+}
+.per-name p{
+	color: #333333;
+}

@@ -1,0 +1,22 @@
+<view class='page'>
+    <view class="list" scroll-y="true">
+        <scroll-view scroll-y style='height: {{screenHeight}}px' bindscrolltolower='getMoreList'>
+            <view class="item" wx:for="{{praiseList}}" wx:key="*this">
+                <view class="heade">
+                    <image src="{{item.headImage}}" />
+                </view>
+                <view class="userinfo">
+                    <view class='name-text'>
+                        <text>{{item.name}}</text>
+                        <!-- 用等级 -->
+                        <!-- <image class="grade" src="/disk/images/error-link.png" /> -->
+                    </view>
+                    <view>
+                        <text>{{item.createTime}}</text>
+                    </view>
+                </view>
+            </view>
+
+        </scroll-view>
+    </view>
+</view>

@@ -1,0 +1,20 @@
+<rules>
+    <rule>
+    	<!-- filter.ownedBy -->
+        <sqlmap>INodeDelete.getFilterd</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+    	<!-- filter.ownedBy -->
+        <sqlmap>INodeDelete.getbystatus</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+   <rule>
+   		<!-- filter.ownedBy -->
+        <namespace>INodeDelete</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

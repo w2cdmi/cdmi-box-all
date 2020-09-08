@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WxUserEnterprise">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="WxUserEnterprise" type="com.huawei.sharedrive.uam.weixin.domain.WxUserEnterprise" />
+
+    <insert id="insert" parameterClass="WxUserEnterprise">
+        <![CDATA[
+        insert into wx_user_enterprise(unionId,enterpriseId,enterpriseUserId,createdAt,modifiedAt)
+        values (#unionId#,#enterpriseId#,#enterpriseUserId#,#createdAt#,#modifiedAt#)
+        ]]>
+	</insert>
+	
+	<update id="update" parameterClass="WxUserEnterprise">
+        update wx_user_enterprise set enterpriseUserId=#enterpriseUserId#, `modifiedAt`=#modifiedAt# where unionId=#unionId# and enterpriseId=#enterpriseId#
+    </update>
+
+    <delete id="delete" parameterClass="WxUserEnterprise">
+        <![CDATA[
+        DELETE FROM wx_user_enterprise WHERE unionId=#unionId# AND enterpriseId=#enterpriseId#
+        ]]>
+    </delete>
+
+    <delete id="deleteByUnionId" parameterClass="String">
+        <![CDATA[
+        DELETE FROM wx_user_enterprise WHERE unionId=#unionId#
+        ]]>
+    </delete>
+
+
+    <select id="getByUnionIdAndEnterpriseId" parameterClass="map" resultClass="WxUserEnterprise">
+        <![CDATA[
+    	select * from wx_user_enterprise where unionId=#unionId# AND enterpriseId=#enterpriseId#
+        ]]>
+    </select>
+
+    <select id="listByUnionId" parameterClass="String" resultClass="WxUserEnterprise">
+        <![CDATA[
+    	select * from wx_user_enterprise where unionId=#unionId# and enterpriseId > 0
+        ]]>
+    </select>
+    
+      <select id="getByEnterpriseUser" parameterClass="map" resultClass="WxUserEnterprise">
+        <![CDATA[
+    	select * from wx_user_enterprise where enterpriseUserId=#enterpriseUserId# and enterpriseId=#enterpriseId#
+        ]]>
+    </select>
+
+    <delete id="deleteEnterpriseUser" parameterClass="map">
+
+        DELETE  FROM  wx_user_enterprise WHERE enterpriseUserId=#enterpriseUserId# and enterpriseId=#enterpriseId#
+    </delete>
+    
+</sqlMap>
+

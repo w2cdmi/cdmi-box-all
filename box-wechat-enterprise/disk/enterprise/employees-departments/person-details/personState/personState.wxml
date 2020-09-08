@@ -1,0 +1,7 @@
+<!--disk/enterprise/employees-departments/person-details/personState/personState.wxml-->
+<view class='page'>
+    <view class='list-item' wx:for="{{state}}" bindtap='toggleState' data-item='{{item}}' wx:key="*this">
+        <view>{{item}}</view>
+        <image src='/disk/images/pitch-on-icon.png' class='checked-icon' wx:if='{{personState === item ? true : false}}'></image>
+    </view>
+</view>

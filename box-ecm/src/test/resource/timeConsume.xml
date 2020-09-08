@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<consumeList>
+	<consume>
+		<name>login</name>
+		<method>post</method>
+		<apiPath>/api/v2/token</apiPath>
+		<picketLine>500</picketLine>
+	</consume>
+</consumeList>
+
+

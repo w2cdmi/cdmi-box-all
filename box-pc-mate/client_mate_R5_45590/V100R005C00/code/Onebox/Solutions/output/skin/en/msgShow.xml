@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window dropenable="true">
+	<VerticalLayout>
+		<HorizontalLayout height="50">
+			<Label name="msgFrame_msgTotal" minwidth="125" padding="20,0,0,0" font="12" textcolor="#FF000000" text="99+" showhtml="true"/>
+			<Control />
+			<Button name="msgFrame_refresh" padding="20,15" tooltip="Refresh" width="20" height="20" normalimage="file='..\Image\ic_oper_refresh.png' source='0,0,20,20'"  hotimage="file='..\Image\ic_oper_refresh.png' source='0,30,20,50'" disabledimage="file='..\Image\ic_oper_refresh.png' source='0,60,20,80'"/>
+		</HorizontalLayout>
+		<HorizontalLayout height="1" padding="20,0,20,0">
+			<Label  height="1" bkcolor="#FFDDDDDD" />
+		</HorizontalLayout>
+		<TabLayout name="msgFrame_Tab" padding="20,0,20,0">
+			<CustomList name="msgFrame_listView" visible="true" header="hidden" menu="false" itemshowhtml="true" vscrollbar="true" hscrollbar="true"  itemlinecolor="#FFE5E5E5" itemhotbkcolor="#FFEBEBEB" itemselectedbkcolor="#FFDEF0FF" bkcolor="#FFFFFFFF"/>
+
+			<VerticalLayout name="msgFrame_noMsg" >
+				<Control />
+				<HorizontalLayout height="210" >
+					<Control />
+					<Label bkimage="..\Image\ic_null_message.png" width="180" height="180" />
+					<Control />
+				</HorizontalLayout>
+
+				<VerticalLayout height="60">
+					<Label align="center" height="24" text="No Message" textpadding="10,0" font="17"  textcolor="#FF666666"/>
+					<Control height="10"/>
+					<Label name="msgFrame_description" align="center" height="16" text="A phrase to describe no message" font="12" textcolor="#FF666666"/>
+					<Control height="10"/>
+				</VerticalLayout>
+				<Control height="50" />
+				<Control />
+			</VerticalLayout>
+		</TabLayout>
+	</VerticalLayout>
+</Window>

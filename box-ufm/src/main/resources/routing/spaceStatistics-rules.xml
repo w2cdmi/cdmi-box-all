@@ -1,0 +1,22 @@
+<rules>
+    <rule>
+        <namespace>FilesAdd</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+        <namespace>FilesDelete</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+     <rule>
+        <namespace>TemporaryUserInfo</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+     <rule>
+        <namespace>ClearRecycleBinRecord</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+ </rules>

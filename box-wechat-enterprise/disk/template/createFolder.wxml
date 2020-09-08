@@ -1,0 +1,14 @@
+<!--弹窗-->
+<view class="modal-mask" bindtap="hideModal" catchtouchmove="preventTouchMove" wx:if="{{showModal}}"></view>
+<view class="modal-dialog" wx:if="{{showModal}}">
+  <view class="modal-title">{{isUpdate?'重命名':'请输入文件夹名'}}</view>
+  <view class="modal-content">
+    <view class="modal-input">
+      <input placeholder-class="input-holder" maxlength="255" bindinput="inputChange" class="input" value='{{newFolderName}}' focus='true' placeholder="请输入文件夹名"></input>
+    </view>
+  </view>
+  <view class="modal-footer">
+    <view class="btn-cancel" bindtap="onCreateFolderCancel" data-status="cancel">取消</view>
+    <view class="btn-confirm" data-is-update='{{isUpdate}}' data-owner-id='{{node.ownerId}}' data-node-id='{{node.nodeId}}' bindtap="onCreateFolderConfirm" data-status="confirm">确定</view>
+  </view>
+</view>

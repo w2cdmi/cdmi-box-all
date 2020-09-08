@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="generated">
+      <UniqueIdentifier>{9285d031-2f05-414b-847a-92a6238080b1}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="thrift">
+      <UniqueIdentifier>{fc59ca68-510c-4ae5-8aa7-2cafd8a99758}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="notice">
+      <UniqueIdentifier>{b6cb1bad-e4b1-41ad-a269-61892af13d57}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="custom">
+      <UniqueIdentifier>{6d612602-1bb3-4f0e-961e-b279ad6445ea}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficeAddin.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficeAddin_i.c">
+      <Filter>generated</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficeAddinImpl.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\OneboxThriftService_constants.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\OneboxThriftService_types.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\ThriftService.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficeAddinThriftClient.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\include\Utility.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UI\source\SkinConfMgr.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\include\InIHelper.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\include\CommonFileDialogImpl.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\OneboxCommon\include\CommonFileDialogThriftClient.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficeAddinUploadPath.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficeAddinProgressFrame.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="NoticeFrame.cpp">
+      <Filter>notice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UI\source\ErrorConfMgr.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UI\source\RenameRichEdit.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UI\source\SimpleNoticeFrame.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\UI\source\CommonLoadingFrame.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="OfficeControlNames.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="ListContainerElement.cpp">
+      <Filter>custom</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="dllmain.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficeAddin_i.h">
+      <Filter>generated</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficeAddinImpl.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\OneboxThriftService_constants.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\OneboxThriftService_types.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\ThriftService.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficeAddinThriftClient.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\include\Utility.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UI\include\SkinConfMgr.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\OneboxCommon\include\InIHelper.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="Global.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficeAddinUploadPath.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficeAddinProgressFrame.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="NoticeFrame.h">
+      <Filter>notice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UI\include\RenameRichEdit.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\UI\include\SimpleNoticeFrame.h">
+      <Filter>source</Filter>
+    </ClInclude>
+    <ClInclude Include="OfficeControlNames.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="ListContainerElement.h">
+      <Filter>custom</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OfficeAddin.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OfficeAddin.rgs">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="OfficeAddin.def">
+      <Filter>source</Filter>
+    </None>
+    <None Include="OfficeAddinImpl.rgs">
+      <Filter>resource</Filter>
+    </None>
+    <None Include="..\..\..\..\OneboxCommon\MessageProxy\thrift\OneboxThriftService.thrift">
+      <Filter>thrift</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="OfficeAddin.idl">
+      <Filter>source</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="OneboxRibbonManifest.xml">
+      <Filter>resource</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\OutlookAddin\Res\logo.ico">
+      <Filter>resource</Filter>
+    </Image>
+  </ItemGroup>
+</Project>

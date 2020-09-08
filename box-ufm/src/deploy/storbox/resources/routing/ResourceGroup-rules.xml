@@ -1,0 +1,7 @@
+<rules>
+    <rule>
+        <namespace>ResourceGroup</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+</rules>

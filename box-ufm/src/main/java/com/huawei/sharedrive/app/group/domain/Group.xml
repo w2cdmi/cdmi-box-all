@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Group">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="Group"
+		type="com.huawei.sharedrive.app.group.domain.Group" />
+	<insert id="insert" parameterClass="Group">
+    	<![CDATA[
+    	insert into groups(id,name,description,createdBy,createdAt,ownedBy,modifiedAt,modifiedBy,status,type,maxMembers,parent,appId,accountId)
+    	values
+    	(#id#,#name#,#description#,#createdBy#,#createdAt#,#ownedBy#,#modifiedAt#,#modifiedBy#,#status#,#type#,#maxMembers#,#parent#,#appId#,#accountId#)
+    	]]>
+	</insert>
+	<select id="get" resultClass="Group" parameterClass="Long">
+        <![CDATA[
+        select * from groups  where id=#id#
+        ]]>
+	</select>
+
+	<select id="getGroupByIdAndAccountId" resultClass="Group"
+		parameterClass="map">
+        <![CDATA[
+        select * from groups  where id=#id# and accountId=#accountId#
+        ]]>
+	</select>
+	
+	<select id="getByName" resultClass="Group" parameterClass="map">
+        <![CDATA[
+        select * from groups where name=#name# and accountId=#accountId# limit 1
+        ]]>
+	</select>
+
+	<select id="getMaxGroupId" resultClass="long">
+        <![CDATA[
+        select max(id) from groups
+        ]]>
+	</select>
+
+	<select id="getGroupsCount" parameterClass="map" resultClass="int">
+		select count(id) from groups
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="filter.status">
+				status= #filter.status#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="filter.name">
+				name like
+				concat('%',#filter.name#,'%')
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="filter.appId">
+				appId = #filter.appId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="filter.type">
+				type= #filter.type#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="filter.accountId">
+				accountId=
+				#filter.accountId#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="getGroupsList" parameterClass="map" resultClass="Group">
+		select * from groups
+		<dynamic prepend="where">
+			<isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.status">
+					status=
+					#filter.status#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.name">
+					name like
+					concat('%',#filter.name#,'%')
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.appId">
+					appId = #filter.appId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.type">
+					type= #filter.type#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.accountId">
+					accountId= #filter.accountId#
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		and status=0
+		<dynamic prepend="order by">
+			<isNotEmpty property="order">
+				$order$
+			</isNotEmpty>
+		</dynamic>
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				$limit.offset$,$limit.length$
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<update id="update" parameterClass="Group">
+        <![CDATA[
+        update groups set name=#name#,description=#description#,createdBy=#createdBy#,createdAt=#createdAt#,
+        ownedBy=#ownedBy#,modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy#,status=#status#
+        ,type=#type#,maxMembers=#maxMembers#,parent=#parent#,appId=#appId#,accountId=#accountId# where id=#id#
+        ]]>
+	</update>
+
+	<delete id="delete" parameterClass="Long">
+        <![CDATA[
+        delete from groups where id=#id#
+        ]]>
+	</delete>
+
+</sqlMap>
+

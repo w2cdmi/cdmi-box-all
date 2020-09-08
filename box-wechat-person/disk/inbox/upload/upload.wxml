@@ -1,0 +1,101 @@
+<!--disk/inbox/upload/upload.wxml-->
+<import src="/disk/template/menu.wxml" />
+
+<view class='page'>
+    <view class='header flex-item'>
+        <view class='flex-item'>
+            <image src='/disk/images/lighting-icon.png' class='enterprise-icon'></image>
+            <text>文件宝</text>
+        </view>
+        <view>
+            <view>收件人：{{senterName}}</view>
+        </view>
+    </view>
+
+
+    <!--已上传的文件列表  -->
+    <view class='uploadFileList' wx:if="{{showFileList}}">
+        <view class='folderName'>
+            <text>{{folderName}}</text>
+        </view>
+        <scroll-view class='scroll-view-height {{viewBrand === "HUAWEI" ? "scroll-view-height-HUAWEI" : ""}}' scroll-y bindscrolltolower="getMoreList">
+            <!--正在上传的文件列表  -->
+            <view class='uploadingList' wx:if="{{uploadingList.length > 0? true : false}}">
+                <view wx:for="{{uploadingList}}" wx:key="*this">
+                    <view class='folder-item' data-item="{{item}}">
+                        <view class='folder-item-flex'>
+                            <view>
+                                <image src='{{item.icon ? item.icon : "/disk/images/icon/file-mp4.png"}}' class='folder-icon'></image>
+                            </view>
+                            <view>
+                                <view>
+                                    <view class='folder-name'>{{item.name}}</view>
+                                </view>
+                                <view class='folder-info'>
+                                    <text>{{item.fileSize}}</text>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                    <template is="up-progress" data="{{isShowUplodProgress, percent}}" wx:if="{{currentIndex === index ? true : false}}" />
+                </view>
+            </view>
+
+            <!--已上传的文件列表  -->
+            <view wx:for="{{fileList}}" wx:key="*this">
+                <view class='folder-item' bindtap='preViewImageOrVideo' data-item="{{item}}">
+                    <view class='folder-item-flex'>
+                        <view>
+                            <image src='{{item.icon ? item.icon : "/disk/images/icon/file-mp4.png"}}' class='folder-icon'></image>
+                        </view>
+                        <view>
+                            <view>
+                                <view class='folder-name'>{{item.name}}</view>
+                            </view>
+                            <view class='folder-info'>
+                                <text>{{item.fileSize}}</text>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+                <!-- <template is="up-progress" data="{{isShowUplodProgress, percent}}" wx:if="{{currentIndex === index ? true : false}}" /> -->
+            </view>
+
+        </scroll-view>
+    </view>
+
+    <!--三个原点唤起的弹出层  -->
+    <view class="drawer_screen" bindtap="cancelModalStatus" wx:if="{{showModalStatus}}"></view>
+    <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+        <view class='margin-bottom'>
+            <view bindtap="setFolderItem" class='cancel_view draw_view_content_comm'> 发送</view>
+            <view bindtap="deleteFolderItem" class='cancel_view draw_view_content_comm'> 删除</view>
+        </view>
+        <view bindtap="cancelModalStatus" class='cancel_view draw_view_content_comm'> 取消</view>
+    </view>
+
+
+    <!--空白上传  -->
+    <view class='blank-folder' wx:if="{{!showFileList}}">
+        <view class='flex-item center-item padding-top'>
+            <image src='/disk/images/icon/folder-icon.png' class='blank-file-icon'></image>
+        </view>
+        <view class='flex-item center-item'>
+            <text>{{folderName}}</text>
+        </view>
+    </view>
+
+    <view class='view-btn'>
+        <view class='upload-btn' bindtap='chooseImage'>
+            上传图片
+        </view>
+        <view class='upload-btn' bindtap='chooseVideo'>
+            上传视频
+        </view>
+    </view>
+
+</view>
+
+<navigator class='back-to-index'  wx:if='{{backIndexBtn}}'  url="/disk/index" open-type="reLaunch">
+    <image class='back-to-index' src='/disk/images/icon/back-to-home.png'></image>
+</navigator>

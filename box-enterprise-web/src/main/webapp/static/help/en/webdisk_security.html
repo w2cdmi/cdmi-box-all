@@ -1,0 +1,54 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Help Center</title>
+<link href="help.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="header"><div class="header_top">Help Center</div></div>
+<div class="main clearfix">
+	<div class="main_con fl main_detail">
+        <div class="clearfix">
+            <h1>How Is Data Security Ensured?</h1>
+            <a class="return" href="helpcenter.html">&lt;&lt;Back to Help Center</a>
+        </div> 
+        <p>StorBox has the following security features:
+		<ul>
+		  <li>Secure access
+		     <ul>
+				<li>StorBox provides a lock mechanism when a login attempt fails to prevent the brute force cracking of your password.</li>
+				<li>StorBox provides the extraction code for accessing the file or folder link to prevent other illegitimate users from accessing the file or folder.</li>
+				<li>StorBox assigns permissions to all Uniform Resource Locators (URLs). A user must have corresponding rights to access a specific URL. After a user is authenticated, corresponding role and permissions are assigned based on the user information. The authentication information must be verified each time the user accesses a URL, and unauthorized access is denied.</li>
+				<li>StorBox provides a secure access control policy which controls the users' access to files based on user types, residing networks, and file types. An enterprise administrator can centrally control data access in the system using secure access rules.</li>
+				<li>StorBox utilizes object-based storage, and all data is stored in specific containers as objects. A user must use an Access Key and Secret Key to access the data. Containers are separated logically to ensure the security of data access.</li>
+			 </ul>
+		 </li>
+         <li>Secure data transmission
+		     <p>StorBox supports encrypted data transfer over Hypertext Transfer Protocol Secure (HTTPS) to prevent data damage or loss during transfer.</p></li>
+		 <li>Secure storage
+		    <ul>
+				<li>Slice-based data storage<p>After object data is sliced, data slices are stored on disks of different storage nodes randomly based on a distributed hash algorithm. Malicious users cannot obtain user data from a single storage node or disk. When the lifecycle of a service ends or a user stops using a service, the slice-based data storage technology supports secure data destruction, preventing data leak.</p></li>
+				<li>User data isolation<p>Each user owns independent logical space and follows unique storage policies. Data of one user is isolated from that of another user, ensuring data security and privacy.</p></li>
+				<li>Encrypted storage of sensitive user data<p>Sensitive and private user data, such as authentication information and email addresses, is encrypted using the Advanced Encryption Standard (AES) algorithm before being stored.</p></li>
+            </ul>
+		 </li>
+        </ul>
+		</p>
+       
+        
+    </div>  
+    
+
+ <div class="sidebar clearfix fr">
+    	<h2>Type</h2>
+        <ul class="help_list type clearfix">
+            <li><a  class="type_icon" href="basic.html">Basic</a></li>
+            <li ><a class="type_icon type_icon1" href="share.html">Share</a></li>
+            <li ><a class="type_icon type_icon2" href="pc.html">Desktop Applications</a></li>
+            <li ><a class="type_icon type_icon3" href="mobile.html">Mobile Applications</a></li>
+            <li ><a class="type_icon type_icon4" href="security.html">Security and Privacy</a></li>
+        </ul> 
+    </div> 
+</div>
+</body>
+</html>

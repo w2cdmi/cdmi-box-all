@@ -1,0 +1,95 @@
+<view class="page">
+    <view class="transfer-content-bg">
+        <!-- 移交tab选择 -->
+        <view class="transfer-title-choose">
+            <view class="transfer-choose {{transferChoose=='authorityTransfer'?'transfer-choose-active':'' }}" data-type="authorityTransfer" catchtap='clickTabTitle'>权限移交</view>
+            <view class="transfer-choose {{transferChoose=='documentTransfer'?'transfer-choose-active':'' }}" data-type="documentTransfer" catchtap='clickTabTitle'>文档移交</view>
+        </view>
+        <view class='transfer-bg'></view>
+
+        <view class="transfer-content-detail">
+            <!-- 权限移交 -->
+            <view hidden='{{isShowCoop}}'>
+                <!-- 暂无权限移交背景 -->
+                <view class="not-list-detail-bg blankBackground" hidden='{{!coopList.length==0?true:false}}'>
+                    <image src='../../../images/blank/not-auth-transfer-bg.png'></image>
+                    <view class="not-list-title">暂无权限移交</view>
+                </view>
+                <view class="coop-space-title" hidden='{{coopList.length>0?false:true}}'>
+                    <view>协作空间</view>
+                      <view class='batch-transfer' wx:if='{{!authBatchCheck}}' bindtap='authBatchTransfer'>
+                        <image class='transfer-icon' src='../../../images/icon/batch-transfer-icon.png'></image>
+                        <text>批量移交</text>
+                    </view>
+                    <view class='batch-transfer' wx:if='{{authBatchCheck}}' bindtap='cancelAuthBatchTransfer'>
+                        <image class='transfer-icon' src='../../../images/icon/batch-transfer-icon.png'></image>
+                        <text>取消批量移交</text>
+                    </view>   
+                </view>
+                <scroll-view hidden='{{coopList.length>0?false:true}}' scroll-y style='height:{{scrollHeight}}'>
+                    <view class="file-group border-bottom view-bg" wx:for="{{coopList}}" wx:key="*this" data-id="{{item.id}}" data-name="{{item.name}}" bindtap='toCoopFileDetail'>
+                    <checkbox class="checkbox-item" wx:if="{{authCheck}}"  value="{{item.name}}" data-check="{{item}}" data-id='{{item.id}}' catchtap='authChooseCheck' checked="{{item.checked}}" />{{item.value}}
+                        <view>
+                            <image class="img-icon" src='../../../images/teamfile.png'></image>
+                        </view>
+                        <view class='file-info cell_2_body_content'>
+                            <label class='coop-name-title'>{{item.name}}</label>
+                        </view>
+                        <button class='clear-button-style button-size' data-item="{{item}}" catchtap='authSingleTransfer' wx:if="{{!authCheck}}">
+                            <image src="../../../images/icon/transfer-icon.png" />
+                        </button>
+                    </view>
+                </scroll-view>
+            </view>
+            
+            <!-- 文档移交 -->
+            <view hidden='{{isShowDocument}}'>
+                <!-- 暂无文档移交 -->
+                <view class="not-list-detail-bg blankBackground" hidden='{{!documentNodes.length==0?true:false}}'>
+                    <image src='../../../images/blank/not-document-bg.png'></image>
+                    <view class="not-list-title">暂无文档移交</view>
+                </view>
+                <view class="coop-space-title" hidden='{{documentNodes.length>0?false:true}}'>
+                    <view>个人文件</view>
+                    <view class="per-opt-right">
+                        <view class='batch-transfer document-batch-transfer' wx:if="{{!batchCheck}}" bindtap='documentBatchTransfer'>
+                            <image class='transfer-icon' src='../../../images/icon/batch-transfer-icon.png'></image>
+                            <text>批量移交</text>
+                        </view>
+                        <view class='batch-transfer document-batch-transfer' wx:if="{{batchCheck}}" bindtap='cancelDocuBatchTransfer'>
+                            <image class='transfer-icon' src='../../../images/icon/batch-transfer-icon.png'></image>
+                            <text>取消批量移交</text>
+                        </view>
+                        <view class='batch-transfer' wx:if="{{!deleteCheck}}" bindtap='deleteNodes'>
+                            <image class='transfer-icon' src='../../../images/icon/delete-icon.png'></image>
+                            <text>删除</text>
+                        </view>
+                        <view class='batch-transfer' wx:if="{{deleteCheck}}" bindtap='cancelDeleteNodes'>
+                            <image class='transfer-icon' src='../../../images/icon/delete-icon.png'></image>
+                            <text>取消删除</text>
+                        </view>
+                    </view>
+                </view>
+                <scroll-view hidden='{{documentNodes.length>0?false:true}}' scroll-y style='height:{{scrollHeight}}'>
+                    <view class="file-group border-bottom view-bg" wx:for="{{documentNodes}}" wx:key="*this" data-nodes="{{item}}" data-owner-id="{{item.ownedBy}}" data-name="{{item.name}}" data-id="{{item.id}}" data-type="{{item.type}}" data-parent="{{item.parent}}" bindtap='toDocumentDetail'>
+
+                        <checkbox class="checkbox-item" wx:if="{{check}}"  value="{{item.name}}" data-check="{{item}}" data-id='{{item.id}}' catchtap='chooseCheck' checked="{{item.checked}}" />{{item.value}}
+                        <view>
+                            <image class="img-icon" src='{{item.icon}}'></image>
+                        </view>
+                        <view class='file-info cell_2_body_content'>
+                            <label>{{item.name}}</label>
+                            <text>{{item.fileSize?item.fileSize + ' | ':''}}{{item.modifiedTime}}</text>
+                        </view>
+                        <button class='clear-button-style button-size' wx:if="{{!check}}" data-item="{{item}}" catchtap='documentSingleTransfer'>
+                            <image src="../../../images/icon/transfer-icon.png" />
+                        </button>
+                    </view>
+                </scroll-view>
+            </view>
+        </view>
+        <view wx-if="{{confim}}" class='btn'>
+            <view bindtap='newteamspace' class='sure-button' bindtap="moreConfirm">确定({{checknum}})</view>
+        </view>
+    </view>
+</view>

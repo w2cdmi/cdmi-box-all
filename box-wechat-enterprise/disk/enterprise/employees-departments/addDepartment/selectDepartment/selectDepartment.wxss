@@ -1,0 +1,158 @@
+/* disk/enterprise/selectEmployee/selectEmployee.wxss */
+
+.serach-bg {
+    background: #f5f5f5;
+    display: flex;
+}
+
+.view-serach-icon {
+    height: 38rpx;
+}
+
+.search-input-bg {
+    width: 570rpx;
+    background: #fff;
+    border-radius: 1.5em;
+    height: 70rpx;
+    display: flex;
+    align-items: center;
+    padding-left: 32rpx;
+}
+
+.serach-icon {
+    width: 38rpx;
+    height: 38rpx;
+}
+
+.show-serach {
+    width: 20rpx;
+    height: 20rpx;
+    margin-left: 6rpx;
+}
+
+.serach-input {
+    width: 530rpx;
+    margin-left: 14rpx;
+}
+
+.serach-department-view {
+    display: flex;
+    align-items: center;
+    margin-left: 14rpx;
+}
+
+.company-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 140rpx;
+    color: #1d97ff;
+    font-weight: light;
+}
+
+/* 搜索出来的人员 */
+
+.border-bottom {
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.department-group {
+    padding: 20rpx 30rpx;
+    display: flex;
+    align-items: center;
+    background: #fff;
+}
+
+.department-info {
+    display: flex;
+    align-items: center;
+}
+
+.view-select-icon {
+    height: 40rpx;
+}
+
+.img-icon {
+    height: 40rpx;
+    width: 40rpx;
+}
+
+.margin-right {
+    margin-right: 20rpx;
+}
+
+.view-department-icon {
+    height: 80rpx;
+}
+
+.department-icon {
+    width: 80rpx;
+    height: 80rpx;
+    border-radius: 50%;
+}
+
+.department-description {
+    font-size: 26rpx;
+    color: #666;
+}
+
+.sure-button {
+    background-color: #ea5036;
+    color: #fff;
+    width: 690rpx;
+    height: 88rpx;
+    font-size: 16px;
+}
+
+/* crumbs */
+
+.crumbs-scroll {
+    background: #fff;
+}
+
+.crumbs {
+    display: flex;
+    height: 30px;
+    display: -webkit-box;
+    margin-left: 40rpx;
+}
+
+.crumbs view {
+    max-width: 80px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.crumbs image {
+    height: 13px;
+    width: 8px;
+    margin: 8px 10px;
+}
+
+.current-dir {
+    color: #999;
+}
+
+.departmentList-H {
+    height: 750rpx;
+    background: #fff;
+}
+
+/* 文件信息 */
+
+.file-group {
+    display: flex;
+    padding-left: 40rpx;
+}
+
+.img-icon {
+    width: 45rpx;
+    height: 45rpx;
+    border-radius: 1.5em;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}

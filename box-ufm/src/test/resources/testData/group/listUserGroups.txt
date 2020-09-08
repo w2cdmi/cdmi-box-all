@@ -1,0 +1,47 @@
+@@normal
+{   
+    "limit":1000,   
+    "offset":0,  
+    "type":"private",
+    "order":   
+    [   
+        {   
+            "field":"name",   
+            "direction":"DESC"  
+        },
+        {
+        	"field":"groupRole",   
+            "direction":"ASC"
+        }   
+    ]
+       
+}
+
+@@isListRole
+{
+"listRole":"false"
+}
+
+@@listRole
+{   
+	"listRole":"dssdf"
+}
+
+@@notCurUser
+{   
+	"userId":999,
+    "limit":1000,   
+    "offset":0,  
+    "keyword":"t",
+    "order":   
+    [   
+        {   
+            "field":"name",   
+            "direction":"DESC"  
+        },
+        {
+        	"field":"groupRole",   
+            "direction":"ASC"
+        }   
+    ]   
+}

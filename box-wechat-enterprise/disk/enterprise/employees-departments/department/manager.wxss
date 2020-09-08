@@ -1,0 +1,56 @@
+page {
+    background-color: #fff;
+    position: absolute;
+}
+
+/* blank_css  */
+
+.top_view {
+    width: 244rpx;
+    margin: 0 auto;
+    margin-top: 20%;
+}
+
+.blank_img {
+    width: 226rpx;
+    height: 170rpx;
+    display: block;
+    margin: 0 auto;
+}
+
+.blank_txt {
+    margin: 0 auto;
+    height: 52rpx;
+    margin-top: 32rpx;
+    display: block;
+    font-size: 30rpx;
+    color: rgba(3, 3, 3, 0.5);
+}
+
+.blank_btn {
+    height: 52rpx;
+    width: 180rpx;
+    border: 1rpx solid #1d97ff;
+    margin-top: 22rpx;
+    color: #1d97ff;
+    font-size: 26rpx;
+    line-height: 52rpx;
+    border-radius: 1.5em;
+}
+
+.bottom_view {
+    width: 650rpx;
+    margin: 0 auto;
+    margin-top: 245rpx;
+}
+
+.tip_img {
+    width: 26rpx;
+    height: 25rpx;
+}
+
+.tip_txt {
+    margin-left: 14rpx;
+    color: rgba(3, 3, 3, 0.6);
+    font-size: 26rpx;
+}

@@ -1,0 +1,6 @@
+<import src="/disk/template/fileList.wxml" />
+<view class='blankBackground' hidden='{{data.files.length==0&&!isClearOldDate?false:true}}'>
+    <image src='/disk/images/blank/blank-bg.png'></image>
+    <view>矮油，还没有文件</view>
+</view>
+<template is="file-list" data="{{data,showShareBtn,isTouchMoveIndex,currentPageIcon,loadMoreIcon, activeIndex}}" />

@@ -1,0 +1,15 @@
+
+@@normal
+{
+"plainAccessCode": "#plainAccessCode#",
+"type":"thumbnail",
+"height":30,
+"width":30
+}
+
+@@noPlainAccesscode
+{
+"type":"thumbnail",
+"height":30,
+"width":30
+}

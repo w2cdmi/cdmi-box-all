@@ -1,0 +1,123 @@
+body {
+    webkit-backface-visibility: hidden;
+}
+
+#box {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 1.75rem;
+    bottom: 2.75rem;
+    overflow-y: auto;
+    height: auto;
+    overflow-x: hidden;
+}
+
+#file-view-toolbar {}
+
+.font-line-height {
+    line-height: 1.6rem;
+    margin-right: 1rem;
+}
+
+.sort>div {
+    float: left;
+    margin-left: 1rem;
+    line-height: 1.68rem;
+}
+
+.pull-right-icon {
+    float: right;
+}
+
+.pull-right-icon img {
+    width: 0.65rem;
+    height: 0.85rem;
+    margin-top: 0.415rem;
+    margin-right: 0.2rem;
+}
+
+.inbox-catalong-header {
+    width: 100%;
+    display: inline-block;
+    background: #FFFFFF;
+}
+
+.inbox-catalong-header li {
+    height: 3.4rem;
+    border-bottom: 1px solid #E4E1E1;
+}
+
+.inbox-catalong-header li i img {
+    width: 1.6rem;
+    height: 2.1rem;
+}
+
+.inbox-catalong-header li>span {
+    float: left;
+    height: 1.6rem;
+    width: 78%;
+    margin-top: 1.05rem;
+    margin-left: 0.5rem;
+}
+
+.inbox-catalong-header li span h1 {
+    width: 14rem;
+    height: 1rem;
+    font-weight: normal;
+    color: #333333;
+    font-size: 0.75rem;
+    line-height: 0.8rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.inbox-catalong-header li span p {
+    float: right;
+    height: 0.8rem;
+    line-height: 0.8rem;
+    font-size: 0.6rem;
+    color: #606060;
+}
+
+.inbox-catalong-tail {
+    width: 100%;
+    height: 33.325rem;
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    z-index: 101;
+}
+
+.inbox-catalong-tail .inbox-catalong-content {
+    width: 92%;
+    margin-left: 4%;
+    display: inline-block;
+    background: #FFFFFF;
+    position: absolute;
+    bottom: 0;
+    border-radius: 0.35rem 0.35rem 0 0;
+    height: 0;
+    overflow: hidden;
+    transition: height 1s;
+}
+
+.inbox-catalong-content li {
+    width: 100%;
+    float: left;
+    height: 2rem;
+    border-bottom: 1px solid #E4E1E1;
+    line-height: 2rem;
+    color: #18B4ED;
+    text-align: center;
+}
+
+.inbox-catalong-content li:last-child {
+    border-bottom: none;
+}
+
+.file-info {
+    float: left;
+    height: 3.4rem;
+}

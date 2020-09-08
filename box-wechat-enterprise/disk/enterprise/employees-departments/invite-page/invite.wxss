@@ -1,0 +1,51 @@
+/* disk/enterprise/employees-departments/invite-page/invite.wxss */
+
+.bc_image {
+    background: #fff;
+}
+
+.container {
+    position: absolute;
+    width: 80%;
+    height: 541rpx;
+    bottom: 0rpx;
+    padding-left: 85rpx;
+    padding-right: 90rpx;
+    overflow: hidden;
+}
+
+.txt_comm {
+    display: block;
+    color: #fff;
+}
+
+.validity_period_text {
+    text-align: center;
+    margin-top: 37rpx;
+}
+
+.button_img {
+    top: -24rpx;
+    width: 648rpx;
+    left: -20px;
+    position: absolute;
+    overflow: hidden;
+    height: 210rpx;
+}
+
+.button_text {
+    display: block;
+    position: absolute;
+    top: 13rpx;
+    left: 34rpx;
+    color: #0097fe;
+    font-size: 30rpx;
+    background: #F5F9FB;
+    width: 500rpx;
+}
+
+.button_view {
+    width: 100%;
+    position: absolute;
+    top: 223rpx;
+}

@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Window>
+	<FullBackUpErrorListContainerElement name="fullBackupError_listItem" height="40" itemaltbk="ture" singularrowcolor="#ffffffff" dualrowcolor="#fffafafa">
+		<HorizontalLayout float="true" pos="0,0,180,40">
+			<Button name="fullBackupError_item_fileIcon" mouse="false" padding="10,4,0,4" width="32" height="32" />
+			<Label name="fullBackupError_item_fileName" padding="10,10,0,10" mouse="true" intset="0,1,0,1" align="left" valign="vcenter" textcolor="#FF000000" font="0" endellipsis="true"/>
+		</HorizontalLayout>
+		<HorizontalLayout float="true" pos="180,0,660,40">
+			<Label name="fullBackupError_item_desc" align="left" endellipsis="true" text="" font="0" textcolor="#FF000000" />
+			<Button name="fullBackupError_item_filePath" width="30" padding="0,0,5,0" tooltip="打开 XXX" bkimage="file='..\Image\ic_transfer_open_locallist.png' source='0,0,20,20' dest='6,10,26,30'" align="center" font="0" textcolor="#FF008BE8" hottextcolor="#FF006AB0"/>
+			<Button name="fullBackupError_item_delete" width="30" padding="0,0,5,0" tooltip="删除"  bkimage="file='..\Image\ic_oper_delete.png' source='0,0,20,20' dest='6,10,26,30'" align="center" font="0" textcolor="#FF008BE8" hottextcolor="#FF006AB0"/>
+		</HorizontalLayout>
+	</FullBackUpErrorListContainerElement>
+</Window>

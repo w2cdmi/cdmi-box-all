@@ -1,0 +1,49 @@
+<rules>
+   <rule>
+   		<!-- ownedBy -->
+        <namespace>INodeACL</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+
+   <rule>
+   		<!-- filter.ownedBy -->
+        <sqlmap>INodeACL.getAll</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+   
+    <rule>
+   		<!-- filter.ownedBy -->
+        <sqlmap>INodeACL.getAllNoLink</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+     
+    <rule>
+    	<!-- filter.ownedBy -->
+        <sqlmap>INodeACL.getByResource</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+    	<!-- filter.ownedBy -->
+        <sqlmap>INodeACL.getByResourceNoLink</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+    	<!-- filter.ownedBy -->
+        <sqlmap>INodeACL.getByResourceAndUser</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+     <rule>
+    	<!-- filter.ownedBy -->
+        <sqlmap>INodeACL.getUserAllINodeACLOfCloudUserID</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

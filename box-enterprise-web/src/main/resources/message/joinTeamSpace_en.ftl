@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> has added you to team space <strong>${teamSpaceName}</strong>

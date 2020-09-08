@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Window>
+	<ShareFrameListContainerElement name="sendShareLink_listItem">
+		<VerticalLayout height="56" mousechild="true" inset="0,6,0,9">
+			<Label name="sendShareLink_listItem_user" align="left" endellipsis="true"  padding="10,0,0,0" textcolor="#FF000000" />
+			<Label name="sendShareLink_listItem_dept" endellipsis="true" font="12" align="left" padding="10,0,0,0" />
+		</VerticalLayout>
+	</ShareFrameListContainerElement>
+</Window>

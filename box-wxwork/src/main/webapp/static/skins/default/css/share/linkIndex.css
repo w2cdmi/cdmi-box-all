@@ -1,0 +1,411 @@
+/*外发首页*/
+.putting-link {
+	background: #FFFFFF;
+}
+
+.putting-link:last-child {
+	border-bottom: none;
+}
+
+.share-homepage-bottom-time {
+	float: left;
+	font-size: 0.6rem;
+}
+
+.share-home-page-nav {
+	width: 100%;
+	height: 1.5rem;
+	background: #FFFFFF;
+	/*margin-top: 0.6rem;*/
+	border-bottom: 0.05rem solid #E4E1E1;
+}
+
+.share-home-page-nav span {
+	margin-left: 1rem;
+	line-height: 1.5rem;
+	color: #333333;
+	font-size: 0.6rem;
+}
+
+.tail-add-links {
+	width: 92%;
+	height: 2.2rem;
+	text-align: center;
+	line-height: 2.2rem;
+	color: #FFFFFF;
+	background: #ea5036;
+	margin-left: 4%;
+	border-radius: 0.2rem;
+	margin-top: 1rem;
+	font-size: 0.75rem;
+}
+
+.setting-delete {
+	width: 92%;
+	height: 2.2rem;
+	text-align: center;
+	line-height: 2.2rem;
+	color: #666;
+	background: #f5f5f5;
+	margin-left: 4%;
+	border-radius: 0.2rem;
+	margin-top: 0.6rem;
+	font-size: 0.75rem;
+	border: 1px solid #ea5036;
+	margin-bottom: 0.6rem;
+}
+/*弹框*/
+.putting-moreshare {
+	width: 100%;
+	height: 12.35rem;
+	background: rgba(0, 0, 0, 0.5);
+	position: fixed;
+	bottom: 0;
+	font-size: 0.6rem;
+	color: #333333;
+	display: none;
+}
+
+.putting-moreshare img {
+	width: 2.2rem;
+	height: 2.2rem;
+}
+
+.putting-moreshare ul {
+	width: 54%;
+	padding-top: 13.2%;
+	padding-bottom: 9%;
+	margin-left: 23%;
+}
+
+.putting-moreshare ul li {
+	float: left;
+}
+
+.putting-moreshare ul li i {
+	display: block;
+}
+
+.putting-moreshare ul li span {
+	display: block;
+	text-align: center;
+}
+
+.putting-moreshare ul li:nth-child(2) {
+	margin-left: 1.6rem;
+	margin-right: 1.6rem;
+}
+
+.putting-moreshare ul li:nth-child(4) {
+	margin-left: 1.9rem;
+	margin-right: 1.6rem;
+	margin-top: 2rem;
+}
+
+.putting-moreshare ul li:nth-child(5) {
+	margin-top: 2rem;
+}
+/*外发的高级设置*/
+.share-senior {
+	width: 100%;
+	background: #E4E1E1;
+}
+
+.share-senior-content {
+	margin-top: 0.6rem;
+	width: 100%;
+	display: inline-block;
+	background: #FFFFFF;
+}
+
+.share-senior-content li {
+	height: 2.2rem;
+	border-bottom: 0.05rem solid #E4E1E1;
+	color: #333333;
+	font-size: 0.6rem;
+	padding-left: 5px;
+    padding-right: 5px;
+}
+
+.share-senior-content li .weui-cell__bd {
+	float: left;
+	line-height: 2.2rem;
+	font-size: 0.75rem;
+}
+
+.share-senior-content li .weui-switch {
+	float: right;
+	margin-top: 0.6rem;
+}
+
+.share-senior-content li span {
+	float: left;
+	line-height: 2.2rem;
+	font-size: 0.75rem;
+}
+
+#validityChoose {
+	font-size: 0.75rem;
+}
+
+.share-senior-content li i {
+	float: left;
+	line-height: 2.2rem;
+	margin-left: 1.9rem;
+	font-style: normal;
+	color: #333333;
+	font-size: 0.6rem;
+}
+
+.share-senior-content li p {
+	float: left;
+	line-height: 2.2rem;
+	color: #18B4ED;
+	margin-left: 0.3rem;
+}
+
+.share-senior-content li h3 {
+	float: right;
+    padding-right: 5px;
+}
+
+.share-senior-content li h3 img {
+	width: 0.7rem;
+	height: 0.7rem;
+	margin-top: 0.75rem;
+}
+
+.share-senior-content li h1 {
+	float: right;
+	color: #333333;
+	font-size: 0.6rem;
+	line-height: 2.2rem;
+	font-weight: normal;
+	margin-right: 0.8rem;
+}
+
+.share-senior-content li h2 {
+	float: right;
+}
+
+.share-senior-content li h2 img {
+	width: 0.3rem;
+	height: 0.5rem;
+	margin-top: 0.85rem;
+}
+
+.weui-switch-cp__input:checked ~.weui-switch-cp__box, .weui-switch:checked
+	{
+	border-color: #18B4ED;
+	background-color: #18B4ED;
+}
+
+.weui-cells_radio .weui-check:checked+.weui-icon-checked:before {
+	color: #18B4ED;
+}
+
+.toolbar .picker-button {
+	color: #18B4ED;
+}
+
+.weui-cells_radio .weui-check__label .weui-cell__bd p {
+	font-size: 0.75rem;
+}
+/*高级设置的弹框*/
+.share-advanced-setting {
+	width: 100%;
+	height: 33.325rem;
+	background: rgba(0, 0, 0, 0.5);
+	position: relative;
+	display: block;
+}
+
+.adcanced-content {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	display: inline-block;
+	background: #FFFFFF;
+}
+
+.adcanced-content li {
+	width: 92%;
+	height: 2.2rem;
+	border-bottom: 0.05rem solid #E4E1E1;
+	margin-left: 4%;
+}
+
+.adcanced-content li span {
+	text-align: center;
+	line-height: 2.2rem;
+	color: #333333;
+	font-size: 0.6rem;
+	width: 100%;
+	display: inline-block;
+}
+
+.adcanced-content li i {
+	font-size: 0.6rem;
+	color: #333333;
+	line-height: 2.2rem;
+	float: left;
+	width: 33.33%;
+}
+
+.adcanced-content li p {
+	text-align: center;
+	color: #333333;
+	line-height: 2.2rem;
+	font-size: 0.6rem;
+	float: left;
+	width: 33.33%;
+}
+
+.adcanced-content li h1 {
+	color: #333333;
+	line-height: 2.2rem;
+	font-size: 0.6rem;
+	float: right;
+	width: 33.33%;
+	text-align: right;
+	font-weight: normal;
+}
+
+.share-senior-input {
+	width: 100%;
+	display: inline-block;
+}
+
+.share-senior-input a {
+	float: left;
+	width: 92%;
+	height: 2.2rem;
+	line-height: 2.2rem;
+	text-align: center;
+	color: #FFFFFF;
+	margin-left: 3%;
+	font-size: 0.75rem;
+	border-radius: 0.2rem;
+}
+
+.share-senior-input a:nth-child(1) {
+	margin-top: 1rem;
+	background: #ea5036;
+}
+
+.share-senior-input a:nth-child(2) {
+	margin-top: 0.6rem;
+	background: #f5f5f5;
+	color: #666666;
+	border: 1px solid #ea5036;
+}
+
+.weui-cell:before {
+	border-top: none;
+}
+
+.weui-check__label {
+	border-bottom: 0.05rem solid #E4E1E1;
+}
+
+#addLinkFileDiv{
+    background: #f5f5f5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.weui-cell{
+	padding: 10px 5px;
+}
+
+.weui-cells_radio{
+	padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+
+.share-senior-content>ul{
+	padding-left: 0.5rem;
+    padding-right: 0.5rem;
+}
+.puttinglink-one>span{
+	float: right;
+    font-size: 0.6rem;
+    padding-right: 0.9rem;
+}
+.share-homepage-top>span>div{
+	margin-top: 0;
+}
+.putting-tail-content p{
+	text-align: center;
+}
+.putting-tail-content a{
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+/*发送的外链 蒙版*/
+.setup-inbox-mask{
+	position: fixed;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.5);
+	z-index: 3;
+}
+.setup-inbox-mask-middle{
+	width: 100%;
+	height: 7rem;
+	position: relative;
+}
+.setup-inbox-mask-middle .setup-inbox-mask-middle-right{
+	width: 7rem;
+	height: 7rem;
+	float: right;
+	margin-right: 1.1rem;
+}
+.setup-inbox-mask-middle .setup-inbox-mask-middle-right img{
+	width: 7rem;
+	height: 7rem;
+}
+.setup-inbox-mask-middle-left{
+	float: right;
+	height: 1rem;
+	display: inline-block;
+	font-size: 0.75rem;
+	color: #FFFFFF;
+	line-height: 1rem;
+	position: absolute;
+	top: 6rem;
+	right: 8.5rem;
+}
+.setup-inbox-mask-middle-left span{
+	float: left;
+	margin-left: 0.4rem;
+	margin-right: 0.4rem;
+}
+.setup-inbox-mask-middle-left span img{
+	width: 0.2rem;
+	height: 0.75rem;
+	margin-top: 0.125rem;
+}
+
+.puttinglink-title div {
+    float: left;
+    margin-left: 1rem;
+    width: 12.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 0.6rem;
+}
+.div-border-bottom{
+	border-bottom: 0.05rem solid #E4E1E1;
+}
+
+.linkinfo-top-bottom{
+	margin: 0.5rem auto;
+}

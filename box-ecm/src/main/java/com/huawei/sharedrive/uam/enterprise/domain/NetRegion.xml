@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="NetRegion">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="NetRegion" type="com.huawei.sharedrive.uam.enterprise.domain.NetRegion" />
+	
+	<insert id="insert" parameterClass="NetRegion">
+        <![CDATA[
+        insert into net_region(id,accountId,netRegionName,netRegionDesc,createdAt,modifiedAt) 
+        values 
+        (#id#,#accountId#,#netRegionName#,#netRegionDesc#,#createdAt#,#modifiedAt#)
+        ]]>
+	</insert>
+	
+	<select id="getDuplicateValues" parameterClass="NetRegion" resultClass="int">
+    	<![CDATA[
+    	select count(id) from net_region where netRegionName=#netRegionName# and accountId=#accountId#;
+        ]]>
+	</select>
+	
+	 <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from net_region where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.netRegionName">
+                netRegionName =#filter.netRegionName#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.id">
+                id =#filter.id#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.accountId">
+                accountId =#filter.accountId#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    
+    <select id="getFilterd" parameterClass="map" resultClass="NetRegion">
+        select * from net_region where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.netRegionName">
+                netRegionName =#filter.netRegionName#
+            </isNotEmpty>
+           <isNotEmpty prepend="and" property="filter.id">
+                id =#filter.id#
+            </isNotEmpty>
+        </dynamic>
+        order by modifiedAt desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getById" parameterClass="Long" resultClass="NetRegion">
+        select * from net_region where id=#id#
+    </select>
+    
+     <update id="modify" parameterClass="NetRegion">
+        update net_region set netRegionName=#netRegionName#, netRegionDesc=#netRegionDesc#,modifiedAt=#modifiedAt# where id=#id#
+    </update>
+    
+    <select id="getMaxId" parameterClass="String" resultClass="Long">
+        <![CDATA[
+        select max(id) from net_region
+        ]]>
+    </select>
+    
+    <delete id="delete" parameterClass="NetRegion">
+        delete from net_region where id=#id#
+    </delete>
+    
+</sqlMap>
+

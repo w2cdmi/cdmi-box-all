@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WxUser">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="WxUser" type="com.huawei.sharedrive.uam.weixin.domain.WxUser" />
+
+    <insert id="insert" parameterClass="WxUser">
+        <![CDATA[
+        insert into wx_user(unionId,openId,nickName,gender,mobile,email,country,province,city,`language`,avatarUrl,createdAt,modifiedAt,cloudUserId,regionId,quota,status,type,inviterId,countTodayInvitByMe,countInvitByMe,shareLevel,countTotalProfits,countTodayProfits)
+        values (#unionId#,#openId#,#nickName#,#gender#,#mobile#,#email#,#country#,#province#,#city#,#language#,#avatarUrl#,#createdAt#,#modifiedAt#,#cloudUserId#,#regionId#,#quota#,#status#,#type#,#inviterId#,#countTodayInvitByMe#,#countInvitByMe#,#shareLevel#,#countTotalProfits#,#countTodayProfits#)
+        ]]>
+	</insert>
+
+    <update id="update" parameterClass="WxUser">
+        UPDATE wx_user SET `modifiedAt`=#modifiedAt#
+        <dynamic>
+            <isNotNull prepend="," property="nickName">
+                `nickName`=#nickName#
+            </isNotNull>
+            <isNotNull prepend="," property="gender">
+                `gender`=#gender#
+            </isNotNull>
+            <isNotNull prepend="," property="mobile">
+                `mobile`=#mobile#
+            </isNotNull>
+            <isNotNull prepend="," property="email">
+                `email`=#email#
+            </isNotNull>
+            <isNotNull prepend="," property="country">
+                `country`=#country#
+            </isNotNull>
+            <isNotNull prepend="," property="province">
+                `province`=#province#
+            </isNotNull>
+            <isNotNull prepend="," property="city">
+                `city`=#city#
+            </isNotNull>
+            <isNotNull prepend="," property="language">
+                `language`=#language#
+            </isNotNull>
+            <isNotNull prepend="," property="avatarUrl">
+                `avatarUrl`=#avatarUrl#
+            </isNotNull>
+             <isNotNull prepend="," property="cloudUserId">
+                `cloudUserId`=#cloudUserId#
+            </isNotNull>
+             <isNotNull prepend="," property="regionId">
+                `regionId`=#regionId#
+            </isNotNull>
+             <isNotNull prepend="," property="quota">
+                `quota`=#quota#
+            </isNotNull>
+             <isNotNull prepend="," property="status">
+                `status`=#status#
+            </isNotNull>
+            <isNotNull prepend="," property="type">
+                `type`=#type#
+            </isNotNull>
+        </dynamic>
+        WHERE unionId=#unionId#
+    </update>
+
+    <update id="updateCountInvitByMe" parameterClass="WxUser">
+       UPDATE wx_user SET `countInvitByMe`=#countInvitByMe# ,`shareLevel`=#shareLevel# WHERE unionId=#unionId# 
+    </update>
+    
+    <update id="updateCountTodayInvitByMe" parameterClass="WxUser">
+       UPDATE wx_user SET `countTodayInvitByMe`=#countTodayInvitByMe#  WHERE unionId=#unionId# 
+    </update>
+    
+   <update id="updateCountTotalProfits" parameterClass="WxUser">
+       UPDATE wx_user SET `countTotalProfits`=#countTotalProfits#  WHERE unionId=#unionId# 
+    </update>
+
+   <update id="updateCountTodayProfits" parameterClass="WxUser">
+       UPDATE wx_user SET `countTodayProfits`=#countTodayProfits# WHERE unionId=#unionId# 
+    </update>
+
+    <delete id="deleteByUnionId" parameterClass="string">
+        <![CDATA[
+        DELETE FROM wx_user WHERE unionId=#unionId#
+        ]]>
+    </delete>
+
+    <select id="getByOpenId" parameterClass="string" resultClass="WxUser">
+        <![CDATA[
+    	select * from wx_user where openId=#openId#
+        ]]>
+    </select>
+
+    <select id="getByUnionId" parameterClass="string" resultClass="WxUser">
+        <![CDATA[
+    	select * from wx_user where unionId=#unionId#
+        ]]>
+    </select>
+    
+    <select id="getByCloudUserId" parameterClass="long" resultClass="WxUser">
+        <![CDATA[
+    	select * from wx_user where cloudUserId=#cloudUserId#
+        ]]>
+    </select>
+     <select id="getByUin" parameterClass="string" resultClass="WxUser">
+        <![CDATA[
+    	select * from wx_user where uin=#uin#
+        ]]>
+    </select>
+    
+     <select id="listByInviterId" parameterClass="map" resultClass="WxUser">
+    	select * from wx_user where inviterId=#inviterId#
+    	 <dynamic >
+            <isNotNull prepend="order by" property="order">
+               $order$
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <update id="cleanCountTodayInvitByMe">
+       UPDATE wx_user SET `countTodayInvitByMe`=0 , countTodayProfits=0
+    </update>
+</sqlMap>
+

@@ -1,0 +1,17 @@
+@@normal
+{
+    "name": "223",
+    "description": "11sqweqweasdazxcvbnmasddfffffg",
+    "type": "private",
+    "maxMembers": 20
+}
+
+@@notContainOwnedBy
+{
+    "name": "nameeee",
+    "description": "namesss",
+    "type": "private",
+    "status": "disable",
+    "maxMembers": 20
+}
+

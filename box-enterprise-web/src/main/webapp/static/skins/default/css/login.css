@@ -1,0 +1,517 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body {
+    background: #09122b;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.background {
+    width: 100%;
+    height: 673px;
+}
+
+.background > img {
+    position: absolute;
+    top: 178px;
+    left: 250px;
+    right: 250px;
+    height: 530px;
+}
+
+.body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 1020px;
+    margin: -280px 0 0 -510px;
+    font-size: 12px;
+    border-radius: 2px;
+}
+/*login-header*/
+.login-header{
+	width: 100%;
+	background: #101834;
+	position: absolute;
+	height: 80px;
+	top: 0;
+}
+.login-header-middle{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin: 0 0 0 -530px;
+	width: 1020px;
+	height: 40px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.banner .banner-text{
+	font-size: 36px;
+	height: 54px;
+	line-height: 54px;
+	color: #FFFFFF;
+	width: 100%;
+}
+
+.banner .banner-text:nth-child(2){
+	font-weight: 600;
+}
+
+.banner-line{
+	height: 103px;
+	width: 100%;
+}
+
+.banner-line-boy{
+	float: left;
+	height: 5px;
+	width: 230px;
+	margin-top: 49px;
+	background: #5A2DFF;
+	display: inline;
+}
+
+.banner-text-large{
+	height: 104px;
+	font-size: 48px;
+	line-height: 104px;
+	color: #FFFFFF;
+}
+
+.banner-button{
+	width: 100%;
+	height: 60px;
+	background: #5A2DFF;
+	color: #FFFFFF;
+	line-height: 60px;
+	text-align: center;
+	margin-top: 60px;
+	font-size: 36px;
+}
+
+.login-header .login-header-icon{
+	width: 184px;
+	height: 38px;
+}
+.login-header .login-header-icon img{
+	max-height: 40px;
+	max-width: 200px !important;
+	vertical-align: middle;
+}
+.login-header .login-header-icon span{
+	font-size: 18px;
+	color: #FFFFFF;
+	line-height: 38px;
+	
+}
+/* icons */
+.icons-login_block {
+    background: url("../img/login/login_block_icons.png") no-repeat;
+}
+
+/* login box */
+.login-block {
+    position: relative;
+    top: -20px;
+    float: right;
+    margin-top: 60px;
+    width: 350px;
+    height: 489px;
+    background-color: #101834;
+    -webkit-box-shadow: inset 0 2px 3px rgba(0, 0, 0, .075), 0 0 8px rgba(204, 204, 204, 0.6);
+    box-shadow: inset 0 2px 3px rgba(0, 0, 0, .075), 0 0 8px rgba(204, 204, 204, 0.6);
+}
+
+/* tab */
+.login-block > ul.nav {
+    padding: 0px;
+    margin: 0px;
+    border-bottom: 0px;
+}
+
+.login-block > ul.nav > li {
+    float: left;
+}
+
+.login-block > ul.nav > li > a {
+    width: 175px;
+    height: 52px;
+    line-height: 52px;
+    border: 0px;
+    border-radius: 0px;
+   /* background-color: #cbe2fb;*/
+    color: #5d5c5c;
+    font-size: 14px;
+    text-align: center;
+    padding: 0px;
+    margin-right: 0px;
+}
+
+.login-block > ul.nav > li.active > a,
+.login-block > ul.nav > li.active > a:hover,
+.login-block > ul.nav > li.active > a:focus {
+    border: 0px;
+   /* background-color: #fff;*/
+}
+
+.login-block > ul.nav > li > a i {
+    margin: 10px 5px 0 0;
+}
+
+.login-block > ul.nav > li > a i.icon-account_login_code {
+    margin-top: 19px;
+    width: 12px;
+    height: 15px;
+    background-position: -177px 1px;
+}
+
+/* login tab content */
+.login-block > .tab-content {
+    padding: 20px 20px 0 20px;
+    height: 380px;
+}
+
+/* qrcode */
+.qrcode {
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    margin-left: -10px;
+}
+
+.qrcode_img {
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 0px 2px 2px #9dcdf9;
+    transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+}
+
+.qrcode:hover .qrcode_img {
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+}
+
+.qrcode_scan {
+    margin-left: 10px;
+    position: absolute;
+    opacity: 0;
+    transition: all 0.3s ease-in;
+    -webkit-transition: all 0.3s ease-in;
+}
+
+.qrcode:hover .qrcode_scan {
+    transform: translate(-50%, 0);
+    -webkit-transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+.qrcode_login_title {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 20px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.qrcode_help {
+    text-align: center;
+}
+
+.qrcode_help > * {
+    margin-top: 10px;
+}
+
+.qrcode_help .around_box {
+    border-radius: 15px;
+    background-color: #9dcdf9;
+    height: 30px;
+    padding-top: 7px;
+    width: 200px;
+    margin-right: auto;
+    margin-left: auto;
+    color: #ffffff;
+}
+
+.login-block > .tab-content #account_login {
+    width: 310px;
+    text-align: center;
+}
+
+.login-block > .tab-content .form-con > div {
+    margin: 10px 0;
+}
+
+.login-block > .tab-content .form-con > div.assist_fn {
+    margin: 5px 0 15px 35px;
+    text-align: left;
+}
+
+.login-block > .tab-content .form-con span.add-on {
+    /*background-color: #fff;*/
+    border-right-width: 0px;
+    height: 44px;
+}
+
+.login-block > .tab-content .form-con input.form-control {
+    height: 44px;
+    background-color: #fff;
+    border-left-width: 0px;
+}
+
+.login-block > .tab-content .form-con .form-control:focus {
+    border-color: #ccc !important;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(204, 204, 204, 0.6);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(204, 204, 204, 0.6);
+}
+
+.login-block > .tab-content .form-con > div.assist_fn #autoLogin {
+    margin-top: 0px;
+}
+
+.login-block > .tab-content .form-con > div.assist_fn .forget-pwd {
+    margin-right: 35px;
+}
+
+.login-block > .tab-content .form-con > div.login-submit {
+    width:248px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.login-submit button, .login-submit a {
+    font-size: 14px;
+    min-width: 100px !important;
+    box-sizing: border-box;
+    width: 100%;
+    background: #5a2dff;
+}
+
+.login-submit > .pull-right {
+    color: #626262;
+    background-color: #cbe2fb;
+    background-image: -moz-linear-gradient(top, #cbe2fb, #cbe2fb);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#cbe2fb), to(#cbe2fb));
+    background-image: -webkit-linear-gradient(top, #cbe2fb, #cbe2fb);
+    background-image: -o-linear-gradient(top, #cbe2fb, #cbe2fb);
+    background-image: linear-gradient(to bottom, #cbe2fb, #cbe2fb);
+}
+
+.login-box-line {
+    background-position: -133px -295px;
+    height: 30px;
+}
+.login-link{
+	height: 100px;
+	width: 100%;
+	background: #303030;
+}
+.nav-client {
+     margin-top: 20px;
+     text-align: center;
+     color: #5eb1fb;
+}
+
+
+
+.nav-client > li {
+    float: left;
+}
+
+.nav-client i[class*="icon-"] {
+    margin: 5px 38px;
+    display: block;
+    width: 40px;
+    height: 40px;
+    /*background-color: #0e90d2;*/
+}
+
+.nav-client i.icon-client_pc {
+    background-position: -182px -340px;
+}
+
+.nav-client i.icon-client_android {
+    background-position: -288px -337px;
+}
+
+.nav-client i.icon-client_iphone {
+    background-position: -395px -337px;
+}
+
+.login-block:after{
+    content: '';
+    display: block;
+    width: 467px;
+    height: 77px;
+    background: url("../img/login/login_block_shadow.png") no-repeat;
+    position: relative;
+    top: 20px;
+    left: -80px;
+    z-index: -1;
+}
+
+/* banner */
+.banner {
+    position: absolute;
+    left: 50px;
+    top: 40px;
+    width: 500px;
+    height: 489px;
+}
+
+.banner > img {
+    width: 100%;
+}
+
+/* verify_code */
+.verify-code {
+    position: absolute;
+    left: -130px;
+    top: 280px;
+    padding: 10px;
+    background: #FFF;
+    text-align: center;
+}
+
+.verify_code_tip {
+    font-size: 14px;
+    color: #6c6c6c;
+}
+
+#img_captcha {
+    width: 80px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.verify_code_click {
+    font-size: 12px;
+    color: #8E8C8C;
+    margin-top: 5px;
+}
+
+.input-medium {
+    width: 80px;
+    height: 40px;
+    margin-top: 5px;
+}
+
+.verify-code:before {
+    content: '';
+    display: block;
+    width: 0;
+    height: 0;
+    position: absolute;
+    right: -25px;
+    top: 18px;
+    border: 10px solid transparent;
+    border-left: 20px solid #FFF;
+}
+
+/* footer */
+.footer {
+    width: 100%;
+    position: fixed;
+    bottom: 10px;
+}
+
+.footer-con {
+    text-align: center;
+    color: #FFF;
+}
+
+
+
+/*register页面的register-qrcode样式*/
+.bodys{
+	overflow-y: hidden;
+}
+.register-qrcode{
+	min-height: 673px;
+	margin-top: -140px;
+	/*padding-left: 100px;
+	padding-right: 100px;
+	width: 820px;*/
+}
+.register-qrcode .register-qrcode-left{
+	width: 400px;
+	height: 304px;
+	float: left;
+	background: rgba(16,24,52,0.5);
+}
+.register-qrcode .register-qrcode-right{
+	width: 400px;
+	height: 304px;
+	float: right;
+	background: rgba(16,24,52,0.5);
+}
+.login-header-middles{
+	margin: 0 0 0 -500px;
+}
+.backgrounds>img{
+	left: 10%;
+	width: 80%;
+	top: 80px;
+}
+.register-qrcode-header{
+	width: 100%;
+	height: 72px;
+	font-size: 20px;
+	color: #FFFFFF;
+	text-align: center;
+	line-height: 40px;
+	margin-top: 30px;
+}
+.register-qrcode-middle{
+	width: 100%;
+	height: 100px;
+	position: relative;
+}
+.register-qrcode-left .register-qrcode-middle>a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background: url(/../../static/skins/default/img/wxwork_install_blank_middle.png) no-repeat 50% 40px;
+	background-size: 200px 40px;
+}
+.register-qrcode-left .register-qrcode-middle:hover>a{
+	background: url(/../../static/skins/default/img/wxwork_install_blue_middle.png) no-repeat 50% 40px;
+	background-size: 200px 40px;
+}
+.register-qrcode-right .register-qrcode-middle>a{
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	background: url(/../../static/skins/default/img/wxwork_register_white_middle.png) no-repeat 50% 40px;
+	background-size: 200px 40px;
+}
+.register-qrcode-right .register-qrcode-middle:hover>a{
+	background: url(/../../static/skins/default/img/wxwork_register_blue_middle.png) no-repeat 50% 40px;
+	background-size: 200px 40px;
+}
+.register-qrcode-middle>.register-qrcode-middles{
+	position: absolute;
+	top: 0;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.register-explain{
+	width: 100%;
+	height: 30px;
+	font-size: 30px;
+	margin-top: 40px;
+	text-align: center;
+	color: #FFFFFF;
+}
+.register-prompt{
+	height: 62px;
+	line-height: 62px;
+	width: 100%;
+	color: #FFFFFF;
+	font-size: 14px;
+	text-align: center;
+}

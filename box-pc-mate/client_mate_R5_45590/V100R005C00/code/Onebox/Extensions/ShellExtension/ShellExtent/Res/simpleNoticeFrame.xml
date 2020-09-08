@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="550,24">
+    <Font name="宋体" size="13" bold="false" italic="false" />
+    <HorizontalLayout width="393" height="24" bkcolor="#FF70CC70">
+        <Text name="simpleNoticeFrame_noticeMsg" text="任务已经添加，进度请在传输列表查看" width="465" height="22" padding="0,0,310,0" textpadding="2,5,2,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" font="0" align="centerwrap" />
+        <Button name="simpleNoticeFrame_btnClose" width="14" height="14" padding="10,4,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="exit.png" />
+    </HorizontalLayout>
+</Window>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CMBOrgInfo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CMBOrgInfo" type="com.huawei.sharedrive.uam.cmb.oa.domain.CMBOrgInfo" />
+	
+	<insert id="insert" parameterClass="CMBOrgInfo">
+        <![CDATA[
+        insert into cmb_org_info(orgId,groupId,groupName,fatherGroupId,fatherOrgId,leaf,unitType,hierarchyflag,
+        emailId,headerId,display,point,pathName,oneclassOrgId,twoClassOrgId,threeClassOrgId,fourClassOrgId,fiveClassOrgId,
+        usePlace,groupProperty,sortId,location,exInfo) 
+        values (#orgId#,#groupId#,#groupName#,#fatherGroupId#,#fatherOrgId#,#leaf#,
+            #unitType#,#hierarchyflag#,#emailId#,
+            #headerId#,#display#,#point#,#pathName#,#oneclassOrgId#,#twoClassOrgId#,
+            #threeClassOrgId#,#fourClassOrgId#,#fiveClassOrgId#,#usePlace#,
+            #groupProperty#,#sortId#,#location#,#exInfo#)
+        ]]>
+	</insert>
+	<select id="getById" resultClass="CMBOrgInfo" parameterClass="int">
+    	<![CDATA[
+        select * from cmb_org_info where orgId=#value#
+        ]]>
+	</select>
+	<update id="updateById" parameterClass="CMBOrgInfo">
+        <![CDATA[
+        update cmb_org_info set groupId=#groupId#,groupName=#groupName#,
+        fatherGroupId=#fatherGroupId#,fatherOrgId=#fatherOrgId#,
+        leaf=#leaf#,unitType=#unitType#,hierarchyflag=#hierarchyflag#,emailId=#emailId#,
+        headerId=#headerId#,display=#display#,point=#point#,
+        pathName=#pathName#,oneclassOrgId=#oneclassOrgId#,twoClassOrgId=#twoClassOrgId#,
+        threeClassOrgId=#threeClassOrgId#,fourClassOrgId=#fourClassOrgId#,
+        fiveClassOrgId=#fiveClassOrgId#,usePlace=#usePlace#,groupProperty=#groupProperty#,
+        sortId=#sortId#,location=#location#,exInfo=#exInfo# where orgId=#orgId#
+        ]]>
+	</update>
+	<select id="getByFatherGroupIdCount" resultClass="int" parameterClass="map">
+    	<![CDATA[
+        select count(1) from cmb_org_info
+        ]]>
+        <isNotEmpty prepend="where" property="fatherGroupId">
+        	fatherGroupId=#fatherGroupId#
+        </isNotEmpty>
+        <isEmpty prepend="where" property="fatherGroupId">
+            fatherGroupId="" or fatherGroupId is null
+        </isEmpty>
+	</select>
+	<select id="getByFatherGroupId" resultClass="CMBOrgInfo" parameterClass="map">
+    	<![CDATA[
+        select * from cmb_org_info
+        ]]>
+        <isNotEmpty prepend="where" property="fatherGroupId">
+        	fatherGroupId=#fatherGroupId#
+        </isNotEmpty>
+        <isEmpty prepend="where" property="fatherGroupId">
+            fatherGroupId="" or fatherGroupId is null
+        </isEmpty>
+        <dynamic prepend="limit">
+           <isNotNull property="limit">
+               #limit.offset#,#limit.length#
+           </isNotNull>
+       </dynamic>
+	</select>
+	<select id="getByExistsFatherGroupId" resultClass="String" parameterClass="String">
+    	<![CDATA[
+        select groupId from cmb_org_info where fatherGroupId=#value#
+        ]]>
+	</select>
+</sqlMap>
+

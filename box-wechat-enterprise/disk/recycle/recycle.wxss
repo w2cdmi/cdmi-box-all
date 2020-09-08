@@ -1,0 +1,92 @@
+/* disk/recycle/recycle.wxss */
+@import "../template/fileList.wxss";
+@import "./drawer.wxss";
+
+.weui-tab__content{
+    padding-bottom: 120rpx;
+}
+
+.page{
+    background: #fff;
+}
+
+.toolbar {
+    background: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 20rpx 30rpx;
+    border-bottom: 1rpx solid #f1f1f1;
+    height: 60rpx;
+    line-height: 60rpx;
+    color: #666;
+}
+
+.confim {
+    position: fixed;
+    bottom: 0;
+    background: #ea5036;
+    width: 100%;
+    color: #fff;
+    text-align: center;
+}
+
+.depart {
+    width: 8rpx;
+    height: 44rpx;
+    margin-top: 24rpx;
+    margin-left: 65rpx;
+}
+
+checkbox .wx-checkbox-input {
+    border-radius: 50%;
+    width: 35rpx;
+    height: 35rpx;
+    margin-top: 24rpx;
+    margin-right: 50rpx;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+    border: 1rpx solid #1d97ff;
+    background: #1d97ff;
+}
+
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+    border-radius: 50%;
+    width: 35rpx;
+    height: 35rpx;
+    line-height: 35rpx;
+    text-align: center;
+    font-size: 26rpx;
+    color: #fff;
+    background: transparent;
+    transform: translate(-50%, -50%) scale(1);
+    -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+.file-info {
+    height: 90rpx;
+    width: 100%;
+}
+
+.cell_2_delete2 {
+    background: #ea5036;
+    right: -140rpx;
+    width: 140rpx;
+}
+.title-icon image{
+    width: 25rpx;
+    height: 25rpx;
+    margin-right: 10rpx;
+}
+.checkbox-item{
+    width: 60rpx;
+}
+.btn {
+    background: #fff;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.weui-tab__content scroll-view{
+    border-bottom: 1px solid #f1f1f1;
+}

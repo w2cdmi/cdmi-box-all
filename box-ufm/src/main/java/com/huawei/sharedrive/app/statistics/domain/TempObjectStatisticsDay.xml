@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TempObjectStatistics">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="TempObjectStatistics"
+		type="com.huawei.sharedrive.app.statistics.domain.TempObjectStatisticsDay" />
+		
+	<insert id="insert" parameterClass="TempObjectStatistics">
+    	<![CDATA[
+    	insert into temp_obj_statistics_day
+    	(day,regionId,resourceGroupId,
+    		actualFileCount,actualSpaceUsed,dbName)
+    	values
+    	(#day#,#regionId#,#resourceGroupId#,
+    		#actualFileCount#,#actualSpaceUsed#,#dbName#)
+    	]]>
+	</insert>
+	
+	<select id="getSumDayList" resultClass="TempObjectStatistics" parameterClass="long">
+        SELECT day,regionId,sum(actualFileCount) as actualFileCount,sum(actualSpaceUsed) as actualSpaceUsed
+        FROM temp_obj_statistics_day
+        WHERE day=#day#
+        GROUP BY day,regionId
+	</select>
+	
+	<delete id="deleteAll">
+        <![CDATA[
+        DELETE FROM temp_obj_statistics_day
+        ]]>
+	</delete>
+</sqlMap>
+

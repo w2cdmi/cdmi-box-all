@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="600,400" caption="0,0,0,40" mininfo="600,400" bktrans="true" roundcorner="5,5,5,5" bordercolor="#FF2980CC">
+	<Font id="0" name="Arial" size="14"  />
+	<Font id="1" name="Arial" size="12" bold="true" />
+	<Font id="2" name="Arial" size="12" />
+	<Font id="3" name="Arial" size="16" bold="true" />
+	<Font id="4" name="Arial" size="22" bold="true" italic="true"/>
+	<Font id="5" name="Arial" size="12" default="true" />
+	<Font id="6" name="SimSun" size="12" bold="false" italic="false" />
+	<Font id="7" name="Arial" size="17"/>
+	<Font id="8" name="Arial" size="8"/>
+	<Font id="9" name="SimSun" size="12" bold="false" italic="false"/>
+	<VerticalLayout bkimage="..\Image\ic_login_bg_en.png" borderround="5,5,5,5">
+		<HorizontalLayout name="background" height="40" padding="20,10,0,0" borderround="6,6,6,6">
+			<Control float="true" width="210" height="40" bkimage="..\Image\ic_top_logo.png"/>
+			<Button name="btn_min" tooltip="minimize" width="20" height="20" align="center" padding="500,10,0,0"  normalimage="file=&apos;..\Image\ic_top_small.png&apos; source=&apos;0,0,20,20&apos;" hotimage="file=&apos;..\Image\ic_top_small.png&apos; source=&apos;0,30,20,50&apos;" pushedimage="file=&apos;..\Image\ic_top_small.png&apos; source=&apos;0,60,20,80&apos;" />
+			<Button name="btn_close" tooltip="close" width="20" height="20" padding="10,10,0,0" align="center" normalimage="file=&apos;..\Image\ic_top_deletle.png&apos; source=&apos;0,0,20,20&apos;" hotimage="file=&apos;..\Image\ic_top_deletle.png&apos; source=&apos;0,30,20,50&apos;" pushedimage="file=&apos;..\Image\ic_top_deletle.png&apos; source=&apos;0,60,20,80&apos;" />
+		</HorizontalLayout>
+		<VerticalLayout name="TextLayout" width="300" height="270" bkcolor="#FFFFFFFF" padding="270,30,0,0">
+			<VerticalLayout width="300" height="76" padding="40,50,0,0">
+				<Edit name="edit_username" text="Account/ID" width="220" height="32" textpadding="10,0,10,0" textcolor="#FF999999" disabledtextcolor="#FFBBBBBB" nativebkcolor="#FFF6F9FC" normalimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,0,220,32&apos;" hotimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,40,220,72&apos;" focusedimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,40,220,72&apos;" disabledimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,120,220,152&apos;" font="0"/>
+				<Edit name="edit_passwordnotice" text="Password" width="220" height="32" padding="0,12,0,0" textpadding="10,0,10,0" textcolor="#FF999999" disabledtextcolor="#FFBBBBBB" nativebkcolor="#FFF6F9FC" normalimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,0,220,32&apos;" hotimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,40,220,72&apos;" focusedimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,40,220,72&apos;" disabledimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,120,220,152&apos;" font="0"/>
+				<Edit name="edit_password"  width="220" height="32" padding="0,12,0,0" textpadding="10,0,10,0" textcolor="#FF000000" disabledtextcolor="#FFBBBBBB" nativebkcolor="#FFF6F9FC" password="true" visible="false" normalimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,0,220,32&apos;" hotimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,40,220,72&apos;" focusedimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,40,220,72&apos;" disabledimage="file=&apos;..\Image\ic_login_input.png&apos; source=&apos;0,120,220,152&apos;" font="0"/>
+			</VerticalLayout>
+			<HorizontalLayout width="300" height="30" padding="40,7,0,0">
+				<CheckBox name="opt_rempsw" width="160" text="Remember password" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox.png' source='0,26,16,42' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" disabledimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,78,16,94' dest='0,7,16,23'"/>
+				<CheckBox name="opt_autologin" width="80" text="Auto Login"  padding="0,0,0,0" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox.png' source='0,26,16,42' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" disabledimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,78,16,94' dest='0,7,16,23'"/>
+			</HorizontalLayout>
+			<HorizontalLayout height="36" padding="40,17,0,0" borderround="5,5,5,5">
+				<Button name="btn_login" text="Login" width="220" height="36"  textcolor="#00FFFBF0" disabledtextcolor="#FFA7A6AA" font="3" align="center" normalimage="file=&apos;..\Image\ic_login_button.png&apos; source=&apos;0,0,220,36&apos;" hotimage="file=&apos;..\Image\ic_login_button.png&apos; source=&apos;0,46,220,82&apos;" pushedimage="file=&apos;..\Image\ic_login_button.png&apos; source=&apos;0,92,220,128&apos;" />
+				<Button name="btn_cancel" text="Cancel" width="220" height="36"  textcolor="#00FFFBF0" disabledtextcolor="#FFA7A6AA" font="3" align="center" normalimage="file=&apos;..\Image\ic_login_button.png&apos; source=&apos;0,0,220,36&apos;" hotimage="file=&apos;..\Image\ic_login_button.png&apos; source=&apos;0,46,220,82&apos;" pushedimage="file=&apos;..\Image\ic_login_button.png&apos; source=&apos;0,92,220,128&apos;" visible="false"/>
+			</HorizontalLayout>
+		</VerticalLayout>
+	</VerticalLayout>
+</Window>

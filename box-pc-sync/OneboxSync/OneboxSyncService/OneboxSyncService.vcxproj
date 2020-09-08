@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{196E0F9E-834B-40FC-8473-CED5AA316E47}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>OneboxSyncService</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)output\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\Build\x86\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;ENABLE_UTILITY_ALL;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./include;../common/include;../common/thrift;../OneboxSDK/include;../OneboxSyncHelper;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/boost/include;$(VS2012_THIRD_PART)/openssl/include;$(VS2012_THIRD_PART)/curl/include;$(VS2012_THIRD_PART)/json/include;$(VS2012_THIRD_PART)/thrift/include;$(VS2012_THIRD_PART)/sqlite3/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(VS2012_THIRD_PART)/curl/lib;$(VS2012_THIRD_PART)/json/lib;$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/openssl/lib;$(VS2012_THIRD_PART)/log4cpp/lib;$(VS2012_THIRD_PART)/thrift/lib;$(VS2012_THIRD_PART)/sqlite3/lib;$(OutDir);%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libjsoncpp_md_d.lib;libcurl_imp.lib;libeay32.lib;ssleay32.lib;libthrift_d.lib;OneboxSDK.lib;OneboxSyncHelper.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;ENABLE_UTILITY_ALL;WIN32_LEAN_AND_MEAN;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>./include;../common/include;../common/thrift;../OneboxSDK/include;../OneboxSyncHelper;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/boost/include;$(VS2012_THIRD_PART)/openssl/include;$(VS2012_THIRD_PART)/curl/include;$(VS2012_THIRD_PART)/json/include;$(VS2012_THIRD_PART)/thrift/include;$(VS2012_THIRD_PART)/sqlite3/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/openssl/lib;$(VS2012_THIRD_PART)/log4cpp/lib;$(VS2012_THIRD_PART)/thrift/lib;$(VS2012_THIRD_PART)/sqlite3/lib;$(OutDir);$(VS2012_THIRD_PART)/curl/lib;$(VS2012_THIRD_PART)/json/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libeay32.lib;ssleay32.lib;libthrift.lib;OneboxSDK.lib;OneboxSyncHelper.lib;libjsoncpp_md.lib;libcurl_imp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EntryPointSymbol>wmainCRTStartup</EntryPointSymbol>
+      <UACExecutionLevel>RequireAdministrator</UACExecutionLevel>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Common\include\CommonDefine.h" />
+    <ClInclude Include="..\Common\include\Configure.h" />
+    <ClInclude Include="..\Common\include\CrashHandler.h" />
+    <ClInclude Include="..\Common\include\ErrorCode.h" />
+    <ClInclude Include="..\Common\include\InIHelper.h" />
+    <ClInclude Include="..\Common\include\NotifyMsg.h" />
+    <ClInclude Include="..\Common\include\SmartHandle.h" />
+    <ClInclude Include="..\Common\include\TimeCounter.h" />
+    <ClInclude Include="..\Common\include\Utility.h" />
+    <ClInclude Include="..\Common\source\Aes.h" />
+    <ClInclude Include="..\Common\source\CSha1.h" />
+    <ClInclude Include="..\Common\source\md5.h" />
+    <ClInclude Include="..\Common\source\sha1.h" />
+    <ClInclude Include="..\Common\thrift\OneboxSyncService\OneboxSyncService_constants.h" />
+    <ClInclude Include="..\Common\thrift\OneboxSyncService\OneboxSyncService_types.h" />
+    <ClInclude Include="..\Common\thrift\OneboxSyncService\SyncService.h" />
+    <ClInclude Include="..\OneboxSDK\include\Util.h" />
+    <ClInclude Include="include\AsyncTaskMgr.h" />
+    <ClInclude Include="include\ConfigureMgr.h" />
+    <ClInclude Include="include\CppSQLite3.h" />
+    <ClInclude Include="include\CredentialMgr.h" />
+    <ClInclude Include="include\DataBaseMgr.h" />
+    <ClInclude Include="include\DiffNode.h" />
+    <ClInclude Include="include\DiffProcessor.h" />
+    <ClInclude Include="include\DiffTable.h" />
+    <ClInclude Include="include\FilterMgr.h" />
+    <ClInclude Include="include\GlobalVariable.h" />
+    <ClInclude Include="include\IFile.h" />
+    <ClInclude Include="include\IFolder.h" />
+    <ClInclude Include="include\LocalDetector.h" />
+    <ClInclude Include="include\LocalFile.h" />
+    <ClInclude Include="include\LocalFolder.h" />
+    <ClInclude Include="include\LocalTable.h" />
+    <ClInclude Include="include\MetaDataTable.h" />
+    <ClInclude Include="include\NetworkMgr.h" />
+    <ClInclude Include="include\NotifyMgr.h" />
+    <ClInclude Include="include\NscaSdkMgr.h" />
+    <ClInclude Include="include\OverlayIconMgr.h" />
+    <ClInclude Include="include\Path.h" />
+    <ClInclude Include="include\PathMgr.h" />
+    <ClInclude Include="include\RelationTable.h" />
+    <ClInclude Include="include\RemoteDetector.h" />
+    <ClInclude Include="include\RemoteDetectorAll.h" />
+    <ClInclude Include="include\RemoteDetectorLocal.h" />
+    <ClInclude Include="include\RemoteTable.h" />
+    <ClInclude Include="include\RestFile.h" />
+    <ClInclude Include="include\RestFolder.h" />
+    <ClInclude Include="include\ShareResMgr.h" />
+    <ClInclude Include="include\SyncAction.h" />
+    <ClInclude Include="include\SyncActionAll.h" />
+    <ClInclude Include="include\SyncActionLocal.h" />
+    <ClInclude Include="include\SyncCommon.h" />
+    <ClInclude Include="include\SyncDataTable.h" />
+    <ClInclude Include="include\SyncFileSystemMgr.h" />
+    <ClInclude Include="include\SynchronizeMgr.h" />
+    <ClInclude Include="include\SyncMeger.h" />
+    <ClInclude Include="include\SyncRules.h" />
+    <ClInclude Include="include\SyncServiceImpl.h" />
+    <ClInclude Include="include\SyncTimeCalc.h" />
+    <ClInclude Include="include\SyncUtility.h" />
+    <ClInclude Include="include\TableDefine.h" />
+    <ClInclude Include="include\TeamspaceMgr.h" />
+    <ClInclude Include="include\TransTask.h" />
+    <ClInclude Include="include\TransTaskTable.h" />
+    <ClInclude Include="include\UploadTable.h" />
+    <ClInclude Include="include\UserContext.h" />
+    <ClInclude Include="include\UserContextMgr.h" />
+    <ClInclude Include="include\UserInfoMgr.h" />
+    <ClInclude Include="include\VersionTable.h" />
+    <ClInclude Include="include\WorkModeMgr.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="source\LocalMappingFile.h" />
+    <ClInclude Include="source\RestCreate.h" />
+    <ClInclude Include="source\RestDownload.h" />
+    <ClInclude Include="source\RestUpload.h" />
+    <ClInclude Include="source\UserInfoMgrImpl.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Common\source\Aes.cpp" />
+    <ClCompile Include="..\Common\source\CrashHandler.cpp" />
+    <ClCompile Include="..\Common\source\CSha1.cpp" />
+    <ClCompile Include="..\Common\source\InIHelper.cpp" />
+    <ClCompile Include="..\Common\source\md5.cpp" />
+    <ClCompile Include="..\Common\source\sha1.c" />
+    <ClCompile Include="..\Common\source\Utility.cpp" />
+    <ClCompile Include="..\Common\thrift\OneboxSyncService\OneboxSyncService_constants.cpp" />
+    <ClCompile Include="..\Common\thrift\OneboxSyncService\OneboxSyncService_types.cpp" />
+    <ClCompile Include="..\Common\thrift\OneboxSyncService\SyncService.cpp" />
+    <ClCompile Include="..\OneboxSDK\src\Util.cpp" />
+    <ClCompile Include="OneboxSyncService.cpp" />
+    <ClCompile Include="source\AsyncTaskMgr.cpp" />
+    <ClCompile Include="source\ConfigureMgr.cpp" />
+    <ClCompile Include="source\CppSQLite3.cpp" />
+    <ClCompile Include="source\CredentialMgr.cpp" />
+    <ClCompile Include="source\DataBaseMgr.cpp" />
+    <ClCompile Include="source\DeviceInfo.cpp" />
+    <ClCompile Include="source\DiffNode.cpp" />
+    <ClCompile Include="source\DiffProcessor.cpp" />
+    <ClCompile Include="source\DiffTable.cpp" />
+    <ClCompile Include="source\FilterMgr.cpp" />
+    <ClCompile Include="source\LocalDetector.cpp" />
+    <ClCompile Include="source\LocalFile.cpp" />
+    <ClCompile Include="source\LocalFolder.cpp" />
+    <ClCompile Include="source\LocalMappingFile.cpp" />
+    <ClCompile Include="source\LocalTable.cpp" />
+    <ClCompile Include="source\MetaDataTable.cpp" />
+    <ClCompile Include="source\NetworkMgr.cpp" />
+    <ClCompile Include="source\NotifyMgr.cpp" />
+    <ClCompile Include="source\NscaSdkMgr.cpp" />
+    <ClCompile Include="source\NTLMDomainAuth.cpp" />
+    <ClCompile Include="source\OverlayIconMgr.cpp" />
+    <ClCompile Include="source\PathMgr.cpp" />
+    <ClCompile Include="source\RelationTable.cpp" />
+    <ClCompile Include="source\RemoteDetector.cpp" />
+    <ClCompile Include="source\RemoteDetectorAll.cpp" />
+    <ClCompile Include="source\RemoteDetectorLocal.cpp" />
+    <ClCompile Include="source\RemoteTable.cpp" />
+    <ClCompile Include="source\RestCreate.cpp" />
+    <ClCompile Include="source\RestDownload.cpp" />
+    <ClCompile Include="source\RestFile.cpp" />
+    <ClCompile Include="source\RestFolder.cpp" />
+    <ClCompile Include="source\RestUpload.cpp" />
+    <ClCompile Include="source\ShareResMgr.cpp" />
+    <ClCompile Include="source\SyncAction.cpp" />
+    <ClCompile Include="source\SyncActionAll.cpp" />
+    <ClCompile Include="source\SyncActionLocal.cpp" />
+    <ClCompile Include="source\SyncDataTable.cpp" />
+    <ClCompile Include="source\SyncFileSystemMgr.cpp" />
+    <ClCompile Include="source\SynchronizeMgr.cpp" />
+    <ClCompile Include="source\SyncMerger.cpp" />
+    <ClCompile Include="source\SyncRules.cpp" />
+    <ClCompile Include="source\SyncServiceImpl.cpp" />
+    <ClCompile Include="source\SyncTimeCalc.cpp" />
+    <ClCompile Include="source\SyncUtility.cpp" />
+    <ClCompile Include="source\TeamspaceMgr.cpp" />
+    <ClCompile Include="source\TransTask.cpp" />
+    <ClCompile Include="source\TransTaskTable.cpp" />
+    <ClCompile Include="source\UploadTable.cpp" />
+    <ClCompile Include="source\UserContext.cpp" />
+    <ClCompile Include="source\UserContextMgr.cpp" />
+    <ClCompile Include="source\UserInfoMgrImpl.cpp" />
+    <ClCompile Include="source\VersionTable.cpp" />
+    <ClCompile Include="source\WorkModeMgr.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OneboxSyncService.rc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

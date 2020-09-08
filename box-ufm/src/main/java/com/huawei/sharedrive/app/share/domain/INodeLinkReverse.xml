@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="INodeLinkReverse">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="INodeLink" type="com.huawei.sharedrive.app.share.domain.INodeLink" />
+
+
+    <select id="listByINodeID" resultClass="INodeLink" parameterClass="map">
+        select * from inode_link_r_$filter.tableSuffix$ where ownedBy=#filter.ownedBy# and iNodeId=#filter.iNodeId# 
+        <dynamic>
+            <isNotNull property="accessCodeMode" prepend="and" >
+                    status = #accessCodeMode#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="listCountByINodeID" resultClass="Integer" parameterClass="map">
+        select count(ownedBy) from inode_link_r_$filter.tableSuffix$ where ownedBy=#filter.ownedBy# and iNodeId=#filter.iNodeId# 
+        <dynamic>
+            <isNotEmpty property="accessCodeMode" prepend="and" >
+                    status = #accessCodeMode#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+
+    <select id="listCountByOwner" parameterClass="map" resultClass="Integer">
+        select count(ownedBy) from inode_link_r_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+    </select>
+              
+    <select id="listByOwner" parameterClass="map" resultClass="INodeLink">
+        select * from inode_link_r_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownedBy">
+                    ownedBy = #filter.ownedBy#
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by type asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    ,$order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+        
+    
+    <select id="listAllLinkCodes" parameterClass="map" resultClass="String">
+        select link.id from inode_link_r_$tableSuffix$ link where  ownedBy = #ownerBy#
+      
+    </select>
+        
+    <insert id="insert" parameterClass="INodeLink">
+        <![CDATA[
+        insert into inode_link_r_$tableSuffix$ (id,iNodeId,url,downloadUrl,password,encryptedPassword,passwordKey,access,role,effectiveAt,expireAt,createdAt,modifiedAt,ownedBy,createdBy,modifiedBy,status,needLogin,subINodes,disdump,isProgram)
+        values 
+        (#id#,#iNodeId#,#url#,#downloadUrl#,#password#,#encryptedPassword#,#passwordKey#,#access#,#role#,#effectiveAt#,#expireAt#,#createdAt#,#modifiedAt#,#ownedBy#,#createdBy#,#modifiedBy#,#status#,#needLogin#,#subINodes#,#disdump#,#isProgram#)
+        ]]>
+    </insert>
+
+    <update id="update" parameterClass="INodeLink">
+        <![CDATA[
+        update inode_link_r_$tableSuffix$ set password=#password#,encryptedPassword=#encryptedPassword#,passwordKey=#passwordKey#,access=#access#,role=#role#,effectiveAt=#effectiveAt#,expireAt=#expireAt#,modifiedAt=#modifiedAt#,modifiedBy=#modifiedBy#,status=#status#,
+        needLogin=#needLogin#
+        
+        where ownedBy=#ownedBy# and id=#id#
+        ]]>
+    </update>
+    
+    <update id="upgradePassword" parameterClass="INodeLink">
+        <![CDATA[
+        update inode_link_r_$tableSuffix$ set password=#password#,encryptedPassword=#encryptedPassword#,passwordKey=#passwordKey# where ownedBy=#ownedBy# and id=#id#
+        ]]>
+    </update>
+    
+    <delete id="delete" parameterClass="INodeLink">
+        <![CDATA[
+        delete from inode_link_r_$tableSuffix$ where ownedBy=#ownedBy# and id=#id#
+        ]]>
+    </delete>
+	
+	<delete id="deleteByOwner" parameterClass="INodeLink">
+        <![CDATA[
+        delete from inode_link_r_$tableSuffix$ where ownedBy=#ownedBy#
+        ]]>
+    </delete>
+
+    <delete id="deleteByINodeID" parameterClass="map">
+        delete from inode_link_r_$filter.tableSuffix$ where ownedBy=#filter.ownedBy# and iNodeId=#filter.iNodeId# 
+        <dynamic>
+            <isNotNull property="accessCodeMode" prepend="and" >
+                    status = #accessCodeMode#
+            </isNotNull>
+        </dynamic>
+    </delete>
+
+</sqlMap>
+

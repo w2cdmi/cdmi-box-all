@@ -1,0 +1,13 @@
+@import "../template/fileList.wxss";
+
+.file-group{
+    border-bottom: 1px solid #f1f1f1;
+}
+.button-size image{
+    width:36rpx;
+    height:44rpx;
+}
+
+.button-size{
+    width: 140rpx;
+}

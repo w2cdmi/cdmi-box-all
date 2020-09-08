@@ -1,0 +1,29 @@
+.refuse-auth-img{
+    width:211px;
+    height:175px;
+}
+.img-view{
+    display:flex;
+    justify-content:center;
+}
+.error-title{
+    text-align:center;
+    color:#999;
+}
+.view-bg{
+    background: #f5f5f5;
+}
+.error-title{
+    height:30px;
+    line-height:30px;
+}
+.error-bg{
+    padding:20px 0;
+}
+.tip{
+    color:#000;
+    display:block;
+}
+.view-bg .tip{
+    margin-top: 10px;
+}

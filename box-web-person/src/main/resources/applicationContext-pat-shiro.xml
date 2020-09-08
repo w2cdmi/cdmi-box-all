@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd"
+	default-lazy-init="true">
+
+	<description>Shiro Security Config</description>
+
+	<!-- Shiro Cluster Service Config -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="sessionManager" ref="defaultWebSessionManager" />
+		<property name="realm" ref="myAuthorizingRealm" />
+        <property name="rememberMeManager" ref="rememberMeManager"/>
+	</bean>
+
+	<bean id="myAuthorizingRealm" class="pw.cdmi.box.disk.user.shiro.MyAuthorizingRealm">
+		<property name="userLoginService" ref="userLoginServiceImpl" />
+		<property name="userService" ref="userServiceImpl" />
+		<property name="enterpriseService" ref="enterpriseServiceImpl" />
+		<property name="authAppService" ref="authAppServiceImpl" />
+		<property name="enterpriseAuthControlManager" ref="enterpriseAuthControlManagerImpl" />
+		<property name="authServerService" ref="authServerServiceImpl" />
+        <property name="cachingEnabled" value="false" />
+	</bean>
+
+	<!-- 与微信接口的缓存由UAM负责生成，所以此处使用UAM的缓存 -->
+	<bean id="weixinOauth2Service" class="pw.cdmi.box.disk.weixin.service.impl.WeixinOauth2ServiceImpl">
+		<property name="cacheClient" ref="uamCacheClient"/>
+	</bean>
+
+	<!-- auto Login -->
+	<bean id="autoLoginFilter" class="pw.cdmi.box.disk.user.shiro.AutoLoginAuthenticationFilter">
+		<property name="userLoginService" ref="userLoginServiceImpl" />
+		<property name="securityService" ref="securityServiceImpl" />
+		<property name="enterpriseAuthControlManager" ref="enterpriseAuthControlManagerImpl" />
+		<property name="authAppService" ref="authAppServiceImpl" />
+		<property name="ssoManagerList">
+			<list>
+				<ref bean="wxSsoManager"/>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Wx authentication manager -->
+	<bean id="wxSsoManager" class="pw.cdmi.box.disk.user.shiro.WxSsoManager"/>
+
+	<!-- Security Permission -->
+	<bean id="securityPermissionsFilter" class="pw.cdmi.box.disk.user.shiro.SecurityPermissionsAuthorizationFilter">
+	</bean>
+
+	<!-- Logout -->
+	<bean id="myLogoutFilter" class="pw.cdmi.box.disk.user.shiro.MyLogoutAuthenticationFilter">
+		<property name="forwardUrl" value="/" />
+		<property name="userAuthService" ref="userAuthServiceImpl" />
+		<property name="ssoManagerList">
+			<list>
+				<ref bean="wxSsoManager"/>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="myCaptchaFilter" class="pw.cdmi.box.disk.user.shiro.FormAuthenticationCaptchaFilter">
+		<property name="securityService" ref="securityServiceImpl" />
+		<property name="refererMatchFilter" ref="refererMatchFilter" />
+		<property name="userLockedDao" ref="userLockedDao" />
+		<property name="systemConfigDao" ref="SystemConfigDAO" />
+		<property name="enterpriseAuthControlManager" ref="enterpriseAuthControlManagerImpl" />
+		<property name="verifyCodeHelper" ref="verifyCodeHelper" />
+		<property name="authAppService" ref="authAppServiceImpl" />
+		<property name="cacheClient" ref="uamCacheClient" />
+	</bean>
+
+	<!--link-->
+	<bean id="linkAuthFilter" class="pw.cdmi.box.disk.user.shiro.LinkAuthFilter">
+		<property name="userLoginService" ref="userLoginServiceImpl" />
+		<property name="securityService" ref="securityServiceImpl" />
+		<property name="userService" ref="userServiceImpl" />
+	</bean>
+	
+	<!--linkCode-->
+	<bean id="linkCodeAuthFilter" class="pw.cdmi.box.disk.user.shiro.LinkCodeAuthFilter">
+	</bean>
+	
+
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+		<property name="loginUrl" value="/login" />
+		<property name="successUrl" value="/" />
+		<property name="filters">
+			<map>
+				<entry key="authc" value-ref="myCaptchaFilter" />
+				<entry key="user" value-ref="autoLoginFilter" />
+				<entry key="noSessionCreation" value-ref="securityPermissionsFilter" />
+				<entry key="logout" value-ref="myLogoutFilter" />
+				<entry key="link" value-ref="linkAuthFilter" />
+				<entry key="linkCode" value-ref="linkCodeAuthFilter" />
+			</map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>
+				/login = authc
+				/login/authfor=anon
+				/login/enterpriseList=anon
+				/logout = logout
+				/login_dev.jsp = anon
+				/static/** = anon
+				/preview/** = anon
+				/user/wxRegister = anon
+				/user/wxRegisterPersonal = anon
+				/p/** = linkCode
+				/files/upload/** = link
+				/uploadFolder/linkDirPreUpload/** = link
+				/uploadFolder/dirPreupload/** = link
+				/files/gotoPreview/** = link
+				/share/link/** = link
+				/share/list = link
+				/share/getPaths=link
+				/share/inputAccessCode = link
+				/share/inputMailAccessCode = link
+				/share/sendAccessCode = link
+				/share/nodePermission = link
+				/share/getDownloadUrl/** = link
+				/login/authfor=anon
+				/checkRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb = anon
+				/newCheckRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb = anon
+				/crossdomain.xml = anon
+				/verifycode = anon
+				/api/** = noSessionCreation
+				/syscommon/** =	anon
+				/favicon.ico = anon
+				/clientapp/** = anon
+				/browserVersionTips=anon
+				/system/verifycode = anon
+				/** = user,roles[user]
+			</value>
+		</property>
+	</bean>
+
+	<bean id="defaultWebSessionManager" class="org.apache.shiro.web.session.mgt.DefaultWebSessionManager">
+		<property name="globalSessionTimeout" value="${session.expire}" />
+		<property name="sessionDAO" ref="memCacheShiroSessionDAO" />
+		<property name="sessionValidationSchedulerEnabled" value="false" />
+		<property name="sessionIdCookie" ref="wapsession" />
+	</bean>
+
+    <bean id="sessionIdGenerator" class="pw.cdmi.core.utils.SecRandomSessionIdGenerator"/> 
+	<bean id="wapsession" class="org.apache.shiro.web.servlet.SimpleCookie">
+		<constructor-arg name="name" value="WAPSESSIONID" />
+		<property name="secure" value="false"/>
+	</bean>
+
+    <bean id="rememberMeManager" class="org.apache.shiro.web.mgt.CookieRememberMeManager">  
+        <property name="cookie" ref="rememberMeCookie"/>
+    </bean>
+  
+    <bean id="rememberMeCookie" class="org.apache.shiro.web.servlet.SimpleCookie">  
+        <constructor-arg value="rememberMe"/>
+        <property name="secure" value="false"/>
+    </bean>
+
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+	<bean id="cloudDriveIntegrationService"  class="com.huawei.sharedrive.integration.CloudDriveIntegrationServiceImpl" />
+</beans>

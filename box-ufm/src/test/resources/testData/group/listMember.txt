@@ -1,0 +1,70 @@
+@@normal
+{   
+    "limit":1000,   
+    "offset":0, 
+    "keyword":"group",
+    "order":   
+    [   
+        {   
+            "field":"groupRole",   
+            "direction":"DESC"  
+        }   
+    ]  
+}
+
+@@listManager
+{   
+    "limit":1000,   
+    "offset":0, 
+    "keyword":"t",
+    "groupRole":"manager",
+    "order":   
+    [   
+        {   
+            "field":"groupRole",   
+            "direction":"DESC"  
+        },
+        {
+        	"field":"name",   
+            "direction":"ASC"
+        }   
+    ]  
+}
+
+@@listMember
+{   
+    "limit":1000,   
+    "offset":0, 
+    "keyword":"t",
+    "groupRole":"member",
+    "order":   
+    [   
+        {   
+            "field":"groupRole",   
+            "direction":"DESC"  
+        },
+        {
+        	"field":"name",   
+            "direction":"ASC"
+        }   
+    ]  
+}
+
+@@listAdmin
+{   
+    "limit":1000,   
+    "offset":0, 
+    "keyword":"t",
+    "groupRole":"admin",
+    "order":   
+    [   
+        {   
+            "field":"groupRole",   
+            "direction":"DESC"  
+        },
+        {
+        	"field":"name",   
+            "direction":"ASC"
+        }   
+    ]  
+}

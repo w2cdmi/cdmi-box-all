@@ -1,0 +1,7 @@
+<rules>
+    <rule>
+        <namespace>WaitingDeleteObject</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+</rules>

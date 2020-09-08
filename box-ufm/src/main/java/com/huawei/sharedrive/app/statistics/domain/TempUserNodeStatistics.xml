@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TempUserNodeStatistics">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="TempUserNodeStatistics"
+		type="com.huawei.sharedrive.app.statistics.domain.TempUserNodeStatistics" />
+	<insert id="insert" parameterClass="TempUserNodeStatistics">
+    	<![CDATA[
+    	insert into temp_node_user_statistics_day
+    	(day,appId,regionId,resourceGroupId, ownedBy,accountId,
+    		fileCount,trashFileCount,deletedFileCount,
+    		spaceUsed,trashSpaceUsed,deletedSpaceUsed,dbName)
+    	values
+    	(#day#,#appId#,#regionId#,#resourceGroupId#,#ownedBy#,#accountId#,
+    		#fileCount#,#trashFileCount#,#deletedFileCount#,
+    		#spaceUsed#,#trashSpaceUsed#,#deletedSpaceUsed#,#dbName#)
+    	]]>
+	</insert>
+	
+	<select id="getGroupByAppAndRegion" resultClass="TempUserNodeStatistics" parameterClass="Long">
+        <![CDATA[
+        SELECT day,appId, regionId,sum(fileCount) as fileCount,sum(trashFileCount) as trashFileCount,
+        	SUM(deletedFileCount) as deletedFileCount,SUM(spaceUsed) as spaceUsed,
+        	SUM(trashSpaceUsed) as trashSpaceUsed,SUM(deletedSpaceUsed) as deletedSpaceUsed
+        FROM temp_node_user_statistics_day 
+        WHERE day=#day# 
+        GROUP BY appId, regionId
+        ]]>
+	</select>
+	
+	<delete id="deleteAll">
+        <![CDATA[
+        DELETE FROM temp_node_user_statistics_day
+        ]]>
+	</delete>
+	
+</sqlMap>
+

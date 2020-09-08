@@ -1,0 +1,71 @@
+/* disk/batchShare/showCode/showCode.wxss */
+
+.bc-white {
+    background-color: #fff;
+}
+
+.margin-auto {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 50rpx;
+}
+
+.code-img {
+    width: 186rpx;
+    height: 186rpx;
+    margin-top: 106rpx;
+}
+
+.share-succ {
+    font-size: 40rpx;
+    color: #000;
+    font-weight: bold;
+    margin-top: 50rpx;
+}
+
+.share-result {
+    font-size: 28rpx;
+    color: #888;
+    margin-top: 30rpx;
+}
+
+.share-code {
+    font-size: 60rpx;
+    color: #333;
+    background-color: #f8f8f8;
+    font-weight: bolder;
+    border-radius: 3px;
+    width: 80rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    justify-content: center;
+    margin-top: 96rpx;
+}
+
+.code-conta {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+}
+
+.code-btn {
+    background-color: #ea4e39;
+    color: #fff;
+    border-radius: 1.5em;
+    width: 252rpx;
+    height: 72rpx;
+    font-size: 30rpx;
+    margin-top: 70rpx;
+    line-height: 72rpx;
+    padding: 0px;
+}
+
+code-btn::after {
+    border: none;
+}
+
+.hover-btn {
+    background-color: #dd7e6b;
+}

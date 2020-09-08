@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccountAuthserver">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="AccountAuthserver" type="com.huawei.sharedrive.uam.authserver.domain.AccountAuthserver" />
+  
+    <select id="getByAccountAuthId"  parameterClass="map" resultClass="AccountAuthserver"> 
+         <![CDATA[
+         select * from account_authserver where accountId=#accountId# and authServerId=#authServerId#
+         ]]>
+    </select> 
+   
+    <select id="getAccountId"  parameterClass="map" resultClass="int"> 
+       select aa.accountId from 
+			enterprise_account ea,
+			account_authserver aa
+			where 
+			ea.enterpriseId=#enterpriseId#
+			and ea.authAppId=#authAppId#
+			and ea.accountId=aa.accountId
+			and aa.authServerId=#authServerId#
+    </select>
+
+    <insert id="insert" parameterClass="AccountAuthserver">
+        insert into account_authserver(authServerId,accountId,ipStart,ipEnd,ipStartValue,ipEndValue,type) 
+        values 
+        (#authServerId#,#accountId#,#ipStart#,#ipEnd#,#ipStartValue#,#ipEndValue#,#type#)
+    </insert>
+    <update id="update" parameterClass="AccountAuthserver">
+        <![CDATA[
+        update account_authserver set type=#type# where authServerId=#authServerId# and accountId=#accountId#
+        ]]>
+	</update>
+	<delete id="delete" parameterClass="map">
+        <![CDATA[
+        delete from account_authserver where authServerId=#authServerId# and accountId=#accountId#
+        ]]>
+	</delete>
+	<delete id="deleteByAuthServerId" parameterClass="long">
+        <![CDATA[
+        delete from account_authserver where authServerId=#authServerId#
+        ]]>
+	</delete>
+
+</sqlMap>
+

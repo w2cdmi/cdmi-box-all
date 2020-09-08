@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="RecentBrowse">
+
+    <typeAlias alias="recentBrowse" type="com.huawei.sharedrive.app.files.domain.RecentBrowse" />
+    
+    <insert id="insert" parameterClass="recentBrowse">
+     <![CDATA[
+       INSERT INTO `recent_browse` (lastBrowseTime, inodeId, ownedBy, accountId,userId) VALUES (#lastBrowseTime#, #inodeId#, #ownedBy#, #accountId#,#userId#)
+     ]]>
+    </insert>
+    <select id="list" parameterClass="map" resultClass="recentBrowse">
+        select * from recent_browse where userId=#userId# order by lastBrowseTime desc
+    </select>
+	<delete id="deleteRecentByNode" parameterClass="recentBrowse">
+	  delete from recent_browse where  inodeId=#inodeId# and ownedBy=#ownedBy# 
+	</delete>
+	<delete id="deleteRecent" parameterClass="recentBrowse">
+	  delete from recent_browse where  inodeId=#inodeId# and ownedBy=#ownedBy# and userId=#userId#
+	</delete>
+	
+	<delete id="deleteRecentByUserId" parameterClass="recentBrowse">
+	  delete from recent_browse where  userId=#userId#
+	</delete>
+	<select id="get" parameterClass="recentBrowse" resultClass="recentBrowse">
+        select * from recent_browse where userId=#userId# and inodeId=#inodeId#  and ownedBy=#ownedBy#
+    </select>
+    
+    <update id="updateCreateAt">
+       update recent_browse set lastBrowseTime=#lastBrowseTime# where ownedBy=#ownedBy# and inodeId=#inodeId# and userId=#userId#
+    </update>
+</sqlMap>
+

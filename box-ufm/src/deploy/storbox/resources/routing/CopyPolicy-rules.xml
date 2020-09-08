@@ -1,0 +1,7 @@
+<rules>
+    <rule>
+        <namespace>CopyPolicy</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+</rules>

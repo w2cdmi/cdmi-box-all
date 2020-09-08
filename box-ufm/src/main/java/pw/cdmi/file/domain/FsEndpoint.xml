@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FsEndpoint">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="FsEndpoint" type="pw.cdmi.file.domain.FsEndpoint" />
+
+	<select id="get" parameterClass="java.util.Map" resultClass="FsEndpoint">
+        select * from fs_endpoint_baseinfo where id=#id#;
+    </select>
+</sqlMap>

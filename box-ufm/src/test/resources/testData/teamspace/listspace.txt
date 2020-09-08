@@ -1,0 +1,145 @@
+@@normal
+{  
+    "userId":#userId#,  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ]  
+}
+@@normalordertime
+{  
+    "userId":#userId#,  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"createdAt",  
+            "direction":"ASC"  
+        }  
+    ]  
+}
+@@invaliduser
+{
+    "userId":#userId#,   
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ]  
+}
+@@invalidlimit
+{
+    "userId":#userId#,   
+    "limit":1001,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ]  
+}
+@@invalidoffset
+{
+    "userId":#userId#,   
+    "limit":1000,  
+    "offset":-1,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ]  
+}
+@@nosuchuser
+{
+    "userId":#userId#,   
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ]  
+}
+@@nouser
+{  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ]  
+}
+@@nolimit
+{  
+    "userId":#userId#,   
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ]  
+}
+@@nooffset
+{  
+    "userId":#userId#,  
+    "limit":100, 
+    "order":  
+    [  
+        {  
+            "field":"teamRole",  
+            "direction":"ASC"  
+        }  
+    ]  
+}
+@@noorder
+{  
+    "userId":#userId#,  
+    "limit":100,  
+    "offset":0
+}
+@@noorderfield
+{  
+    "userId":#userId#,  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "direction":"ASC"  
+        }  
+    ]  
+}
+
+@@noorderdirect
+{  
+    "userId":#userId#,  
+    "limit":100,  
+    "offset":0,  
+    "order":  
+    [  
+        {  
+            "field":"teamRole" 
+        }  
+    ]  
+}

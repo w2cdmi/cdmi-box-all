@@ -1,0 +1,32 @@
+<rules>
+  <rule>
+    <namespace>Message</namespace>
+    <shardingExpression>receiverId % 1024 &lt; 512</shardingExpression>
+    <shards>partition1</shards>
+  </rule>
+  <rule>
+    <namespace>Message</namespace>
+    <shardingExpression>receiverId % 1024 &gt;= 512</shardingExpression>
+    <shards>partition2</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.listMessage</sqlmap>
+    <shardingExpression>filter.receiverId % 1024 &lt; 512</shardingExpression>
+    <shards>partition1</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.listMessage</sqlmap>
+    <shardingExpression>filter.receiverId % 1024 &gt;= 512</shardingExpression>
+    <shards>partition2</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.cleanExpiredMessage</sqlmap>
+    <shardingExpression>partitionNum==1</shardingExpression>
+    <shards>partition1</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.cleanExpiredMessage</sqlmap>
+    <shardingExpression>partitionNum==2</shardingExpression>
+    <shards>partition2</shards>
+  </rule>
+</rules>

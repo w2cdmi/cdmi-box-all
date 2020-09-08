@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FileCopySecurity">
+
+	<typeAlias alias="FileCopySecurity"
+		type="com.huawei.sharedrive.uam.enterprise.domain.FileCopySecurity" />
+
+	<insert id="insert" parameterClass="FileCopySecurity">
+        <![CDATA[
+	        insert into space_copy_config(id,srcSafeRoleId,targetSafeRoleId,createdAt,modifiedAt,accountId) 
+	        values 
+	       	 (#id#,#srcSafeRoleId#,#targetSafeRoleId#,#createdAt#,#modifiedAt#,#accountId#)
+        ]]>
+	</insert>
+
+	<select id="getMaxId" resultClass="long">
+    	<![CDATA[
+    		select max(id) from space_copy_config
+        ]]>
+	</select>
+
+	<select id="getObject" parameterClass="FileCopySecurity"
+		resultClass="FileCopySecurity">
+		<![CDATA[
+	        select * from space_copy_config 
+	        where srcSafeRoleId=#srcSafeRoleId# 
+	        and targetSafeRoleId=#targetSafeRoleId#
+	        and accountId=#accountId#
+        ]]>
+	</select>
+	
+	<select id="getByAccountId" parameterClass="long" resultClass="FileCopySecurity">
+		<![CDATA[
+			select * from space_copy_config where accountId=#accountId#;
+		]]>
+	</select>
+ 
+	<update id="modify" parameterClass="FileCopySecurity">
+		update space_copy_config set
+		srcSafeRoleId=#srcSafeRoleId#,
+		targetSafeRoleId=#targetSafeRoleId#,
+		modifiedAt=#modifiedAt#
+		where id=#id#
+	</update>
+
+	<select id="getFilterCount" parameterClass="map" resultClass="int">
+		select count(id) from space_copy_config
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="filter.srcSafeRoleId">
+				srcSafeRoleId=#filter.srcSafeRoleId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="filter.targetSafeRoleId">
+				targetSafeRoleId=#filter.targetSafeRoleId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="filter.accountId">
+				accountId=#filter.accountId#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="getFilter" parameterClass="map" resultClass="FileCopySecurity">
+		select * from space_copy_config
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="filter.srcSafeRoleId">
+				srcSafeRoleId=#filter.srcSafeRoleId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="filter.targetSafeRoleId">
+				targetSafeRoleId=#filter.targetSafeRoleId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="filter.accountId">
+				accountId=#filter.accountId#
+			</isNotEmpty>
+		</dynamic>
+		order by modifiedAt DESC
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				#limit.offset#,#limit.length#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<select id="getById" parameterClass="String" resultClass="FileCopySecurity">
+		select * from space_copy_config where id=#id#
+	</select>
+
+	<delete id="delete" parameterClass="Map">
+		delete from space_copy_config where srcSafeRoleId =#srcSafeRoleId# and
+		targetSafeRoleId=#targetSafeRoleId# and accountId =#accountId#
+	</delete>
+	
+	<select id="getFilterdCount" parameterClass="map" resultClass="int">
+		select count(id) from space_copy_config where accountId =#filter.accountId#
+		and (srcSafeRoleId =#filter.srcSafeRoleId# or targetSafeRoleId=#filter.targetSafeRoleId#)
+	</select>
+</sqlMap>
+

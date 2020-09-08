@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> has uploaded file <strong>${nodeName}</strong> to team space <strong>${teamSpaceName}</strong>

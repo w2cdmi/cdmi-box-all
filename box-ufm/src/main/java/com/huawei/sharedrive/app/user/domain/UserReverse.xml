@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserReverse">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="User" type="com.huawei.sharedrive.app.user.domain.User" />
+
+
+	<insert id="insertToAccount" parameterClass="User">
+        <![CDATA[
+        insert into account_user_$tableSuffix$(id,objectSid,loginName,name,email,createdAt,modifiedAt,spaceUsed,status
+        ,domain,spaceQuota,recycleDays,regionId,type,appId,maxVersions,accountId,versionFileSize,versionFileType) 
+        values 
+        (#id#,#objectSid#,#loginName#,#name#
+        ,#email#,#createdAt#,#modifiedAt#,#spaceUsed#,#status#,#domain#,#spaceQuota#,#recycleDays#,#regionId#,#type#,#appId#,#maxVersions#,#accountId#,#versionFileSize#,#versionFileType#)
+        ]]>
+	</insert>
+
+	<delete id="deleteToAccount" parameterClass="User">
+        <![CDATA[
+        delete from account_user_$tableSuffix$ where id=#id#
+        ]]>
+	</delete>
+
+	<select id="getFilterd" parameterClass="map" resultClass="User">
+		select * from account_user_$filter.tableSuffix$
+		<dynamic prepend="where">
+			<isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.type">
+					type = #filter.type#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.accountId">
+					accountId =
+					#filter.accountId#
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="and" open="(" close=")">
+			<isNotEmpty prepend="or" property="filter.loginName">
+				loginName like
+				concat('%',#filter.loginName#,'%')
+			</isNotEmpty>
+			<isNotEmpty prepend="or" property="filter.name">
+				name like
+				concat('%',#filter.name#,'%')
+			</isNotEmpty>
+			<isNotEmpty prepend="or" property="filter.email">
+				email like
+				concat('%',#filter.email#,'%')
+			</isNotEmpty>
+		</dynamic>
+		<dynamic prepend="order by">
+			<isNotNull property="order">
+				<isNotEmpty property="order.field">
+					$order.field$
+					<isEqual property="order.desc" compareValue="true">
+						desc
+					</isEqual>
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				#limit.offset#,#limit.length#
+			</isNotNull>
+		</dynamic>
+	</select>
+
+	<select id="getFilterdCount" parameterClass="map" resultClass="int">
+		select count(id) from account_user_$filter.tableSuffix$
+		<dynamic prepend="where">
+			<isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.type">
+					type = #filter.type#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.accountId">
+					accountId =
+					#filter.accountId#
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="and" open="(" close=")">
+			<isNotEmpty prepend="or" property="filter.loginName">
+				loginName like
+				concat('%',#filter.loginName#,'%')
+			</isNotEmpty>
+			<isNotEmpty prepend="or" property="filter.name">
+				name like
+				concat('%',#filter.name#,'%')
+			</isNotEmpty>
+			<isNotEmpty prepend="or" property="filter.email">
+				email like
+				concat('%',#filter.email#,'%')
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="getTableCount" parameterClass="String" resultClass="int">
+		select count(id) from account_user_$tableSuffix$
+	</select>
+
+	<select id="getOrderedUser" parameterClass="map" resultClass="User">
+		select * from account_user_$filter.tableSuffix$ where status != 2
+		<isNotNull property="filter">
+			<isNotEmpty prepend="and" property="filter.accountId">
+				accountId =
+				#filter.accountId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="filter.type">
+				type = #filter.type#
+			</isNotEmpty>
+		</isNotNull>
+		<dynamic prepend="order by ">
+			<isNotNull property="orderBy">
+				$orderBy$
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="limit">
+			#offset#, #limit#
+		</dynamic>
+	</select>
+
+	<select id="getUsedCapacity" parameterClass="map" resultClass="User">
+		select id,fileCount,spaceUsed from account_user_$filter.tableSuffix$
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="filter.accountId">
+				accountId =
+				#filter.accountId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="numLimit1">
+				(
+				type = #numLimit1#
+				<isNotEmpty prepend="or" property="numLimit2">
+					type = #numLimit2#
+				</isNotEmpty>
+				)
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="countSpaceTotal" parameterClass="map" resultClass="long">
+		select count(id) from account_user_$filter.tableSuffix$
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="filter.accountId">
+				accountId =
+				#filter.accountId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="numLimit1">
+				(
+				type = #numLimit1#
+				<isNotEmpty prepend="or" property="numLimit2">
+					type = #numLimit2#
+				</isNotEmpty>
+				)
+			</isNotEmpty>
+		</dynamic>
+	</select>
+
+	<select id="getUserCountByAccountId" parameterClass="User"
+		resultClass="int">
+		select count(*) from account_user_$tableSuffix$ where
+		accountId = #accountId# and type=#type#
+	</select>
+
+	<update id="updateToAccount" parameterClass="User">
+        <![CDATA[
+        update account_user_$tableSuffix$ set objectSid=#objectSid#,name=#name#, loginName=#loginName#, 
+        email=#email#, createdAt=#createdAt#, modifiedAt=#modifiedAt#, spaceUsed=#spaceUsed#, 
+        status=#status#,domain=#domain#, spaceQuota=#spaceQuota#, recycleDays=#recycleDays#, regionId=#regionId#, maxVersions=#maxVersions#,securityId=#securityId#,
+        versionFileSize=#versionFileSize#,versionFileType=#versionFileType#
+        where id=#id#
+        ]]>
+	</update>
+
+
+	<update id="updateLastLoginAtToAccount" parameterClass="User">
+        <![CDATA[
+        update account_user_$tableSuffix$ set lastLoginAt=#lastLoginAt# where id=#id#
+        ]]>
+	</update>
+
+	<update id="updateRegionToAccount" parameterClass="User">
+        <![CDATA[
+        update account_user_$tableSuffix$ set regionId=#regionId#, modifiedAt=#modifiedAt# where id=#id#
+        ]]>
+	</update>
+
+
+	<update id="updateStatisticInfoToAccount" parameterClass="User">
+		update account_user_$tableSuffix$
+		<dynamic prepend="set">
+			<isNotEmpty property="spaceUsed" prepend=",">
+				spaceUsed=#spaceUsed#
+			</isNotEmpty>
+			<isNotEmpty property="fileCount" prepend=",">
+				fileCount=#fileCount#
+			</isNotEmpty>
+			<isNotEmpty property="lastStatisticsTime" prepend=",">
+				lastStatisticsTime=#lastStatisticsTime#
+			</isNotEmpty>
+		</dynamic>
+		where id=#id#
+	</update>
+
+	<update id="updateStatusToAccount" parameterClass="User">
+        <![CDATA[
+        update account_user_$tableSuffix$ set status=#status#, modifiedAt=#modifiedAt# where id=#id#
+        ]]>
+	</update>
+
+	<select id="getUserByLoginNameAccountId" parameterClass="User"
+		resultClass="User">
+    	<![CDATA[
+        select * from account_user_$tableSuffix$ where loginName=#loginName# and accountId=#accountId#
+        ]]>
+	</select>
+
+	<select id="getOneUserOrderByACS" parameterClass="User"
+		resultClass="User">
+    	<![CDATA[
+        select * from account_user_$tableSuffix$ where accountId=#accountId# and id>#id# ORDER BY id ASC limit 1;
+        ]]>
+	</select>
+
+	<update id="updateSecurityIdToAccount" parameterClass="User">
+		update
+		account_user_$tableSuffix$ set securityId=#securityId# where
+		accountId=#accountId# and id=#id#
+	</update>
+
+	<select id="countActiveUserByAccountId" parameterClass="User"
+		resultClass="int">
+		select count(*) from account_user_$tableSuffix$ where
+		accountId = #accountId# and type=#type# and status != 2
+	</select>
+	
+	<select id="getAccountInfoById" parameterClass="User" resultClass="com.huawei.sharedrive.app.spacestatistics.domain.AccountStatisticsInfo">
+		select accountId,sum(spaceUsed) as currentSpace, sum(fileCount) as currentFiles from account_user_$tableSuffix$ where accountId = #accountId#;
+	</select>
+	
+	<select id="getUserById" parameterClass="map" resultClass="User">
+    	<![CDATA[
+        	select * from account_user_$tableSuffix$ where id=#id# and accountId = #accountId#
+        ]]>
+	</select>
+	
+	<update id="updateBaseInfo" parameterClass="User">
+        <![CDATA[
+       		 update account_user_$tableSuffix$ set name=#name#, loginName=#loginName#, email=#email# where id=#id#
+        ]]>
+	</update>
+
+	<select id="getByAccountIdAndSpaceQuota" parameterClass="map" resultClass="User">
+		<![CDATA[
+        	select * from account_user_$tableSuffix$ where accountId = #accountId# and spaceQuota = #spaceQuota# and status = 0;
+        ]]>
+	</select>
+
+	<update id="compareAndSwapSpaceQuotaByAccountId" parameterClass="map">
+		<![CDATA[
+        update account_user_$tableSuffix$ set spaceQuota=#newValue# where accountId=#accountId# and status = 0 and spaceQuota=#oldValue#
+		]]>
+	</update>
+
+	<update id="updateSpaceQuotaByAccountIdAndUserIds" parameterClass="map">
+		update account_user_$tableSuffix$ set spaceQuota=#spaceQuota# where accountId=#accountId#
+		and id in <iterate open="(" close=")" conjunction="," property="userIds"> #userIds[]# </iterate>
+	</update>
+</sqlMap>
+

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DocTypeConfig">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="DocUserConfig" type="pw.cdmi.box.ufm.tools.domain.DocUserConfig" />
+
+    
+
+    <select id="getByPrefix" parameterClass="map" resultClass="DocUserConfig">
+        select * from doctype_user_config where name like concat('',#prefix#,'%') and appId=#appId# 
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                $limit.offset$,$limit.length$
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getById" parameterClass="long" resultClass= "DocUserConfig">
+    	select * from doctype_user_config where id = #id#
+    </select>
+    
+    <select id="getdocTypeConfigByOwner" parameterClass="long" resultClass= "DocUserConfig">
+    	select * from doctype_user_config where userId = #ownerId# or isDefault = '1'
+    </select>
+    
+    <select id="getCountByOwner" parameterClass="long" resultClass= "long">
+    	select count(*) from doctype_user_config where userId = #ownerId#
+    </select>
+
+    <insert id="insert" parameterClass="DocUserConfig">
+        insert into doctype_user_config values(#id#,#name#,#value#,#isDefault#,#userId#,#appId#)
+    </insert>
+
+   <update id="update" parameterClass="DocUserConfig">
+        update doctype_user_config set value=#value#, name=#name# where id=#id# and appId=#appId#
+    </update>
+    
+    <delete id="delete" parameterClass="DocUserConfig">
+        delete from doctype_user_config where id=#id# and appId=#appId#
+    </delete>
+    
+    <delete id="deleteOwner" parameterClass="DocUserConfig">
+        delete from doctype_user_config where userId=#userId# and appId=#appId#
+    </delete>
+
+	
+</sqlMap>
+

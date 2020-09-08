@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<!-- 自动扫描且只扫描@Controller -->
+	<context:component-scan base-package="com.huawei.sharedrive.app" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+				<!-- 不返回Accept-Charset响应头 -->
+				<property name="writeAcceptCharset" value="false" />
+			</bean>
+			<!-- 配置返回的JSON数据中不返回NULL值数据 -->
+			<bean
+				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+						<property name="serializationInclusion" value="NON_NULL" />
+					</bean>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<bean id="handlerExceptionResolver" class="org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver">
+		<property name="warnLogCategory" value="com.huawei.sharedrive"/>
+	</bean>
+	<!-- 定义JSP文件的位置 -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+	<!-- 容器默认的DefaultServletHandler处理 所有静态内容与无RequestMapping处理的URL -->
+	<mvc:default-servlet-handler />
+
+	<!-- 定义国际化消息 -->
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n/messages" />
+		<property name="useCodeAsDefaultMessage" value="true" />
+	</bean>
+
+	<!-- 按华为IT要求语言设置改为Cookie级 -->
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+
+	<mvc:interceptors>
+		<bean class="pw.cdmi.core.log.LogInterceptor">
+			<property name="excludeHeaders">
+				<set>  
+                	<value>Cookie</value>
+                	<value>cookie</value>  
+                	<value>authorization</value>  
+            	</set>  
+			</property>
+			<property name="excludeUrl">
+				<set>  
+					<value>/</value>  
+                	<value>/[^/]+/static/.*</value>  
+                	<value>/static/.*</value>  
+                	<value>/[^/]+/skins/.*</value>
+                	<value>/skins/.*</value>    
+                	<value>/favicon.ico</value>  
+                	<value>/crossdomain.xml</value>  
+            	</set>  
+			</property>
+		</bean>
+		<bean class="pw.cdmi.core.log.AfterAccessInterceptor">
+			<property name="excludeUrl">
+				<set>  
+					<value>/</value>  
+                	<value>/[^/]+/static/.*</value>  
+                	<value>/static/.*</value>  
+                	<value>/[^/]+/skins/.*</value>
+                	<value>/skins/.*</value>    
+                	<value>/favicon.ico</value>  
+                	<value>/crossdomain.xml</value>  
+            	</set>  
+			</property>
+		</bean>
+		<!-- <bean class="com.huawei.sharedrive.app.core.interceptor.LicenseInterceptor" /> -->
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+		<bean class="com.huawei.sharedrive.app.core.interceptor.RealIpInterceptor" />
+		<bean class="com.huawei.sharedrive.app.oauth2.UserTokenInterceptor" />
+	</mvc:interceptors>
+
+	<!-- 上传拦截，如最大上传值及最小上传值 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes <property 
+			name="maxUploadSize" value="102400" /> -->
+	</bean>
+</beans>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UasNode">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UasNode"
+		type="com.huawei.sharedrive.isystem.dns.domain.UasNode" />
+
+	<resultMap id="resultMap.UasNode" class="UasNode">
+		<result column="managerip" property="managerIp" javaType="java.lang.String" />
+		<result column="managerport" property="managerport" javaType="java.lang.String" />
+		<result column="serviceaddr" property="serviceAddr" javaType="java.lang.String" />
+		<result column="nataddr" property="natAddr" javaType="java.lang.String" />
+	</resultMap>
+
+	<select id="select" resultMap="resultMap.UasNode"
+		parameterClass="String">
+		select * from uas_node where managerip=#value#
+	</select>
+
+	<select id="selectAll" resultMap="resultMap.UasNode"  >
+		select * from uas_node 
+	</select>
+
+
+	<update id="update" parameterClass="UasNode">
+		update uas_node set nataddr=#natAddr# where managerip=#managerIp#
+	</update>
+
+
+</sqlMap>
+

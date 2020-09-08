@@ -1,0 +1,158 @@
+.page_bc {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.image-comm {
+    width: 7%;
+    display: inline-block;
+}
+
+.bcImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -999;
+}
+
+.content_container {
+    width: 78%;
+    position: absolute;
+    top: 144rpx;
+    left: 84rpx;
+}
+
+.view_comm {
+    width: 100%;
+    height: 82rpx;
+    border-bottom: 3rpx solid rgba(6, 6, 6, 0.15);
+    display: flex;
+    align-items: center;
+    padding-top: 40rpx;
+}
+
+.placeholder {
+    font-size: 30rpx;
+    color: #999;
+}
+
+.icon_comm {
+    width: 25rpx;
+    height: 34rpx;
+}
+
+.view_button {
+    height: 50rpx;
+    color: #fff;
+}
+
+/* 点我快捷获取  */
+
+.tel-padding {
+    padding: 0 0.8rem;
+}
+
+/* 获取验证码*/
+
+.code-padding {
+    padding: 0 1.1rem;
+}
+
+.right-flex {
+    display: flex;
+    justify-content: space-between;
+    width: 93%;
+}
+
+.button_comm {
+    background-color: #ea5036;
+    border-radius: 1.5em;
+    line-height: 50rpx;
+    font-size: 24rpx;
+    text-align: center;
+    white-space: nowrap;
+    margin: 0;
+    overflow: initial;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.button_comm::after {
+    border: none;
+}
+
+.sending-color {
+    background-color: #757575;
+    width: 123rpx;
+}
+
+.input_comm {
+    display: inline-block;
+    margin-bottom: -1rpx;
+    border-radius: 1.5em;
+    font-size: 30rpx;
+    width: auto;
+}
+
+.input-style {
+    display: inline-block;
+}
+
+.tick {
+    width: 22rpx;
+    height: 22rpx;
+    display: inline-block;
+    margin-bottom: -1rpx;
+}
+
+.terms_view {
+    color: #333;
+    font-size: 20rpx;
+    line-height: 40rpx;
+    height: 40rpx;
+    margin-top: 20rpx;
+}
+
+.terms_text {
+    margin-left: 10rpx;
+    display: inline;
+}
+
+.protocol {
+    display: inline;
+}
+
+.register_confirm {
+    width: 100%;
+    height: 80rpx;
+    background-color: #ea5036;
+    color: #fff;
+    margin-top: 84rpx;
+    font-size: 30rpx;
+    line-height: 80rpx;
+}
+
+.to_login {
+    color: #666;
+    font-size: 24rpx;
+}
+
+.to_login_button {
+    width: 10rpx;
+    height: 20rpx;
+    margin-left: 16rpx;
+    margin-bottom: -1rpx;
+}
+
+.to_login_view {
+    margin-top: 37rpx;
+}
+
+.to_person {
+    color: #ea5036;
+    position: absolute;
+    bottom: 71rpx;
+    left: 28%;
+    font-size: 24rpx;
+}

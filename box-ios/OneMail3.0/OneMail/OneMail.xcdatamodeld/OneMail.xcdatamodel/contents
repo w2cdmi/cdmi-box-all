@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="15G31" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="Asset" representedClassName="Asset" syncable="YES">
+        <attribute name="assetAlbumKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetAlbumName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetBackUpFailedFlag" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="assetBackUpFlag" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="assetDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="assetName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="assetUploadFlag" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="assetUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="relationFile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="File" inverseName="relationAsset" inverseEntity="File" syncable="YES"/>
+    </entity>
+    <entity name="AssetGroup" representedClassName="AssetGroup" syncable="YES">
+        <attribute name="groupBackUpFlag" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="groupKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groupName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groupOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="groupURL" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Attachment" representedClassName="Attachment" syncable="YES">
+        <attribute name="attachmentDisplayFlag" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="attachmentFileId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attachmentFileOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attachmentId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attachmentMessageId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attachmentName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="attachmentSize" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="attachmentType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="attachmentUploadFlag" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="File" representedClassName="File" syncable="YES">
+        <attribute name="fileAlbumFolderKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileAlbumMain" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fileAlbumUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileAttachmentFolderTag" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileAttachmentId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileLocalMD5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileMD5" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileModifiedDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fileName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileOwnerName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileParent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileShareNewFlag" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fileShareUser" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileSize" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fileSortNameKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileSortSizeKey" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fileSortTimeKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileSyncDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fileThumbnailRemotePath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fileType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="fileUpdateFlag" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="relationAsset" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Asset" inverseName="relationFile" inverseEntity="Asset" syncable="YES"/>
+        <relationship name="teamSpace" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TeamSpace" inverseName="teamFile" inverseEntity="TeamSpace" syncable="YES"/>
+        <relationship name="transportTask" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TransportTask" inverseName="file" inverseEntity="TransportTask" syncable="YES"/>
+    </entity>
+    <entity name="Message" representedClassName="Message" syncable="YES">
+        <attribute name="messageHTMLContent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messagePlainContent" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageReadFlag" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="messageReceiveDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="messageReceiver" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageReferenceId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageSendDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="messageSender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageSessionId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="messageType" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+    </entity>
+    <entity name="Session" representedClassName="Session" syncable="YES">
+        <attribute name="sessionId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sessionLastMessageId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sessionNotification" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sessionOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sessionScreenName" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sessionSyncDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sessionTitle" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="sessionTopDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sessionTopFlag" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="sessionUsers" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="TeamSpace" representedClassName="TeamSpace" syncable="YES">
+        <attribute name="role" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="teamId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamMemberNum" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamOwnerName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamRelationId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamRole" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamSortTimeKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="teamUsedSpace" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="teamUserId" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="teamFile" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="File" inverseName="teamSpace" inverseEntity="File" syncable="YES"/>
+    </entity>
+    <entity name="TransportTask" representedClassName="TransportTask" syncable="YES">
+        <attribute name="taskCreatedDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="taskFraction" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="taskLoadPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskRecoverable" optional="YES" attributeType="Boolean" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="taskStatus" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="taskType" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="file" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="File" inverseName="transportTask" inverseEntity="File" syncable="YES"/>
+        <relationship name="version" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Version" inverseName="transportTask" inverseEntity="Version" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="userCloudId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userEmail" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userLoginName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userMyContactFlag" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userPhone" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userRecentContactFlag" optional="YES" attributeType="Boolean" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userRemark" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userSingleId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userSortNameKey" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userSortTimeKey" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="userSystemStatus" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Version" representedClassName="Version" syncable="YES">
+        <attribute name="versionFileId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="versionFileName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="versionId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="versionModifiedDate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="versionModifiedDateString" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="versionObjectId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="versionOwner" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="versionSize" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="transportTask" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TransportTask" inverseName="version" inverseEntity="TransportTask" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Asset" positionX="-396" positionY="126" width="128" height="195"/>
+        <element name="AssetGroup" positionX="-378" positionY="144" width="128" height="120"/>
+        <element name="Attachment" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="File" positionX="-594" positionY="9" width="128" height="435"/>
+        <element name="Message" positionX="-54" positionY="45" width="128" height="240"/>
+        <element name="Session" positionX="-54" positionY="108" width="128" height="195"/>
+        <element name="TeamSpace" positionX="-396" positionY="126" width="128" height="240"/>
+        <element name="TransportTask" positionX="-315" positionY="93" width="128" height="180"/>
+        <element name="User" positionX="-27" positionY="162" width="128" height="240"/>
+        <element name="Version" positionX="-396" positionY="126" width="128" height="180"/>
+    </elements>
+</model>

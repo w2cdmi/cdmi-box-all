@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CMBSapUser">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CMBSapUser" type="com.huawei.sharedrive.uam.cmb.oa.domain.CMBSapUser" />
+	<insert id="insert" parameterClass="CMBSapUser">
+        <![CDATA[
+        insert into cmb_user_info(userId,name,gender,officeTel,sapId,position,status,type,
+        email,firstSpell,spell) 
+        values (#userId#,#name#,#gender#,#officeTel#,#sapId#,#position#,
+            #status#,#type#,#email#,
+            #firstSpell#,#spell#)
+        ]]>
+	</insert>
+	<update id="updateById" parameterClass="CMBSapUser">
+        <![CDATA[
+        update cmb_user_info set userId=#userId#,name=#name#,gender=#gender#,
+        officeTel=#officeTel#,position=#position#,status=#status#,
+        type=#type#,email=#email#,firstSpell=#firstSpell#,spell=#spell# where sapId=#sapId#
+        ]]>
+	</update>
+	<select id="getAll" resultClass="CMBSapUser">
+    	<![CDATA[
+        select * from cmb_user_info
+        ]]>
+	</select>
+	<select id="getById" resultClass="CMBSapUser" parameterClass="String">
+    	<![CDATA[
+        select * from cmb_user_info where sapId=#value#
+        ]]>
+	</select>
+</sqlMap>
+

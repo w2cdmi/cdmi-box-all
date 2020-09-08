@@ -1,0 +1,56 @@
+// OfficeAddin.idl : OfficeAddin 的 IDL 源
+//
+
+// 此文件将由 MIDL 工具处理以
+// 产生类型库(OfficeAddin.tlb)和封送处理代码。
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(5B8B3068-D4C5-4B0A-BD08-2DC94E5876D9),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IOfficeAddinImpl : IDispatch{
+};
+[
+    object,
+    uuid(E999331B-53C0-4086-BDF5-6A29EF89A736),
+    dual,
+    nonextensible,
+    helpstring("IRibbonCallback Interface"),
+    pointer_default(unique)
+]
+interface IRibbonCallback : IDispatch{
+    [id(42),helpstring("ribbon clicked")]
+    HRESULT OnButtonClicked([in]IDispatch* ribbonControl);
+	[id(43),helpstring("ribbon load image")]
+    HRESULT OnLoadImage([in]IDispatch* ribbonControl, [out, retval] IPictureDisp** ppdispImage);
+	[id(44),helpstring("ribbon get lable")]
+	HRESULT OnGetLable([in]IDispatch* ribbonControl, [out, retval] BSTR* pbstrReturnedVal);
+	[id(45),helpstring("ribbon enabled")]
+	HRESULT OnGetEnabled([in] IDispatch *ribbonControl, [out, retval] VARIANT_BOOL* pvarReturnedVal);
+	[id(46),helpstring("ribbon get discription")]
+	HRESULT OnGetDiscription([in] IDispatch *ribbonControl, [out, retval] BSTR *pbstrReturnedVal);
+	[id(47),helpstring("ribbon get key tip")]
+	HRESULT OnGetKeyTip([in] IDispatch *ribbonControl, [out, retval] BSTR *pbstrReturnedVal);
+};
+[
+	uuid(C66DD079-BDF2-4A57-933B-AECECB0E3933),
+	version(1.0),
+]
+library OfficeAddinLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(2A91A4AC-0C65-4C67-895C-181447733643)		
+	]
+	coclass OfficeAddinImpl
+	{
+		[default] interface IRibbonCallback;
+	};
+};
+

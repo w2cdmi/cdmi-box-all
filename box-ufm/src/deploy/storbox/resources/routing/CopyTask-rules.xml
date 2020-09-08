@@ -1,0 +1,7 @@
+<rules>
+    <rule>
+        <namespace>CopyTask</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+</rules>

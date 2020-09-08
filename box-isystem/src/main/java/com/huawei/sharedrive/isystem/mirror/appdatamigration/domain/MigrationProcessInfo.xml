@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MigrationProcessInfo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="MigrationProcessInfo"
+		type="com.huawei.sharedrive.isystem.mirror.appdatamigration.domain.MigrationProcessInfo" />
+		
+	<select id="getByPolicyId" resultClass="MigrationProcessInfo" parameterClass="Integer">
+		select * from history_data_copy_process_info where policyId=#value# order by createdAt desc
+	</select>	
+		
+	<insert id="insert" parameterClass="MigrationProcessInfo">
+		insert into	history_data_copy_process_info(id,createdAt,policyId,status,totalFiles,totalSizes,curFiles,curSizes,failedFiles,failedSizes,modifiedAt,endTime)
+		values(#id#, #createdAt#,#policyId#, #status#,#totalFiles#,#totalSizes#, #curFiles#, #curSizes#,#failedFiles#,#failedSizes#, #modifiedAt#, #endTime#)
+	</insert>
+	
+	<update id="update" parameterClass="MigrationProcessInfo">
+		update history_data_copy_process_info 
+		set status=#status#,totalFiles=#totalFiles#,totalSizes=#totalSizes#,curFiles=#curFiles#,curSizes=#curSizes#,failedFiles=#failedFiles#,failedSizes=#failedSizes#,modifiedAt=#modifiedAt#,endTime=#endTime# where id=#id#
+	</update>
+	
+	
+	<select id="getLastUnDoneMigrationProcess" resultClass="MigrationProcessInfo" parameterClass="MigrationProcessInfo">
+		select * from history_data_copy_process_info where status=#status# and policyId=#policyId#
+	</select>
+	
+	
+	<update id="updateMigrationProcessForCompleteFile" parameterClass="MigrationProcessInfo">
+		update history_data_copy_process_info 
+		set curFiles=#curFiles#,curSizes=#curSizes#,failedFiles=#failedFiles#,failedSizes=#failedSizes#,modifiedAt=#modifiedAt# where id=#id#
+	</update>
+	
+	<select id="lstAllMigrationProcessInfoByPolicyId" resultClass="MigrationProcessInfo" parameterClass="Integer">
+		select * from history_data_copy_process_info where policyId=#value#
+	</select>
+	<select id="get" resultClass="MigrationProcessInfo" parameterClass="String">
+		select * from history_data_copy_process_info where id=#value#
+	</select>
+	
+	<update id="endMigrationProcess" parameterClass="MigrationProcessInfo">
+		update history_data_copy_process_info 
+		set status=#status#,modifiedAt=#modifiedAt#,endTime=#endTime# where id=#id#
+	</update>
+</sqlMap>
+

@@ -1,0 +1,77 @@
+@@normal
+{  
+    "limit": 100,  
+    "offset": 0,  
+    "order": 
+    [  
+        {  
+            "field": "name",  
+            "direction": "ASC"  
+        }  
+    ] 
+}
+
+@@limitNegative
+{  
+    "limit": -100,  
+    "offset": 0,  
+    "order": 
+    [  
+        {  
+            "field": "name",  
+            "direction": "ASC"  
+        }  
+    ] 
+}
+
+@@limitOver1000
+{  
+    "limit": 10000,  
+    "offset": 0,  
+    "order": 
+    [  
+        {  
+            "field": "name",  
+            "direction": "ASC"  
+        }  
+    ] 
+}
+
+@@offsetNegative
+{  
+    "limit": 900,  
+    "offset": -100,  
+    "order": 
+    [  
+        {  
+            "field": "name",  
+            "direction": "ASC"  
+        }  
+    ] 
+}
+
+@@noContainDirect
+{  
+    "limit": 900,  
+    "offset": 0,  
+    "order": 
+    [  
+        {  
+            "field": "name",  
+            "direction": "ASsdfsdC"  
+        }  
+    ] 
+}
+
+@@noContainField
+{  
+    "limit": 900,  
+    "offset": 0,  
+    "order": 
+    [  
+        {  
+            "field": "SDSDS",  
+            "direction": "ASC"  
+        }  
+    ] 
+}

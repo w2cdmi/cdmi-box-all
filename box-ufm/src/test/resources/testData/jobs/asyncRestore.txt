@@ -1,0 +1,56 @@
+@@normal
+{ 
+    "type":"restoreTrash",  
+    "srcOwnerId":"62"
+}
+
+@@normal1
+{ 
+    "type":"restoreTrash", 
+    "srcOwnerId":#srcOwnerId#, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":#srcNodeId1#},
+        {"srcNodeId":#srcNodeId2#}
+    ], 
+    "autoRename":true
+}
+
+@@other
+{ 
+    "type":"restoreTrash",  
+    "srcOwnerId":63
+}
+
+@@srcOwnerIdNull
+{ 
+    "type":"restoreTrash",  
+    "destFolderId":#destFolderId#, 
+    "destOwnerId":#destOwnerId#, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":#srcNodeId#} 
+    ], 
+    "autoRename":true
+}
+
+@@srcNodeIdNull
+{ 
+    "type":"restoreTrash",  
+    "destFolderId":#destFolderId#, 
+    "destOwnerId":#destOwnerId#, 
+    "srcOwnerId":#srcOwnerId#, 
+    "autoRename":true
+}
+
+@@teamOwner
+{ 
+    "type":"restoreTrash",  
+    "srcOwnerId":70
+}
+
+@@teamOther
+{ 
+    "type":"restoreTrash",  
+    "srcOwnerId":70
+}

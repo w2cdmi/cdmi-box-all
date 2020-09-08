@@ -1,0 +1,123 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en-us" xml:lang="en-us">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<meta name="copyright" content="(C) Copyright 2005">
+<meta name="DC.rights.owner" content="(C) Copyright 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="What Can I Do If There Is No Icon on the File or Folder?">
+<meta name="DC.Relation" scheme="URI" content="../faq/pc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="desktop_icon_dispear">
+<meta name="DC.Language" content="en-us">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<title>What Can I Do If There Is No Icon on the File or Folder?</title>
+<script type="text/javascript" language="JavaScript">
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+</script>
+<style type="text/css">
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+</style>
+<script type="text/javascript" language="javascript1.2" src="../whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whtopic.js"></script>
+
+ <meta name="generator" content="Adobe RoboHelp 9">
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><script type="text/javascript" language="javascript1.2">
+if (window.gbWhTopic)
+{
+	var strUrl = decodeURI(document.location.href);
+	var bc = 0;
+	var n = strUrl.toLowerCase().indexOf("bc-");
+	if(n != -1)
+	{
+		document.location.href = encodeURI(strUrl.substring(0, n));
+		bc = strUrl.substring(n+3);
+	}
+
+	if (window.addTocInfo)
+	{
+	addTocInfo("Desktop Applications\nWhat Can I Do If There Is No Icon on the File or Folder?");
+addButton("show",BTN_TEXT,"Show","","","","",0,0,"","","");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(1);
+
+	
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../clouddrive_faq.htm", "", ">", "Home", "welcome.html");
+document.write("<a href=\"pc.html\">Desktop Applications<\/a> > What Can I Do If There Is No Icon on the File or Folder?<\/p>");
+
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("../clouddrive_faq.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+
+</script><a name="desktop_icon_dispear"></a><a name="desktop_icon_dispear"></a>
+
+
+<h1 class="topictitle1">What Can I Do If There Is No Icon on the File or Folder?</h1>
+
+<div>
+<div class="p">If there is no icon on the file or folder, the reason is probably
+that the data fails to be written into the registration table during
+the synchronization client installation. Perform the following steps
+to solve the problem:<ol><li>Run the <b><span class="cmdname">cmd.exe</span></b> command as an administrator
+to enter the command-line interface (CLI).</li><li>Run the <b><span class="cmdname">cd</span></b> <i><span class="varname">/C C:\Program Files\huawei\StorBox</span></i> command to enter the installation directory of the synchronization
+client. Suppose that the synchronization client is installed in disk <i><span class="varname">C</span></i> and the installation directory is <i><span class="varname">C:\Program
+Files\huawei\StorBox</span></i>.</li><li>Run the <b><span class="cmdname">regsvr32 ShellExtent.dll</span></b> command to
+manually register shell expansion.</li><li>Run the following commands to restart the Resource Manager.<ol type="a"><li><b><span class="cmdname">taskkill</span></b> <strong><span>/f /im</span></strong> <i><span class="varname">explorer.exe</span></i></li><li><i><span class="varname">explorer.exe</span></i></li></ol>
+</li></ol>
+</div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>Parent topic:</strong> <a href="pc.html">Desktop Applications</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">Huawei Proprietary and Confidential</div><div class="hwcopyright">Copyright &copy; Huawei Technologies Co., Ltd.</div><script type="text/javascript" language="javascript1.2">
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+
+
+highlightSearch();
+</script>
+</body>
+</html>

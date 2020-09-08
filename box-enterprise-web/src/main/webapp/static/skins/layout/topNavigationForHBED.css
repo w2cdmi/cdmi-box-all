@@ -1,0 +1,32 @@
+/* layout start ============================================================*/
+/*header*/
+.header{ top:25px;}
+
+/*breadcrumb*/
+.breadcrumb{ 
+	top:85px;
+}
+
+/*page body*/
+.body{
+	padding-top:85px;
+}
+
+/*public-bar*/
+.public-bar-con{
+	top:126px;
+}
+
+/*tab-menu*/
+.tab-menu{
+	top:85px;
+}
+
+.top-info{ width:100%; min-width:980px; height:25px; position:fixed; z-index:9995; top:0; left:0;
+	background-color: #f2f2f2;
+	line-height:25px;
+	text-indent:40px;
+	color:#ff6500;
+	font-size:12px;
+}
+

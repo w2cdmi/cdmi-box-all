@@ -1,0 +1,515 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{2fe7837d-e91e-463c-85db-6df8cb632676}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="configureMgr">
+      <UniqueIdentifier>{01d41fff-ead6-4e67-8f47-770fda085e23}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="credentialMgr">
+      <UniqueIdentifier>{6dc15c0a-15fb-4e04-b9df-577efd0d0c60}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataBaseMgr">
+      <UniqueIdentifier>{86ef73bb-2be6-4fab-8a8a-476a7249a4ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataBaseMgr\CppSQLite3">
+      <UniqueIdentifier>{a951e98b-1855-4264-8f4f-a5686a9b87c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dataBaseMgr\Tables">
+      <UniqueIdentifier>{d819b993-65b2-4b3d-a584-756099be13fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="networkMgr">
+      <UniqueIdentifier>{6de8ee53-1159-4570-988a-e2fb623f5d10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="others">
+      <UniqueIdentifier>{1491a907-f9c9-4a4a-98b7-97e46c073d5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="syncService">
+      <UniqueIdentifier>{37249761-c813-44d8-9d58-ac265826cbf2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="pathMgr">
+      <UniqueIdentifier>{75db7ec8-3019-41ad-9766-6f83e2221270}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="notifyMgr">
+      <UniqueIdentifier>{8b9d4102-0869-4dd6-9e5b-22638db387e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="userContext">
+      <UniqueIdentifier>{795097d7-97c6-4106-b460-871f9f214b99}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="syncFilesystemMgr">
+      <UniqueIdentifier>{0740164c-79d7-4937-af1e-56bdd8758569}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="synchronizeMgr">
+      <UniqueIdentifier>{7478b9d8-8141-4fe7-851e-bc29655defd9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="workModeMgr">
+      <UniqueIdentifier>{97a46528-a453-48e9-a58b-e17bf2d1b62e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="userInfoMgr">
+      <UniqueIdentifier>{0969a851-f6d5-4e9e-97fd-e7373a15b279}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="filterMgr">
+      <UniqueIdentifier>{6ee4ab9c-181f-4e1a-88f7-adfe2d67ee9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="asyncTaskMgr">
+      <UniqueIdentifier>{07834acb-5d1f-410e-99bb-62399621745e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="shareResMgr">
+      <UniqueIdentifier>{124bc242-7a5d-484d-b029-a4e6268b9466}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="nscaSdkMgr">
+      <UniqueIdentifier>{8579acae-7e15-4f5f-8749-81699a08ba52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="overlayIconMgr">
+      <UniqueIdentifier>{847aa1c9-8595-46b4-a1ec-f30ae8e55a8c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="teamspaceMgr">
+      <UniqueIdentifier>{703ef31b-6add-43ed-9570-65dd4343b283}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Common\include\CommonDefine.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\ErrorCode.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\InIHelper.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Utility.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\source\Aes.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\source\CSha1.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\VersionTable.h">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncDataTable.h">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TransTaskTable.h">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RemoteTable.h">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RelationTable.h">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LocalTable.h">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DiffTable.h">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\source\md5.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\source\sha1.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CppSQLite3.h">
+      <Filter>dataBaseMgr\CppSQLite3</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ConfigureMgr.h">
+      <Filter>configureMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CredentialMgr.h">
+      <Filter>credentialMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DataBaseMgr.h">
+      <Filter>dataBaseMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NetworkMgr.h">
+      <Filter>networkMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="source\UserInfoMgrImpl.h">
+      <Filter>userInfoMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UserInfoMgr.h">
+      <Filter>userInfoMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\WorkModeMgr.h">
+      <Filter>workModeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SynchronizeMgr.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncFileSystemMgr.h">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncCommon.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UserContext.h">
+      <Filter>userContext</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NotifyMgr.h">
+      <Filter>notifyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\PathMgr.h">
+      <Filter>pathMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Path.h">
+      <Filter>pathMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IFolder.h">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\IFile.h">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>others</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>others</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DiffProcessor.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LocalDetector.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RemoteDetector.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncServiceImpl.h">
+      <Filter>syncService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\thrift\OneboxSyncService\OneboxSyncService_constants.h">
+      <Filter>syncService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\thrift\OneboxSyncService\OneboxSyncService_types.h">
+      <Filter>syncService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\thrift\OneboxSyncService\SyncService.h">
+      <Filter>syncService</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncUtility.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncAction.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TableDefine.h">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MetaDataTable.h">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\NotifyMsg.h">
+      <Filter>notifyMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\Configure.h">
+      <Filter>configureMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\TimeCounter.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\FilterMgr.h">
+      <Filter>filterMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LocalFile.h">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LocalFolder.h">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RestFile.h">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RestFolder.h">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="source\RestDownload.h">
+      <Filter>asyncTaskMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="source\RestUpload.h">
+      <Filter>asyncTaskMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\AsyncTaskMgr.h">
+      <Filter>asyncTaskMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TransTask.h">
+      <Filter>asyncTaskMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="source\RestCreate.h">
+      <Filter>asyncTaskMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncTimeCalc.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>others</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\CrashHandler.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ShareResMgr.h">
+      <Filter>shareResMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\NscaSdkMgr.h">
+      <Filter>nscaSdkMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RemoteDetectorAll.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RemoteDetectorLocal.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncActionAll.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncActionLocal.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UploadTable.h">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Common\include\SmartHandle.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="source\LocalMappingFile.h">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\GlobalVariable.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DiffNode.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncRules.h">
+      <Filter>configureMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncMeger.h">
+      <Filter>synchronizeMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OverlayIconMgr.h">
+      <Filter>overlayIconMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\OneboxSDK\include\Util.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UserContextMgr.h">
+      <Filter>userContext</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TeamspaceMgr.h">
+      <Filter>teamspaceMgr</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Common\source\Aes.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\source\CSha1.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\source\InIHelper.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\source\Utility.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\VersionTable.cpp">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TransTaskTable.cpp">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncDataTable.cpp">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RemoteTable.cpp">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RelationTable.cpp">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LocalTable.cpp">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DiffTable.cpp">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\source\md5.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\source\sha1.c">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CppSQLite3.cpp">
+      <Filter>dataBaseMgr\CppSQLite3</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ConfigureMgr.cpp">
+      <Filter>configureMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CredentialMgr.cpp">
+      <Filter>credentialMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DataBaseMgr.cpp">
+      <Filter>dataBaseMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\NetworkMgr.cpp">
+      <Filter>networkMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UserInfoMgrImpl.cpp">
+      <Filter>userInfoMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\NTLMDomainAuth.cpp">
+      <Filter>userInfoMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\WorkModeMgr.cpp">
+      <Filter>workModeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SynchronizeMgr.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncFileSystemMgr.cpp">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DeviceInfo.cpp">
+      <Filter>userInfoMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UserContext.cpp">
+      <Filter>userContext</Filter>
+    </ClCompile>
+    <ClCompile Include="source\NotifyMgr.cpp">
+      <Filter>notifyMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\PathMgr.cpp">
+      <Filter>pathMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="OneboxSyncService.cpp" />
+    <ClCompile Include="stdafx.cpp">
+      <Filter>others</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DiffProcessor.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LocalDetector.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RemoteDetector.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncServiceImpl.cpp">
+      <Filter>syncService</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\thrift\OneboxSyncService\OneboxSyncService_constants.cpp">
+      <Filter>syncService</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\thrift\OneboxSyncService\OneboxSyncService_types.cpp">
+      <Filter>syncService</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\thrift\OneboxSyncService\SyncService.cpp">
+      <Filter>syncService</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncUtility.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncAction.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MetaDataTable.cpp">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="source\FilterMgr.cpp">
+      <Filter>filterMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LocalFile.cpp">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LocalFolder.cpp">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RestFile.cpp">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RestFolder.cpp">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TransTask.cpp">
+      <Filter>asyncTaskMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RestDownload.cpp">
+      <Filter>asyncTaskMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RestUpload.cpp">
+      <Filter>asyncTaskMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\AsyncTaskMgr.cpp">
+      <Filter>asyncTaskMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RestCreate.cpp">
+      <Filter>asyncTaskMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncTimeCalc.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Common\source\CrashHandler.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ShareResMgr.cpp">
+      <Filter>shareResMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\NscaSdkMgr.cpp">
+      <Filter>nscaSdkMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UploadTable.cpp">
+      <Filter>dataBaseMgr\Tables</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RemoteDetectorLocal.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncActionAll.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncActionLocal.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RemoteDetectorAll.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LocalMappingFile.cpp">
+      <Filter>syncFilesystemMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DiffNode.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncRules.cpp">
+      <Filter>configureMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncMerger.cpp">
+      <Filter>synchronizeMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\OverlayIconMgr.cpp">
+      <Filter>overlayIconMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\OneboxSDK\src\Util.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UserContextMgr.cpp">
+      <Filter>userContext</Filter>
+    </ClCompile>
+    <ClCompile Include="source\TeamspaceMgr.cpp">
+      <Filter>teamspaceMgr</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>others</Filter>
+    </Text>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="OneboxSyncService.rc">
+      <Filter>others</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

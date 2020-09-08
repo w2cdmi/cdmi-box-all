@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PreviewObject">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="PreviewObject" type="com.huawei.sharedrive.app.plugins.preview.domain.PreviewObject" />
+    
+    <select id="get" resultClass="PreviewObject" parameterClass="PreviewObject">
+        select * from preview_object_$tableSuffix$ where sourceObjectId=#sourceObjectId# and accountId=#accountId#
+    </select>
+    
+    <select id="selectForUpdate" resultClass="PreviewObject" parameterClass="PreviewObject">
+        select * from preview_object_$tableSuffix$ where sourceObjectId=#sourceObjectId# and accountId=#accountId# for update
+    </select>
+    
+    <select id="getAll" resultClass="PreviewObject" parameterClass="PreviewObject">
+        select * from preview_object_$tableSuffix$ where sourceObjectId=#sourceObjectId#
+    </select>
+    
+    <insert id="insert" parameterClass="PreviewObject">
+        insert into preview_object_$tableSuffix$(sourceObjectId,accountId,convertStartTime,createdAt,status,storageObjectId
+        ,resourceGroupId,size,md5,blockMD5) 
+        values 
+        (#sourceObjectId#,#accountId#,#convertStartTime#,#createdAt#,#status#,#storageObjectId#,#resourceGroupId#
+        ,#size#,#md5#,#blockMD5#)
+    </insert>
+    
+    <update id="updateConvertStartTime" parameterClass="PreviewObject">
+        update preview_object_$tableSuffix$ set convertStartTime=#convertStartTime# 
+        where sourceObjectId=#sourceObjectId# and accountId=#accountId#
+    </update>
+    
+    <update id="updateConvertResult" parameterClass="PreviewObject">
+        update preview_object_$tableSuffix$ set createdAt=#createdAt#,status=#status#,storageObjectId=#storageObjectId#
+        ,resourceGroupId=#resourceGroupId#,size=#size#,md5=#md5#,blockMD5=#blockMD5# 
+        where sourceObjectId=#sourceObjectId# and accountId=#accountId#
+    </update>
+    
+    <update id="updateConvertRestart" parameterClass="PreviewObject">
+        update preview_object_$tableSuffix$ set convertStartTime=#convertStartTime#,createdAt=#createdAt#,status=#status#
+        ,storageObjectId=#storageObjectId#,resourceGroupId=#resourceGroupId#,size=#size#,md5=#md5#,blockMD5=#blockMD5# 
+        where sourceObjectId=#sourceObjectId# and accountId=#accountId#
+    </update>
+
+    <delete id="delete" parameterClass="PreviewObject">
+        delete from preview_object_$tableSuffix$ where sourceObjectId=#sourceObjectId# and accountId=#accountId#
+    </delete>    
+    
+    <delete id="deleteAll" parameterClass="PreviewObject">
+        delete from preview_object_$tableSuffix$ where sourceObjectId=#sourceObjectId#
+    </delete>  
+    
+</sqlMap>
+

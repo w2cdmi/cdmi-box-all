@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Shortcut">
+
+    <typeAlias alias="shortcut" type="com.huawei.sharedrive.app.files.domain.Shortcut" />
+    
+    <insert id="insert" parameterClass="shortcut">
+     <![CDATA[
+     INSERT INTO `inode_shortcut` (`nodeId`, `ownerId`, `createBy`, `id`, `createAt`,`type`) VALUES (#nodeId#, #ownerId#, #createBy#, #id#, #createAt#,#type#)
+     ]]>
+    </insert>
+    <select id="list" parameterClass="long" resultClass="shortcut">
+        select * from inode_shortcut where createBy=#createBy# order by createAt desc
+    </select>
+	<delete id="delete" parameterClass="long">
+	  delete from inode_shortcut where  id=#id#
+	</delete>
+	<delete id="deleteByNodeId" parameterClass="map">
+	  delete from inode_shortcut where  ownerId=#ownerId# and nodeId=#nodeId#
+	</delete>
+	
+	<delete id="deleteShortByOwner" parameterClass="long">
+	  delete from inode_shortcut where  ownerId=#ownerId# 
+	</delete>
+	
+	<select id="getByOwnerIdAndNodeId" parameterClass="shortcut" resultClass="shortcut">
+	   select * from inode_shortcut where ownerId=#ownerId# and nodeId=#nodeId# and createBy=#createBy#
+	</select>
+</sqlMap>
+

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="600,480" caption="0,0,0,-1" roundcorner="5,5" bktrans="true">
+	<VerticalLayout bkcolor="#FFFFFFFF" borderround="5,5">
+		<HorizontalLayout name="background" height="42" bkcolor="#FFFAFAFA" borderround="5,5">
+			<Label name="uploadFrame_title" text="Upload to Onebox" width="540" padding="20,0" font="15" textcolor="#FF000000" align="left"/>
+			<Button name="uploadFrame_btnClose" padding="0,11,20,11" width="20" height="20"  align="left" normalimage="file='..\Image\SysBtn\ic_popup_delete.png' source='0,0,20,20' dest='0,0,20,20'" hotimage="file='..\Image\SysBtn\ic_popup_delete.png' source='0,30,20,50' dest='0,0,20,20'"/>
+		</HorizontalLayout>
+		<Control width="600" height="1" bkcolor="#FFD9D9D9" />
+		<HorizontalLayout name="mianFrame_NoticeArea" float="true" pos="0,30,0,0" width="578" height="24" bkcolor="#FF70CC70" visible="false">
+			<Text name="text_simpleNoticeMsg" text="任务已经添加，进度请在传输列表查看" width="553" height="22" maxheight="22" maxwidth="553" minwidth="553" minheight="22" textpadding="2,5,2,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" font="2" align="centerwrap" />
+			<Button name="btn_closeNotice" width="14" height="14" padding="5,4,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="..\img\exit.png" />
+		</HorizontalLayout>
+		<HorizontalLayout  width="560" height="345" padding="20,20,20,0">
+			<TreeView name="uploadFrame_oneboxTree" visiblefolderbtn="true" inset="1,1,1,1" align="left" bordersize="1" bordercolor="#FFCCCCCC" borderround="5,5,5,5"  itemendellipsis="true" itemhotbkcolor="#FFEBEBEB" itemselectedbkcolor="#FFDEF0FF"  bkcolor="#FFFFFFFF" vscrollbar="true" hscrollbar="true"/>
+		</HorizontalLayout>
+		<HorizontalLayout height="30" padding="0,20,20,0" width="600" algin="Right">
+			<Button name="uploadFrame_create" visible="false" text="新建文件夹" padding="20,0" font="12"  width="110" height="30" textcolor="#FF000000"  normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,80,110' corner='3,3,3,3'"/>
+			<HorizontalLayout height="30"/>
+			<HorizontalLayout name="uploadFrame_upLoadArea" height="30" width="82">
+				<Button name="uploadFrame_upLoad" text="上传" width="82" height="30" font="12"  textcolor="#FFE2ECF8"  disabledtextcolor="#FF999999" normalimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" align="center"/>
+			</HorizontalLayout>   
+			<HorizontalLayout name="uploadFrame_copyMoveArea" height="30" width="197" visible="false">
+				<Control height="30" />
+				<Button name="uploadFrame_copy" text="复制" width="82" height="30" textcolor="#FFE2ECF8" font="12" normalimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'"  align="center" enabled="false"/>
+				<Button name="uploadFrame_move" text="移动" width="82" height="30" padding="10,0,0,0" font="12" textcolor="#FFE2ECF8" normalimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'"  enabled="false"/>
+				<Control height="30" />
+			</HorizontalLayout>   
+			<HorizontalLayout height="20" width="10"/>
+			<Button name="uploadFrame_cancel" text="取消"  width="80" height="30" font="12" textcolor="#FF000000" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,80,110' corner='3,3,3,3'" align="center"/>
+			<HorizontalLayout name="uploadFrame_horLayout" visible="false" height="30" width="20"/>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

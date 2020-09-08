@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EnterpriseUser">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="EnterpriseUser" type="com.huawei.sharedrive.uam.enterpriseuser.domain.EnterpriseUser" />
+	
+	<select id="getMaxUserId" parameterClass="String" resultClass="Long">
+        <![CDATA[
+        select max(id) from enterprise_user$tableSuffix$
+        ]]>
+    </select>
+	<insert id="insert" parameterClass="EnterpriseUser">
+        <![CDATA[
+        insert into enterprise_user$tableSuffix$(id,password,enterpriseId,role,objectSid,name,alias,description,email,mobile,staffNo,staffSecretLevel,type,createdAt,modifiedAt,lastLoginAt,status,ldapStatus,userSource,validateKey,validateKeyEncodeKey,iterations,salt)
+        values 
+        (#id#,#password#,#enterpriseId#,#role#,#objectSid#,#name#,#alias#,#description#,#email#,#mobile#,#staffNo#,#staffSecretLevel#,#type#,#createdAt#,#modifiedAt#,#lastLoginAt#,#status#,#ldapStatus#,#userSource#,#validateKey#,#validateKeyEncodeKey#,#iterations#,#salt#)
+        ]]>
+	</insert>
+	<update id="update" parameterClass="EnterpriseUser">
+        <![CDATA[
+        update  enterprise_user$tableSuffix$ set enterpriseId=#enterpriseId#,name=#name#,role=#role#,type=#type#,objectSid=#objectSid#,
+        alias=#alias#,description=#description#,email=#email#,modifiedAt=#modifiedAt#,status=#status#,validateKey=#validateKey#,validateKeyEncodeKey=#validateKeyEncodeKey#,
+        mobile=#mobile#
+        where id=#id#
+        ]]>
+	</update>
+	
+	<update id="updateEnterpriseUser" parameterClass="EnterpriseUser">
+        <![CDATA[
+        update  enterprise_user$tableSuffix$ set alias=#alias#,description=#description#,mobile=#mobile#,staffNo=#staffNo#,staffSecretLevel=#staffSecretLevel#
+        where id=#id# and enterpriseId=#enterpriseId#
+        ]]>
+	</update>
+	
+	
+	<update id="updateLdapStatus" parameterClass="map">  
+    	update enterprise_user$tableSuffix$ set ldapStatus=#ldapStatus# 
+    	where id in(  
+        <dynamic>  
+            <iterate property="list" conjunction=",">  
+                #list[].id#
+            </iterate>  
+        </dynamic>  
+         )  
+  	</update>
+  	
+  	<!-- 更新企业用户状态 -->
+  	<update id="updateStatus" parameterClass="map">  
+    	update enterprise_user$tableSuffix$ set status=#status# 
+    	
+    	<dynamic>
+    		<isNotEqual property="userIds" compareValue="all">
+		    	where id in 
+			       	<iterate conjunction="," open="(" close=")" property="userIds">
+					 	<![CDATA[
+							#userIds[]#
+						]]>
+					</iterate> 
+    		</isNotEqual>
+    	</dynamic>
+    		
+  	</update>
+  	
+  	<update id="updateLdapStatusByNotIn" parameterClass="map">  
+    	update enterprise_user$tableSuffix$ set ldapStatus=#ldapStatus# 
+    	where enterpriseId=#enterpriseId# and id not in(  
+        <dynamic>  
+            <iterate property="list" conjunction=",">  
+                #list[].id#
+            </iterate>  
+        </dynamic>  
+         )  
+  	</update>
+	<select id="get" parameterClass="map" resultClass="EnterpriseUser">
+    	<![CDATA[
+        select * from enterprise_user$tableSuffix$ where id=#userId# and enterpriseId=#enterpriseId#
+        ]]>
+	</select>
+	
+	<select id="getUserInfo" parameterClass="map" resultClass="EnterpriseUser">
+    	<![CDATA[
+        select t1.* from enterprise_user$tableSuffix$ t1 , authserver t2 WHERE t1.userSource = t2.id AND t1.id = #userId# AND t1.enterpriseId = #enterpriseId# AND t2.type = #authType#
+        ]]>
+	</select>
+	
+	<select id="getByObjectSid" parameterClass="map" resultClass="EnterpriseUser">
+    	<![CDATA[
+        select * from enterprise_user$tableSuffix$ where objectSid=#objectSid# and enterpriseId=#enterpriseId#
+        ]]>
+	</select>
+	
+	<select id="getEmailEnterpriseId" parameterClass="map" resultClass="int">
+    	<![CDATA[
+        select id from enterprise_user$tableSuffix$ where email=#email# and enterpriseId=#enterpriseId#
+        ]]>
+	</select>
+	
+	<select id="getFilterdCount" parameterClass="map" resultClass="int">
+		select count(*) from enterprise_user$tableSuffix$ eu where eu.userSource=#authServerId#
+        
+           <dynamic prepend="and" open="(" close=")">
+           
+              <isNotEmpty prepend="or" property="filter">
+                eu.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.staffNo like concat('%',#filter#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%')
+            </isNotEmpty>
+           
+           
+           </dynamic>
+           
+              <dynamic prepend="and" open="(" close=")">
+           
+	            <isNotNull prepend="and" property="type">
+	                eu.type=#type#
+	            </isNotNull>
+	            <isNull prepend="and" property="type">
+	                <![CDATA[
+	                	eu.type > 0
+	        		]]>
+	            </isNull>
+	            <isNotNull prepend="and" property="status">
+	                eu.status=#status#
+	            </isNotNull>
+	            <isNull prepend="and" property="status">
+	                <![CDATA[
+	                	eu.status >= 0
+	        		]]>
+	            </isNull>
+	            <isNotNull prepend="and" property="departmentId">
+	                eu.id IN (SELECT  enterpriseUserId FROM  user_department WHERE enterpriseId=#enterpriseId# AND departmentId=#departmentId#)
+	            </isNotNull>
+	           
+	           </dynamic>
+   </select>
+	
+	<select id="getFilterd" parameterClass="map" resultClass="EnterpriseUser">
+        select eu.* from enterprise_user$tableSuffix$ eu where eu.userSource=#authServerId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotNull prepend="and" property="type">
+                eu.type=#type#
+            </isNotNull>
+            <isNull prepend="and" property="type">
+                <![CDATA[
+                	eu.type > 0
+        		]]>
+            </isNull>
+            <isNotNull prepend="and" property="status">
+                eu.status=#status#
+            </isNotNull>
+            <isNull prepend="and" property="status">
+                <![CDATA[
+                	eu.status >= 0
+        		]]>
+            </isNull>
+            <isNotNull prepend="and" property="departmentId">
+                eu.id IN (SELECT  enterpriseUserId FROM  user_department WHERE enterpriseId=#enterpriseId# AND departmentId=#departmentId#)
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+         <isNotEmpty prepend="or" property="filter">
+                eu.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.staffNo like concat('%',#filter#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%') 
+            </isNotEmpty>
+          </dynamic>
+         <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                    <isEqual property="order.desc" compareValue="false">
+                        asc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+         <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+     <select id="getByLdapStatusCount" parameterClass="map" resultClass="int">
+        select count(id) from enterprise_user$tableSuffix$ where ldapStatus=#ldapStatus# and enterpriseId=#enterpriseId#
+    </select>
+    
+    <select id="getByLdapStatus" parameterClass="map" resultClass="EnterpriseUser">
+        select * from enterprise_user$tableSuffix$ where ldapStatus=#ldapStatus# and enterpriseId=#enterpriseId#
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getAllADEnterpriseUser" parameterClass="map" resultClass="EnterpriseUser">
+        select * from enterprise_user$tableSuffix$ eu where eu.enterpriseId=#enterpriseId# and userSource!=#authServerId#
+    </select>
+	
+	<select id="getAccountUser" parameterClass="map" resultClass="EnterpriseUser">
+      select eu.*,ua.regionId,ua.cloudUserId from 
+			user_account$accountTableSuffix$ ua,
+			enterprise_user$enterpriseTableSuffix$ eu
+			where 
+			ua.accountId=#accountId#
+			and ua.enterpriseId=#enterpriseId#
+			and eu.userSource=#userSource#
+			and ua.userId=eu.id
+		<dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                eu.name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%') 
+            </isNotEmpty>         
+        </dynamic>
+        <dynamic>  
+             <isNotEmpty prepend="and" property="ids">  
+                 ua.id in ($ids$)  
+             </isNotEmpty>  
+        </dynamic> 
+    </select>
+    
+    <delete id="deleteByIds" parameterClass="map">
+    	<![CDATA[
+        delete from enterprise_user$tableSuffix$ where id in ($ids$)
+        ]]>
+	</delete>
+	
+	<delete id="deleteById" parameterClass="map">
+    	<![CDATA[
+        delete from enterprise_user$tableSuffix$ where id=#id#
+        ]]>
+	</delete>
+	
+	<select id="getAllEnterpriseUser" parameterClass="map" resultClass="EnterpriseUser">
+        select * from enterprise_user$tableSuffix$ eu where eu.enterpriseId=#enterpriseId#
+    </select>
+    
+	<select id="listByDepId" parameterClass="map" resultClass="EnterpriseUser">
+        select * from enterprise_user$tableSuffix$ eu where eu.enterpriseId=#enterpriseId# and eu.id IN (SELECT enterpriseUserId FROM user_department WHERE enterpriseId=#enterpriseId# AND departmentId=#departmentId#)
+    </select>
+
+    <select id="getByEnterpriseIdAndDeptIdAndType" parameterClass="map" resultClass="EnterpriseUser">
+        select * from enterprise_user$tableSuffix$ eu where eu.enterpriseId=#enterpriseId# and eu.type = #type# and eu.id IN (SELECT enterpriseUserId FROM user_department WHERE enterpriseId=#enterpriseId# AND departmentId=#departmentId#)
+    </select>
+
+    <update id="updateTypeById" parameterClass="map">
+        <![CDATA[
+        update enterprise_user$tableSuffix$ set type=#type# where id=#id#
+        ]]>
+    </update>
+
+    <update id="updateTypeByDept" parameterClass="map">
+        <![CDATA[
+        update enterprise_user$tableSuffix$ set type=#type# where enterpriseId=#enterpriseId# and id IN (SELECT enterpriseUserId FROM user_department WHERE enterpriseId=#enterpriseId# AND departmentId=#departmentId#)
+        ]]>
+    </update>
+
+    <update id="changeTypeInDept" parameterClass="map">
+        <![CDATA[
+        update enterprise_user$tableSuffix$ set type=#newValue# where enterpriseId=#enterpriseId# and type=#oldValue# and id IN (SELECT enterpriseUserId FROM user_department WHERE enterpriseId=#enterpriseId# AND departmentId=#departmentId#)
+        ]]>
+    </update>
+
+    <select id="getByEnterpriseIdAndName" parameterClass="map" resultClass="EnterpriseUser">
+        <![CDATA[
+        select * from enterprise_user$tableSuffix$ where enterpriseId=#enterpriseId# and name=#name#
+        ]]>
+    </select>
+
+    <update id="updateStatusByEnterpriseId" parameterClass="EnterpriseUser">
+        update enterprise_user$tableSuffix$ set `modifiedAt`=#modifiedAt#, `status`=#status# where enterpriseId=#enterpriseId#
+    </update>
+
+    <select id="getByEnterpriseIdAndStatus" parameterClass="map" resultClass="EnterpriseUser">
+        <![CDATA[
+        select * from enterprise_user$tableSuffix$ where enterpriseId=#enterpriseId# and `status`=#status#
+        ]]>
+    </select>
+
+    <select id="getByDeptId" parameterClass="map" resultClass="EnterpriseUser">
+        <![CDATA[
+        select * from enterprise_user$tableSuffix$ where enterpriseId=#enterpriseId# and id in (select enterpriseUserId from user_department where enterpriseId=#enterpriseId# and departmentId=#departmentId#)
+        ]]>
+    </select>
+</sqlMap>
+

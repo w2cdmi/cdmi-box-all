@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserDataMigrationTask">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UserDataMigrationTask"
+		type="com.huawei.sharedrive.app.mirror.datamigration.domain.UserDataMigrationTask" />
+
+	<resultMap id="resultMap.UserDataMigrationTask" class="UserDataMigrationTask">
+		<result column="cloudUserId" 				property="cloudUserId" 						javaType="java.lang.Long" />
+		<result column="defaultRegionId" 			property="defaultRegionId" 					javaType="java.lang.Integer" />
+		<result column="destRegionId" 				property="destRegionId" 					javaType="java.lang.Integer" />
+		<result column="destResourceGroupId" 		property="destResourceGroupId" 				javaType="java.lang.Integer" />
+		<result column="createdAt" 					property="createdAt" 						javaType="java.util.Date" />
+		<result column="modifiedAt" 			    property="modifiedAt" 						javaType="java.util.Date" />
+		<result column="status" 		            property="status" 							javaType="java.lang.Integer" />
+		<result column="exeAgent" 		            property="exeAgent" 						javaType="java.lang.String" />
+		<result column="totalFiles" 		        property="totalFiles" 						javaType="java.lang.Long" />
+		<result column="totalSizes" 		        property="totalSizes" 						javaType="java.lang.Long" />
+		<result column="curFiles" 		            property="curFiles" 						javaType="java.lang.Long" />
+		<result column="curSizes" 		            property="curSizes" 						javaType="java.lang.Long" />
+		
+	</resultMap>
+
+	<select id="getByUserId" resultMap="resultMap.UserDataMigrationTask" parameterClass="Long">
+		select * from user_data_migration_task where cloudUserID=#value#
+	</select>
+
+	<insert id="insert" parameterClass="UserDataMigrationTask">
+		insert into
+		user_data_migration_task(cloudUserId,defaultRegionId,destRegionId,destResourceGroupId,createdAt,modifiedAt,
+		status,totalFiles,totalSizes,curFiles,curSizes)
+		values(#cloudUserId#,#defaultRegionId#,#destRegionId#,#destResourceGroupId#,#createdAt#,#modifiedAt#,
+		#status#,#totalFiles#,#totalSizes#,#curFiles#,#curSizes#)
+	</insert>
+
+	<delete id="deleteByUserId" parameterClass="UserDataMigrationTask">
+		delete from user_data_migration_task where cloudUserId=#cloudUserId#
+	</delete>
+	
+	<delete id="delete" parameterClass="UserDataMigrationTask">
+		delete from user_data_migration_task where cloudUserId=#cloudUserId#
+	</delete>
+	
+	<update id="update" parameterClass="UserDataMigrationTask">
+		update user_data_migration_task set modifiedAt = #modifiedAt#,status=#status#,exeAgent=#exeAgent# ,curFiles = #curFiles#,curSizes=#curSizes#,totalFiles=#totalFiles#,totalSizes=#totalSizes# where cloudUserId=#cloudUserId#
+	</update>
+
+	<update id="updateStatus" parameterClass="UserDataMigrationTask">
+		update user_data_migration_task set modifiedAt = #modifiedAt#,status=#status#,exeAgent=#exeAgent# where cloudUserId=#cloudUserId#
+	</update>
+	
+	<update id="updateProgress" parameterClass="UserDataMigrationTask">
+		update user_data_migration_task set curFiles = curFiles+#curFiles#,curSizes=curSizes+#curSizes# ,modifiedAt = #modifiedAt# where cloudUserId=#cloudUserId#
+	</update>
+	
+	
+	<select id="getOneTask" resultMap="resultMap.UserDataMigrationTask">
+        select * from user_data_migration_task where status=0 and exeAgent is NULL limit 1 
+    </select>
+    
+    <select id="getTotalByStatus"  resultClass="Integer" parameterClass="Integer">
+        select count(*) from user_data_migration_task  where status=#value#
+    </select>
+    
+    <select id="getNotCompletedTaskTotal"  resultClass="Integer">
+        <![CDATA[ 
+        select count(*) from user_data_migration_task  where status <> 3 and  status <> 4
+         ]]>
+    </select>
+    
+    
+
+	<select id="getOneTaskByStatus" resultMap="resultMap.UserDataMigrationTask" parameterClass="Integer">
+        select * from user_data_migration_task where status=#value# limit 1 
+    </select>
+    
+    <select id="list" resultMap="resultMap.UserDataMigrationTask" parameterClass="map">
+     	select * from user_data_migration_task
+         <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+</sqlMap>
+

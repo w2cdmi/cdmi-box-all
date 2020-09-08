@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Menu width="242" bkcolor="#FFFAFAFA" bordersize="1" borderround="7,7">
+		<Control height="10"/>
+
+		<MenuItem id="0" height="32" padding="1,0,1,0" normalimage="file='..\Image\ic_toolmenu_share-cancel.png' source='0,0,20,20' dest='15,6,35,26'" hotimage="file='..\Image\ic_toolmenu_share-cancel.png' source='0,30,20,50' dest='15,6,35,26'">
+			<HorizontalLayout>
+				<Control width="20" height="20" padding="15,6" />
+				<Label text="取消分享" align="left" font="12" textcolor="#FF000000" textpadding="8,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<MenuItem id="1" height="32" padding="1,0,1,0" normalimage="file='..\Image\ic_toolmenu_detail.png' source='0,0,20,20' dest='15,6,35,26'" hotimage="file='..\Image\ic_toolmenu_detail.png' source='0,30,20,50' dest='15,6,35,26'">
+			<HorizontalLayout>
+				<Control width="20" height="20" padding="15,6" />
+				<Label text="查看分享" align="left" font="12" textcolor="#FF000000" textpadding="8,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+
+		<Control height="10"/>
+	</Menu>
+</Window>

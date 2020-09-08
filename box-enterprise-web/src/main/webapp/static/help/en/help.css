@@ -1,0 +1,94 @@
+body{
+	background:transparent;
+	font-family:"ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Helvetica Neue",Helvetica,Arial,"Hiragino Sans GB","Hiragino Sans GB W3","Microsoft YaHei UI","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif; color:#000;font-size: 14px;}
+p { margin: 0;line-height:26px;}
+img{ border:none;}
+ul,ol{padding: 0; margin: 0;}
+dl,dt,dd{  margin:0;  padding:0;}
+ 
+.header{ width:100%; height:60px; position:fixed; z-index:9995; top:0; left:0;	
+	background-color: #3282c4;
+  	*background-color: #3282c4;
+ 	background-image: -moz-linear-gradient(top, #3282c4, #3282c4);
+ 	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#3282c4), to(#3282c4));
+ 	background-image: -webkit-linear-gradient(top, #3282c4, #3282c4);
+	background-image: -o-linear-gradient(top, #3282c4, #3282c4);
+	background-image: linear-gradient(to bottom, #3282c4, #3282c4);
+  	background-repeat: repeat-x;
+	 
+}
+table { border-collapse:collapse; border-spacing:0; } 
+th,td {  padding: 0; vertical-align:top;line-height:24px;}
+table tr td{ padding:0 35px 15px 0;}
+table{ margin:15px 0;}
+.clearfix { *zoom: 1;}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  line-height: 0;
+  content: "";
+}
+.clearfix:after {clear: both;}
+a{ color:#000; text-decoration:none;}
+a:hover,h2 a:hover{color:#1571bf;}
+.fl{ float:left;}
+.fr{ float:right;}
+.mb10{ margin-bottom:10px;}
+
+.pl10{ padding-left:10px;}
+.bt{border-top: 1px solid #cbcbcb; margin-top:20px;}
+
+.main{background:#fff;width:1200px;margin:0 auto;padding-top:60px;}
+.main_con{width:62%;}
+.sidebar{width:33%;}
+ 
+h1{font-size:20px;line-height:32px;margin:10px 0 0 0;font-weight:normal;}
+h1 span{color:#000;}
+h2,h2 a{font-size:18px;font-weight:normal;}
+h2 a{color:#1571bf;}
+h3{font-size:16px;color:#1571bf; font-weight:normal;}
+
+.header_top{ font-size:24px; color:#fff; margin:0 auto; width:1200px; line-height:60px;}
+.return{font-size:14px;height:32px;line-height:32px;color:#1571bf;margin-bottom:10px; display:inline-block;}
+.return:hover{ text-decoration:underline;}
+
+.help_type:hover,a.green:hover{ text-decoration:underline;}
+
+.help_list li { height:42px; border-bottom: 1px solid #E1E1E1; padding-left:20px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.help_list li a{font-size:14px;color:#000;line-height:42px;text-decoration:none;}
+.help_list li a:hover,.help_type,a.green{color:#1571bf;}
+
+.type{border-bottom:1px solid #E1E1E1;}
+.type li{ float:left; width:175px; border-bottom:none; height:45px;}
+.type li a{ line-height:32px; padding-left:40px;color:#1571bf;}
+.type li a:hover{ text-decoration:underline;}
+.type_icon{background:url("image/type_icon.png") 0 0 no-repeat; height:50px; display:inline-block;}
+.type_icon1{ background-position: 0 -52px;}
+.type_icon2{ background-position: 0 -104px;}
+.type_icon3{ background-position: 0 -156px;}
+.type_icon4{ background-position: 0 -208px;}
+
+
+
+.resource{padding:0 0 10px 15px;}
+.resource_pic{float:left; width:17%;}
+
+.resource_detail{float:left; width:80%;}
+.resource_detail a{font-size:14px; text-decoration:none; height:26px; line-height:26px;color:#1571bf;}
+.resource_detail a:hover,.relative li a:hover{ text-decoration:underline;}
+.resource_detail p{ font-size:14px; }
+ 
+.relative{border-top: 1px solid #c4c4c4; margin-top:15px;}
+.relative ul{list-style-type:square;}
+.relative ul li{height:24px; line-height:24px;}
+.relative ul li a{line-height:24px;color:#1571bf; }
+
+.main_con ul li,.main_con ol li{ line-height:26px;}
+.main_detail ul,.main_detail ol,.main_detail ul ol,.main_detail ol ul,.main_detail ul ul{padding-left:40px;line-height:26px;}
+.main_con p img{max-width:740px;}
+.main_con li span img{max-width:48px;max-height:48px;}
+
+.notes{ background-color:#e2f3fc; border:1px solid #44a5f6; padding:10px; margin:15px 0; font-size:12px;}
+.notes span{ display:block;background:url("image/notes.png") 0 0 no-repeat; height:24px; line-height:20px; padding-left:25px;}
+.main_detail ol ul{list-style-type:lower-alpha;}
+.main_detail ul ul{list-style-type:square;}

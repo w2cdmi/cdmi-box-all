@@ -1,0 +1,17 @@
+<view class='page'>
+<view style='padding-top: 70rpx;display:flex;justify-content:center;'><image src='/disk/images/enterprise-auth.png'></image></view>
+<view class='title'>企业文件宝-知识管理专家</view>
+
+<view class='description'>
+    <view>·信息安全管控</view>
+    <view>·企业上下游的互动</view>
+</view>
+<view class='description'>
+    <view>·知识传承</view>
+    <view>·企业内部协同办公效率提升</view>
+</view>
+<view class='option-group'>
+    <button open-type='getUserInfo' bindgetuserinfo="getUserInfo" class='btn'>微信登录</button>
+    <button class='btn exit-btn' bindtap='exitLogin'>退出</button>
+</view>
+</view>

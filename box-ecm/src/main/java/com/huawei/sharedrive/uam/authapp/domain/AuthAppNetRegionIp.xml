@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AuthAppNetRegionIp">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="AuthAppNetRegionIp" type="com.huawei.sharedrive.uam.authapp.domain.AuthAppNetRegionIp" />
+    
+	<resultMap id="resultMap.AuthAppNetRegionIp" class="AuthAppNetRegionIp">
+        <result column="id" 				property="id" 					javaType="java.lang.Long"/>
+        <result column="authAppId" 			property="authAppId" 			javaType="java.lang.String"/>
+        <result column="ipStart" 			property="ipStart" 				javaType="java.lang.String"/>
+        <result column="ipEnd" 				property="ipEnd" 				javaType="java.lang.String"/>
+        <result column="ipStartValue" 		property="ipStartValue" 		javaType="java.lang.Long"/>
+        <result column="ipEndValue" 		property="ipEndValue" 			javaType="java.lang.Long"/>
+        <result column="regionId" 			property="regionId" 			javaType="java.lang.Integer"/>
+        <result column="regionName" 		property="regionName" 			javaType="java.lang.String"/>
+        <result column="uploadBandWidth" 	property="uploadBandWidth" 		javaType="java.lang.Long"/>
+        <result column="downloadBandWidth" 	property="downloadBandWidth" 	javaType="java.lang.Long"/>
+        <result column="createdAt" 			property="createdAt" 			javaType="java.util.Date"/>
+        <result column="modifiedAt" 		property="modifiedAt" 			javaType="java.util.Date"/>
+    </resultMap>
+    
+    <select id="queryByConfigId" resultMap="resultMap.AuthAppNetRegionIp" parameterClass="java.lang.Long">
+		select * from authapp_network_region_config where id=#value#
+	</select>
+	
+    <select id="queryByIp" resultMap="resultMap.AuthAppNetRegionIp" parameterClass="map">
+		select * from authapp_network_region_config where authAppId=#appId# and ipStartValue &lt;= #ipValue# and ipEndValue &gt;= #ipValue# limit 1
+	</select>
+	
+	<select id="queryTotalCountByAuthAppId" resultClass="java.lang.Integer" parameterClass="java.lang.String">
+		select count(1) from authapp_network_region_config where authAppId=#value#
+	</select>
+	
+	<select id="listAllNetworkRegion" parameterClass="java.lang.String" resultMap="resultMap.AuthAppNetRegionIp">
+        select * from authapp_network_region_config where authAppId=#value#
+    </select>
+    
+	<delete id="deleteById" parameterClass="java.lang.Long">
+		delete from authapp_network_region_config where id = #value#;
+	</delete>
+	
+	<delete id="deleteByAuthAppId" parameterClass="java.lang.String">
+		delete from authapp_network_region_config where authAppId = #value#;
+	</delete>
+	
+	<select id="getCount" parameterClass="map" resultClass="int">
+        select count(id) from authapp_network_region_config 
+        <dynamic prepend="where">
+        	<isNotEmpty property="appId" prepend="and">
+        		authAppId=#appId#
+        	</isNotEmpty>
+        	<isNotNull property="regionId" prepend="and">
+        		regionId=#regionId#
+        	</isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="listNetworkRegion" parameterClass="map" resultMap="resultMap.AuthAppNetRegionIp">
+        select * from authapp_network_region_config 
+        <dynamic prepend="where">
+        	<isNotEmpty property="appId" prepend="and">
+        		authAppId=#appId#
+        	</isNotEmpty>
+        	<isNotNull property="regionId" prepend="and">
+        		regionId=#regionId#
+        	</isNotNull>
+        </dynamic>
+        order by authAppId,regionId,ipStartValue
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getMaxId" resultClass="long">
+        select max(id) from authapp_network_region_config 
+    </select>
+    
+    <insert id="insert" parameterClass="AuthAppNetRegionIp">
+        insert into authapp_network_region_config(id, authAppId, ipStart, ipEnd, ipStartValue, ipEndValue, regionId, regionName, uploadBandWidth, downloadBandWidth, createdAt, modifiedAt)
+        values(#id#, #authAppId#, #ipStart#, #ipEnd#, #ipStartValue#, #ipEndValue#, #regionId#, #regionName#, #uploadBandWidth#, #downloadBandWidth#, #createdAt#, #modifiedAt#)
+    </insert>
+    
+    <update id="update" parameterClass="AuthAppNetRegionIp">
+        update authapp_network_region_config
+        <dynamic prepend="set">
+        	<isNotNull property="ipStart" prepend=",">
+        		ipStart=#ipStart#
+        	</isNotNull>
+        	<isNotNull property="ipEnd" prepend=",">
+        		ipEnd=#ipEnd#
+        	</isNotNull>
+        	<isNotNull property="ipStartValue" prepend=",">
+        		ipStartValue=#ipStartValue#
+        	</isNotNull>
+        	<isNotNull property="ipEndValue" prepend=",">
+        		ipEndValue=#ipEndValue#
+        	</isNotNull>
+        	<isNotNull property="regionId" prepend=",">
+        		regionId=#regionId#
+        	</isNotNull>
+        	<isNotNull property="regionName" prepend=",">
+        		regionName=#regionName#
+        	</isNotNull>
+        	<isNotNull property="uploadBandWidth" prepend=",">
+        		uploadBandWidth=#uploadBandWidth#
+        	</isNotNull>
+        	<isNotNull property="downloadBandWidth" prepend=",">
+        		downloadBandWidth=#downloadBandWidth#
+        	</isNotNull>
+        	<isNotNull property="modifiedAt" prepend=",">
+        		modifiedAt=#modifiedAt#
+        	</isNotNull>
+        </dynamic>
+        where id = #id#
+    </update>
+</sqlMap>

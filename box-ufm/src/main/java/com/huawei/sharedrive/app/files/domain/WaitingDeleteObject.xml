@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WaitingDeleteObject">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="WaitingDeleteObject" type="com.huawei.sharedrive.app.files.domain.WaitingDeleteObject" />
+   
+    <select id="getAll" parameterClass="map" resultClass="WaitingDeleteObject">
+       select * from waiting_delete_object
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="get" resultClass="WaitingDeleteObject" parameterClass="WaitingDeleteObject">
+        select * from waiting_delete_object where objectId=#objectId#
+    </select>
+    
+    <insert id="insert" parameterClass="WaitingDeleteObject">
+        insert into waiting_delete_object(objectId,resourceGroupId,createdAt) values(#objectId#,#resourceGroupId#,#createdAt#)
+    </insert>
+
+    <delete id="delete" parameterClass="WaitingDeleteObject">
+        delete from waiting_delete_object where objectId=#objectId#
+    </delete>
+</sqlMap>
+

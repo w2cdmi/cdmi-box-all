@@ -1,0 +1,1 @@
+<strong>${providerName}</strong> has quit team space <strong>${teamSpaceName}</strong>

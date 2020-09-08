@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window >
+	<Include source="Default.xml" />
+	<TransTaskCompleteListContainerElement name="transTask_itemComplete_listItem" height="44" vlign="center" singularrowcolor="#ffffffff" dualrowcolor="#fffafafa"  itemhotbkcolor="0" itemselectedbkcolor="0">
+		<VerticalLayout mousechild="true" >
+			<HorizontalLayout height="5" />
+			<Button name="transTask_itemComplete_preview" height="15" visible="false" text="点击加载更多" />
+			<HorizontalLayout>
+				<HorizontalLayout inset="10,0,0,0">					
+					<Label name="transTask_itemComplete_icon" width="32" height="32" padding="0,1,0,3" />
+					<Control width="6"/>
+					<Label name="transTask_itemComplete_name" align="left" height="32" font="12" endellipsis="true" textcolor="#ff000000"/>
+				</HorizontalLayout>
+				<!--<Control height="1" />-->
+				<HorizontalLayout width="318"  valign="center" inset="0,0,20,0">
+					<Button name="transTask_itemComplete_type" width="20" font="12" height="20" padding="0,7,0,0" mouse="false" tooltip="上传" bkimage="..\Image\ic_oper_transfer_upload.png" />
+					<Label name="transTask_itemComplete_size" width="80" font="12" textcolor="#FF999999" font="12"/>
+					<Label name="transTask_itemComplete_time" width="140" font="12" text="2015-09-21 15:15:00" textcolor="#FF999999" />
+					<Control width="10"/>
+					<Button name="transTask_itemComplete_Link"  width="20" height="20" font="12" padding="0,8,0,0" textcolor="#FF999999" tooltip="打开" normalimage="..\Image\ic_transfer_open_cloudpath.png"/>
+					<Control width="10"/>
+					<Button name="transTask_itemComplete_delete"  width="20" height="20" padding="0,7,0,0" textcolor="#FF999999" tooltip="删除" normalimage="file='..\Image\ic_oper_delete.png' source='0,0,20,20'" hotimage="file='..\Image\ic_oper_delete.png' source='0,30,20,50'" pushedimage="file='..\Image\ic_oper_delete.png' source='0,60,20,80'"/>
+				</HorizontalLayout>
+			</HorizontalLayout>
+			<Button name="transTask_itemComplete_next" height="15" visible="false" text="点击加载更多" />
+			<HorizontalLayout height="4" />
+			<Control height="1" bkcolor="#FFE5E5E5" />
+		</VerticalLayout>
+	</TransTaskCompleteListContainerElement>
+</Window>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ClusterInstance">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="ClusterInstance"
+		type="com.huawei.sharedrive.isystem.monitor.domain.ClusterInstance" />
+
+	<insert id="insert" parameterClass="ClusterInstance">
+		insert into
+		cluster_instance_running_info( clusterName,
+		clusterServiceName,
+		reportTime,
+		hostName,
+		status,
+		runRole,
+		dataStatus,
+		vip,
+		innerIP)
+		values
+		(#clusterName#,
+		#clusterServiceName#,
+		#reportTime#,
+		#hostName#,
+		#status#,
+		#runRole#,
+		#dataStatus#,
+		#vip#,
+		#innerIP#)
+	</insert>
+
+	<update id="update" parameterClass="ClusterInstance">
+		update
+		cluster_instance_running_info set
+		clusterName=#clusterName#,clusterServiceName=#clusterServiceName#,reportTime=#reportTime#,hostName=#hostName#,status=#status#,runRole=#runRole#,dataStatus=#dataStatus#,vip=#vip#,innerIP=#innerIP#
+		where clusterName=#clusterName# and
+		clusterServiceName=#clusterServiceName# and hostName=#hostName#
+	</update>
+
+	<select id="selectOne" resultClass="ClusterInstance" parameterClass="ClusterInstance">
+        select * from cluster_instance_running_info  where clusterName=#clusterName# and
+		clusterServiceName=#clusterServiceName# and hostName=#hostName#
+    </select>
+    
+    <select id="selectNodes" resultClass="ClusterInstance" parameterClass="ClusterInstance">
+        select * from cluster_instance_running_info  where clusterName=#clusterName# and
+		clusterServiceName=#clusterServiceName# 
+    </select>
+    
+    <delete id="deleteNodes"  parameterClass="ClusterInstance">
+        delete from cluster_instance_running_info  where clusterName=#clusterName# and
+		clusterServiceName=#clusterServiceName#
+    </delete>
+	<!-- <select id="getFilterd" parameterClass="ClusterInstance"
+		resultClass="ClusterInstance">
+		select * from admin
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="filter">
+				type = #filter.type#
+			</isNotNull>
+			<isNotNull prepend="and" property="filter.status">
+				status = #filter.status#
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="and" open="(" close=")">
+			<isNotEmpty prepend="or" property="filter.loginName">
+				loginName like
+				concat('%',#filter.loginName#,'%')
+			</isNotEmpty>
+			<isNotEmpty prepend="or" property="filter.name">
+				name like
+				concat('%',#filter.name#,'%')
+			</isNotEmpty>
+			<isNotEmpty prepend="or" property="filter.email">
+				email like
+				concat('%',#filter.email#,'%')
+			</isNotEmpty>
+		</dynamic>
+		<dynamic prepend="order by">
+			<isNotNull property="order">
+				<isNotEmpty property="order.field">
+					$order.field$
+					<isEqual property="order.desc" compareValue="true">
+						desc
+					</isEqual>
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				#limit.offset#,#limit.length#
+			</isNotNull>
+		</dynamic>
+	</select> -->
+
+</sqlMap>
+

@@ -1,0 +1,195 @@
+/* disk/inbox/upload/upload.wxss */
+
+/*头部  */
+
+.header {
+    height: 90rpx;
+    line-height: 90rpx;
+    background: #fff;
+    padding: 0 40rpx;
+    margin-bottom: 20rpx;
+    justify-content: s;
+}
+
+.flex-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.enterprise-icon {
+    width: 42rpx;
+    height: 40rpx;
+    margin-right: 20rpx;
+}
+/*正在上传文件列表  */
+.uploadingList{
+    margin-bottom: 40rpx;
+}
+
+/*文件列表  */
+.scroll-view-height{
+     height: 850rpx; 
+}
+
+.scroll-view-height-HUAWEI{
+    height: 740rpx;
+}
+
+.scroll-view-width {
+    white-space: nowrap;
+    overflow: hidden;
+    height: 120rpx;
+}
+
+.folder-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 118rpx;
+    background: #fff;
+    border-bottom: 2rpx solid #f1f1f1;
+}
+
+.folder-inline {
+    display: inline-block;
+    width: 750rpx;
+}
+
+.folder-item-flex {
+    display: flex;
+    align-items: center;
+}
+
+.folder-icon {
+    width: 64rpx;
+    height: 72rpx;
+    padding: 0 25rpx 0 40rpx;
+}
+
+.folder-name {
+    font-size: 30rpx;
+    color: #333;
+}
+
+.folder-info {
+    font-size: 24rpx;
+    color: #999;
+}
+
+.folderName {
+    height: 80rpx;
+    line-height: 80rpx;
+    padding-left: 40rpx;
+    background: #fff;
+    margin-top: 20rpx;
+    border-bottom: 2rpx solid #f1f1f1;
+}
+
+/*三个原点  */
+
+.dept-more {
+    width: 60rpx;
+    display: flex;
+    justify-content: center;
+}
+
+.plug_icon {
+    width: 8rpx;
+    height: 44rpx;
+}
+
+/*圆点唤起的层  */
+
+.drawer_screen {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #000;
+    opacity: 0.2;
+    overflow: hidden;
+    z-index: 1000;
+    color: #fff;
+}
+
+.drawer_attr_box {
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 2000;
+    background: #f4f4f4;
+}
+
+.cancel_view {
+    height: 100rpx;
+    line-height: 100rpx;
+}
+
+.margin-bottom {
+    margin-bottom: 20rpx;
+}
+
+.draw_view_content_comm {
+    width: 100%;
+    height: 90rpx;
+    background-color: #fff;
+    margin-bottom: 2rpx;
+    line-height: 90rpx;
+    text-align: center;
+    font-size: 30rpx;
+    border-bottom: 2rpx solid #f1f1f1;
+}
+
+/*空白文件夹  */
+
+.blank-folder {
+    background: #fff;
+    height: 900rpx;
+}
+
+.center-item {
+    justify-content: center;
+}
+
+.padding-top {
+    padding: 300rpx 0 20rpx;
+}
+
+.blank-file-icon {
+    height: 250rpx;
+    width: 250rpx;
+}
+
+/*上传按钮  */
+
+.view-btn {
+    position: absolute;
+    bottom: 40rpx;
+}
+
+.upload-btn {
+    background-color: #ea5036;
+    color: #fff;
+    width: 350rpx;
+    height: 88rpx;
+    font-size: 16px;
+    text-align: center;
+    line-height: 88rpx;
+    border-radius: 10rpx;
+    display: inline-block;
+    float: left;
+    margin: 0 12rpx;
+}
+.back-to-index {
+    position: fixed;
+    bottom: 115px;
+    width: 120rpx;
+    height: 120rpx;
+    right: 34rpx;
+    border-radius: 2.5em;
+    overflow: hidden;
+}

@@ -1,0 +1,54 @@
+<!-- 文件、文件夹列表 -->
+<scroll-view scroll-y style="max-height: {{WXh-42}}px" bindscrolltoupper="upper" bindscrolltolower="scrollLower">
+    <view class='blankBackground' style='position:fixed;top:56%;' hidden='{{isShowBlankPage?fales:true}}'>
+        <image src='../images/blank/blank-bg.png'></image>
+        <view>矮油，还没有文件</view>
+    </view>
+    <view wx:for="{{searchFolders==null?folders:searchFolders}}" data-folderinfo="{{item}}" catchtap='onFolderItemClick' wx:key="*this" class='file-group border-bottom view-bg flex-item' hover-class="button-hover">
+
+        <view class='flex-item'>
+            <view>
+                <image class="img-icon" mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src='{{item.icon}}'></image>
+            </view>
+
+            <view class="file-info cell_2_body_content">
+                <label>{{item.name}}</label>
+                <text>{{item.menderName}} | {{item.modifiedTime}}
+            </text>
+            </view>
+        </view>
+
+        <block wx:if="{{item.isListAcl && item.type != -7 && item.type != -5}}">
+            <button class='clear-button-style button-size' data-info='{{item}}' catchtap="toggleActionsheet" data-folderinfo="{{item}}">
+                <image mode='aspectFit' src="/disk/images/depart-plug.png" />
+            </button>
+        </block>
+    </view>
+    <view wx:for="{{searchFiles==null?files:searchFiles}}" data-fileinfo="{{item}}" catchtap='onFileItemClick' wx:key="*this" class='file-group border-bottom view-bg flex-item' hover-class="button-hover">
+
+        <view class='flex-item'>
+            <view>
+                <image class="img-icon" mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src='{{item.icon}}'></image>
+            </view>
+
+            <view class="file-info cell_2_body_content">
+                <label>{{item.name}}</label>
+                <text>{{item.fileSize}} | {{item.modifiedTime}}</text>
+            </view>
+
+        </view>
+
+        <button class='clear-button-style button-size' data-info='{{item}}' catchtap="toggleActionsheet" data-fileinfo="{{item}}">
+            <image mode='aspectFit' style='width:36rpx;height:42rpx;' src="/disk/images/depart-plug.png" />
+        </button>
+    </view>
+    <view hidden='{{currentPageIcon}}'>
+        <view class="loadmore" hidden='{{loadMoreIcon}}'>
+            <view class="loading"></view>
+            <view class="loadmore-tips">正在加载</view>
+        </view>
+        <view class="loadmore loadmore-line" hidden='{{isShowBlankPage || !loadMoreIcon ? true : false}}'>
+            <view class="loadmore-tips loadmore-tips-in-line"> 没有更多数据 </view>
+        </view>
+    </view>
+</scroll-view>

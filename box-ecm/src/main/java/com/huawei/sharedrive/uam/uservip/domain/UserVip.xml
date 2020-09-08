@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserVip">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UserVip" type="com.huawei.sharedrive.uam.uservip.domain.UserVip" />
+	
+	<select id="get" parameterClass="UserVip" resultClass="UserVip">
+	   select * from user_vip where enterpriseId=#enterpriseId# and enterpriseAccountId=#enterpriseAccountId# and enterpriseUserId=#enterpriseUserId# and cloudUserId=#cloudUserId#
+	</select>
+	
+    <insert id="insert" parameterClass="UserVip">
+        <![CDATA[
+        insert into user_vip(`cloudUserId`,`enterpriseUserId`,`enterpriseAccountId`,`enterpriseId`,`productId`,`startDate`,`expireDate`,`updateDate`)
+                           values (#cloudUserId#,#enterpriseUserId#,#enterpriseAccountId#,#enterpriseId#,#productId#,#startDate#,#expireDate#, #updateDate#)
+           ]]>
+	</insert>
+	<update id="update" parameterClass="UserVip" >
+	   UPDATE `user_vip` SET `productId`=#productId#, `startDate`=#startDate#, `expireDate`=#expireDate#, `updateDate`=#updateDate#
+	   WHERE enterpriseId=#enterpriseId# and enterpriseAccountId=#enterpriseAccountId# and enterpriseUserId=#enterpriseUserId# and cloudUserId=#cloudUserId#
+	</update>
+	
+	<select id="listAll" resultClass="UserVip">
+	   select * from user_vip
+	</select>
+	
+	<delete id="delete" parameterClass="UserVip">
+        delete from user_vip WHERE enterpriseId=#enterpriseId# and enterpriseAccountId=#enterpriseAccountId# and enterpriseUserId=#enterpriseUserId# and cloudUserId=#cloudUserId#
+    </delete>
+
+</sqlMap>
+

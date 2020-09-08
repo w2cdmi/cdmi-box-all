@@ -1,0 +1,14 @@
+<rules>
+    <rule>
+    	<!-- hash.apply(id) -->
+        <namespace>ObjectReference</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+  	<rule>
+  		<!-- ASSIGNED_PARTITION -->
+        <sqlmap>ObjectReference.lstNeedDeleteObjects</sqlmap>
+        <shardingExpression>partitionNum==1</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

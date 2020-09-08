@@ -1,0 +1,47 @@
+<!-- 首页列表cell模板 -->
+<template name="file-list">
+    <scroll-view style='height:100%;' hidden='{{data.files.length > 0 ? false : true}}' scroll-y="true" bindscrolltolower="scrollLower">
+        <view class="folderList {{(isTouchMoveIndex === index && shortcut !== 'shortcut') ? 'touch-moveToLeft-active' : 'touch-moveToRight-active'}}" bindtouchstart="touchstart" wx:for="{{data.files}}" wx:key="*this">
+            <view class='folderList-item flex-item view-bg'>
+                <view class='folder-item flex-item'>
+                    <view class="folder-item file-group border-bottom flex-item" data-index="{{index}}" data-fileInfo="{{item}}" data-item="{{item}}" bindtouchend="touchend">
+                        <view>
+                        <image class="img-icon" mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src='{{item.icon}}'></image>
+                        </view>
+                        <view class='file-info cell_2_body_content'>
+                            <label>{{item.name}}</label>
+                            <text>
+                    <block wx:if="{{item.fileSize}}">{{item.fileSize}}</block>
+                    <block wx:if="{{item.ownerName}}">{{item.ownerName}}</block> | {{item.modifiedTime}}</text>
+                        </view>
+                        <!-- <button class='clear-button-style button-size' data-file-info='{{item}}' catchtap='saveToPersion' hidden='{{data.isShowSaveMenu?false:true}}'>
+                        <image src="./images/save-to.png" />
+                    </button> -->
+                        <!-- <button class='clear-button-style button-size' data-file-info='{{item}}' catchtap="onShareButtonClick" open-type="share" wx:if="{{activeIndex > 1}}">
+                        <image style='float:none;' src="./images/share-disable.png" />
+                    </button> -->
+
+                    </view>
+                </view>
+
+                <!--可以分享  -->
+                <view class='share-view' wx:if="{{showShareBtn}}" catchtap='share'>
+                    <button class='share-btn flex-item' data-item="{{item}}" open-type="share">
+                        <image src='/disk/images/icon/share.png' class='share-icon'></image>
+                    </button>
+                </view>
+            </view>
+            <view class="del" bindtap="deleteBrowseRecords" data-item="{{item}}" data-fileInfo='{{item}}' data-index="{{index}}">删除</view>
+        </view>
+
+        <view hidden='{{currentPageIcon}}'>
+            <!-- <view class="loadmore" hidden='{{loadMoreIcon}}'>
+                <view class="loading"></view>
+                <view class="loadmore-tips">正在加载</view>
+            </view> -->
+            <view class="loadmore loadmore-line" hidden='{{ isShowBlankPage || !loadMoreIcon ? true : false }}'>
+                <view class="loadmore-tips loadmore-tips-in-line">没有更多数据 </view>
+            </view>
+        </view>
+    </scroll-view>
+</template>

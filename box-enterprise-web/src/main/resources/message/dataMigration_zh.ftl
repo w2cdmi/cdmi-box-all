@@ -1,0 +1,1 @@
+你收到了来自<strong>${providerName}</strong>的移交文件夹<strong>${nodeName}</strong>

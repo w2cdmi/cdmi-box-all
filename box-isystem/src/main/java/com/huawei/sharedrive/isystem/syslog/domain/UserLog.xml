@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserLog">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="UserLog" type="pw.cdmi.common.log.UserLog" />
+	
+	
+	    <select id="getFilterd" parameterClass="map" resultClass="UserLog">
+        select * from admin_log_0
+        <dynamic prepend="where">
+            <isGreaterEqual prepend="and" property="filter.operateType" compareValue="0">
+            	type = #filter.operateType#
+            </isGreaterEqual>
+            <isNotEmpty  prepend="and" property="filter.admin">
+  				  loginName like concat('%',#filter.admin#,'%') 
+            </isNotEmpty>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createdAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+        <dynamic prepend="order by">
+        	<isNull property="order">
+        		createdAt desc
+        	</isNull>
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getFilterdCount" parameterClass="map" resultClass="java.lang.Integer">
+        select count(id) from admin_log_0
+        <dynamic prepend="where">
+            <isGreaterEqual prepend="and" property="filter.operateType" compareValue="0">
+            	type = #filter.operateType#
+            </isGreaterEqual>
+            <isNotEmpty  prepend="and" property="filter.admin">
+            	loginName like concat('%',#filter.admin#,'%')
+            </isNotEmpty>
+            <isNotNull prepend="and" property="filter.startTime">
+        		createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		createdAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+    </select>
+	
+	
+    <insert id="insert" parameterClass="UserLog" >
+        insert into admin_log_0(id,loginName,userId,type,createdAt,level,clientType,clientDeviceSN,clientVersion,
+        clientAddress,clientOS,clientDeviceName,detail,keyword,appId) 
+        values
+        (#id#,#loginName#,#userId#,#type#,#createdAt#,#level#,#clientType#,#clientDeviceSN#,#clientVersion#,
+        #clientAddress#,#clientOS#,#clientDeviceName#,#detail#,#keyword#,#appId#) 
+    </insert> 
+    
+    <update id="update" parameterClass="UserLog">
+    	update admin_log_0 set detail=#detail#, level=#level#, type=#type# where id =#id#
+    </update>
+</sqlMap>
+

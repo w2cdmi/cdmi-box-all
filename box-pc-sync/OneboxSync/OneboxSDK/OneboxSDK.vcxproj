@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{943EE68F-7A48-4633-AB24-7E3C609583CC}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>OneboxSDK</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)output\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\Build\x86\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;ONEBOX_EXPORTS;ENABLE_UTILITY_STRING;ENABLE_UTILITY_FS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(VS2012_THIRD_PART)/json/include;$(VS2012_THIRD_PART)/openssl/include;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/curl/include;$(VS2012_THIRD_PART)/boost/include;./include;../Common/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(VS2012_THIRD_PART)/json/lib;$(VS2012_THIRD_PART)/openssl/lib;$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/curl/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/log4cpp/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcurl_imp.lib;libjsoncpp_md_d.lib;libeay32.lib;ssleay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;ONEBOX_EXPORTS;ENABLE_UTILITY_STRING;ENABLE_UTILITY_FS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(VS2012_THIRD_PART)/json/include;$(VS2012_THIRD_PART)/openssl/include;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/curl/include;$(VS2012_THIRD_PART)/boost/include;./include;../Common/include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(VS2012_THIRD_PART)/json/lib;$(VS2012_THIRD_PART)/openssl/lib;$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/curl/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/log4cpp/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>libcurl_imp.lib;libjsoncpp_md.lib;libeay32.lib;ssleay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Common\include\CommonDefine.h" />
+    <ClInclude Include="..\Common\include\Configure.h" />
+    <ClInclude Include="..\Common\include\ErrorCode.h" />
+    <ClInclude Include="..\Common\include\OneboxExport.h" />
+    <ClInclude Include="..\Common\include\Token.h" />
+    <ClInclude Include="..\Common\include\Utility.h" />
+    <ClInclude Include="include\CommonValue.h" />
+    <ClInclude Include="include\EmailItem.h" />
+    <ClInclude Include="include\FileItem.h" />
+    <ClInclude Include="include\HttpCbFuns.h" />
+    <ClInclude Include="include\HttpRequest.h" />
+    <ClInclude Include="include\JsonGeneration.h" />
+    <ClInclude Include="include\JsonParser.h" />
+    <ClInclude Include="include\PageParam.h" />
+    <ClInclude Include="include\RestClient.h" />
+    <ClInclude Include="include\ServerSysConfig.h" />
+    <ClInclude Include="include\ShareLinkNode.h" />
+    <ClInclude Include="include\ShareNode.h" />
+    <ClInclude Include="include\ShareUserInfo.h" />
+    <ClInclude Include="include\TeamspaceInfo.h" />
+    <ClInclude Include="include\UpdateInfo.h" />
+    <ClInclude Include="include\UploadInfo.h" />
+    <ClInclude Include="include\UserInfo.h" />
+    <ClInclude Include="include\Util.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\Common\source\Utility.cpp" />
+    <ClCompile Include="src\HttpCbFuns.cpp" />
+    <ClCompile Include="src\HttpRequest.cpp" />
+    <ClCompile Include="src\JsonGeneration.cpp" />
+    <ClCompile Include="src\JsonParser.cpp" />
+    <ClCompile Include="src\RestClient.cpp" />
+    <ClCompile Include="src\RestClient_more.cpp" />
+    <ClCompile Include="src\Util.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="include\JsonParser.inl" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

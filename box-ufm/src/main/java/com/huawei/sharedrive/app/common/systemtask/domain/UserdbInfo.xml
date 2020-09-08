@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserDBInfo">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="UserDBInfo" type="com.huawei.sharedrive.app.common.systemtask.domain.UserDBInfo" />
+
+    <select id="getAll" resultClass="UserDBInfo">
+        select * from userdb_info;
+    </select>
+  
+
+</sqlMap>
+

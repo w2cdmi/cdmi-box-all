@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="362,248" sizebox="4,4,6,6" caption="0,0,0,30">
+	<Include source="Default.xml" />
+	<VerticalLayout width="362" height="248" bkcolor="#FFFFFFFF">
+		<HorizontalLayout width="362" height="30" padding="0,35,0,0">
+			<Control width="335"/>
+			<Button name="btn_close" width="10" height="10" padding="10,6,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;0,0,10,10&apos;" hotimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;11,0,21,10&apos;" pushedimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;22,0,32,10&apos;" />
+		</HorizontalLayout>
+		<VerticalLayout height="100" padding="30,30,0,0" vscrollbar="true">
+			<RichEdit name="upgrade_msg" width="312" height="100" valign="center" enabled="false" maxheight="100" maxwidth="312"  textcolor="#FF000000"  showhtml="true" disabledtextcolor="#FFA7A6AA" />
+		</VerticalLayout>
+		<HorizontalLayout height="42" padding="0,10,0,0">
+			<Control width="160" height="30" />
+			<Button name="btn_upgrade" text="升级" width="80" height="30" font="0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\Image\ic_button_color.png&apos; source=&apos;0,0,80,30&apos;" hotimage="file=&apos;..\Image\ic_button_color.png&apos; source=&apos;0,40,80,70&apos;" pushedimage="file=&apos;..\Image\ic_button_color.png&apos; source=&apos;0,80,80,110&apos;" />
+			<Button name="btn_cancel" text="取消" width="80" height="30" font="0" padding="14,0,0,0" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\Image\ic_button_white_nor.png&apos; source=&apos;0,0,66,30&apos;" hotimage="file=&apos;..\Image\ic_button_white_nor.png&apos; source=&apos;0,40,66,70&apos;" pushedimage="file=&apos;..\Image\ic_button_white_nor.png&apos; source=&apos;0,80,66,110&apos;" />
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

@@ -1,0 +1,37 @@
+@@srcFolderId
+209
+
+@@normal
+{ 
+   "destParent":0, 
+   "destOwnerId":46, 
+   "autoRename":true
+}
+
+@@noSuchDest
+{ 
+   "destParent":99999, 
+   "destOwnerId":46, 
+   "autoRename":true
+}
+
+@@repeatName
+{ 
+   "destParent":210, 
+   "destOwnerId":46, 
+   "autoRename":false
+}
+
+@@subFolderConflict
+{ 
+   "destParent":221, 
+   "destOwnerId":46, 
+   "autoRename":true
+}
+
+@@sameParentConflict
+{
+   "destParent":210, 
+   "destOwnerId":46, 
+   "autoRename":true
+}

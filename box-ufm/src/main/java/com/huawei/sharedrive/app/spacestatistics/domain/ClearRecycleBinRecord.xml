@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ClearRecycleBinRecord">
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="ClearRecycleBinRecord"
+		type="com.huawei.sharedrive.app.spacestatistics.domain.ClearRecycleBinRecord" />
+
+	<insert id="insert" parameterClass="ClearRecycleBinRecord">
+		insert into
+		clear_recyclebin_record(ownedBy,accountId,createdAt)
+		values(#ownedBy#,#accountId#,#createdAt#);
+	</insert>
+
+	<delete id="delete" parameterClass="ClearRecycleBinRecord">
+     <![CDATA[ 
+         delete from clear_recyclebin_record where ownedBy=#ownedBy# and createdAt <= #createdAt#;
+     ]]>
+	</delete>
+
+	<select id="getAccountIds" resultClass="Long">
+		select
+		distinct(accountId) from clear_recyclebin_record;
+	</select>
+
+	<select id="getRecords" resultClass="ClearRecycleBinRecord">
+     <![CDATA[ 
+        select * from  clear_recyclebin_record  where createdAt in (select max(createdAt) from clear_recyclebin_record group by ownedBy) group by ownedBy;
+      ]]>
+	</select>
+
+</sqlMap>    

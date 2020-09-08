@@ -1,0 +1,12 @@
+<rules>
+    <rule>
+        <namespace>Account</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+        <namespace>AccountAccessKey</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+ </rules>

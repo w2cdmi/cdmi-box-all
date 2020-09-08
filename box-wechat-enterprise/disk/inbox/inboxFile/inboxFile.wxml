@@ -1,0 +1,66 @@
+<!--disk/inbox/file/file.wxml-->
+<view class='page'>
+    <!--面包屑  -->
+    <view scroll-x="{{true}}" class='crumbs-list'>
+        <view class='crumb-item'>
+            <view class='flex-item'>
+                <text>{{folderName}}</text>
+                <image src='/disk/images/arrow1.png' class='crumb-arrow-icon'></image>
+            </view>
+        </view>
+    </view>
+
+    <!--文件列表  -->
+    <view wx:if="{{!showBlank}}">
+        <scroll-view scroll-y="{{true}}" class='scroll-view-height' bindscrolltolower='getMoreList'>
+            <view scroll-x="{{true}}" class='scroll-view-width' wx:for="{{fileList}}" wx:key="*this" bindtap='preViewImageOrVideo' data-item='{{item}}'>
+                <view class='folder-inline'>
+                    <view class='folder-item'>
+                        <view class='folder-item-flex'>
+                            <view>
+                                <image src='{{item.icon}}' class='folder-icon'></image>
+                            </view>
+                            <view>
+                                <view>
+                                    <view class='folder-name'>{{item.name}}</view>
+                                </view>
+                                <view class='folder-info flex-item'>
+                                    <view class='menderName'><text>{{item.menderName}}</text> | </view>
+                                    <view><text>{{item.fileSize}}</text> |</view>
+                                    <view><text>{{item.modifiedTime}}</text></view>
+                                </view>
+                            </view>
+                        </view>
+                        <view class='dept-more' data-folder-item='{{item}}' catchtap='setModalStatus'>
+                            <image class='plug_icon' src='/disk/images/depart-plug.png'></image>
+                        </view>
+                    </view>
+                </view>
+            </view>
+
+        </scroll-view>
+    </view>
+
+    <!--三个原点唤起的弹出层  -->
+    <view class="drawer_screen" bindtap="cancelModalStatus" wx:if="{{showModalStatus}}"></view>
+    <view animation="{{animationData}}" class="drawer_attr_box" wx:if="{{showModalStatus}}">
+        <view class='margin-bottom'>
+            <view bindtap="saveFileItem" class='cancel_view draw_view_content_comm'>另存为...</view>
+            <view bindtap="deleteFileItem" class='cancel_view draw_view_content_comm'>删除</view>
+        </view>
+        <view bindtap="cancelModalStatus" class='cancel_view draw_view_content_comm'> 取消</view>
+    </view>
+
+    <!--空白文件  -->
+    <view class='blank-file' wx:if="{{showBlank}}">
+        <view class='blank-item'>
+            <image src='/disk/images/file-black.png' class='blank-image'></image>
+        </view>
+        <view class='blank-item'>
+            <text class='blank-text'>暂无文件</text>
+        </view>
+    </view>
+
+    <button class='add-btn' open-type='share'>继续收集</button>
+</view>
+

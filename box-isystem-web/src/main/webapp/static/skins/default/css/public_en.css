@@ -1,0 +1,18 @@
+/**
+ * @public style
+ */
+
+/* new bootstrap start ============================================================*/
+.sys-content-en .form-horizontal .control-label{width:285px;}
+.sys-content-en .form-horizontal .controls{margin-left:300px;*margin-left: 0;}
+.sys-content-en .form-horizontal .controls:first-child { *padding-left: 300px;}
+
+.pop-content-en .form-horizontal .control-label{width:150px;}
+.pop-content-en .form-horizontal .controls{margin-left:170px;*margin-left: 0;}
+.pop-content-en .form-horizontal .controls:first-child {*padding-left: 200px;}
+
+.sys-content .form-con .form-left-en{ width:47%;}
+.sys-content .form-con .form-right-en{ width:53%;}
+.form-horizontal .form-right-en .control-label{ width:230px;}
+.form-horizontal .form-right-en .controls{ margin-left:250px;*margin-left: 0;}
+.form-horizontal .form-right-en .controls:first-child { *padding-left: 250px;}

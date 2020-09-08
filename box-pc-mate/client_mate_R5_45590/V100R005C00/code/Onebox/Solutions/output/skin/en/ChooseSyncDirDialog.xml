@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="600,300" caption="0,0,0,42" mininfo="600,300" bktrans="true" roundcorner="5,5,5,5">
+	<Include source="Default.xml" />
+	<VerticalLayout bkcolor="#FFFFFFFF" borderround="5,5,5,5">
+		<HorizontalLayout height="41" bkcolor="#FFFAFAFA" borderround="5,5,5,5">
+			<Label name="ChooseSyncDirFrame_Title"  text="设置同步目录" width="530" height="41" align="left" padding="20,0,0,0" textcolor="#FF000000" font="14"/>
+			<Button name="ChooseSyncDirFrame_Close" width="20" height="20" padding="10,10,0,0" align="center" normalimage="file=&apos;..\Image\ic_popup_delete.png&apos; source=&apos;0,0,20,20&apos;" hotimage="file=&apos;..\Image\ic_popup_delete.png&apos; source=&apos;0,30,20,50&apos;" pushedimage="file=&apos;..\Image\ic_popup_delete.png&apos; source=&apos;0,60,20,80&apos;" />
+		</HorizontalLayout>
+		<Control height="1" bkcolor="#FFD9D9D9" />
+		<VerticalLayout name="TextLayout" width="560" height="218" bkcolor="#FFFFFFFF" padding="20,20,0,0">
+			<VerticalLayout  height="152" >
+				<RichEdit name="ChooseSyncDirFrame_Notice" text="该目录下的文件在多个终端保持同步，其中一个终端的文件更新，其他终端对应的文件自动更新（包括删除）。" width="560" height="50" maxwidth="560" maxheight="100" textcolor="#FF000000" enabled="false" font="0"/>
+				<Button name="ChooseSyncDirFrame_Help" text="了解什么是同步？" width="220" height="20" padding="0,15,0,0" align="left" textcolor="#FF008BE8" font="0"/>
+				<HorizontalLayout height="30" padding="0,10,0,0">
+					<Edit name="ChooseSyncDirFrame_Path"  width="481" height="30"  textcolor="#FF000000" bkimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'" font="0"/>
+					<ScaleIconButton name="ChooseSyncDirFrame_select" text="选择"  minwidth="80" height="30"  textcolor="#FF000000" padding="-1,0,0,0" textpadding="25,0,15,0" font="0" align="left" valign="vcenter" normalimage="file=&apos;..\Image\ic_popup_input_rightbtn.png&apos; source=&apos;0,0,40,30&apos; corner=&apos;0,0,5,5&apos;" />
+				</HorizontalLayout>
+				<Label name="ChooseSyncDirFrame_Info" text="同步目录设置后不可修改" width="220" height="20" padding="0,10,0,0" textcolor="#FF000000"  font="2"/>
+			</VerticalLayout>
+			<HorizontalLayout height="30" padding="390,30,0,0" borderround="8,8,8,8">
+				<ScaleIconButton name="ChooseSyncDirFrame_OK" text="确定"   minwidth="80" height="30"  textcolor="#FFFFFFFF" textpadding="25,0,15,0" font="0" align="left" valign="vcenter" normalimage="file=&apos;..\Image\ic_button_color.png&apos; source=&apos;0,0,80,30&apos;" hotimage="file=&apos;..\Image\ic_button_color.png&apos; source=&apos;0,40,80,70&apos;" pushedimage="file=&apos;..\Image\ic_button_color.png&apos; source=&apos;0,80,80,110&apos;" />
+				<ScaleIconButton name="ChooseSyncDirFrame_cancel" text="取消" minwidth="80" height="30" textcolor="#FF000000" textpadding="25,0,15,0" disabledtextcolor="#FFA7A6AA"  padding="10,0,0,0" font="0" align="left" valign="vcenter" normalimage="file=&apos;..\Image\ic_button_white_nor.png&apos; source=&apos;0,0,66,30&apos;" hotimage="file=&apos;..\Image\ic_button_white_nor.png&apos; source=&apos;0,40,66,70&apos;" pushedimage="file=&apos;..\Image\ic_button_white_nor.png&apos; source=&apos;0,80,66,110&apos;" />             
+			</HorizontalLayout>
+		</VerticalLayout>
+	</VerticalLayout>
+</Window>

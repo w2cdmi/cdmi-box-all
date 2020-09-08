@@ -1,0 +1,80 @@
+<rules>
+    <rule>
+        <namespace>INodeACL</namespace>
+        <shardingExpression>ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>INodeACL</namespace>
+        <shardingExpression>ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+    <rule>
+        <sqlmap>INodeACL.getAll</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeACL.getAll</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+    <rule>
+        <sqlmap>INodeACL.getAllNoLink</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeACL.getAllNoLink</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>INodeACL.getByResource</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeACL.getByResource</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+    <rule>
+        <sqlmap>INodeACL.getByResourceNoLink</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeACL.getByResourceNoLink</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>INodeACL.getByResourceAndUser</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>INodeACL.getByResourceAndUser</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+
+     <rule>
+        <sqlmap>INodeACL.getUserAllINodeACLOfCloudUserID</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    
+    <rule>
+        <sqlmap>INodeACL.getUserAllINodeACLOfCloudUserID</sqlmap>
+        <shardingExpression>filter.ownedBy % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+</rules>

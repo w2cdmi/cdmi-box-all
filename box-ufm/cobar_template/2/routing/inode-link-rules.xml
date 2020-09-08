@@ -1,0 +1,22 @@
+<rules>
+    <rule>
+        <sqlmap>INodeLink.deleteALL</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1,partition2</shards>
+    </rule>
+    <rule>
+        <sqlmap>INodeLink.deleteByOwner</sqlmap>
+        <shardingExpression></shardingExpression>
+        <shards>partition1,partition2</shards>
+    </rule>
+    <rule>
+        <namespace>INodeLink</namespace>
+        <shardingExpression>hash.apply(id) % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>INodeLink</namespace>
+        <shardingExpression>hash.apply(id) % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+</rules>

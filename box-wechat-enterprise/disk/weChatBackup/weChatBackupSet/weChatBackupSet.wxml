@@ -1,0 +1,58 @@
+<view class='page'>
+    <view class='wechat-backup-set-content'>
+        <view class='wechat-group-data-choose'>
+            <view class='group-data-choose {{wechatBackupDataChoose=="chooseBackupGroup"?"group-data-choose-active":""}}' data-type="chooseBackupGroup" bindtap='clickTab'>选择备份群</view>
+            <view class='group-data-choose {{wechatBackupDataChoose=="chooseDataType"?"group-data-choose-active":""}}' data-type="chooseDataType" bindtap='clickTab'>选择数据类型</view>
+        </view>
+        <view class='wechat-backup-set-detail'>
+            <!-- 选择备份群 -->
+            <view class='backup-group-detail' hidden='{{isShowBackupGroup}}'>
+                <view class='backup-group-title'>由于微信限制，只能选择最近有消息的群组</view>
+                <scroll-view scroll-y class='scroll-y-style'>
+                    <checkbox-group bindchange="listenCheckboxChange">
+                            <label class='backup-group-list border-bottom file-group view-bg' wx:for="{{listGroupsNameData}}" wx:key="*this">
+                                <checkbox bindtap='' value='{{item.name}}' class="checkbox-item" checked='{{item.checked}}'></checkbox>
+                                <view>
+                                    <image class="img-icon" src='../../images/group-head.png'></image>
+                                </view>
+                                <view class='file-info cell_2_body_content'>
+                                    <label class='coop-name-title'>{{item.name}}</label>
+                                </view>
+                            </label>
+                    </checkbox-group>
+                </scroll-view>
+            </view>
+            <!-- 确定按钮 -->
+            <view class='confirm-button-content' hidden='{{isShowBackupGroup}}'>
+                <button class='clear-button-style sure-button' bindtap='confirmAddWxBackupGroup'>确定</button>
+            </view>
+            <!-- 选着数据类型 -->
+            <view class='data-type-detail' hidden='{{isShowDataType}}'>
+                <view class='backup-bg'></view>
+                <view class='person-chat'>
+                    <view class='per-group-title'>个人聊天</view>
+                    <checkbox-group>
+                        <view class='choose-data-type file-group'>
+                            <view class='picture-video-document' wx:for="{{perDataType}}" wx:key="*this">
+                                <checkbox class='data-checkbox-item' bindtap='listenPerDataCheckChange' data-item="{{item}}" value='{{item.value}}' checked="{{item.checked}}"></checkbox>
+                                <view>{{item.name}}</view>
+                            </view>
+                        </view>
+                    </checkbox-group>
+                </view>
+                <view class='backup-bg'></view>
+                <view class='group-chat'>
+                    <view class='per-group-title'>群组聊天</view>
+                    <checkbox-group>
+                        <view class='choose-data-type file-group'>
+                            <view class='picture-video-document' wx:for="{{groupDataType}}" wx:key="*this">
+                                <checkbox class='data-checkbox-item' data-item="{{item}}" value='{{item.value}}' checked="{{item.checked}}" bindtap='listenGroupDataCheckChange'></checkbox>
+                                <view>{{item.name}}</view>
+                            </view>
+                        </view>
+                    </checkbox-group>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

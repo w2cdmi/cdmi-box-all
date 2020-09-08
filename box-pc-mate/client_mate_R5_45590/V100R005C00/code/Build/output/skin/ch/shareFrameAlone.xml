@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="600,400" caption="0,0,0,-1" mininfo="600,400" maxinfo="600,620" roundcorner="5,5">
+	<Include source="Default.xml" />  
+	<VerticalLayout bkcolor="#FFFAFAFA" >
+		<HorizontalLayout height="42">
+			<Label name="shareFrame_title" text="分享" endellipsis="true" textcolor="#FF000000" valign="vcenter" width="250" padding="20,0" font="3" />
+			<Control />
+			<Button name="btn_close" width="20" height="20" padding="0,11" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" normalimage="file='..\image\ic_popup_delete.png' source='0,0,20,20'" hotimage="file='..\image\ic_popup_delete.png' source='0,30,20,50'" pushedimage="file='..\image\ic_popup_delete.png' source='0,60,20,80'" />
+		</HorizontalLayout>
+		<Label height="1" bkcolor="#FFD9D9D9"/>
+		<Control height="20" />	
+		<HorizontalLayout height="20" padding="20,0,20,0" >
+			<Label name="shareFrame_text" text="分享给指定的人" width="130" textcolor="#FF000000"/>
+			<Control />
+			<Button name="shareFrame_ShareLink"  padding="0,0,0,0" tooltip="分享外链" text="通过链接分享给任何人" textpadding="20,0,0,0"  width="145"  normalimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50' dest='0,0,20,20'" hotimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50' dest='0,0,20,20'" disabledimage="file='..\Image\ic_toolmenu_link.png' source='0,0,20,20' dest='0,0,20,20'" textcolor="#FF008BE8"/>					
+		</HorizontalLayout>
+		<Control height="15"/>
+		<HorizontalLayout width="560" height="160" padding="20,0,0,0">
+			<List name="shareFrame_sharedUsersList" header="hidden" droptarget="true" inset="1,1,1,1" itemshowhtml="true" bordersize="1" borderround="3,3" vscrollbar="true" hscrollbar="true"  bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF" itembkImage="file='..\img\list_bg.png' source='0,0,1,32'" itemalternatebkImage="file='..\img\list_bg.png' source='1,0,2,32'" itemhotImage="file='..\img\list_bg.png' source='2,0,3,32'" itemselectedImage="file='..\img\list_bg.png' source='3,0,4,32'">
+			</List>
+		</HorizontalLayout>		
+		<Control height="10"/>
+		<VerticalLayout name="shareFrame_user_Layout" width="560" height="31" padding="20,0,0,0" bordersize="1" borderround="3,3"  bordercolor="#FFDDDDDD">
+			<UserListControl name="shareFrame_tileLayout_listView" visible="false" mouse="true"/>
+			<Edit name="shareFrame_users" text="邀请分享人" height="28" itemfont="2" maxchar="2000" padding="1,1,1,1"  bkimage="file=..\img\search_bg.png source=0,0,184,26 corner=1,1,1,1" bkcolor="#FFFFFFFF" textpadding="4,0" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" />
+		</VerticalLayout>     
+		<Control height="5"/>
+		<HorizontalLayout name="shareFrame_menulayout" width="560" height="30" padding="20,0,0,0" visible="false">		
+			<Combo name="shareFrame_menu" text="浏览者" pos="0,0,0,0" width="560" height="30" bordersize="1" borderround="3,3" bordercolor="#FFDDDDDD" itemendellipsis="true" itemalign="left" itemfont="2" itemtextpadding="10,2,25,2" bkimage="file='..\Image\ic_tab_head_arrowdown.png' source='0,0,6,6' dest='544,11,550,17'" textcolor="#FF000000" bkcolor="#FFFFFFFF" />
+		</HorizontalLayout>
+		<HorizontalLayout  name="shareFrame_messagelayout" width="560" height="80" padding="20,10,0,0" visible="false">
+			<RichEdit name="shareFrame_message" inset="8,3" text="添加消息，邀请时发送给分享人" height="70" bordersize="1" borderround="3,3" bordercolor="#FFDDDDDD" textpadding="8,0,0,0" multiline="true" maxchar="2000" autovscroll="true" vscrollbar="true"  bkimage="file=..\img\search_bg.png source=0,0,184,26 corner=1,1,1,1"  textcolor="#99999999" font="2" />
+		</HorizontalLayout>
+		<Control />
+		<HorizontalLayout width="560" height="30" padding="20,0,0,0">
+			<ScaleIconButton name="shareFrame_deleteall" text="删除分享人" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110' corner='3,3,3,3'" textpadding="20,0,20,0" font="2" textcolor="#FF000000" />
+			<Control width="10" />	
+			<ScaleIconButton name="shareFrame_copyall" text="复制分享人" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110' corner='3,3,3,3'" textpadding="20,0,20,0" font="2" textcolor="#FF000000" />
+			<Control />			
+			<ScaleIconButton name="shareFrame_invite" text="邀请"  bkimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" textpadding="20,0,20,0" font="2" textcolor="#FFFFFFFF" visible="false" />
+			<Control width="10"/>		
+			<ScaleIconButton name="shareFrame_close" text="关闭" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110' corner='3,3,3,3'" textpadding="20,0,20,0" font="2" textcolor="#FF000000" />
+			<ScaleIconButton name="shareFrame_cancel" text="取消" normalimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'" hotimage="file='..\image\ic_button_white_nor.png' source='0,40,66,70' corner='3,3,3,3'" pushedimage="file='..\image\ic_button_white_nor.png' source='0,80,66,110' corner='3,3,3,3'" textpadding="20,0,20,0" font="2" textcolor="#FF000000" visible="false" />
+		</HorizontalLayout>
+		<Control height="20" />
+		<List name="shareFrame_listUserView" float="true" font="12" pos="20,298,580,413" visible="false" header="hidden" bordersize="1" bordercolor="#FFDDDDDD" borderround="3,3"  bkcolor="#FFFFFFFF" vscrollbar="true" hscrollbar="true" itemfont="12"/>
+	</VerticalLayout>
+</Window>

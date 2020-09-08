@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+	default-autowire="byName">
+    
+    <bean id="managerLockedAlarm" class="com.huawei.sharedrive.isystem.core.alarm.ManagerLockedAlarm">
+    	<constructor-arg index="0" value="0x100B02230080L" />
+    	<constructor-arg index="1" value="1" />
+    	<constructor-arg index="2" value="2" />
+    	<constructor-arg index="3" value="${alarm.service.name}" />
+    </bean>
+    
+    <bean id="mailFailedAlarm" class="com.huawei.sharedrive.isystem.core.alarm.MailFailedAlarm" scope="prototype">
+    	<constructor-arg index="0" value="0xB02230072L" />
+    	<constructor-arg index="1" value="0" />
+    	<constructor-arg index="2" value="6" />
+    	<constructor-arg index="3" value="${alarm.service.name}" />
+    </bean>
+    
+    <bean id="alarmHelper" class="com.huawei.sharedrive.common.alarm.AlarmHelper">     
+    	<property name="supportAlarm" value="${alarm.support}" />
+    	<property name="ismIp" value="${alarm.ism.ip}" />
+    	<property name="ismPort" value="${alarm.ism.port}" />
+    	<property name="cacheSupported" value="${cache.supported}" />
+    	<property name="cacheClient" ref="isystemCacheClient" />
+    </bean>
+</beans>

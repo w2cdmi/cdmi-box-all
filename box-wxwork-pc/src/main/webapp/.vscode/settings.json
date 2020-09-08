@@ -1,0 +1,36 @@
+{
+    "deploy": {
+        "packages": [
+            {
+                "name": "Version 2.3.4",
+                "description": "Package version 2.3.4",
+                "files": [
+                    "**/*.*"
+                ],
+                "exclude": [
+                    "tests/**",
+                    "**/*.json"
+                ],
+                "deployOnSave": true
+            }
+        ],
+        "targets": [
+            {
+                "type": "sftp",
+                "name": "jmapi",
+                "description": "A SFTP folder",
+                "dir": "/opt/tomcat_web/webapps/enterprise/",
+                "host": "114.115.212.88",
+                "port": 22,
+                "user": "root",
+                "privateKey": "C:\\Users\\Taylor\\Desktop\\hcloud-hb-wilson-root.ppk",
+                "mappings": [
+                    {
+                        "source": "d:/WEB/storbox-wxwork-pc/src/main/webapp/",
+                        "target": "/opt/tomcat_web/webapps/enterprise/"
+                    }
+                ]
+            }
+        ]
+    }
+}

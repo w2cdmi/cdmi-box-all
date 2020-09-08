@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserImage">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UserImage"
+		type="com.huawei.sharedrive.uam.user.domain.UserImage" />
+
+	<resultMap id="resultMap.UserImage" class="UserImage">
+		<result column="userId" property="userId" />
+		<result column="accountId" property="accountId" />
+		<result column="userImage" property="userImage" jdbcType="BLOB" javaType="byte"
+			typeHandler="com.ibatis.sqlmap.engine.type.BlobTypeHandlerCallback" />
+		<result column="imageFormatName" property="imageFormatName" />
+	</resultMap>
+	
+	<insert id="insert" parameterClass="UserImage">
+        insert into user_image$tableSuffix$(userId,accountId,userImage,imageFormatName) 
+        values 
+        (#userId#,#accountId#,#userImage#,#imageFormatName#)
+    </insert>
+
+	<update id="update" parameterClass="UserImage">
+		update user_image$tableSuffix$ set
+		userImage=#userImage#,imageFormatName=#imageFormatName# where userId=#userId#
+	</update>
+
+	<select id="get" resultClass="UserImage" parameterClass="UserImage">
+		select * from user_image$tableSuffix$ where userId = #userId# and accountId = #accountId#
+	</select>
+
+	<select id="getUid" resultClass="int" parameterClass="UserImage">
+		select count(userId) from user_image$tableSuffix$ where userId = #userId#
+	</select>
+
+</sqlMap>
+

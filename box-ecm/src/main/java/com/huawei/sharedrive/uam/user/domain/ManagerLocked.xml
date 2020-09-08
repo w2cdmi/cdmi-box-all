@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ManagerLocked">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="ManagerLocked" type="pw.cdmi.common.domain.ManagerLocked" />
+	
+	<select id="getForUpdate" parameterClass="String" resultClass="ManagerLocked">
+    	<![CDATA[
+        select * from manager_locked 
+        where loginName=#loginName#
+        ]]>
+    </select>
+    
+    <insert id="insert" parameterClass="ManagerLocked">
+        <![CDATA[
+        insert into manager_locked(loginName,createdAt,lockedAt,loginFailTimes) 
+        values 
+        (#loginName#,#createdAt#,#lockedAt#,#loginFailTimes#)
+        ]]>
+    </insert>
+    
+    <update id="updateFailTime" parameterClass="ManagerLocked">
+        <![CDATA[
+        update manager_locked
+        set loginFailTimes=loginFailTimes + 1
+        where loginName=#loginName#
+        ]]>
+    </update>
+    
+    <update id="lock" parameterClass="ManagerLocked">
+        <![CDATA[
+        update manager_locked
+        set lockedAt=#lockedAt#
+        where loginName=#loginName#
+        ]]>
+    </update>
+    
+    <delete id="delete" parameterClass="String">
+        <![CDATA[
+        delete from manager_locked
+        where loginName=#loginName#
+        ]]>
+    </delete>
+</sqlMap>
+

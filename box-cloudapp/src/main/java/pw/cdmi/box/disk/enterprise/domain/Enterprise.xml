@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Enterprise">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="Enterprise" type="pw.cdmi.common.domain.enterprise.Enterprise" />
+	<select id="listEnterprise" resultClass="Enterprise">
+    	<![CDATA[
+    	select * from enterprise;
+        ]]>
+	</select>
+	<select id="getByDomainName" parameterClass="String" resultClass="Enterprise">
+    	<![CDATA[
+    	select * from enterprise where domainName=#value#;
+        ]]>
+	</select>
+	<select id="getById" parameterClass="long" resultClass="Enterprise">
+    	<![CDATA[
+    	select * from enterprise where id=#enterpriseId#;
+        ]]>
+	</select>
+	<select id="getByName" parameterClass="String" resultClass="Enterprise">
+		<![CDATA[
+    	select * from enterprise where name=#name#;
+        ]]>
+	</select>
+</sqlMap>
+

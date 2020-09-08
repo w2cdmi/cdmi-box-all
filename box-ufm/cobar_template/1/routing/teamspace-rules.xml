@@ -1,0 +1,27 @@
+<rules>
+    <rule>
+    	<!-- SINGLE_PARTITION -->
+        <namespace>TeamRole</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+    	<!-- SINGLE_PARTITION -->
+        <namespace>TeamSpace</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+    	<!-- SINGLE_PARTITION -->
+        <namespace>TeamSpaceMemberships</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+    	<!-- SINGLE_PARTITION -->
+        <namespace>ResourceRole</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    
+</rules>

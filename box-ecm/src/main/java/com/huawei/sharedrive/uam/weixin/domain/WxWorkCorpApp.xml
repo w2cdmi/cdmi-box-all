@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="WxWorkCorpApp">
+    <typeAlias alias="WxWorkCorpApp" type="com.huawei.sharedrive.uam.weixin.domain.WxWorkCorpApp" />
+
+    <insert id="insert" parameterClass="WxWorkCorpApp">
+        INSERT INTO wxwork_corp_app(corpId, suiteId, appId, agentId, `name`, roundLogoUrl, squareLogoUrl,createdAt,modifiedAt)
+        VALUES (#corpId#, #suiteId#, #appId#, #agentId#, #name#, #roundLogoUrl#, #squareLogoUrl#,#createdAt#,#modifiedAt#)
+    </insert>
+
+    <update id="update" parameterClass="WxWorkCorpApp">
+        UPDATE wxwork_corp_app SET `name`=#name#, roundLogoUrl=#roundLogoUrl#, squareLogoUrl=#squareLogoUrl#, `modifiedAt`=#modifiedAt#
+        WHERE corpId=#corpId# AND suiteId=#suiteId# AND appId=#appId#
+    </update>
+
+    <delete id="delete" parameterClass="WxWorkCorpApp">
+        DELETE FROM wxwork_corp_app WHERE corpId=#corpId# AND suiteId=#suiteId# AND appId=#appId#
+    </delete>
+
+    <delete id="deleteByCorpIdAndSuiteId" parameterClass="map">
+        DELETE FROM wxwork_corp_app WHERE corpId=#corpId# AND suiteId=#suiteId#
+    </delete>
+
+    <select id="getByCorpId" parameterClass="String" resultClass="WxWorkCorpApp">
+        select * from wxwork_corp_app where corpId=#corpId#
+    </select>
+
+    <select id="getByCorpIdAndSuiteId" parameterClass="map" resultClass="WxWorkCorpApp">
+        select * from wxwork_corp_app where corpId=#corpId# AND suiteId=#suiteId#;
+    </select>
+
+    <select id="getByCorpIdAndSuiteIdAndAppId" parameterClass="map" resultClass="WxWorkCorpApp">
+        select * from wxwork_corp_app where corpId=#corpId# AND suiteId=#suiteId# AND appId=#appId#;
+    </select>
+
+    <select id="getByCorpIdAndAgentId" parameterClass="map" resultClass="WxWorkCorpApp">
+        select * from wxwork_corp_app where corpId=#corpId# AND agentId=#agentId#;
+    </select>
+</sqlMap>
+

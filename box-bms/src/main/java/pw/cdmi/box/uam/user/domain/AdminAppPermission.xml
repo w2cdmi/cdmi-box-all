@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AdminAppPermission">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="AdminAppPermission" type="pw.cdmi.box.uam.user.domain.AdminAppPermission" />
+    
+    <resultMap id="resultMap.AdminAppPermission" class="AdminAppPermission">
+        <result column="adminId"               property="adminId" />
+        <result column="appId"               property="appId" />
+    </resultMap>
+    
+    <select id="getAppByAdminId" parameterClass="Long"   resultClass="String" >
+        select appId from authapp_permission where adminId=#value#
+    </select>
+    
+    <select id="getAdminByAppId" parameterClass="String"   resultClass="Long">
+        select adminId from authapp_permission where appId=#value#
+    </select>
+
+    <insert id="insert" parameterClass="AdminAppPermission">
+        insert into authapp_permission(adminId,appId) 
+        values 
+        (#adminId#,#appId#)
+    </insert>
+   
+    <delete id="delete" parameterClass="map">
+        delete from authapp_permission where appId=#appId# and adminId=#adminId#
+    </delete>
+    
+    <delete id="deleteByAdminId" parameterClass="Long">
+        delete from authapp_permission where adminId=#value#
+    </delete>
+
+</sqlMap>
+

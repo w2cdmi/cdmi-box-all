@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window >
+	<FileVersionListContainerElement name="fileVersion_listItem" >
+		<VerticalLayout height="40" mousechild="true">
+			<HorizontalLayout height="1" />
+			<HorizontalLayout>
+				<HorizontalLayout width="60">
+					<Label name="fileVersion_item_version" align="center" textcolor="#FFFFFFFF" bkimage="file='..\Image\ic_popup_view_version.png' source='0,0,40,20'" height="20"  padding="10,10,0,10" font="1" />
+				</HorizontalLayout>
+				<HorizontalLayout width="150">
+					<Label name="fileVersion_item_time" align="left"  font="0" textcolor="#FF000000" padding="0,6,0,0"/>
+				</HorizontalLayout>
+				<HorizontalLayout width="150" padding="10,0">
+					<Label name="fileVersion_item_size" font="0" textcolor="#FF666666" align="right" padding="0,6,0,0"/>
+				</HorizontalLayout>
+				<Button name="fileVersion_item_down" width="20" height="20" tooltip="下载文件" padding="90,10,0,10" showhtml="true" normalimage="file='..\Image\ic_oper_download.png' source='0,0,20,20'" hotimage="file='..\Image\ic_oper_download.png' source='0,30,20,50'"  disabledimage="file='..\Image\ic_oper_download.png' source='0,60,20,80'"/>
+				<Button name="fileVersion_item_delete" width="20" height="20" tooltip="删除" padding="10,10,0,10"  showhtml="true" normalimage="file='..\Image\ic_oper_delete.png' source='0,0,20,20'" hotimage="file='..\Image\ic_oper_delete.png' source='0,30,20,50'" disabledimage="file='..\Image\ic_oper_delete.png' source='0,60,20,80'"/>
+				<Button name="fileVersion_item_restore" visible="flase" width="20" height="20" tooltip="恢复" padding="10,10,0,10"  showhtml="true" normalimage="file='..\Image\ic_oper_restore.png' source='0,0,20,20'" hotimage="file='..\Image\ic_oper_restore.png' source='0,30,20,50'" disabledimage="file='..\Image\ic_oper_restore.png' source='0,60,20,80'"/>
+			</HorizontalLayout>
+			<HorizontalLayout height="5" />
+			<Control height="1" bkcolor="#FFE1E1E1" />
+		</VerticalLayout>
+	</FileVersionListContainerElement>
+</Window>

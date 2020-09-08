@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CopyExeTime">
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CopyExeTime" type="pw.cdmi.file.engine.mirro.domain.CopyExeTime" />
+
+	<insert id="insert" parameterClass="CopyExeTime">
+		<![CDATA[
+		insert into copyExeTime (copyTaskId,size,exeAgent,startTime,endTime,beginDown,beginWrite,endWrite)
+		 values (#copyTaskId#,#size#,#exeAgent#,#startTime#,#endTime#,#beginDown#,#beginWrite#,#endWrite#)
+		]]>
+	</insert>
+</sqlMap>

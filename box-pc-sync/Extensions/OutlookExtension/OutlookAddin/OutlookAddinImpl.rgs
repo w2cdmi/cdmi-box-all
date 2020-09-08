@@ -1,0 +1,51 @@
+HKCR
+{
+	OneboxOoutlookAddin.1 = s 'OutlookAddinImpl Class'
+	{
+		CLSID = s '{9A329592-15D8-4597-B298-7CB722BDEE5D}'
+	}
+	OneboxOoutlookAddin = s 'OutlookAddinImpl Class'
+	{		
+		CurVer = s 'OneboxOoutlookAddin.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {9A329592-15D8-4597-B298-7CB722BDEE5D} = s 'OutlookAddinImpl Class'
+		{
+			ProgID = s 'OneboxOoutlookAddin.1'
+			VersionIndependentProgID = s 'OneboxOoutlookAddin'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{C21B900D-EA33-4A0D-9DE7-91F898D1B662}'
+			Version = s '1.0'
+		}
+	}
+}
+
+HKCU
+{
+    NoRemove Software
+    {
+        NoRemove Microsoft
+        {
+            NoRemove Office
+            {
+                NoRemove Outlook
+                {
+                    NoRemove Addins
+                    {
+                        OneboxOoutlookAddin
+                        {
+                            val Description = s 'Onebox Addin'
+                            val FriendlyName = s 'Onebox Addin'
+                            val LoadBehavior = d 3
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

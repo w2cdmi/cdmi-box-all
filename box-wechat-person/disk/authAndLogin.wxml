@@ -1,0 +1,9 @@
+<view class='page'>
+<view style='padding-top: 70rpx;display:flex;justify-content:center;'><image src='/disk/images/person-auth.png'></image></view>
+<view class='title'>文件宝-知识管理专家</view>
+<view class='description'>手机拓展储存·微信备份·分享</view>
+<view class='option-group'>
+    <button open-type='getUserInfo' bindgetuserinfo="getUserInfo" class='btn'>微信登录</button>
+    <button class='btn exit-btn' bindtap='exitLogin'>退出</button>
+</view>
+</view>

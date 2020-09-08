@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="GroupMemberships">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="GroupMemberships"
+		type="com.huawei.sharedrive.app.group.domain.GroupMemberships" />
+	<insert id="insert" parameterClass="GroupMemberships">
+    	<![CDATA[
+    	insert into group_memberships_$tableSuffix$(id,groupId,name,userId,userType,username,loginName,groupRole)
+    	values
+    	(#id#,#groupId#,#name#,#userId#,#userType#,#username#,#loginName#,#groupRole#)
+    	]]>
+	</insert>
+
+	<insert id="insertUser" parameterClass="GroupMemberships">
+    	<![CDATA[
+    	insert into group_memberships_r_$tableSuffix$(id,groupId,name,userId,userType,username,loginName,groupRole)
+    	values
+    	(#id#,#groupId#,#name#,#userId#,#userType#,#username#,#loginName#,#groupRole#)
+    	]]>
+	</insert>
+
+	<select id="getMemberList" parameterClass="map" resultClass="GroupMemberships">
+		select * from group_memberships_$filter.tableSuffix$
+		<dynamic prepend="where">
+			<isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.groupId">
+					groupId = #filter.groupId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.name">
+					username like concat(#filter.name#,'%')			
+				</isNotEmpty>
+			</isNotNull>
+			<isNotEmpty prepend="and" property="groupRole">
+					groupRole = #groupRole#
+			</isNotEmpty>
+		</dynamic>
+		<dynamic prepend="order by">
+			<isNotEmpty property="order">
+				$order$
+			</isNotEmpty>
+		</dynamic>
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				$limit.offset$,$limit.length$
+			</isNotNull>
+		</dynamic>
+	</select>
+	
+	<select id="getMemberListCount" parameterClass="map" resultClass="Long">
+		select count(id) from group_memberships_$filter.tableSuffix$
+		<dynamic prepend="where">
+			<isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.groupId">
+					groupId = #filter.groupId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.name">
+					username like concat(#filter.name#,'%')			
+				</isNotEmpty>
+			</isNotNull>
+			<isNotEmpty prepend="and" property="groupRole">
+					groupRole= #groupRole#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id ="getMembership" parameterClass="GroupMemberships" resultClass="GroupMemberships">
+		<![CDATA[
+			select * from group_memberships_$tableSuffix$ where groupId=#groupId# and userId=#userId# and userType=#userType#
+		]]>
+	</select>
+	
+	<select id="getMembershipsByGroupId">
+		select * from group_memberships_$tableSuffix$ where groupId =#groupId#
+	</select>
+
+	<select id="getMaxMembershipsId" resultClass="long"
+		parameterClass="GroupMemberships">
+        <![CDATA[
+        select max(id) from group_memberships_$tableSuffix$ where groupId=#groupId#
+        ]]>
+	</select>
+
+	<select id="getUser" resultClass="GroupMemberships"
+		parameterClass="GroupMemberships">
+        <![CDATA[
+        select * from group_memberships_r_$tableSuffix$ where groupId=#groupId# and userId=#userId#  and userType=#userType#
+        ]]>
+	</select>
+
+	<select id="getUserMembershipsListCount" resultClass="Long" parameterClass="GroupMemberships">
+        select count(id) from group_memberships_r_$tableSuffix$ 
+        <dynamic prepend="where">
+			<isNotEmpty prepend="and" property="userId">
+				userId = #userId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="name">
+				name like concat('%',#name#,'%')			
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="userType">
+				userType = #userType#
+			</isNotEmpty>
+		</dynamic>
+	</select>
+	
+	<select id="getUserMembershipsList" parameterClass="map"
+		resultClass="GroupMemberships">
+		select * from group_memberships_r_$filter.tableSuffix$
+		<dynamic prepend="where">
+			<isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.userId">
+					userId =#filter.userId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.name">
+					name like concat('%',#filter.name#,'%')			
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.userType">
+					userType =#filter.userType#
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="order by ">
+			<isNotNull property="order">
+				$order$
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				$limit.offset$,$limit.length$
+			</isNotNull>
+		</dynamic>
+	</select>
+	
+	<select id="getUserListByUserId" parameterClass="GroupMemberships" resultClass="GroupMemberships">
+		select * from group_memberships_r_$tableSuffix$ where userId =#userId#
+	</select>
+
+	<select id="getMemberListByGroupId" parameterClass="GroupMemberships" resultClass="GroupMemberships">
+		select * from group_memberships_$tableSuffix$ where groupId =#groupId#
+	</select>
+
+	<delete id="delete" parameterClass="GroupMemberships">
+        <![CDATA[
+        	delete from group_memberships_$tableSuffix$ where groupId=#groupId#
+        ]]>
+	</delete>
+
+	<delete id="deleteUser" parameterClass="GroupMemberships">
+        <![CDATA[
+        	delete from group_memberships_r_$tableSuffix$ where groupId=#groupId#
+        ]]>
+	</delete>
+	
+	<delete id="deleteOneUser" parameterClass="GroupMemberships">
+		<![CDATA[
+			delete from group_memberships_r_$tableSuffix$ where userId=#userId# and groupId=#groupId# and userType=#userType#
+		]]>
+	</delete>
+	
+	<delete id="deleteOneShips" parameterClass="GroupMemberships">
+		<![CDATA[
+			delete from group_memberships_$tableSuffix$ where userId=#userId# and groupId=#groupId# and userType=#userType#
+		]]>
+	</delete>
+
+	<update id="updateShipsOfGroupName" parameterClass="GroupMemberships">
+		<![CDATA[
+				update group_memberships_$tableSuffix$ set name=#name#
+				where groupId=#groupId# and userId =#userId#
+			]]>
+	</update>
+	
+	<update id="updateUserShipsOfGroupName" parameterClass="GroupMemberships">
+		<![CDATA[
+				update group_memberships_r_$tableSuffix$ set name=#name#
+				where groupId=#groupId#  and userId =#userId#
+			]]>
+	</update>
+	
+	<update id="updateMemberships" parameterClass="GroupMemberships">
+		<![CDATA[
+			update group_memberships_$tableSuffix$ set groupRole=#groupRole#
+			where id =#id# and groupId=#groupId# and userId=#userId#
+		]]>
+	</update>
+	
+	<update id="updateUser" parameterClass="GroupMemberships">
+		<![CDATA[
+			update group_memberships_r_$tableSuffix$ set groupRole=#groupRole#
+			where id =#id# and groupId=#groupId# and userId=#userId#
+		]]>
+	</update>
+	
+	<update id="updateUserForUsername" parameterClass="GroupMemberships">
+		<![CDATA[
+			update group_memberships_r_$tableSuffix$ set username=#username#,loginName=#loginName# 
+			where userId=#userId# and userType=#userType# and groupId=#groupId#
+		]]>
+	</update>
+	
+		<update id="updateMembershipsForUsername" parameterClass="GroupMemberships">
+		<![CDATA[
+			update group_memberships_$tableSuffix$ set username=#username#,loginName=#loginName# 
+			where  userId=#userId# and userType=#userType# and groupId=#groupId#
+		]]>
+	</update>
+	
+</sqlMap>
+

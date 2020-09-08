@@ -1,0 +1,62 @@
+<rules>
+  <rule>
+    <namespace>Message</namespace>
+    <shardingExpression>receiverId % 1024 &lt; 256</shardingExpression>
+    <shards>partition1</shards>
+  </rule>
+  <rule>
+    <namespace>Message</namespace>
+    <shardingExpression>receiverId % 1024 &gt;= 256 and receiverId % 1024 &lt; 512</shardingExpression>
+    <shards>partition2</shards>
+  </rule>
+  <rule>
+    <namespace>Message</namespace>
+    <shardingExpression>receiverId % 1024 &gt;= 512 and receiverId % 1024 &lt; 768</shardingExpression>
+    <shards>partition3</shards>
+  </rule>
+  <rule>
+    <namespace>Message</namespace>
+    <shardingExpression>receiverId % 1024 &gt;= 768</shardingExpression>
+    <shards>partition4</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.listMessage</sqlmap>
+    <shardingExpression>filter.receiverId % 1024 &lt; 256</shardingExpression>
+    <shards>partition1</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.listMessage</sqlmap>
+    <shardingExpression>filter.receiverId % 1024 &gt;= 256 and filter.receiverId % 1024 &lt; 512</shardingExpression>
+    <shards>partition2</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.listMessage</sqlmap>
+    <shardingExpression>filter.receiverId % 1024 &gt;= 512 and filter.receiverId % 1024 &lt; 768</shardingExpression>
+    <shards>partition3</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.listMessage</sqlmap>
+    <shardingExpression>filter.receiverId % 1024 &gt;= 768</shardingExpression>
+    <shards>partition4</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.cleanExpiredMessage</sqlmap>
+    <shardingExpression>partitionNum==1</shardingExpression>
+    <shards>partition1</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.cleanExpiredMessage</sqlmap>
+    <shardingExpression>partitionNum==2</shardingExpression>
+    <shards>partition2</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.cleanExpiredMessage</sqlmap>
+    <shardingExpression>partitionNum==3</shardingExpression>
+    <shards>partition3</shards>
+  </rule>
+  <rule>
+    <sqlmap>Message.cleanExpiredMessage</sqlmap>
+    <shardingExpression>partitionNum==4</shardingExpression>
+    <shards>partition4</shards>
+  </rule>
+</rules>

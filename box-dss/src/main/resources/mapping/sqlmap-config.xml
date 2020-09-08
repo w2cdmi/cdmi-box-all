@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig  PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+         "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+	<settings lazyLoadingEnabled="true" useStatementNamespaces="true" />
+
+	<!-- 使用spring之后，数据源的配置移植到了spring上，所以iBATIS本身的配置可以取消 -->
+	<sqlMap resource="mapping/system/fs_endpoint-sql.xml" />
+	<sqlMap resource="mapping/system/systemconfig-sql.xml" />
+	<sqlMap resource="mapping/system/systemclusters-sql.xml" />
+	<sqlMap resource="mapping/fileobject/fileobject-sql.xml" />
+	<sqlMap resource="mapping/fileobject/fileobject_attachment-sql.xml" />
+	<sqlMap resource="mapping/fileobject/multipart_fileobject-sql.xml" />
+	<sqlMap resource="pw/cdmi/common/job/manage/dao/systemjob-sql.xml" />
+	<sqlMap resource="pw/cdmi/common/slavedb/domain/DatabaseAddr.xml" />
+	<sqlMap resource="mapping/mirro/copytask-sql.xml" />
+	<sqlMap resource="mapping/mirro/copytaskpart-sql.xml" />
+	<sqlMap resource="mapping/realtime/realtimecopytask-sql.xml" />
+	<sqlMap resource="mapping/realtime/realtimecopytaskpart-sql.xml" />
+	<sqlMap resource="mapping/mirro/copyexetime-sql.xml" />
+	<sqlMap resource="pw/cdmi/common/monitor/domain/ServiceNode.xml" />
+	<sqlMap resource="mapping/fileobject/fileobject-delete-task-sql.xml" />
+	<sqlMap resource="mapping/fileobject/fileobject-delete-log-sql.xml" />
+	
+</sqlMapConfig>

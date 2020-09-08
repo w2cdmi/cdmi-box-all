@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AccessSpaceConfig">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="AccessSpaceConfig" type="com.huawei.sharedrive.uam.enterprise.domain.AccessSpaceConfig" />
+	
+	<insert id="insert" parameterClass="AccessSpaceConfig">
+        <![CDATA[
+        insert into access_space_config(id,accountId,safeRoleId,netRegionId,targetSafeRoleId,targetSafeRoleName,clientType,operation,createdAt,modifiedAt) 
+        values 
+        (#id#,#accountId#,#safeRoleId#,#netRegionId#,#targetSafeRoleId#,#targetSafeRoleName#,#clientType#,#operation#,#createdAt#,#modifiedAt#)
+        ]]>
+	</insert>
+	
+	<select id="getDuplicateValues" parameterClass="AccessSpaceConfig" resultClass="int">
+    	<![CDATA[
+    	select count(id) from access_space_config where safeRoleId=#safeRoleId# and netRegionId=#netRegionId#
+    	and targetSafeRoleId=#targetSafeRoleId# and clientType=#clientType#;
+        ]]>
+	</select>
+	
+	 <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from access_space_config where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.safeRoleId">
+                safeRoleId = #filter.safeRoleId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.netRegionId">
+                netRegionId = #filter.netRegionId#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.clientType">
+                clientType = #filter.clientType#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.targetSafeRoleId">
+                targetSafeRoleId = #filter.targetSafeRoleId#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+    
+    <select id="getListByOperation" parameterClass="map" resultClass="AccessSpaceConfig">
+        SELECT * 
+        FROM access_space_config
+        WHERE accountId=#accountId# and operation > 0 and operation%#operation#=0
+    </select>
+ 
+     <select id="getListBySafeRoleId" parameterClass="map" resultClass="AccessSpaceConfig">
+        SELECT * 
+        FROM access_space_config
+        WHERE accountId=#accountId# and safeRoleId=#safeRoleId# and operation > 0 and operation%#operation#=0
+    </select>
+ 
+    
+    <select id="getObject" resultClass="AccessSpaceConfig" parameterClass="AccessSpaceConfig">
+    	select * from access_space_config where
+    	accountId=#accountId# 
+    	and safeRoleId=#safeRoleId# 
+    	and netRegionId=#netRegionId# 
+    	and targetSafeRoleId=#targetSafeRoleId#
+    	and clientType=#clientType#
+    </select>
+    
+    <select id="getFilterd" parameterClass="map" resultClass="AccessSpaceConfig">
+        select * from access_space_config where accountId=#filter.accountId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="filter.safeRoleId">
+                safeRoleId = #filter.safeRoleId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.netRegionId">
+                netRegionId = #filter.netRegionId#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.clientType">
+                clientType = #filter.clientType#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="filter.targetSafeRoleId">
+                targetSafeRoleId = #filter.targetSafeRoleId#
+            </isNotEmpty>
+        </dynamic>
+		order by modifiedAt desc
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getById" parameterClass="String" resultClass="AccessSpaceConfig">
+        select * from access_space_config where id=#id#
+    </select>
+    
+     <update id="modify" parameterClass="AccessSpaceConfig">
+        update access_space_config set
+        safeRoleId=#safeRoleId#,
+        netRegionId=#netRegionId#,
+        targetSafeRoleId=#targetSafeRoleId#,
+        clientType=#clientType#,
+        operation=#operation#,
+	   modifiedAt=#modifiedAt# 
+	   where id=#id#
+    </update>
+    
+    <delete id="delete" parameterClass="String">
+    	delete from access_space_config where id =#id#
+    </delete>
+    
+    <delete id="deleteByCondition" parameterClass="AccessSpaceConfig">
+    	delete from access_space_config where accountId =#accountId#
+    	 <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="safeRoleId">
+                safeRoleId = #safeRoleId# 
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="netRegionId">
+                netRegionId = #netRegionId#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="clientType">
+                clientType = #clientType#
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="targetSafeRoleId">
+                targetSafeRoleId = #targetSafeRoleId#
+            </isNotEmpty>
+        </dynamic>
+    </delete>
+    
+</sqlMap>
+

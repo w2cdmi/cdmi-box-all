@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?><Window>    	<Include source="../Default.xml" />  <ShadeListContainerElement name="Progress_item_listItem" height="30" borderround="3,3,3,3" shadecolor="#ffdef0ff" shadecolor2="#ffe7ffd6" bordersize="1" bordercolor="#FFD9D9D9"/></Window>

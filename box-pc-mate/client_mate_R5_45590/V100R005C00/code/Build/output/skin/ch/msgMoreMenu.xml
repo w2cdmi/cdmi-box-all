@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window>
+	<Menu width="65" menupadding="-35,18" trianglepadding="4,8" bkcolor="#FFFAFAFA" bordersize="1" borderround="7,7" bordercolor="#FFFFFFFF">
+		<Control height="10"/>
+		<MenuItem id="0" height="30" padding="0,10,0,0">
+			<HorizontalLayout>
+				<Label text="下载" align="left" font="12" textcolor="#FF000000"  textpadding="15,0,15,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+		<MenuItem id="1" height="30">
+			<HorizontalLayout>
+				<Label text="保存" align="left" font="12" textcolor="#FF000000" textpadding="15,0,15,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+		<MenuItem id="2" height="30">
+			<HorizontalLayout>
+				<Label text="查看" align="left" font="12" textcolor="#FF000000"  textpadding="15,0,15,0"/>
+			</HorizontalLayout>
+		</MenuItem>
+		<Control height="10" />
+	</Menu>
+</Window>

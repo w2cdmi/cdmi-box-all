@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{0333da02-4739-401a-9856-fb6f056d67a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="include\UpdateGeneral">
+      <UniqueIdentifier>{89398015-8777-496a-b092-75c15eb79a92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source\UpdateGeneral">
+      <UniqueIdentifier>{59d1bd3b-8f01-4e1c-8deb-ba0b62dacf8e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\OneboxCommon\include\CppSQLite3.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\InIHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\Utility.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UpdateDB.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UpdateDBCommon.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OperateFile.h">
+      <Filter>include\UpdateGeneral</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OperateSQL.h">
+      <Filter>include\UpdateGeneral</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UpdateGeneral.h">
+      <Filter>include\UpdateGeneral</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\OneboxCommon\Common\source\CppSQLite3.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\InIHelper.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\Utility.cpp">
+      <Filter>Common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UpdateDB.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\OperateFile.cpp">
+      <Filter>source\UpdateGeneral</Filter>
+    </ClCompile>
+    <ClCompile Include="source\OperateSQL.cpp">
+      <Filter>source\UpdateGeneral</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UpdateGeneral.cpp">
+      <Filter>source\UpdateGeneral</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

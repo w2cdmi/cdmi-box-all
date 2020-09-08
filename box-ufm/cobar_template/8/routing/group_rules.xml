@@ -1,0 +1,12 @@
+<rules>
+    <rule>
+        <namespace>Group</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+    <rule>
+        <namespace>GroupMemberships</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition0</shards>
+    </rule>
+</rules>

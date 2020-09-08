@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EnterpriseAccount">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="EnterpriseAccount" type="pw.cdmi.common.domain.enterprise.EnterpriseAccount" />
+    <select id="getByAccessKeyId" parameterClass="String" resultClass="EnterpriseAccount">
+        <![CDATA[
+        select * from enterprise_account where accessKeyId=#value#
+        ]]>
+    </select>
+    <select id="getByAccountId" parameterClass="Long" resultClass="EnterpriseAccount">
+        <![CDATA[
+        select * from enterprise_account where accountId=#value#
+        ]]>
+    </select>
+    <select id="getByEnterpriseIdAndAccountId" parameterClass="map" resultClass="EnterpriseAccount">
+        <![CDATA[
+        select * from enterprise_account where enterpriseId=#enterpriseId# and accountId=#value#
+        ]]>
+    </select>
+    <select id="getByEnterpriseId" parameterClass="Long" resultClass="EnterpriseAccount">
+        select * from enterprise_account where enterpriseId=#value#
+    </select>
+    
+     <select id="getAll" resultClass="EnterpriseAccount">
+        select * from enterprise_account
+    </select>
+    
+    <update id="updateEnterpriseAccount" parameterClass="EnterpriseAccount">
+        update enterprise_account set enterpriseId=#enterpriseId#, authAppId=#authAppId#, accountId=#accountId#, status=#status#, secretKey=#secretKey#, secretKeyEncodeKey=#secretKeyEncodeKey# where accessKeyId=#accessKeyId#
+    </update>
+    
+    <select id="getAppContextByEnterpriseId" parameterClass="Long" resultClass="EnterpriseAccount">
+            select e.*,a.description from enterprise_account e,authapp a where e.enterpriseId=#value# and a.authAppId=e.authAppId
+    </select>
+    <select id="getByEnterpriseApp" parameterClass="map" resultClass="EnterpriseAccount">
+        select * from enterprise_account where enterpriseId=#enterpriseId# and authAppId=#authAppId#
+    </select>
+    
+    <select id="getAppByEnterpriseId" parameterClass="Long"   resultClass="String">
+        select authAppId from enterprise_account where enterpriseId=#value#
+    </select>
+    
+    <select id="getAccountIdByEnterpriseId" parameterClass="Long"   resultClass="Long">
+        select accountId from enterprise_account where enterpriseId=#value#
+    </select>
+
+    <insert id="insert" parameterClass="EnterpriseAccount">
+        insert into enterprise_account(enterpriseId,authAppId,accountId,status,accessKeyId,secretKey,secretKeyEncodeKey) 
+        values 
+        (#enterpriseId#,#authAppId#,#accountId#,#status#,#accessKeyId#,#secretKey#,#secretKeyEncodeKey#)
+    </insert>
+
+    <delete id="deleteByAccountId" parameterClass="Long">
+        delete from enterprise_account where accountId=#value#
+    </delete>
+    	<select id="listAll"  resultClass="EnterpriseAccount">
+    	<![CDATA[
+    	select * from enterprise_account;
+        ]]>
+	</select>
+
+</sqlMap>
+

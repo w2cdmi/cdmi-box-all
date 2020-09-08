@@ -1,0 +1,82 @@
+.zan-actionsheet {
+    background-color: #f8f8f8;
+}
+
+.zan-actionsheet__mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.7);
+    display: none;
+}
+
+.zan-actionsheet__container {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #f8f8f8;
+    transform: translate3d(0, 50%, 0);
+    transform-origin: center;
+    transition: all 0.2s ease;
+    z-index: 11;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.zan-actionsheet__btn.zan-btn {
+    height:85rpx;
+    line-height:85rpx;
+    margin-bottom: 0;
+    font-size: 30rpx;
+    color:#333333;
+    text-align:center;
+    border-bottom:1rpx solid rgba(3,3,3, 0.1);
+    background-color: #FFFFFF;
+}
+
+.zan-actionsheet__btn.zan-btn::after {
+    border-width: 0;
+    border-bottom-width: 1px;
+}
+.cancel_btn{
+height:100rpx;
+line-height:100rpx;
+color:#333333;
+background-color:#fff;
+margin-top:10px;
+text-align:center;
+font-size:30rpx;
+}
+.zan-actionsheet__btn.zan-btn:last-child::after {
+    border-bottom-width: 0;
+}
+
+.zan-actionsheet__subname {
+    margin-left: 2px;
+    font-size: 12px;
+    color: #666;
+}
+
+.zan-actionsheet__footer {
+    margin-top: 10px;
+    background-color: #F4F4F4;
+}
+
+.zan-actionsheet__btn.zan-btn--loading .zan-actionsheet__subname {
+    color: transparent;
+}
+
+.zan-actionsheet--show .zan-actionsheet__container {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+    background-color:#F4F4F4;
+}
+
+.zan-actionsheet--show .zan-actionsheet__mask {
+    display: block;
+}

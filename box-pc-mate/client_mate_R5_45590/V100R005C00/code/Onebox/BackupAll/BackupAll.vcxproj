@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{C69B00B0-9553-4324-9208-2830C8F36158}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>BackupTask</RootNamespace>
+    <ProjectName>BackupAll</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <OutDir>$(SolutionDir)output\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\Build\output\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;ONEBOX_EXPORTS;ENABLE_UTILITY_STRING;ENABLE_UTILITY_REGISTRY;ENABLE_UTILITY_FS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\include;..\..\OneboxCommon\include;..\..\OneboxCommon\Common\source\asyncTask;..\..\OneboxCommon\NetSDK\include;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/boost/include;$(VS2012_THIRD_PART)/sqlite3/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>$(OutDir);$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/HuaweiSecureC/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/log4cpp/lib;$(VS2012_THIRD_PART)/sqlite3/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Common.lib;HuaweiSecureC_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;ONEBOX_EXPORTS;ENABLE_UTILITY_STRING;ENABLE_UTILITY_REGISTRY;ENABLE_UTILITY_FS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>.\include;..\..\OneboxCommon\include;..\..\OneboxCommon\Common\source\asyncTask;..\..\OneboxCommon\NetSDK\include;$(VS2012_THIRD_PART)/ISSPLibrary/Include;$(VS2012_THIRD_PART)/boost/include;$(VS2012_THIRD_PART)/sqlite3/include</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalLibraryDirectories>$(OutDir);$(VS2012_THIRD_PART)/ISSPLibrary/lib;$(VS2012_THIRD_PART)/HuaweiSecureC/lib;$(VS2012_THIRD_PART)/boost/lib;$(VS2012_THIRD_PART)/log4cpp/lib;$(VS2012_THIRD_PART)/sqlite3/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>Common.lib;HuaweiSecureC.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\OneboxCommon\include\CppSQLite3.h" />
+    <ClInclude Include="..\..\OneboxCommon\include\InIHelper.h" />
+    <ClInclude Include="..\..\OneboxCommon\include\Utility.h" />
+    <ClInclude Include="include\BackupAllCommon.h" />
+    <ClInclude Include="include\BackupAllDbMgr.h" />
+    <ClInclude Include="include\BackupAllFilterMgr.h" />
+    <ClInclude Include="include\BackupAllFullScan.h" />
+    <ClInclude Include="include\BackupAllIncScan.h" />
+    <ClInclude Include="include\BackupAllLocalDb.h" />
+    <ClInclude Include="include\BackupAllLocalFile.h" />
+    <ClInclude Include="include\BackupAllMgr.h" />
+    <ClInclude Include="include\BackupAllProcess.h" />
+    <ClInclude Include="include\BackupAllScan.h" />
+    <ClInclude Include="include\BackupAllTaskDb.h" />
+    <ClInclude Include="include\BackupAllTransTask.h" />
+    <ClInclude Include="include\BackupAllUtility.h" />
+    <ClInclude Include="include\MFTReader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\OneboxCommon\Common\source\CppSQLite3.cpp" />
+    <ClCompile Include="..\..\OneboxCommon\include\InIHelper.cpp" />
+    <ClCompile Include="..\..\OneboxCommon\include\Utility.cpp" />
+    <ClCompile Include="source\BackupAllDbMgr.cpp" />
+    <ClCompile Include="source\BackupAllFilterMgr.cpp" />
+    <ClCompile Include="source\BackupAllFullScan.cpp" />
+    <ClCompile Include="source\BackupAllIncScan.cpp" />
+    <ClCompile Include="source\BackupAllLocalDb.cpp" />
+    <ClCompile Include="source\BackupAllLocalFile.cpp" />
+    <ClCompile Include="source\BackupAllMgr.cpp" />
+    <ClCompile Include="source\BackupAllProcess.cpp" />
+    <ClCompile Include="source\BackupAllScan.cpp" />
+    <ClCompile Include="source\BackupAllTaskDb.cpp" />
+    <ClCompile Include="source\BackupAllTransTask.cpp" />
+    <ClCompile Include="source\BackupAllUtility.cpp" />
+    <ClCompile Include="source\MFTReader.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

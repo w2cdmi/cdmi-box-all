@@ -1,0 +1,61 @@
+@@normal
+{ 
+    "type":0,
+    "subject":"editor",
+    "message":"mail message"
+}
+
+@@notype
+{ 
+    "subject":"editor",
+    "message":"mail message"
+}
+
+@@nosubject
+{ 
+    "type":0,
+    "subject":"editor",
+    "message":"mail message"
+}
+
+@@nomessage
+{ 
+    "type":0,
+    "subject":"editor",
+    "message":"mail message"
+}
+
+@@emptysubject
+{ 
+    "type":0,
+    "subject":"",
+    "message":"mail message"
+}
+
+@@emptymsg
+{ 
+    "type":0,
+    "subject":"editor",
+    "message":""
+}
+
+@@invalidtype
+{ 
+    "type":3,
+    "subject":"editor",
+    "message":"mail message"
+}
+
+@@longsubject
+{ 
+    "type":0,
+    "subject":"ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss",
+    "message":"mail message"
+}
+
+@@longmsg
+{ 
+    "type":0,
+    "subject":"editor",
+    "message":"ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss"
+}

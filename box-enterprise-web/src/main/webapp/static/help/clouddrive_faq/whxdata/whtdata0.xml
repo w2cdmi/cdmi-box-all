@@ -1,0 +1,49 @@
+﻿<?xml version='1.0' encoding='utf-8' ?>
+<tocdata>
+<item name="欢迎" url="faq/welcome.html" />
+<book name="基本" url="faq/basic.html" >
+  <item name="什么是Huawei CloudDrive同步客户端" url="faq/desktop_definition.html" />
+  <item name="如何添加或上传文件" url="faq/upload_file.html" />
+  <item name="如何与他人分享文件或文件夹" url="faq/share_file.html" />
+  <item name="如何在电脑之间同步文件" url="faq/desktop_sync_file.html" />
+  <item name="如何了解同步客户端什么时间正在同步" url="faq/desktop_syncing.html" />
+  <item name="我的文件丢失了，怎样才能找回" url="faq/find_lost_file.html" />
+  <item name="如何获取旧版本文件" url="faq/web_gain_multiversion.html" />
+  <item name="如何恢复已删除的文件" url="faq/recover_deleted_file.html" />
+  <item name="Huawei CloudDrive对系统有哪些要求" url="faq/rundisk_system_require.html" />
+</book>
+<book name="共享" url="faq/share.html" >
+  <item name="如何与他人分享文件或文件夹" url="faq/share_file.html#bc-1" />
+  <item name="加入其他人的共享文件夹是否会占用我的空间" url="faq/share_file_occupy_space.html" />
+  <item name="我是否可以共享文件或文件夹给非Huawei CloudDrive用户" url="faq/share_file_nohuawei.html" />
+  <item name="能否重命名或移动共享文件或文件夹" url="faq/rename_move_share.html" />
+  <item name="如何删除共享成员" url="faq/remove_share_number.html" />
+  <item name="如何取消文件或文件夹共享" url="faq/cancel_share_file.html" />
+  <item name="如何退出共享" url="faq/quit_share.html" />
+  <item name="如何取消文件或文件夹链接" url="faq/cancel_share_link.html" />
+</book>
+<book name="桌面应用" url="faq/pc.html" >
+  <item name="什么是Huawei CloudDrive同步客户端" url="faq/desktop_definition.html#bc-1" />
+  <item name="如何在电脑之间同步文件" url="faq/desktop_sync_file.html#bc-1" />
+  <item name="如何取消同步文件夹与云端的同步关系" url="faq/desktop_release_sync.html" />
+  <item name="如何暂停和恢复同步" url="faq/desktop_pause_recover_sync.html" />
+  <item name="图标含义是什么" url="faq/desktop_file_icon.html" />
+  <item name="是否能在多台电脑上运行我的Huawei CloudDrive同步客户端" url="faq/desktop_multicomputer_oneacc.html" />
+  <item name="是否能在同一台电脑上运行多个Huawei CloudDrive用户" url="faq/desktop_onecomputer_multiacc.html" />
+  <item name="如何删除Huawei CloudDrive中的文件" url="faq/delete_file.html" />
+  <item name="当文件或文件夹上没有显示任何状态图标时，如何解决" url="faq/desktop_icon_dispear.html" />
+  <item name="如果我的硬盘空间无法容纳整个Huawei CloudDrive中的内容，是否可以进行选择性同步" url="faq/selected_sync.html" />
+</book>
+<book name="移动应用" url="faq/mobile.html" >
+  <item name="如何从手机上传文件" url="faq/mobile_upload_file.html" />
+  <item name="我可以在手机上查看哪些类型的文件" url="faq/mobile_file_type.html" />
+  <item name="如何在我的手机上播放电影" url="faq/mobile_play_film.html" />
+  <item name="我可以在手机上储存多少文件" url="faq/mobile_store_file.html" />
+  <item name="在我的手机上，将文件或文件夹标记为本地缓存起什么作用" url="faq/mobile_file_cache.html" />
+</book>
+<book name="安全和隐私" url="faq/security.html" >
+  <item name="Huawei CloudDrive如何保证数据安全" url="faq/webdisk_security.html" />
+  <item name="Huawei CloudDrive如何保证隐私" url="faq/webdisk_privacy.html" />
+</book>
+
+</tocdata>

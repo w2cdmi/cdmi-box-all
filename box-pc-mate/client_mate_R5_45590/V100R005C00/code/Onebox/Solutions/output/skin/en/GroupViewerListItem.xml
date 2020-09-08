@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window >
+	<GroupManageListContainerElement name="GroupViewer_listItem" >
+		<VerticalLayout height="32" mousechild="true">
+			<HorizontalLayout height="6" />
+			<HorizontalLayout mousechild="true">				
+				<Label name="GroupViewer_item_icon" align="center" textcolor="#FFFFFFFF" bkimage="..\img\GroupManage.png" width="18" padding="10,0,0,0" font="2" />
+				<Label name="GroupViewer_item_name" endellipsis="true" text="" width="150" font="2" align="left" padding="5,2,0,2"/>
+				<Label name="GroupViewer_item_dept" width="180" endellipsis="true" padding="10,2,0,2" />
+				<Label name="GroupViewer_item_role" width="82" font="2" />
+			</HorizontalLayout>
+			<HorizontalLayout height="5" />
+			<Control height="1" bkcolor="#FFE1E1E1" />
+		</VerticalLayout>
+	</GroupManageListContainerElement>
+</Window>

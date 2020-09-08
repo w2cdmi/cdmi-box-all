@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EnterpriseSecurityPrivilege">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="EnterpriseUser" type="com.huawei.sharedrive.uam.enterpriseuser.domain.EnterpriseUser" />
+    <typeAlias alias="EnterpriseSecurityPrivilege" type="com.huawei.sharedrive.uam.enterpriseuser.domain.EnterpriseSecurityPrivilege" />
+
+	<select id="getMaxId" resultClass="Long">
+        <![CDATA[
+        select max(id) from enterprise_security_privilege
+        ]]>
+    </select>
+
+	<insert id="insert" parameterClass="EnterpriseSecurityPrivilege">
+        <![CDATA[
+        insert into enterprise_security_privilege(id,enterpriseId,departmentId,role,enterpriseUserId)
+        values 
+        (#id#,#enterpriseId#,#departmentId#,#role#,#enterpriseUserId#)
+        ]]>
+	</insert>
+
+	<update id="update" parameterClass="EnterpriseSecurityPrivilege">
+        <![CDATA[
+        update  enterprise_security_privilege set enterpriseUserId=#enterpriseUserId#, departmentId=#departmentId#, role=#role#
+        where id=#id#
+        ]]>
+	</update>
+
+    <delete id="delete" parameterClass="map">
+        <![CDATA[
+        delete from enterprise_security_privilege where enterpriseUserId=#enterpriseUserId# and enterpriseId=#enterpriseId# and role=#role#
+        ]]>
+    </delete>
+    
+     <delete id="deleteByDeptAndRole" parameterClass="map">
+        <![CDATA[
+        delete from enterprise_security_privilege where  enterpriseId=#enterpriseId# and departmentId=#departmentId# and role=#role#
+        ]]>
+    </delete>
+
+    <delete id="deleteByEnterprise" parameterClass="map">
+        <![CDATA[
+        delete from enterprise_security_privilege where enterpriseUserId=#enterpriseUserId#
+        ]]>
+    </delete>
+
+    <select id="getUserByEnterpriseAndDepartmentAndRole" parameterClass="map" resultClass="EnterpriseUser">
+        select t1.* from enterprise_user$tableSuffix$ t1 where t1.id in ( select distinct enterpriseUserId from enterprise_security_privilege
+        where enterpriseId=#enterpriseId#
+        <dynamic prepend="and">
+            <isNotNull property="departmentId">
+                departmentId=#departmentId#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+            <isNotNull property="role">
+                role=#role#
+            </isNotNull>
+        </dynamic>
+        )
+	</select>
+
+    <select id="getIdByEnterpriseAndDepartmentAndRole" parameterClass="map" resultClass="EnterpriseSecurityPrivilege">
+        select * from enterprise_security_privilege where enterpriseId=#enterpriseId#
+        <dynamic prepend="and">
+            <isNotNull property="departmentId">
+                departmentId=#departmentId#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+            <isNotNull property="role">
+                role=#role#
+            </isNotNull>
+        </dynamic>
+	</select>
+	
+	
+	<select id="get" parameterClass="EnterpriseSecurityPrivilege" resultClass="EnterpriseSecurityPrivilege">
+        select * from enterprise_security_privilege where enterpriseId=#enterpriseId#
+        <dynamic prepend="and">
+            <isGreaterThan property="departmentId"  compareValue="0">
+                departmentId=#departmentId#
+            </isGreaterThan>
+        </dynamic>
+        
+         <dynamic prepend="and">
+            <isGreaterThan property="enterpriseUserId"  compareValue="0">
+                enterpriseUserId=#enterpriseUserId#
+            </isGreaterThan>
+        </dynamic>
+        
+        <dynamic prepend="and">
+            <isGreaterThan property="role"  compareValue="0">
+                role=#role#
+            </isGreaterThan>
+        </dynamic>
+	</select>
+	
+	<select id="getTotal" parameterClass="EnterpriseSecurityPrivilege" resultClass="int">
+        select count(id) from enterprise_security_privilege where enterpriseId=#enterpriseId#
+        <dynamic prepend="and">
+            <isGreaterThan property="departmentId"  compareValue="0">
+                departmentId=#departmentId#
+            </isGreaterThan>
+        </dynamic>
+        
+         <dynamic prepend="and">
+            <isGreaterThan property="enterpriseUserId"  compareValue="0">
+                enterpriseUserId=#enterpriseUserId#
+            </isGreaterThan>
+        </dynamic>
+        
+        <dynamic prepend="and">
+            <isGreaterThan property="role"  compareValue="0">
+                role=#role#
+            </isGreaterThan>
+        </dynamic>
+	</select>
+	
+	<select id="listPage" parameterClass="map" resultClass="EnterpriseSecurityPrivilege">
+        select * from enterprise_security_privilege where enterpriseId=#enterpriseId#
+        
+        <dynamic >
+             <isNotNull prepend="and" property="departmentId">
+               departmentId=#departmentId#
+             </isNotNull>
+              <isNotNull prepend="and" property="enterpriseUserId">
+               enterpriseUserId=#enterpriseUserId#
+             </isNotNull>
+              <isNotNull prepend="and" property="role">
+               role=#role#
+             </isNotNull>
+            <isNotNull property="limit" prepend="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+	</select>
+	
+	<select id="listPageTotal" parameterClass="map" resultClass="int">
+        select count(id) from enterprise_security_privilege where enterpriseId=#enterpriseId#
+        
+        <dynamic >
+             <isNotNull prepend="and" property="departmentId">
+               departmentId=#departmentId#
+             </isNotNull>
+              <isNotNull prepend="and" property="enterpriseUserId">
+               enterpriseUserId=#enterpriseUserId#
+             </isNotNull>
+              <isNotNull prepend="and" property="role">
+               role=#role#
+             </isNotNull>
+            <isNotNull property="limit" prepend="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+	</select>
+	
+
+    <select id="countWithFilter" parameterClass="map" resultClass="int">
+        SELECT COUNT(*) FROM enterprise_security_privilege p LEFT JOIN enterprise_user$tableSuffix$ eu ON p.enterpriseUserId = eu.id where p.enterpriseId=#enterpriseId#
+        <dynamic prepend="and">
+            <isNotNull property="departmentId">
+                p.departmentId=#departmentId#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+            <isNotEqual compareProperty="role" compareValue="0">
+                p.role=#role#
+            </isNotEqual>
+        </dynamic>
+        <dynamic prepend="and">
+            <isNotNull property="authServerId">
+                eu.userSource=#authServerId#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                eu.staffNo like concat('%',#filter#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%')
+            </isNotEmpty>
+        </dynamic>
+	</select>
+
+    <select id="getWithFilter" parameterClass="map" resultClass="EnterpriseUser">
+        SELECT eu.*, d.name AS departmentName FROM enterprise_security_privilege p LEFT JOIN enterprise_user$tableSuffix$ eu ON p.enterpriseUserId = eu.id LEFT JOIN department d ON p.departmentId = d.departmentId AND p.enterpriseId = d.enterpriseId WHERE p.enterpriseId=#enterpriseId#
+        <dynamic prepend="and">
+            <isNotNull property="departmentId">
+                p.departmentId=#departmentId#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+            <isNotNull property="role">
+                p.role=#role#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and">
+            <isNotNull property="authServerId">
+                eu.userSource=#authServerId#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                eu.staffNo like concat('%',#filter#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.alias like concat('%',#filter#,'%')
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                eu.email like concat('%',#filter#,'%')
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                    <isEqual property="order.desc" compareValue="false">
+                        asc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+	</select>
+	
+	<select id="listSecurityPrivilege" parameterClass="EnterpriseSecurityPrivilege" resultClass="EnterpriseSecurityPrivilege">
+	  SELECT * FROM enterprise_security_privilege 
+        <dynamic prepend="where">
+            <isNotNull prepend="and" property="departmentId">
+                departmentId=#departmentId#
+            </isNotNull>
+             <isNotNull prepend="and" property="enterpriseId">
+                enterpriseId=#enterpriseId#
+            </isNotNull>
+            <isGreaterThan prepend="and"  compareValue="0" compareProperty="role">
+                role=#role#
+            </isGreaterThan>
+             <isNotNull prepend="and" property="enterpriseUserId">
+                enterpriseUserId=#enterpriseUserId#
+            </isNotNull>
+        </dynamic>
+	</select>
+	
+	<delete id="deleteBy" parameterClass="map">
+	
+	     delete from enterprise_security_privilege where enterpriseId=#enterpriseId# and departmentId=#departmentId# and    role=#role#
+	     <dynamic>
+	        <isGreaterThan compareProperty="enterpriseUserId" compareValue="0" prepend="and">
+	             enterpriseUserId=#enterpriseUserId#
+	        </isGreaterThan>
+	     </dynamic>
+	
+	</delete>
+	
+	<delete id="deletePrivilege" parameterClass="EnterpriseSecurityPrivilege">
+	   delete from enterprise_security_privilege where enterpriseId=#enterpriseId#
+	   <dynamic prepend="and">
+	     <isGreaterEqual compareValue="0" property="enterpriseUserId">
+	        enterpriseUserId=#enterpriseUserId#
+	     </isGreaterEqual>
+	   </dynamic>
+	   <dynamic prepend="and">
+	   
+	     <isGreaterEqual compareValue="0" property="departmentId">
+	        departmentId=#departmentId#
+	     </isGreaterEqual>
+	   </dynamic>
+	   <dynamic prepend="and">
+	     <isGreaterEqual compareValue="0" property="role">
+	        role=#role#
+	     </isGreaterEqual>
+	   </dynamic>
+	
+	</delete>
+	
+	
+</sqlMap>
+

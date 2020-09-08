@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<customList>
+	<custom>
+		<name>hbdky</name>
+		<status>true</status>
+		<attList>
+			<attribute>
+				<key>cloudapp.login</key>
+				<value>true</value>
+				<param>loginForHBED</param>
+			</attribute>
+			<attribute>
+				<key>cloudapp.commonTips</key>
+				<value>true</value>
+				<param></param>
+			</attribute>
+			<attribute>
+				<key>link.hidden</key>
+				<value>true</value>
+				<param></param>
+			</attribute>
+		</attList>
+	</custom>
+	<custom>
+		<name>tjzh</name>
+		<status>true</status>
+		<attList>
+			<attribute>
+				<key>email.force.change</key>
+				<value>true</value>
+				<param></param>
+			</attribute>
+			<attribute>
+				<key>test</key>
+				<value>true</value>
+				<param>testParam</param>
+			</attribute>
+		</attList>
+	</custom>
+</customList>

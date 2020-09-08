@@ -1,0 +1,12 @@
+.controls ul.ztree {margin-top: 10px;border: 1px solid #617775;background: #FFFFFF;width:620px;height:360px;overflow-y:scroll;overflow-x:auto;}
+
+.folderTreeCon .ztree{ position:absolute; z-index:9999; background:#fff; border:1px solid #ccc; padding:10px; display:none; width:260px;height:320px; overflow:auto;
+	-webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+
+.clearfix .form-search .folderTreeCon{margin-right:4px;}
+
+.ztree li span.button.prevPage {background-position:-144px -48px; vertical-align:top; *vertical-align:middle}
+.ztree li span.button.nextPage {background-position:-144px -64px; vertical-align:top; *vertical-align:middle}

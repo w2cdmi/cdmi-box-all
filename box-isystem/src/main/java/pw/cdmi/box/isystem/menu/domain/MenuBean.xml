@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MenuBean">
+
+	<typeAlias alias="MenuBean"
+		type="cpw.cdmi.box.isystem.menu.domain.MenuBean" />
+
+	<select id="getMenuBeanList" resultClass="MenuBean">
+		select * from menu_jurisdiction
+	</select>
+	
+	<select id="getTotals" resultClass="java.lang.Integer">
+		select count(*) count from menu_jurisdiction
+	</select>
+	
+	<update id="update" parameterClass="map" >
+		update menu_jurisdiction set menuValue=#menuValue# where menuKey=#menuKey#
+	</update>
+</sqlMap>

@@ -1,0 +1,66 @@
+.folder-icon {
+    background: url(../../../css/default/ico/folder.png) no-repeat center center;
+
+}
+
+.file-doc,
+.file-docx {
+    background: url(../../../css/default/ico/folder.png) no-repeat center center;
+}
+
+.file-rar {
+    background: url(../../../css/default/ico/folder.png) no-repeat center center;
+}
+
+.file-ppt,
+.file-pptx {
+    background: url(../../../css/default/ico/folder.png) no-repeat center center;
+}
+
+.file-pdf {
+    background: url(../../../css/default/ico/pdf.png) no-repeat center center;
+}
+
+.file-avi,
+.file-mp4,
+.file-MP4 {
+    background: url(../../../css/default/ico/video.png) no-repeat center center;
+}
+
+.file-mp3 {
+    background: url(../../../css/default/ico/music.png) no-repeat center center;
+}
+
+.file-xls,
+.file-xlsx {
+    background: url(../../../css/default/ico/excel.png) no-repeat center center;
+}
+
+.file-txt {
+    background: url(../../../css/default/ico/txt.png) no-repeat center center;
+}
+
+.file-undefined {
+    background: url(../../../css/default/ico/none.png) no-repeat center center;
+}
+
+.file-jpg,
+.file-jpeg {
+    background: url(../../../css/default/ico/img.png) no-repeat center center;
+}
+
+.file-png {
+    background: url(../../../css/default/ico/img.png) no-repeat center center;
+}
+
+.file-gif {
+    background: url(../../../css/default/ico/img.png) no-repeat center center;
+}
+
+.file-exe {
+    background: url(../../../css/default/ico/none.png) no-repeat center center;
+}
+
+.folder-share-icon {
+    background: url(../../../css/default/ico/share_folder.png) no-repeat center center;
+}

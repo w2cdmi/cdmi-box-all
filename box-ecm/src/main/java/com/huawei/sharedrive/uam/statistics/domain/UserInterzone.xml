@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserInterzone">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UserInterzone"
+		type="com.huawei.sharedrive.uam.statistics.domain.UserInterzone" />
+	<insert id="insert" parameterClass="UserInterzone">
+    	<![CDATA[
+	    	INSERT INTO userInterzone
+	    	(id,interzone)
+	    	VALUES
+	    	(#id#,#interzone#)
+    	]]>
+	</insert>
+	
+	<select id="get" resultClass="UserInterzone">
+        <![CDATA[
+	        SELECT *
+	        FROM userInterzone
+        ]]>
+	</select>
+		
+	<delete id="delete" >
+		<![CDATA[
+	        DELETE FROM userInterzone
+        ]]>
+	</delete>
+	
+</sqlMap>
+

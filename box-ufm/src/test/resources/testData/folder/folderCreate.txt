@@ -1,0 +1,60 @@
+@@normal
+{ 
+ "name":"   　　　`Dsd~!@#$%^&()[]{};',. -=_+ABCDEabcde华为 产品线，。！·~--【】{} ￥&！＠＃‘％……（）  　    　", 
+ "parent":0
+}
+
+@@emptyName
+{ 
+ "name":"　", 
+ "parent":0
+}
+
+@@longName
+{ 
+ "name":"11111111sdfss11111111122222ssd222223333wwe444444444ddd45555555555111111111122222222223333333333444444444455555555551111111111222222222233333333334444444444555555555511111111112222222222333333333344444444441234567", 
+ "parent":0
+}
+
+@@nameContainSlash
+{ 
+ "name":"WERasdfb/c", 
+ "parent":0
+ 
+}
+
+@@nameContainBackSlash
+{ 
+ "name":"abWEsdR\\c", 
+ "parent":0
+}
+
+@@nameStartWithPeriod
+{ 
+ "name":".aWsdERbc", 
+ "parent":0
+}
+
+@@nameEndWithPeriod
+{ 
+ "name":"abWEsRWc.", 
+ "parent":0
+ }
+
+@@repeatName
+{ 
+ "name":"testRepedsatName", 
+ "parent":0
+}
+
+@@noParent
+{ 
+ "name":"abWERsEWc", 
+ "parent":999999
+}
+
+@@unauthorization
+{ 
+ "name":"xdWEdRWsd", 
+ "parent":25550
+}

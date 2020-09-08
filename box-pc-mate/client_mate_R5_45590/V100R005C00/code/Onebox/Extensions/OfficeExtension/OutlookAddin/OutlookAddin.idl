@@ -1,0 +1,50 @@
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(C12B8E19-29B6-47CD-8813-C99C229E4C06),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IOutlookAddinImpl : IDispatch{
+};
+[
+    object,
+    uuid(73297787-F7C4-4353-B4F5-E773E6D79987),
+    dual,
+    nonextensible,
+    helpstring("IRibbonCallback Interface"),
+    pointer_default(unique)
+]
+interface IRibbonCallback : IDispatch{
+    [id(42),helpstring("ribbon clicked")]
+    HRESULT OnButtonClicked([in]IDispatch* ribbonControl);
+	[id(43),helpstring("ribbon load image")]
+    HRESULT OnLoadImage([in]IDispatch* ribbonControl, [out, retval] IPictureDisp** ppdispImage);
+	[id(44),helpstring("ribbon get lable")]
+	HRESULT OnGetLable([in]IDispatch* ribbonControl, [out, retval] BSTR* pbstrReturnedVal);
+	[id(45),helpstring("ribbon enabled")]
+	HRESULT OnGetEnabled([in] IDispatch *ribbonControl, [out, retval] VARIANT_BOOL* pvarReturnedVal);
+	[id(46),helpstring("ribbon get discription")]
+	HRESULT OnGetDiscription([in] IDispatch *ribbonControl, [out, retval] BSTR *pbstrReturnedVal);
+	[id(47),helpstring("ribbon get key tip")]
+	HRESULT OnGetKeyTip([in] IDispatch *ribbonControl, [out, retval] BSTR *pbstrReturnedVal);
+};
+[
+	uuid(C21B900D-EA33-4A0D-9DE7-91F898D1B662),
+	version(1.0),
+]
+library OutlookAddinLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(9A329592-15D8-4597-B298-7CB722BDEE5D)		
+	]
+	coclass OutlookAddinImpl
+	{
+		[default] interface IRibbonCallback;
+	};
+};
+

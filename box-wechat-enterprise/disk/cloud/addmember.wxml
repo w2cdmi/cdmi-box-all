@@ -1,0 +1,62 @@
+<view class='page'>
+    <view class='crumbs' style='border-bottom:1px solid #F5F5F5;'>
+        <view class="breadcrumbs">
+            <!--水平滚动-->
+            <view class="weui-flex" scroll-x style="width: 100%;background:#fff;">
+                <view id="breadcrumb">
+                    <view class='crumb-name' data-crumb="{{item}}">
+                        <view class="weui-flex__item">
+                            <text data-crumb="{{item}}" bindtap="onCrumbClick">返回</text>
+                        </view>
+                        <image src='/disk/images/triangle.png'></image>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" style='height:{{scrollHeight}};'>
+        <view class="weui-panel weui-panel_access">
+            <view class="weui-panel__bd">
+                <view class='list' hidden='{{list ? true : false}}'>
+                    <view class='people'>
+                        <view class='img'>
+                            <image src='../images/depfile.png'></image>
+                        </view>
+                        <label>{{deptName}}</label>
+                    </view>
+                    <view class='permissions'>
+
+                        <view class='img'>
+                            <image src='../images/arrow.png'></image>
+                        </view>
+                    </view>
+                </view>
+                <block wx:for="{{list}}" wx:key="*this">
+                <checkbox-group bindchange="checkboxChange" data-index="{{index}}" data-checks="{{item.checks}}">
+                    <view class='list' bindtap='showDepAndUsers' data-items="{{item}}">
+
+                        <view class='people'>
+                            <checkbox data-index="{{index}}" catchtap="checkbox" data-items="{{item}}" checked="{{item.checked}}" />
+                            <view class='img'>
+                                <image src='{{item.icon}}'></image>
+                            </view>
+                            <label>{{item.name}}</label>
+                        </view>
+                        <view class='permissions' catchtap="click">
+                            <view class='img'>
+                                <image wx:if="{{item.isParent}}" src='../images/arrow.png'></image>
+                            </view>
+                        </view>
+                    </view>
+                    </checkbox-group>
+                </block>
+            </view>
+        </view>
+    </scroll-view>
+    <view class='btn' wx-if="{{!confim}}">
+        <view class='confim' bindtap="confim">确定 </view>
+    </view>
+    <view class='btn' wx-if="{{confim}}">
+        <view class='confim' bindtap="confimcheck">确定 </view>
+    </view>
+</view>

@@ -1,0 +1,42 @@
+<view class='page'>
+    <!--水平滚动-->
+    <view id="breadcrumb" scroll-x>
+        <view class='crumb-name' wx:for="{{crumbs}}" wx:key="*this" data-crumb="{{item}}" bindtap="onCrumbClick">
+            <view class="item">
+                <text>{{item.name}}</text>
+            </view>
+            <image src='../images/triangle.png'></image>
+        </view>
+    </view>
+
+    <!-- 文件、文件夹列表 -->
+    <scroll-view scroll-y style="height:1100rpx;" bindscrolltoupper="upper" bindscrolltolower="lower">
+        <view class='blankBackground' hidden='{{isShowBlankPage?fales:true}}'>
+            <image src='../images/blank/blank-bg.png'></image>
+            <view>矮油，还没有文件</view>
+        </view>
+        <view wx:for="{{folders}}" data-folderinfo="{{item}}" catchtap='onFolderItemClick' wx:key="*this" class='file-group border-bottom view-bg' hover-class="button-hover">
+
+            <view>
+                <image class="img-icon"  mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src='{{item.icon}}'></image>
+            </view>
+
+            <view class="file-info cell_2_body_content">
+                <label>{{item.name}}</label>
+                <text>{{item.menderName}} | {{item.modifiedTime}}
+            </text>
+            </view>
+        </view>
+        <view wx:for="{{files}}" data-fileinfo="{{item}}" catchtap='onFileItemClick' wx:key="*this" class='file-group border-bottom view-bg' hover-class="button-hover">
+
+            <view>
+                <image class="img-icon" mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src='{{item.icon}}'></image>
+            </view>
+
+            <view class="file-info cell_2_body_content">
+                <label>{{item.name}}</label>
+                <text>{{item.fileSize}} | {{item.modifiedTime}}</text>
+            </view>
+        </view>
+    </scroll-view>
+</view>

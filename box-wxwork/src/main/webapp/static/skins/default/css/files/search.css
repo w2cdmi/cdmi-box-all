@@ -1,0 +1,15 @@
+.search-choose-title{
+    text-align: center;
+    font-size: 0.65rem;
+    color: #666666;
+    line-height: 2.15rem;
+}
+.search-choose-file ul{
+    display: flex;
+}
+.search-choose-file ul li{
+    width: 100%;
+    font-size: 0.6rem;
+    color: #999999;
+    text-align: center;
+}

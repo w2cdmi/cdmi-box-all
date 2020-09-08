@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" 
+    xmlns:tx="http://www.springframework.org/schema/tx" 
+    xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+	default-autowire="byName">
+    
+    <bean id="dbExhaustAlarm" class="pw.cdmi.common.alarm.common.DBExhaustAlarm" scope="prototype">
+    	<constructor-arg index="0" value="0xB0223006CL" />
+    	<constructor-arg index="1" value="0" />
+    	<constructor-arg index="2" value="6" />
+    	<constructor-arg index="3" value="${alarm.service.name}" />
+    	<constructor-arg index="4" value="600000" />
+    </bean>
+    
+    <bean id="dssNodeOfflineAlarm" class="com.huawei.sharedrive.app.core.alarm.DSSNodeOfflineAlarm" scope="prototype">
+    	<constructor-arg index="0" value="0xB02230087L" />
+    	<constructor-arg index="1" value="0" />
+    	<constructor-arg index="2" value="6" />
+    	<constructor-arg index="3" value="${alarm.service.name}" />
+    </bean>
+    
+    <bean id="concurrentAlarm" class="pw.cdmi.common.alarm.common.ConcurrentAlarm">
+    	<constructor-arg index="0" value="0x100B02230091L" />
+    	<constructor-arg index="1" value="1" />
+    	<constructor-arg index="2" value="2" />
+    	<constructor-arg index="3" value="${alarm.service.name}" />
+    </bean>
+    
+    <bean id="licenseOvertimeAlarm" class="pw.cdmi.common.alarm.common.LicenseOvertimeAlarm">
+    	<constructor-arg index="0" value="0xB02230093L" />
+    	<constructor-arg index="1" value="1" />
+    	<constructor-arg index="2" value="6" />
+    	<constructor-arg index="3" value="${alarm.service.name}" />
+    	<constructor-arg index="4" value="30" />
+    </bean>
+    
+    <bean id="licenseUserNumberLimitAlarm" class="pw.cdmi.common.alarm.common.LicenseUserNumberLimitAlarm">
+    	<constructor-arg index="0" value="0xB02230094L" />
+    	<constructor-arg index="1" value="1" />
+    	<constructor-arg index="2" value="5" />
+    	<constructor-arg index="3" value="${alarm.service.name}" />
+    	<constructor-arg index="4" value="0.9" />
+    </bean>
+    
+    <bean id="licenseTeamNumberLimitAlarm" class="pw.cdmi.common.alarm.common.LicenseTeamNumberLimitAlarm">
+    	<constructor-arg index="0" value="0xB02230095L" />
+    	<constructor-arg index="1" value="1" />
+    	<constructor-arg index="2" value="5" />
+    	<constructor-arg index="3" value="${alarm.service.name}" />
+    	<constructor-arg index="4" value="0.9" />
+    </bean>
+    
+    <bean id="licenseValidateAlarm" class="pw.cdmi.common.alarm.common.LicenseValidateAlarm">
+    	<constructor-arg index="0" value="0xB02230096L" />
+    	<constructor-arg index="1" value="1" />
+    	<constructor-arg index="2" value="5" />
+    	<constructor-arg index="3" value="${alarm.service.name}" />
+    </bean>
+    
+    
+    <bean id="alarmHelper" class="pw.cdmi.common.alarm.AlarmHelper">     
+    	<property name="supportAlarm" value="${alarm.support}" />
+    	<property name="ismIp" value="${alarm.ism.ip}" />
+    	<property name="ismPort" value="${alarm.ism.port}" />
+    	<property name="cacheSupported" value="${cache.supported}" />
+    	<property name="cacheClient" ref="cacheClient" />
+    	<property name="recoverAbleAlarms">
+			<list>
+				<ref local="dbExhaustAlarm" />
+				<ref local="concurrentAlarm" />
+			</list>
+		</property>
+    </bean>
+    
+    <bean id="autoRecoverTask" class="pw.cdmi.common.alarm.AutoRecoverTask">
+    	<property name="alarmHelper" ref="alarmHelper" />
+    </bean>
+    
+    <bean id="tomcatMonitor" class="pw.cdmi.common.tomcat.monitor.TomcatMonitor">
+    	<property name="threshold" value="190" />
+    	<property name="retrieval" value="150" />
+    	<property name="objectName" value="Catalina:type=Executor,name=tomcatThreadPool" />
+    	<property name="attribute" value="activeCount" />
+    	<property name="alarm" ref="concurrentAlarm" />
+    	<property name="alarmHelper" ref="alarmHelper" />
+    </bean>
+    
+    <bean id="licenseAlarmHelper" class="com.huawei.sharedrive.app.system.service.LicenseAlarmHelper">
+    	<property name="licenseOvertimeAlarm" ref="licenseOvertimeAlarm" />
+    	<property name="licenseUserNumberLimitAlarm" ref="licenseUserNumberLimitAlarm" />
+    	<property name="licenseTeamNumberLimitAlarm" ref="licenseTeamNumberLimitAlarm" />
+    	<property name="alarmHelper" ref="alarmHelper" />
+    </bean>
+</beans>

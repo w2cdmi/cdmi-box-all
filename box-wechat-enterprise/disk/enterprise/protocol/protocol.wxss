@@ -1,0 +1,29 @@
+/* disk/enterprise/protocol/protocol.wxss */
+
+.srcoll-view-h {
+    font-size: 28rpx;
+    width: 670rpx;
+    padding: 40rpx;
+    background: #fff;
+}
+
+.title {
+    font-size: 32rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    text-align: center;
+}
+
+.innertitle {
+    text-align: center;
+    margin: 40rpx 0rpx 30rpx;
+}
+
+.sure-button {
+    margin: 0 30rpx;
+}
+
+.page {
+    background: #fff;
+    padding-bottom: 20rpx;
+}

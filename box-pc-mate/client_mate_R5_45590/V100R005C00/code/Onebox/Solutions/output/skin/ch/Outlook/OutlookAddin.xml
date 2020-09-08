@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="1000,295">
+  <Font id="0" name="微软雅黑" size="14" shared="true" />
+  <Font id="1" name="微软雅黑" size="12" bold="true" shared="true" />
+  <Font id="2" name="微软雅黑" size="12" shared="true" />
+  <Font id="3" name="微软雅黑" size="16" bold="true" shared="true" />
+  <Font id="4" name="微软雅黑" size="22" bold="true" italic="true" shared="true"/>
+  <Font id="5" name="微软雅黑" size="12" default="true" shared="true" />
+  <Font id="6" name="微软雅黑" size="12" bold="false" italic="false" shared="true" />
+  <Font id="7" name="微软雅黑" size="15" shared="true" />
+  <Font id="8" name="微软雅黑" size="8" shared="true" />
+  <Font id="9" name="微软雅黑" size="12" bold="false" italic="false" shared="true" />
+  <Font id="10" name="微软雅黑" size="12" bold="false" italic="false" shared="true" />
+  <Font id="11" name="微软雅黑" size="12" bold="true" italic="false" shared="true" />
+  <Font id="12" name="微软雅黑" size="14" bold="false" italic="false" shared="true" />
+  <Font id="13" name="微软雅黑" size="14" bold="true" italic="false" shared="true" />
+  <Font id="14" name="微软雅黑" size="20" bold="true" italic="false" shared="true" />
+  <Font id="15" name="微软雅黑" size="16" bold="false" italic="false" shared="true" />
+  <Font id="16" name="微软雅黑" size="12" bold="false" italic="true" shared="true" />
+  <Font id="17" name="微软雅黑" size="18" bold="true" italic="false" shared="true" />
+  
+  <Default name="VScrollBar" shared="true" value="width=&quot;10&quot; button1normalimage=&quot;file=''&quot; button1hotimage=&quot;file=''&quot; button1pushedimage=&quot;file=''&quot; button1disabledimage=&quot;file=''&quot; button2normalimage=&quot; file=''&quot; button2hotimage=&quot;file=''&quot; button2pushedimage=&quot;file=''&quot; button2disabledimage=&quot;file=''&quot; thumbnormalimage=&quot;file='..\..\Image\scroll\ic_vscroll.png' source='0,0,10,7' corner='3,3,3,3'&quot; thumbhotimage=&quot;file='..\..\Image\scroll\ic_vscroll.png' source='0,17,10,24' corner='3,3,3,3'&quot; thumbpushedimage=&quot;file='..\..\Image\scroll\ic_vscroll.png' source='0,34,10,41' corner='3,3,3,3'&quot; thumbdisabledimage=&quot;file=''&quot;  bkcolor=&quot;#FF000000&quot;"/>
+  <Default name="HScrollBar" shared="true" value="height=&quot;10&quot; button1normalimage=&quot;file=''&quot; button1hotimage=&quot;file=''&quot; button1pushedimage=&quot;file=''&quot; button1disabledimage=&quot;file=''&quot; button2normalimage=&quot; file=''&quot; button2hotimage=&quot;file=''&quot; button2pushedimage=&quot;file=''&quot; button2disabledimage=&quot;file=''&quot; thumbnormalimage=&quot;file='..\..\Image\scroll\ic_hscroll.png' source='0,0,7,10' corner='3,3,3,3'&quot; thumbhotimage=&quot;file='..\..\Image\scroll\ic_hscroll.png' source='17,0,24,10' corner='3,3,3,3'&quot; thumbpushedimage=&quot;file='..\..\Image\scroll\ic_hscroll.png' source='34,0,41,10' corner='3,3,3,3'&quot; thumbdisabledimage=&quot;file=''&quot;  bkcolor=&quot;#FF000000&quot;"/>
+	<VerticalLayout bkcolor="#FFFFFFFF">
+		<HorizontalLayout padding="15,0,0,0">
+			<List name="transTask_ListView" width="985" height="295" mousechild="true" header="hidden" hscrollbar="true" vscrollbar="true" />
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

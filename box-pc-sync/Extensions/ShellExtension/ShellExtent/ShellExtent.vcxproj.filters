@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="生成的文件">
+      <UniqueIdentifier>{d814e17b-57d1-4f91-bd62-24f16456063e}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{4bafebf5-8a3d-4c27-889a-12c9979d64b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="icon">
+      <UniqueIdentifier>{270b63f1-41df-4040-b91e-ea754d6fb298}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ctxmenu">
+      <UniqueIdentifier>{f9b194d9-59e7-4232-b814-092ef74d70c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thrift">
+      <UniqueIdentifier>{93dfa5a9-65c9-478b-b2c8-aef94318aae8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IconSynced.cpp">
+      <Filter>icon</Filter>
+    </ClCompile>
+    <ClCompile Include="IconSyncIng.cpp">
+      <Filter>icon</Filter>
+    </ClCompile>
+    <ClCompile Include="Globals.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="ContextMenuExt.cpp">
+      <Filter>ctxmenu</Filter>
+    </ClCompile>
+    <ClCompile Include="ShellExtent_i.c">
+      <Filter>生成的文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ShellExtent.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="IconSyncNoAction.cpp">
+      <Filter>icon</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OneboxSync\Common\thrift\OneboxSyncService\OneboxSyncService_constants.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OneboxSync\Common\thrift\OneboxSyncService\OneboxSyncService_types.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OneboxSync\Common\thrift\OneboxSyncService\SyncService.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="ThriftClient.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OneboxSync\Common\source\InIHelper.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\OneboxSync\Common\source\Utility.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="dllmain.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IconSynced.h">
+      <Filter>icon</Filter>
+    </ClInclude>
+    <ClInclude Include="IconSyncIng.h">
+      <Filter>icon</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="ContextMenuExt.h">
+      <Filter>ctxmenu</Filter>
+    </ClInclude>
+    <ClInclude Include="ShellExtent_i.h">
+      <Filter>生成的文件</Filter>
+    </ClInclude>
+    <ClInclude Include="IconSyncNoAction.h">
+      <Filter>icon</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OneboxSync\Common\thrift\OneboxSyncService\OneboxSyncService_constants.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OneboxSync\Common\thrift\OneboxSyncService\OneboxSyncService_types.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OneboxSync\Common\thrift\OneboxSyncService\SyncService.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="ThriftClient.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OneboxSync\Common\include\InIHelper.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OneboxSync\Common\include\Utility.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OneboxSync\Common\include\NotifyMsg.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OneboxSync\Common\include\CommonDefine.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\OneboxSync\Common\include\ErrorCode.h">
+      <Filter>common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ContextMenuExt.rgs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="IconSynced.rgs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="IconSyncIng.rgs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="ShellExtent.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="ShellExtent.rgs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="IconSyncFailed.rgs">
+      <Filter>资源文件</Filter>
+    </None>
+    <None Include="IconSyncNoAction.rgs">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\share.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\outchain.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\Share.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\ShareLink.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\cloudlogo.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\ShareLink.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="ShellExtent.idl">
+      <Filter>源文件</Filter>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="ShellExtent.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

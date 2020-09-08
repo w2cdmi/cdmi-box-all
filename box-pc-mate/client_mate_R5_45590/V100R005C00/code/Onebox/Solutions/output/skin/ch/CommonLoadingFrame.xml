@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="300,100" caption="0,0,0,-1" roundcorner="2,2,2,2" mininfo="300,100" maxinfo="300,100" bordersize="0">
+
+	<Font id="0" name="微软雅黑" size="14" default="true" />
+
+	<VerticalLayout bkcolor="#FFFFFFFF"  borderround="2,2,2,2">
+		<Control height="25" />
+		<HorizontalLayout >
+			<Control width="80" />
+			<GifAnim height="32" width="32" bkimage="..\Image\ic_loading_32.gif"  padding="0,10"/>
+			<Label text="操作进行中... " padding="20,0" height="50" align="left" valign="center" textcolor="#FF000000" />
+		</HorizontalLayout>
+
+	</VerticalLayout>
+</Window>

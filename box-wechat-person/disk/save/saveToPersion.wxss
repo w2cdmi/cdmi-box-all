@@ -1,0 +1,45 @@
+/* 标签样式 */
+label {
+    display: block;
+    line-height: 50rpx;
+    height: 50rpx;
+    overflow:hidden;
+    width:560rpx;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+text {
+    font-size: 24rpx;
+    line-height: 20px;
+    color: #999;
+    display: block;
+}
+
+/* 页面布局 */
+.margin-right {
+    margin-right: 20rpx;
+}
+
+.margin-top {
+    margin-top: 20rpx;
+}
+
+/* 文件信息 */
+.file-group {
+    height: 90rpx;
+    display: flex;
+}
+
+.img-icon {
+    width: 90rpx;
+    height: 90rpx;
+}
+
+.file-info {
+    height: 90rpx;
+}
+
+
+@import "../template/selectFolder.wxss";
+@import "../template/createFolder.wxss";

@@ -1,0 +1,54 @@
+/* disk/enterprise/reselection/knowledger.wxss */
+
+.title {
+    height: 90rpx;
+    background: #fff;
+    line-height: 90rpx;
+    padding-left: 34rpx;
+}
+
+.scroll-item{
+    height: 134rpx;
+}
+
+.department-info {
+    display: flex;
+    align-items: center;
+    width: 750rpx;
+    padding-left: 40rpx;
+    padding-top: 40rpx;
+}
+
+.department-icon {
+    width: 80rpx;
+    height: 80rpx;
+    margin: 8rpx 20rpx;
+    border-radius: 50%;
+}
+
+.department-description {
+    font-size: 26rpx;
+    color: #666;
+}
+
+.scroll-view-item {
+    white-space: nowrap;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
+.member-item {
+    display: flex;
+    background: #fff;
+}
+
+.reselection {
+    height: 134rpx;
+    line-height: 134rpx;
+    background: #ea5036;
+    color: #fff;
+    width: 208rpx;
+    text-align: center;
+}

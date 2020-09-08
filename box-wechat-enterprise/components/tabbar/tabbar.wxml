@@ -1,0 +1,26 @@
+<view class="tab-bar">
+    <view class="tab-item" wx:for="{{ tabbars }}" wx:for-item="tabItem" wx:key="tabItem" wx:for-index="index">
+        <template is="tab-item" data="{{ tabItem, selectIndex, index, mCount}}"></template>
+    </view>
+</view>
+
+<template name="tab-item">
+    <!--绑定一个onTabItemTap方法-->
+    <view class="tab-content" bindtap="onTabItem" data-index='{{index}}'>
+
+        <!--tabBar图标-->
+        <view class="tab-icon" style='height:{{tabItem.text?"":"100%"}}'>
+            <image src="{{ selectIndex==index?tabItem.selectedIconPath:tabItem.iconPath}}" class='{{tabItem.text?"":"add-icon"}}'></image>
+        </view>
+
+        <!--tabBar标题-->
+        <view class="tab-title" wx:if="{{ tabItem.text }}" style='color:{{selectIndex==index?"#EA5036":""}}'>
+            <text>{{ tabItem.text }}</text>
+        </view>
+
+        <!--未读信息气泡-->
+        <view class="tab-bubble" wx:if="{{ mCount > 0 && index==0 }}">
+            <text class="tab-count">{{ mCount < 100? mCount: 99 + "+" }}</text>
+        </view>
+    </view>
+</template>

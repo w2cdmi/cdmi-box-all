@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig  PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN" 
+         "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+
+    <settings lazyLoadingEnabled="true" useStatementNamespaces="true" />
+
+    <sqlMap resource="pw/cdmi/common/domain/SystemConfig.xml" />
+    <sqlMap resource="pw/cdmi/common/domain/CustomizeLogo.xml" />
+    <sqlMap resource="pw/cdmi/common/domain/ClientManage.xml" />
+    <sqlMap resource="pw/cdmi/common/domain/AuthServer.xml" />
+    <sqlMap resource="pw/cdmi/common/domain/AccountConfig.xml" />
+    
+    <sqlMap resource="pw/cdmi/box/disk/core/domain/SystemLock.xml" />
+    
+    <sqlMap resource="pw/cdmi/box/disk/user/domain/User.xml" />
+    
+    
+    <sqlMap resource="pw/cdmi/box/disk/authapp/domain/AuthApp.xml" />
+    <sqlMap resource="pw/cdmi/box/disk/user/domain/UserAccount.xml" />
+    <sqlMap resource="pw/cdmi/box/disk/user/domain/UserLocked.xml"/>
+    <sqlMap resource="pw/cdmi/box/disk/user/domain/EnterpriseUser.xml" />
+    <sqlMap resource="pw/cdmi/box/disk/user/domain/WxEnterpriseUser.xml" />
+
+    <sqlMap resource="pw/cdmi/box/disk/enterprise/domain/Enterprise.xml" />
+    <sqlMap resource="pw/cdmi/box/disk/enterprise/domain/EnterpriseAccount.xml" />
+    <sqlMap resource="pw/cdmi/box/disk/authserver/domain/AccountAuthserver.xml" />
+    <sqlMap resource="pw/cdmi/box/disk/accountrole/domain/AccountRole.xml" />
+    
+    <sqlMap resource="pw/cdmi/box/disk/user/domain/UserImage.xml" />
+    <sqlMap resource="pw/cdmi/box/disk/enterpriseindividual/domain/WebIconPcLogo.xml" />
+       
+	<sqlMap resource="pw/cdmi/common/domain/ConcealDeclare.xml"/>
+	<sqlMap resource="pw/cdmi/common/domain/UserSignDeclare.xml"/>
+	<sqlMap resource="pw/cdmi/box/disk/logininfo/domain/LoginInfo.xml" />
+	
+	<sqlMap resource="pw/cdmi/common/job/manage/dao/systemjob-sql.xml" />
+	<sqlMap resource="pw/cdmi/box/disk/accountbaseconfig/domain/AccountBasicConfig.xml" />
+	
+	<sqlMap resource="pw/cdmi/box/disk/product/domain/Product.xml"/>
+    <sqlMap resource="pw/cdmi/box/disk/product/domain/PaymentInfo.xml" />
+    <sqlMap resource="pw/cdmi/box/disk/product/domain/OrderBill.xml" />
+</sqlMapConfig>
+

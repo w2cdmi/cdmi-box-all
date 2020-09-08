@@ -1,0 +1,100 @@
+<!--disk/find/index.wxml-->
+<view class='page-plug'>
+    <view class='navbar-conta' style='position:{{style.navPosition}}'>
+        <view class='navbar' style='width:{{style.navbarWidth*100}}%;margin:0 {{(1-style.navbarWidth)/2*100}}%;'>
+            <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+                <view id="{{index}}" class="navbar-item {{activeIndex == index ? 'bar-item-on' : ''}}" bindtap="tabClick">
+                    <view class="navbar-title">{{item}}</view>
+                </view>
+            </block>
+            <view class="navbar-slider" style="left: {{style.sliderLeft}}px; transform: translateX({{style.sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+        </view>
+    </view>
+    <!-- 推荐  -->
+    <view class="find-content" style='margin-top:{{style.marginTop}}px;' hidden="{{activeIndex != 0}}">
+        <view class='find-items-content'>
+            <block wx:for='{{datasA}}'>
+                <view class='find-items' bindtap='fileItemClick' data-fileInfo="{{item}}" hover-class="hover-items">
+                    <view class="find-items descr-txt-conta"style='height:87rpx;'><view class='con-txt'>{{item.description}}</view></view>
+                    <view class='flex-center'>
+                        <view class='{{item.coverImg.length < 95 ? "bc-recommdImg":"" }}'>
+                            <image class='con-img items-width' lazy-load="true" mode='{{item.coverImg.length < 95 ? "aspectFit":"aspectFill" }}' src='{{item.coverImg}}'></image>
+                        </view>
+                    </view>
+                    <view class='con-user'>
+                        <view class='flex-center'>
+                            <image class='op-avatar' src='{{item.avatorImg}}'></image>
+                            <text class='op-avatar-txt'>{{item.onwerName}}</text>
+                        </view>
+                        <view class='flex-center op-like-com'>
+                            <image class='op-img' src='/disk/images/find/like.png'></image>
+                            <text>{{item.praiseCount}}</text>
+                        </view>
+                        <view class='flex-center op-like-com'>
+                            <image class='op-img' src='/disk/images/find/comment.png'></image>
+                            <text>{{item.commentCount}}</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+        </view>
+        <view class='there-paging' hidden='{{paging.isShowLoadMore ? false:true}}'>
+            <view class="loadmore there-paging-loadmore">
+                <view class="loading " style='margin-top:3px;' hidden='{{paging.loadMoreIcon ? false:true}}'></view>
+                <view class="loadmore-tips loadmore-tips-in-line" style='top:0px;margin-top:10rpx;background-color:transparent;'>{{paging.loadMoreIcon? "正在加载": "没有更多数据"}}</view>
+            </view>
+        </view>
+    </view>
+    <!-- 我的发布  -->
+    <view class="find-content" style='padding:0px;margin-top:{{style.marginTop}}px;' hidden="{{activeIndex != 1}}">
+        <block wx:for='{{datasB}}'>
+            <view class='mypost-conta' catchtap='fileItemClick' data-fileInfo="{{item}}">
+                <view hover-class="hover-items">
+                    <view class='mypost-items mypost-txt'>
+                        <text class='mypost-title'>{{item.description}}</text>
+                        <view class='delete-view' data-fileInfo='{{item}}' data-id="{{index}}" catchtap='deleteMypost' hover-class="hover-deleTxt" hover-stop-propagation="{{true}}">
+                            <text class='del-color'>删除</text>
+                        </view>
+                    </view>
+                    <view class='mypost-items  {{item.coverImg.length < 95 ? "bc-img":"" }}'>
+                        <image mode='{{item.coverImg.length < 95 ? "aspectFit":"aspectFill" }}' lazy-load="true" class=' mypost-img ' src="{{item.coverImg}}"></image>
+                    </view>
+                    <view class='mypost-items mypost-op'>
+                        <view class='flex-center'>
+                            <image class='op-comm-img' src='/disk/images/find/view.png'></image>
+                            <text class='op-aview-txt'>{{item.visitCount}}</text>
+                        </view>
+                        <view class='flex-center'>
+                            <image class='op-comm-img' src='/disk/images/find/like.png'></image>
+                            <text>{{item.praiseCount}}</text>
+                        </view>
+                        <view class='flex-center'>
+                            <image class='op-comm-img' src='/disk/images/find/comment.png'></image>
+                            <text>{{item.commentCount}}</text>
+                        </view>
+                        <view class='flex-center share-view' hover-stop-propagation='{{true}}' hover-class='hover-items'>
+                            <button class='share-button share-view' data-fileInfo='{{item}}' hover-class='hover-items' catchtap='xxx' open-type='share' hover-stop-propagation='true'>
+                                <image class='op-comm-img' src='/disk/images/find/share.png'></image>
+                                <text style='color:#5176AA;'>转发</text>
+                            </button>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </block>
+        <view class='there-paging' hidden='{{paging.isShowLoadMore ? false:true}}'>
+            <view class="loadmore there-paging-loadmore">
+                <view class="loading " style='margin-top:3px;' hidden='{{paging.loadMoreIcon ? false:true}}'></view>
+                <view class="loadmore-tips loadmore-tips-in-line" style='top:0px;margin-top:10rpx;background-color:transparent;'>{{paging.loadMoreIcon? "正在加载": "没有更多数据"}}</view>
+            </view>
+        </view>
+
+    </view>
+</view>
+
+<navigator class='to-addpost' wx:if='{{addBtn}}' url="/disk/find/addpost/addpost" open-type="navigate">
+    <image class='to-addpost' src='/disk/images/find/addpost.png'></image>
+</navigator>
+
+<tabbar selectIndex="3" mCount="{{mCount}}" bind:onShowMenu="onShowMenu"></tabbar>
+<menu isShowMenu='{{isShowMenu}}' bind:onUploadImage="onUploadImage" bind:onUploadVideo="onUploadVideo" bind:showCreateFolder="showCreateFolder"></menu>

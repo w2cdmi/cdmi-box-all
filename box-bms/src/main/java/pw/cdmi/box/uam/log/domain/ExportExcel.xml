@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ExportExcel">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="ExportExcel" type="pw.cdmi.box.uam.log.domain.ExportExcel" />
+    
+    <resultMap id="resultMap.ExportExcelMap" class="ExportExcel">
+        <result column="plyName" 				property="plyName" 					javaType="java.lang.String"/>
+        <result column="num" 			property="num" 		    	javaType="java.lang.Integer"/>
+    </resultMap>
+    
+    <select id="getEveryDayUserDoCloud" parameterClass="map" resultMap="resultMap.ExportExcelMap">
+        select plyName, count(*) num from ( 
+               SELECT DISTINCT userId,DATE_FORMAT(createdAt,'%y-%c-%d') as plyName from event_log GROUP BY plyName,userId
+         ) newtable  GROUP BY plyName   
+    </select>
+    
+    <select id="getEveryMonthUserDoCloud" parameterClass="map" resultMap="resultMap.ExportExcelMap">
+        select DATE_FORMAT(dodate,'%y-%c') plyName,sum(s) num from (
+            select dodate, count(*) s from ( 
+                SELECT DISTINCT userId, STR_TO_DATE(DATE_FORMAT(createdAt,'%y-%c-%d'),'%y-%c-%d')  as dodate from event_log GROUP BY dodate,userId
+            ) newtable1  GROUP BY dodate
+         )newtable2 group by plyName
+    </select>
+    
+    <select id="getDeviceDoCloud" parameterClass="map" resultMap="resultMap.ExportExcelMap">
+         SELECT clientDeviceType plyName,count(*) num from event_log group By clientDeviceType
+    </select>
+
+</sqlMap>
+

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ResourceRole">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="ResourceRole" type="com.huawei.sharedrive.app.acl.domain.ResourceRole" />
+    <select id="get" resultClass="ResourceRole" parameterClass="String">
+        <![CDATA[
+        select * from resource_role  where resourceRole=#resourceRole#
+        ]]>
+    </select>
+    <select id="getAll" resultClass="ResourceRole"> 
+        <![CDATA[
+        select * from resource_role
+        ]]>
+    </select>
+    <select id="getByCreatedBy" resultClass="ResourceRole"> 
+        <![CDATA[
+        select * from resource_role  where createdBy=#createdBy#
+        ]]>
+    </select>
+     <insert id="insert" parameterClass="ResourceRole">
+        <![CDATA[
+        insert into resource_role(resourceRole,acl,createdBy,createdAt,modifiedBy,modifiedAt,description) 
+        values 
+        (#resourceRole#,#acl#,#createdBy#,#createdAt#,#modifiedBy#,#modifiedAt#,#description#)
+        ]]>
+    </insert>
+    
+    <update id="update" parameterClass="ResourceRole">
+        <![CDATA[
+        update resource_role set acl=#acl#,description=#description#,modifiedBy=#modifiedBy#,modifiedAt=#modifiedAt# where resourceRole=#resourceRole#
+        ]]>
+    </update>
+    
+    <delete id="delete" parameterClass="ResourceRole">
+        <![CDATA[
+        delete from resource_role where resourceRole=#resourceRole#
+        ]]>
+    </delete>
+    
+</sqlMap>
+

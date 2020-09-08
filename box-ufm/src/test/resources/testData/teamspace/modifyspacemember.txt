@@ -1,0 +1,37 @@
+@@normal
+{ 
+    "teamRole":"manager",    
+    "role":"editor" 
+}
+
+@@repeat
+{ 
+    "teamRole":"manager",    
+    "role":"editor" 
+}
+
+@@noteamRole
+{   
+   "role":"editor" 
+}
+
+@@norole
+{ 
+    "teamRole":"manager"
+}
+
+@@invalidteamRole
+{ 
+    "teamRole":"sssss",
+    "role":"editor" 
+}
+
+@@invalidrole
+{ 
+    "teamRole":"manager", 
+   "role":"eeeeeeeee" 
+}
+
+@@nobody
+{ 
+}

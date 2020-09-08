@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<link href="../../skins/default/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="../../skins/default/css/public.css" rel="stylesheet" type="text/css" />
+<link href="../../skins/default/css/main.css" rel="stylesheet" type="text/css" />
+<script src="../../js/public/jquery-1.10.2.min.js" type="text/javascript"></script>
+<style type="text/css">
+
+.h4Center{
+	text-align: center;
+	color: #398dd0;
+	font-family: cursive;
+}
+.pCenter{
+	text-align: center;
+	color: black;
+	font-family: cursive;
+
+}
+
+
+	
+</style>
+</head>
+
+<body>
+<div class="guide-con">
+<div id="test" ></div>
+	<div>
+    	<ul id="guideImgCon" class="clearfix"  style="margin-top: 30px;">
+        	<li class="">
+            	<h4 class="h4Center">正在下载或安装文件夹上传控件,请不要关闭浏览器或网页...</h4>
+            	<p class="pCenter">过程可能耗时1~2分钟，请耐心等待!</p>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- <OBJECT classid=clsid:AE60D877-3019-4F01-8CBE-017A4B7FF788 codebase="../../js/public/Upload.CAB#version=2,1,2,10" id=Upload style="HEIGHT: 1px; WIDTH: 1px"></OBJECT> -->
+<script type="text/javascript">
+
+var intervalActiveX = new Object();
+intervalActiveX = setInterval("checkLoadReady()",500);
+
+ $(function()
+ {
+	 if (navigator.userAgent.indexOf("MSIE 8.0") < 0){
+		 var divhtml = '<OBJECT classid=clsid:AE60D877-3019-4F01-8CBE-017A4B7FF788 codebase="../../js/public/Upload.CAB#version=2,1,2,10" id=Upload style="HEIGHT: 1px; WIDTH: 1px"></OBJECT>';
+		 $("#test").html(divhtml);
+	} 
+	 
+	 checkHasInstall();
+	 checkLoadReady();
+ });
+ 
+ var UploadObj;
+ function checkHasInstall()
+ {
+	 try
+	 {
+		 if(!UploadObj) 
+		 {
+			 UploadObj =  new ActiveXObject("UPLOADPLUGIN.UploadPluginCtrl.1");
+			 alert(UploadObj);
+		 }
+	 }
+	 
+	 catch(e)
+	 {
+		if (navigator.userAgent.indexOf("MSIE 8.0") > 0)
+		{
+			parent.addActiveObj();
+		}
+		
+		return;
+	 }
+	 
+	 top.ymPrompt.close();
+	 parent.childrenCallBack();
+ }
+ 
+ function checkLoadReady(){
+	
+	 try{
+		 if(!UploadObj) {
+			 UploadObj =  new ActiveXObject("UPLOADPLUGIN.UploadPluginCtrl.1");
+		 }
+	 }
+	 catch(e)
+	 {
+		 sleep(500);
+		return;
+	 }
+	 
+	 try{
+	 
+	 top.ymPrompt.close();
+	
+	 clearInterval(intervalActiveX);
+	 intervalActiveX = null;
+	 parent.childrenCallBack();
+	 }
+	 catch(e)
+	 {
+		 
+	 }
+	 return;
+	 
+ }
+ 
+  function sleep(time){
+	  
+	 var now = new Date();
+	 var goalTime = now.getTime() + time;
+	 
+	 while(true)
+	 {
+		 var current = new Date();
+		 
+		 var currentTime = current.getTime();
+		 
+		 if(goalTime <= currentTime)
+		 {
+			 return;
+		 }
+	 }
+ }
+
+ 
+</script>
+</body>
+</html>

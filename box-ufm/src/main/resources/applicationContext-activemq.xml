@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="		
+    http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+	http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd">
+    
+    <!-- 连接池 -->
+    <bean id="pooledConnectionFactory" class="org.apache.activemq.pool.PooledConnectionFactory" destroy-method="stop">
+        <property name="connectionFactory">
+            <bean class="org.apache.activemq.ActiveMQConnectionFactory">
+                <property name="brokerURL" value="${activemq.broker.url}"/>
+            </bean>
+        </property>
+        <property name="maxConnections" value="${activemq.pool.maxConnections}"/>  
+    </bean>
+    
+    <!-- defaultMessageConverter -->
+    <bean id="defaultMessageConverter" class="org.springframework.jms.support.converter.SimpleMessageConverter" />
+    
+    <!-- jmsTemplate -->
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="pooledConnectionFactory"></property>
+        <property name="messageConverter">  
+            <bean class="org.springframework.jms.support.converter.SimpleMessageConverter" />
+        </property>  
+    </bean>
+    
+    <!-- 用户消息通知topic -->
+    <bean id="noticeTopic" class="org.apache.activemq.command.ActiveMQTopic">
+        <constructor-arg value="onebox.message.notice.topic"></constructor-arg>
+    </bean>
+    
+    <!-- 消息通知生产者 -->
+    <bean id="noticeProducer" class="com.huawei.sharedrive.app.message.mq.producer.TopicProducer">
+    	<property name="template" ref="jmsTemplate" />  
+        <property name="destination" ref="noticeTopic" />  
+    </bean>
+     
+    <!-- 消息通知消费者 -->
+    <bean id="noticeConsumer" class="com.huawei.sharedrive.app.message.mq.consumer.NoticeConsumer"></bean>
+    <bean id="noticeListener" class="org.springframework.jms.listener.adapter.MessageListenerAdapter">  
+        <constructor-arg ref="noticeConsumer" />  
+        <property name="defaultListenerMethod" value="receive" />  
+        <property name="messageConverter" ref="defaultMessageConverter" />  
+    </bean>
+    <bean id="noticeListenerContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer" destroy-method="shutdown">  
+        <property name="connectionFactory" ref="pooledConnectionFactory" />  
+        <property name="destination" ref="noticeTopic" />  
+        <property name="messageListener" ref="noticeListener" />  
+    </bean>
+    
+</beans>

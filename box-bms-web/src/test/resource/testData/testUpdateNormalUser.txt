@@ -1,0 +1,6 @@
+{
+	"loginName":"huangfei9",
+	"name":"huangfeifei",
+	"email":"huangfeifei@123.com",
+	"spaceQuota":"1073741824"
+}

@@ -1,0 +1,283 @@
+@@normal
+{}
+
+@@containAll
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "order": 
+    [ 
+        { 
+            "field": "name", 
+            "direction": "DESC" 
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 50, 
+            "width": 50 
+        } 
+    ] 
+}
+
+@@noContainOrder
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 50, 
+            "width": 50 
+        } 
+    ] 
+}
+@@onlyContainOrder
+{ 
+    "order": 
+    [ 
+        { 
+            "field": "name", 
+            "direction": "DESC" 
+        } 
+    ]
+}
+
+@@onlyContainKeyWord
+{ 
+    "keyword": "zhangsan"
+}
+
+@@nameDESC
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "order": 
+    [ 
+        { 
+            "field": "name", 
+            "direction": "DESC" 
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 30, 
+            "width": 40 
+        } 
+    ] 
+}
+
+@@nameASC
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "order": 
+    [ 
+        { 
+            "field": "name", 
+            "direction": "ASC" 
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 30, 
+            "width": 40 
+        } 
+    ] 
+}
+
+@@sizeDESC
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "order": 
+    [ 
+        { 
+            "field": "size", 
+            "direction": "DESC" 
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 30, 
+            "width": 40 
+        } 
+    ] 
+}
+
+@@sizeASC
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "order": 
+    [ 
+        { 
+            "field": "size", 
+            "direction": "ASC" 
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 30, 
+            "width": 40 
+        } 
+    ] 
+}
+
+@@modifiedAtDESC
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "order": 
+    [ 
+        { 
+            "field": "modifiedAt", 
+            "direction": "DESC" 
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 30, 
+            "width": 40 
+        } 
+    ] 
+}
+
+@@modifiedAtASC
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "order": 
+    [ 
+        { 
+            "field": "modifiedAt", 
+            "direction": "ASC" 
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 30, 
+            "width": 40 
+        } 
+    ] 
+}
+
+@@typeDESC
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "order": 
+    [ 
+        { 
+            "field": "type", 
+            "direction": "DESC" 
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 30, 
+            "width": 40 
+        } 
+    ] 
+}
+
+@@typeASC
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "order": 
+    [ 
+        { 
+            "field": "type", 
+            "direction": "ASC" 
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 30, 
+            "width": 40 
+        } 
+    ] 
+}
+
+@@ownerNameASC
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "order": 
+    [ 
+        { 
+            "field": "ownerName", 
+            "direction": "ASC" 
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 30, 
+            "width": 40 
+        } 
+    ] 
+}
+
+@@ownerNameDESC
+{ 
+    "limit": 100, 
+    "offset": 0, 
+    "keyword": "", 
+    "order": 
+    [ 
+        { 
+            "field": "ownerName", 
+            "direction": "DESC" 
+        } 
+    ], 
+    "thumbnail": 
+    [ 
+        { 
+            "height": 30, 
+            "width": 40 
+        } 
+    ] 
+}
+
+@@normalThumb
+{
+	"thumbnail": 
+    [ 
+        { 
+            "height":12, 
+            "width":23 
+        } 
+    ] 
+}
+
+@@onlyContainOffset
+{ 
+    "offset": 50
+}
+
+@@onlyContainOffsetAndOffsetNegative
+{ 
+    "offset": -10
+}

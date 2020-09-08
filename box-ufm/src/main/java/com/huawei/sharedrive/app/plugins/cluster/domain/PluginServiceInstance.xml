@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="PluginServiceInstance">
+
+    <typeAlias alias="PluginServiceInstance" type="com.huawei.sharedrive.app.plugins.cluster.domain.PluginServiceInstance" />
+	
+	<insert id="create" parameterClass="PluginServiceInstance">
+        <![CDATA[
+        insert into plugin_service_instance(ip, clusterId, name, status, lastMonitorTime)
+        	values (#ip#, #clusterId#, #name#, #status#, #lastMonitorTime#)
+        ]]>
+    </insert>
+    
+    <select id="listByClusterId" parameterClass="PluginServiceInstance" resultClass="PluginServiceInstance">
+    	<![CDATA[
+        select * from plugin_service_instance where clusterId = #clusterId#
+        ]]>
+    </select>
+    
+    <update id="updateStatusAndLastMonitorTime" parameterClass="PluginServiceInstance">
+    	<![CDATA[
+        update plugin_service_instance set status = #status#, lastMonitorTime = #lastMonitorTime# where ip = #ip# and clusterId = #clusterId#
+        ]]>
+    </update>
+     <delete id="delete" parameterClass="PluginServiceInstance">
+    	<![CDATA[
+        delete from plugin_service_instance  where ip = #ip# and clusterId = #clusterId#
+        ]]>
+    </delete>
+    
+</sqlMap>
+

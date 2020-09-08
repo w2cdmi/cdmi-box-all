@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Product">
+
+	<typeAlias alias="Product" type="com.huawei.sharedrive.uam.product.domain.Product" />
+  
+   
+    <select id="list" resultClass="Product">
+       SELECT * FROM product
+    </select>
+    
+    <select id="get" resultClass="Product" parameterClass="long">
+       SELECT * FROM product where id=#id#
+    </select>
+    
+    <select id="getByType" resultClass="Product" parameterClass="byte">
+       SELECT * FROM product where type=#type#
+    </select>
+    
+    <select id="getByProduct" resultClass="Product" parameterClass="Product">
+       <![CDATA[
+        SELECT * FROM product where type=#type#
+       ]]>
+    </select>
+</sqlMap>
+

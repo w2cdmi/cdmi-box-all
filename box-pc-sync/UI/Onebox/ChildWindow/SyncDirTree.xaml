@@ -1,0 +1,83 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+		xmlns:cs="clr-namespace:Onebox.CustomControls"
+        xmlns:local="clr-namespace:Onebox.SyncDirTreeView"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        mc:Ignorable="d"
+        x:Class="Onebox.SyncDirTreeView.SyncDirTree"
+        Icon="/Onebox;component/ImageResource/logo.ico" 
+       	Title="{StaticResource uploadToCloud}"   
+        x:Name="sync"
+        Width="560" SizeToContent="Height" Background="{x:Null}" 
+        WindowStyle="None" ResizeMode="NoResize" 
+        AllowsTransparency="True" WindowStartupLocation="CenterScreen" 
+        ShowInTaskbar="True">
+	<Grid ShowGridLines="False">
+		<Grid.RowDefinitions>
+			<RowDefinition   Height="Auto" MinHeight="36"/>
+			<RowDefinition/>
+		</Grid.RowDefinitions>
+		<!--界面主显示区-->
+		<Border  BorderThickness="1,0,1,1"  BorderBrush="#FFA3A4A4"  Background="#FFF1F1F1" Grid.Row="1" CornerRadius="0,0,5,5">	
+			<StackPanel Margin="40,0" Grid.Row="1" Orientation="Vertical" >
+				<TextBlock Grid.Column="2"   VerticalAlignment="Bottom"
+					FontSize="14"  Foreground="Black"   Text="{StaticResource dirChooseNotice}" Margin="0,4,0,0"/>
+                <TextBlock Grid.Column="2"   MaxWidth="478"  TextWrapping="Wrap"
+					FontSize="14"  Foreground="#FF6D6D6D"  Text="{StaticResource uploadNotice}"/>
+                <TreeView x:Name="directoryTreeView" Height="260"  BorderBrush="#FFA3A4A4" 
+						Background="#FFFFFFFF" VerticalAlignment="Center" HorizontalAlignment="Stretch"  Loaded="directoryTreeView_Loaded_1">
+                    <TreeView.Resources>
+                        <HierarchicalDataTemplate DataType="{x:Type local:DirectoryRecord}"   ItemsSource="{Binding Children}" >
+                            <StackPanel x:Name="SPViewItem"  Orientation="Horizontal">
+                                <Image  x:Name ="ImageViewItem"  Source="{Binding FolderFlags,Converter={StaticResource ListFolderTypeConverter}}" Width="16" Height="16" Visibility="{Binding FolderFlags,Converter={StaticResource ListFolderShowImageConverter}}"/>
+                                <TextBlock Text="  " Visibility="{Binding FolderId,Converter={StaticResource ListFolderShowImageConverter}}"/>
+                                <TextBlock Name="TBTreeViewItem"  Text="{Binding FolderName}" />
+                                </StackPanel>
+                        </HierarchicalDataTemplate>
+                    </TreeView.Resources>
+                    <TreeView.ItemContainerStyle>
+                        <Style TargetType="{x:Type TreeViewItem}">
+                            <EventSetter Event="TreeViewItem.Expanded" Handler="TreeViewItem_OnExpanded"/>
+                            <EventSetter Event="TreeViewItem.Loaded" Handler="TreeViewItem_Loaded"/>
+                            <EventSetter Event="TreeViewItem.Selected" Handler="TreeViewItem_Selected"/>
+                        </Style>
+                    </TreeView.ItemContainerStyle>
+                </TreeView>
+                <!--区域：云端文件列表显示区-->
+                <!--区域：按钮区-->
+				<StackPanel x:Name="area_Share_btns" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,25">
+                    <Button Name="SyncDirTree_upload"  Style="{DynamicResource Button_Style_Focus}" Background="{x:Null}" Content="{StaticResource uploadButtonContent}" Click="Button_Upload_Click"/>
+                    <Button  x:Name="SyncDirTree_Cancel"   Style="{StaticResource Button_Style_Normal}" Margin="10,0,0,0" Content="{StaticResource cancel}" Click="SyncDirTree_Cancel_Click_1"/>
+				</StackPanel>
+			</StackPanel>
+		</Border>
+		<!--界面标题区-->
+		<Border Style="{StaticResource Bg_Style_WindowHeader}">
+			<Grid>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition Width="0.7*"/>
+					<ColumnDefinition Width="0.3*"/>
+				</Grid.ColumnDefinitions>	
+				<StackPanel  Orientation="Horizontal" HorizontalAlignment="Left">
+					<Grid Margin="10,0,0,0">
+						<Image Source="/Onebox;component/ImageResource/logo.png" Stretch="Fill" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+					</Grid>
+                    <Label Style="{StaticResource Font_Style_WindowTtile}" Content="{StaticResource uploadToCloud}" />
+				</StackPanel>
+				<StackPanel Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+					<cs:ImageButton x:Name="CloseButton1" ImageSize="14" BorderVisibility="Hidden"  
+						NormalImage="/Onebox;component/ImageResource/exit.png"
+						OverImage="/Onebox;component/ImageResource/exit.png"
+						PresseImage="/Onebox;component/ImageResource/exit.png"
+						DisableImage="/Onebox;component/ImageResource/exit.png"
+						Style="{StaticResource ImageButtonStyle}" 
+                        Click="CloseButton1_Click_1"/>
+				</StackPanel>
+				<Border BorderBrush="#FFA3A4A4" BorderThickness="0,0,0,1" Height="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+				<Border BorderBrush="#FFF1F1F1" BorderThickness="0,0,0,1" Margin="1,0" Grid.ColumnSpan="2"/>
+			</Grid>
+		</Border>
+	</Grid>
+</Window>

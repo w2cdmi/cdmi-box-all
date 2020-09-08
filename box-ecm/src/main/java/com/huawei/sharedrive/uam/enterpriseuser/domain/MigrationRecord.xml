@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="MigrationRecord">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="MigrationRecord" type="com.huawei.sharedrive.uam.enterpriseuser.domain.MigrationRecord" />
+	
+	<!-- 新增移交记录 -->
+	<insert id="insert" parameterClass="MigrationRecord">
+        <![CDATA[
+        insert into migration_record_$tableSuffix$(id,migrationType,departureUserId,recipientUserId,
+        	migrationStatus,migrationDate,expiredDate,clearDate,inodeId,enterpriseId,appId,
+        	departureCloudUserId, recipientCloudUserId) 
+        values 
+        (#id#, #migrationType#, #departureUserId#, #recipientUserId#, #migrationStatus#, #migrationDate#, 
+        	#expiredDate#,#clearDate#, #inodeId#, #enterpriseId#, #appId#, #departureCloudUserId#, #recipientCloudUserId#)
+        ]]>
+	</insert>
+
+	<!-- 查询单表中的最大编号值 -->
+	<select id="getMaxRecordId" parameterClass="String" resultClass="Long">
+    	<![CDATA[
+        	select max(id) from migration_record_$tableSuffix$
+        ]]>
+	</select>
+	
+	<!-- 查询待清理的移交记录 -->
+	<select id="findBeCleandRecords" parameterClass="map" resultClass="MigrationRecord">
+    	<![CDATA[
+        	select * from migration_record_$tableSuffix$ where migrationStatus in(1, 3) and expiredDate <= current_timestamp()
+        ]]>
+	</select>
+	
+	<!-- 检查离职用户是否已经将数据迁移给已有用户 -->
+	<select id="isMigratedForSpecialDepartureUser" parameterClass="map" resultClass="Integer">
+    	<![CDATA[
+        	select count(id) from migration_record_$tableSuffix$ where migrationStatus > 0 and departureUserId = $departureUserId$
+        ]]>
+	</select>
+	
+	<!-- 更新记录状态 -->
+	<update id="updateStatus" parameterClass="map">
+		<![CDATA[
+        	update migration_record_$tableSuffix$ set migrationStatus = $status$, clearDate = $clearDate$ where id = $id$
+        ]]>
+	</update>
+	
+</sqlMap>
+

@@ -1,0 +1,7 @@
+{
+	"type":"aduser",
+	"appId":"OneBox",
+	"keyword":"11111111111111111111111111111111",
+	"limit":"20",
+	"offset":"10"
+}

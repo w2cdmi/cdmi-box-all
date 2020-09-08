@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<consumeList>
+	<consume>
+		<name>/</name>
+		<method>get</method>
+		<apiPath>/</apiPath>
+		<picketLine>500</picketLine>
+	</consume>
+</consumeList>
+
+

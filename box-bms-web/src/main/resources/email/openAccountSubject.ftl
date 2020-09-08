@@ -1,0 +1,1 @@
+【重要】您的账号已开通，请妥善保管您的密码。 [Important] Your account has been registered. Please keep your password safe. 

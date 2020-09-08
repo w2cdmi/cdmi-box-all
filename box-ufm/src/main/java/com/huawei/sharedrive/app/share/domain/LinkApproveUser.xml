@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="LinkApproveUser">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="LinkApproveUser" type="com.huawei.sharedrive.app.share.domain.LinkApproveUser" />
+
+    <insert id="create" parameterClass="LinkApproveUser">
+      INSERT INTO `link_approve_user` (`cloudUserId`, `linkCode`, `type`) VALUES ( #cloudUserId#, #linkCode#, #type#)
+    </insert>
+    <select id="list" parameterClass="LinkApproveUser" resultClass="LinkApproveUser">
+        select * FROM  link_approve_user WHERE  linkCode=#linkCode#
+        <dynamic >
+
+            <isNotNull prepend="and" property="type" >
+                type=#type#
+            </isNotNull>
+
+            <isNotNull prepend="cloudUserId" property="cloudUserId" >
+                cloudUserId=#cloudUserId#
+            </isNotNull>
+        </dynamic>
+
+    </select>
+
+    <update id="updateType" parameterClass="LinkApproveUser">
+       UPDATE  link_approve_user set  type=#type# where   cloudUserId=#cloudUserId# and linkCode=#linkCode#
+
+    </update>
+
+</sqlMap>
+

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SystemStat">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="SystemStat" type="com.huawei.sharedrive.uam.system.statistic.domain.SystemStat" />
+    
+    <select id="getByDate" parameterClass="map" resultClass="SystemStat">
+        select * from system_stat where statDate=#statDate# and appId = #appId#
+    </select>
+
+    <select id="listFilter" parameterClass="map" resultClass="SystemStat">
+        select * from system_stat where  appId = #appId#
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="and" property="beginDate">
+            	<![CDATA[
+        	 		statDate >= #beginDate#
+        		]]>
+            </isNotEmpty>
+            <isNotEmpty prepend="and" property="endDate">
+            	<![CDATA[
+        	 		statDate <= #endDate#
+        		]]>
+            </isNotEmpty>
+        </dynamic>
+    </select>
+
+    <insert id="insert" parameterClass="SystemStat">
+        insert into system_stat(statDate,createDate,totalUser,loginUserCount,webAccessAgentCount,pcAccessAgentCount,androidAccessCount,iosAccessCount,appId) 
+        values 
+        (#statDate#,#createDate#,#totalUser#,#loginUserCount#,#webAccessAgentCount#,#pcAccessAgentCount#,#androidAccessCount#,#iosAccessCount#,#appId#)
+    </insert>
+    <delete id="delete" parameterClass="map">
+        delete from system_stat where statDate=#statDate# and appId = #appId#
+    </delete>
+
+</sqlMap>
+

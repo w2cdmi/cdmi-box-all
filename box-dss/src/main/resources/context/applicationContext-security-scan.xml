@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+	default-autowire="byName" default-lazy-init="true">
+
+	<bean id="securityScanThriftService"
+		class="pw.cdmi.file.scan.thrift.SecurityScanThriftServiceImpl" init-method="init" destroy-method="destroy">
+		<property name="jmsUrl" value="${jms.url}" />
+		<property name="jobQueue" value="${jms.security.scan.job.queue}" />
+	</bean>
+
+	<bean id="securityScanThriftServiceProcessor" class="com.huawei.sharedrive.thrift.plugins.scan.SecurityScanThriftService$Processor">
+		<constructor-arg ref="securityScanThriftService"></constructor-arg>
+	</bean>
+
+	<bean id="securityScanAgentThriftService"
+        class="pw.cdmi.file.scan.thrift.SecurityScanAgentThriftServiceImpl" init-method="init" destroy-method="destroy">
+        <property name="configManager" ref="securityScanConfigManager" />
+        <property name="zookeeperServer" ref="zookeeperServer" />
+        <property name="clusterRoot" value="/SecurityScanWorkers" />
+    </bean>
+    
+    <bean id="securityScanAgentThriftServiceProcessor"
+        class="com.huawei.sharedrive.thrift.plugins.agent.PluginServiceAgentThriftService$Processor">
+        <constructor-arg ref="securityScanAgentThriftService"></constructor-arg>
+    </bean>
+</beans>

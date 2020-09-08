@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Enterprise">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="Enterprise" type="pw.cdmi.common.domain.enterprise.Enterprise" />
+	
+	<insert id="insert" parameterClass="Enterprise">
+        <![CDATA[
+        insert into enterprise(id,name,contactPerson,contactPhone,contactEmail,domainName,createdAt,modifiedAt,status,maxMembers,pwdLevel)
+        values 
+        (#id#,#name#,#contactPerson#,#contactPhone#,#contactEmail#,#domainName#,#createdAt#,#modifiedAt#,#status#,#maxMembers#,#pwdLevel#)
+        ]]>
+	</insert>
+	
+	<select id="getDuplicateValues" parameterClass="Enterprise" resultClass="int">
+    	<![CDATA[
+    	select count(id) from enterprise where domainName=#domainName# or name=#name#;
+        ]]>
+	</select>
+	
+	<select id="getMaxId" resultClass="long">
+    	<![CDATA[
+    	select max(id) from enterprise;
+        ]]>
+	</select>
+	
+	 <select id="getFilterdCount" parameterClass="map" resultClass="int">
+	    select count(distinct ep.id) from enterprise ep left join enterprise_account ea on ep.id=ea.enterpriseId where 1=1
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                contactEmail like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                domainName like concat('%',#filter#,'%') 
+            </isNotEmpty>
+        </dynamic>
+        <isNotNull prepend="and" property="appId">
+           	<![CDATA[
+              ea.authAppId=#appId#
+              ]]>
+         </isNotNull>
+    </select>
+    
+    <select id="getFilterd" parameterClass="map" resultClass="Enterprise">
+        select distinct ep.* from enterprise ep left join enterprise_account ea on ep.id=ea.enterpriseId where 1=1
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                name like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                contactEmail like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                domainName like concat('%',#filter#,'%') 
+            </isNotEmpty>
+        </dynamic>
+         <isNotNull prepend="and" property="appId">
+           	<![CDATA[
+              ea.authAppId=#appId#
+              ]]>
+         </isNotNull>
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                     <isEqual property="order.desc" compareValue="false">
+                        asc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getById" parameterClass="Long" resultClass="Enterprise">
+        select * from enterprise where id=#id#
+    </select>
+    
+    <select id="listForUpdate" resultClass="Enterprise">
+        select * from enterprise for update
+    </select>
+    
+     <select id="getByDomainExclusiveId" parameterClass="Enterprise" resultClass="long">
+        select count(id) from enterprise where (domainName=#domainName# or contactEmail=#contactEmail#) and id!=#id#
+    </select>
+      <!--  增加修改密码复杂度   pwdLevel-->
+     <update id="updateEnterpriseInfo" parameterClass="Enterprise">
+        update enterprise set name=#name#, domainName=#domainName#, contactEmail=#contactEmail#,
+        modifiedAt=#modifiedAt#,contactPerson=#contactPerson#,contactPhone=#contactPhone#,pwdLevel=#pwdLevel#,isdepartment=#isdepartment# where id=#id#
+    </update>
+     <update id="updateStatus" parameterClass="Enterprise">
+        update enterprise set status=#status# where id=#id#
+    </update>
+    
+    <update id="updateNetworkAuthStatus" parameterClass="map">
+        update enterprise set networkAuthStatus=#networkAuthStatus# where id=#id#
+    </update>
+    
+    <delete id="deleteById" parameterClass="long">
+        <![CDATA[
+        delete from enterprise where id=#value#
+        ]]>
+	</delete>
+    <select id="getByDomainName" parameterClass="String" resultClass="Enterprise">
+    	<![CDATA[
+    	select * from enterprise where domainName=#value#;
+        ]]>
+	</select>
+    <select id="getByName" parameterClass="String" resultClass="Enterprise">
+    	<![CDATA[
+    	select * from enterprise where name=#name#;
+        ]]>
+	</select>
+</sqlMap>
+

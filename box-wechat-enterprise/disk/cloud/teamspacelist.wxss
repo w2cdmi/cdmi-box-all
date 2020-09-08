@@ -1,0 +1,99 @@
+/* disk/cloud/teamspacelist.wxss */
+ @import "../template/fileList.wxss"; 
+ @import "./drawer.wxss";
+ @import "../template/menu.wxss";
+.file_tool_item {
+  padding-left: 10px;
+}
+.crumbshide{
+  display: none;
+}
+.file_tool_order_item {
+  padding-left: 5px;
+}
+::-webkit-scrollbar {/*隐藏滚轮*/
+    display: none;
+}
+.file_tool image {
+  width: 12px;
+  height: 12px;
+}
+.weui-flex{
+  overflow: scroll;
+}
+.weui-media-box{
+  position: relative;
+}
+.weui-media-box__bd_in-appmsg .weui-media-box__title{
+    width:200px;
+    float:left;
+    display:inline-block;
+}
+.weui-media-box__bd_in-appmsg button{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display:inline-block;
+    background: none;
+    /* position: static; */
+    padding: 0;
+    line-height: normal;
+    width:85px; 
+    border:none;
+}
+.weui-media-box__bd_in-appmsg button::after{
+  border: none;
+}
+.weui-media-box__bd_in-appmsg button image{
+  width: 20px;
+  height: 20px;
+  float: right;
+  margin: 15px 15px 0 0;
+}
+.weui-media-box .buttonhide{
+  display: none;
+}
+.weui-panel{
+  margin-top: 0;
+}
+.newbtn {
+    background: #fff;
+    padding: 10rpx 20rpx;
+}
+
+.newbtn button {
+    background: #ea5036;
+    color: #fff;
+}
+.depart {
+    width: 8rpx;
+    height: 44rpx;
+    margin-top: 24rpx;
+    margin-left: 68rpx;
+}
+/* .file-group{
+    width: 100%;
+} */
+/* .cell_2_body_content{
+    line-height: 20rpx;
+    width: 100%;
+} */
+.weui-media-box{
+    padding:10px 0;
+}
+/* .view-bg{
+    padding: 0 30rpx;
+} */
+/* .weui-media-box__thumb{
+    width:90rpx;
+    height:90rpx;
+} */
+
+.content{
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.file-icon{
+    padding: 0;
+}

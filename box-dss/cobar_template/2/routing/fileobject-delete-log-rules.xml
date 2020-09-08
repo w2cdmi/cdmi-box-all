@@ -1,0 +1,12 @@
+<rules>
+    <rule>
+        <namespace>fileObjectDeleteLog</namespace>
+        <shardingExpression>hash.apply(object.objectID) % 1024 &lt; 512</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <namespace>fileObjectDeleteLog</namespace>
+        <shardingExpression>hash.apply(object.objectID) % 1024 &gt;= 512</shardingExpression>
+        <shards>partition2</shards>
+    </rule>
+</rules>

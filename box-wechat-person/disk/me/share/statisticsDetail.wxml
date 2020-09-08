@@ -1,0 +1,25 @@
+<!--disk/me/share/statisticsDetail.wxml-->
+<view class='page'>
+    <view class='view-bg'>
+        <block wx:for="{{shareLevels}}" wx:key="*this">
+            <view class='item'>
+                <view class='left'>
+                    <view class='view-avatar-img'><image class='avatar-img' src='/disk/images/me/share/share{{item.id}}.png'></image></view>
+                    <view>{{item.description}}</view>
+                </view>
+                <view class='middle'>提成比例{{item.proportions}}%</view>
+                <view class='right font-middle'>分享人数：>={{item.startRange}}</view>
+            </view>
+        </block>
+    </view>
+    <view class='me-detail-bottom'>
+        <view class='view-big-level-img'>
+            <image src='/disk/images/me/share/share{{shareLevel}}.png'></image>
+        </view>
+        <view class='me-level-detail'>
+            <view class='font-middle'>我的等级</view>
+            <view class='me-level'>{{currentLevelName}}</view>
+            <view class='font-middle'>提成为{{proportions}}%</view>
+        </view>
+    </view>
+</view>

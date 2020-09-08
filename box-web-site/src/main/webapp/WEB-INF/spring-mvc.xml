@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <context:component-scan base-package="pw.cdmi.box.website" use-default-filters="false">
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg value="UTF-8"/>
+                <property name="writeAcceptCharset" value="false"/>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <property name="serializationInclusion" value="NON_NULL"/>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="order" value="1"/>
+        <property name="ignoreUnresolvablePlaceholders" value="true"/>
+        <property name="locations">
+            <list>
+                <value>classpath*:application.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/views/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!-- 将静态的请求交给DefaultServletHttpRequestHandler处理，最终由容器的default servlet来处理。 -->
+    <mvc:default-servlet-handler/>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="i18n/messages"/>
+        <property name="useCodeAsDefaultMessage" value="true"/>
+    </bean>
+
+    <bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver"/>
+
+    <mvc:interceptors>
+        <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor"/>
+    </mvc:interceptors>
+
+    <!--
+        <bean id="userController" class="pw.cdmi.box.websitesite.user.website.UserController">
+            <property name="bindAccountUrl" value="https://www.jmapi.cn/ecm/api/v2/wxOauth2/bindWxAccount"/>
+            <property name="wxAppId" value="wxf54677c64020f6f1"/>
+        </bean>
+    -->
+
+    <bean id="enterpriseRegisterController" class="pw.cdmi.box.website.web.EnterpriseRegisterController">
+        <property name="suiteId" value="${ww.suiteId}"/>
+        <property name="redirectUrl" value="${ww.install.url}"/>
+        <property name="wwAppId" value="${ww.appId}"/>
+        <property name="wwRedirectUrl" value="${ww.login.url}"/>
+        <property name="wxAppId" value="${wx.appId}"/>
+        <property name="wxEnterpriseRedirectUrl" value="${wx.enterprise.login.url}"/>
+        <property name="wxPersonalRedirectUrl" value="${wx.personal.login.url}"/>
+    </bean>
+
+    <bean id="indexController" class="pw.cdmi.box.website.web.IndexController">
+        <property name="wwAppId" value="${ww.appId}"/>
+        <property name="wwRedirectUrl" value="${ww.login.url}"/>
+        <property name="wxAppId" value="${wx.appId}"/>
+        <property name="wxEnterpriseRedirectUrl" value="${wx.enterprise.login.url}"/>
+        <property name="wxPersonalRedirectUrl" value="${wx.personal.login.url}"/>
+        <property name="wxRobotRedirectUrl" value="${wx.robot.login.url}"/>
+    </bean>
+</beans>

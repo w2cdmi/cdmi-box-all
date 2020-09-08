@@ -1,0 +1,164 @@
+<!-- 分享页面内容 -->
+<view class='scroll-view-height' wx:if="{{showPanel != 'video'}}">
+    <!-- 多个分享图片以及视频 -->
+    <view class='showfile' wx:if="{{showPanel == 'multipleFile'}}">
+        <view class="picture-lits">
+            <block wx:for="{{nodeList}}" wx:key="*this">
+                <view bindtap="onNodeItemClick" data-file-info="{{item}}" data-index="{{index}}" class='item'>
+                    <image mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src="{{item.icon}}" />
+                    <view class="name">{{item.name}}</view>
+                </view>
+            </block>
+        </view>
+        <view class="file-group border-bottom view-bg">
+            <view class='file-info cell_2_body_content' style='padding-left:0rpx;'>
+                <label>{{link.alias}}</label>
+                <text class="text">{{link.createdAt}}</text>
+            </view>
+            <view class='view-save-button'>
+                <view class='save-button' catchtap="showCheckFileMask" wx:if="{{!checkfilemask}}" wx:if="{{isSave}}">保存</view>
+            </view>
+        </view>
+
+        <view class='tool'>
+            <view class='right'>
+                <button class='i-tool clear-button-style' style='width:100rpx;margin-right:50rpx;' open-type="share">
+                    <image class='shareicon' src="../images/comments/share.png" />
+                    <text class="text">分享</text>
+                </button>
+                <view class='i-tool' bindtap='giveOrCancelPraise' data-is-praised='{{isPraised}}' data-id="{{praisedId}}">
+                    <image class='icon' bindtap='comments' wx:if="{{isPraised}}" src="../images/comments/comments-red.png" />
+                    <image class='icon' bindtap='comments' wx:if="{{!isPraised}}" src="../images/comments/comments-white.png" />
+                    <text class="text">点赞</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!--单个文件-->
+    <view class='showfile' wx:if="{{showPanel == 'singleFile'}}">
+        <view hover-class='button-hover' class="file-group border-bottom view-bg" data-file-info='{{node}}' catchtap="onNodeItemClick">
+            <view>
+                <image class='img-icon' mode='{{node.icon.length < 95 ? "aspectFit":"center" }}' src="{{node.icon}}" />
+            </view>
+            <view class='file-info cell_2_body_content'>
+                <label>{{node.name}}</label>
+                <text class="text"><block wx:if="{{node.fileSize}}">{{node.fileSize}} | </block>{{node.modifiedTime}}</text>
+            </view>
+            <view class='view-save-button'>
+                <view class='save-button' catchtap="onSaveToPerson" wx:if="{{isSave}}">保存</view>
+            </view>
+        </view>
+
+        <view class='tool'>
+            <view class='right'>
+                <button class='i-tool clear-button-style' style='width:100rpx;margin-right:50rpx;' open-type="share">
+                    <image class='shareicon' src="../images/comments/share.png" />
+                    <text class="text">分享</text>
+                </button>
+                <view class='i-tool' bindtap='giveOrCancelPraise' data-is-praised='{{isPraised}}' data-id="{{praisedId}}">
+                    <image class='icon' bindtap='comments' wx:if="{{isPraised}}" src="../images/comments/comments-red.png" />
+                    <image class='icon' bindtap='comments' wx:if="{{!isPraised}}" src="../images/comments/comments-white.png" />
+                    <text class="text">点赞</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+
+    <!--单个文件视频-->
+    <view class='showfile' wx:if="{{showPanel == 'video'}}">
+        <view>
+            <include src="/disk/template/video.wxml" />
+        </view>
+        <view class="file-group border-bottom view-bg">
+            <view class='file-info cell_2_body_content' style='padding-left:0rpx;'>
+                <label>{{node.name}}</label>
+                <text class="text"><block wx:if="{{node.fileSize}}">{{node.fileSize}} | </block>{{node.modifiedTime}}</text>
+            </view>
+            <view class='view-save-button'>
+                <view class='save-button' catchtap="onSaveToPerson" wx:if="{{isSave}}">保存</view>
+            </view>
+        </view>
+        <view class='tool'>
+            <view class='right'>
+                <button class='i-tool clear-button-style' style='width:100rpx;margin-right:50rpx;' open-type="share">
+                    <image class='shareicon' src="../images/comments/share.png" />
+                    <text class="text">分享</text>
+                </button>
+                <view class='i-tool' bindtap='giveOrCancelPraise' data-is-praised='{{isPraised}}' data-id="{{praisedId}}">
+                    <image class='icon' bindtap='comments' wx:if="{{isPraised}}" src="../images/comments/comments-red.png" />
+                    <image class='icon' bindtap='comments' wx:if="{{!isPraised}}" src="../images/comments/comments-white.png" />
+                    <text class="text">点赞</text>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <include src="/disk/template/comment.wxml" />
+
+</view>
+
+<!--单个文件视频-->
+<view wx:if="{{showPanel == 'video'}}">
+    <include src="/disk/template/video.wxml" />
+    
+    <view class='scroll-height'>
+        <view class='showfile'>
+            <view class="file-group border-bottom view-bg">
+                <view class='file-info cell_2_body_content' style='padding-left:0rpx;'>
+                    <label>{{node.name}}</label>
+                    <text class="text"><block wx:if="{{node.fileSize}}">{{node.fileSize}} | </block>{{node.modifiedTime}}</text>
+                </view>
+                <view class='view-save-button'>
+                    <view class='save-button' catchtap="onSaveToPerson" wx:if="{{isSave}}">保存</view>
+                </view>
+            </view>
+            <view class='tool'>
+                <view class='right'>
+                    <button class='i-tool clear-button-style' style='width:100rpx;margin-right:50rpx;' open-type="share">
+                        <image class='shareicon' src="../images/comments/share.png" />
+                        <text class="text">分享</text>
+                    </button>
+                    <view class='i-tool' bindtap='giveOrCancelPraise' data-is-praised='{{isPraised}}' data-id="{{praisedId}}">
+                        <image class='icon' bindtap='comments' wx:if="{{isPraised}}" src="../images/comments/comments-red.png" />
+                        <image class='icon' bindtap='comments' wx:if="{{!isPraised}}" src="../images/comments/comments-white.png" />
+                        <text class="text">点赞</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <include src="/disk/template/comment.wxml" />
+    </view>
+</view>
+
+
+
+<!-- 选择文件保存文件 -->
+<view class="mask" wx:if="{{checkfilemask}}" catchtouchmove="preventTouchMove">
+    <view class="picture-lits">
+        <block wx:for="{{checkNodeList}}" wx:key="*this" wx:for-index="index">
+            <view class="item" data-index='{{index}}' bindtap="checkFile">
+                <image mode='{{item.icon.length < 95 ? "aspectFit":"center" }}' src="{{item.icon}}" />
+                <view class="name" style="color:{{item.checked?'#333':'#999'}}">{{item.name}}</view>
+                <view class="checkicon">
+                    <image wx:if="{{!item.checked}}" src="../images/icon/file-unchecked.png" />
+                    <image wx:if="{{item.checked}}" src="../images/icon/file-checked.png" />
+                </view>
+            </view>
+        </block>
+    </view>
+    <view class="mask-bottom">
+        <view class="but cancel" bindtap="onCancelSave">
+            取消
+        </view>
+        <view class="but sure {{checkfilenum?'checked':''}}" bindtap="{{checkfilenum?'onSaveToPerson':''}}">
+            保存{{checkfilenum?' ('+checkfilenum+')':''}}
+        </view>
+    </view>
+</view>
+
+<navigator class='back-to-index' wx:if='{{backIndexBtn}}' url="/disk/index" open-type="reLaunch">
+    <image class='back-to-index' src='/disk/images/icon/back-to-home.png'></image>
+</navigator>

@@ -1,0 +1,81 @@
+@@parentId
+0
+@@object
+{
+"access":"object",
+"plainAccessCode":"32s33fff444s",
+ "effectiveAt":1391845093374,
+  "expireAt":1431845193374
+}
+
+
+@@normal
+{
+"access":"direct",
+"plainAccessCode":"32s33fff444s",
+ "effectiveAt":1391845093374,
+  "expireAt":1431845193374
+}
+
+@@noContainPlianAccessCode
+{
+"access":"object",
+ "effectiveAt":1391845093374,
+  "expireAt":1421845193374
+}
+
+
+@@folderToCreateDirect
+{
+"access":"direct",
+"plainAccessCode":"32swefsf444s",
+ "effectiveAt":1391845093374,
+  "expireAt":1421845193374
+}
+
+@@folderToCreateObject
+{
+"access":"object",
+"plainAccessCode":"32s3sds44s",
+ "effectiveAt":1391845093374,
+  "expireAt":1421845193374
+}
+
+@@allEmpty
+{
+"plainAccessCode":"",
+ "effectiveAt":,
+  "expireAt":
+}
+
+@@normal1
+{
+"plainAccessCode":"@J^1gj4!",
+ "effectiveAt":1391845093374
+}
+
+@@notContainPlainAccess
+{
+ "effectiveAt":1391845093374,
+ "expireAt":1421845193374
+}
+
+@@effectiveAtNegative
+{
+"plainAccessCode":"324dwweer3@",
+ "effectiveAt":-1391845093374,
+  "expireAt":1421845193374
+}
+
+@@effectiveAtOverExpireAt
+{
+"plainAccessCode":"324dqw0weer3",
+ "effectiveAt":1431845193374,
+  "expireAt":1421845193374
+}
+
+@@onlyExpireAt
+{
+"plainAccessCode":"324dqweer3@",
+  "expireAt":1421845193374
+}

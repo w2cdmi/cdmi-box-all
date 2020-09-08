@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserLocked">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UserLocked"
+		type="com.huawei.sharedrive.uam.user.domain.UserLocked" />
+
+	<select id="getForUpdate" parameterClass="map" resultClass="UserLocked">
+    	<![CDATA[
+        select * from user_locked 
+        where userId=#userId# and appId=#appId# for update
+        ]]>
+	</select>
+	
+	<select id="getWithoutLock" parameterClass="map" resultClass="UserLocked">
+    	<![CDATA[
+        select * from user_locked 
+        where userId=#userId# and appId=#appId#
+        ]]>
+	</select>
+
+	<insert id="insert" parameterClass="UserLocked">
+        <![CDATA[
+        insert into user_locked(userId,appId,loginName,
+        createdAt,lockedAt,loginFailTimes) 
+        values 
+        (#userId#,#appId#,#loginName#,
+        #createdAt#,#lockedAt#,#loginFailTimes#)
+        ]]>
+	</insert>
+
+	<update id="updateFailTime" parameterClass="UserLocked">
+        <![CDATA[
+        update user_locked
+        set loginFailTimes=loginFailTimes + 1,lockedAt=#lockedAt#
+        where userId=#userId# and appId=#appId#
+        ]]>
+	</update>
+
+	<update id="clear" parameterClass="UserLocked">
+        <![CDATA[
+        delete from user_locked
+        where userId=#userId# and appId=#appId#
+        ]]>
+	</update>
+</sqlMap>
+

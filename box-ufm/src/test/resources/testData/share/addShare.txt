@@ -1,0 +1,100 @@
+@@parentId
+0
+
+@@normal
+ { 
+	"sharedUser": 
+	{ 
+  		"id":2182, 
+  		"type":"user" 
+	},
+	"roleName":"viewer" 
+}
+
+@@normalEditor
+ { 
+	"sharedUser": 
+	{ 
+  		"id":2182, 
+  		"type":"user" 
+	},
+	"roleName":"editor" 
+}
+@@invalidRole
+ { 
+	"sharedUser": 
+	{ 
+  		"id":2182, 
+  		"type":"user" 
+	},
+	"roleName":"Editor" 
+}
+
+@@emptyRole
+ { 
+	"sharedUser": 
+	{ 
+  		"id":2182, 
+  		"type":"user" 
+	}
+}
+
+@@normal2
+ { 
+ "message":"Message:This is Message.", 
+"sharedUser": 
+	{ 
+  		"id":2183, 
+  		"type":"user" 
+	} 
+}
+
+@@teamSpace
+{ 
+ 	"message":"Message:This is Message.", 
+	"sharedUser": 
+	{ 
+  		"id":#spaceId#, 
+  		"type":"user" 
+	} 
+}
+
+@@emptyMessage
+{
+"message":"",
+"sharedUser": 
+	{ 
+  		"id":2183, 
+  		"type":"user" 
+	} 
+}
+
+@@messageContainSymbol
+{
+"message":"@#J%$&**(@()ew2rw!^&$!(*ds2f",
+"sharedUser": 
+	{ 
+  		"id":2183, 
+  		"type":"user" 
+	} 
+}
+
+@@invalidParam
+{
+"message":"sdfsrew",
+"sharedUser": 
+	{ 
+  		"id":2183, 
+  		"type":"sdfs" 
+	} 
+}
+
+@@noUser
+{
+"message":"",
+"sharedUser": 
+	{ 
+  		"id":78999944, 
+  		"type":"user" 
+	} 
+}

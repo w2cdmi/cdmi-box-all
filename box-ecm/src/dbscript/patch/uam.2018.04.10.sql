@@ -1,0 +1,1 @@
+INSERT INTO `system_job_def` VALUES ('wxUserCleanInvitJob', 'uam', 'wxUserCleanInvitJob', '1', 'wxUserCleanInvitJob', null, '1', '0 0 0 * * ?', '100', '1', '-1', '-1', '1', null);

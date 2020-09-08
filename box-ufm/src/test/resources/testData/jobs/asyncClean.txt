@@ -1,0 +1,32 @@
+@@srcOwnerIdNull
+{ 
+    "type":"cleanTrash",  
+    "destFolderId":#destFolderId#, 
+    "destOwnerId":#destOwnerId#, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":#srcNodeId#} 
+    ], 
+    "autoRename":true
+}
+
+@@srcNodeIdNull
+{ 
+    "type":"cleanTrash",  
+    "destFolderId":#destFolderId#, 
+    "destOwnerId":#destOwnerId#, 
+    "srcOwnerId":#srcOwnerId#, 
+    "autoRename":true
+}
+
+@@normal
+{ 
+    "type":"cleanTrash",  
+    "srcOwnerId":#srcOwnerId#, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":#srcNodeId1#} ,
+        {"srcNodeId":#srcNodeId2#} 
+    ], 
+    "autoRename":true
+}

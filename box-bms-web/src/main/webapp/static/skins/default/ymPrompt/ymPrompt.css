@@ -1,0 +1,92 @@
+/*container*/
+#ym-window{
+	background:#f3f3f3;
+	border:1px solid #fff;
+	overflow:hidden;
+	font-size:14px;
+	font-family: Arial, Tahoma, Helvetica, "Microsoft Yahei", "微软雅黑", STHeiti, "宋体";
+	  -webkit-border-radius: 6px;
+		 -moz-border-radius: 6px;
+			  border-radius: 6px;
+}
+
+#ym-shadow{
+	-webkit-box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.5);
+       -moz-box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.5);
+            box-shadow: 1px 2px 20px rgba(0, 0, 0, 0.5);
+    -webkit-border-radius: 6px;
+		 -moz-border-radius: 6px;
+			  border-radius: 6px;
+}
+
+.ym-tl{
+	padding-left:15px;
+	-webkit-box-shadow: inset 0 1px 0 #ffffff;
+     -moz-box-shadow: inset 0 1px 0 #ffffff;
+          box-shadow: inset 0 1px 0 #ffffff;
+    -webkit-border-top-left-radius: 6px;
+		 -moz-border-top-left-radius: 6px;
+			  border-top-left-radius: 6px;
+	-webkit-border-top-right-radius: 6px;
+		 -moz-border-top-right-radius: 6px;
+			  border-top-right-radius: 6px;
+}
+.ym-tr{padding-right:15px;}
+.ym-tc{overflow:hidden;height:30px;line-height:30px; padding:12px 0; position:relative;border-bottom:1px solid #ddd;}
+.ym-ttc{height:3px}
+.ym-header-text{font-size:18px; color:#333; text-align:center;}
+.ym-header-tools{ position:absolute; right:0; top:10px; }
+
+/*body*/
+.ym-ml{padding-left:0px}
+.ym-mr{padding-right:0px}
+.ym-mc{padding: 0 15px;}
+.ym-body{overflow:auto;padding:0;}
+.ym-header-tools strong{display:none}
+
+/*button*/
+.ym-btn{text-align:center; padding:10px 0;}
+
+/*footer*/
+.ym-bl{padding-left:15px}
+.ym-br{padding-right:15px}
+.ym-bc{height:10px;font-size:2px}
+
+.ymPrompt_alert{
+	padding-left:90px;
+	background:url(images/info.png) no-repeat 20px 50%
+}
+.ymPrompt_succeed{
+	padding-left:90px;
+	background:url(images/right.png) no-repeat 20px 50%
+}
+.ymPrompt_error{
+	padding-left:90px;
+	background:url(images/err.png) no-repeat 20px 50%
+}
+.ymPrompt_confirm{
+	padding-left:90px;
+	background:url(images/ask.png) no-repeat 20px 50%
+}
+.ymPrompt_alert .ym-content td,.ymPrompt_succeed .ym-content td,.ymPrompt_error .ym-content td,.ymPrompt_confirm .ym-content td{padding:0 20px 0 0; vertical-align:middle; }
+/*handler style*/
+.ym-header-tools div{
+	cursor:pointer;
+	width:16px;height:16px;float:left;margin:2px 0;
+	background:url(images/ico.png) no-repeat 0 0;
+}
+.ymPrompt_close{
+	background-position:-48px 0 !important;
+}
+.ymPrompt_max{
+	background-position:0 0 !important;
+}
+.ymPrompt_min{
+	background-position:-32px 0 !important;
+}
+.ymPrompt_normal{
+	background-position:-16px 0 !important;
+}
+/*button style*/
+input.btn{
+}

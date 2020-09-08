@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="thrift">
+      <UniqueIdentifier>{550c0ea5-11c3-4c62-993f-3ceaa7fe65ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="others">
+      <UniqueIdentifier>{e6625676-1942-465b-9f16-64dbb35b991c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="thriftService">
+      <UniqueIdentifier>{531e69c9-7677-4242-8228-e608681bf42f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{05eb5b24-80c5-4875-be09-0edda0d049ab}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="thrift\OneboxThriftService_constants.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="thrift\ThriftService.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>others</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>others</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Utility.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="ThriftServiceImpl.h">
+      <Filter>thriftService</Filter>
+    </ClInclude>
+    <ClInclude Include="thrift\OneboxThriftService_types.h">
+      <Filter>thrift</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\InIHelper.h">
+      <Filter>common</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="thrift\OneboxThriftService_constants.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="thrift\OneboxThriftService_types.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="thrift\ThriftService.cpp">
+      <Filter>thrift</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>others</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\Utility.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="ThriftServiceImpl.cpp">
+      <Filter>thriftService</Filter>
+    </ClCompile>
+    <ClCompile Include="..\include\InIHelper.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt">
+      <Filter>others</Filter>
+    </Text>
+  </ItemGroup>
+</Project>

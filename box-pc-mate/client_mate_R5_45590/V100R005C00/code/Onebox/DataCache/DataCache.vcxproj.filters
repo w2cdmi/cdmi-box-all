@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="include">
+      <UniqueIdentifier>{12a9a8fb-e0b3-4b1b-b6f2-2dd956ca43fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="source">
+      <UniqueIdentifier>{4973a2d7-4668-46db-9728-7ca2f039209d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="common">
+      <UniqueIdentifier>{2e19d9cd-c95b-4725-883c-6805f2dd6cda}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\CacheMgr.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ProxyMgr.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\Utility.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CacheMetaData.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CacheReceiveShare.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CacheCommon.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CacheUserInfo.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CacheMsgInfo.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MsgListener.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CacheMyShare.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ThumbMgr.h">
+      <Filter>include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\CacheMetaData.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CacheMgr.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ProxyMgr.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\Utility.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CacheReceiveShare.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CacheUserInfo.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CacheMsgInfo.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MsgListener.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\CacheMyShare.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ThumbMgr.cpp">
+      <Filter>source</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

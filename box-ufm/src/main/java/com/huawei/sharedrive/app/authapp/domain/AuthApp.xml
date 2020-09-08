@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AuthApp">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="AuthApp" type="pw.cdmi.uam.domain.AuthApp" />
+    
+    <select id="getByAuthAppID" parameterClass="String" resultClass="AuthApp">
+        select * from authapp where authAppId=#value#
+    </select>
+
+    <select id="getFilterd" parameterClass="map" resultClass="AuthApp">
+        select * from authapp
+        <dynamic prepend="where">
+            <isNotNull prepend="and" property="filter">
+                status = #filter.status#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.name">
+                name like concat('%',#filter.name#,'%') 
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from authapp
+        <dynamic prepend="where">
+            <isNotNull prepend="and" property="filter">
+                status = #filter.status#
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.name">
+                name like concat('%',#filter.name#,'%') 
+            </isNotEmpty>
+        </dynamic>
+    </select>
+
+    <insert id="insert" parameterClass="AuthApp">
+        insert into authapp(authAppId,name,status,createdAt,modifiedAt,authUrl,description) 
+        values 
+        (#authAppId#,#name#,#status#,#createdAt#,#modifiedAt#,#authUrl#,#description#)
+    </insert>
+
+    <update id="updateAuthApp" parameterClass="AuthApp">
+        update authapp set name=#name#,authUrl=#authUrl#,modifiedAt=#modifiedAt#,description=#description# where authAppId=#authAppId#
+    </update>
+
+    <update id="updateStatus" parameterClass="map">
+        update authapp set status=#status#,modifiedAt=#modifiedAt# where authAppId=#authAppId#
+    </update>
+
+    <delete id="delete" parameterClass="String">
+        delete from authapp where authAppId=#value#
+    </delete>
+
+</sqlMap>
+

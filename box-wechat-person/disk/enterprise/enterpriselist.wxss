@@ -1,0 +1,116 @@
+/* disk/enterpriselist.wxss */
+
+.choice-header {
+    height: 80rpx;
+    padding: 0 30rpx;
+    background: #fff;
+    color: #666;
+    line-height: 80rpx;
+    font-size: 26rpx;
+    border-bottom:1px solid #f1f1f1;
+}
+
+.weui-panel {
+    margin-top: 0;
+}
+
+.weui-panel:after {
+    border-bottom: none;
+}
+
+.weui-media-box {
+    padding: 10px 0;
+    position: relative;
+}
+
+.share-tail {
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    color: #999;
+    font-size: 10px;
+}
+
+.weui-media-box__title {
+    width: 300px;
+}
+
+.weui-media-box__bd {
+    position: relative;
+}
+
+.weui-media-box__bd_in-appmsg image {
+    display: none;
+}
+
+.pitchOn {
+    display: block;
+}
+
+.enterprise-list-bg {
+    background: #fff;
+}
+
+.enterprise-item {
+    padding: 20rpx 30rpx;
+    height: 80rpx;
+    display: flex;
+    border-bottom: 1px solid #f1f1f1;
+    align-items: center;
+}
+
+.view-enterprise-icon {
+    padding-right: 20rpx;
+}
+
+.enterprise-icon {
+    width: 80rpx;
+    height: 80rpx;
+}
+
+.enterprise-info {
+    width: 100%;
+}
+
+.enterprise-name {
+    width: 450rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.enterprise-size {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.image-size {
+    width: 28rpx;
+    height: 20rpx;
+}
+
+/* 添加企业 */
+
+.add-enterprise-bg {
+    position: absolute;
+    height: 110rpx;
+    background: #fff;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 5px #999;
+}
+
+.add-content {
+    display: flex;
+    align-items: center;
+}
+
+.add-icon {
+    width: 45rpx;
+    height: 45rpx;
+    margin-right: 14rpx;
+}

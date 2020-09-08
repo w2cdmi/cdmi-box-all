@@ -1,0 +1,7 @@
+<rules>
+   <rule>
+        <namespace>MailMsg</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

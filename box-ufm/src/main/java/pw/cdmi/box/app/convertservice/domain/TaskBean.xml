@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap namespace="TaskBean">
+	<typeAlias alias="TaskBean" type="pw.cdmi.box.app.convertservice.domain.TaskBean"/>
+	<delete id="deleteHistoryTask" parameterClass="String">
+		delete from convert_task_history where taskId in ($taskId$)
+	</delete>
+	<delete id="deleteNodeSign" parameterClass="String">
+		<![CDATA[ 
+			delete from nodeSign where resourceGroupId = #resourceGroupId#
+        ]]>
+	</delete>
+	<delete id="deleteTask" parameterClass="String">
+		delete from convert_task where taskId in ($taskId$)
+	</delete>
+	<insert id="addTask" parameterClass="TaskBean">
+		<![CDATA[
+			insert into convert_task(taskId,objectId,imageObjectId,owneId,fileName,status,level,percent,retryCount,convertTime,resourceGroupId,csIp,bigFileFlag,destFileFlag,inodeId)
+			values(#taskId#,#objectId#,#imageObjectId#,#owneId#,#fileName#,#status#,#level#,#percent#,#retryCount#,#convertTime#,#resourceGroupId#,#csIp#,#bigFileFlag#,#destFileFlag#,#inodeId#)
+		]]>
+	</insert>
+	<insert id="insertNodeSign" parameterClass="map">
+		<![CDATA[ 
+			insert into nodeSign(resourceGroupId,csip) values(#resourceGroupID#,#csip#)
+        ]]>
+	</insert>
+	<select id="checkTaskId" parameterClass="map" resultClass="String">
+		<![CDATA[
+		 select count(objectId) count from convert_task where objectId=#objectId#
+		]]>
+	</select>
+	<select id="getAssignIpTaskCount" parameterClass="String" resultClass="String">
+		<![CDATA[
+		 select count(1) count from convert_task where csip = #ip#
+		]]>
+	</select>
+	<select id="getHandleIp" parameterClass="String" resultClass="String">
+		<![CDATA[
+			SELECT t.managerip FROM 
+			(SELECT DISTINCT managerip,resourcegroupid FROM resource_group_node WHERE managerip != #ip#) t 
+			LEFT JOIN 
+			(SELECT csip,resourcegroupid,COUNT(taskId) AS num FROM convert_task 
+			WHERE csip IS NOT NULL GROUP BY csip,resourcegroupid) tt 
+			ON t.managerip = tt.csIp AND t.resourcegroupid = tt.resourcegroupid
+			ORDER BY IF(tt.num IS NULL,0,tt.num) ASC
+			LIMIT 0,1
+		]]>
+	</select>
+	<select id="getHistoryTaskBeanList" parameterClass="map" resultClass="TaskBean">
+		select * from convert_task_history
+		<dynamic prepend="and">
+			<isNotNull property="objectIds">
+				objectId in ($objectIds$)
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				#offset#, #limit#
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="order by ">
+			<isNotNull property="orderBy">
+				$orderBy$
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="where">
+			<isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.destFileFlag">
+					destFileFlag = #filter.destFileFlag#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.fileName">
+					<![CDATA[ 
+                    fileName like "%"#filter.fileName#"%" 
+                      ]]>
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.imageObjectId">
+					imageObjectId = #filter.imageObjectId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.level">
+					level = #filter.level#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.objectId">
+					objectId = #filter.objectId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.owneId">
+					owneId = #filter.owneId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.percent">
+					percent = #filter.percent#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.resourceGroupId">
+					resourceGroupId = #filter.resourceGroupId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.retryCount">
+					retryCount = #filter.retryCount#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.status">
+					status = #filter.status#
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+	</select>
+	<select id="getNodeSign" parameterClass="String" resultClass="String">
+		<![CDATA[ 
+			select csip from nodeSign where resourceGroupId = #resourceGroupId#
+        ]]>
+	</select>
+	<select id="getRenewTasks" parameterClass="map" resultClass="TaskBean">
+		<![CDATA[
+		 select * from convert_task where (csip = #ip#  OR csip like '%%' OR csip IS NULL) and resourceGroupId = #resourceGroupId#
+		]]>
+	</select>
+	<select id="getTaskBeanList" parameterClass="map" resultClass="TaskBean">
+		select * from convert_task
+		<dynamic prepend="and">
+			<isNotNull property="objectIds">
+				objectId in ($objectIds$)
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				#offset#, #limit#
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="order by ">
+			<isNotNull property="orderBy">
+				$orderBy$
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="where">
+			<isNotNull property="filter">
+				<isNotEmpty prepend="and" property="filter.destFileFlag">
+					destFileFlag = #filter.destFileFlag#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.fileName">
+					<![CDATA[ 
+                    fileName like "%"#filter.fileName#"%" 
+                      ]]>
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.imageObjectId">
+					imageObjectId = #filter.imageObjectId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.level">
+					level = #filter.level#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.objectId">
+					objectId = #filter.objectId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.owneId">
+					owneId = #filter.owneId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.percent">
+					percent = #filter.percent#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.resourceGroupId">
+					resourceGroupId = #filter.resourceGroupId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.retryCount">
+					retryCount = #filter.retryCount#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.status">
+					status = #filter.status#
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+	</select>
+	<select id="getTaskBean" parameterClass="map" resultClass="TaskBean">
+		<![CDATA[
+       	 select * from convert_task where objectId=#objectId# and status != 99
+        ]]>
+	</select>
+	<select id="getTaskBeanThriftList" parameterClass="map" resultClass="TaskBean">
+		select * from convert_task
+		<dynamic prepend="where">
+			<isNotNull property="filter">
+				<isEmpty prepend="and" property="filter.status">
+					status in (9,8)
+				</isEmpty>
+				<isNotEmpty prepend="and" property="filter.csIp">
+					csIp = #filter.csIp#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.fileName">
+					<![CDATA[ 
+                    fileName like "%"#filter.fileName#"%" 
+                      ]]>
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.imageObjectId">
+					imageObjectId = #filter.imageObjectId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.level">
+					level = #filter.level#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.objectId">
+					objectId = #filter.objectId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.owneId">
+					owneId = #filter.owneId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.percent">
+					percent = #filter.percent#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.resourceGroupId">
+					resourceGroupId = #filter.resourceGroupId#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.retryCount">
+					retryCount = #filter.retryCount#
+				</isNotEmpty>
+				<isNotEmpty prepend="and" property="filter.status">
+					status = #filter.status#
+				</isNotEmpty>
+			</isNotNull>
+			<isNull prepend="and" property="filter">
+				status in (9,8)
+			</isNull>
+		</dynamic>
+		<dynamic prepend="and">
+			<isNotNull property="objectIds">
+				objectId in ($objectIds$)
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				#offset#, #limit#
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="order by ">
+			<isNotNull property="orderBy">
+				$orderBy$
+			</isNotNull>
+		</dynamic>
+	</select>
+	<select id="getTaskHandleIp" parameterClass="String" resultClass="String">
+		<![CDATA[
+			SELECT t.managerip FROM 
+			(SELECT DISTINCT managerip,resourcegroupid FROM resource_group_node
+				WHERE resourcegroupid = #resourcegroupid#) t 
+			LEFT JOIN 
+			(SELECT csip,resourcegroupid,COUNT(taskId) AS num FROM convert_task 
+			WHERE csip IS NOT NULL GROUP BY csip,resourcegroupid) tt 
+			ON t.managerip = tt.csIp AND t.resourcegroupid = tt.resourcegroupid
+			ORDER BY IF(tt.num IS NULL,0,tt.num) ASC
+			LIMIT 0,1
+		]]>
+	</select>
+	<select id="getTaskInfo" parameterClass="map" resultClass="TaskBean">
+		<![CDATA[
+       	 select * from convert_task where objectId=#objectId#
+        ]]>
+	</select>
+	<select id="getTasks" parameterClass="String" resultClass="TaskBean">
+		<![CDATA[
+		 select * from convert_task where csip = #ip#
+		]]>
+	</select>
+	
+	<update id="updateConvertBeginTime" parameterClass="TaskBean">
+		<![CDATA[
+			update convert_task set convertBeginTime=#convertBeginTime# where taskId =#taskId#
+		]]>
+	</update>
+	<update id="updateConvertEndTime" parameterClass="TaskBean">
+		<![CDATA[
+			update convert_task set convertEndTime=#convertEndTime# where taskId =#taskId#
+		]]>
+	</update>
+	<update id="updateTaskHandleIp" parameterClass="map">
+		<![CDATA[
+		 update convert_task set csip=#ip# where taskId = #taskid#
+		]]>
+	</update>
+	<update id="updateTask" parameterClass="TaskBean">
+		<![CDATA[
+			update convert_task set status=#status#,percent=#percent#,retryCount=#retryCount# where taskId =#taskId#
+		]]>
+	</update>
+	<update id="updateTaskStatus" parameterClass="String">
+		update convert_task set status=1,percent=10 where taskId in ($taskId$)
+	</update>
+</sqlMap>

@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap
+        PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+        "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="INodeShare">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="INodeShare" type="com.huawei.sharedrive.app.share.domain.INodeShare" />
+    <typeAlias alias="List" type="java.util.List" />
+    <resultMap id="mapToShare" class="INodeShare">
+        <result column="createdAt" property="createdAt"/>
+        <result column="createdBy" property="createdBy"/>
+        <result column="iNodeId" property="iNodeId"/>
+        <result column="modifiedAt" property="modifiedAt"/>
+        <result column="modifiedBy" property="modifiedBy"/>
+        <result column="ownerId" property="ownerId"/>
+        <result column="roleName" property="roleName"/>
+        <result column="sharedUserId" property="sharedUserId"/>
+        <result column="sharedUserType" property="sharedUserType"/>
+    </resultMap>
+    <insert id="insert" parameterClass="INodeShare">
+       insert into inode_share_$tableSuffix$(iNodeId,type,name,ownerId,ownerName,sharedUserId,sharedUserName,
+	   sharedUserType,createdAt,modifiedAt,createdBy,modifiedBy,roleName,status,size,shareType,forwardId,linkCode) values
+        (#iNodeId#,#type#,#name#,#ownerId#,#ownerName#,#sharedUserId#,#sharedUserName#,#sharedUserType#,
+		#createdAt#,#modifiedAt#,#createdBy#,#modifiedBy#,#roleName#,#status#,#size#,#shareType#,#forwardId#,#linkCode#)
+    </insert>
+
+
+    <delete id="deleteByInodeAndSharedUser" parameterClass="INodeShare">
+        <![CDATA[
+		delete from inode_share_$tableSuffix$  
+		]]>
+		
+		<dynamic prepend="where">
+            <isNull property="shareType" prepend="and">
+               iNodeId=#iNodeId# and ownerId=#ownerId# and sharedUserId=#sharedUserId# and sharedUserType=#sharedUserType#
+            </isNull>
+            <isNotNull  property="shareType" prepend="and">
+               ownerId=#ownerId#  and linkCode=#linkCode# and shareType=#shareType# and iNodeId=#iNodeId#
+            </isNotNull>
+        </dynamic>
+    </delete>
+
+    <delete id="deleteByOwner" parameterClass="INodeShare">
+        <![CDATA[
+		delete from inode_share_$tableSuffix$ where createdBy=#createdBy#
+		]]>
+    </delete>
+
+    <delete id="deleteByInode" parameterClass="INodeShare">
+        <![CDATA[
+        delete from inode_share_$tableSuffix$ where iNodeId=#iNodeId# and ownerId=#ownerId#
+        ]]>
+    </delete>
+
+    <update id="updateSize" parameterClass="INodeShare">
+        <![CDATA[
+        update inode_share_$tableSuffix$ set `size`=#size# where iNodeId=#iNodeId# and ownerId=#ownerId#
+        ]]>
+    </update>
+
+    <update id="updateStatus" parameterClass="INodeShare">
+        <![CDATA[
+        update inode_share_$tableSuffix$ set `status`=#status# where iNodeId=#iNodeId# and ownerId=#ownerId#
+        ]]>
+    </update>
+
+    <update id="updateRole" parameterClass="INodeShare">
+        <![CDATA[
+	update inode_share_$tableSuffix$ set `roleName`=#roleName# where iNodeId=#iNodeId# and ownerId=#ownerId# and sharedUserId=#sharedUserId# and sharedUserType=#sharedUserType#
+	]]>
+    </update>
+
+    <update id="updateOwnerName" parameterClass="INodeShare">
+        <![CDATA[
+        update inode_share_$tableSuffix$ set `ownerName`=#ownerName# where ownerId=#ownerId#
+        ]]>
+    </update>
+
+    <update id="updateName" parameterClass="INodeShare">
+        <![CDATA[
+        update inode_share_$tableSuffix$ set `name`=#name# where iNodeId=#iNodeId# and ownerId=#ownerId#
+        ]]>
+    </update>
+
+    <update id="updateNameAndSize" parameterClass="INodeShare">
+        <![CDATA[
+        update inode_share_$tableSuffix$ set `name`=#name#, `size`=#size# where iNodeId=#iNodeId# and ownerId=#ownerId#
+        ]]>
+    </update>
+
+
+
+    <select id="getsharelist" parameterClass="INodeShare" resultClass="INodeShare">
+        select * from inode_share_$tableSuffix$ where iNodeId=#iNodeId# and ownerId=#ownerId# and status=0 
+         <dynamic>
+             <isNotNull property="linkCode" prepend="and">
+                linkCode=#linkCode# 
+             </isNotNull>
+         </dynamic>
+        
+        order by sharedUserType DESC,sharedUserName ASC
+    </select>
+
+
+    <select id="getsharelistIgnoreStatus" parameterClass="INodeShare" resultClass="INodeShare">
+        select * from inode_share_$tableSuffix$ where iNodeId=#iNodeId# and ownerId=#ownerId#
+    </select>
+
+    <select id="getINodeShare" parameterClass="INodeShare" resultClass="INodeShare">
+        select * from inode_share_$tableSuffix$ where iNodeId=#iNodeId# and ownerId=#ownerId#
+        and sharedUserId=#sharedUserId# and sharedUserType=#sharedUserType# and status=0 limit 0,1
+    </select>
+
+    <!-- 添加V2查询共享资源 -->
+    <select id="listMyShares" parameterClass="map" resultClass="INodeShare">
+        select * from inode_share_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.createdBy">
+                    createdBy = #filter.createdBy# and status=0
+                </isNotEmpty>
+                 <isEmpty prepend="and" property="filter.shareType">
+                  shareType is null
+                 </isEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty property="searchName" >
+                <![CDATA[
+                    name like concat('%',#searchName#,'%')
+                  ]]>
+            </isNotEmpty>
+        </dynamic>
+        group by inodeId,shareType,linkCode order by $order$
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                $limit.offset$, $limit.length$
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="listAllMyShares" parameterClass="INodeShare" resultClass="INodeShare">
+        select * from inode_share_$tableSuffix$ where ownerId = #ownerId#
+    </select>
+
+    <select id="getPageList" parameterClass="map" resultClass="INodeShare">
+        select * from inode_share_$inodeShare.tableSuffix$
+        where iNodeId=#inodeShare.iNodeId# and ownerId=#inodeShare.ownerId# and status=0 and shareType is null
+        <dynamic prepend="order by ">
+            <isNotNull property="orderBy">
+                $orderBy$
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                $limit.offset$,$limit.length$
+            </isNotNull>
+        </dynamic>
+    </select>
+    <select id="getCountPageList" parameterClass="INodeShare" resultClass="int">
+        select count(*) from inode_share_$tableSuffix$ where iNodeId=#iNodeId# and ownerId=#ownerId# and status=0 and shareType is null
+    </select>
+
+    <select id="getCountByNode" parameterClass="INodeShare" resultClass="int">
+        select count(*) from inode_share_$tableSuffix$ where ownerId=#ownerId# and iNodeId=#iNodeId#
+    </select>
+
+    <select id="getCountMyShares" parameterClass="map" resultClass="long">
+        select count(DISTINCT inodeId,shareType,linkCode) from inode_share_$filter.tableSuffix$
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                <isNotEmpty prepend="and" property="filter.ownerId">
+                      createdBy = #filter.createdBy#  and status=0
+                </isNotEmpty>
+                 <isEmpty prepend="and" property="filter.shareType">
+                  shareType is null
+                 </isEmpty>
+            </isNotNull>
+            
+        </dynamic>
+  
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty property="searchName" >
+                <![CDATA[
+                    name like concat('%',#searchName#,'%')
+                  ]]>
+            </isNotEmpty>
+        </dynamic>
+        
+    </select>
+
+    <select id="getForwardRecord" parameterClass="INodeShare" resultClass="INodeShare">
+        select * from inode_share_$tableSuffix$ where createdBy=#createdBy# and linkCode=#linkCode# 
+         <dynamic>
+             <isNotNull property="sharedUserId" prepend="and">
+                sharedUserId=#sharedUserId#
+             </isNotNull>
+         </dynamic>
+        
+    </select> 
+</sqlMap>
+

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap>
+
+    <parameterMap class="map" id="paramMap">
+        <parameter property="param" javaType="java.lang.String" jdbcType="varchar" mode="IN" />
+        <parameter property="returnid" javaType="java.lang.Long" jdbcType="long" mode="OUT" />
+    </parameterMap>
+
+    <procedure id="getNextId" parameterMap="paramMap">
+        {call get_next_id(?,?)}
+    </procedure>
+
+</sqlMap>

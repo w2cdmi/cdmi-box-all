@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EnterpriseAccount">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="EnterpriseAccount" type="pw.cdmi.common.domain.enterprise.EnterpriseAccount" />
+    <typeAlias alias="EnterpriseAccountVo" type="pw.cdmi.common.domain.enterprise.EnterpriseAccountVo" />
+    <select id="getByAccessKeyId" parameterClass="String" resultClass="EnterpriseAccount">
+        <![CDATA[
+        select * from enterprise_account where accessKeyId=#value#
+        ]]>
+    </select>
+    
+    <select id="getEnterpriseAccountFilterdCount" parameterClass="map" resultClass="int">
+          SELECT count(t1.accountId) from  enterprise_account t1 , enterprise t2 WHERE t1.enterpriseId = t2.id and t1.authAppId = #authAppId# 
+          <dynamic prepend="and">
+            <isNotNull property="status">
+               t1.`status` = #status#
+            </isNotNull>
+          </dynamic>
+          <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                t2.`name` like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                t2.domainName like concat('%',#filter#,'%') 
+            </isNotEmpty>
+          </dynamic>
+    </select>
+    
+    <select id="getEnterpriseAccountFilterd" parameterClass="map" resultClass="EnterpriseAccountVo">
+        SELECT t2.name , t2.domainName,t1.authAppId,t1.maxMember,t1.maxTeamspace,t1.maxFiles,t1.filePreviewable ,t1.`status`,t1.createdAt,t1.modifiedAt,t1.accountId
+        from  enterprise_account t1 , enterprise t2
+          WHERE t1.enterpriseId = t2.id and t1.authAppId = #authAppId# 
+          <dynamic prepend="and">
+            <isNotNull property="status">
+               t1.`status` = #status#
+            </isNotNull>
+          </dynamic>
+          <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                t2.`name` like concat('%',#filter#,'%') 
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter">
+                t2.domainName like concat('%',#filter#,'%') 
+            </isNotEmpty>
+          </dynamic>
+          <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    <isEqual property="order.field" compareValue="name">
+                        convert(t2.`name` USING gbk) COLLATE gbk_chinese_ci
+                         <isEqual property="order.desc" compareValue="false">
+	                        desc
+	                     </isEqual>
+	                     <isEqual property="order.desc" compareValue="true">
+	                        asc
+	                     </isEqual>
+                    </isEqual>
+                    <isNotEqual property="order.field" compareValue="name">
+                        $order.field$
+                        <isEqual property="order.desc" compareValue="false">
+	                        desc
+	                     </isEqual>
+	                     <isEqual property="order.desc" compareValue="true">
+	                        asc
+	                     </isEqual>
+                    </isNotEqual>
+                </isNotEmpty>
+            </isNotNull>
+            <isNull property="order">
+            	 convert(t2.`name` USING gbk) COLLATE gbk_chinese_ci
+            </isNull>
+         </dynamic>
+         <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+         </dynamic> 
+    </select>
+    
+    <select id="getByAccountId" parameterClass="Long" resultClass="EnterpriseAccount">
+        <![CDATA[
+        select * from enterprise_account where accountId=#value#
+        ]]>
+    </select>
+    <select id="getByEnterpriseId" parameterClass="Long" resultClass="EnterpriseAccount">
+        select * from enterprise_account where enterpriseId=#value#
+    </select>
+    <select id="getAppContextByEnterpriseId" parameterClass="Long" resultClass="EnterpriseAccount">
+            select e.*,a.description from enterprise_account e,authapp a where e.enterpriseId=#value# and a.authAppId=e.authAppId
+    </select>
+    <select id="getByEnterpriseApp" parameterClass="map" resultClass="EnterpriseAccount">
+        select * from enterprise_account where enterpriseId=#enterpriseId# and authAppId=#authAppId#
+    </select>
+    
+    <select id="getAppByEnterpriseId" parameterClass="Long"   resultClass="String">
+        select authAppId from enterprise_account where enterpriseId=#value#
+    </select>
+    
+    <select id="getAccountIdByEnterpriseId" parameterClass="Long"   resultClass="Long">
+        select accountId from enterprise_account where enterpriseId=#value#
+    </select>
+
+    <insert id="insert" parameterClass="EnterpriseAccount">
+        insert into enterprise_account(enterpriseId,authAppId,accountId,status,accessKeyId,secretKey,secretKeyEncodeKey,maxSpace,maxMember,maxFiles,maxTeamspace,filePreviewable,fileScanable,createdAt,modifiedAt) 
+        values 
+        (#enterpriseId#,#authAppId#,#accountId#,#status#,#accessKeyId#,#secretKey#,#secretKeyEncodeKey#,#maxSpace#,#maxMember#,#maxFiles#,#maxTeamspace#,#filePreviewable#,#fileScanable#,#createdAt#,#modifiedAt#)
+    </insert>
+
+    <delete id="deleteByAccountId" parameterClass="Long">
+        delete from enterprise_account where accountId=#value#
+    </delete>
+
+	<update id="update" parameterClass="EnterpriseAccount">
+		<![CDATA[
+			update enterprise_account set
+			enterpriseId=#enterpriseId#,authAppId=#authAppId#,status=#status#,accessKeyId=#accessKeyId#,secretKey=#secretKey#,secretKeyEncodeKey=#secretKeyEncodeKey#,maxSpace=#maxSpace#,maxMember=#maxMember#,maxFiles=#maxFiles#,maxTeamspace=#maxTeamspace#,filePreviewable=#filePreviewable#,fileScanable=#fileScanable#,createdAt=#createdAt#,modifiedAt=#modifiedAt#
+			where accountId =#accountId#
+		]]>
+	</update>
+</sqlMap>
+

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserStatisticsDay">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="UserStatisticsDay" type="com.huawei.sharedrive.app.statistics.domain.UserStatisticsDay" />
+
+	<insert id="insert" parameterClass="UserStatisticsDay">
+        <![CDATA[
+        insert into user_statistics_day(day,appId,regionId,userCount,addedUserCount) 
+        values 
+        (#day#,#appId#,#regionId#,#userCount#,#addedUserCount#)
+        ]]>
+	</insert>
+	
+	<select id="getFilterd" resultClass="UserStatisticsDay" parameterClass="map">
+        select * from user_statistics_day
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="day">
+				day = #day#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="regionId">
+				regionId = #regionId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="appId">
+				appId = #appId#
+			</isNotEmpty>
+		</dynamic>
+		order by day
+	</select>
+
+    <select id="listRange" parameterClass="map" resultClass="UserStatisticsDay">
+	    select * from user_statistics_day
+		<dynamic prepend="where">
+			<isNotEmpty prepend="and" property="beginDay">
+			     <![CDATA[
+				day >= #beginDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="endDay">
+			     <![CDATA[
+				day <= #endDay#
+			    ]]>	
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="regionId">
+				regionId = #regionId#
+			</isNotEmpty>
+			<isNotEmpty prepend="and" property="appId">
+				appId = #appId#
+			</isNotEmpty>
+		</dynamic>
+		order by day
+
+    </select>
+    					
+</sqlMap>
+

@@ -1,0 +1,54 @@
+<view class='page'>
+    <view class='massage' hidden='{{ifteam}}'>
+        <view class='form'>
+            <label>名称</label>
+            <!-- <label class='name' hidden='{{showname}}' bindtap='showinput'>{{name}}</label> -->
+            <input bindtap='changename' bindblur="bindblur" focus='true' placeholder='请输入空间名称' />
+        </view>
+        <view class='form'>
+            <label>上传文件时通知</label>
+            <switch bindchange="switchChange" />
+        </view>
+    </view>
+    <view class='muberlist'>
+        <view class='form'>
+            <label>成员列表</label>
+            <view style='float: right;' wx:if="{{addmember}}" bindtap='addmember'>
+                <icon></icon>
+                <label>添加</label>
+            </view>
+        </view>
+        <view class='form empty' wx:if="{{teamspacelist.length == 0}}">
+            <label>协作空间暂无成员，请点击右上角添加成员</label>
+        </view>
+        <view>
+            <scroll-view scroll-y="true" bindscrolltoupper="upper" bindscrolltolower="lower" style='height:{{scrollHeight}};'>
+
+                <view wx:for="{{teamspacelist}}" wx:key="*this">
+                    <view class='list'>
+                        <view class='people' hidden='{{ifteam}}'>
+                            <view class='img'>
+                                <image src='{{item.icon}}'></image>
+                            </view>
+                            <label>{{item.name}}</label>
+                        </view>
+                        <view class='people' hidden='{{!ifteam}}'>
+                            <view class='img'>
+                                <image src='{{item.member.icon}}'></image>
+                            </view>
+                            <label>{{item.member.name}}</label>
+                        </view>
+                        <view class='permissions' hidden='{{!ifteam || !deletebtn}}' wx:if="{{item.teamRole != 'admin'}}">
+                            <view class='img' data-user-id='{{item.id}}' bindtap='deleteMember'>
+                                <image src='/disk/images/icon/enterprise/cancel-select.png'></image>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </scroll-view>
+            <view hidden='{{ifteam}}' class='btn'>
+                <view bindtap='newteamspace' class='sure-button'>确定</view>
+            </view>
+        </view>
+    </view>
+</view>

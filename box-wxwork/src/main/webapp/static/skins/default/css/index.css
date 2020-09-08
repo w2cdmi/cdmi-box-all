@@ -1,0 +1,486 @@
+﻿* {
+	margin: 0;
+	padding: 0;
+}
+
+
+/*文档1*/
+
+#box {
+	width: 100%;
+	overflow: hidden;
+	/*position: fixed;*/
+	top: 0;
+	margin-bottom: 2.5rem;
+	overflow-y: scroll;
+	height: auto;
+}
+
+
+/*目录*/
+
+#list {
+	width: 100%;
+	/*height: 1.7rem;*/
+	border-bottom: 1px solid #eaeaea;
+}
+
+#list>i {
+	float: right;
+	margin-top: 0.6rem;
+	width: 0.6rem;
+	height: 0.7rem;
+	margin-right: 0.8rem;
+}
+
+#list>i>img {
+	width: 0.6rem;
+}
+
+
+/*目录1*/
+
+.file-directory {
+	width: 100%;
+}
+
+.file-background>li {
+	font-size: 0.75rem;
+	height: 3rem;
+}
+
+.historyFile-li-content {
+	height: 2.2rem;
+	padding-bottom: 0.3rem;
+	padding-top: 0.3rem;
+	float: left;
+}
+
+.historyFile-li-contents {
+	width: 92%;
+	height: 2.2rem;
+	padding-left: 4%;
+	padding-right: 4%;
+}
+
+.file-background>li span {
+	float: left;
+	width: 80%;
+	height: 1.1rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 1.1rem;
+	color: #333;
+}
+
+.file-background {
+	overflow: hidden;
+	min-height: 5.4rem;
+	max-height: 8.5rem;
+}
+
+.historyFile-li-share {
+	width: 3rem;
+	height: 3rem;
+	line-height: 3rem;
+	text-align: center;
+	color: #FFFFFF;
+	background: #29B6F6;
+	float: left;
+}
+
+.historyFile-li-theouterhair {
+	width: 3rem;
+	height: 3rem;
+	line-height: 3rem;
+	text-align: center;
+	color: #FFFFFF;
+	background: #ea5036;
+	float: left;
+}
+
+.ananan {
+	height: 2.8rem;
+	overflow: hidden;
+}
+
+#historyFile-replicon {
+	float: left;
+	height: 2.8rem;
+}
+
+.ananan>li {
+	float: left;
+	font-size: 0.75rem;
+	height: 2.2rem;
+	position: relative;
+	padding-bottom: 0.3rem;
+	padding-top: 0.3rem;
+}
+.ananan>li>div:nth-child(1) {
+	margin-top: -0.15rem;
+	margin-left: 8%;
+}
+.ananan>li span {
+	float: left;
+	width: 5rem;
+	height: 1.1rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 1.1rem;
+	color: #333;
+}
+
+.file-directory li:last-of-type {
+	border-bottom: none;
+}
+
+.Page-tail-navigation {
+	/*margin-top: 0.5rem;*/
+}
+.Page-tail-navigation ul li {
+	width: 100%;
+	height: 2.4rem;
+	border-bottom: 1px solid #eaeaea;
+}
+/*增加暂无文件class*/
+.not-available-file{
+	width: 2rem;
+	height: 1.8rem;
+	background: url(../../default/img/notAvailabeFile.png) no-repeat;
+	background-size: 2rem 1.8rem;
+	margin: 1rem 1.25rem 0 6rem;
+	float: left;
+}
+.not-available-title{
+	font-size: 0.65rem;
+	color: #999;
+	float: left;
+	line-height: 4rem;
+}
+.file-background{
+	min-height: 4rem;
+	width: 100%;
+	background: #ffffff;
+}
+.ananan-width{
+	width: 100% !important;
+}
+/*增加暂无快捷目录class*/
+.ananan{
+	min-height: 4rem;
+	background: #ffffff;
+	margin: 0.2rem 0;
+}
+.ananan_add{
+	min-height: 2.7rem;
+}
+.not-qulick-con{
+	width: 2rem;
+	height: 2rem;
+	float: left;
+	background: url(../../default/img/notQulickContent.png) no-repeat;
+	background-size: 2rem 2rem;
+	margin: 1rem 1.25rem 0 6rem
+}
+.not-qulick-title{
+	font-size: 0.65rem;
+	color: #999;
+	float: left;
+	line-height: 4rem
+}
+.historyFile-li-contents>div:nth-child(1) {
+	margin-top: 0.2rem;
+	margin-left: 0;
+}
+
+.Page-tail-navigation ul li img {
+	float: left;
+	margin-left: 0.8rem;
+	width: 1.6rem;
+	height: 1.6rem;
+	margin-top: 0.35rem;
+}
+
+.Page-tail-navigation ul li span {
+	float: left;
+	line-height: 2.4rem;
+	margin-left: 0.8rem;
+	font-size: 0.75rem;
+	color: #333333;
+}
+
+.folder-share-icon {
+	margin-top: 0;
+	margin-left: 0;
+}
+
+.index-file-row-user {
+	float: left;
+	font-size: 0.6rem;
+	color: #999999;
+	margin-top: 0.05rem;
+	width: 5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.index-file-row-data {
+	float: right;
+}
+
+.index-file-row-bottom {
+	font-size: 0.6rem;
+	color: #999999;
+	height: 1.1rem;
+	line-height: 1.1rem;
+}
+
+#recent-browse-more-contents {
+	overflow: hidden;
+}
+
+#recent-browse-more-contents li .historyFile-li-content {
+	height: 2.8rem;
+}
+
+#recent-browse-more-contents li .historyFile-li-contents {
+	height: 2.8rem;
+}
+
+#recent-browse-more-contents li .historyFile-li-contents div:nth-child(1) {
+	margin-top: 0.2rem;
+}
+
+#recent-browse-more-contents li .historyFile-li-contents span {
+	float: left;
+	width: 80%;
+	height: 1.4rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 1.4rem;
+}
+
+#recent-browse-more-contents .historyFile-li-share {
+	height: 3.4rem;
+	line-height: 3.4rem;
+}
+
+#recent-browse-more-contents .historyFile-li-theouterhair {
+	height: 3.4rem;
+	line-height: 3.4rem;
+}
+
+.weui-actions_mask {
+	z-index: 1002;
+}
+
+.weui-icon-cancel:before {
+	content: "\EA0F";
+	background-color: white;
+	border-radius: 9px;
+}
+
+.weui-icon-cancel {
+	font-size: 18px;
+}
+.badge-action {
+    left: 1.8rem;
+    width: 18px;
+    top:auto;
+    right:auto;
+    bottom:auto;
+}
+
+/*界面优化样式*/
+.index-search{
+	height: 2.45rem;
+	background: #F8F8F8;
+	overflow: hidden;
+	position: relative;
+}
+.index-search .index-search-input{
+	width:17.25rem;
+	height:1.45rem;
+	background:rgba(255,255,255,1);
+	border-radius: 0.13rem;
+	outline: none;
+	border: none;
+	display:block;
+	margin: 0.5rem auto 0;
+	padding-left: 1rem;
+	font-size:0.6rem;
+	color:rgba(153,153,153,1);
+}
+.index-search-icon{
+	width: 0.8rem;
+	position: absolute;
+	right: 2rem;
+	top: 0.8rem;
+}
+.index-search-icon img{
+	width: 100%;
+}
+.index-recent-title{
+	overflow: hidden;
+}
+.index-recent-left{
+	float: left;
+    padding: 10px 0.4rem 10px 15px;
+}
+.weui-cell-change{
+	padding: 0;
+}
+.index-recent-middle{
+	float: left;
+	padding-top: 7px;
+}
+.index-recent-right{
+	float: right;
+	padding: 14px 0.35rem 14px 0.35rem;
+}
+.index-recent-right i{
+	display: inline-block;
+	width: 1.45rem;
+}
+.index-recent-right i img{
+	width: 100%;
+}
+.index-list-content{
+	overflow: hidden;
+	margin-top: 1.1rem;
+}
+.index-list-content li{
+	width: 33%;
+	float: left;
+	margin: auto;
+	text-align: center;
+}
+.index-list-content li i{
+	display: inline-block;
+	width: 1.45rem;
+}
+.index-list-content li i img{
+	width: 100%;
+}
+.index-list-content li p{
+	font-size: 0.6rem;
+	color: #333333;
+	margin-top: 0.3rem;
+}
+.index-per-depart{
+	height: 4.5rem;
+	overflow: hidden;
+}
+
+/*最近浏览*/
+.index-recent-title{
+	background: #fff;
+	overflow: hidden;
+	border-bottom: 1px solid rgba(241,241,241,1);
+}
+.index-recent-title>span{
+	display: block;
+	float: left;
+	line-height: 2rem;
+	margin-left: 15px;
+	font-size:0.65rem;
+	color:rgba(102,102,102,1);
+}
+.index-recent-title>i{
+	width: 0.65rem;
+    height: 0.65rem;
+	display: block;
+	float: right;
+	margin-right: 0.75rem;
+	margin-top: 0.65rem;
+}
+.index-recent-title>i img{
+	width: 100%;
+}
+.index-recent-list,.index-shortcut-list{
+	width:100%;
+	max-height: 9rem;
+	overflow: hidden;
+}
+.recent-detail-name{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	white-space:nowrap;
+}
+.index-recent-middle .recent-detail-name p{
+	font-size:0.75rem;
+	color:rgba(51,51,51,1);
+	line-height:1.1rem;
+}
+.recent-detail-other span{
+	font-size:0.6rem;
+	color:rgba(153,153,153,1);
+	line-height:0.75rem
+}
+.weui-swiped-btn{
+	padding: 0 0.75rem;
+	font-size: 0.75rem;
+	line-height: 3rem;
+}
+.index-share-btn{
+	background:rgba(41,182,246,1);
+}
+.index-link-btn{
+	background:rgba(234,80,54,1);
+}
+.recent-detail-name p{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	-o-text-overflow:ellipsis;
+	white-space:nowrap;
+	max-width: 11.5rem;
+	float: left;
+}
+.recent-detail-name i{
+	display: inline-block;
+	width: 0.6rem;
+	float: left;
+	margin-top: 0.3rem;
+	margin-left: 0.5rem
+}
+.recent-detail-name i img{
+	width: 100%;
+}
+/*暂无最近浏览样式*/
+.index-not-recent{
+	display: block;
+	width: 2rem;
+	margin: 1.5rem auto 0;
+}
+.index-not-recent img,.index-not-qulick img{
+	width: 100%;
+}
+.index-not-recent-title{
+	font-size:0.6rem;
+	color:#999;
+	line-height:0.45rem;
+	text-align: center;
+	margin:0.5rem 0 1.5rem 0;
+}
+.index-not-qulick{
+    display: block;
+    width: 2rem;
+    margin: 1rem auto 0;
+}
+.index-not-qulick-title{
+    font-size: 0.6rem;
+    color: #999;
+    margin-left: 2rem;
+}
+.index-not-qulick-title-first{
+    margin-top: 0.4rem;
+}
+.index-not-qulick-title-last{
+    margin-bottom: 1.5rem;
+}

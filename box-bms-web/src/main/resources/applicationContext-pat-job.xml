@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans classpath:org/springframework/beans/factory/xml/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context classpath:org/springframework/context/config/spring-context-3.2.xsd
+		http://www.springframework.org/schema/tx classpath:org/springframework/transaction/config/spring-tx-3.2.xsd
+        http://www.springframework.org/schema/aop classpath:org/springframework/aop/config/spring-aop-3.2.xsd"
+	default-autowire="byName">
+	
+	<bean id="jobDao" class="pw.cdmi.common.job.manage.dao.impl.JobDaoImpl">
+		<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate" />
+	</bean>
+	
+	<bean id="jobExecuteRecordIdService" class="pw.cdmi.common.job.manage.service.impl.JobExecuteRecordIdServiceImpl" lazy-init="false" init-method="init">
+		<property name="jobDao" ref="jobDao" />
+		<property name="zookeeperServer" ref="zookeeperServer" />
+		<property name="basePath" value="/cse_job_${job.model.name}/recordid" />
+		<property name="model" value="${job.model.name}"/>
+	</bean>
+	
+	<bean id="jobService" class="pw.cdmi.common.job.manage.service.impl.JobServiceImpl">
+		<property name="jobDao" ref="jobDao" />
+		<property name="jobExecuteRecordIdService" ref="jobExecuteRecordIdService" />
+		<property name="defaultModelName" value="${job.model.name}"/>
+	</bean>
+
+	<bean id="clearRedundantJobExecuteRecordJob" class="pw.cdmi.common.job.manage.service.ClearRedundantJobExecuteRecordJob">
+		<property name="jobService" ref="jobService" />
+	</bean>
+	
+	<bean id="quartzJobFactory" class="pw.cdmi.common.job.quartz.QuartzJobFactory" lazy-init="false">
+		<property name="quartzSchedulerFactory">
+			<bean
+				class="pw.cdmi.common.job.quartz.QuartzSchedulerFactory">
+				<constructor-arg>
+					<props>
+						<prop key="org.quartz.scheduler.instanceName">${job.model.name}_${cron.org.quartz.scheduler.instanceName}</prop>
+						<prop key="org.quartz.jobStore.misfireThreshold">${cron.org.quartz.jobStore.misfireThreshold}</prop>
+						<prop key="org.quartz.threadPool.threadCount">${cron.org.quartz.threadPool.threadCount}</prop>
+					</props>
+				</constructor-arg>
+				<constructor-arg>
+					<props>
+						<prop key="org.quartz.scheduler.instanceName">${job.model.name}_${cluster.org.quartz.scheduler.instanceName}</prop>
+						<prop key="org.quartz.jobStore.class">org.quartz.impl.jdbcjobstore.JobStoreTX</prop>
+						<prop key="org.quartz.jobStore.driverDelegateClass">org.quartz.impl.jdbcjobstore.StdJDBCDelegate</prop>
+						<prop key="org.quartz.jobStore.dataSource">jobds</prop>
+						<prop key="org.quartz.jobStore.tablePrefix">${cluster.org.quartz.jobStore.tablePrefix}</prop>
+						<prop key="org.quartz.dataSource.jobds.driver">${cluster.org.quartz.dataSource.driver}</prop>
+						<prop key="org.quartz.dataSource.jobds.URL">${cluster.org.quartz.dataSource.URL}</prop>
+						<prop key="org.quartz.dataSource.jobds.user">${cluster.org.quartz.dataSource.user}</prop>
+						<prop key="org.quartz.dataSource.jobds.password">${cluster.org.quartz.dataSource.password}</prop>
+						<prop key="org.quartz.dataSource.jobds.maxConnections">${cluster.org.quartz.dataSource.maxConnections}</prop>
+						<prop key="org.quartz.dataSource.jobds.validationQuery">${cluster.org.quartz.dataSource.validationQuery}</prop>
+						<prop key="org.quartz.dataSource.jobds.connectionProvider.class">${cluster.org.quartz.dataSource.connectionProvider.class}</prop>
+						<prop key="org.quartz.dataSource.jobds.validateOnCheckout">${cluster.org.quartz.dataSource.validateOnCheckout}</prop>
+						<prop key="org.quartz.jobStore.misfireThreshold">${cluster.org.quartz.jobStore.misfireThreshold}</prop>
+						<prop key="org.quartz.jobStore.maxMisfiresToHandleAtATime">${cluster.org.quartz.jobStore.maxMisfiresToHandleAtATime}</prop>
+						<prop key="org.quartz.jobStore.clusterCheckinInterval">${cluster.org.quartz.jobStore.clusterCheckinInterval}</prop>
+						<prop key="org.quartz.threadPool.threadCount">${cluster.org.quartz.threadPool.threadCount}</prop>
+						<prop key="org.quartz.jobStore.useDBLocks">true</prop>
+					</props>
+				</constructor-arg>
+			</bean>
+		</property>
+	</bean>
+	
+	<bean id="daemonJobFactory" class="pw.cdmi.common.job.daemon.DaemonJobFactory"/>
+	
+	<bean id="beanFactory" class="pw.cdmi.common.job.DefaultJobBeanFactory"/>
+	
+	<bean id="jobConfigManager" class="pw.cdmi.common.config.service.impl.ConfigManagerImpl" lazy-init="false" init-method="init">
+        <property name="zookeeperServer" ref="zookeeperServer" />
+        <property name="configRoot" value="/cse_job_${job.model.name}/listeners" />
+        <property name="listeners">
+            <list>
+                <ref bean="jobClusterHandler" />
+                <ref bean="daemonJobNewDataListener" />
+            </list>
+        </property>
+    </bean>
+    
+	<bean id="jobManager" class="pw.cdmi.common.job.manage.JobManager" lazy-init="false" init-method="init">
+		<constructor-arg index="0" ref="quartzJobFactory" />
+		<constructor-arg index="1" ref="daemonJobFactory" />
+		<constructor-arg index="2" ref="beanFactory" />
+		<property name="jobService" ref="jobService" />
+	</bean>
+	
+	<bean id="jobClusterHandler" class="pw.cdmi.common.job.manage.cluster.JobClusterHandler">
+    	<property name="jobManager" ref="jobManager"/>
+    	<property name="configManager" ref="jobConfigManager"/>
+    </bean>
+    
+    <bean id="daemonJobActiveUtils" class="pw.cdmi.common.job.daemon.DaemonJobActiveUtils">
+    	<property name="configManager" ref="jobConfigManager"/>
+    	<property name="listenerKey" value="job_com.huawei.sharedrive.common.job.daemon.DaemonJobNewDataListener"/>
+    </bean>
+    
+    <bean id="daemonJobNewDataListener" class="pw.cdmi.common.job.daemon.DaemonJobNewDataListener">
+    	<property name="daemonJobActiveUtils" ref="daemonJobActiveUtils"/>
+    	<property name="listenerKey" value="job_com.huawei.sharedrive.common.job.daemon.DaemonJobNewDataListener"/>
+    </bean>
+    
+    <bean id="zookeeperUtils" class="pw.cdmi.common.job.ZookeeperUtils">
+    	<property name="zookeeperServer" ref="zookeeperServer"/>
+    	<property name="pathPrefix" value="/cse_job_${job.model.name}/jobs"/>
+    </bean>
+    
+    <bean id="jobScheduler" class="pw.cdmi.common.job.manage.JobScheduler">        
+        <property name="jobService" ref="jobService"/>
+        <property name="jobClusterHandler" ref="jobClusterHandler"/>
+    </bean>
+   
+</beans>

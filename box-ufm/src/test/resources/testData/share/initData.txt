@@ -1,0 +1,26 @@
+@@addShareMessage
+ { 
+"sharedUserList":[
+	{ 
+  		"id":2, 
+  		"type":"user" 
+	}]
+}
+
+@@addShareMessage1
+{ 
+"sharedUserList":
+	[{
+  		"id":2, 
+  		"type":"user" 
+	}]
+}
+@@addShareMessage2
+{ 
+ "message":"Message:This is Message.", 
+"sharedUserList":
+	[{
+  		"id":1572, 
+  		"type":"user" 
+	}]
+}

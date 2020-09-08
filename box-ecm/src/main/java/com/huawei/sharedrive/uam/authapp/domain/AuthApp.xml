@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="AuthApp">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="AuthApp" type="pw.cdmi.uam.domain.AuthApp" />
+    
+    <select id="getByAuthAppID" parameterClass="String" resultClass="AuthApp">
+        select * from authapp where authAppId=#value#
+    </select>
+    
+    <select id="getCountByAuthentication" parameterClass="long" resultClass="int">
+	    <![CDATA[
+        select count(distinct ap.authAppId)
+        from enterprise_account ea, account_authserver aa, authapp ap
+        where
+        ea.enterpriseId=#value# 
+        and ea.accountId=aa.accountId 
+        and ea.authAppId=ap.authAppId
+        ]]>
+	</select>
+    
+     <select id="getByAuthentication" parameterClass="map" resultClass="AuthApp">
+        select distinct ap.authAppId,ap.description
+        from enterprise_account ea, account_authserver aa, authapp ap
+        where
+        ea.enterpriseId=#enterpriseId# 
+        and ea.accountId=aa.accountId 
+        and ea.authAppId=ap.authAppId
+         <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+        
+    <select id="getDefaultWebApp" resultClass="AuthApp">
+        select * from authapp where type=1
+    </select>
+
+    <select id="getAppId" resultClass="String">
+        select authAppId from authapp
+    </select>
+
+    <select id="getFilterd" parameterClass="map" resultClass="AuthApp">
+        select * from authapp
+        <dynamic prepend="where">
+            <isNotNull property="filter">
+                 <isNotNull prepend="and" property="filter.name">
+	                name like concat('%',#filter.name#,'%') 
+	            </isNotNull>
+	            <isNotNull prepend="and" property="filter.includedAppId">
+	                    authAppId in 
+		                <iterate open="(" close=")" conjunction="," property="filter.includedAppId" > 
+			                #filter.includedAppId[]# 
+			            </iterate> 
+		        </isNotNull>
+		         <isNotNull prepend="and" property="filter.excludeAppId">
+	                    authAppId not in 
+		                <iterate open="(" close=")" conjunction="," property="filter.excludeAppId" > 
+			                #filter.excludeAppId[]# 
+			            </iterate> 
+		        </isNotNull>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="order by">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getFilterdCount" parameterClass="map" resultClass="int">
+        select count(id) from authapp
+        <dynamic prepend="where">
+            <isNotNull prepend="and" property="filter">
+                name like concat('%',#filter.name#,'%') 
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <insert id="insert" parameterClass="AuthApp">
+        insert into authapp(authAppId,ufmAccessKeyId,ufmSecretKey,ufmSecretKeyEncodeKey,name,createdAt,modifiedAt,description,type, networkRegionStatus) 
+        values 
+        (#authAppId#,#ufmAccessKeyId#,#ufmSecretKey#,#ufmSecretKeyEncodeKey#,#name#,#createdAt#,#modifiedAt#,#description#,#type#, #networkRegionStatus#)
+    </insert>
+
+    <update id="updateAuthApp" parameterClass="AuthApp">
+        update authapp set ufmAccessKeyId=#ufmAccessKeyId#,ufmSecretKey=#ufmSecretKey#,ufmSecretKeyEncodeKey=#ufmSecretKeyEncodeKey#,name=#name#,modifiedAt=#modifiedAt#,description=#description# where authAppId=#authAppId#
+    </update>
+
+    <delete id="delete" parameterClass="String">
+        delete from authapp where authAppId=#value#
+    </delete>
+	
+	<update id="updateNetworkRegionStatus" parameterClass="AuthApp">
+        update authapp set networkRegionStatus=#networkRegionStatus# where authAppId=#authAppId#
+    </update>
+    
+</sqlMap>
+

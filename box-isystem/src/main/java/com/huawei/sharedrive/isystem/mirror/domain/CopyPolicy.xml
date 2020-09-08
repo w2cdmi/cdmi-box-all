@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CopyPolicy">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CopyPolicy"
+		type="com.huawei.sharedrive.isystem.mirror.domain.CopyPolicy" />
+
+	<resultMap id="resultMap.CopyPolicy" class="CopyPolicy">
+		<result column="id" 			property="id" 						javaType="java.lang.Integer" />
+		<result column="name" 			property="name" 					javaType="java.lang.String" />
+		<result column="description" 	property="description" 				javaType="java.lang.String" />
+		<result column="appId" 			property="appId" 					javaType="java.lang.String" />
+		<result column="type" 			property="type" 					javaType="java.lang.Integer" />
+		<result column="state" 			property="state" 					javaType="java.lang.Integer" />
+		<result column="copyType" 		property="copyType" 				javaType="java.lang.Integer" />
+		<result column="exeType" 		property="exeType" 					javaType="java.lang.Integer" />
+		<result column="createdAt" 		property="createdAt" 				javaType="java.util.Date" />
+		<result column="modifiedAt" 	property="modifiedAt" 				javaType="java.util.Date" />
+		<result column="exeStartAt" 	property="exeStartAt" 				javaType="java.lang.String" />
+		<result column="exeEndAt" 		property="exeEndAt" 				javaType="java.lang.String" />
+	</resultMap>
+
+	<select id="get" resultMap="resultMap.CopyPolicy">
+		select * from copy_policy where
+		id=#id#
+	</select>
+	
+	<select id="getAll" resultMap="resultMap.CopyPolicy">
+		select * from copy_policy
+	</select>
+	
+	<select id="getAllByPage" resultMap="resultMap.CopyPolicy" parameterClass="map">
+		select * from copy_policy
+		 <dynamic prepend="order by createdAt asc">
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    ,$order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+		<dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+        
+	</select>
+	
+	<select id="getByApp" resultMap="resultMap.CopyPolicy">
+		select * from copy_policy where
+		appId=#appId#
+	</select>
+	
+
+	<insert id="insert" parameterClass="CopyPolicy">
+		insert into
+		copy_policy(id,name,description,appId,type,state,copyType,
+		exeType,createdAt,modifiedAt,exeStartAt,exeEndAt)
+		values(#id#,#name#,#description#,#appId#,#type#,#state#,#copyType#,
+		#exeType#,#createdAt#,#modifiedAt#,#exeStartAt#,#exeEndAt#)
+	</insert>
+
+	<delete id="delete" parameterClass="java.lang.Integer">
+		delete from copy_policy where
+		id=#id#
+	</delete>
+	
+	<delete id="deleteByApp" parameterClass="CopyPolicy">
+		delete from copy_policy where
+		appId=#appId#
+	</delete>
+
+	<update id="update" parameterClass="CopyPolicy">
+		update copy_policy set
+		name=#name#,description=#description#,appId=#appId#,state=#state#,copyType=#copyType#,
+		exeType=#exeType#,type=#type#,
+		<isNotNull property="createdAt">
+                <isNotEmpty property="createdAt">
+		createdAt=#createdAt#,
+		     </isNotEmpty>
+         </isNotNull>
+		modifiedAt=#modifiedAt#,exeStartAt=#exeStartAt#,exeEndAt=#exeEndAt#
+		where id=#id#
+	</update>
+	
+	<update id="updateByApp" parameterClass="CopyPolicy">
+		update copy_policy set
+		name=#name#,description=#description#,state=#state#,copyType=#copyType#,
+		exeType=#exeType#,type=#type#,createdAt=#createdAt#,modifiedAt=#modifiedAt#,exeStartAt=#exeStartAt#,exeEndAt=#exeEndAt#
+		where appId=#appId#
+	</update>
+
+</sqlMap>
+

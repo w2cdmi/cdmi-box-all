@@ -1,0 +1,48 @@
+<view class='page'>
+    <view class='product-select'>
+        <view class='item view-border-bottom'>
+            <view class='item-title'>选择容量</view>
+            <view class='item-content'>
+                <block wx:for="{{products}}" wx:key="*this">
+                    <view class='option' bindtap='selectStorage' data-storage-size='{{item.accountSpace}}' data-product-id='{{item.id}}'>
+                        <view class='select-img-view'><image class='select-img' src='/disk/images/{{item.accountSpace==storageSize?"selected":"no-select"}}.png'></image></view>
+                        {{item.accountSpace}}G</view>
+                </block>
+            </view>
+        </view>
+        <view class='item view-border-bottom'>
+            <view class='item-title'>选择服务时长</view>
+            <view class='item-content'>
+                <block wx:for="{{durations}}" wx:key="*this">
+                    <view class='option' bindtap='selectDate' data-date-size='{{item.duration}}' data-product-id='{{item.productId}}'>
+                        <view class='select-img-view'><image class='select-img' src='/disk/images/{{dateSize==item.duration?"selected":"no-select"}}.png'></image></view>
+                        <block wx:if="{{item.duration<12}}">{{item.duration}}个月</block>
+                        <block wx:else>
+                            <block wx:if="{{item.duration/12 == 1}}">1年</block>
+                            <block wx:if="{{item.duration/12 == 2}}">2年<view class='rebate-triangle' style='border-bottom:30px solid #EA5036'><view class='rebate' style='color:{{dateSize==6?"#EA5036":"#fff"}}'>9折</view></view></block>
+                            <block wx:if="{{item.duration/12 == 3}}">3年<view class='rebate-triangle' style='border-bottom:30px solid #EA5036'><view class='rebate' style='color:{{dateSize==6?"#EA5036":"#fff"}}'>8折</view></view></block>
+                        </block>
+                    </view>
+                </block>
+            </view>
+        </view>
+    </view>
+
+    <view class='item' wx:if="{{payMoney!=0}}">
+        <view class='font-middle'>合计</view>
+        <view class='item-row font-middle'><view>有效期至：</view><view class='font-color-red'>{{expireDate}}</view></view>
+        <view class='item-row font-middle'><view>应付：</view><view class='{{discountPrice!=totalPrice?"price-line":""}}'>￥{{totalPrice}}</view></view>
+        <view class='item-row font-middle' wx:if="{{discountPrice!=totalPrice}}"><view></view><view>￥{{discountPrice}}</view></view>
+        <view class='item-row font-middle'><view>原方案剩余时长抵现：</view><view>￥{{surplusCost}}</view></view>
+        <view class='item-row view-padding'><view>实付：</view><view class='font-color-red'>￥{{payMoney}}</view></view>
+    </view>
+
+    <view class='item' wx:if="{{payMoney==0}}">
+        <view class='item-row view-padding'><view class='font-color-red'>抱歉，实付金额不能低于原方案剩余时长抵现金额</view></view>
+    </view>
+
+    <view class='pay-view'>
+        <view class='total-price'>实付:<text style='color:red;font-size:28rpx;margin-left:5px;'>￥{{payMoney}}</text></view>
+        <view class='pay-button {{payMoney==0?"gray-bg":""}}' bindtap='{{payMoney==0?"":"payMoney"}}'>去支付</view>
+    </view>
+</view>

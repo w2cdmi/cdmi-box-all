@@ -1,0 +1,1 @@
+"%VS2012_THIRD_PART%/thrift/bin/thrift-0.9.1.exe" -out "./" --gen cpp "./OneboxThriftService.thrift"

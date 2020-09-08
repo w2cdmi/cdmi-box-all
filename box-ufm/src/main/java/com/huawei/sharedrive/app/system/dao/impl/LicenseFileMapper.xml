@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="LicenseFileMapper">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="LicenseFile"
+		type="com.huawei.sharedrive.common.license.LicenseFile" />
+
+	<resultMap id="resultMap.LicenseFile" class="LicenseFile">
+		<result column="content" property="content" jdbcType="BLOB" javaType="byte"
+			typeHandler="com.ibatis.sqlmap.engine.type.BlobTypeHandlerCallback" />
+		<result column="id" property="id" />
+		<result column="createdAt" property="createdAt"/>
+		<result column="createdBy" property="createdBy" />
+		<result column="name" property="name" />
+		<result column="sha1" property="sha1" />
+	</resultMap>
+
+	<select id="get" resultClass="LicenseFile" parameterClass="String">
+		select * from license_file where id=#value#
+	</select>
+	
+	<select id="getLastest" resultClass="LicenseFile" parameterClass="LicenseFile">
+		select * from license_file where status=#status# order by createdAt DESC limit 1
+	</select>
+	
+	<select id="getLicenseFileListByStatus" resultClass="LicenseFile" parameterClass="LicenseFile">
+		select * from license_file where status=#status#
+	</select>
+
+</sqlMap>
+

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="DepartmentAccount">
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="DepartmentAccount" type="com.huawei.sharedrive.uam.organization.domain.DepartmentAccount" />
+
+    <select id="getMaxId" resultClass="Long">
+        <![CDATA[
+        select max(id) from department_account
+        ]]>
+    </select>
+
+    <insert id="insert" parameterClass="DepartmentAccount">
+        <![CDATA[
+        insert into department_account(id,deptId,enterpriseId,accountId,cloudUserId,status,accessKeyId,secretKey,regionId,
+        createdAt,modifiedAt,maxVersions,spaceQuota,teamSpaceFlag,teamSpaceQuota,teamSpaceMaxNum,uploadBandWidth,downloadBandWidth,resourceType,fileNeedApprove)
+        values 
+        (#id#,#deptId#,#enterpriseId#,#accountId#,#cloudUserId#,#status#,#accessKeyId#,#secretKey#,#regionId#,
+        #createdAt#,#modifiedAt#,#maxVersions#,#spaceQuota#,#teamSpaceFlag#,#teamSpaceQuota#,#teamSpaceMaxNum#,#uploadBandWidth#,#downloadBandWidth#,#resourceType#,#fileNeedApprove#)
+        ]]>
+	</insert>
+	<update id="update" parameterClass="DepartmentAccount">
+        <![CDATA[
+        update department_account set status=#status#,regionId=#regionId#,modifiedAt=#modifiedAt#,maxVersions=#maxVersions#,spaceQuota=#spaceQuota#,teamSpaceFlag=#teamSpaceFlag#,
+        teamSpaceQuota=#teamSpaceQuota#,teamSpaceMaxNum=#teamSpaceMaxNum#,uploadBandWidth=#uploadBandWidth#,downloadBandWidth=#downloadBandWidth#,fileNeedApprove=#fileNeedApprove#
+        where
+        deptId=#deptId# and accountId=#accountId#
+        ]]>
+	</update>
+	<!-- 更新关联的deptId -->
+	<update id="updateUserIdById" parameterClass="DepartmentAccount">
+        <![CDATA[
+        update department_account set deptId = #deptId#, modifiedAt=#modifiedAt#
+        where
+          id=#id#
+        ]]>
+	</update>
+
+    <delete id="deleteById" parameterClass="Long">
+        <![CDATA[
+        delete from department_account where id=#id#
+        ]]>
+    </delete>
+
+    <delete id="deleteByDeptIdAndAccountId" parameterClass="DepartmentAccount">
+        <![CDATA[
+        delete from department_account where enterpriseId=#enterpriseId# and deptId=#deptId# and accountId=#accountId#
+        ]]>
+    </delete>
+
+    <select id="get" parameterClass="map" resultClass="DepartmentAccount">
+    	<![CDATA[
+        select * from department_account where deptId=#deptId# and accountId=#accountId#
+        ]]>
+	</select>
+	
+	<select id="getBycloudDepartmentAccountId" parameterClass="DepartmentAccount" resultClass="DepartmentAccount">
+    	<![CDATA[
+        select * from department_account where cloudUserId=#cloudUserId# and accountId=#accountId#
+        ]]>
+	</select>
+	
+	<select id="getByDeptIdAndEnterpriseId" parameterClass="map" resultClass="DepartmentAccount">
+    	<![CDATA[
+        select * from department_account where enterpriseId=#enterpriseId# and deptId=#deptId#
+        ]]>
+	</select>
+	
+	<select id="getById" parameterClass="map" resultClass="DepartmentAccount">
+    	<![CDATA[
+        select * from department_account where id=#id#
+        ]]>
+	</select>
+	<select id="countFiltered" parameterClass="map" resultClass="int">
+		select count(ua.id) from
+            department_account da,
+            department d
+			where
+            da.accountId=#accountId#
+			and da.enterpriseId=#enterpriseId#
+			and da.deptId=d.id
+			<dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                d.name like concat('%',#filter#,'%')
+            </isNotEmpty>
+            <isNotNull prepend="and" property="status">
+           	<![CDATA[
+              da.status=#status#
+              ]]>
+         </isNotNull>       
+        </dynamic>
+	</select>
+	
+	 <select id="getFiltered" parameterClass="map" resultClass="DepartmentAccount">
+      select d.name, da.* from
+            department_account da,
+            department d
+			where 
+			da.accountId=#accountId#
+			and da.enterpriseId=#enterpriseId#
+			and da.enterpriseId=d.enterpriseId
+			and da.deptId=d.id
+		<dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter">
+                d.name like concat('%',#filter#,'%')
+            </isNotEmpty>
+        </dynamic>
+        <isNotNull prepend="and" property="status">
+           	<![CDATA[
+              da.status=#status#
+              ]]>
+         </isNotNull>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+     <update id="updateStatus" parameterClass="map">
+       <![CDATA[
+        update department_account set status=#filter.status#,modifiedAt=#filter.modifiedAt# where id in ($ids$)
+        ]]>
+	</update>
+
+    <select id="listByAccountIdAndDeptId" parameterClass="map" resultClass="DepartmentAccount">
+        select * from
+        department_account da where accountId=#accountId# and
+        deptId in(
+        <dynamic>
+            <iterate property="deptList" conjunction=",">
+                #deptList[]#
+            </iterate>
+        </dynamic>
+        )
+    </select>
+    
+    <delete id="deleteBydeptId" parameterClass="map">
+        delete from department_account where  enterpriseId=#enterpriseId# and deptId=#deptId#
+    </delete>
+</sqlMap>
+

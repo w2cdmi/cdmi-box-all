@@ -1,0 +1,5 @@
+{
+	"loginName":"account",
+	"password":"password",
+	"appId":"OneBox"
+}

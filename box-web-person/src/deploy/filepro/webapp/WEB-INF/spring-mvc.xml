@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+	<context:component-scan base-package="pw.cdmi.box.disk" use-default-filters="false">
+		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+		<context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice" />
+	</context:component-scan>
+
+	<mvc:annotation-driven>
+		<mvc:message-converters register-defaults="true">
+			<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+				<constructor-arg value="UTF-8" />
+				<property name="writeAcceptCharset" value="false" />
+			</bean>
+			<bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+				<property name="objectMapper">
+					<bean class="com.fasterxml.jackson.databind.ObjectMapper">
+						<property name="serializationInclusion" value="NON_NULL" />
+					</bean>
+				</property>
+			</bean>
+		</mvc:message-converters>
+	</mvc:annotation-driven>
+
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+
+	<mvc:default-servlet-handler />
+
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n/messages" />
+		<property name="useCodeAsDefaultMessage" value="true" />
+	</bean>
+
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver" />
+
+	<mvc:interceptors>
+		<bean class="pw.cdmi.box.disk.user.web.UnauthorizeAccessInterceptor">
+			<property name="excludeUrl">
+				<set>
+					<value>/|/[^/]+/</value>
+					<value>/login|/[^/]+/login|/login/.*</value>
+					<value>/api/.*|/[^/]+/api/.*</value>
+					<value>/login/turnToError|/[^/]+/login/turnToError</value>
+					<value>/logout.*|/[^/]+/logout.*</value>
+					<value>/user/changePwd|/[^/]+/user/changePwd</value>
+					<value>/user/firstLoginInit|/[^/]+/user/firstLoginInit</value>
+					<value>/syscommon/.*|/[^/]+/syscommon/.*</value>
+					<value>/static/.*|/[^/]+/static/.*</value>
+					<value>/checkRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb|/[^/]+/checkRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb</value>
+					<value>/newCheckRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb|/[^/]+/newCheckRealServerHealth.28055dab3fc0a85271dddbeb0464bfdb</value>
+					<value>/register/.*|/[^/]+/register/.*</value>
+					<value>/system/verifycode.*|/[^/]+/system/verifycode.*</value>
+					<value>/skins/.*|/[^/]+/skins/.*</value>
+					<value>/favicon.ico|/[^/]+/favicon.ico</value>
+				</set>
+			</property>
+		</bean>
+		<bean class="pw.cdmi.core.log.LogInterceptor">
+			<property name="excludeHeaders">
+				<set>
+					<value>Cookie</value>
+					<value>cookie</value>
+					<value>authorization</value>
+				</set>
+			</property>
+			<property name="excludeUrl">
+				<set>
+					<value>/</value>
+					<value>/[^/]+/static/.*</value>
+					<value>/static/.*</value>
+					<value>/static/.*</value>
+					<value>/[^/]+/skins/.*</value>
+					<value>/skins/.*</value>
+					<value>/favicon.ico</value>
+					<value>/crossdomain.xml</value>
+				</set>
+			</property>
+		</bean>
+		<bean class="pw.cdmi.core.log.AfterAccessInterceptor">
+			<property name="excludeUrl">
+				<set>
+					<value>/</value>
+					<value>/[^/]+/static/.*</value>
+					<value>/static/.*</value>
+					<value>/[^/]+/skins/.*</value>
+					<value>/skins/.*</value>
+					<value>/favicon.ico</value>
+					<value>/crossdomain.xml</value>
+				</set>
+			</property>
+		</bean>
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" />
+		<bean class="pw.cdmi.box.disk.core.interceptor.ThemeSwitchInterceptor"/>
+		<bean class="pw.cdmi.box.disk.core.interceptor.PageLayoutInterceptor"/>
+		<bean class="pw.cdmi.box.disk.core.interceptor.RealIpInterceptor"/>
+
+	</mvc:interceptors>
+
+	<bean id="multipartResolver" class="pw.cdmi.box.disk.utils.MyCommonsMultipartResolver">
+		<!-- one of the properties available; the maximum file size in bytes <property
+			name="maxUploadSize" value="102400" /> -->
+	</bean>
+
+	<bean id="userController" class="pw.cdmi.box.disk.user.web.UserController">
+		<property name="wxAppId" value="wx2537f50f549d60eb"/>
+		<property name="bindAccountUrl" value="https://www.filepro.cn/ecm/api/v2/wxOauth2/bindWxAccount"/>
+		<property name="wxRegisterUrl" value="https://www.filepro.cn/personal/user/wxRegisterPersonal?qr=wx&amp;type=person"/>
+	</bean>
+
+	<bean id="enterpriseRegisterController" class="pw.cdmi.box.disk.enterprise.web.EnterpriseRegisterController">
+		<property name="suiteId" value="ww2e8f675c0308dbb3"/>
+		<property name="redirectUrl" value="http://www.filepro.cn/ecm/wxEvent/install"/>
+	</bean>
+
+	<bean id="loginController" class="pw.cdmi.box.disk.user.web.LoginController">
+		<property name="wxAppId" value="wx2537f50f549d60eb"/>
+		<property name="wxRedirectUrl" value="https://www.filepro.cn/personal?qr=wx&amp;type=person"/>
+		<property name="wxRegisterUrl" value="https://www.filepro.cn/personal/user/wxRegisterPersonal?qr=wx&amp;type=person"/>
+		<property name="wxRobotRedirectUrl" value="https://www.filepro.cn/personal/wxrobot/wxBak?qr=wx&amp;type=person"/>
+		<property name="wwAppId" value="wwff314b9b8085f16c"/>
+		<property name="wwRedirectUrl" value="https://www.filepro.cn/personal?qr=ww&amp;type=person"/>
+	</bean>
+
+	<bean id="wxRobotController" class="pw.cdmi.box.disk.wxrobot.web.WxRobotController">
+		<property name="wxAppId" value="wx2537f50f549d60eb"/>
+		<property name="wxEnterpriseRedirectUrl" value="https://www.filepro.cn/enterprise?qr=wx"/>
+		<property name="wxPersonalRedirectUrl" value="https://www.filepro.cn/personal?qr=wx&amp;type=person"/>
+		<property name="wxRobotRedirectUrl" value="https://www.filepro.cn/personal/wxrobot/wxBak?qr=wx&amp;type=person"/>
+		<property name="wwAppId" value="wwff314b9b8085f16c"/>
+		<property name="wwRedirectUrl" value="https://www.filepro.cn/personal?qr=ww&amp;type=person"/>
+	</bean>
+
+	<bean id="clientLoginController" class="pw.cdmi.box.disk.openapi.rest.v2.ClientLoginController">
+		<property name="wxAppId" value="wx2537f50f549d60eb"/>
+		<property name="wxRedirectUrl" value="https://www.filepro.cn/api/v2/client/takeToken?qr=wx"/>
+		<property name="wwAppId" value="wwff314b9b8085f16c"/>
+		<property name="wwRedirectUrl" value="https://www.filepro.cn/api/v2/client/takeToken?qr=ww"/>
+	</bean>
+</beans>

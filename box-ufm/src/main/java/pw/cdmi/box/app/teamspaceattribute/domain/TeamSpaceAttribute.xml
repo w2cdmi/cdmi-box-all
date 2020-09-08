@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="TeamSpaceAttribute">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="TeamSpaceAttribute" type="com.huawei.sharedrive.app.teamspace.domain.TeamSpaceAttribute" />
+    
+    <insert id="insert" parameterClass="TeamSpaceAttribute">
+        <![CDATA[
+        insert into teamspace_attribute(cloudUserId,name,value) 
+        values 
+        (#cloudUserId#,#name#,#value#)
+        ]]>
+    </insert>
+    
+    <update id="update" parameterClass="TeamSpaceAttribute">
+        <![CDATA[
+        update teamspace_attribute set value=#value# where cloudUserId=#cloudUserId# and name=#name#
+        ]]>
+    </update>
+    
+    <select id="get" resultClass="TeamSpaceAttribute" parameterClass="TeamSpaceAttribute">
+        <![CDATA[
+        select * from teamspace_attribute  where cloudUserId=#cloudUserId# and name=#name#
+        ]]>
+    </select>
+	
+    <select id="selectByTeamSpaceId" parameterClass="Long" resultClass="TeamSpaceAttribute">
+		<![CDATA[
+    	select *
+    	from teamspace_attribute
+    	where cloudUserId = #teamSpaceId#
+		]]>
+    </select>
+    
+    <delete id="deleteTeamspaceAttribute" parameterClass="Long">
+    	<![CDATA[
+   		delete from teamspace_attribute
+   		where cloudUserId = #teamId#
+    	]]>
+    </delete>
+    
+</sqlMap>
+

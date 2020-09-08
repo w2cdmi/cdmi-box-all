@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window >
+	<ShareFrameListContainerElement name="shareFrame_listUserItem" >
+		<VerticalLayout height="56" mousechild="true">
+			<HorizontalLayout height="6" />
+			<VerticalLayout mousechild="true">
+				<HorizontalLayout height="23" >
+					<Label name="shareFrame_Team_user" align="left" endellipsis="true"  padding="10,0,0,0" textcolor="#FF000000" />
+				</HorizontalLayout>
+				<Label name="shareFrame_Team_itemUser_dept" endellipsis="true" font="12" align="left" padding="10,0,0,0" />
+			</VerticalLayout>
+			<HorizontalLayout height="9" />
+		</VerticalLayout>
+	</ShareFrameListContainerElement>
+</Window>

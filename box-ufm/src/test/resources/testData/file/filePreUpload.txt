@@ -1,0 +1,96 @@
+@@normal
+{ 
+ "name":"testfile001", 
+ "parent":0,
+ "size":123,
+ "sha1":"8b22dae2c74656bd4547cc99cc8f60871c8a560e"
+}
+
+@@allParameter
+{ 
+ "name":"testfile002", 
+ "parent":0,
+ "size":123,
+ "sha1":"7b22dae2c74656bd4547cc99cc8f60871c8a560f",
+ "contentCreatedAt":-1131111111000,
+ "contentModifiedAt":-131111111000,
+ "encryptKey":"encryptKey"
+}
+
+@@flashUpload
+{ 
+ "name":"testfile002", 
+ "parent":0,
+ "size":123,
+ "sha1":"#sha1#"
+}
+
+@@noSuchParent
+{ 
+ "name":"testfile003", 
+ "parent":999,
+ "size":123,
+ "sha1":"8b22dae2c74656bd4547cc99cc8f60871c8a560d"
+}
+
+@@repeatFolderName
+repeatFolder
+
+@@repeatFolderParentId
+0
+
+@@repeatName
+{ 
+ "name":"repeatFolder", 
+ "parent":0,
+ "size":123,
+ "sha1":"8b22dae2c74656bd4547cc99cc8f60871c8a560d"
+}
+
+@@emptyName
+{ 
+ "name":"", 
+ "parent":0,
+ "size":123,
+ "sha1":"8b22dae2c74656bd4547cc99cc8f60871c8a560d"
+}
+
+@@longName
+{ 
+ "name":"1111111111222222222233333333334444444444555555555511111111112222222222333333333344444444445555555555111111111122222222223333333333444444444455555555551111111111222222222233333333334444444444555555555511111111112222222222333333333344444444441234567", 
+ "parent":0,
+ "size":123,
+ "sha1":"8b22dae2c74656bd4547cc99cc8f60871c8a560d"
+}
+
+@@nameContainSlash
+{ 
+ "name":"abc/", 
+ "parent":0,
+ "size":123,
+ "sha1":"8b22dae2c74656bd4547cc99cc8f60871c8a560d"
+}
+
+@@nameContainBackSlash
+{ 
+ "name":"abc\\", 
+ "parent":0,
+ "size":123,
+ "sha1":"8b22dae2c74656bd4547cc99cc8f60871c8a560d"
+}
+
+@@nameStartWithPeriod
+{ 
+ "name":".a", 
+ "parent":0,
+ "size":123,
+ "sha1":"8b22dae2c74656bd4547cc99cc8f60871c8a560d"
+}
+
+@@nameEndWithPeriod
+{ 
+ "name":"a.", 
+ "parent":0,
+ "size":123,
+ "sha1":"8b22dae2c74656bd4547cc99cc8f60871c8a560d"
+}

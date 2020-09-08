@@ -1,0 +1,352 @@
+﻿* {
+	margin: 0;
+	padding: 0;
+	text-decoration: none;
+    list-style: none;
+}
+ul,
+li,
+dl,
+dd,
+dt,
+p,
+ol,
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-size: 12px;
+    font-weight: 100;
+    padding: 0;
+    margin: 0;
+}
+
+
+/*文档1*/
+
+#box {
+	width: 100%;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	bottom: 3.05rem;
+	overflow-y: scroll;
+	height: auto;
+}
+
+
+/*目录*/
+
+#list {
+	width: 100%;
+	height: 1.7rem;
+	/* border-bottom: 1px solid #E4E1E1; */
+	text-align: center;
+}
+
+#list span {
+	font-size: .65rem;
+	margin-left: 12px;
+	line-height: 1.7rem;
+	font-weight: 600;
+	/* float: left; */
+}
+#list span::after{
+	content: "";
+	position: absolute;
+	left: 48.5%;
+    top: 6%;
+	width: 20px;
+	height: 3px;
+	border-bottom: 3px solid #ea5036;
+}
+.listfast span::after{
+	content: "";
+	position: absolute;
+	left: 49.5% !important;
+    top: 17% !important;
+	width: 20px;
+	height: 3px;
+	border-bottom: 3px solid #ea5036;
+}
+
+#list>i {
+	float: right;
+	margin-top: 0.6rem;
+	width: 0.3rem;
+	height: 0.5rem;
+	margin-right: 12px;
+}
+
+#list>i>img {
+	width: 0.3rem;
+	height: 0.5rem;
+}
+
+
+/*目录1*/
+
+.file-directory {
+	width: 100%;
+}
+
+.file-background>li {
+	font-size: 0.75rem;
+	height: 2.2rem;
+}
+.listBackground{
+	background: #fff;
+	width: 100%;
+	height: 40px;
+}
+.listBackground::after{
+	content: "。。。";
+    position: absolute;
+    right: 17px;
+    height: 20px;
+    margin-top: 8px;
+}
+
+.historyFile-li-content {
+	height: 2rem;
+	/* padding-bottom: 0.3rem;
+	padding-top: 0.3rem; */
+	/* float: left; */
+}
+
+.historyFile-li-contents {
+	width: 100%;
+	height: 2rem;
+	/* padding-left: 4%; */
+	padding-right: 4%;
+}
+
+.file-background>li span {
+	float: left;
+	/* width: 80%; */
+	height: 2rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 2rem;
+}
+
+.file-background {
+	overflow: hidden;
+	min-height: 5.4rem;
+	max-height: 17.5rem;
+}
+
+.historyFile-li-share {
+	width: 3.5rem;
+	height: 2.85rem;
+	line-height: 2.85rem;
+	text-align: center;
+	color: #FFFFFF;
+	background: #f19a1e;
+	float: left;
+}
+
+.historyFile-li-theouterhair {
+	width: 3.5rem;
+	height: 2.85rem;
+	line-height: 2.85rem;
+	text-align: center;
+	color: #FFFFFF;
+	background: #cb1616;
+	float: left;
+}
+
+.ananan {
+	height: 2.8rem;
+	overflow: hidden;
+}
+
+#historyFile-replicon {
+	float: left;
+	height: 2.8rem;
+}
+
+.ananan>li {
+	float: left;
+	font-size: 0.75rem;
+	height: 2.2rem;
+	position: relative;
+	padding-bottom: 0.3rem;
+	padding-top: 0.3rem;
+}
+.ananan>li>div:nth-child(1) {
+	margin-top: -0.15rem;
+	margin-left: 8%;
+}
+.ananan>li span {
+	float: left;
+	width: 5rem;
+	height: 1.1rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 1.1rem;
+}
+
+.file-directory li:last-of-type {
+	border-bottom: none;
+}
+
+.Page-tail-navigation {
+	margin-top: 0.5rem;
+}
+.Page-tail-navigation ul li {
+	width: 100%;
+	height: 1.7rem;
+	/* margin-left: 12x; */
+	/* border-bottom: 1px solid #E4E1E1; */
+	margin-top: 0.6rem;
+}
+/*增加暂无文件class*/
+.not-available-file{
+	width: 1.15rem;
+	height: 1.2rem;
+	background: url(../../default/img/notAvailabeFile.png) no-repeat;
+	background-size: 1.15rem 1.2rem;
+	margin: 0.6rem auto;
+}
+.not-available-title{
+	text-align: center;
+	font-size: 0.65rem;
+	color: #999;
+}
+.file-background{
+	min-height: 4rem;
+	width: 100%;
+	background: #f5f5f5;
+	margin: 0.2rem 0;
+}
+.ananan-width{
+	width: 100% !important;
+}
+/*增加暂无快捷目录class*/
+.ananan{
+	min-height: 4rem;
+	background: #f5f5f5;
+	margin: 0.2rem 0;
+}
+.ananan_add{
+	min-height: 2.7rem;
+}
+.not-qulick-con{
+	width: 1.2rem;
+	height: 1.2rem;
+	background: url(../../default/img/notQulickContent.png) no-repeat;
+	background-size: 1.2rem 1.2rem;
+	margin: 0.6rem auto;
+}
+.not-qulick-title{
+	text-align: center;
+	font-size: 0.65rem;
+	color: #999;
+}
+.historyFile-li-contents>div:nth-child(1) {
+	margin-top: 3px;
+	margin-left: 0;
+}
+
+.Page-tail-navigation ul li img {
+	float: left;
+	margin-left: 0.6rem;
+	width: 1rem;
+	height: 1rem;
+	margin-top: 0.35rem;
+}
+
+.Page-tail-navigation ul li span {
+	float: left;
+	line-height: 1.7rem;
+	margin-left: 0.8rem;
+	font-size: 0.75rem;
+}
+
+.folder-share-icon {
+	margin-top: 0;
+	margin-left: 0;
+}
+
+.index-file-row-user {
+	float: left;
+	font-size: 0.6rem;
+	color: #999999;
+	margin-top: -5px;
+	width: 5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.index-file-row-data {
+	float: right;
+}
+
+.index-file-row-bottom {
+	font-size: 0.6rem;
+	color: #999999;
+	height: 2rem;
+	line-height: 2rem;
+}
+
+#recent-browse-more-contents {
+	overflow: hidden;
+}
+
+#recent-browse-more-contents li .historyFile-li-content {
+	height: 2.8rem;
+}
+
+#recent-browse-more-contents li .historyFile-li-contents {
+	height: 2.8rem;
+}
+
+#recent-browse-more-contents li .historyFile-li-contents div:nth-child(1) {
+	margin-top: 0.2rem;
+}
+
+#recent-browse-more-contents li .historyFile-li-contents span {
+	float: left;
+	width: 80%;
+	height: 1.4rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 1.4rem;
+}
+
+#recent-browse-more-contents .historyFile-li-share {
+	height: 3.4rem;
+	line-height: 3.4rem;
+}
+
+#recent-browse-more-contents .historyFile-li-theouterhair {
+	height: 3.4rem;
+	line-height: 3.4rem;
+}
+
+.weui-actions_mask {
+	z-index: 1002;
+}
+
+.weui-icon-cancel:before {
+	content: "\EA0F";
+	background-color: white;
+	border-radius: 9px;
+}
+
+.weui-icon-cancel {
+	font-size: 18px;
+}
+.badge-action {
+    left: 2.4rem;
+    width: 18px;
+    top:auto;
+    right:auto;
+    bottom:auto;
+}

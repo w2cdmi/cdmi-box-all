@@ -1,0 +1,46 @@
+<view class='content_container'>
+    <view class='view_comm'>
+        <view class='image-comm'>
+            <image class='icon_comm' style="width:28rpx;height:30rpx;" src='/disk/images/enter-name.png'></image>
+        </view>
+        <input class='input_comm' bindblur="setEnterpriseName" type="text" placeholder="请输入企业名" placeholder-class="placeholder"></input>
+    </view>
+    <view class='view_comm'>
+        <view class='image-comm'>
+            <image class='icon_comm' style='width:30rpx;' src='/disk/images/enter-tel.png'></image>
+        </view>
+        <view class='right-flex'>
+            <input class='input_comm' maxlength='11' value='{{phone}}' bindinput="setPhoneNumber" type="number" placeholder="获取后自动填充" placeholder-class="placeholder"></input>
+            <button class='view_button button_comm margin-left tel-padding' open-type='getPhoneNumber' bindgetphonenumber="getPhoneNumber">点我快捷获取</button>
+        </view>
+    </view>
+    <view class='view_comm'>
+        <view class='image-comm'>
+            <image class='icon_comm' src='/disk/images/enter-verifi.png'></image>
+        </view>
+        <view class='right-flex'>
+            <input class='input_comm' type="number" maxlength='6' placeholder="请输入6位验证码" placeholder-class="placeholder" bindblur="setIdentifyCode"></input>
+            <view class='view_button button_comm margin-left code-padding {{count == 60 ? "":"sending-color"}}' catchtap="getIdentifyingCode">
+                {{count != 60?count+' s':'获取验证码'}}
+            </view>
+        </view>
+    </view>
+    <view class='terms_view' catchtap='isAgree'>
+        <image class='tick' data-agree='{{isAgree}}' src='{{agree}}'></image>
+        <view class='terms_text'>我同意
+            <view style="color:#EA5036;" catchtap='toProtocol' class='protocol'>"企业知识云网络服务条款及用户协议"</view>
+        </view>
+    </view>
+    <button class='register_confirm button_comm' bindtap='registerEnterprise' hover-class=''>企业注册</button>
+    <view class='to_login_view'>
+        <view style='width:206rpx;' bindtap='jumpToEnterpriselist'>
+            <text class='to_login' decode='true'>已有账号登录</text>
+            <image class='to_login_button' src='/disk/images/arrow1.png'></image>
+        </view>
+    </view>
+</view>
+
+<view style='color:#EA5036;' class='to_person' bindtap='jumpToPerson'>
+    点击这里，进入个人文件宝
+    <image style='margin-left:8rpx;' class='to_login_button' src='/disk/images/arrow-red.png'></image>
+</view>

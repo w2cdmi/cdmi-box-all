@@ -1,0 +1,12 @@
+<rules>
+    <rule>
+        <namespace>ObjectReference</namespace>
+        <shardingExpression></shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+    <rule>
+        <sqlmap>ObjectReference.lstNeedDeleteObjects</sqlmap>
+        <shardingExpression>partitionNum==1</shardingExpression>
+        <shards>partition1</shards>
+    </rule>
+</rules>

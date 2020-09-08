@@ -1,0 +1,13 @@
+
+@@normal
+{
+	"domain":"www.huawei33.com",
+	"enterpriseId":100,
+	"status":"enable",
+	"maxSpace":999,
+	"maxMember":999,
+	"maxFiles":999,
+	"maxTeamspace":999,
+	"filePreviewable":true,
+	"fileScanable":false
+}

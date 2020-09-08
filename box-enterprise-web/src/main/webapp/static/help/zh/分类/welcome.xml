@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2008, v.4002-->
+<!DOCTYPE concept PUBLIC "-//OASIS//DTD DITA Concept//EN"
+ "concept.dtd">
+<concept id="welcome" xml:lang="zh-cn">
+<title>欢迎</title>
+<conbody>
+<p>欢迎使用<ph
+conref="..\common\commonterms.xml#commonterms/brand_webname_zh"></ph
+>帮助。通过阅读本帮助，您可以了解<ph
+conref="..\common\commonterms.xml#commonterms/brand_webname_zh"></ph
+>的常用操作。<ul>
+<li><xref href="basic.xml"></xref></li>
+<li><xref href="share.xml"></xref></li>
+<li><xref href="pc.xml"></xref></li>
+<li><xref href="mobile.xml"></xref></li>
+<li><xref href="security.xml"></xref><?Pub Caret1?></li>
+</ul></p>
+</conbody>
+</concept>
+<?Pub *0000000672?>

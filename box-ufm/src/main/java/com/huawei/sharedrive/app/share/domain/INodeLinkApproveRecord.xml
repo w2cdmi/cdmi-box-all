@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="INodeLinkApproveRecord">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="INodeLinkApproveRecord" type="com.huawei.sharedrive.app.share.domain.INodeLinkApproveRecord" />
+
+    <insert id="insert" parameterClass="INodeLinkApproveRecord">
+       INSERT INTO `inode_link_approve_record` (`linkCode`, `approveAt`, `approveBy`, `status`, `comment`)
+                                 VALUES (#linkCode#, #approveAt#, #approveBy#, #status#, #comment#)
+    </insert>
+
+    <delete id="deleteByLinkCode" parameterClass="String">
+        delete from `inode_link_approve_record` where `linkCode`=#linkCode#
+    </delete>
+
+    <select id="listByLinkCode" parameterClass="String" resultClass="INodeLinkApproveRecord">
+        select * from `inode_link_approve_record` where `linkCode`=#linkCode# order by approveAt asc
+    </select>
+</sqlMap>
+

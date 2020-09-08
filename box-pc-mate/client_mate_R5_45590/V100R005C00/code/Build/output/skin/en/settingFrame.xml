@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window size="680,400" caption="0,0,0,42" roundcorner="5,5,5,5">
+	<Font id="0" name="Helvetica" size="12"  />
+	<Font id="1" name="Helvetica" size="14" bold="true" />
+	<Font id="2" name="Helvetica" size="12" bold="true" />
+	<Font id="3" name="Helvetica" size="16" />
+	<Font id="4" name="Helvetica" size="14" />
+
+	<VerticalLayout bkcolor="#FFF0F0F0" inset="1,1,1,1">
+		<HorizontalLayout height="42" bkcolor="#FFFAFAFA">
+			<Label name="settingFrame_title" text="Settings" width="640" textpadding="20,12,0,12" font="3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA"/>
+			<Button name="settingFrame_btnClose" width="20" height="20" padding="0,11,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\Image\SysBtn\ic_popup_delete.png&apos; source=&apos;0,0,20,20&apos;" hotimage="file=&apos;..\Image\SysBtn\ic_popup_delete.png&apos; source=&apos;0,30,20,50&apos;" pushedimage="file=&apos;..\Image\SysBtn\ic_popup_delete.png&apos; source=&apos;0,60,20,80&apos;" />
+		</HorizontalLayout>
+		<HorizontalLayout height="1" bkcolor="#FFD9D9D9" />
+		<HorizontalLayout >
+			<VerticalLayout width="160" bkcolor="#fff0f0f0"  bkimage="file='..\Image\line_right_bk.png' corner='1,1,2,2'" inset="1,0,1,0" >
+				<LeftOption name="leftRegion_userInfo" text="Basic Information" font="4" selectedfont="1" height="40" textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" group="settingTable" selectedbkcolor="#FFFFFFFF" selected="true" textpadding="20,12"/>
+				<LeftOption name="leftRegion_transfer_Setting" text="Transfer" font="4" selectedfont="1" height="40" textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8"  align="left" group="settingTable" selectedbkcolor="#FFFFFFFF" textpadding="20,12" />
+				<LeftOption name="leftRegion_advanced_Setting" text="Advanced" font="4" selectedfont="1" height="40"  textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" group="settingTable" selectedbkcolor="#FFFFFFFF" textpadding="20,12" />
+			</VerticalLayout>
+			<VerticalLayout  bkcolor="#FFFFFFFF">
+				<TabLayout name="Setting_tab">
+					<!--用户信息-->
+					<VerticalLayout bkcolor="#FFFFFFFF" inset="20,20,20,0">
+						<HorizontalLayout height="80">
+							<UserPhoto name="settingFrame_UserHead" width="80" height="80" fixedimage="..\Image\ic_popup_setting_portrait.png" bkimage="..\Image\ic_popup_view_version - small.png" />
+							<VerticalLayout inset="10,0,0,0" bkcolor="#FFffffff" >
+								<Control height="17"/>
+								<HorizontalLayout width="400">
+									<Label name="settingFrame_userInfo_title" width="257" height="24" font="4" endellipsis="true" text="MachineSally.Underwood.Frank.Jahson.H.Bubbery." textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+									<Button name="settingFrame_userInfo_btnAccountType" width="130" height="24" font="4" valign="center" text="View Account Type" align="right" textcolor="#FF008be8"  texthotcolor="#FF006ab0"/>
+								</HorizontalLayout>
+								<Label name="settingFrame_userInfo_context" height="22" align="left" font="0" text="User Experiense Design &amp; Digital Marketing / Office Product Dept" textcolor="#ff666666" endellipsis="true" />
+								<Control height="17"/>
+							</VerticalLayout>
+						</HorizontalLayout>
+						<Control height="10"/>
+						<Control height="1" bkcolor="#ffe5e5e5"/>
+						<Control height="20"/>
+						<HorizontalLayout height="30">
+							<ScaleIconButton name="settingFrame_userInfo_btnDataCentre" text="View Data Center" font="1" textpadding="10,6,10,6" float="true" width="150" height="30" textcolor="#ff666666" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,80,110' corner='3,3,3,3'" />
+						</HorizontalLayout>
+						<Control height="10"/>
+						<HorizontalLayout height="72">
+							<RichEdit name="settingFrame_userInfo_dataContext" align="left" valign="top" text="Some functions are not available to non-R&D accounts due to security restrictions. You can apply to change your account type. The change takes effect immediately upon approval." textcolor="#ff666666" readonly="true" endellipsis="true" mouse="false" />
+						</HorizontalLayout>
+					</VerticalLayout>
+					<!--传输设置-->
+					<VerticalLayout bkcolor="#FFFFFFFF" inset="20,20,20,0">
+						<HorizontalLayout height="30">
+							<Label name="settingFrame_transfer_Task" text="Number of Concurrent Transfer Tasks:" font="4" width="270" height="30" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" />
+							<Combo name="settingFrame_transfer_combo" width="100" padding="37,2" height="26" itemtextcolor="#FF666666" normalimage="file='..\Image\ic_combo.png' corner='2,2,30,24'" itemtextpadding="10,0,0,0" >
+								<ListLabelElement text="2" />
+								<ListLabelElement text="3" />
+								<ListLabelElement text="4" />
+								<ListLabelElement text="5" />
+							</Combo>
+						</HorizontalLayout>
+						<HorizontalLayout height="10"/>
+						<HorizontalLayout height="30">
+							<Label name="settingFrame_transfer_Title" text="Transfer Rate:" font="4" width="132" height="30" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" />
+							<CheckBox name="settingFrame_transfer_UploadPlace" width="16" height="16" padding="0,7,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="left" normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68'" />
+							<Control width="5" />
+							<Label name="settingFrame_transfer_DownloadDes1" text="Upload Limit" font="4" width="150" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+							<Control width="5" />
+							<Edit name="settingFrame_transfer_edtUploadSpeed" borderround="5,5" text="2048" width="100" height="30" maxchar="6" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" disabledimage="file='..\Image\ic_input.png' source='0,120,40,150' corner='5,5,5,5'" normalimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'" hotimage="file='..\Image\ic_input.png' source='0,40,40,70' corner='5,5,5,5'" focusedimage="file='..\Image\ic_input.png' source='0,40,40,70' corner='5,5,5,5'"/>
+							<Control width="5" />
+							<Label name="settingFrame_transfer_UploadSpeed" text="KB/s" font="4" width="60" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+						</HorizontalLayout>
+						<Control height="10" />
+						<HorizontalLayout height="30">
+							<Control width="132" />
+							<CheckBox name="settingFrame_transfer_DownPlace" width="16" height="16" padding="0,7,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="left" normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68'" />
+							<Control width="5" />
+							<Label name="settingFrame_transfer_DownloadDes1" text="Download Limit" font="4" width="150" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+							<Control width="5" />
+							<Edit name="settingFrame_transfer_edtDownSpeed" borderround="5,5" text="2048" width="100" height="30" maxchar="6" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" disabledimage="file='..\Image\ic_input.png' source='0,120,40,150' corner='5,5,5,5'" normalimage="file='..\Image\ic_input.png' source='0,0,40,30' corner='5,5,5,5'" hotimage="file='..\Image\ic_input.png' source='0,40,40,70' corner='5,5,5,5'" focusedimage="file='..\Image\ic_input.png' source='0,40,40,70' corner='5,5,5,5'"/>
+							<Control width="5" />
+							<Label name="settingFrame_transfer_DownSpeed" text="KB/s" font="4" width="60" height="30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+						</HorizontalLayout>
+						<Control height="20" />
+						<HorizontalLayout height="20">
+							<Label name="settingFrame_transfer_Title" text="Save Path:" font="4" width="132" height="20" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" />
+							<CheckBox name="settingFrame_transfer_Option_Autodir" width="16" height="16" padding="0,2,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="left" normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68'" />
+							<Control width="5" />
+							<Label name="settingFrame_transfer_DownloadDes1" height="20" mouse="false" text="Automatically download files to the specified " font="4" readonly="true" width="300" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+						</HorizontalLayout>
+						<HorizontalLayout height="20">
+							<Control width="153" />
+							<Label name="settingFrame_transfer_DownloadDes1" height="20" mouse="false" text="directory" font="4" readonly="true" width="300" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+						</HorizontalLayout>
+						<Control height="15" />
+						<HorizontalLayout height="30">
+							<Control width="132" />
+							<HorizontalLayout width="326" bkimage="file='..\image\ic_button_white_nor.png' source='0,0,66,30' corner='3,3,3,3'">
+								<SearchTxt name="settingFrame_transfer_edtAutodir" width="289" align="left"  padding="5,3,0,3" bordersize="0" visible="true" wantreturn="true" autohscroll="true" font="2" multiline="false" rich="false" textcolor="#FF999999" endellipsis="true"/>
+								<Control height="30" bkcolor="#FFCCCCCC" width="1"/>
+								<Button name="settingFrame_transfer_btnSelDir" width="20" height="20" padding="5,5,0,5" normalimage="..\Image\ic_popup_setting_browse.png"/>
+							</HorizontalLayout>
+						</HorizontalLayout>
+					</VerticalLayout>
+					<!--高级设置-->
+          <VerticalLayout inset="20,0,20,0" bkcolor="#FFFFFFFF">
+            <HorizontalLayout height="30" padding="0,18,0,0">
+              <Label name="settingFrame_advanced_LoginSetting" text="Login Settings：" width="155" font="4" textcolor="#FF666666" />
+              <CheckBox name="settingFrame_advanced_AutoRun" font="4" width="300" text="Start Onebox when Windows starts" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0" normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68' dest='0,7,16,23'"/>
+            </HorizontalLayout>
+            <HorizontalLayout height="30" padding="0,10,0,0">
+              <Control width="155" />
+              <CheckBox name="settingFrame_advanced_rempsw" font="4" width="300" text="Remember password" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68' dest='0,7,16,23'"/>
+            </HorizontalLayout>
+            <HorizontalLayout height="30" padding="0,10,0,0">
+              <Control width="155" />
+              <CheckBox name="settingFrame_advanced_autologin" font="4" width="300" text="Auto Login" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68' dest='0,7,16,23'"/>
+            </HorizontalLayout>
+
+            <HorizontalLayout height="30" padding="0,10,0,0">
+              <Label name="settingFrame_advanced_Notification" text="Message notification：" width="155" font="4" textcolor="#FF666666"/>
+              <CheckBox name="settingFrame_advanced_SystemNotification" font="4" width="300" text="Service message notification" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68' dest='0,7,16,23'"/>
+            </HorizontalLayout>
+            <HorizontalLayout height="30" padding="0,10,0,0">
+              <Control width="155" />
+              <CheckBox name="settingFrame_advanced_ResourceNotification" font="4" width="355" text="Network and power supply message notification" align="left" textcolor="#FF000000" valign="vcenter" textpadding="22,0"  normalimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,0,16,16' dest='0,7,16,23'" hotimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,26,16,42' dest='0,7,16,23'" pushedimage="file='..\Image\ic_popup_checkbox_unselect.png' source='0,52,16,68' dest='0,7,16,23'" selectedimage="file='..\Image\ic_popup_checkbox_select.png' source='0,0,16,16' dest='0,7,16,23'" selectedhotimage="file='..\Image\ic_popup_checkbox_select.png' source='0,26,16,42' dest='0,7,16,23'" selectedpushedimage="file=..\Image\ic_popup_checkbox_select.png source='0,52,16,68' dest='0,7,16,23'"/>
+            </HorizontalLayout>
+          </VerticalLayout>
+				</TabLayout>
+				<HorizontalLayout bkcolor="#FFFFFFFF" height="30" inset="0,0,20,0" >
+					<Control height="1" />
+					<Button name="settingFrame_btnOk" text="Save" width="80" height="30" font="4" textcolor="#FFffffff" visible="false" pushedtextcolor="#FFffffff" hottextcolor="#FFffffff" align="center" normalimage="file='..\Image\ic_button_color.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_color.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_color.png' source='0,80,80,110' corner='3,3,3,3'" />
+					<Control width="10" />
+					<Button name="settingFrame_btnCancel" text="Cancel" width="80" height="30" font="4" textcolor="#FF666666" visible="false" align="center" normalimage="file='..\Image\ic_button_white_nor.png' source='0,0,80,30' corner='3,3,3,3'" hotimage="file='..\Image\ic_button_white_nor.png' source='0,40,80,70' corner='3,3,3,3'" pushedimage="file='..\Image\ic_button_white_nor.png' source='0,80,80,110' corner='3,3,3,3'" />
+				</HorizontalLayout>
+				<Control height="20"/>
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

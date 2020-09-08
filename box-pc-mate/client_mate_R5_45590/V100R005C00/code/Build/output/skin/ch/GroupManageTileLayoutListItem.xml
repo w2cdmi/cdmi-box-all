@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Window>
+	<GroupManageTileLayoutListContainerElement name="GroupManage_TileLayoutListItem" mousechild="true" >
+		<HorizontalLayout name="GroupManage_TileLayoutListItem_VLayout" bordersize="1" bordercolor="#FFDDDDDD" float="true" pos="0,0,140,20" mousechild="true" >
+			<Label name="GroupManage_TileLayoutListItem_name" text="test" endellipsis="true" float="true" pos="2,2,120,18" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" />
+			<Button name="GroupManage_TileLayoutListItem_delete_btn" tooltip="删除" float="true" pos="122,2,138,18" align="center" normalimage="file='..\img\delete.png' source='0,0,16,16'" hotimage="file='..\img\delete.png' source='16,0,32,16'" pushedimage="file='..\img\delete.png' source='32,0,48,16'" disabledimagefile="'..\img\delete.png' source='48,0,64,16'"/>
+		</HorizontalLayout>
+	</GroupManageTileLayoutListContainerElement>
+</Window>

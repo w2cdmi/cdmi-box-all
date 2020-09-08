@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{2e19d9cd-c95b-4725-883c-6805f2dd6cda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="syncMgr">
+      <UniqueIdentifier>{4973a2d7-4668-46db-9728-7ca2f039209d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="dbMgr">
+      <UniqueIdentifier>{12a9a8fb-e0b3-4b1b-b6f2-2dd956ca43fe}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\SyncCommon.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncService.h" />
+    <ClInclude Include="include\SyncRules.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DiffTable.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RelationTable.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RemoteTable.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\RemoteDetector.h">
+      <Filter>syncMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DataBaseMgr.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncDataTable.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncUtility.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\MetaDataTable.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LocalTable.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\UploadTable.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\TableDefine.h">
+      <Filter>dbMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DiffProcessor.h">
+      <Filter>syncMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\DiffNode.h">
+      <Filter>syncMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\OverlayIconMgr.h">
+      <Filter>syncMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncAction.h">
+      <Filter>syncMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\InIHelper.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\OneboxCommon\include\Utility.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ChangeJournal.h">
+      <Filter>syncMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\LocalDetector.h">
+      <Filter>syncMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncTransTask.h">
+      <Filter>syncMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncMerger.h">
+      <Filter>syncMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SyncConfigure.h">
+      <Filter>syncMgr</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\SyncService.cpp" />
+    <ClCompile Include="source\RemoteDetector.cpp">
+      <Filter>syncMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DiffTable.cpp">
+      <Filter>dbMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RelationTable.cpp">
+      <Filter>dbMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\RemoteTable.cpp">
+      <Filter>dbMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncRules.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DataBaseMgr.cpp">
+      <Filter>dbMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncUtility.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncDataTable.cpp">
+      <Filter>dbMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\MetaDataTable.cpp">
+      <Filter>dbMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LocalTable.cpp">
+      <Filter>dbMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UploadTable.cpp">
+      <Filter>dbMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DiffProcessor.cpp">
+      <Filter>syncMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\DiffNode.cpp">
+      <Filter>syncMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\OverlayIconMgr.cpp">
+      <Filter>syncMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncAction.cpp">
+      <Filter>syncMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncMerger.cpp">
+      <Filter>syncMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\InIHelper.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\OneboxCommon\include\Utility.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="source\ChangeJournal.cpp">
+      <Filter>syncMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\LocalDetector.cpp">
+      <Filter>syncMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncTransTask.cpp">
+      <Filter>syncMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SyncConfigure.cpp">
+      <Filter>syncMgr</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

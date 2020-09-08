@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<Window>
+	<TeamSpaceFilesTileLayoutListContainerElement name="teamSpace_File_largeIconItem" mousechild="false" height="114" maxheight="114" width="120" maxwidth="120">
+		<ItemCheckBox float="true"/>
+		<VerticalLayout name="teamSpace_File_largeIconItemVLayout" float="true" pos="0,0,120,114" shortcut="F2" >
+			<Label name="teamSpace_File_nameIcon" float="true"   width="72" height="72" pos="24,8,96,80" hotcolor="#FFEBEBEB" selectedcolor="#FFDEF0FF"/>
+			<MyFilesRichEditUI name="teamSpace_File_name" limitchars="/ \ * | ' : ? &lt; &gt; &quot;" mouse="false" maxchar="246" multiline="false" endellipsis="true" float="true" pos="10,84,110,104" textpading="10,4,10,10" inset="0,2" textcolor="#FF000000" font="12" align="center" valign="vcenter" rich="false"/>
+		</VerticalLayout>
+	</TeamSpaceFilesTileLayoutListContainerElement>
+</Window>

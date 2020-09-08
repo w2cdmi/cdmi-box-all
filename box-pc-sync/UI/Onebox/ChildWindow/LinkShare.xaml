@@ -1,0 +1,254 @@
+﻿<Window x:Class="Onebox.LinkShare"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:cs="clr-namespace:Onebox.CustomControls"
+        xmlns:vdp="clr-namespace:vhDatePicker"
+        Title="{StaticResource linkShare}" 
+        x:Name ="LinkShareWd"
+        Width="650" SizeToContent="Height"
+        WindowStyle="None" AllowsTransparency="True"
+        Icon="/ImageResource/logo.ico" 
+        WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        Background="{x:Null}" Loaded="LinkShareWd_Loaded"
+        LocationChanged="LinkShareWd_LocationChanged">
+    <Grid ShowGridLines="False">
+        <Grid.RowDefinitions>
+            <RowDefinition   Height="Auto" MinHeight="36"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+ 		<Border BorderBrush="#FFA3A4A4" Grid.Row="1" Background="#FFF1F1F1" CornerRadius="0,0,5,5" BorderThickness="1,0,1,1">
+        	<Grid>
+        		<Grid.RowDefinitions>
+        			<RowDefinition Height="87"/>
+        			<RowDefinition Height="106*"/>
+        		</Grid.RowDefinitions>
+                <!--链接展示区-->
+        		<StackPanel Orientation="Vertical" Margin="20,0" x:Name="area_FileAndLink_Info">
+        			<StackPanel  Orientation="Horizontal" VerticalAlignment="Center"  Margin="20,10">
+        				<Image x:Name="Shmgr_image_fileIcon" Visibility="Visible"
+        					Stretch="Fill" Height="20"/>
+        				<Label  x:Name="lb_Linkshare_FileName"
+        					Content="{Binding FileName, Converter={StaticResource StringShow20ByteConverter}, Mode=OneWay}"
+        					HorizontalAlignment="Left"  
+        					FontSize="14" Foreground="#FF333333"  FontWeight="Bold" >
+        					<Label.ToolTip >
+        						<TextBlock  Text="{Binding FileName}" TextWrapping="Wrap" MaxWidth="400" />
+        					</Label.ToolTip>
+        				</Label>
+        			</StackPanel>
+        			<StackPanel Orientation="Horizontal" Margin="20,0">
+        				<TextBox x:Name="textbox_fileLink" Text="{Binding LinkURL}"
+        					Background="#FFEBEBEB" Foreground="#FF333333" FontSize="14" Height="30" Width="485"  BorderBrush="#FFC4C4C4"
+        					IsReadOnly="True" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle}"/>
+        				<Button x:Name="link_btn_copyLink" Margin="-2,0,0,0" 
+        					Content="{StaticResource copy}" Style="{StaticResource Button_Style_Normal}"
+        					Click="btn_copyLink"/>
+        			</StackPanel>
+        		</StackPanel>
+        		<StackPanel Grid.Row="1" Margin="40,0,40,0">
+        			<!--按钮操作区-->
+    <!--访问权限显示区-->
+        			<StackPanel x:Name="area_LinkLimit_Info" Orientation="Vertical"  Visibility="Visible" Height="50">
+        				<RichTextBox x:Name="rtx_LinkLimit_Info" IsDocumentEnabled="True" IsReadOnly="True" BorderThickness="0" Margin="-4,0,0,0"
+        					Foreground="#FF333333" VerticalAlignment="Center" Background="Transparent">
+        					<FlowDocument>
+        						<Paragraph><InlineUIContainer>
+        								<Label  Content="{StaticResource accessLimit}"  FontSize="14" Foreground="#FF333333" Margin="-5,0,2,0" />
+        							</InlineUIContainer><Run Text=" "/><InlineUIContainer>
+        								<Label x:Name="tt_linkLimit_none" Content="{StaticResource linkPublic}" 
+        									FontSize="14" Visibility="Visible" Margin="0,0,5,0"/>
+        							</InlineUIContainer><Run Text=" "/><Span x:Name="tt_linkLimit_str" FontSize="14"  BaselineAlignment="Center" /></Paragraph>
+        					</FlowDocument>
+        				</RichTextBox> 
+        			</StackPanel>
+                    <!--访问限制修改操作区-->
+        			<Grid Grid.Row="1" x:Name="area_LinkLimit_change"  Visibility="Visible" Margin="0,20,0,0">
+        				<Grid.RowDefinitions>
+        					<RowDefinition Height="0.675*"/>
+        					<RowDefinition Height="0.325*"/>
+        				</Grid.RowDefinitions>
+        				<Border BorderBrush="#FFB8B8B8" BorderThickness="1"
+        					Background="White" CornerRadius="3" Padding="15,10" 
+        					Grid.Row="0">
+        					<Grid >
+        						<Grid.RowDefinitions>
+        							<RowDefinition Height="34"/>
+        							<RowDefinition Height="75"/>
+        						</Grid.RowDefinitions>
+                                <!--标题-->
+        						<Label  Grid.Row="0" Grid.Column="0" FontSize="14" FontWeight="Bold" Foreground="#FF333333"
+        							Content="{StaticResource accessLimit1}"  Margin="-5,0,0,0"/>
+                                <!--左侧限制条件标题区-->
+        						<StackPanel  Orientation="Horizontal" Grid.Row ="1" >
+        							<StackPanel  Grid.Row="1"  Grid.Column="0"  Orientation="Vertical" >
+        								<StackPanel Orientation="Horizontal" Height="30">
+        									<CheckBox  x:Name="ckb_isNeedCode"  FontSize="14" VerticalAlignment="Center" 
+        										IsChecked="{Binding IsNeedCode, Mode=TwoWay}"  Checked="chk_needCode" />
+        									<Label   Content="{StaticResource readCode1}" FontSize="14" Foreground="#FF333333"  HorizontalAlignment="Right" VerticalAlignment="Center" />
+        								</StackPanel>
+        								<StackPanel Orientation="Horizontal" Height="30" Margin="0,10,0,0">
+        									<CheckBox  x:Name="ckb_CusPeriod" Margin="0,2,0,0"
+        										VerticalAlignment="Center" HorizontalAlignment="Left" 
+        										IsChecked="False" />
+        									<Label Content="{StaticResource validTimes1}" FontSize="14" Foreground="#FF333333"  HorizontalAlignment="Right" VerticalAlignment="Center"/>
+        								</StackPanel>
+        							</StackPanel>
+                                    <!--右侧具体限制条件操作区-->
+        							<StackPanel Orientation="Vertical" Margin="10,0" HorizontalAlignment="Left" >
+                                        <!--提取码-->
+        								<StackPanel Orientation="Horizontal"
+        									Visibility="{Binding IsChecked, Converter={StaticResource ShowControlConverter}, ElementName=ckb_isNeedCode, Mode=OneWay}">
+        									<TextBox x:Name="textbox_code" Text="{Binding ReadCode}" 
+        										FontSize="14" Height="30" Width="150" BorderBrush="#FFC4C4C4" MaxLength="20" Foreground="#FF333333" Background="White"                                                   
+        										HorizontalAlignment="Left" VerticalAlignment="Center" VerticalContentAlignment="Center" Style="{DynamicResource TextBoxStyle}" />
+        									<Button x:Name="link_btn_refreshCode" Width="60"  Style="{StaticResource Button_Style_Normal}"
+        										Margin="-1,0,0,0" Click="btn_refreshCode"  Visibility="Collapsed">
+        										<Image Height="16" Source="/ImageResource/refresh.png" Width="16"/>
+        									</Button>
+        								</StackPanel>
+                                        <!--日历选择-->
+        								<StackPanel  x:Name="area_dateCustom" Orientation="Horizontal"  Margin="0,10,0,0"
+        									Visibility="{Binding IsChecked, Converter={StaticResource ShowControlConverter}, ElementName=ckb_CusPeriod}">
+        									<vdp:DatePicker x:Name="Dpk_Start" FontSize="14"
+        										Width="175"  Height="30" Background="White" 
+        										HorizontalAlignment="Center" CalendarHeight="170" CalendarWidth="190"  
+        										Value="{Binding DateStartTime}"/>
+        									<TextBox Text="{Binding Value, ElementName=Dpk_Start, Mode=OneWay}"   Visibility="Collapsed" />
+        									<Label Content="{StaticResource to}" Margin="5,0" FontSize="14" />
+        									<vdp:DatePicker x:Name="Dpk_End" FontSize="14"
+        										Width="175" Height="30" Background="White"
+        										HorizontalAlignment="Center" CalendarHeight="170" CalendarWidth="190" 
+        										Value="{Binding DateEndTime}"/>
+        									<TextBox Text="{Binding Value, ElementName=Dpk_End, Mode=OneWay}"  Visibility="Collapsed" FontSize="14" Style="{DynamicResource TextBoxStyle}"/>
+        								</StackPanel>
+        							</StackPanel>
+        						</StackPanel>
+        					</Grid>
+        				</Border>
+        			</Grid>
+                    <!--邮件发送操作区-->
+                    <StackPanel x:Name="area_Link_Email" Orientation="Vertical" Grid.Row="1" Margin="0,2,0,0">
+                        <TextBox x:Name="tb_invite_msg" BorderBrush="#FFC4C4C4" Foreground="#FFB8B8B8" FontSize="14" Background="White" Height="34"
+        					VerticalContentAlignment="Center" Text="{StaticResource addEmailPerson}"  GotFocus="tb_invite_msg_Focus" Style="{DynamicResource TextBoxStyle}"/>
+                        <!--输入被共享人-->
+                        <StackPanel x:Name="sp_Email_Person"  Visibility ="Collapsed"  IsVisibleChanged="sp_Email_Person_IsVisibleChanged">
+                            <StackPanel x:Name="sp_Email_Users">
+                                <TextBox x:Name="tb_EmailUsers_tmp" Visibility="Hidden"  Text="" Margin="0,-30,0,0"
+        						TextChanged="tb_EmailUsers_tmp_TextChanged" Style="{DynamicResource TextBoxStyle}" />
+                            <ListBox x:Name="lb_EmailPerson" MaxHeight="120" 
+        						Background="#FFFFFFFF"  BorderBrush="#FFC4C4C4" BorderThickness="1" 
+        						ScrollViewer.VerticalScrollBarVisibility="Auto" 
+        						ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+        						LostFocus="lb_EmailPerson_LostFocus"   MouseDown="lb_EmailPerson_MouseDown">
+                                <ListBox.Resources>
+                                    <Style TargetType="{x:Type ListBoxItem}">
+                                        <Style.Resources>
+                                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightBrushKey}" Color="White"/>
+                                            <SolidColorBrush x:Key="{x:Static SystemColors.HighlightTextBrushKey}" Color="Black"/>
+                                        </Style.Resources>
+                                    </Style>
+                                </ListBox.Resources>
+                                <ListBox.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel Orientation="Horizontal" IsItemsHost="True"  ItemHeight="30"/>
+                                    </ItemsPanelTemplate>
+                                </ListBox.ItemsPanel>
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <!--用户框：提示状态、输入查询状态、选中状态 -->
+                                        <Border x:Name="BDSharePerson" Height="25.667" CornerRadius="2" Margin="0,0,3,0" 
+        									BorderThickness="{Binding StyleVisibility}"  BorderBrush="#FFC4C4C4"
+        									Background="{Binding StyleVisibility, Converter={StaticResource StyleBordBackgroundConverter}}">
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBox x:Name="TBUserContrl" Text="{Binding Email, Mode=TwoWay}"
+        											FontSize="14" VerticalAlignment="Center" BorderThickness="0" BorderBrush="{x:Null}" Background="{x:Null}"
+        											Foreground="{Binding StyleVisibility, Converter={StaticResource StyleForegroundConverter}}"
+        											IsEnabled="{Binding StyleVisibility, Converter={StaticResource StyleEnableConverter}}"
+        											Loaded="TBUserContrl_Loaded_1" GotFocus="TBUserContrl_GotFocus_1"
+        											PreviewKeyDown="TBUserContrl_KeyDown"/>
+                                                <cs:ImageButton x:Name="CloseButton1" AutomationProperties.AutomationId="{Binding UserName}"
+        											NormalImage="/Onebox;component/ImageResource/UserCloseButton.png"
+        											OverImage="/Onebox;component/ImageResource/UserCloseButton.png"
+        											PresseImage="/Onebox;component/ImageResource/UserCloseButton.png"
+        											DisableImage="/Onebox;component/ImageResource/UserCloseButton.png"
+        											ImageSize="9" Margin="5,5,5,0" BorderVisibility="Hidden" Cursor="Hand"
+        											Visibility="{Binding StyleVisibility, Converter={StaticResource StyleVisibilityConverter}}"
+        											Style="{StaticResource ImageButtonStyle}" 
+        											Click="bt_UserRemove" VerticalAlignment="top" />
+                                            </StackPanel>
+                                        </Border>
+                                        <DataTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter Property="Cursor" Value="IBeam"/>
+                                            </Trigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <!--弹出层：用户选择下拉列表-->
+                            <Popup x:Name="pop_userList" Width="380" MaxHeight="220"
+        						HorizontalAlignment="Right" StaysOpen="False"  IsOpen="False"  AllowsTransparency="True">
+                                <ListBox x:Name="searchUserList"  Width="380" MaxHeight="220"  Background="White"
+        							ScrollViewer.HorizontalScrollBarVisibility="Disabled"  ItemContainerStyle="{StaticResource listbox_searchUsersStyle}"
+        							ItemTemplate="{StaticResource searchUserDataTemplate}"  
+        							KeyDown="lb_pop_keydown"  MouseUp="lb_pop_MouseUp" BorderBrush="#FFAAAAAA"/>
+                            </Popup>
+                          </StackPanel>
+                                    <!--区域：邀请信息区域-->
+                            <TextBox x:Name="tx_share_emailMsg" BorderBrush="#FFC4C4C4" Foreground="#FFB8B8B8" FontSize="14" MaxLength="2000"
+        					Background="White" BorderThickness="1,0,1,1" Height="65.976"  TextWrapping="Wrap"  AcceptsReturn="True"  ScrollViewer.VerticalScrollBarVisibility="Auto"
+        					Tag="0" Text="{StaticResource addMsg}" GotFocus="tx_emailMsg_GotFocus" LostFocus="tx_emailMsg_lostFocus" />
+                            </StackPanel>
+                    </StackPanel>
+                   
+                    <!--按钮操作区-->
+        			<StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,15,0,25">
+        				<Button x:Name="link_btn_linkSet" 
+        					Style="{StaticResource Button_Style_Focus}" Content="{StaticResource savingLimit}"
+        					Click="Save_Link_Click" Background="{x:Null}" />
+        				<Button  x:Name="link_btn_Cancel" Margin="10,0,0,0" 
+        					Click="btn_linkChange_Cancel" Content="{StaticResource cancel}" 
+        					Style="{StaticResource Button_Style_Normal}"/>
+        				<Button  x:Name="link_btn_linkCancel"
+        					Style="{StaticResource Button_Style_Normal}" Content="{StaticResource linkCancel}"
+        					Click="btn_linkCancel" />
+        				<Button x:Name="link_btn_finish" Margin="10,0,0,0"
+        					Style="{DynamicResource Button_Style_Focus}"  Content="{StaticResource finish}"  
+        					Click="btn_link_finish" Background="{x:Null}"/>
+                        <Button  x:Name="link_btn_send"
+        					Style="{StaticResource Button_Style_Normal}" Content="{StaticResource sendMail}"
+        					Click="btn_linksend_clicked" />
+                        <Button x:Name="btn_cancelsend" Margin="10,0,0,0"
+        					Style="{DynamicResource Button_Style_Focus}"  Content="{StaticResource cancelSend}"  
+        					Click="btn_cancelsend_clicked" Background="{x:Null}"/>
+                    </StackPanel>
+        		</StackPanel>
+        	</Grid>
+        </Border>
+ 		<Border Style="{StaticResource Bg_Style_WindowHeader}">
+    		<Grid>
+    			<Grid.ColumnDefinitions>
+    				<ColumnDefinition Width="0.7*"/>
+    				<ColumnDefinition Width="0.3*"/>
+    			</Grid.ColumnDefinitions>	
+                <StackPanel  Orientation="Horizontal" HorizontalAlignment="Left">
+    				<Grid Margin="10,0,0,0">
+    					<Image Source="/Onebox;component/ImageResource/logo.png" Stretch="Fill" Width="22" Height="22" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    				</Grid>
+    				<Label Content="{StaticResource linkShare}"  Style="{StaticResource Font_Style_WindowTtile}" VerticalAlignment="Center" />
+    			</StackPanel>
+                <StackPanel Grid.Column="1"  HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0">
+                    <cs:ImageButton x:Name="CloseButton"   
+                		NormalImage="/Onebox;component/ImageResource/exit.png"
+                		OverImage="/Onebox;component/ImageResource/exit.png"
+                		PresseImage="/Onebox;component/ImageResource/exit.png"
+                		DisableImage="/Onebox;component/ImageResource/exit.png"
+                		ImageSize="14" Cursor="Hand" BorderVisibility="Hidden"
+                		Style="{DynamicResource ImageButtonStyle}" Click="CloseButton_Click_1" />
+                </StackPanel>
+				<Border BorderBrush="#FFA3A4A4" BorderThickness="0,0,0,1" Height="1" VerticalAlignment="Bottom" Grid.ColumnSpan="2"/>
+				<Border BorderBrush="#FFF1F1F1" BorderThickness="0,0,0,1" Margin="1,0" Grid.ColumnSpan="2"/>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

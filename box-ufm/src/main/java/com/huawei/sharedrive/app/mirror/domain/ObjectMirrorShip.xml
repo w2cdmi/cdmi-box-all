@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="ObjectMirrorShip">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="ObjectMirrorShip"
+		type="com.huawei.sharedrive.app.mirror.domain.ObjectMirrorShip" />
+
+	<resultMap id="resultMap.ObjectMirrorShip" class="ObjectMirrorShip">
+		<result column="objectId" 			property="objectId" 			javaType="java.lang.String" />
+		<result column="size" 				property="size" 				javaType="java.lang.Long" />
+		<result column="parentObjectId" 	property="parentObjectId"  		javaType="java.lang.String" />
+		<result column="resourceGroupId" 	property="resourceGroupId" 		javaType="java.lang.Integer" />
+		<result column="createdAt" 			property="createdAt" 			javaType="java.util.Date" />
+		<result column="accessedAt" 		property="accessedAt" 			javaType="java.util.Date" />
+		<result column="type" 				property="type" 				javaType="java.lang.Integer" />
+	</resultMap>
+
+	<select id="get" resultMap="resultMap.ObjectMirrorShip">
+		select * from
+		object_mirror_ship_$tableSuffix$ where objectId=#objectId#
+	</select>
+	
+	<select id="getByIdAndParentId" resultMap="resultMap.ObjectMirrorShip">
+		select * from
+		object_mirror_ship_$tableSuffix$ where objectId=#objectId# and parentObjectId=#parentObjectId#
+	</select>
+	
+	<update id="update" parameterClass="ObjectMirrorShip">
+		update object_mirror_ship_$tableSuffix$ set type = #type# ,accessedAt=#accessedAt# where objectId=#objectId# and parentObjectId=#parentObjectId# 
+	</update>
+	
+
+	<select id="getByParent" resultMap="resultMap.ObjectMirrorShip" parameterClass="ObjectMirrorShip">
+		select * from
+		object_mirror_ship_$tableSuffix$ where
+		parentObjectId=#parentObjectId#
+	</select>
+
+	<insert id="insert" parameterClass="ObjectMirrorShip">
+		insert into
+		object_mirror_ship_$tableSuffix$(objectId,size,parentObjectId,resourceGroupId,createdAt,accessedAt,type)
+		values(#objectId#,#size#,#parentObjectId#,#resourceGroupId#,#createdAt#,#accessedAt#,#type#)
+	</insert>
+
+	<delete id="delete" parameterClass="ObjectMirrorShip">
+		delete from
+		object_mirror_ship_$tableSuffix$ where objectId=#objectId#
+	</delete>
+
+	<delete id="deleteByParent" parameterClass="ObjectMirrorShip">
+		delete from
+		object_mirror_ship_$tableSuffix$ where
+		parentObjectId=#parentObjectId#
+	</delete>
+
+</sqlMap>
+

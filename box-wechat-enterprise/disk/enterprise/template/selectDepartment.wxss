@@ -1,0 +1,129 @@
+/* 标签样式 */
+label {
+    display: block;
+    line-height: 50rpx;
+    height: 50rpx;
+    overflow:hidden;
+    width:560rpx;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
+
+text {
+    font-size: 12px;
+    line-height: 40rpx;
+    height: 40rpx;
+    color: #999;
+    display: block;
+}
+
+/* 页面布局 */
+.margin-right {
+    margin-right: 20rpx;
+}
+
+.margin-top {
+    margin-top: 10px;
+}
+
+/* 文件信息 */
+.file-group {
+    height: 90rpx;
+    display: flex;
+}
+
+.img-icon {
+    width: 90rpx;
+    height: 90rpx;
+    border-radius:50%;
+}
+
+.file-info {
+    height: 90rpx;
+}
+
+/* 云文档菜单样式 */
+.cloud-menu {
+    font-size: 13px;
+    color: #999;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.menu-select {
+    color: #ea5036;
+    border-bottom: 1px solid #ea5036;
+}
+
+.current-dir {
+    color: #999;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* 底部按钮 */
+.save-to-operation {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+    height: 57px;
+    padding: 0 15px;
+}
+
+.save-to-operation button {
+    width: 320rpx;
+    font-size: 14px;
+    background: #ea5036;
+    color: #fff;
+    margin: 10px 0;
+    height: 37px;
+    line-height: 37px;
+}
+
+.save-to-operation .gray-button {
+    background: #47BF5A;
+    color: #fff;
+}
+
+/* 空背景 */
+.blankBackground {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transform: none;
+}
+
+.blankBackground view image {
+    width: 250px;
+    height: 200px;
+}
+
+.blankBackground view text {
+    font-size: 14px;
+    color: #a9a9a9;
+}
+
+/* crumbs */
+.crumbs {
+    display: flex;
+    height: 30px;
+    display: -webkit-box;
+}
+
+.crumbs view {
+    max-width: 80px;
+    line-height: 30px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.crumbs image {
+    height: 13px;
+    width: 8px;
+    margin: 8px 10px;
+}

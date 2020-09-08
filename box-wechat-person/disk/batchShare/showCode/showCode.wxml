@@ -1,0 +1,11 @@
+<!--disk/batchShare/showCode/showCode.wxml-->
+<view class='page bc-white'>
+    <image class='margin-auto code-img' src='/disk/images/success.png'></image>
+    <text class='margin-auto share-succ'>分享成功</text>
+    <text class='margin-auto share-result'>您已成功分享给微信好友</text>
+    <view class='margin-auto code-conta'>
+        <text class='margin-auto share-code' wx:for="{{codeArr}}">{{item}}</text>
+    </view>
+
+    <button hover-class='hover-btn' bindtap='onExtractionCode' data-code="{{code}}" class='margin-auto code-btn'>复制提取码</button>
+</view>

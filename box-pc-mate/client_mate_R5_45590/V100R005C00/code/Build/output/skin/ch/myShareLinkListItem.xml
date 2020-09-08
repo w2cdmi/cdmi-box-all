@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Window >
+
+	<MyShareElement name="myShare_listItem" height="44" singularrowcolor="#ffffffff" dualrowcolor="#fffafafa">
+		<HorizontalLayout float="true" pos="0,0,290,44" >
+			<HorizontalLayout width="44">
+				<Button name="myShare_fileicon" float="true" pos="10,6,42,38" mouse="false" />
+			</HorizontalLayout>
+			<HorizontalLayout >
+				<MyFilesRichEditUI name="myShare_filename"  limitchars="/ \ * | ' : ? &lt; &gt; &quot;" padding="5,8" align="left" valign="vcenter" textcolor="#FF000000" font="12" height="30" maxheight="30" mouse="false" inset="5,5" align="left" autohscroll="true" multiline="false"/>
+			</HorizontalLayout>
+		</HorizontalLayout>
+
+		<Button name="myShare_sharePath" float="true" pos="290,0,435,44" textpadding="15,0,15,0" align="left" valign="vcenter" font="12" textcolor="#FF008be8" hottextcolor="#FF006ab0" endellipsis="true" />
+		<Button name="myShare_shareLink" float="true" text="Link(s)" pos="435,0,525,44" textpadding="0,0,15,0" align="left" valign="vcenter" font="12" textpadding="30,0"  textcolor="#FF008be8" hottextcolor="#FF006ab0" endellipsis="true" normalimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50' dest='0,12,20,32'" hotimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50' dest='0,12,20,32'" pushedimage="file='..\Image\ic_toolmenu_link.png' source='0,30,20,50' dest='0,12,20,32'" disableimage="file='..\Image\ic_toolmenu_link.png' source='0,0,20,20' dest='0,12,20,32'" />
+		<Label name="myShare_fileSize" float="true" pos="515,0,670,44" textpadding="15,0,20,0" align="right" font="12" textcolor="#FF666666" endellipsis="true" />
+	</MyShareElement>
+</Window>

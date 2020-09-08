@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<Window size="900,600" caption="0,0,0,60" mininfo="900,600" bktrans="true" roundcorner="2,2,2,2" bordersize="0">
+	<Include source="Default.xml" />
+
+	<Default name="NotifyIcon" shared="true" value="name=&quot;notify_icon&quot; balloonskinfolder=&quot;skin\ch&quot; balloonskinfile=&quot;balloon.xml&quot; checkboxtitleresource=&quot;不再弹出网络、电源消息提醒&quot; checkboxtitlesystem=&quot;不再弹出业务消息提醒&quot; menu=&quot;true&quot; menuxmlfile=&quot;notifyIconContextMenu.xml&quot; tooltip=&quot;Onebox Mate&quot; notifyicon=&quot;.\Res\logo.ico&quot; id=&quot;0&quot;"/>
+
+	<VerticalLayout>
+		<HorizontalLayout name="mainframe_header" height="60" bkcolor="#FF2d90e5" bordersize="1" bordercolor="#FF2980cc" inset="1,1,1,0">
+			<HorizontalLayout padding="20,10">
+				<Label width="210" height="40" bkimage="..\Image\ic_top_logo.png"/>
+			</HorizontalLayout>
+			<HorizontalLayout >
+				<Control />
+				<HorizontalLayout width="35">
+					<Button name="btn_msg" width="20" height="20" tooltip="消息" padding="0,20" bkimage="..\Image\ic_top_sys_messege.png" />
+					<Button name="msgTip" float="true" pos="10,14,40,30" text="99+" textcolor="#FFffffff" align="center" bkimage="file='..\Image\ic_top_sys_number.png' source='0,52,29,67'" visible="false" />
+				</HorizontalLayout>
+				<UserPhoto name="userPhoto" width="32" height="32" padding="5,14" fixedimage="file='..\Image\ic_top_user_headfixed.png' dest='0,0,32,32'" bkimage="..\Image\ic_top_user_headportrait.png" />
+				<ScaleImgButton name="btn_userName" text="Username" padding="8,0" menu="true" menuxmlfile="userBaseInfoContextMenu.xml" textcolor="#FFffffff" font="10" align="left" valign="vcenter" endellipsis="true" maxwidth="300" addwidth="26" btnnormalimage="file='..\Image\ic_top_user_arrowdown.png' source='0,0,20,20' dest='0,20,20,40'" btnhotimage="file='..\Image\ic_top_user_arrowdown.png' source='0,30,20,50' dest='0,20,20,40'"/>
+				<Control width="10"/>
+			</HorizontalLayout>
+			<HorizontalLayout width="90">
+				<Control padding="0,15,0,0" width="1" height="30" bkcolor="#FF57a6eb"/>
+
+				<Button name="btn_min" tooltip="最小化" width="20" height="20" padding="10,20" normalimage="file='..\Image\ic_top_small.png' source='0,0,20,20'" hotimage="file='..\Image\ic_top_small.png' source='0,30,20,50'" pushedimage="file='..\Image\ic_top_small.png' source='0,60,20,80'"  />
+				<Button name="btn_max" tooltip="最大化" width="20" height="20" padding="10,20" normalimage="file='..\Image\ic_top_large.png' source='0,0,20,20'" hotimage="file='..\Image\ic_top_large.png' source='0,30,20,50'" pushedimage="file='..\Image\ic_top_large.png' source='0,60,20,80'" />
+				<Button name="btn_restore" tooltip="还原" visible="false" width="20" height="20" padding="10,20" normalimage="file='..\Image\ic_top_return.png' source='0,0,20,20'" hotimage="file='..\Image\ic_top_return.png' source='0,30,20,50'" pushedimage="file='..\Image\ic_top_return.png' source='0,60,20,80'" />
+				<Button name="btn_close" tooltip="关闭" width="20" height="20" padding="10,20" normalimage="file='..\Image\ic_top_deletle.png' source='0,0,20,20'" hotimage="file='..\Image\ic_top_deletle.png' source='0,30,20,50'" pushedimage="file='..\Image\ic_top_deletle.png' source='0,60,20,80'"  />
+			</HorizontalLayout>
+		</HorizontalLayout>
+
+		<HorizontalLayout bordersize="1" bordercolor="#FFbbbbbb" inset="1,0,1,1">
+			<VerticalLayout name="leftRegion_verticalLayout" width="180" bkcolor="#FFededed">
+				<Control height="2" />
+				<LeftOption name="leftRegion_myFile" text="个人空间" font="12" selectedfont="12" height="40" textpadding="50,0"
+				  textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" valign="vcenter"
+				  bkcolor="#FFededed" hotbkcolor="#FFededed" selectedbkcolor="#FFffffff"
+				  blockwidth="4" selectedblockcolor="#FF2d90e5"
+				  normaliconimage="file='..\Image\ic_nav_myfiles.png' source='0,0,20,20' dest='20,10,40,30'"
+				  hoticonimage="file='..\Image\ic_nav_myfiles.png' source='0,30,20,50' dest='20,10,40,30'"
+				  selectediconimage="file='..\Image\ic_nav_myfiles.png' source='0,60,20,80' dest='20,10,40,30'"
+				  group="quickTable" selected="true" />
+				<LeftOption name="leftRegion_teamSpace" text="团队空间" font="12" selectedfont="12" height="40" textpadding="50,0"
+				  textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" valign="vcenter"
+				  bkcolor="#FFededed" hotbkcolor="#FFededed" selectedbkcolor="#FFffffff"
+				  blockwidth="4" selectedblockcolor="#FF2d90e5"
+				  normaliconimage="file='..\Image\ic_nav_teamspace.png' source='0,0,20,20' dest='20,10,40,30'"
+				  hoticonimage="file='..\Image\ic_nav_teamspace.png' source='0,30,20,50' dest='20,10,40,30'"
+				  selectediconimage="file='..\Image\ic_nav_teamspace.png' source='0,60,20,80' dest='20,10,40,30'"
+				  group="quickTable" />
+				<VerticalLayout height="11">
+					<Label height="1" padding="20,5,20,0" bkcolor="#FFe0e0e0" />
+				</VerticalLayout>
+
+				<LeftOption name="leftRegion_share2Me" text="收到的分享" font="12" selectedfont="12" height="40" textpadding="50,0"
+				  textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" valign="vcenter"
+				  bkcolor="#FFededed" hotbkcolor="#FFededed" selectedbkcolor="#FFffffff"
+				  blockwidth="4" selectedblockcolor="#FF2d90e5"
+				  normaliconimage="file='..\Image\ic_nav_sharewithme.png' source='0,0,20,20' dest='20,10,40,30'"
+				  hoticonimage="file='..\Image\ic_nav_sharewithme.png' source='0,30,20,50' dest='20,10,40,30'"
+				  selectediconimage="file='..\Image\ic_nav_sharewithme.png' source='0,60,20,80' dest='20,10,40,30'"
+				  group="quickTable" />
+				<LeftOption name="leftRegion_myShare" text="发出的分享" font="12" selectedfont="12" height="40" textpadding="50,0"
+				  textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" valign="vcenter"
+				  bkcolor="#FFededed" hotbkcolor="#FFededed" selectedbkcolor="#FFffffff"
+				  blockwidth="4" selectedblockcolor="#FF2d90e5"
+				  normaliconimage="file='..\Image\ic_nav_sharebyme.png' source='0,0,20,20' dest='20,10,40,30'"
+				  hoticonimage="file='..\Image\ic_nav_sharebyme.png' source='0,30,20,50' dest='20,10,40,30'"
+				  selectediconimage="file='..\Image\ic_nav_sharebyme.png' source='0,60,20,80' dest='20,10,40,30'"
+				  group="quickTable" />
+				<!--
+				<LeftOption name="leftRegion_favor" text="我的收藏" font="12" selectedfont="12" height="40" textpadding="50,0" 
+				  textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" valign="vcenter" 
+				  bkcolor="#FFededed" hotbkcolor="#FFf5f5f5" selectedbkcolor="#FFffffff" 
+				  blockwidth="4" selectedblockcolor="#FF2d90e5"  
+				  normaliconimage="file='..\Image\ic_nav_favor.png' source='0,0,20,20' dest='20,10,40,30'" 
+				  hoticonimage="file='..\Image\ic_nav_favor.png' source='0,30,20,50' dest='20,10,40,30'" 
+				  selectediconimage="file='..\Image\ic_nav_favor.png' source='0,60,20,80' dest='20,10,40,30'" 
+				  group="quickTable" />			
+				<VerticalLayout height="5">
+				  <Label height="1" padding="20,2,20,0" bkcolor="#FFd9d9d9" />
+				</VerticalLayout>
+				-->
+				<LeftOption name="leftRegion_transfersList" text="传输任务" font="12" selectedfont="12" height="40" textpadding="50,0"
+				  textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" valign="vcenter"
+				  bkcolor="#FFededed" hotbkcolor="#FFededed" selectedbkcolor="#FFffffff"
+				  blockwidth="4" selectedblockcolor="#FF2d90e5"
+				  normaliconimage="file='..\Image\ic_nav_transfer.png' source='0,0,20,20' dest='20,10,40,30'"
+				  hoticonimage="file='..\Image\ic_nav_transfer.png' source='0,30,20,50' dest='20,10,40,30'"
+				  selectediconimage="file='..\Image\ic_nav_transfer.png' source='0,60,20,80' dest='20,10,40,30'"
+				  group="quickTable" />
+				<Button name="leftRegion_trash" text="回收站" font="12" selectedfont="12" height="40" textpadding="50,0"
+          textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" valign="vcenter"
+          bkcolor="#FFededed" hotbkcolor="#FFf5f5f5" selectedbkcolor="#FFffffff"
+          blockwidth="4" selectedblockcolor="#FF2d90e5"
+          normalimage="file='..\Image\ic_nav_trash.png' source='0,0,20,20' dest='20,10,40,30'"
+          hotimage="file='..\Image\ic_nav_trash.png' source='0,30,20,50' dest='20,10,40,30'"/>
+				<VerticalLayout height="11">
+					<Label height="1" padding="20,5,20,0" bkcolor="#FFe0e0e0" />
+				</VerticalLayout>
+
+				<LeftOption name="leftRegion_backup" text="备份" font="12" selectedfont="12" height="40" textpadding="50,0"
+				  textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" valign="vcenter"
+				  bkcolor="#FFededed" hotbkcolor="#FFededed" selectedbkcolor="#FFffffff"
+				  blockwidth="4" selectedblockcolor="#FF2d90e5"
+				  normaliconimage="file='..\Image\ic_nav_backup.png' source='0,0,20,20' dest='20,10,40,30'"
+				  hoticonimage="file='..\Image\ic_nav_backup.png' source='0,30,20,50' dest='20,10,40,30'"
+				  selectediconimage="file='..\Image\ic_nav_backup.png' source='0,60,20,80' dest='20,10,40,30'"
+				  group="quickTable" />
+				<!--
+				<LeftOption name="leftRegion_sync" text="同步" font="12" selectedfont="12" height="40" textpadding="50,0" 
+				  textcolor="#FF000000" hottextcolor="#FF006ab0" selectedtextcolor="#FF008be8" align="left" valign="vcenter" 
+				  bkcolor="#FFededed" hotbkcolor="#FFf5f5f5" selectedbkcolor="#FFffffff" 
+				  blockwidth="4" selectedblockcolor="#FF2d90e5"  
+				  normaliconimage="file='..\Image\ic_nav_sync.png' source='0,0,20,20' dest='20,10,40,30'" 
+				  hoticonimage="file='..\Image\ic_nav_sync.png' source='0,30,20,50' dest='20,10,40,30'" 
+				  selectediconimage="file='..\Image\ic_nav_sync.png' source='0,60,20,80' dest='20,10,40,30'" 
+				  group="quickTable" />
+				<Label name="ShareMyTip" visible="false" float="true" pos="122,54,138,70" padding="10,12,0,0" bkimage="..\img\shareMyTip.png"/>
+				-->
+				<Label name="TransfersListTip" visible="false" text="99+" textcolor="#FFffffff" align="center" float="true" pos="110,185,140,201" padding="10,12,0,0" bkimage="file='..\Image\ic_top_sys_number.png' source='0,52,30,68'"/>
+			</VerticalLayout>
+
+			<Control width="1" bkcolor="#FFd9d9d9" />
+			<VerticalLayout bkimage="..\img\right_bg.png" visible="true">
+				<HorizontalLayout name="mainFrame" >
+					<TabLayout name="tb_listView">
+						<ChildLayoutEx comment="我的文件" xmlfile="myFile.xml"/>
+						<ChildLayoutEx comment="分享给我的" xmlfile="share2Me.xml"/>
+						<ChildLayoutEx comment="我的分享" xmlfile="myShare.xml"/>
+						<ChildLayoutEx comment="团队空间" xmlfile="teamSpace.xml"/>
+						<ChildLayoutEx comment="传输列表" xmlfile="transTask.xml"/>
+						<!--<ChildLayoutEx comment="自动备份" xmlfile="backup.xml"/>-->
+						<ChildLayoutEx comment="备份" xmlfile="FullBackup.xml"/>
+					</TabLayout>
+				</HorizontalLayout>
+				<ChildLayoutEx name="msgFrame" comment="消息展示" xmlfile="msgShow.xml" visible="false"/>
+				<HorizontalLayout height="1" bkcolor="#FFE1E1E1"/>
+				<HorizontalLayout name="mianFrame_NoticeArea" float="true" height="40" width="740" bkcolor="#FFDAF0CC" visible="false">
+					<Text name="text_simpleNoticeMsg" text="任务已经添加，进度请在传输列表查看" width="716"  height="40" minwidth="716" textpadding="20,10,0,0" textcolor="#FF276600" font="12" align="leftwrap" />
+					<Button name="btn_closeNotice" padding="0,11,20,11" width="20" height="20"  align="left" normalimage="file='..\Image\SysBtn\ic_popup_delete.png' source='0,0,20,20' dest='0,0,20,20'" hotimage="file='..\Image\SysBtn\ic_popup_delete.png' source='0,30,20,50' dest='0,0,20,20'"/>
+					<Control width="20"/>
+				</HorizontalLayout>
+			</VerticalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

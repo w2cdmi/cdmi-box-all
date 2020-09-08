@@ -1,0 +1,27 @@
+@import "/disk/template/fileList.wxss";
+/* 离职人员移交列表样式 */
+.view-leave-page{
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+.view-member-title,
+.border-bottom{
+  border-bottom: 1rpx solid #f1f1f1;
+}
+.view-leave-status{
+  font-size: 28rpx;
+  line-height: 90rpx;
+  color: #999;
+}
+.file-info{
+  width: 70%;
+}
+
+.not-list-detail-bg image{
+  width: 130px;
+  height:100px;
+}
+.img-icon-border{
+    border-radius: 50%;
+}

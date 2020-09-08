@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="SystemClusterInfo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="SystemClusterInfo"
+		type="com.huawei.sharedrive.isystem.monitor.domain.SystemClusterInfo" />
+
+	<insert id="insert" parameterClass="SystemClusterInfo">
+		insert into
+		system_cluster_info( systemName,resourceGrounpId,type,
+		clusterName, status) values (#systemName#, #resourceGrounpId#,
+		#type#,#clusterName#,#status#)
+	</insert>
+	
+	<select id="getAll" resultClass="SystemClusterInfo" >
+        select * from system_cluster_info order by resourceGrounpId 
+    </select>
+    
+    
+    
+    <select id="getSystemName" resultClass="SystemClusterInfo" parameterClass="String">
+        select * from system_cluster_info  where clusterName = #clusterName#
+    </select>
+    
+    <update id="updateStatus" parameterClass="SystemClusterInfo" >
+         update system_cluster_info set status=#status# where clusterName=#clusterName#
+    </update>
+<!-- 	<update id="update" parameterClass="Cluster">
+		update
+		system_cluster_info set
+		clusterName=#clusterName#,clusterServiceName=#clusterServiceName#,reportTime=#reportTime#,type=#type#,status=#status#,reserve=#reserve#
+		where clusterName=#clusterName# and
+		clusterServiceName=#clusterServiceName#
+	</update> -->
+
+	
+    
+    
+	<!-- <select id="getFilterd" parameterClass="Cluster" resultClass="Cluster">
+		select * from admin
+		<dynamic prepend="where">
+			<isNotNull prepend="and" property="filter">
+				type = #filter.type#
+			</isNotNull>
+			<isNotNull prepend="and" property="filter.status">
+				status = #filter.status#
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="and" open="(" close=")">
+			<isNotEmpty prepend="or" property="filter.loginName">
+				loginName like
+				concat('%',#filter.loginName#,'%')
+			</isNotEmpty>
+			<isNotEmpty prepend="or" property="filter.name">
+				name like
+				concat('%',#filter.name#,'%')
+			</isNotEmpty>
+			<isNotEmpty prepend="or" property="filter.email">
+				email like
+				concat('%',#filter.email#,'%')
+			</isNotEmpty>
+		</dynamic>
+		<dynamic prepend="order by">
+			<isNotNull property="order">
+				<isNotEmpty property="order.field">
+					$order.field$
+					<isEqual property="order.desc" compareValue="true">
+						desc
+					</isEqual>
+				</isNotEmpty>
+			</isNotNull>
+		</dynamic>
+		<dynamic prepend="limit">
+			<isNotNull property="limit">
+				#limit.offset#,#limit.length#
+			</isNotNull>
+		</dynamic>
+	</select> -->
+
+</sqlMap>
+

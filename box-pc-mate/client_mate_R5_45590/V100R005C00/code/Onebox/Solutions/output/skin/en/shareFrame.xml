@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<Window size="560,440" caption="0,0,0,-1">
+	<Font id="0" name="微软雅黑" size="13" bold="true" />
+	<Font id="1" name="微软雅黑" size="12" bold="true" />
+	<Font id="2" name="微软雅黑" size="11" />
+	<Font id="3" name="微软雅黑" size="14" bold="true" />
+	<Font id="4" name="微软雅黑" size="22" bold="true" italic="true"/>
+	<Font id="5" name="微软雅黑" size="12" default="true" />
+	<Font id="6" name="SimSun" size="12" bold="false" italic="false" />
+	<Font id="7" name="微软雅黑" size="17"/>
+
+	<Default name="VScrollBar" value="width=&quot;13&quot; button1normalimage=&quot;file='..\img\scroll\vscroll_up_normal.png'&quot; button1hotimage=&quot;file='..\img\scroll\vscroll_up_hover.png'&quot; button1pushedimage=&quot;file='..\img\scroll\vscroll_up_down.png'&quot; button1disabledimage=&quot;file='..\img\scroll\vscroll_up_disable.png'&quot; button2normalimage=&quot; file='..\img\scroll\vscroll_down_normal.png'&quot; button2hotimage=&quot;file='..\img\scroll\vscroll_down_hover.png'&quot; button2pushedimage=&quot;file='..\img\scroll\vscroll_down_down.png'&quot; button2disabledimage=&quot;file='..\img\scroll\vscroll_down_disable.png'&quot; thumbnormalimage=&quot;file='..\img\scroll\thumb_normal.png' &quot; thumbhotimage=&quot;file='..\img\scroll\thumb_hover.png' &quot; thumbpushedimage=&quot;file='..\img\scroll\thumb_down.png' &quot; thumbdisabledimage=&quot;file='..\img\scroll\thumb_disable.png' &quot;  bkcolor=&quot;#FF000000&quot;" />
+	<Default name="HScrollBar" value="button1normalimage=&quot;file='..\img\scrollbar.bmp' source='0,0,16,16' mask='#FFFF00FF'&quot; button1hotimage=&quot;file='..\img\scrollbar.bmp' source='18,0,34,16' mask='#FFFF00FF'&quot; button1pushedimage=&quot;file='..\img\scrollbar.bmp' source='36,0,52,16' mask='#FFFF00FF'&quot; button1disabledimage=&quot;file='..\img\scrollbar.bmp' source='54,0,70,16' mask='#FFFF00FF'&quot; button2normalimage=&quot;file='..\img\scrollbar.bmp' source='0,18,16,34' mask='#FFFF00FF'&quot; button2hotimage=&quot;file='..\img\scrollbar.bmp' source='18,18,34,34' mask='#FFFF00FF'&quot; button2pushedimage=&quot;file='..\img\scrollbar.bmp' source='36,18,52,34' mask='#FFFF00FF'&quot; button2disabledimage=&quot;file='..\img\scrollbar.bmp' source='54,18,70,34' mask='#FFFF00FF'&quot; thumbnormalimage=&quot;file='..\img\scrollbar.bmp' source='0,36,16,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbhotimage=&quot;file='..\img\scrollbar.bmp' source='18,36,34,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbpushedimage=&quot;file='..\img\scrollbar.bmp' source='36,36,52,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; thumbdisabledimage=&quot;file='..\img\scrollbar.bmp' source='54,36,70,52' corner='2,2,2,2' mask='#FFFF00FF'&quot; railnormalimage=&quot;file='..\img\scrollbar.bmp' source='0,54,16,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; railhotimage=&quot;file='..\img\scrollbar.bmp' source='18,54,34,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; railpushedimage=&quot;file='..\img\scrollbar.bmp' source='36,54,52,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; raildisabledimage=&quot;file='..\img\scrollbar.bmp' source='54,54,70,70' corner='2,2,2,2' mask='#FFFF00FF'&quot; bknormalimage=&quot;file='..\img\scrollbar.bmp' source='0,72,16,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkhotimage=&quot;file='..\img\scrollbar.bmp' source='18,72,34,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkpushedimage=&quot;file='..\img\scrollbar.bmp' source='36,72,52,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; bkdisabledimage=&quot;file='..\img\scrollbar.bmp' source='54,72,70,88' corner='2,2,2,2' mask='#FFFF00FF'&quot; " />
+
+	<VerticalLayout bordersize="1" bordercolor="#FF999999" bkcolor="#FFF5FAFC" inset="1,1,1,1">
+		<HorizontalLayout name="shareFrame_background" bkcolor="#FFFFFFFF" height="44" padding="0,0,0,0">
+			<Label name="shareFrame_title" text="Share" width="540" align="left" endellipsis="true" textpadding="10,0,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" font="0" />
+			<Button name="btn_close" width="10" height="10" padding="0,6,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;0,0,10,10&apos;" hotimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;11,0,21,10&apos;" pushedimage="file=&apos;..\img\SysBtn\btn_close.png&apos; source=&apos;22,0,32,10&apos;" />
+		</HorizontalLayout>
+		<HorizontalLayout name="shareFrame_tabLayout" height="30" padding="0,0,0,0" bkcolor="#FFFFFFFF">
+			<VerticalLayout width="560" padding="0,0,0,0">
+				<HorizontalLayout name="shareFrame_line" float="true" pos="0,29,0,0" width="560" height="1" bkcolor="#FFE6E6E6"/>
+				<Option name="shareFrame_share" text="Share to Colleagues" float="true" pos="120,0,0,0" width="151" height="30" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" align="center" group="shareTable" normalimage="file=&apos;..\img\tab.png&apos; source=&apos;131,0,282,32&apos;" hotimage="" selectedimage="file=&apos;..\img\tab.png&apos; source=&apos;281,0,431,32&apos;" />
+				<Option name="shareFrame_link" text="Create Link" float="true" pos="271,0,0,0" width="151" height="30" textcolor="#FF666666" disabledtextcolor="#FFA7A6AA" align="center" group="shareTable" normalimage="file=&apos;..\img\tab.png&apos; source=&apos;131,0,282,32&apos;" hotimage="" selectedimage="file=&apos;..\img\tab.png&apos; source=&apos;281,0,431,32&apos;" />
+			</VerticalLayout>
+		</HorizontalLayout>
+		<HorizontalLayout height="300" bordercolor="#FF000000"  bkcolor="#FFF5FAFC">
+			<TabLayout name="shareFrame_listView">
+				<VerticalLayout>
+					<HorizontalLayout width="520" height="16" padding="20,18,0,0">
+						<Button name="shareFrame_text" text="Add one by one or in batch" width="300" align="left" mouse="false" textpadding="0,0,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+					</HorizontalLayout>
+					<HorizontalLayout width="520" height="40" padding="20,10,0,0">
+						<VerticalLayout width="520">
+							<Edit name="shareFrame_users" text="Please enter the name, ID, or email address." width="436" height="40" padding="0,0,0,0" maxchar="2000" bordersize="1" borderround="3,3" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" bkcolor="#FFFFFFFF" textpadding="16,3,4,3" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" />
+							<Button name="shareFrame_add" text="Add" float="true" pos="436,0,0,0" width="84" height="40" bordersize="1" bkcolor="#FF0080FF" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\shareAdd.png&apos; source=&apos;0,0,84,40&apos;" hotimage="file=&apos;..\img\shareAdd.png&apos; source=&apos;85,0,169,40&apos;" pushedimage="file=&apos;..\img\shareAdd.png&apos; source=&apos;170,0,254,40&apos;" />					
+						</VerticalLayout>
+					</HorizontalLayout>
+					<!--HorizontalLayout width="520" height="1" padding="20,0,0,0" bkcolor="#0x99999999">
+				</HorizontalLayout-->
+					<HorizontalLayout width="520" height="120" padding="20,12,0,0">
+						<List name="shareFrame_sharedUsersList" header="hidden" droptarget="true" menu="true" itemshowhtml="true" bordersize="1" borderround="3,3" vscrollbar="true" hscrollbar="true"  bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF" itembkimage="file='..\img\list_bg.png' source='0,0,1,32'" itemalternatebkimage="file='..\img\list_bg.png' source='1,0,2,32'" itemhotimage="file='..\img\list_bg.png' source='2,0,3,32'" itemselectedimage="file='..\img\list_bg.png' source='3,0,4,32'">
+						</List>
+					</HorizontalLayout>
+					<HorizontalLayout width="520" height="16" padding="20,9,0,0">
+						<Label name="shareFrame_intro" text="Description (optional)." width="300" textpadding="0,0,0,0" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" />
+					</HorizontalLayout>
+					<HorizontalLayout width="520" height="50" padding="20,9,0,0">
+						<RichEdit name="shareFrame_message" text="The description must be shorter than 500 characters." height="50" textpadding="10,0,0,0" multiline="true" maxchar="500" bordersize="1" borderround="3,3" autovscroll="true" vscrollbar="true" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" bkcolor="#FFFFFFFF" textcolor="#99999999" />
+					</HorizontalLayout>
+					<List name="shareFrame_listUserView" float="true" pos="20,80,456,230" visible="false" header="hidden" bordersize="1" bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF" vscrollbar="true" hscrollbar="true"/>
+					<Label name="shareFrame_listUserTip" text="Press Enter to obtain more information.	" float="true" pos="20,230,456,242" align="center" visible="false" header="hidden" bordersize="1" bordercolor="#FFDDDDDD" bkcolor="#FFFFFFFF"/>
+				</VerticalLayout>
+
+				<VerticalLayout>
+					<TabLayout name="shareFrame_linklistView">
+						<VerticalLayout>
+							<HorizontalLayout width="520" height="14" padding="20,44,0,0">
+								<Text name="shareFrame_shareLinkText" text="Generate a download link and send it to colleagues via eSpace, 3MS, or email." textpadding="0,0,0,0" textcolor="#99999999" font="2"/>
+							</HorizontalLayout>
+							<HorizontalLayout width="120" height="32" padding="220,42,0,0">
+								<Option name="shareFrame_privateLink" text="Create Link" width="120" height="32" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" group="shareTable" normalimage="file=&apos;..\img\sharelink.png&apos; source=&apos;0,0,120,32&apos;" hotimage="file=&apos;..\img\sharelink.png&apos; source=&apos;121,0,241,32&apos;" selectedimage="file=&apos;..\img\sharelink.png&apos; source=&apos;242,0,362,32&apos;" />
+								<!--Text name="shareFrame_publicText" text="用于发布公开内容，任何人都能下载使用" padding="175,0,0,0" textpadding="4,3,4,3" textcolor="#FF999999"/-->
+							</HorizontalLayout>
+							<HorizontalLayout width="560" height="166" padding="0,1,0,0">
+								<Label name="shareFrame_picture" bkimage="file=&apos;..\img\shareLinkPic.png&apos; corner=&apos;1,1,1,1&apos;"/>
+							</HorizontalLayout>
+						</VerticalLayout>
+
+						<VerticalLayout>
+							<VerticalLayout width="520" height="30" padding="20,15,0,0">
+								<Text name="shareFrame_publicLinkTextTitle" height="30" text="Create Public Link" textpadding="4,3,4,3" textcolor="#FF999999"/>
+							</VerticalLayout>
+							<VerticalLayout width="520" height="30" padding="20,25,0,0">
+								<Text name="shareFrame_shareLinkTextInfo" height="30" text="Succeeded in creating the public link." textpadding="4,3,4,3" textcolor="#99999999" font ="3"/>
+							</VerticalLayout>
+							<VerticalLayout width="520" height="30" padding="20,15,0,0">
+								<Edit name="shareFrame_publiclinkUrl" text="" width="520" height="28" padding="0,0,0,0" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" />
+							</VerticalLayout>
+							<VerticalLayout width="520" height="30" padding="20,15,0,0">
+								<HorizontalLayout>
+									<HorizontalLayout width="300" bkcolor="#FFFFFFFF">
+										<Text name="shareFrame_shareLinkTextTip" text="You can send the link to colleagues via eSpace, 3MS, or email now." padding="0,0,0,0" textpadding="4,3,4,3" textcolor="#99999999"/>
+									</HorizontalLayout>
+									<HorizontalLayout />
+									<HorizontalLayout width="75" bkcolor="#FFFFFFFF">
+										<Button name="shareFrame_publicCopyUrl" text="Copy Link" width="75" height="28" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\MessageDialog\Ok_normal.png&apos; corner=&apos;5,5,5,5&apos;" hotimage="file=&apos;..\img\MessageDialog\Ok_hover.png&apos; corner=&apos;5,5,5,5&apos;" pushedimage="file=&apos;..\img\MessageDialog\Ok_down.png&apos; corner=&apos;5,5,5,5&apos;" />
+									</HorizontalLayout>
+								</HorizontalLayout>
+							</VerticalLayout>
+						</VerticalLayout>
+
+						<VerticalLayout>
+							<HorizontalLayout width="520" height="40" padding="20,28,0,0">
+								<Label name="shareFrame_icon" width="39" bkimage="file=&apos;..\img\shareIcon.png&apos; source=&apos;0,0,39,40&apos;"/>
+								<Text name="shareFrame_privateLinkTextTitle" height="30" text="Link created successfully" padding="10,0,0,0" textpadding="0,12,0,0" textcolor="#FF999999"/>
+							</HorizontalLayout>
+							<HorizontalLayout width="520" height="30" padding="20,20,0,0">
+								<Edit name="shareFrame_privatelinkUrl" text="" width="420" height="30" padding="0,0,0,0" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" />
+								<Button name="shareFrame_privateCopyUrl" text="Copy Link" width="84" height="30" padding="17,0,0,0" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\shareOK.png&apos; source=&apos;0,0,84,30&apos;" hotimage="file=&apos;..\img\shareOK.png&apos; source=&apos;85,0,169,30&apos;" pushedimage="file=&apos;..\img\shareOK.png&apos; source=&apos;170,0,254,30&apos;" />
+							</HorizontalLayout>
+							<VerticalLayout width="520" height="120" padding="20,0,0,0">
+								<HorizontalLayout height="30" padding="0,40,0,0">
+									<CheckBox name="shareFrame_codeSelect" padding="0,-6,0,0" width="40" height="30" align="left" selectedimage="file='..\img\checkbox.png' dest='20,16,32,28' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,16,32,28' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,16,32,28' source='26,0,38,12'"/>
+									<Text name="shareFrame_shareLinkTextCode" text="Use retrieval code" width="70" height="30" padding="0,0,0,0" textpadding="0,8,0,0" textcolor="#FF999999"/>
+									<Edit name="shareFrame_privateCode" text="" width="120" height="30" padding="20,0,0,0" maxchar="20" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;" bkcolor="#FFFFFFFF" textpadding="4,3,4,3" textcolor="#99999999" disabledtextcolor="#FFA7A6AA" />
+									<Button name="shareFrame_privateCodeRefresh" width="16" padding="-20,7,0,0" tooltip="Refresh" maxwidth="16" maxheight="16" visible="false" normalimage="file='..\img\uqdate.png' source='16,0,32,16'"/>
+								</HorizontalLayout>
+								<HorizontalLayout height="30" padding="0,12,0,0">
+									<CheckBox name="shareFrame_dateSelect" padding="0,-6,0,0" width="40" height="30" align="left" selectedimage="file='..\img\checkbox.png' dest='20,16,32,28' source='39,0,51,12'" normalimage="file='..\img\checkbox.png' dest='20,16,32,28' source='0,0,12,12'" hotimage="file='..\img\checkbox.png' dest='20,16,32,28' source='26,0,38,12'"/>
+									<Text name="shareFrame_shareLinkTextDate" text="Specify expiration date" width="70" height="30" padding="0,0,0,0" textpadding="0,8,0,0" textcolor="#FF999999"/>
+									<DateTime name="shareFrame_shareLinkFirstDatetime" width="140" height="30" padding="20,0,0,0"  bkcolor="#FFFFFFFF" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;"/>
+									<Text name="shareFrame_shareLinkTextDateTip" text="To" padding="5,0,0,0" textpadding="4,3,4,3" textcolor="#FF999999"/>
+									<DateTime name="shareFrame_shareLinkSecondDatetime" width="140" height="30" padding="5,0,0,0"  bkcolor="#FFFFFFFF" bkimage="file=&apos;..\img\search_bg.png&apos; source=&apos;0,0,184,26&apos; corner=&apos;1,1,1,1&apos;"/>
+								</HorizontalLayout>
+							</VerticalLayout>
+							<VerticalLayout width="520" height="30" padding="20,15,0,0">
+								<HorizontalLayout>
+									<HorizontalLayout width="520" bkcolor="#FFF5FAFC">
+										<Text name="shareFrame_shareLinkTextTip" text="You can send the link to colleagues via eSpace, 3MS, or email now." padding="0,0,0,0" textpadding="4,3,4,3" textcolor="#99999999" bkcolor="#FFF5FAFC"/>
+									</HorizontalLayout>
+								</HorizontalLayout>
+							</VerticalLayout>
+						</VerticalLayout>
+
+					</TabLayout>	
+				</VerticalLayout>
+			</TabLayout>
+		</HorizontalLayout>
+		<HorizontalLayout height="30" bkcolor="#FFF5FAFC" padding="0,20,0,0">
+			<HorizontalLayout />
+			<HorizontalLayout width="195" >
+				<Button name="shareFrame_invite" text="Invite" width="75" height="30" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\shareOK.png&apos; source=&apos;0,0,84,30&apos;" hotimage="file=&apos;..\img\shareOK.png&apos; source=&apos;85,0,169,30&apos;" pushedimage="file=&apos;..\img\shareOK.png&apos; source=&apos;170,0,254,30&apos;" />
+				<Button name="shareFrame_compelete" text="Finish" width="75" height="30" float="true" pos="0,0,75,30" textcolor="#FFFFFFFF" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\shareOK.png&apos; source=&apos;0,0,84,30&apos;" hotimage="file=&apos;..\img\shareOK.png&apos; source=&apos;85,0,169,30&apos;" pushedimage="file=&apos;..\img\shareOK.png&apos; source=&apos;170,0,254,30&apos;" />
+				<Button name="shareFrame_cancel" text="Cancel" width="75" height="30" float="true" pos="85,0,75,30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\MessageDialog\Cancel_normal.png&apos; corner=&apos;5,5,5,5&apos;" hotimage="file=&apos;..\img\MessageDialog\Cancel_hover.png&apos; corner=&apos;5,5,5,5&apos;" pushedimage="file=&apos;..\img\MessageDialog\Cancel_down.png&apos; corner=&apos;5,5,5,5&apos;" />
+				<Button name="shareFrame_linkCancel" text="Cancel" width="75" height="30" float="true" pos="85,0,75,30" textcolor="#FF000000" disabledtextcolor="#FFA7A6AA" align="center" normalimage="file=&apos;..\img\MessageDialog\Cancel_normal.png&apos; corner=&apos;5,5,5,5&apos;" hotimage="file=&apos;..\img\MessageDialog\Cancel_hover.png&apos; corner=&apos;5,5,5,5&apos;" pushedimage="file=&apos;..\img\MessageDialog\Cancel_down.png&apos; corner=&apos;5,5,5,5&apos;" />
+			</HorizontalLayout>
+		</HorizontalLayout>
+	</VerticalLayout>
+</Window>

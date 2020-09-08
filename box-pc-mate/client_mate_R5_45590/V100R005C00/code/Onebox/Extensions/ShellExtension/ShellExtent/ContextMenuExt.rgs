@@ -1,0 +1,38 @@
+HKCR
+{
+	NoRemove CLSID
+	{
+		ForceRemove {A4B065F6-91BF-452E-A481-736729410010} = s 'ContextMenuExt Class'
+		{
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{3BB1CF7D-5703-481E-9D13-531142A4F801}'
+			Version = s '1.0'
+		}
+	}
+
+	NoRemove AllFilesystemObjects
+    {
+        NoRemove shellex
+        {
+            NoRemove ContextMenuHandlers
+            {
+                ForceRemove OneboxMate = s '{A4B065F6-91BF-452E-A481-736729410010}'
+            }
+        }
+    }
+
+	NoRemove Directory
+	{
+		NoRemove ShellEx
+		{
+			NoRemove ContextMenuHandlers
+			{
+				ForceRemove OneboxMate = s '{A4B065F6-91BF-452E-A481-736729410010}'
+			}
+		}
+	}
+}

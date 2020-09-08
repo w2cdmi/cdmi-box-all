@@ -1,0 +1,329 @@
+@@plainAccessCode
+123
+@@normalSelf
+{ 
+    "type":"copy",  
+    "destFolderId":2144, 
+    "destOwnerId":1430, 
+    "srcOwnerId":1430, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":2145} 
+    ], 
+    "autoRename":true
+}
+
+@@normal
+{ 
+    "type":"copy",  
+    "destFolderId":#destFolderId#, 
+    "destOwnerId":#destOwnerId#, 
+    "srcOwnerId":#srcOwnerId#, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":#srcNodeId1#},
+        {"srcNodeId":#srcNodeId2#} 
+    ], 
+       "link": 
+    { 
+        "linkCode":"#linkCode#",
+        "plainAccessCode":"#plainAccessCode#"
+    }, 
+    "autoRename":true
+}
+
+
+@@copyLinkToMeBadAccessCode
+{ 
+    "type":"copy",  
+    "destFolderId":275, 
+    "destOwnerId":62, 
+    "srcOwnerId":62, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":274} 
+    ], 
+    "link": 
+    { 
+        "linkCode":"3222"
+    }, 
+    "autoRename":true
+}
+
+
+@@copyLinkToMe
+{ 
+    "type":"copy",  
+    "destFolderId":2, 
+    "destOwnerId":62, 
+    "srcOwnerId":63, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":5} 
+    ], 
+    "link": 
+    { 
+        "linkCode":"e87db31c"
+    }, 
+    "autoRename":true
+}
+
+@@copyLinkToMeEncryptedForbidden
+{ 
+    "type":"copy",  
+    "destFolderId":2, 
+    "destOwnerId":62, 
+    "srcOwnerId":63, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":6} 
+    ], 
+    "link": 
+    { 
+        "linkCode":"1f4fae6b"
+    }, 
+    "autoRename":true
+}
+@@copyLinkToMeEncrypted
+{ 
+    "type":"copy",  
+    "destFolderId":2, 
+    "destOwnerId":62, 
+    "srcOwnerId":63, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":6} 
+    ], 
+    "link": 
+    { 
+        "linkCode":"1f4fae6b",
+        "plainAccessCode":"$plainAccessCode"
+    }, 
+    "autoRename":true
+}
+
+@@copyLinkToMeEncryptedChild
+{ 
+    "type":"copy",  
+    "destFolderId":2, 
+    "destOwnerId":62, 
+    "srcOwnerId":63, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":7} 
+    ], 
+    "link": 
+    { 
+        "linkCode":"1f4fae6b",
+        "plainAccessCode":"$plainAccessCode"
+    }, 
+    "autoRename":true
+}
+
+@@copyToOther
+{ 
+    "type":"copy",  
+    "destFolderId":16666, 
+    "destOwnerId":1430, 
+    "srcOwnerId":1430, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":2} 
+    ], 
+    "autoRename":true
+}
+@@copyOtherToMeForbidden
+{ 
+    "type":"copy",  
+    "destFolderId":2, 
+    "destOwnerId":62, 
+    "srcOwnerId":63, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":2} 
+    ], 
+    "autoRename":true
+}
+@@copyShareToMe
+{ 
+    "type":"copy",  
+    "destFolderId":2, 
+    "destOwnerId":62, 
+    "srcOwnerId":63, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":3} 
+    ], 
+    "autoRename":true
+}
+@@copyShareToMeChild
+{ 
+    "type":"copy",  
+    "destFolderId":2, 
+    "destOwnerId":62, 
+    "srcOwnerId":63, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":4} 
+    ], 
+    "autoRename":true
+}
+@@sameNode
+{ 
+    "type":"copy",  
+    "destFolderId":2, 
+    "destOwnerId":62, 
+    "srcOwnerId":62, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":2} 
+    ], 
+    "autoRename":true
+} 
+@@sameParent
+{ 
+    "type":"copy",  
+    "destFolderId":32, 
+    "destOwnerId":62, 
+    "srcOwnerId":62, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":30} 
+    ], 
+    "autoRename":true
+} 
+@@subFolderConflict
+{ 
+    "type":"copy",  
+    "destFolderId":32, 
+    "destOwnerId":62, 
+    "srcOwnerId":62, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":13} 
+    ], 
+    "autoRename":true
+} 
+@@nullDest1
+{ 
+    "type":"copy", 
+    "destFolderId":13,  
+    "srcOwnerId":62, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":2} 
+    ], 
+    "autoRename":true
+} 
+@@nullDest2
+{ 
+    "type":"copy",  
+    "destOwnerId":62, 
+    "srcOwnerId":62, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":2} 
+    ], 
+    "autoRename":true
+} 
+
+@@nullSrc1
+{ 
+    "type":"copy",  
+    "destFolderId":13, 
+    "destOwnerId":62, 
+    "srcOwnerId":62, 
+    "srcNodeList": 
+    [ 
+        {} 
+    ], 
+    "autoRename":true
+} 
+@@nullSrc2
+{ 
+    "type":"copy",  
+    "destFolderId":13, 
+    "destOwnerId":62, 
+    "srcOwnerId":62, 
+    "srcNodeList": 
+    [ 
+    ], 
+    "autoRename":true
+} 
+@@nullSrc3
+{ 
+    "type":"copy",  
+    "destFolderId":13, 
+    "destOwnerId":62, 
+    "srcOwnerId":62, 
+    "autoRename":true
+} 
+@@sameNameSelf
+{ 
+    "type":"copy",  
+    "destFolderId":251, 
+    "destOwnerId":62, 
+    "srcOwnerId":62, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":250} 
+    ], 
+    "autoRename":false
+} 
+@@noSuchSource
+{ 
+    "type":"copy",  
+    "destFolderId":13, 
+    "destOwnerId":62, 
+    "srcOwnerId":62, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":22258} 
+    ], 
+    "autoRename":false
+} 
+@@noSuchDest
+{ 
+    "type":"copy",  
+    "destFolderId":1433443, 
+    "destOwnerId":62, 
+    "srcOwnerId":62, 
+    "srcNodeList": 
+    [ 
+        {"srcNodeId":274} 
+    ], 
+    "autoRename":false
+} 
+
+@@nodeIdNull
+{ 
+    "type":"copy",  
+    "destFolderId":#destFolderId#, 
+    "destOwnerId":#destOwnerId#, 
+    "srcOwnerId":#srcOwnerId#, 
+    "autoRename":true
+}
+
+@@srcOwnerId
+{ 
+    "type":"copy",  
+    "destFolderId":#destFolderId#, 
+    "destOwnerId":#destOwnerId#, 
+     "srcNodeList": 
+    [ 
+        {"srcNodeId":#srcNodeId#} 
+    ], 
+    "autoRename":true
+}
+
+@@destOwnerId
+{ 
+    "type":"copy",  
+    "destFolderId":#destFolderId#, 
+    "srcOwnerId":#srcOwnerId#, 
+     "srcNodeList": 
+    [ 
+        {"srcNodeId":#srcNodeId#} 
+    ], 
+    "autoRename":true
+}

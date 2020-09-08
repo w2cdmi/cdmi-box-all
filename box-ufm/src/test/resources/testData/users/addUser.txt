@@ -1,0 +1,67 @@
+@@successData
+{
+	"email":"tangzffhiwei091@huawei.com",
+	"loginName":"tff90006603",
+    "name":"tangzhiffwei 90006602",
+    "description":"bushi lsssiffumang"
+}
+
+@@testDescription
+{
+	"email":"tangzhiwei091@huawei.com",
+	"loginName":"tf90006603",
+    "name":"tangzhwei 90006602",
+    "description":"qwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiop12345678901234567890123456789012345678901234567890123455"
+}
+
+@@negativeSpaceQuote
+{
+	"email":"tangzffhiwei091@huawei.com",
+	"loginName":"tff90006603",
+    "name":"tangzhiffwei 90006602",
+    "description":"bushi lsssiffumang",
+    "spaceQuota":-18
+}
+
+@@noLoginName
+{
+    "description":"bushi liumang"
+}
+
+@@existUser
+{
+	"email":"huangfei@123.com",
+	"loginName":"huangfeifei121",
+    "name":"huangfeifei ddd",
+    "description":"bushi liumang"
+}
+
+@@errorRegion
+{
+	"email":"tongxuan@123.com",
+	"loginName":"huangfeifei122",
+    "name":"huangfeifei d123",
+    "description":"bushi liumang",
+    "regionId":122
+}
+@@errorEmail
+{
+	"email":"huangfei123.com",
+	"loginName":"user111",
+    "name":"user111",
+    "description":"bushi"
+}
+@@longLoginName
+{
+	"email":"huangfei@123.com",
+	"loginName":"useruser111user111user111111useruser111user111user111111useruser111user111user111111useruser111user111user111111useruser111user111user111111useruser111user111user111111useruser111user111user111111useruser111user111user111111useruser111user111user111111useruser111user1useruser111user1",
+    "name":"user111",
+    "description":"bushi"
+}
+@@longName
+{
+	"email":"huangfei@123.com",
+	"name":"qwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiopqwertyuiop12345678901234567890123456789012345678901234567890123455",
+    "loginName":"user111",
+    "description":"bushi"
+}

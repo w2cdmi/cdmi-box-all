@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="CopyPolicySiteInfo">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="CopyPolicySiteInfo"
+		type="com.huawei.sharedrive.app.mirror.domain.CopyPolicySiteInfo" />
+
+	<resultMap id="resultMap.CopyPolicySiteInfo" class="CopyPolicySiteInfo">
+		<result column="id" property="id" javaType="java.lang.Integer" />
+		<result column="policyId" property="policyId" javaType="java.lang.Integer" />
+		<result column="srcRegionId" property="srcRegionId" javaType="java.lang.Integer" />
+		<result column="srcResourceGroupId" property="srcResourceGroupId"
+			javaType="java.lang.Integer" />
+		<result column="destRegionId" property="destRegionId" javaType="java.lang.Integer" />
+		<result column="destResourceGroupId" property="destResourceGroupId"
+			javaType="java.lang.Integer" />
+		<result column="state" property="state" javaType="java.lang.Integer" />
+	</resultMap>
+
+	<select id="get" resultMap="resultMap.CopyPolicySiteInfo" parameterClass="java.lang.Integer">
+		select * from copy_policy_site_info
+		where
+		id=#id#
+	</select>
+
+	<select id="getByPolicy" resultMap="resultMap.CopyPolicySiteInfo" parameterClass="java.lang.Integer">
+		select * from
+		copy_policy_site_info where
+		policyId=#policyId#
+	</select>
+
+
+	<insert id="insert" parameterClass="CopyPolicySiteInfo">
+		insert into
+		copy_policy_site_info(id,policyId,srcRegionId,srcResourceGroupId,destRegionId,destResourceGroupId,state)
+		values(#id#,#policyId#,#srcRegionId#,#srcResourceGroupId#,#destRegionId#,#destResourceGroupId#,#state#)
+	</insert>
+
+	<delete id="delete"  parameterClass="java.lang.Integer">
+		delete from
+		copy_policy_site_info where
+		id=#id#
+	</delete>
+
+	<delete id="deleteByPolicy" parameterClass="java.lang.Integer">
+		delete from
+		copy_policy_site_info where
+		policyId=#policyId#
+	</delete>
+
+	<update id="update" parameterClass="CopyPolicySiteInfo">
+		update copy_policy_site_info
+		set
+		srcRegionId=#srcRegionId#,srcResourceGroupId=#srcResourceGroupId#,destRegionId=#destRegionId#,destResourceGroupId=#destResourceGroupId#
+		where
+		id=#id# and policyId = #policyId#
+	</update>
+
+
+</sqlMap>
+

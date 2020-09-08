@@ -1,0 +1,55 @@
+<import src="/disk/template/menu.wxml" />
+<import src="/disk/template/operation.wxml" />
+<import src="/components/actionsheet/actionsheet.wxml" />
+<view class='page'>
+    <!-- search box  -->
+    <view class="search-bar">
+        <view class="search-bar-form">
+            <view class="search-bar-box">
+                <icon class="icon-search-in-box" type="search" size="14"></icon>
+                <input type="text" placeholder-style="color:rgba(3,3,3,0.4);font-size:13px;" class="search-bar-input" placeholder="请输入搜索的内容" value="{{inputVal}}" bindconfirm="searchRequest" bindfocus="showSearchPage" bindinput="inputTyping" />
+            </view>
+        </view>
+        <image src='../images/sort.png' class="sort_btn" hidden='{{!isSearch}}' catchtap='fileSort'></image>
+        <text class="sort_btn" hidden='{{isSearch}}' style='width:30px;' catchtap='cancelSearch'>取消</text>
+    </view>
+    <!--水平滚动-->
+    <view id="breadcrumb" hidden='{{!isSearch}}'>
+        <view class='crumb-name' wx:for="{{crumbs}}" wx:key="*this" data-crumb="{{item}}" bindtap="onCrumbClick">
+            <view class="item">
+                <text>{{item.name}}</text>
+            </view>
+            <image src='../images/triangle.png'></image>
+        </view>
+    </view>
+    <view style="height:{{WXh-42}}px" hidden='{{!isSearch}}'>
+        <template is="up-progress" data="{{isShowUplodProgress, percent}}" />
+        <include src="../template/nodeList.wxml" />
+    </view>
+    <view class='searchPage' hidden='{{isSearch}}' style="height: {{WXh-42}}px">
+        <include src="../template/nodeList.wxml" />
+    </view>
+
+</view>
+
+<tabbar selectIndex="0" bind:onShowMenu="onShowMenu"></tabbar>
+<menu isShowMenu='{{isShowMenu}}' bind:onUploadImage="onUploadImage" bind:onUploadVideo="onUploadVideo" bind:showCreateFolder="showCreateFolder"></menu>
+
+<!--  排序选项框  -->
+<view class="popover bottom" hidden="{{isShowSortView}}" id="sort_popover" class='sort-view'>
+    <view class='sort-gg'></view>
+    <view class="sort-menu">
+        <view data-types="0" catchtap='sortBytypes'>
+            <text class='sort-text' id="orderField_modifiedAt">创建时间</text>
+            <image class='sort-img {{desc_img[0][0] ? "desc-sorting" : "asc-sorting"}}' hidden='{{desc_img[0][1] }}' src='../images/sorting.png'></image>
+        </view>
+        <view data-types="1" catchtap='sortBytypes'>
+            <text id="orderField_name">文件名</text>
+            <image class='sort-img {{desc_img[1][0] ? "desc-sorting" : "asc-sorting"}}' hidden='{{desc_img[1][1]}}' src='../images/sorting.png'></image>
+        </view>
+    </view>
+</view>
+
+<include src="/disk/template/createFolder.wxml" />
+<!-- <template is="operation-menu" data="{{menu_top,menu_left,isShowMenu,node}}" /> -->
+<template is="zan-actionsheet" data="{{ ...baseActionsheet,node,info }}"></template>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="UserSpecial">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="UserSpecial" type="com.huawei.sharedrive.uam.security.domain.UserSpecial" />
+    
+    <resultMap id="resultMap.UserSpecial" class="UserSpecial">
+        <result column="userName" 		    property="userName" 					javaType="java.lang.String"/>
+        <result column="specialType" 		property="specialType" 					typeHandler="com.huawei.sharedrive.uam.security.domain.UserSpecialTypeHandler"/>
+    </resultMap>
+    
+    <select id="getFilterd" parameterClass="map" resultMap="resultMap.UserSpecial" >
+        select * from user_special where 1=1
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="filter.userName">
+            	userName = #filter.userName#
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="filter.specialType">
+            	specialType = #filter.specialType.type#
+            </isNotEmpty>
+        </dynamic>
+        <dynamic prepend="order by">
+        	<isNull property="order">
+        		userName desc
+        	</isNull>
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+    
+    <select id="getFilterdCount" parameterClass="UserSpecial" resultClass="java.lang.Integer">
+        select count(*) from user_special where 1=1
+        <dynamic prepend="and" open="(" close=")">
+            <isNotEmpty prepend="or" property="userName">
+            	userName = #userName#
+            </isNotEmpty>
+            <isNotEmpty prepend="or" property="specialType">
+            	specialType = #specialType.type#
+            </isNotEmpty>
+        </dynamic>
+    </select>
+
+    <select id="isExist" resultClass="java.lang.Integer" parameterClass="UserSpecial">
+        <![CDATA[
+        select count(*) from user_special where userName=#userName# and specialType=#specialType.type#
+        ]]>
+    </select>
+    
+    <select id="getUserSpecial" resultMap="resultMap.UserSpecial" parameterClass="UserSpecial">
+        <![CDATA[
+        select * from user_special where userName=#userName# and specialType=#specialType.type#
+        ]]>
+    </select>
+    
+    <select id="getUserSpecialByNameAndType" resultMap="resultMap.UserSpecial" parameterClass="map">
+        <![CDATA[
+        select * from user_special where userName=#userName# and specialType=#specialType#
+        ]]>
+    </select>
+    
+    <insert id="insert" parameterClass="UserSpecial">
+    	 <![CDATA[
+    	insert into user_special(userName,specialType) values(#userName#, #specialType.type#)
+    	]]>
+    </insert>
+    
+    <update id="update" parameterClass="map">
+        <![CDATA[
+        update user_special set userName=#filter.userName#,specialType=#filter.specialType.type#
+        where userName=#oldUserName# and specialType=#oldSpecialType#
+        ]]>
+    </update>
+    
+    <delete id="delete" parameterClass="UserSpecial">
+        <![CDATA[
+        delete from user_special 
+        where userName=#userName# and specialType=#specialType.type#
+        ]]>
+    </delete>
+</sqlMap>
+

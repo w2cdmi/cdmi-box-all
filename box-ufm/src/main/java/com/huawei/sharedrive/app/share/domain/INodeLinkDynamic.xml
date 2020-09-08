@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="INodeLinkDynamic">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="INodeLinkDynamic" type="com.huawei.sharedrive.app.share.domain.INodeLinkDynamic" />
+
+
+    <select id="getByIdentity" resultClass="INodeLinkDynamic" parameterClass="INodeLinkDynamic">
+        select * from inode_link_dynamic where id=#id#  
+       <!--  <dynamic>
+           <isNotEmpty property="identity" prepend="and"> identity=#identity#</isNotEmpty>
+        </dynamic> -->
+    </select>
+
+    <select id="list" resultClass="INodeLinkDynamic" parameterClass="INodeLinkDynamic">
+        <![CDATA[
+        select * from inode_link_dynamic where id=#id#
+        ]]>
+    </select>
+    
+    <insert id="insert" parameterClass="INodeLinkDynamic">
+        <![CDATA[
+        insert into inode_link_dynamic (id,identity,password,encryptedPassword,passwordKey,createdAt,expiredAt)
+        values 
+        (#id#,#identity#,#password#,#encryptedPassword#,#passwordKey#,#createdAt#,#expiredAt#)
+        ]]>
+    </insert>
+
+    <update id="updatePassword" parameterClass="INodeLinkDynamic">
+        <![CDATA[
+        update inode_link_dynamic set password=#password#,encryptedPassword=#encryptedPassword#,passwordKey=#passwordKey#,expiredAt=#expiredAt#  where id=#id# 
+
+        ]]>
+                <!-- and identity=#identity# -->
+    </update>
+    
+    <update id="upgradePassword" parameterClass="INodeLinkDynamic">
+        <![CDATA[
+        update inode_link_dynamic set password=#password#,encryptedPassword=#encryptedPassword#,passwordKey=#passwordKey#  where id=#id# <!-- and identity=#identity# -->
+        ]]>
+    </update>
+
+    <update id="updateExpiredAt" parameterClass="INodeLinkDynamic">
+        <![CDATA[
+        update inode_link_dynamic set expiredAt=#expiredAt#   where id=#id# and identity=#identity#
+        ]]>
+    </update>
+        
+    <delete id="deleteByIdentity" parameterClass="INodeLinkDynamic">
+        <![CDATA[
+        delete from inode_link_dynamic  where id=#id# and identity=#identity#
+        ]]>
+    </delete>
+	
+	<delete id="deleteAll" parameterClass="INodeLinkDynamic">
+        <![CDATA[
+        delete from inode_link_dynamic  where id=#id# 
+        ]]>
+    </delete>
+    
+</sqlMap>
+

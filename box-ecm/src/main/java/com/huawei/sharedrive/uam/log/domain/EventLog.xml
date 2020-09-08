@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="EventLog">
+
+    <!-- Use type aliases to avoid typing the full classname every time. -->
+    <typeAlias alias="EventLog" type="com.huawei.sharedrive.uam.log.domain.EventLog" />
+    
+    <resultMap id="resultMap.EventLogMap" class="EventLog">
+        <result column="id" 				property="id" 					javaType="java.lang.String"/>
+        <result column="userId" 			property="userId" 		    	javaType="java.lang.Long"/>
+        <result column="name" 		    	property="userName" 			javaType="java.lang.String"/>
+        <result column="type"   			property="type" 				javaType="java.lang.String"/>
+        <result column="createdAt" 			property="createdAt" 			javaType="java.util.Date"/>
+        <result column="clientDeviceType" 	property="clientDeviceType" 	javaType="java.lang.String"/>
+        <result column="clientDeviceSN" 	property="clientDeviceSN" 		javaType="java.lang.String"/>
+        <result column="clientAgent" 		property="clientAgent" 			javaType="java.lang.String"/>
+        <result column="clientAddress" 		property="clientAddress" 		javaType="java.lang.String"/>
+        <result column="sourceId" 			property="sourceId" 		    javaType="java.lang.Long"/>
+        <result column="sourceParentId" 	property="sourceParentId" 		javaType="java.lang.Long"/>
+        <result column="sourceOwnerId" 		property="sourceOwnerId" 		javaType="java.lang.Long"/>
+        <result column="sourceName" 		property="sourceName" 	    	javaType="java.lang.String"/>
+        <result column="sourceType" 		property="sourceType" 		    javaType="java.lang.Byte"/>
+        <result column="destId" 			property="destId" 		    	javaType="java.lang.Long"/>
+        <result column="destParentId" 		property="destParentId" 		javaType="java.lang.Long"/>
+        <result column="destOwnerId" 		property="destOwnerId" 			javaType="java.lang.Long"/>
+        <result column="destName" 			property="destName" 	    	javaType="java.lang.String"/>
+        <result column="destType" 			property="destType" 		    javaType="java.lang.Byte"/>
+    </resultMap>
+    
+    <insert id="insert" parameterClass="EventLog">
+        insert into event_log(id,userId,type,createdAt,clientDeviceType,clientDeviceSN,clientAgent
+        ,clientAddress,sourceId,sourceParentId,sourceOwnerId,sourceName,sourceType,destId,destParentId,destOwnerId
+        ,destName,destType) 
+        values
+        (#id#,#userId#,#type#,#createdAt#,#clientDeviceType#,#clientDeviceSN#,#clientAgent#,#clientAddress#,#sourceId#
+        ,#sourceParentId#,#sourceOwnerId#,#sourceName#,#sourceType#,#destId#,#destParentId#,#destOwnerId#,#destName#,
+        #destType#)
+    </insert>
+    
+    <delete id="delete" parameterClass="map">
+        delete from event_log where createdAt &lt; #createdAt#
+    </delete>
+    
+    <select id="getFilterd" parameterClass="map" resultMap="resultMap.EventLogMap">
+         select 
+         a.id,a.userId,b.name,a.type,a.createdAt,a.clientDeviceType,
+         a.clientDeviceSN,a.clientAgent,a.clientAddress,a.sourceId,a.sourceParentId,a.sourceOwnerId,
+         a.sourceName,a.sourceType,a.destId,a.destParentId,a.destOwnerId,a.destName,a.destType
+		 from event_log a INNER JOIN user b ON a.userId=b.id 
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="filter.type">
+            	type = #filter.type#
+            </isNotEmpty>
+            <isNotEmpty  prepend="and" property="filter.admin">
+            	(loginName like concat('%',#filter.admin#,'%') 
+            	or 
+            	name like concat('%',#filter.admin#,'%') ) 
+            </isNotEmpty>
+            <isNotNull prepend="and" property="filter.startTime">
+        		a.createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		a.createdAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+        <dynamic prepend="order by">
+        	<isNull property="order">
+        		a.createdAt desc
+        	</isNull>
+            <isNotNull property="order">
+                <isNotEmpty property="order.field">
+                    $order.field$
+                    <isEqual property="order.desc" compareValue="true">
+                        desc
+                    </isEqual>
+                </isNotEmpty>
+            </isNotNull>
+        </dynamic>
+        <dynamic prepend="limit">
+            <isNotNull property="limit">
+                #limit.offset#,#limit.length#
+            </isNotNull>
+        </dynamic>
+    </select>
+
+    <select id="getFilterdCount" parameterClass="map" resultClass="java.lang.Integer">
+        select count(a.id) from event_log a INNER JOIN user b ON a.userId=b.id 
+        <dynamic prepend="where">
+            <isNotEmpty prepend="and" property="filter.type">
+            	type = #filter.type#
+            </isNotEmpty>
+            <isNotEmpty  prepend="and" property="filter.admin">
+            	(loginName like concat('%',#filter.admin#,'%') 
+            	or 
+            	name like concat('%',#filter.admin#,'%') ) 
+            </isNotEmpty>
+            <isNotNull prepend="and" property="filter.startTime">
+        		a.createdAt &gt;= #filter.startTime#
+        	</isNotNull>
+        	<isNotNull prepend="and" property="filter.endTime">
+        		a.createdAt &lt;= #filter.endTime#
+        	</isNotNull>
+        </dynamic>
+    </select>
+</sqlMap>
+

@@ -1,0 +1,117 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="zh-cn" xml:lang="zh-cn">
+<head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<meta name="copyright" content="(C) 版权 2005">
+<meta name="DC.rights.owner" content="(C) 版权 2005">
+<meta name="DC.Type" content="concept">
+<meta name="DC.Title" content="当文件或文件夹上没有显示任何状态图标时，如何解决">
+<meta name="DC.Relation" scheme="URI" content="../faq/pc.html">
+<meta name="DC.Format" content="XHTML">
+<meta name="DC.Identifier" content="desktop_icon_dispear">
+<meta name="DC.Language" content="zh-cn">
+<link rel="stylesheet" type="text/css" href="../public_sys-resources/commonltr.css">
+<title>当文件或文件夹上没有显示任何状态图标时，如何解决</title>
+<script type="text/javascript" language="JavaScript">
+function reDo() {
+  if (innerWidth != origWidth || innerHeight != origHeight)
+     location.reload();
+}
+if ((parseInt(navigator.appVersion) == 4) && (navigator.appName == "Netscape")) {
+	origWidth = innerWidth;
+	origHeight = innerHeight;
+	onresize = reDo;
+}
+onerror = null; 
+</script>
+<style type="text/css">
+div.WebHelpPopupMenu { position:absolute;
+left:0px;
+top:0px;
+z-index:4;
+visibility:hidden; }
+</style>
+<script type="text/javascript" language="javascript1.2" src="../whmsg.js"></script>
+<script type="text/javascript" language="javascript" src="../whver.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whproxy.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whutils.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whlang.js"></script>
+<script type="text/javascript" language="javascript1.2" src="../whtopic.js"></script>
+
+ <meta name="generator" content="Adobe RoboHelp 9">
+</head>
+<body style="clear:both; padding-left:10px; padding-top:5px; padding-right:5px; padding-bottom:5px"><script type="text/javascript" language="javascript1.2">
+if (window.gbWhTopic)
+{
+	var strUrl = decodeURI(document.location.href);
+	var bc = 0;
+	var n = strUrl.toLowerCase().indexOf("bc-");
+	if(n != -1)
+	{
+		document.location.href = encodeURI(strUrl.substring(0, n));
+		bc = strUrl.substring(n+3);
+	}
+
+	if (window.addTocInfo)
+	{
+	addTocInfo("桌面应用\n当文件或文件夹上没有显示任何状态图标时，如何解决");
+addButton("show",BTN_TEXT,"显示","","","","",0,0,"","","");
+
+	}
+	if (window.writeBtnStyle)
+		writeBtnStyle();
+
+	if (window.writeIntopicBar)
+		writeIntopicBar(1);
+
+	
+	document.write("<p style=\"text-align:right\"> ");
+AddMasterBreadcrumbs("../clouddrive_faq.htm", "", ">", "Home", "welcome.html");
+document.write("<a href=\"pc.html\">桌面应用<\/a> > 当文件或文件夹上没有显示任何状态图标时，如何解决<\/p>");
+
+
+	if (window.setRelStartPage)
+	{
+	setRelStartPage("../clouddrive_faq.htm");
+
+		autoSync(1);
+		sendSyncInfo();
+		sendAveInfoOut();
+	}
+}
+else
+	if (window.gbIE4)
+		document.location.reload();
+
+</script><a name="desktop_icon_dispear"></a><a name="desktop_icon_dispear"></a>
+
+
+<h1 class="topictitle1">当文件或文件夹上没有显示任何状态图标时，如何解决</h1>
+
+<div>
+<div class="p">当文件或文件夹上没有显示任何状态图标时，可能是安装同步客户端时写注册表失败造成的。请参考下文的方法解决。<ol><li>以管理员身份运行<b><span class="cmdname">cmd.exe</span></b>，进入命令行界面。</li><li>运行<b><span class="cmdname">cd</span></b> <i><span class="varname">/C C:\Program Files\huawei\StorBox</span></i>进入同步客户端安装目录。此处以同步客户端安装在<i><span class="varname">C</span></i>盘，安装目录是<i><span class="varname">C:\Program
+Files\huawei\StorBox</span></i>为例。</li><li>运行<b><span class="cmdname">regsvr32 ShellExtent.dll</span></b>手动注册shell扩展。</li><li>运行以下命令手动重启资源管理器。<ol type="a"><li><b><span class="cmdname">taskkill</span></b> <strong><span>/f /im</span></strong> <i><span class="varname">explorer.exe</span></i></li><li><i><span class="varname">explorer.exe</span></i></li></ol>
+</li></ol>
+</div>
+
+</div>
+
+<div>
+<div class="familylinks">
+<div class="parentlink"><strong>父主题：</strong> <a href="pc.html">桌面应用</a></div>
+</div>
+</div>
+
+<div class="hrcopyright"><hr size="2"></div><div class="hwcopyright">华为专有和保密信息</div><div class="hwcopyright">版权所有 &copy; 华为技术有限公司</div><script type="text/javascript" language="javascript1.2">
+if (window.writeIntopicBar)
+	writeIntopicBar(0);
+
+
+highlightSearch();
+</script>
+</body>
+</html>

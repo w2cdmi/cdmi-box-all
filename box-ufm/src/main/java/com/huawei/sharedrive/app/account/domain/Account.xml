@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="Account">
+
+	<typeAlias alias="Account"
+		type="com.huawei.sharedrive.app.account.domain.Account" />
+
+	<insert id="insert" parameterClass="Account">
+		<![CDATA[
+			insert into account(id,appId,domain,createdAt,modifiedAt,status,enterpriseId,maxSpace,maxFiles,maxMember,maxTeamspace,filePreviewable,fileScanable,currentMember,currentTeamspace,currentSpace,currentFiles)
+			values(#id#,#appId#,#domain#,#createdAt#,#modifiedAt#,#status#,#enterpriseId#,#maxSpace#,#maxFiles#,#maxMember#,#maxTeamspace#,#filePreviewable#,#fileScanable#,#currentMember#,#currentTeamspace#,#currentSpace#,#currentFiles#)
+		]]>
+	</insert>
+
+	<update id="update" parameterClass="Account">
+		<![CDATA[
+			update account set appId=#appId#,domain=#domain#,createdAt=#createdAt#,modifiedAt=#modifiedAt#,
+			status=#status#,maxSpace=#maxSpace#,maxFiles=#maxFiles#,maxMember=#maxMember#,maxTeamspace=#maxTeamspace#,
+			filePreviewable=#filePreviewable#,fileScanable=#fileScanable#,currentMember=#currentMember#,currentTeamspace=#currentTeamspace#,currentSpace=#currentSpace#,currentFiles=#currentFiles# where id =#id#
+		]]>
+	</update>
+
+	<select id="getMaxAccountId" resultClass="long">
+        <![CDATA[
+       	 select max(id) from account
+        ]]>
+	</select>
+
+	<select id="getById" resultClass="Account" parameterClass="Long">
+		<![CDATA[
+       	 select * from account where id =#id#
+        ]]>
+	</select>
+
+	<select id="getByAppId" resultClass="Account" parameterClass="String">
+		<![CDATA[
+       	 select * from account where appId =#appId#
+        ]]>
+	</select>
+
+	<select id="getByDomain" resultClass="Account" parameterClass="String">
+		<![CDATA[
+       	 select * from account where domain=#domain#
+        ]]>
+	</select>
+
+	<select id="getOneAccountOrderByACS" resultClass="Account"
+		parameterClass="Account">
+		<![CDATA[
+       	 select * from account where appId=#appId# and id>#id# order by id ASC limit 1
+        ]]>
+	</select>
+
+
+   	<update id="updateStatisticsInfo" parameterClass="Account">
+		<![CDATA[
+			update account set currentSpace = #currentSpace#, currentFiles=#currentFiles#  where id = #id# ;
+		]]>
+	</update>
+
+	<select id="getMaxSpace" resultClass="Long" parameterClass="Long">
+		<![CDATA[
+       	 select maxSpace from account where id =#id#
+        ]]>
+	</select>
+</sqlMap>

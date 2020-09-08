@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap      
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"      
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="FilesDelete">
+
+	<!-- Use type aliases to avoid typing the full classname every time. -->
+	<typeAlias alias="FilesDelete"
+		type="com.huawei.sharedrive.app.spacestatistics.domain.FilesDelete" />
+
+	<select id="getUserDelete" resultClass="FilesDelete">
+		select
+		ownedBy,MAX(nodeId) as nodeId,accountId,SUM(size) as size, count(*)
+		as
+		fileCount from files_delete GROUP BY ownedBy ;
+	</select>
+	<select id="getdeletedNodes" parameterClass="Long" resultClass="long">
+		select nodeId from files_delete where ownedBy=#userId#;
+	</select>
+
+	<delete id="deleteByNodeId" parameterClass="FilesDelete">
+		delete from
+		files_delete where ownedBy=#ownedBy# and nodeId = #nodeId# ;
+	</delete>
+
+	<delete id="deleteByUserId" parameterClass="long">
+		delete from
+		files_delete where ownedBy=#userId# ;
+	</delete>
+
+	<insert id="insert" parameterClass="FilesDelete">
+		insert into
+		files_delete(ownedBy,accountId,size,nodeId)
+		values(#ownedBy#,#accountId#,#size#,#nodeId#);
+	</insert>
+
+	<select id="getDeletedAccountInfo" resultClass="FilesDelete">
+		select
+		MAX(ownedBy) as ownedBy,MAX(nodeId) as nodeId , accountId,SUM(size) as
+		size , count(*) as fileCount from files_delete GROUP BY accountId ;
+	</select>
+</sqlMap>    
